@@ -1,0 +1,11 @@
+:root {
+  --primary-color: hsl(244, 69%, 13%);
+  --second-color: hsl(213, 22%, 40%);
+  --white-color: #fff;
+  --gray-color: #eee;
+  --default-font-family: "Roboto Condensed", sans-serif;
+  --title-font-family: "Roboto Slab", sans-serif;
+  --container-padding: 0.8rem;
+  --box-shadow: 2px 2px 8px #00000060;
+  --table-shadow: 0 0 10px #0000006a;
+}

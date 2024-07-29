@@ -1,0 +1,26 @@
+.header {
+  color: var(--white-color);
+  height: 3rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: var(--primary-color);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-name,
+.menu-icon {
+  padding: var(--container-padding);
+}
+
+.brand-name {
+  font-size: 0.8rem;
+}
+
+.menu-icon {
+  width: 32px;
+  height: 32px;
+}
