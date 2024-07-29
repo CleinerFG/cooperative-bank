@@ -7,8 +7,10 @@
 body {
   height: 100vh;
   width: 100vw;
+  background-color: #8c8c8c;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--title-font-family);
 }

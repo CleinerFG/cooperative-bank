@@ -1,0 +1,30 @@
+@import url("main.css");
+
+@media (min-width: 767px) {
+  .main {
+    max-width: 1400px;
+  }
+  .section {
+    width: 50%;
+  }
+
+  .section + .section {
+    border-top: none;
+    margin-bottom: 4rem;
+  }
+
+  .content-wrapper {
+    /* 160px - Height section financial-statement;
+       64px - Height footer */
+    height: calc(100vh - 160px - 64px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* gap: 4rem; */
+    flex-wrap: wrap;
+  }
+
+  .items-container {
+    justify-content: flex-start;
+  }
+}
