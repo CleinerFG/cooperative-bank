@@ -93,28 +93,24 @@ h2 {
   margin-right: -0.8rem;
 }
 
-section {
+.section + .section {
+  border-top: 1px solid #45436b7c;
+}
+
+.section {
   padding-bottom: 1rem;
-}
-
-section + section {
-  padding-top: 1rem;
-  border-top: 1px solid #45436b;
-}
-
-.investments-section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.investments-itens {
+.itens-container {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
-.activity-item {
+.card-item {
   background-color: var(--white-color);
   border-radius: 1rem;
   width: 6rem;
@@ -128,19 +124,15 @@ section + section {
   gap: 0.5rem;
 }
 
-.activity-icon {
+.card-icon {
   width: 70%;
 }
 
-.activity-label {
+.label {
   font-size: 1rem;
 }
 
-.upcoming-events h2 {
-  padding-bottom: 1rem;
-}
-
-table {
+.table {
   background-color: var(--white-color);
   width: 100%;
   border-collapse: collapse;
@@ -148,23 +140,21 @@ table {
   box-shadow: 0 0 10px #0000006a;
 }
 
-thead tr {
+.table thead tr {
   background-color: var(--primary-color);
   color: var(--white-color);
   text-align: left;
 }
 
-th,
+.table th,
 td {
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
 }
 
-tbody tr {
+.table tbody tr {
   border-bottom: 1px solid #ccc;
 }
 
-tbody tr:nth-child(odd) {
+.table tbody tr:nth-child(odd) {
   background-color: #f3f3f3;
 }
-
-
