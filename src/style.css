@@ -8,6 +8,8 @@
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
   --container-padding: 0.8rem;
+  --box-shadow: 2px 2px 8px #00000060;
+  --table-shadow: 0 0 10px #0000006a;
 }
 
 * {
@@ -90,8 +92,8 @@ h2 {
   color: var(--primary-color);
   border-radius: 2rem 2rem 0 0;
   padding: var(--container-padding);
-  margin-left: -0.8rem;
-  margin-right: -0.8rem;
+  margin-left: calc(-1 * var(--container-padding));
+  margin-right: calc(-1 * var(--container-padding));
 }
 
 .section + .section {
@@ -116,7 +118,7 @@ h2 {
   border-radius: 1rem;
   width: 6rem;
   height: 7rem;
-  box-shadow: 2px 2px 8px #00000060;
+  box-shadow: var(--box-shadow);
 
   display: flex;
   flex-direction: column-reverse;
@@ -138,7 +140,7 @@ h2 {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  box-shadow: 0 0 10px #0000006a;
+  box-shadow: var(--table-shadow);
 }
 
 .table thead tr {
