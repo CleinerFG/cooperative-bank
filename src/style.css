@@ -61,6 +61,7 @@ h2 {
 .main {
   margin-top: 3rem;
   padding: var(--container-padding);
+  padding-bottom: 0;
   background-image: linear-gradient(var(--primary-color), var(--second-color));
 }
 
@@ -157,4 +158,18 @@ td {
 
 .table tbody tr:nth-child(odd) {
   background-color: #f3f3f3;
+}
+
+.footer {
+  padding: var(--container-padding);
+  background-color: var(--second-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.footer-icon {
+  width: 4rem;
 }
