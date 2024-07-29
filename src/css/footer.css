@@ -1,6 +1,7 @@
 .footer {
+  color: var(--text-color);
   padding: var(--container-padding);
-  background-color: var(--second-color);
+  background-color: var(--third-color);
 
   display: flex;
   justify-content: center;

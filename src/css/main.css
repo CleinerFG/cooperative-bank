@@ -8,7 +8,7 @@
 }
 
 .financial-statement {
-  color: var(--white-color);
+  color: var(--text-color);
   height: 10rem;
 }
 
@@ -18,7 +18,7 @@
 
 .total-investments-container {
   padding: 0.8rem 0 0 0;
-  border-top: 1px solid #45436b;
+  border-top: 1px solid var(--line-color);
   display: flex;
   justify-content: space-between;
 }
@@ -28,12 +28,21 @@
 }
 
 .content-wrapper {
-  background-color: var(--gray-color);
+  background-color: var(--second-color);
   color: var(--primary-color);
   border-radius: 2rem 2rem 0 0;
   padding: var(--container-padding);
   margin-left: calc(-1 * var(--container-padding));
   margin-right: calc(-1 * var(--container-padding));
+}
+
+.section h2 {
+  background-image: linear-gradient(
+    to left,
+    var(--accent-color),
+    var(--second-color)
+  );
+  padding: .5rem 0 .5rem 0;
 }
 
 .section + .section {
@@ -54,7 +63,8 @@
 }
 
 .card-item {
-  background-color: var(--white-color);
+  color: var(--text-color);
+  background-color: var(--third-color);
   border-radius: 1rem;
   width: 6rem;
   height: 7rem;

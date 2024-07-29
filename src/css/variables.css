@@ -1,12 +1,14 @@
 :root {
-  --primary-color: hsl(244, 69%, 13%);
-  --second-color: hsl(213, 22%, 40%);
-  --white-color: #fff;
-  --gray-color: #eee;
+  --container-padding: 0.8rem;
+  --primary-color: #1e1e1e;
+  --second-color: #323232;
+  --third-color: #1b4d5c;
+  --accent-color: #1997bd;
+  --text-color: #e0e0e0;
+  --line-color: #e0e0e06e;
+  --border-color: #333333; /* Cor de borda escura */
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
+  --header-height: 3rem;
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
-  --container-padding: 0.8rem;
-  --box-shadow: 2px 2px 8px #00000060;
-  --table-shadow: 0 0 10px #0000006a;
-  --header-height: 3rem;
 }
