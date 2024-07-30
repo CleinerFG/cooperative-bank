@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Manager</title>
   <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/index.js"></script>
 </head>
 
 <body>
@@ -18,8 +19,8 @@
       <section class="financial-statement">
         <h1>Financial Statement</h1>
         <div class="total-investments-container">
-          <div class="total-investments">R$ * * * * * *</div>
-          <img class="visibility-icon"  src="assets/visibility-on.svg" alt="">
+          <div class="total-investments">R$ <span id="total-value">******</span></div>
+          <img class="visibility-icon" data-visibility="off" src="assets/visibility-off.svg" alt="">
         </div>
       </section>
       <div class="content-wrapper">
