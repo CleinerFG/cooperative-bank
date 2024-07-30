@@ -24,3 +24,8 @@
   width: 32px;
   height: 32px;
 }
+
+/* Hover */
+.menu-icon:hover {
+  cursor: pointer;
+}

@@ -42,7 +42,8 @@
     var(--accent-color),
     var(--second-color)
   );
-  padding: .5rem 0 .5rem 0;
+  padding: 0.5rem 0 0.5rem 0;
+  border-radius: 1rem;
 }
 
 .section + .section {
@@ -83,4 +84,14 @@
 
 .label {
   font-size: 1rem;
+}
+
+/* Hover */
+.visibility-icon:hover {
+  cursor: pointer;
+}
+
+.card-item:hover {
+  cursor: pointer;
+  background-color: var(--third-color-hover);
 }

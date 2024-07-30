@@ -3,11 +3,12 @@
   --primary-color: #1e1e1e;
   --second-color: #323232;
   --third-color: #1b4d5c;
+  --third-color-hover: #24697e;
   --accent-color: #1997bd;
   --text-color: #e0e0e0;
   --line-color: #e0e0e06e;
-  --border-color: #333333; /* Cor de borda escura */
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
+  --border-color: #333333;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   --header-height: 3rem;
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
