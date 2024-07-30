@@ -25,7 +25,27 @@
   height: 32px;
 }
 
+.menu-options {
+  background-color: var(--second-color-light);
+  border-radius: 0.5rem 0 0.5rem 0.5rem;
+  box-shadow: var(--box-shadow);
+  padding: 0.6rem;
+  /* display: none; */
+  position: absolute;
+  right: calc(var(--container-padding) + 0.2rem);
+  top: 2.3rem;
+}
+
+.menu-list-item {
+  list-style: none;
+}
+
 /* Hover */
 .menu-icon:hover {
   cursor: pointer;
+}
+
+.menu-list-item:hover {
+  cursor: pointer;
+  color: var(--accent-color);
 }
