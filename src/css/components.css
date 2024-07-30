@@ -1,6 +1,7 @@
 .table {
   background-color: var(--second-color-light);
-  width: 100%;
+  width: fit-content;
+  margin: auto;
   border-collapse: collapse;
   text-align: left;
   box-shadow: var(--box-shadow);
@@ -14,7 +15,7 @@
 
 .table th,
 td {
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 0.7rem;
   color: var(--text-color);
 }
 
