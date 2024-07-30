@@ -5,6 +5,7 @@
   border-collapse: collapse;
   text-align: left;
   box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
 }
 
 .table thead tr {
@@ -19,8 +20,16 @@ td {
   color: var(--text-color);
 }
 
+.table th:first-child {
+  border-top-left-radius: 0.8rem;
+}
+
+.table th:last-child {
+  border-top-right-radius: 0.8rem;
+}
+
 .table tbody tr {
-  border-bottom: 1px solid var(--line-color);
+  border-top: 1px solid var(--line-color);
 }
 
 /* Hover */
