@@ -1,5 +1,5 @@
 .table {
-  background-color: var(--primary-color);
+  background-color: var(--second-color-light);
   width: 100%;
   border-collapse: collapse;
   text-align: left;
@@ -20,4 +20,10 @@ td {
 
 .table tbody tr {
   border-bottom: 1px solid var(--line-color);
+}
+
+/* Hover */
+.table tbody tr:hover {
+  cursor: pointer;
+  background-color: var(--primary-color);
 }
