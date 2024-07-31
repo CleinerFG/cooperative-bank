@@ -15,3 +15,7 @@ h2 {
   font-family: var(--title-font-family);
   color: var(--text-color);
 }
+
+a {
+  text-decoration: none;
+}
