@@ -1,5 +1,5 @@
-import { menuHandler } from "./modules/menuHandler.js";
-import { visibilitySwitch } from "./modules/visibilitySwitch.js";
+import { menuHandler } from "./modules/common/menuHandler.js";
+import { visibilitySwitch } from "./modules/home/visibilitySwitch.js";
 
 // Menu
 document.querySelector(".menu-icon").addEventListener("click", menuHandler);
