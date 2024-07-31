@@ -4,7 +4,7 @@ export function visibilitySwitch(ev) {
 
   // Switching visibility and SVG file
   const state = visibility === "off" ? "on" : "off";
-  icon.src = `assets/visibility-${state}.svg`;
+  icon.src = `../assets/icons/visibility-${state}.svg`;
   icon.dataset.visibility = state;
 
   // Showing the total value

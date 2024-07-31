@@ -1,11 +1,4 @@
-.main {
-  max-width: 1200px;
-  margin: auto;
-  margin-top: 3rem;
-  padding: var(--container-padding);
-  padding-bottom: 0;
-  background-image: linear-gradient(var(--primary-color), var(--second-color));
-}
+@import url(../main/content-container.css);
 
 .financial-statement {
   color: var(--text-color);

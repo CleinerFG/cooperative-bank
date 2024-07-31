@@ -1,0 +1,10 @@
+@media (min-width: 767px) {
+  /* footer */
+  .footer-text {
+    flex-direction: row;
+  }
+
+  .footer-text p + p::before {
+    content: " - ";
+  }
+}
