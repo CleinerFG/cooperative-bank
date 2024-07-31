@@ -10,105 +10,103 @@
 </head>
 
 <body>
-  <div class="content-container">
-    <header class="header">
-      <a class="brand-name" href="index.html" rel="home">Coperative Bank</a>
-      <img class="menu-icon" src="../assets/icons/icon-menu.svg">
-      <div class="menu-options">
-        <ul class="menu-list">
-          <li class="menu-list-item">Profile</li>
-          <li class="menu-list-item">Logout</li>
-        </ul>
+  <header class="header">
+    <a class="brand-name" href="index.html" rel="home">Coperative Bank</a>
+    <img class="menu-icon" src="../assets/icons/icon-menu.svg">
+    <div class="menu-options">
+      <ul class="menu-list">
+        <li class="menu-list-item">Profile</li>
+        <li class="menu-list-item">Logout</li>
+      </ul>
+    </div>
+  </header>
+  <main class="content-container">
+    <section class="financial-statement">
+      <h1>Financial Statement</h1>
+      <div class="total-investments-container">
+        <div class="total-investments">R$ <span id="total-value">******</span></div>
+        <img class="visibility-icon" data-visibility="off" src="../assets/icons/icon-visibility-off.svg" alt="">
       </div>
-    </header>
-    <main class="main">
-      <section class="financial-statement">
-        <h1>Financial Statement</h1>
-        <div class="total-investments-container">
-          <div class="total-investments">R$ <span id="total-value">******</span></div>
-          <img class="visibility-icon" data-visibility="off" src="../assets/icons/icon-visibility-off.svg" alt="">
+    </section>
+    <div class="content-wrapper">
+      <section class="section wallet-section">
+        <h2>Wallet</h2>
+        <div class="items-container wallet-items">
+          <div class="card-item">
+            <span class="wallet-label">Loans</span>
+            <img class="card-icon" src="../assets/icons/icon-loans.svg">
+          </div>
+          <div class="card-item">
+            <span class="wallet-label">Debtors</span>
+            <img class="card-icon" src="../assets/icons/icon-debtors.svg">
+          </div>
+          <div class="card-item">
+            <span class="wallet-label">Payments</span>
+            <img class="card-icon" src="../assets/icons/icon-payments.svg">
+          </div>
         </div>
       </section>
-      <div class="content-wrapper">
-        <section class="section wallet-section">
-          <h2>Wallet</h2>
-          <div class="items-container wallet-items">
-            <div class="card-item">
-              <span class="wallet-label">Loans</span>
-              <img class="card-icon" src="../assets/icons/icon-loans.svg">
-            </div>
-            <div class="card-item">
-              <span class="wallet-label">Debtors</span>
-              <img class="card-icon" src="../assets/icons/icon-debtors.svg">
-            </div>
-            <div class="card-item">
-              <span class="wallet-label">Payments</span>
-              <img class="card-icon" src="../assets/icons/icon-payments.svg">
-            </div>
+      <section class="section investments-section">
+        <h2>Investments</h2>
+        <div class="items-container investments-items">
+          <div class="card-item">
+            <span class="label activity-label">All</span>
+            <img class="card-icon" src="../assets/icons/icon-wallet.svg">
           </div>
-        </section>
-        <section class="section investments-section">
-          <h2>Investments</h2>
-          <div class="items-container investments-items">
-            <div class="card-item">
-              <span class="label activity-label">All</span>
-              <img class="card-icon" src="../assets/icons/icon-wallet.svg">
-            </div>
-            <div class="card-item">
-              <span class="label activity-label">Reports</span>
-              <img class="card-icon" src="../assets/icons/icon-reports.svg">
-            </div>
+          <div class="card-item">
+            <span class="label activity-label">Reports</span>
+            <img class="card-icon" src="../assets/icons/icon-reports.svg">
           </div>
-        </section>
-        <section class="section upcoming-events">
-          <h2>Upcoming Liquidity Events</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Person</th>
-                <th>Type</th>
-                <th>Initial Value</th>
-                <th>Liquidy Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Meg Thomas</td>
-                <td>CDB</td>
-                <td>R$ 200,00</td>
-                <td>10/09/2024</td>
-              </tr>
-              <tr>
-                <td>Claudette Morel</td>
-                <td>CDB</td>
-                <td>R$ 4.200,00</td>
-                <td>13/09/2024</td>
-              </tr>
-              <tr>
-                <td>Vitorio Toscano</td>
-                <td>LCI</td>
-                <td>R$ 7.360,00</td>
-                <td>22/09/2024</td>
-              </tr>
-              <tr>
-                <td>Leon Keneddy</td>
-                <td>CDB</td>
-                <td>R$ 2.680,00</td>
-                <td>18/09/2024</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-    </main>
-    <footer class="footer">
-      <img class="footer-icon" src="../assets/icons/icon-globe.svg">
-      <div class="footer-text">
-        <p>Coperative Bank</p>
-        <p>By Cleiner Furlani</p>
-      </div>
-    </footer>
-  </div>
+        </div>
+      </section>
+      <section class="section upcoming-events">
+        <h2>Upcoming Liquidity Events</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Person</th>
+              <th>Type</th>
+              <th>Initial Value</th>
+              <th>Liquidy Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Meg Thomas</td>
+              <td>CDB</td>
+              <td>R$ 200,00</td>
+              <td>10/09/2024</td>
+            </tr>
+            <tr>
+              <td>Claudette Morel</td>
+              <td>CDB</td>
+              <td>R$ 4.200,00</td>
+              <td>13/09/2024</td>
+            </tr>
+            <tr>
+              <td>Vitorio Toscano</td>
+              <td>LCI</td>
+              <td>R$ 7.360,00</td>
+              <td>22/09/2024</td>
+            </tr>
+            <tr>
+              <td>Leon Keneddy</td>
+              <td>CDB</td>
+              <td>R$ 2.680,00</td>
+              <td>18/09/2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <img class="footer-icon" src="../assets/icons/icon-globe.svg">
+    <div class="footer-text">
+      <p>Coperative Bank</p>
+      <p>By Cleiner Furlani</p>
+    </div>
+  </footer>
 </body>
 
 </html>

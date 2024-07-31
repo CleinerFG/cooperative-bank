@@ -1,8 +1,5 @@
 @media (min-width: 767px) {
   /* main */
-  .main {
-    max-width: 1400px;
-  }
   .section {
     width: 50%;
   }

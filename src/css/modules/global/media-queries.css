@@ -1,4 +1,9 @@
 @media (min-width: 767px) {
+  /* main container */
+  .content-container {
+    max-width: 1400px;
+  }
+
   /* footer */
   .footer-text {
     flex-direction: row;
