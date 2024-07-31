@@ -29,19 +29,23 @@
   background-color: var(--second-color-light);
   border-radius: 0.5rem 0 0.5rem 0.5rem;
   box-shadow: var(--box-shadow);
-  padding: 0.6rem;
-  /* display: none; */
+  padding: 1rem .8rem;
+  display: none;
   position: absolute;
   right: calc(var(--container-padding) + 0.2rem);
   top: 2.3rem;
 }
 
-.menu-options-none {
-  display: none;
+.menu-options-block {
+  display: block;
 }
 
 .menu-list-item {
   list-style: none;
+}
+
+.menu-list-item + .menu-list-item {
+  margin-top: .3rem;
 }
 
 /* Hover */
