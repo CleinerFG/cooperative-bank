@@ -33,7 +33,7 @@ function createHtmlPlugins({ pages }) {
 
 module.exports = {
   // Webpack base configs
-  entry: { home: "./src/js/home.js" },
+  entry: { home: "./src/js/home.js", debtors: "./src/js/debtors.js" },
   mode: "production", // development or production
   output: {
     path: path.resolve(__dirname, "dist"),
