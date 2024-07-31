@@ -1,6 +1,8 @@
 @import url("main.css");
+@import url("footer.css");
 
 @media (min-width: 767px) {
+  /* main */
   .main {
     max-width: 1400px;
   }
@@ -26,5 +28,14 @@
 
   .items-container {
     justify-content: flex-start;
+  }
+
+  /* footer */
+  .footer-text {
+    flex-direction: row;
+  }
+
+  .footer-text p + p::before {
+    content: " - ";
   }
 }
