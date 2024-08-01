@@ -82,6 +82,12 @@ Example:
 
 - Remove the `.css` imports from `JavaScript` files to allow the project to run in development.
 
+Example:
+
+```Javascript
+import "../css/home.css";
+```
+
 - Remove the icon import in [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js)
 
 ```Javascript

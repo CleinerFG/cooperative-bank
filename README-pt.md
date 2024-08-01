@@ -82,6 +82,12 @@ Exemplo:
 
 - Remover os imports `.css` dos arquivos `Javascript`, para ser possível executar o projeto em desenvolvimento.
 
+Exemplo
+
+```Javascript
+import "../css/home.css";
+```
+
 - Remover o import do ícone em [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js)
 
 ```Javascript
