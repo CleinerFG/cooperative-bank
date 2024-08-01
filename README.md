@@ -1,86 +1,91 @@
-# Gerenciador Financeiro
+# Financial Manager
 
-## Descrição
+## README File Languages
 
-Este é um projeto de desenvolvimento web que simula um banco cooperativo entre pessoas, construído com `HTML`, `CSS` e `JavaScript`. Utiliza o `webpack` para compilar e otimizar arquivos do projeto.
+- [English](README.md)
+- [Portuguese-BR](README-pt.md)
 
-## Tecnologias Utilizadas
+## Description
 
-- **`HTML`**: Estruturação das páginas.
-- **`CSS`**: Estilização das páginas.
-- **`JavaScript`**: Funcionalidade e interatividade.
-- **`Webpack`**: Bundler para empacotar e otimizar arquivos.
+This is a web development project simulating a cooperative bank between peoples, built with `HTML`, `CSS`, and `JavaScript`. It uses `webpack` to compile and optimize project files.
 
-## Estrutura do Projeto
+## Technologies Used
 
-- **`src/`**: Contém todos os arquivos fonte.
+- **`HTML`**: Structuring the pages.
+- **`CSS`**: Styling the pages.
+- **`JavaScript`**: Functionality and interactivity.
+- **`Webpack`**: Bundler for packaging and optimizing files.
 
-  - **`pages/`**: Arquivos HTML das páginas.
-  - **`css/`**: Arquivos CSS.
-  - **`js/`**: Arquivos JavaScript.
-  - **`assets/icons/`**: Ícones SVG.
+## Project Structure
 
-- **`dist/`**: Pasta gerada após a execução do build com `npm run build`, contendo os arquivos otimizados e prontos para produção.
+- **`src/`**: Contains all source files.
 
-## Inicialização
+  - **`pages/`**: HTML files for the pages.
+  - **`css/`**: CSS files.
+  - **`js/`**: JavaScript files.
+  - **`assets/icons/`**: SVG icons.
 
-### Instalação das Dependências
+- **`dist/`**: Folder generated after running the build with `npm run build`, containing optimized and production-ready files.
 
-Para instalar as dependências do projeto, execute:
+## Initialization
+
+### Installing Dependencies
+
+To install the project's dependencies, run:
 
 ```bash
 npm install
 ```
 
-### Build do Projeto
+### Project Build
 
-Para gerar os arquivos otimizados e prontos para distribuição, execute:
+To generate the optimized files ready for distribution, run:
 
 ```bash
 npm run build
 ```
 
-## Configuração do Webpack
+## Webpack Configuration
 
-### Arquivo: webpack.config.js
+### File: webpack.config.js
 
-O arquivo `webpack.config.js` é configurado para:
+The `webpack.config.js` file is configured to:
 
-- **Entry**: Define os pontos de entrada para os arquivos JavaScript.
-- **Output**: Configura onde os arquivos compilados serão salvos e com quais nomes.
-- **Loaders**: Configura loaders para processar arquivos CSS, JS e SVG.
-  - `css-loader` para arquivos CSS.
-  - `babel-loader` para arquivos JavaScript.
-  - `html-loader` para processar imagens e outros recursos dentro dos arquivos HTML.
-  - `asset/resource` para gerar os assets em **`dist/`**
-- **Plugins**: Utiliza plugins para otimização e gerenciamento de HTML.
-  - `HtmlWebpackPlugin` para gerar arquivos HTML com links atualizados para CSS e JS.
-  - `MiniCssExtractPlugin` para extrair CSS em arquivos separado do JavaScript.
-  - `CssMinimizerPlugin` para minimizar arquivos CSS.
+- **Entry**: Define the entry points for JavaScript files.
+- **Output**: Configure where the compiled files will be saved and with which names.
+- **Loaders**: Configure loaders to process CSS, JS, and SVG files.
+  - `css-loader` for CSS files.
+  - `babel-loader` for JavaScript files.
+  - `html-loader` to process images and other resources within HTML files.
+  - `asset/resource` to generate assets in **`dist/`**
+- **Plugins**: Uses plugins for optimization and HTML management.
+  - `HtmlWebpackPlugin` to generate HTML files with updated links to CSS and JS.
+  - `MiniCssExtractPlugin` to extract CSS into files separate from JavaScript.
+  - `CssMinimizerPlugin` o minimize CSS files.
 
-### Configuração dos arquivos: HTML e JS
+### Configuration of Files: HTML and JS
 
-No HTML é inserido imports de JS e CSS utilizados no processo de desenvolvimento.
+In HTML, imports of JS and CSS used in the development process are included.
 
-Exemplo:
+Example:
 
 ```html
 <link rel="stylesheet" href="../css/home.css" />
 <script type="module" src="../js/home.js"></script>
 ```
 
-- Esses imports devem ser removidos antes da build do projeto, caso não sejam removidos, eles continuarão no `.html` final.
+- These imports should be removed before the project build. If they are not removed, they will remain in the final `.html` file.
 
-## Configurações para desenvolvimento
+## Development Settings
 
-### Arquivos JS
+### JavaScript Files
 
-- Remover os imports `.css` dos arquivos `Javascript`, para ser possível executar o projeto em produção.
+- Remove the `.css` imports from `JavaScript` files to allow the project to run in development.
 
-- Remover o import do ícone em [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js)
+- Remove the icon import in [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js)
 
 ```Javascript
 import "../../../assets/icons/icon-visibility-on.svg";
 ```
 
-Todos os assets, são adicionados em [dist/assets/icons](dist/assets/icons/) através do `asset/resource`. Esse import é necessário pois o `html-loader` remove assets não utilizados diretamente no HTML. O ícone [icon-visibility-on.svg](src/assets/icons/icon-visibility-on.svg) é adicionado por `Javascript` em [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js) e não adicionado diretamente no HTML .
+All assets are added in [dist/assets/icons](dist/assets/icons/) through `asset/resource`. This import is necessary because `html-loader` removes assets not directly used in the HTML. The icon [icon-visibility-on.svg](src/assets/icons/icon-visibility-on.svg) is added by `Javascript` in [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js) and isn't added directly in the HTML.
