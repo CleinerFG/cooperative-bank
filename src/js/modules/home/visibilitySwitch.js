@@ -1,3 +1,6 @@
+// The asset/resource adds all the icons in dist, but the visibility-on icon needs to be imported directly into the JS. The html-loader removes it, because it is not used directly in the html
+import "../../../assets/icons/icon-visibility-on.svg";
+
 export function visibilitySwitch() {
   document.querySelector(".visibility-icon").addEventListener("click", (ev) => {
     const icon = ev.currentTarget;

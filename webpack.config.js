@@ -17,7 +17,7 @@ function createHtmlPlugins({ pages }) {
       (file) =>
         new HtmlWebpackPlugin({
           template: `./src/pages/${dir}/${file}.html`,
-          filename: `${file}.html`,
+          filename: `pages/${dir}/${file}.html`,
           minify: {
             collapseWhitespace: true,
             removeComments: true,
@@ -37,9 +37,10 @@ module.exports = {
   mode: "production", // development or production
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.min.js",
+    filename: "js/[name].bundle.min.js",
   },
-  // Loaders: babel-loader and mini-css-extract-plugin
+  // Loaders: babel-loader, mini-css-extract-plugin and css-loader
+  // assets-resource and html-loader
   module: {
     rules: [
       {
@@ -85,7 +86,7 @@ module.exports = {
                   },
                 ],
               },
-              minimize: true,
+              minimize: false,
             },
           },
         ],
@@ -100,7 +101,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].bundle.min.css" }),
+    new MiniCssExtractPlugin({ filename: "css/[name].bundle.min.css" }),
     ...createHtmlPlugins({ pages }),
   ],
 };
