@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const pages = [
-  { dir: "", files: ["index"] },
+  { dir: "", files: ["home"] },
   {
     dir: "wallet",
     files: ["debtors"],
@@ -18,6 +18,7 @@ function createHtmlPlugins({ pages }) {
         new HtmlWebpackPlugin({
           template: `./src/pages/${dir}/${file}.html`,
           filename: `pages/${dir}/${file}.html`,
+          chunks: [file], // Only add CSS and JS that name is equal file
           minify: {
             collapseWhitespace: true,
             removeComments: true,
@@ -38,6 +39,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].bundle.min.js",
+    clean: true,
   },
   // Loaders: babel-loader, mini-css-extract-plugin and css-loader
   // assets-resource and html-loader
