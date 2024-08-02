@@ -1,4 +1,4 @@
-import "../css/debtors.css";
+// import "../css/debtors.css";
 import { menuHandler } from "./modules/common/menuHandler.js";
 
 menuHandler();
