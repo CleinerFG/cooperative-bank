@@ -10,7 +10,7 @@ const pages = [
 ];
 
 // Return a array of the HtmlWebpackPlugin objects
-function createHtmlPlugins({ pages }) {
+function createHtmlPlugins(pages) {
   return pages.flatMap(({ dir, files }) =>
     files.map(
       (file) =>
@@ -35,5 +35,5 @@ function createHtmlPlugins({ pages }) {
 // MiniCssExtractPlugin: extract CSS into separate files from JavaScript.
 module.exports = [
   new MiniCssExtractPlugin({ filename: "css/[name].bundle.min.css" }),
-  ...createHtmlPlugins({ pages }),
+  ...createHtmlPlugins(pages),
 ];
