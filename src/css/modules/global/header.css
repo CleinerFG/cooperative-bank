@@ -54,7 +54,7 @@
   cursor: pointer;
 }
 
-.menu-list-item:hover {
+.menu-link:hover {
   cursor: pointer;
   color: var(--accent-color);
 }
