@@ -5,7 +5,7 @@ const paths = {
   investments: "/src/pages/investments/",
 };
 
-export function setSrc(query, pathName, filename) {
+export function setHref(query, pathName, filename) {
   document
     .querySelector(query)
     .setAttribute("href", paths[pathName] + filename);

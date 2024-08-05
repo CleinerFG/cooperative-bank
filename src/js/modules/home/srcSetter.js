@@ -1,5 +1,5 @@
 import "../footer/srcSetter.js";
-import "../menu/srcSetter.js";
+import "../menu/pathSetter.js";
 import { setSrc } from "../common/assetsPaths.js";
 
 // Financial Statement
