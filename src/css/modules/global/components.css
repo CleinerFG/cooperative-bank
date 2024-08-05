@@ -37,3 +37,11 @@ td {
   cursor: pointer;
   background-color: var(--primary-color);
 }
+
+.table tbody tr:last-child:hover td:first-child {
+  border-bottom-left-radius: 0.8rem;
+}
+
+.table tbody tr:last-child:hover td:last-child {
+  border-bottom-right-radius: 0.8rem;
+}
