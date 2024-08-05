@@ -6,19 +6,15 @@ import { setHref } from "../common/htmlPagesPaths.js";
 // Financial Statement
 setSrc(".visibility-icon", "icons", "icon-visibility-off.svg");
 
-// Wallet
-setSrc("#card-icon-loans", "icons", "icon-loans.svg");
-setHref("#card-link-loans", "wallet", "loans.html");
+const pages = {
+  wallet: ["loans", "debtors", "payments"],
+  investments: ["all", "reports"],
+};
 
-setSrc("#card-icon-debtors", "icons", "icon-debtors.svg");
-setHref("#card-link-debtors", "wallet", "debtors.html");
-
-setSrc("#card-icon-payments", "icons", "icon-payments.svg");
-setHref("#card-link-payments", "wallet", "payments.html");
-
-// Investments
-setSrc("#card-icon-all", "icons", "icon-all.svg");
-setHref("#card-link-all", "investments", "all.html");
-
-setSrc("#card-icon-reports", "icons", "icon-reports.svg");
-setHref("#card-link-reports", "investments", "reports.html");
+// Defining icons and links: wallet and investments
+for (const dir in pages) {
+  pages[dir].forEach((pageName) => {
+    setSrc(`#card-icon-${pageName}`, "icons", `icon-${pageName}.svg`);
+    setHref(`#card-link-${pageName}`, dir, `${pageName}.html`);
+  });
+}
