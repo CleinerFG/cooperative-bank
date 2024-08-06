@@ -65,6 +65,7 @@
 }
 
 .card-item:hover {
+  color: var(--color-text);
   cursor: pointer;
   background-color: var(--color-accent-hover);
 }

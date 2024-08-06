@@ -34,7 +34,8 @@ td {
 /* Hover */
 .table tbody tr:hover {
   cursor: pointer;
-  background-color: var(--color-accent-hover);
+  /* background-color: var(--color-accent-hover); */
+  background-color: var(--color-accent-translucent);
 }
 
 .table tbody tr:last-child:hover td:first-child {

@@ -2,7 +2,8 @@
   --container-padding: 0.8rem;
   --color-primary: #253659;
   --color-accent: #0ac2af;
-  --color-accent-hover: rgb(4, 210, 189);
+  --color-accent-hover: #04d2bd;
+  --color-accent-translucent: rgba(10, 194, 176, 0.3);
   --color-secondary: #04bf9d;
   --color-cta: #f28157;
   --color-detail: #bf665e;
