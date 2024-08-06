@@ -1,17 +1,15 @@
 :root {
   --container-padding: 0.8rem;
   --color-primary: #253659;
-  --color-accent: hsl(174, 90%, 40%);
-  --color-accent-hover: hsl(174, 96%, 42%);
+  --color-accent: #0ac2af;
+  --color-accent-hover: rgb(4, 210, 189);
   --color-secondary: #04bf9d;
   --color-cta: #f28157;
   --color-detail: #bf665e;
   --color-text: #253659;
-  --color-text-reverse: #f5f7fa;
   --color-background: #f5f7fa;
-
-  --box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
-  --header-height: 3rem;
+  --box-shadow: .1rem .25rem .1rem rgba(0, 0, 0, 0.2);
+  --header-height: 3.5rem;
 
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;

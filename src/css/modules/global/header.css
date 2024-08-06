@@ -2,6 +2,7 @@
   height: var(--header-height);
   width: 100%;
   background-color: var(--color-secondary);
+  box-shadow: var(--box-shadow);
 
   position: fixed;
   top: 0;
@@ -18,8 +19,17 @@
 .menu-icon {
   width: 32px;
   height: 32px;
+  z-index: 1;
   margin-right: 0.5rem;
   padding: 0.3rem;
+  border-radius: 30%;
+  transition: border-radius 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.menu-active {
+  background-color: var(--color-background);
+  box-shadow: var(--box-shadow);
+  transition: all 0.5s ease;
 }
 
 .menu-options {
@@ -28,21 +38,39 @@
   border-radius: 0.5rem 0 0.5rem 0.5rem;
   box-shadow: var(--box-shadow);
   padding: 1rem 0.8rem;
-  display: none;
+  display: block;
   position: absolute;
-  right: calc(var(--container-padding) + 0.2rem);
-  top: var(--header-height);
+  top: calc(var(--header-height) - 0.3rem);
+  right: calc(var(--container-padding) - 0.3rem);
+  max-height: 0px;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
 }
 
 .menu-options-block {
-  display: block;
+  max-height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out, max-height 0.4s ease-in-out;
 }
 
 .menu-list-item + .menu-list-item {
   margin-top: 0.3rem;
 }
 
-/* Hover */
+.menu-list-item:last-child {
+  color: var(--color-detail);
+}
+
+/* Hover*/
 .menu-icon:hover {
   cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--color-background);
+}
+
+.menu-list-item:last-child:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
