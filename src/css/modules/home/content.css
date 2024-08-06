@@ -75,5 +75,5 @@
   color: var(--color-text);
   cursor: pointer;
   background-color: var(--color-accent-hover);
-  transform: scale(105%) translateY(.5rem); 
+  transform: scale(105%) translateY(.5rem);
 }

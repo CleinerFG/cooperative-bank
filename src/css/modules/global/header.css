@@ -3,6 +3,7 @@
   width: 100%;
   background-color: var(--color-secondary);
   box-shadow: var(--box-shadow);
+  z-index: 1;
 
   position: fixed;
   top: 0;
