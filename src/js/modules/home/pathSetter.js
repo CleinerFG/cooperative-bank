@@ -1,5 +1,5 @@
 import "../header/pathSetter.js";
-import "../footer/srcSetter.js";
+import "../footer/pathSetter.js";
 import { setSrc } from "../common/assetsPaths.js";
 import { setHref } from "../common/htmlPagesPaths.js";
 
