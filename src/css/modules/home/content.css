@@ -35,6 +35,11 @@
   gap: 1rem;
 }
 
+.section h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-accent-translucent);
+}
+
 .items-container {
   display: flex;
   justify-content: center;
@@ -53,6 +58,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  transform: scale(100%) translateY(0);
+  transition: all .3s ease-in-out;
 }
 
 .card-icon {
@@ -68,4 +75,5 @@
   color: var(--color-text);
   cursor: pointer;
   background-color: var(--color-accent-hover);
+  transform: scale(105%) translateY(.5rem); 
 }
