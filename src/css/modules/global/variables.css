@@ -1,16 +1,18 @@
 :root {
   --container-padding: 0.8rem;
-  --primary-color: #1e1e1e;
-  --second-color: #323232;
-  --second-color-light: #474747;
-  --third-color: #1b4d5c;
-  --third-color-hover: #24697e;
-  --accent-color: #1997bd;
-  --text-color: #e0e0e0;
-  --line-color: #e0e0e06e;
-  --border-color: #333333;
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  --color-primary: #253659;
+  --color-accent: hsl(174, 90%, 40%);
+  --color-accent-hover: hsl(174, 96%, 42%);
+  --color-secondary: #04bf9d;
+  --color-cta: #f28157;
+  --color-detail: #bf665e;
+  --color-text: #253659;
+  --color-text-reverse: #f5f7fa;
+  --color-background: #f5f7fa;
+
+  --box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
   --header-height: 3rem;
+
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
 }

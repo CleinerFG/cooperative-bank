@@ -9,12 +9,6 @@
   .card-item {
     width: 12rem;
     height: 14rem;
-
-    /* display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem; */
   }
 
   .card-item .label {

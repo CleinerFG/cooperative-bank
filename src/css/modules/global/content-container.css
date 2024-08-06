@@ -4,5 +4,5 @@
   margin-top: 3rem;
   padding: var(--container-padding);
   padding-bottom: 0;
-  background-image: linear-gradient(var(--primary-color), var(--second-color));
+  background-color: var(--color-background);
 }

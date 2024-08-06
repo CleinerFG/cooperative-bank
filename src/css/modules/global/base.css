@@ -7,16 +7,25 @@
 body {
   height: 100vh;
   width: 100vw;
-  background-color: var(--second-color);
+  color: var(--color-text);
 }
 
 h1,
 h2 {
   font-family: var(--title-font-family);
-  color: var(--text-color);
 }
 
 a {
   text-decoration: none;
-  color: var(--text-color)
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+li {
+  list-style-type: none;
+}
+
+/* Hover on Elements */
+a:hover {
+  color: var(--color-cta);
 }

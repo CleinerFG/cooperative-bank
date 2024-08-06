@@ -1,48 +1,41 @@
 .header {
-  color: var(--text-color);
   height: var(--header-height);
   width: 100%;
+  background-color: var(--color-secondary);
+
   position: fixed;
   top: 0;
-  background-color: var(--primary-color);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.brand-name,
-.menu-icon {
-  padding: var(--container-padding);
-}
-
 .brand-name {
   font-size: 0.8rem;
-  color: var(--font-color);
+  margin-left: 0.8rem;
 }
 
 .menu-icon {
   width: 32px;
   height: 32px;
+  margin-right: 0.5rem;
+  padding: 0.3rem;
 }
 
 .menu-options {
-  background-color: var(--second-color-light);
+  background-color: var(--color-accent);
+  color: var(--color-text);
   border-radius: 0.5rem 0 0.5rem 0.5rem;
   box-shadow: var(--box-shadow);
   padding: 1rem 0.8rem;
   display: none;
   position: absolute;
   right: calc(var(--container-padding) + 0.2rem);
-  top: 2.3rem;
+  top: var(--header-height);
 }
 
 .menu-options-block {
   display: block;
-}
-
-.menu-list-item {
-  list-style: none;
 }
 
 .menu-list-item + .menu-list-item {
@@ -52,13 +45,4 @@
 /* Hover */
 .menu-icon:hover {
   cursor: pointer;
-}
-
-.menu-link:hover {
-  cursor: pointer;
-  color: var(--accent-color);
-}
-
-.brand-name:hover {
-  color: var(--accent-color);
 }
