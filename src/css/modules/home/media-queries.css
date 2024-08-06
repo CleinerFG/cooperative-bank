@@ -1,23 +1,23 @@
 @media (min-width: 767px) {
-  /* main */
-  .section {
-    width: 50%;
+  .total-investments {
+    font-size: 1.8rem;
+  }
+  .visibility-icon {
+    width: 2.5rem;
   }
 
-  .section + .section {
-    border-top: none;
-    margin-bottom: 4rem;
+  .card-item {
+    width: 12rem;
+    height: 14rem;
+
+    /* display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; */
   }
 
-  .content-wrapper {
-    height: calc(100vh - 160px - 64px);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  .items-container {
-    justify-content: flex-start;
+  .card-item .label {
+    font-size: 1.5rem;
   }
 }

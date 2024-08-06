@@ -1,4 +1,12 @@
 @media (min-width: 767px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
   /* main container */
   .content-container {
     max-width: 1400px;
@@ -11,5 +19,9 @@
 
   .footer-text p + p::before {
     content: " - ";
+  }
+
+  .table {
+    font-size: 1.5rem;
   }
 }
