@@ -1,4 +1,4 @@
-import "../menu/pathSetter.js";
+import "../header/pathSetter.js";
 import "../footer/srcSetter.js";
 import { setSrc } from "../common/assetsPaths.js";
 import { setHref } from "../common/htmlPagesPaths.js";
