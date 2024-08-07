@@ -17,7 +17,7 @@
   margin-left: 0.8rem;
 }
 
-.menu-icon-container{
+.menu-icon-container {
   width: 32px;
   height: 32px;
   z-index: 1;
@@ -69,6 +69,12 @@
   color: var(--color-detail);
 }
 
+#switch-theme {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Hover*/
 .menu-icon-container:hover {
   cursor: pointer;
@@ -81,16 +87,14 @@
   text-decoration: underline;
 }
 
-#switch-theme {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 #switch-theme:hover span {
   color: var(--color-cta);
 }
 
 #switch-theme:hover {
   cursor: pointer;
+}
+
+#switch-theme:hover #theme-mode {
+  filter: drop-shadow(0 0 0.5rem #fff);
 }
