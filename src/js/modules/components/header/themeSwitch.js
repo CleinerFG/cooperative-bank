@@ -19,8 +19,8 @@ export function setTheme() {
     .addEventListener("click", toggleTheme);
 
   const storedTheme = localStorage.getItem(THEME_KEY);
-  setSrc("#theme-mode", "theme", `${storedTheme}-mode.svg`);
   if (storedTheme && storedTheme !== body.dataset.theme) {
+    setSrc("#theme-mode", "theme", `${storedTheme}-mode.svg`);
     body.dataset.theme = storedTheme;
     icons.forEach((icon) => icon.classList.toggle(LIGHT_THEME_CLASS));
   }
