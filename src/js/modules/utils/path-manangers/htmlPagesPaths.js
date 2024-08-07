@@ -1,8 +1,8 @@
 const paths = {
-  home: "/src/pages/home.html",
+  home: "/src/pages/home/",
   menu: "/src/pages/menu/",
-  wallet: "/src/pages/wallet/",
-  investments: "/src/pages/investments/",
+  wallet: "/src/pages/home/wallet/",
+  investments: "/src/pages/home/investments/",
 };
 
 export function setHref(query, pathName, filename) {
