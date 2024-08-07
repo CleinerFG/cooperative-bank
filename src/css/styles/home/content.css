@@ -59,7 +59,7 @@
   justify-content: center;
   gap: 0.5rem;
   transform: scale(100%) translateY(0);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .card-icon {
@@ -75,5 +75,5 @@
   color: var(--color-text);
   cursor: pointer;
   background-color: var(--color-accent-hover);
-  transform: scale(105%) translateY(.5rem);
+  transform: scale(105%) translateY(0.5rem);
 }

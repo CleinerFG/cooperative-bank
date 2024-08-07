@@ -15,3 +15,21 @@
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
 }
+
+[data-theme="dark"]{
+  --container-padding: 0.8rem;
+  --color-primary: #f5f7fa;
+  --color-accent: hsl(174, 90%, 30%);
+  --color-accent-hover: hsl(174, 96%, 35%);
+  --color-accent-translucent: hsla(174, 90%, 30%, 0.3);
+  --color-secondary: hsl(169, 96%, 25%);
+  --color-cta: hsl(16, 86%, 80%);
+  --color-detail: hsl(5, 43%, 30%);
+  --color-text: #f5f7fa;
+  --color-background: hsl(220, 41%, 10%);
+  --box-shadow: .1rem .25rem .1rem rgba(0, 0, 0, 0.2);
+  --header-height: 3.5rem;
+
+  --default-font-family: "Roboto Condensed", sans-serif;
+  --title-font-family: "Roboto Slab", sans-serif;
+}

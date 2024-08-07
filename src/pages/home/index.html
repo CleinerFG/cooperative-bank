@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="../../css/styles/home/index.css">
 </head>
 
-<body>
+<body data-theme="dark">
   <header class="header">
     <a class="brand-name" rel="home">Coperative Bank</a>
-    <img class="menu-icon">
+    <img class="icon menu-icon">
     <div class="menu-options">
       <ul class="menu-list">
+        <li id="switch-theme" class="menu-list-item">Switch theme</li>
         <li class="menu-list-item"><a class="menu-link">Profile</a></li>
         <li class="menu-list-item">Logout</li>
       </ul>
@@ -25,7 +26,7 @@
       <h1>Financial Statement</h1>
       <div class="total-investments-container">
         <div class="total-investments">R$ <span id="total-value">******</span></div>
-        <img class="visibility-icon" data-visibility="off" alt="Closed eye">
+        <img class="icon visibility-icon" data-visibility="off" alt="Closed eye">
       </div>
     </section>
     <div class="content-wrapper">
@@ -35,19 +36,19 @@
           <a id="card-link-loans" class="card-link" rel="next">
             <div class="card-item">
               <span class="label wallet-label">Loans</span>
-              <img id="card-icon-loans" class="card-icon">
+              <img id="card-icon-loans" class="icon card-icon">
             </div>
           </a>
           <a id="card-link-debtors" class="card-link" rel="next">
             <div class="card-item">
               <span class="label wallet-label">Debtors</span>
-              <img id="card-icon-debtors" class="card-icon">
+              <img id="card-icon-debtors" class="icon card-icon">
             </div>
           </a>
           <a id="card-link-payments" class="card-link" rel="next">
             <div class="card-item">
               <span class="label wallet-label">Payments</span>
-              <img id="card-icon-payments" class="card-icon">
+              <img id="card-icon-payments" class="icon card-icon">
             </div>
           </a>
         </div>
@@ -58,13 +59,13 @@
           <a id="card-link-all" class="card-link" rel="next">
             <div class="card-item">
               <span class="label activity-label">All</span>
-              <img id="card-icon-all" class="card-icon">
+              <img id="card-icon-all" class="icon card-icon">
             </div>
           </a>
           <a id="card-link-reports" class="card-link" rel="next">
             <div class="card-item">
               <span class="label activity-label">Reports</span>
-              <img id="card-icon-reports" class="card-icon">
+              <img id="card-icon-reports" class="icon card-icon">
             </div>
           </a>
         </div>
@@ -111,7 +112,7 @@
     </div>
   </main>
   <footer class="footer">
-    <a id="footer-icon-link"><img class="footer-icon"></a>
+    <a id="footer-icon-link"><img class="icon footer-icon"></a>
     <div class="footer-text">
       <a id="footer-link">Coperative Bank</a>
       <p>By Cleiner Furlani</p>
