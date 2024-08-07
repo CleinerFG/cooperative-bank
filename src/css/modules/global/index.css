@@ -1,7 +1,7 @@
 /* CSS Aggregator */
 @import url("variables.css");
 @import url("base.css");
-@import url("components.css");
+@import url("components/table.css");
 @import url("header.css");
 @import url("content-container.css");
 @import url("footer.css");

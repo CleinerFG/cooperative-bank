@@ -1,4 +1,4 @@
-import { setSrc } from "./../common/assetsPaths.js";
+import { setSrc } from "../../modules/common/assetsPaths.js";
 // The asset/resource adds all the icons in dist, but the visibility-on icon needs to be imported directly into the JS. The html-loader removes it, because it is not used directly in the html
 // import "../../../assets/icons/icon-visibility-on.svg";
 

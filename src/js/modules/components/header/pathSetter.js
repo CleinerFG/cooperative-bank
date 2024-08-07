@@ -1,5 +1,5 @@
-import { setSrc } from "../common/assetsPaths.js";
-import { setHref } from "../common/htmlPagesPaths.js";
+import { setSrc } from "../../modules/common/assetsPaths.js";
+import { setHref } from "../../modules/common/htmlPagesPaths.js";
 
 setHref(".brand-name", "home", "");
 
