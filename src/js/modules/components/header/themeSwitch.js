@@ -5,7 +5,7 @@ export function setTheme() {
   const LIGHT_THEME_CLASS = "theme-light-icon";
   const body = document.body;
   const icons = document.querySelectorAll(".icon");
-
+  setSrc("#theme-mode", "theme", `${body.dataset.theme}-mode.svg`);
   const toggleTheme = () => {
     const isDarkTheme = body.dataset.theme === "dark";
     body.dataset.theme = isDarkTheme ? "light" : "dark";
