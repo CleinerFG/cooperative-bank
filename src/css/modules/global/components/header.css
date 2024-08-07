@@ -17,7 +17,7 @@
   margin-left: 0.8rem;
 }
 
-.menu-icon {
+.menu-icon-container{
   width: 32px;
   height: 32px;
   z-index: 1;
@@ -27,7 +27,12 @@
   transition: border-radius 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
 
-.menu-active {
+.menu-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.menu-active-container {
   background-color: var(--color-background);
   box-shadow: var(--box-shadow);
   transition: all 0.5s ease;
@@ -65,7 +70,7 @@
 }
 
 /* Hover*/
-.menu-icon:hover {
+.menu-icon-container:hover {
   cursor: pointer;
   border-radius: 50%;
   background-color: var(--color-background);
