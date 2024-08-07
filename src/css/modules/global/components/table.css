@@ -3,9 +3,8 @@
   margin: auto;
   border-collapse: collapse;
   text-align: left;
-  box-shadow: var(--box-shadow);
-  
   border-radius: 0.8rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .table thead tr {
@@ -32,6 +31,10 @@ td {
 }
 
 /* Hover */
+.table:hover {
+  box-shadow: var(--box-shadow);
+}
+
 .table tbody tr:hover {
   cursor: pointer;
   /* background-color: var(--color-accent-hover); */

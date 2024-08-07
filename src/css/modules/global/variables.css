@@ -9,7 +9,7 @@
   --color-detail: #bf665e;
   --color-text: #253659;
   --color-background: #f5f7fa;
-  --box-shadow: .1rem .25rem .1rem rgba(0, 0, 0, 0.2);
+  --box-shadow: .1rem .25rem .3rem rgba(0, 0, 0, 0.2);
   --header-height: 3.5rem;
 
   --default-font-family: "Roboto Condensed", sans-serif;
@@ -27,7 +27,7 @@
   --color-detail: hsl(5, 43%, 30%);
   --color-text: #f5f7fa;
   --color-background: hsl(220, 41%, 10%);
-  --box-shadow: .1rem .25rem .1rem rgba(0, 0, 0, 0.2);
+  --box-shadow: 0 0 1rem rgba(38, 0, 255, 0.2);
   --header-height: 3.5rem;
 
   --default-font-family: "Roboto Condensed", sans-serif;
