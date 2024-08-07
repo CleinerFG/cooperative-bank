@@ -75,3 +75,17 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+#switch-theme {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#switch-theme:hover span {
+  color: var(--color-cta);
+}
+
+#switch-theme:hover {
+  cursor: pointer;
+}
