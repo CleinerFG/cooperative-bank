@@ -1,7 +1,8 @@
-import { setSrc } from "../../modules/common/assetsPaths.js";
-import { setHref } from "../../modules/common/htmlPagesPaths.js";
+import { setSrc } from "../../utils/path-manangers/assetsPaths.js";
+import { setHref } from "../../utils/path-manangers/assetsPaths.js";
 
-setHref(".brand-name", "home", "");
-
-setSrc(".menu-icon", "icons", "icon-menu.svg");
-setHref(".menu-link", "menu", "profile.html");
+export function initPathSettings() {
+  setHref(".brand-name", "home", "");
+  setSrc(".menu-icon", "icons", "icon-menu.svg");
+  setHref(".menu-link", "menu", "profile.html");
+}
