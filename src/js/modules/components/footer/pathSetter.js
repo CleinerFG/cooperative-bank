@@ -1,6 +1,8 @@
-import { setSrc } from "../../modules/common/assetsPaths.js";
-import { setHref } from "../../modules/common/htmlPagesPaths.js";
+import { setSrc } from "../../utils/path-manangers/assetsPaths.js";
+import { setHref } from "../../utils/path-manangers/htmlPagesPaths.js";
 
-setSrc(".footer-icon", "icons", "icon-globe.svg");
-setHref("#footer-icon-link", "home", "");
-setHref("#footer-link", "home", "");
+export function initPathSettings() {
+  setSrc(".footer-icon", "icons", "icon-globe.svg");
+  setHref("#footer-icon-link", "home", "");
+  setHref("#footer-link", "home", "");
+}
