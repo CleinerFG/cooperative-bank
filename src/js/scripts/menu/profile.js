@@ -1,5 +1,5 @@
-import "./modules/header/pathSetter.js"
-import "./modules/footer/pathSetter.js"
-import { menuHandler } from "./modules/common/menuHandler.js";
+import { initHeader } from "../../modules/components/header/index.js";
+import { initFooter } from "../../modules/components/footer/index.js";
 
-menuHandler();
+initHeader();
+initFooter();

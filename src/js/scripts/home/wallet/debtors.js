@@ -1,6 +1,5 @@
-// import "../css/debtors.css";
-import "./modules/header/pathSetter.js"
-import "./modules/footer/pathSetter.js"
-import { menuHandler } from "../../../components/header/menuHandler.js";
+import { initHeader } from "../../../modules/components/header.js";
+import { initFooter } from "../../../modules/components/footer";
 
-menuHandler();
+initHeader();
+initFooter();
