@@ -1,3 +1,5 @@
-import { initPathSettings} from "./pathSetter.js";
+import { initPathSettings } from "./pathSetter.js";
 
-initPathSettings();
+export function initFooter() {
+  initPathSettings();
+}

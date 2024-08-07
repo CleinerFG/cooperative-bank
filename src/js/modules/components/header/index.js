@@ -1,5 +1,7 @@
 import { initPathSettings } from "./pathSetter.js";
 import { menuHandler } from "./menuHandler.js";
 
-initPathSettings();
-menuHandler();
+export function initHeader() {
+  menuHandler();
+  initPathSettings();
+}
