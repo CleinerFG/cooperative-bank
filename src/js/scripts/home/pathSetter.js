@@ -1,20 +1,20 @@
-import "../header/pathSetter.js";
-import "../footer/pathSetter.js";
-import { setSrc } from "../common/assetsPaths.js";
-import { setHref } from "../common/htmlPagesPaths.js";
+import { setSrc } from "../../modules/utils/path-manangers/assetsPaths.js";
+import { setHref } from "../../modules/utils/path-manangers/htmlPagesPaths.js";
 
-// Financial Statement
-setSrc(".visibility-icon", "icons", "icon-visibility-off.svg");
+export function initPathSettings() {
+  // Financial Statement
+  setSrc(".visibility-icon", "icons", "icon-visibility-off.svg");
 
-const pages = {
-  wallet: ["loans", "debtors", "payments"],
-  investments: ["all", "reports"],
-};
+  const pages = {
+    wallet: ["loans", "debtors", "payments"],
+    investments: ["all", "reports"],
+  };
 
-// Defining icons and links: wallet and investments
-for (const dir in pages) {
-  pages[dir].forEach((pageName) => {
-    setSrc(`#card-icon-${pageName}`, "icons", `icon-${pageName}.svg`);
-    setHref(`#card-link-${pageName}`, dir, `${pageName}.html`);
-  });
+  // Defining icons and links: wallet and investments
+  for (const dir in pages) {
+    pages[dir].forEach((pageName) => {
+      setSrc(`#card-icon-${pageName}`, "icons", `icon-${pageName}.svg`);
+      setHref(`#card-link-${pageName}`, dir, `${pageName}.html`);
+    });
+  }
 }

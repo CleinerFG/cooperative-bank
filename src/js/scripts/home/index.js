@@ -1,7 +1,8 @@
 // import "../css/home.css";
-import "./modules/home/pathSetter.js";
-import { menuHandler } from "./modules/common/menuHandler.js";
-import { visibilitySwitch } from "./modules/home/visibilitySwitch.js";
+import "../../modules/components/header/index.js";
+import "../../modules/components/footer/index.js";
+import { initPathSettings } from "./pathSetter.js";
+import { visibilitySwitch } from "./visibilitySwitch.js";
 
-menuHandler();
+initPathSettings();
 visibilitySwitch();
