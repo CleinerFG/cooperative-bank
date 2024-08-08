@@ -8,11 +8,11 @@
   gap: 2rem;
 }
 
-.footer-icon {
+.footer__icon {
   width: 4rem;
 }
 
-.footer-text {
+.footer__content {
   display: flex;
   flex-direction: column;
   align-items: center;

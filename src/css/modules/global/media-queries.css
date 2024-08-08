@@ -7,7 +7,7 @@
     font-size: 2rem;
   }
 
-  .brand-name {
+  .header__brand-name {
     font-size: 1rem;
   }
 
@@ -17,11 +17,11 @@
   }
 
   /* footer */
-  .footer-text {
+  .footer__content {
     flex-direction: row;
   }
 
-  .footer-text a + p::before {
+  .footer__content a + p::before {
     content: " - ";
   }
 
