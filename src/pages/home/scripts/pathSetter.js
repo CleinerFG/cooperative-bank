@@ -1,5 +1,5 @@
-import { setSrc } from "../../modules/utils/path-manangers/assetsPaths.js";
-import { setHref } from "../../modules/utils/path-manangers/htmlPagesPaths.js";
+import { setSrc } from "../../../js/utils/path-manangers/assetsPaths.js";
+import { setHref } from "../../../js/utils/path-manangers/htmlPagesPaths.js";
 
 export function initPathSettings() {
   // Financial Statement
