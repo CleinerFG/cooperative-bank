@@ -1,0 +1,31 @@
+.card {
+  background-color: var(--color-accent);
+  border-radius: 1rem;
+  width: 6rem;
+  height: 7rem;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transform: scale(100%) translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.card__icon {
+  width: 70%;
+}
+
+.card__label {
+  color: var(--color-text);
+}
+
+/* Hover */
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-accent-hover);
+  transform: scale(105%) translateY(-0.6rem);
+}
