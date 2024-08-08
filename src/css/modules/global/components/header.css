@@ -1,3 +1,5 @@
+@import url('menu.css');
+
 .header {
   height: var(--header-height);
   width: 100%;
@@ -12,90 +14,7 @@
   align-items: center;
 }
 
-.brand-name {
+.header__brand-name {
   font-size: 0.8rem;
   margin-left: 0.8rem;
-}
-
-.menu-icon-container {
-  width: 32px;
-  height: 32px;
-  z-index: 1;
-  margin-right: 0.5rem;
-  padding: 0.3rem;
-  border-radius: 30%;
-  transition: all 0.4s ease-in-out;
-}
-
-.menu-icon {
-  width: 32px;
-  height: 32px;
-}
-
-.menu-active-container {
-  background-color: var(--color-background);
-  box-shadow: var(--box-shadow);
-  transition: all 0.5s ease;
-}
-
-.menu-options {
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  border-radius: 0.5rem 0 0.5rem 0.5rem;
-  box-shadow: var(--box-shadow);
-  padding: 1rem;
-  display: block;
-  position: absolute;
-  top: calc(var(--header-height) - 0.3rem);
-  right: calc(var(--container-padding) - 0.3rem);
-  max-height: 0%;
-  opacity: 0;
-  visibility: hidden;
-  overflow: hidden;
-}
-
-.menu-options-block {
-  max-height: 5rem;
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.4s ease-in-out;
-}
-
-.menu-list-item+.menu-list-item {
-  margin-top: 0.3rem;
-}
-
-.menu-list-item:last-child {
-  color: var(--color-detail);
-}
-
-#switch-theme {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Hover*/
-.menu-icon-container:hover {
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: var(--box-shadow);
-  background-color: var(--color-background);
-}
-
-.menu-list-item:last-child:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-#switch-theme:hover span {
-  color: var(--color-cta);
-}
-
-#switch-theme:hover {
-  cursor: pointer;
-}
-
-#switch-theme:hover #theme-mode {
-  filter: drop-shadow(0 0 0.5rem #fff);
 }

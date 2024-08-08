@@ -11,18 +11,20 @@
 
 <body data-theme="dark">
   <header class="header">
-    <a class="brand-name" rel="home">Coperative Bank</a>
-    <div class="menu-icon-container"><img class="icon menu-icon"></div>
-    <nav class="menu-options">
-      <ul class="menu-list">
-        <li class="menu-list-item">
-          <div id="switch-theme">
+    <a class="header__brand-name" rel="home">Coperative Bank</a>
+    <button id="menu-button" class="header__menu-button" aria-label="Menu">
+      <img class="icon header__menu-icon" alt="Menu Icon" src="../../assets/icons/icon-menu.svg">
+    </button>
+    <nav class="header__menu" aria-label="Main navigation">
+      <ul class="header__menu-list">
+        <li class="header__menu-item">
+          <button class="header__theme-button" id="switch-theme-button" aria-label="Switch Theme">
             <span>Switch Theme</span>
-            <img id="theme-mode">
-          </div>
+            <img class="header__theme-icon" id="theme-mode" alt="Theme Mode Icon">
+          </button>
         </li>
-        <li class="menu-list-item"><a class="menu-link">Profile</a></li>
-        <li class="menu-list-item">Logout</li>
+        <li class="header__menu-item"><a class="header__menu-link">Profile</a></li>
+        <li class="header__menu-item">Logout</li>
       </ul>
     </nav>
   </header>

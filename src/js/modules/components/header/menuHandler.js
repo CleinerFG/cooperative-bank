@@ -1,8 +1,8 @@
 export function menuHandler() {
-  const menuIcon = document.querySelector(".menu-icon-container");
+  const menuIcon = document.querySelector("#menu-button");
   menuIcon.addEventListener("click", (ev) => {
-    menuIcon.classList.toggle("menu-active-container");
-    const divOptions = document.querySelector(".menu-options");
-    divOptions.classList.toggle("menu-options-block");
+    menuIcon.classList.toggle("header__menu-button--active");
+    const divOptions = document.querySelector(".header__menu");
+    divOptions.classList.toggle("header__menu--block");
   });
 }

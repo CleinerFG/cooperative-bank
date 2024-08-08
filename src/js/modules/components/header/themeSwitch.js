@@ -2,7 +2,7 @@ import { setSrc } from "../../utils/path-manangers/assetsPaths.js";
 
 export function setTheme() {
   const THEME_KEY = "coperativeBankTheme";
-  const LIGHT_THEME_CLASS = "theme-light-icon";
+  const LIGHT_THEME_CLASS = "icon__theme-light";
   const body = document.body;
   const icons = document.querySelectorAll(".icon");
   setSrc("#theme-mode", "theme", `${body.dataset.theme}-mode.svg`);
@@ -15,7 +15,7 @@ export function setTheme() {
   };
 
   document
-    .getElementById("switch-theme")
+    .getElementById("switch-theme-button")
     .addEventListener("click", toggleTheme);
 
   const storedTheme = localStorage.getItem(THEME_KEY);

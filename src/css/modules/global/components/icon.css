@@ -2,6 +2,6 @@
   filter: invert(100%) sepia(100%) hue-rotate(180deg);
 }
 
-.theme-light-icon {
+.icon__theme-light {
   filter: invert(0);
 }
