@@ -28,57 +28,60 @@
       </ul>
     </nav>
   </header>
-  <main class="content-container">
-    <section class="financial-statement">
-      <h1>Financial Statement</h1>
-      <div class="total-investments-container">
-        <div class="total-investments">R$ <span id="total-value">******</span></div>
-        <img class="icon visibility-icon" data-visibility="off" alt="Closed eye">
+  <main class="main">
+    <section class="section statement">
+      <h1 class="statement__title">Financial Statement</h1>
+      <div class="statement__container">
+        <div class="statement__total">R$ <span id="total-value" class="statement__total-value"
+            data-visibility="off">******</span></div>
+        <button class="button statement__visibility-button">
+          <img id="visibility-icon" class="icon statement__visibility-icon" alt="Closed eye">
+        </button>
       </div>
     </section>
-    <div class="content-wrapper">
-      <section class="section wallet-section">
-        <h2>Wallet</h2>
-        <div class="items-container wallet-items">
-          <a id="card-link-loans" class="card-link" rel="next">
-            <div class="card-item">
-              <span class="label wallet-label">Loans</span>
-              <img id="card-icon-loans" class="icon card-icon">
+    <div class="wrapper">
+      <section class="section wallet">
+        <h2 class="section__title">Wallet</h2>
+        <div class="cards wallet-cards">
+          <a id="card-link-loans" class="card__link" rel="next">
+            <div class="card">
+              <span class="label card__label">Loans</span>
+              <img id="card-icon-loans" class="icon card__icon" alt="Loans Icon">
             </div>
           </a>
-          <a id="card-link-debtors" class="card-link" rel="next">
-            <div class="card-item">
-              <span class="label wallet-label">Debtors</span>
-              <img id="card-icon-debtors" class="icon card-icon">
+          <a id="card-link-debtors" class="card__link" rel="next">
+            <div class="card">
+              <span class="label card__label">Debtors</span>
+              <img id="card-icon-debtors" class="icon card__icon" alt="Debtors Icon">
             </div>
           </a>
-          <a id="card-link-payments" class="card-link" rel="next">
-            <div class="card-item">
-              <span class="label wallet-label">Payments</span>
-              <img id="card-icon-payments" class="icon card-icon">
-            </div>
-          </a>
-        </div>
-      </section>
-      <section class="section investments-section">
-        <h2>Investments</h2>
-        <div class="items-container investments-items">
-          <a id="card-link-all" class="card-link" rel="next">
-            <div class="card-item">
-              <span class="label activity-label">All</span>
-              <img id="card-icon-all" class="icon card-icon">
-            </div>
-          </a>
-          <a id="card-link-reports" class="card-link" rel="next">
-            <div class="card-item">
-              <span class="label activity-label">Reports</span>
-              <img id="card-icon-reports" class="icon card-icon">
+          <a id="card-link-payments" class="card__link" rel="next">
+            <div class="card">
+              <span class="card__label">Payments</span>
+              <img id="card-icon-payments" class="icon card__icon" alt="Payments Icon">
             </div>
           </a>
         </div>
       </section>
-      <section class="section upcoming-events">
-        <h2>Upcoming Liquidity Events</h2>
+      <section class="section investments">
+        <h2 class="section__title">Investments</h2>
+        <div class="cards cards__investments">
+          <a id="card-link-all" class="card__link" rel="next">
+            <div class="card">
+              <span class="label card__label">All</span>
+              <img id="card-icon-all" class="icon card__icon" alt="All Icon">
+            </div>
+          </a>
+          <a id="card-link-reports" class="card__link" rel="next">
+            <div class="card">
+              <span class="card__label">Reports</span>
+              <img id="card-icon-reports" class="icon card__icon" alt="Reports Icon">
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="section events">
+        <h2 class="section__title">Upcoming Liquidity Events</h2>
         <table class="table">
           <thead>
             <tr>

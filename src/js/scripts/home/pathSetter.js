@@ -3,7 +3,7 @@ import { setHref } from "../../modules/utils/path-manangers/htmlPagesPaths.js";
 
 export function initPathSettings() {
   // Financial Statement
-  setSrc(".visibility-icon", "icons", "icon-visibility-off.svg");
+  setSrc("#visibility-icon", "icons", "icon-visibility-off.svg");
 
   const pages = {
     wallet: ["loans", "debtors", "payments"],
