@@ -58,7 +58,6 @@
 
 /* Hover*/
 .header__menu-button:hover {
-  cursor: pointer;
   border-radius: 50%;
   box-shadow: var(--box-shadow);
   background-color: var(--color-background);
