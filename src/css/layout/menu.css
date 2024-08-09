@@ -1,5 +1,4 @@
 .header__menu-button {
-  all: unset;
   width: 32px;
   height: 32px;
   z-index: 1;
@@ -52,7 +51,6 @@
 }
 
 .header__theme-button {
-  all: unset;
   display: flex;
   align-items: center;
   gap: 0.5rem;

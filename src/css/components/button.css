@@ -1,0 +1,23 @@
+.btn {
+  border: none;;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  color: #fff;
+  transition: all .5s ease-in-out;
+}
+
+.btn-unset {
+  all: unset;
+}
+
+.btn-action {
+  background-color: var(--color-cta);
+}
+
+/* Hover */
+.btn:hover {
+  cursor: pointer;
+  border-radius: 0.8rem;
+  background-color: var(--color-cta-hover);
+  box-shadow: var(--component-box-shadow);
+}
