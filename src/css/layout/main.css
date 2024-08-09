@@ -14,7 +14,16 @@
   gap: 0.5rem;
 }
 
-.section__title {
-  border-bottom: var(--color-accent-translucent) solid .1rem;
-  padding-bottom: .5rem;
+.section__h1 {
+  padding: 0.4rem 0;
+  background-image: linear-gradient(
+    to right,
+    #fff0 -15%,
+    var(--color-accent-translucent)
+  );
+}
+
+.section__h2 {
+  border-bottom: var(--color-accent-translucent) solid 0.1rem;
+  padding-bottom: 0.5rem;
 }
