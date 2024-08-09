@@ -1,9 +1,9 @@
 .btn {
-  border: none;;
-  border-radius: 0.5rem;
+  border: none;
+  border-radius: var(--component-border-radius);
   padding: 0.5rem 0.8rem;
   color: #fff;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .btn-unset {

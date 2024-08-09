@@ -13,16 +13,16 @@
   --box-shadow: 0.1rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   --header-height: 3.5rem;
 
-  --color-border-component: #ccc;
-  --color-bg-component: #fff;
-  --component-box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.5);
+  --component-border-color: #ccc;
+  --component-border-radius: 0.5rem;
+  --component-bg-color: #fff;
+  --component-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
 }
 
 [data-theme="dark"] {
-  --container-padding: 0.8rem;
   --color-primary: #f5f7fa;
   --color-accent: hsl(174, 90%, 30%);
   --color-accent-hover: hsl(174, 96%, 35%);
@@ -33,12 +33,8 @@
   --color-text: #f5f7fa;
   --color-background: hsl(220, 41%, 10%);
   --box-shadow: 0 0 1rem rgba(38, 0, 255, 0.2);
-  --header-height: 3.5rem;
 
-  --color-border-component: #aaa;
-  --color-bg-component: #000000;
-  --component-box-shadow: 0 0 .5rem rgba(38, 0, 255, 0.5);
-
-  --default-font-family: "Roboto Condensed", sans-serif;
-  --title-font-family: "Roboto Slab", sans-serif;
+  --component-border-color: #aaa;
+  --component-bg-color: #000000;
+  --component-box-shadow: 0 0 0.5rem rgba(38, 0, 255, 0.5);
 }

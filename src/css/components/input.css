@@ -1,20 +1,21 @@
 /* Estilo básico para todos os inputs */
-input {
+.input {
   width: 100%;
   padding: 0.4rem;
   /* box-sizing: border-box; */
-  background-color: var(--color-bg-component);
-  border: 0.12rem solid var(--color-border-component);
-  border-radius: 0.5rem;
+  background-color: var(--component-bg-color);
+  border: 0.12rem solid var(--component-border-color);
+  border-radius: var(--component-border-radius);
   transition: all 0.5s;
   color: var(--color-font);
 }
 
-input:focus {
+.input:focus {
   border-color: var(--color-accent);
+  box-shadow: var(--component-box-shadow);
   outline: none;
 }
 
-input[type="password"] {
+.input[type="password"] {
   font-family: "Courier New", Courier, monospace;
 }
