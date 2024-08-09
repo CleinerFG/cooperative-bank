@@ -10,6 +10,7 @@
   --color-cta-hover: hsl(5, 43%, 60%);
   --color-text: #253659;
   --color-background: #f5f7fa;
+  --box-shadow-default: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
   --box-shadow: 0.1rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   --header-height: 3.5rem;
 
@@ -32,6 +33,7 @@
   --color-cta: hsl(5, 43%, 30%);
   --color-text: #f5f7fa;
   --color-background: hsl(220, 41%, 10%);
+  --box-shadow-default: 0 0 .3rem rgba(255, 255, 255, 0.3);
   --box-shadow: 0 0 1rem rgba(38, 0, 255, 0.2);
 
   --component-border-color: #aaa;

@@ -4,6 +4,7 @@
   border-collapse: collapse;
   text-align: left;
   border-radius: 0.8rem;
+  box-shadow: var(--box-shadow-default);
   transition: all 0.3s ease-in-out;
 }
 
@@ -27,7 +28,6 @@ td {
 
 .table tbody tr {
   border-top: 1px solid var(--color-detail);
-
 }
 
 /* Hover */
@@ -37,7 +37,6 @@ td {
 
 .table tbody tr:hover {
   cursor: pointer;
-  /* background-color: var(--color-accent-hover); */
   background-color: var(--color-accent-translucent);
 }
 
