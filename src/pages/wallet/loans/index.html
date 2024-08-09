@@ -13,7 +13,7 @@
   <header class="header">
     <a class="header__brand-name" rel="home">Coperative Bank</a>
     <button id="menu-button" class="header__menu-button" aria-label="Menu">
-      <img class="icon header__menu-icon" alt="Menu Icon" src="../../assets/icons/icon-menu.svg">
+      <img class="icon header__menu-icon" alt="Menu Icon">
     </button>
     <nav class="header__menu" aria-label="Main navigation">
       <ul class="header__menu-list">
@@ -30,6 +30,52 @@
   </header>
   <main class="main">
     <h1>Loans</h1>
+    <section class="section new-loan">
+      <h2>Take Out a Loan</h2>
+      <p>To obtain a loan, the creditor needs to access their own account and accept the loan request.</p>
+
+      <section class="new-loan__request">
+        <h3>New Loan Request</h3>
+        <form id="new-loan-form" class="form new-loan__form" action="/submit" method="post">
+          <div class="form-group">
+            <label for="search-creditor-input" class="label form-group__label">Search for a Creditor</label>
+            <div class="form-group__input-group">
+              <input id="search-creditor-input" type="text" name="creditor" placeholder="Search"
+                aria-label="Search Creditor" class="input form-group__input">
+              <button id="search-creditor-button" class="button form-group__button" type="submit" aria-label="Search">
+                <img id="search-creditor-icon" class="icon" src="search-icon.png" alt="Search Icon">
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="button">Get a Loan</button>
+        </form>
+        </div>
+      </section>
+
+      <section class="section new-loan__open-request">
+        <h3>Opened Requests</h3>
+        <table id="open-requests-table" class="table">
+          <thead>
+            <tr>
+              <th>Creditor</th>
+              <th>Date</th>
+              <th>Value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kate</td>
+              <td>09/07/2024</td>
+              <td>R$ 450</td>
+              <td>Credit card</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+    </section>
+
     <section class="section loans-receive">
       <h2>Loans to Receive</h2>
       <table class="table">
@@ -68,12 +114,13 @@
       </table>
       <p>Total to Receive: R$ 870,00</p>
     </section>
+
     <section class="section loans-pay">
       <h2>Loans to Pay</h2>
       <table class="table">
         <thead>
           <tr>
-            <th>Debtor</th>
+            <th>Creditor</th>
             <th>Date</th>
             <th>Value</th>
             <th>Description</th>
