@@ -1,0 +1,20 @@
+/* Estilo básico para todos os inputs */
+input {
+  width: 100%;
+  padding: 0.4rem;
+  /* box-sizing: border-box; */
+  background-color: var(--color-bg-component);
+  border: 0.12rem solid var(--color-border-component);
+  border-radius: 0.5rem;
+  transition: all 0.5s;
+  color: var(--color-font);
+}
+
+input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+input[type="password"] {
+  font-family: "Courier New", Courier, monospace;
+}
