@@ -7,3 +7,14 @@
   padding-bottom: 0;
   background-color: var(--color-background);
 }
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section__title {
+  border-bottom: var(--color-accent-translucent) solid .1rem;
+  padding-bottom: .5rem;
+}

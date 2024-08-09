@@ -1,9 +1,4 @@
 @import url("./card.css");
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
 
 .statement {
   height: 10rem;
