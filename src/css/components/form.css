@@ -1,4 +1,19 @@
 .form {
   width: fit-content;
-  padding: var(--container-padding);
+}
+
+.form-group {
+  /* margin-bottom: 1rem;  */
+}
+
+.form-group__input-group {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group__input-container {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }

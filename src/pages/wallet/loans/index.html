@@ -38,13 +38,15 @@
         <h3>New Loan Request</h3>
         <form id="new-loan-form" class="form new-loan__form" action="/submit" method="post">
           <div class="form-group">
-            <label for="search-creditor-input" class="label form-group__label">Search for a Creditor</label>
             <div class="form-group__input-group">
-              <input id="search-creditor-input" type="text" name="creditor" placeholder="Search"
-                aria-label="Search Creditor" class="input form-group__input">
-              <button id="search-creditor-button" class="btn-unset form-group__button" aria-label="Search">
-                <img id="search-creditor-icon" class="icon" src="search-icon.png" alt="Search Icon">
-              </button>
+              <label for="search-creditor-input" class="label form-group__label">Search for a Creditor</label>
+              <div class="form-group__input-container">
+                <input id="search-creditor-input" type="text" name="creditor" placeholder="Search"
+                  aria-label="Search Creditor" class="input form-group__input">
+                <button id="search-creditor-button" class="btn-unset form-group__button" aria-label="Search">
+                  <img id="search-creditor-icon" class="icon" src="search-icon.png" alt="Search Icon">
+                </button>
+              </div>
             </div>
           </div>
           <button class="btn btn-action">Get Loan</button>
