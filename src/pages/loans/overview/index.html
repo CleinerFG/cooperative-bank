@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview</title>
+  <!-- Production Imports -->
+  <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body data-theme="dark">
+  <header class="header">
+    <a class="header__brand-name" rel="home">Coperative Bank</a>
+    <button id="menu-button" class="btn-unset header__menu-button" aria-label="Menu">
+      <img class="icon header__menu-icon" alt="Menu Icon">
+    </button>
+    <nav class="header__menu" aria-label="Main navigation">
+      <ul class="header__menu-list">
+        <li class="header__menu-item">
+          <button class="btn-unset  header__theme-button" id="switch-theme-button" aria-label="Switch Theme">
+            <span>Switch Theme</span>
+            <img class="header__theme-icon" id="theme-mode" alt="Theme Mode Icon">
+          </button>
+        </li>
+        <li class="header__menu-item"><a class="header__menu-link">Profile</a></li>
+        <li class="header__menu-item">Logout</li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="section">
+      <h1 class="section__h1">Loans Overview</h1>
+      <p>Report of all active loans.</p>
+    </section>
+
+    <section class="section Receivables">
+      <h2 class="section__h2">Receivables</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Debtor</th>
+            <th>Date</th>
+            <th>Value</th>
+            <th>Description</th>
+            <th>Amount Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Claudette</td>
+            <td>20/05/2023</td>
+            <td>R$ 1.200</td>
+            <td>To buy a cell</td>
+            <td>R$ 500</td>
+          </tr>
+          <tr>
+            <td>Meg</td>
+            <td>12/03/2023</td>
+            <td>R$ 2.000</td>
+            <td>IPVA</td>
+            <td>R$ 250</td>
+          </tr>
+          <tr>
+            <td>Meg</td>
+            <td>05/01/2024</td>
+            <td>R$ 1.200</td>
+            <td>Credit card bill</td>
+            <td>R$ 120</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Total to Receive: R$ 870,00</p>
+    </section>
+
+    <section class="section Payables">
+      <h2 class="section__h2">Payables</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Creditor</th>
+            <th>Date</th>
+            <th>Value</th>
+            <th>Description</th>
+            <th>Amount Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kate</td>
+            <td>09/01/2024</td>
+            <td>R$ 500</td>
+            <td>Shopping</td>
+            <td>R$ 50</td>
+          </tr>
+          <tr>
+            <td>David</td>
+            <td>15/08/2020</td>
+            <td>R$ 12.000</td>
+            <td>Car</td>
+            <td>R$ 6.200</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Total to Pay: R$ 6.250,00</p>
+    </section>
+  </main>
+  <footer class="footer" aria-label="Footer">
+    <a class="footer__icon-link">
+      <img class="icon footer__icon" alt="Footer Icon">
+    </a>
+    <div class="footer__content">
+      <a class="footer__brand-name">Coperative Bank</a>
+      <p>By Cleiner Furlani</p>
+    </div>
+  </footer>
+  <script type="module" src="./scripts/index.js"></script>
+</body>
+
+</html>
