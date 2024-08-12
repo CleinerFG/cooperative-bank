@@ -15,7 +15,6 @@ export function initPathSettings() {
     pages[dir].forEach((pageName) => {
       setSrc(`#card-icon-${pageName}`, "icons", `icon-${pageName}.svg`);
       setHref(`#card-link-${pageName}`, dir, `${pageName}`);
-      console.log(`Dir: ${dir} and page:${pageName}`);
     });
   }
 }
