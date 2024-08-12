@@ -6,7 +6,7 @@ export function initPathSettings() {
   setSrc("#visibility-icon", "icons", "icon-visibility-off.svg");
 
   const pages = {
-    loans: ["requests", "debtors", "payments", "timeline"],
+    loans: ["requests", "overview", "payments", "timeline"],
     investments: ["all", "reports"],
   };
 
