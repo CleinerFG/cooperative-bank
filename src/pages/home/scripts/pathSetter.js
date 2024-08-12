@@ -6,7 +6,7 @@ export function initPathSettings() {
   setSrc("#visibility-icon", "icons", "icon-visibility-off.svg");
 
   const pages = {
-    wallet: ["loans", "debtors", "payments", "timeline"],
+    loans: ["requests", "debtors", "payments", "timeline"],
     investments: ["all", "reports"],
   };
 
@@ -15,6 +15,7 @@ export function initPathSettings() {
     pages[dir].forEach((pageName) => {
       setSrc(`#card-icon-${pageName}`, "icons", `icon-${pageName}.svg`);
       setHref(`#card-link-${pageName}`, dir, `${pageName}`);
+      console.log(`Dir: ${dir} and page:${pageName}`);
     });
   }
 }

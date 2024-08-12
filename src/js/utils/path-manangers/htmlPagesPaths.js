@@ -1,7 +1,7 @@
 const paths = {
   home: "/src/pages/home/",
   menu: "/src/pages/menu/",
-  wallet: "/src/pages/wallet/",
+  loans: "/src/pages/loans/",
   investments: "/src/pages/investments/",
 };
 
