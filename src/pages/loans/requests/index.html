@@ -30,54 +30,51 @@
   </header>
   <main class="main">
     <section class="section">
-      <h1 class="section__h1">Loans</h1>
-    </section>
-    <section class="section new-loan">
-      <h2 class="section__h2">Take Out a Loan</h2>
+      <h1 class="section__h1">Take Out a Loan</h1>
       <p>To obtain a loan, the creditor needs to access their own account and accept the loan request.</p>
+    </section>
 
-      <section class="new-loan__request">
-        <h3>New Loan Request</h3>
-        <form id="new-loan-form" class="form new-loan__form" action="/submit" method="post">
-          <div class="form-group">
-            <div class="form-group__input-group">
-              <label for="search-creditor-input" class="label form-group__label">Search for a Creditor</label>
-              <div class="form-group__input-container">
-                <input id="search-creditor-input" type="text" name="creditor" placeholder="Search"
-                  aria-label="Search Creditor" class="input form-group__input">
-                <button id="search-creditor-button" class="btn-unset form-group__button" aria-label="Search">
-                  <img id="search-creditor-icon" class="icon" src="search-icon.png" alt="Search Icon">
-                </button>
-              </div>
+    <section class="section new-loan">
+      <h2 class="section__h2">New Loan Request</h2>
+      <form id="new-loan-form" class="form new-loan__form" action="/submit" method="post">
+        <div class="form-group">
+          <div class="form-group__input-group">
+            <label for="search-creditor-input" class="label form-group__label">Search for a Creditor</label>
+            <div class="form-group__input-container">
+              <input id="search-creditor-input" type="text" name="creditor" placeholder="Search"
+                aria-label="Search Creditor" class="input form-group__input">
+              <button id="search-creditor-button" class="btn-unset form-group__button" aria-label="Search">
+                <img id="search-creditor-icon" class="icon" src="search-icon.png" alt="Search Icon">
+              </button>
             </div>
           </div>
-          <button class="btn btn-action">Get Loan</button>
-        </form>
         </div>
-      </section>
+        <button class="btn btn-action">Get Loan</button>
+      </form>
+      </div>
+    </section>
 
-      <section class="section new-loan__open-request">
-        <h3>Opened Requests</h3>
-        <table id="open-requests-table" class="table">
-          <thead>
-            <tr>
-              <th>Creditor</th>
-              <th>Date</th>
-              <th>Value</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Kate</td>
-              <td>09/07/2024</td>
-              <td>R$ 450</td>
-              <td>Credit card</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </section>
+    <section class="section open-requests">
+      <h2 class="section__h2">Opened Requests</h2>
+      <table id="open-requests-table" class="table">
+        <thead>
+          <tr>
+            <th>Creditor</th>
+            <th>Date</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kate</td>
+            <td>09/07/2024</td>
+            <td>R$ 450</td>
+            <td>Credit card</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </section>
 
     <section class="section loans-receive">
