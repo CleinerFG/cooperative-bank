@@ -6,12 +6,12 @@
     width: 2.5rem;
   }
 
-  .card {
+  .card-action {
     width: 9rem;
     height: 11rem;
   }
 
-  .card__label {
+  .card-action__label {
     font-size: 1.5rem;
   }
 }

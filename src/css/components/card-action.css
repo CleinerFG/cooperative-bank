@@ -1,4 +1,4 @@
-.card {
+.card-action {
   background-color: var(--color-accent);
   border-radius: 1rem;
   width: 6rem;
@@ -13,17 +13,16 @@
   transition: all 0.3s ease-in-out;
 }
 
-.card__icon {
+.card-action__icon {
   width: 70%;
 }
 
-.card__label {
+.card-action__label {
   color: var(--color-text);
 }
 
 /* Hover */
-
-.card:hover {
+.card-action:hover {
   cursor: pointer;
   box-shadow: var(--box-shadow);
   background-color: var(--color-accent-hover);
