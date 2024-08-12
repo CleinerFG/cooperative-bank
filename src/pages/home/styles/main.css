@@ -52,6 +52,12 @@
   gap: 1.5rem;
 }
 
+.events__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 /* Hover */
 .statement__visibility-button:hover {
   cursor: pointer;

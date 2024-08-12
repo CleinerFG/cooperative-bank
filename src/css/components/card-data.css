@@ -1,0 +1,67 @@
+.card-data {
+  background-color: var(--component-bg-color);
+  border: 1px solid var(--component-border-color);
+  border-radius: var(--component-border-radius);
+  padding: var(--container-padding);
+  box-shadow: 0 0 0 #000;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.card-data__header {
+  padding: 0 0.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--color-detail);
+}
+
+.card-data__content {
+  padding: 0 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.card-data__item {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.card-data__label {
+  text-align: left;
+}
+
+.card-data__value {
+  text-align: right;
+}
+
+.card-data__item + .card-data__item {
+  border-top: solid 0.1rem var(--component-border-color);
+}
+
+.card-data__value {
+  font-style: italic;
+}
+
+.card-data__footer {
+  display: flex;
+  justify-content: end;
+}
+
+.card-data__btn {
+  width: 100%;
+}
+
+/* Hover */
+.card-data:hover {
+  box-shadow: var(--component-box-shadow);
+}
