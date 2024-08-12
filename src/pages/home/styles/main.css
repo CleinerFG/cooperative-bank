@@ -31,17 +31,6 @@
   all: unset;
 }
 
-.wrapper {
-  padding: var(--container-padding);
-  margin-left: calc(-1 * var(--container-padding));
-  margin-right: calc(-1 * var(--container-padding));
-}
-
-.wrapper__title {
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-accent-translucent);
-}
-
 .loans__cards,
 .investments__cards {
   padding: var(--container-padding);
