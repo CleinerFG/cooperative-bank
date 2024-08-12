@@ -1,5 +1,9 @@
 @import url("./card.css");
 
+.section {
+  margin-bottom: 0;
+}
+
 .statement {
   height: 10rem;
   gap: 0;
