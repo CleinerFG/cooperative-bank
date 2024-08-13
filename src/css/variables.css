@@ -7,7 +7,7 @@
   --color-secondary: #04bf9d;
   --color-detail: #f28157;
   --color-cta: #bf665e;
-  --color-cta-hover: hsl(5, 43%, 60%);
+  --color-cta-hover: hsl(5, 43%, 50%);
   --color-text: #253659;
   --color-background: #f5f7fa;
   --box-shadow-default: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
@@ -17,7 +17,7 @@
   --component-border-color: #ccc;
   --component-border-radius: 0.5rem;
   --component-bg-color: #fff;
-  --component-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
   --default-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", sans-serif;
@@ -30,7 +30,8 @@
   --color-accent-translucent: hsla(174, 90%, 30%, 0.3);
   --color-secondary: hsl(169, 95%, 20%);
   --color-detail: hsl(16, 86%, 80%);
-  --color-cta: hsl(5, 42%, 50%);
+  --color-cta: hsl(5, 43%, 50%);
+  --color-cta-hover: hsl(5, 43%, 56%);
   --color-text: #f5f7fa;
   --color-background: #000;
   --box-shadow-default: 0 0 .3rem rgba(255, 255, 255, 0.2);

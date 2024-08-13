@@ -1,10 +1,10 @@
 .btn {
-  width: 6rem;
+  width: 5rem;
   height: 2rem;
   border: none;
   border-radius: var(--component-border-radius);
-  color: #fff;
-  transition: all 0.5s ease-in-out;
+  background-color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .btn-unset {
@@ -12,13 +12,16 @@
 }
 
 .btn-action {
+  color: var(--color-background);
   background-color: var(--color-cta);
 }
 
 /* Hover */
 .btn:hover {
-  cursor: pointer;
-  border-radius: 0.8rem;
-  background-color: var(--color-cta-hover);
   box-shadow: var(--component-box-shadow);
+  background-color: var(--color-accent-hover);
+}
+
+.btn-action:hover {
+  background-color: var(--color-cta-hover);
 }
