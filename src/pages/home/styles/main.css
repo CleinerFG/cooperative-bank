@@ -24,14 +24,5 @@
 .loans__cards,
 .investments__cards {
   padding: var(--container-padding);
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-}
-
-.events__cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
 }

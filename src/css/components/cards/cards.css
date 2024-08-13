@@ -1,0 +1,8 @@
+@import url("./card-action.css");
+@import url("./card-data.css");
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
