@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover */
+.card:hover {
+  box-shadow: var(--component-box-shadow);
+}

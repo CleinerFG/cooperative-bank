@@ -1,13 +1,10 @@
 .card-data {
   background-color: var(--component-bg-color);
-  border: 1px solid var(--component-border-color);
+  border: 0.1rem solid var(--component-border-color);
   border-radius: var(--component-border-radius);
   padding: var(--container-padding);
   box-shadow: 0 0 0 #000;
-  transition: all 0.4s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+
   flex: 1;
 }
 
@@ -59,9 +56,4 @@
 
 .card-data__btn {
   width: 100%;
-}
-
-/* Hover */
-.card-data:hover {
-  box-shadow: var(--component-box-shadow);
 }
