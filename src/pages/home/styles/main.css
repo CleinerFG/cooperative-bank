@@ -7,11 +7,6 @@
   gap: 0;
 }
 
-.statement__title {
-  padding-bottom: 0.5rem;
-  border-bottom: 0.1rem solid var(--color-accent);
-}
-
 .statement__container {
   padding-top: var(--container-padding);
   display: flex;
@@ -28,26 +23,17 @@
   font-weight: 550;
 }
 
-.statement__visibility-button {
-  all: unset;
-}
-
 .loans__cards,
 .investments__cards {
   padding: var(--container-padding);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .events__cards {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-}
-
-/* Hover */
-.statement__visibility-button:hover {
-  cursor: pointer;
 }
