@@ -3,5 +3,5 @@ import { initFooter } from "./footer/index.js";
 
 export function initHeaderFooter() {
   initHeader();
-  initFooter();
+  // initFooter();
 }

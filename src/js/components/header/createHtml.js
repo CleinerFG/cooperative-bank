@@ -1,6 +1,6 @@
-import { insertHtml } from "./../../utils/dom/insertHtml.js";
+import { innerHTML } from "./../../utils/dom/innerHTML.js";
 
-const htmlStr = `<header class="header">
+const htmlStr = `
     <a class="header__brand-name" rel="home">Coperative Bank</a>
     <button id="menu-button" class="btn-unset header__menu-button" aria-label="Menu">
       <img class="icon header__menu-icon" alt="Menu Icon">
@@ -17,9 +17,6 @@ const htmlStr = `<header class="header">
         <li class="header__menu-item">Logout</li>
       </ul>
     </nav>
-  </header>`;
+`;
 
-export function createHtml() {
-  const body = document.body;
-  insertHtml(body, "afterbegin", htmlStr);
-}
+export const createHtml = () => innerHTML("header", htmlStr);

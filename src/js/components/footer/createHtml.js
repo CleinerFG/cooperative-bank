@@ -1,4 +1,4 @@
-import { insertHtml } from "./../../utils/dom/insertHtml.js";
+import { innerHTML } from "../../utils/dom/innerHTML.JS";
 
 const htmlStr = `
 <footer class="footer" aria-label="Footer">
@@ -11,8 +11,4 @@ const htmlStr = `
   </div>
 </footer>
 `;
-
-export function createHtml() {
-  const body = document.body;
-  insertHtml(body, "beforeend", htmlStr);
-}
+export const createHtml = () => innerHTML("footer", htmlStr);
