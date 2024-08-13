@@ -8,14 +8,15 @@
 }
 
 .statement__title {
-  padding: 0 0 0.8rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--color-accent);
 }
 
 .statement__container {
-  padding: 0.8rem 0 0 0;
-  border-top: 1px solid var(--color-accent);
+  padding-top: var(--container-padding);
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 .statement__total {

@@ -1,10 +1,7 @@
 .main {
-  max-width: 1200px;
-  min-height: 630px;
   margin: auto;
   margin-top: var(--header-height);
   padding: var(--container-padding);
-  padding-bottom: 0;
   background-color: var(--color-background);
 }
 
@@ -12,11 +9,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 2rem;
 }
 
 .section__h1 {
-  padding: 0.4rem 0;
+  padding: 0.5rem 0;
   background-image: linear-gradient(
     to right,
     #fff0 -15%,
