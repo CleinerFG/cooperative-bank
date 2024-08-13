@@ -1,16 +1,15 @@
 .header__menu-button {
-  width: 32px;
-  height: 32px;
   z-index: 1;
-  margin-right: 0.5rem;
-  padding: 0.3rem;
+  margin-right: 0.6rem;
+  padding: 0.2rem;
   border-radius: 30%;
   transition: all 0.4s ease-in-out;
 }
 
+.header__menu-button,
 .header__menu-icon {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .header__menu-button--active {
@@ -21,7 +20,6 @@
 
 .header__menu {
   background-color: var(--color-accent);
-  color: var(--color-text);
   border-radius: 0.5rem 0 0.5rem 0.5rem;
   box-shadow: var(--box-shadow);
   padding: 1rem;
@@ -42,8 +40,10 @@
   transition: all 0.4s ease-in-out;
 }
 
-.header__menu-item + .header__menu-item {
-  margin-top: 0.3rem;
+.header__menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .header__menu-item:last-child {
@@ -72,10 +72,6 @@
   color: var(--color-cta);
 }
 
-.header__theme-button:hover {
-  cursor: pointer;
-}
-
-.header__theme-button:hover .header__theme-icon{
+.header__theme-button:hover .header__theme-icon {
   filter: drop-shadow(0 0 0.5rem #fff);
 }
