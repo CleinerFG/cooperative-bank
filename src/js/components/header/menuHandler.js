@@ -1,8 +1,8 @@
 export function menuHandler() {
-  const menuIcon = document.querySelector("#menu-button");
-  menuIcon.addEventListener("click", (ev) => {
-    menuIcon.classList.toggle("header__menu-button--active");
-    const divOptions = document.querySelector(".header__menu");
-    divOptions.classList.toggle("header__menu--block");
+  const menuBtn = document.querySelector("#menu-button");
+  menuBtn.addEventListener("click", (ev) => {
+    menuBtn.classList.toggle("header__menu-button--active");
+    const nav = document.querySelector(".header__menu");
+    nav.classList.toggle("header__menu--block");
   });
 }
