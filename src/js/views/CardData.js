@@ -1,7 +1,7 @@
 import { insertHtml } from "../utils/dom/insertHtml.js";
 import { Event } from "../models/Event.js";
 
-class CardData {
+export class CardData {
   constructor(dataObject, parentNode) {
     if (!(dataObject instanceof Event)) {
       throw new Error("Object is not an instance of Event");
