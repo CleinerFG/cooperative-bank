@@ -33,11 +33,11 @@ export class EventController {
 
   renderEvent(event) {
     const cardDataInstance = this.addEvent(event);
-    cardDataInstance.render("beforeend");
+    cardDataInstance.render("afterbegin");
   }
 
   renderAllEvents() {
-    this.cardDataInstances.forEach((card) => card.render("beforeend"));
+    this.cardDataInstances.forEach((card) => card.render("afterbegin"));
   }
 
   removeEvent(event) {
