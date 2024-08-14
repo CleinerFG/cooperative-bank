@@ -6,6 +6,7 @@
   --color-accent-hover: hsl(174, 90%, 38%);
   --color-accent-translucent: hsla(174, 90%, 40%, 0.3);
   --color-secondary: hsl(169, 96%, 38%);
+  --color-off-white: #fbfcf8;
   --color-detail: #f28157;
   --color-cta: hsl(5, 43%, 50%);
   --color-cta-hover: hsl(5, 43%, 46%);
@@ -33,8 +34,8 @@
   --color-primary-hover: hsl(45, 26%, 80%);
   --color-accent: hsl(0, 0%, 35%);
   --color-accent-hover: hsl(0, 0%, 30%);
-  --color-accent-translucent: hsla(0, 0%, 30%, 0.3);
-  --color-secondary: hsl(169, 95%, 20%);
+  --color-accent-translucent: hsla(174, 90%, 35%, 0.3);
+  --color-secondary: hsl(169, 96%, 30%);
   --color-detail: hsl(16, 86%, 80%);
   --color-cta: hsl(5, 43%, 45%);
   --color-cta-hover: hsl(5, 43%, 40%);

@@ -12,16 +12,18 @@
 }
 
 .btn-action {
-  color: #faf8f5;
+  color: var(--color-off-white);
   background-color: var(--color-cta);
 }
 
 .btn-success {
   background-color: var(--component-color-success);
+  color: var(--color-off-white);
 }
 
 .btn-fail {
   background-color: var(--component-color-fail);
+  color: var(--color-off-white);
 }
 
 /* Hover */
