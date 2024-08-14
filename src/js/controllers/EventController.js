@@ -3,6 +3,9 @@ import { CardData } from "../views/CardData.js";
 
 export class EventController {
   constructor(container) {
+    if (!(container instanceof Element)) {
+      throw new Error("Container must be a DOM element");
+    }
     this.container = container;
     this.cardDataInstances = [];
   }
@@ -12,30 +15,41 @@ export class EventController {
   }
 
   createCardDataInstance(event) {
+    if (!this.isEventInstance(event)) {
+      throw new Error(`${event} is not an instance of Event`);
+    }
     return new CardData(event, this.container);
   }
 
   addEvent(event) {
-    if (!this.isEventInstance(event)) {
-      console.log(`${event} - Isn't an instance of Event`);
-      return;
+    try {
+      const cardDataInstance = this.createCardDataInstance(event);
+      this.cardDataInstances.push(cardDataInstance);
+      return cardDataInstance;
+    } catch (error) {
+      console.log(error.message);
     }
-    const cardDataInstance = this.createCardDataInstance(event);
-    this.cardDataInstances.push(cardDataInstance);
   }
 
   renderEvent(event) {
-    if (!this.isEventInstance(event)) {
-      console.log(`${event} - Isn't an instance of Event`);
-      return;
-    }
-    const cardDataInstance = this.createCardDataInstance(event);
+    const cardDataInstance = this.addEvent(event);
     cardDataInstance.render("beforeend");
   }
 
   renderAllEvents() {
-    this.cardDataInstances.forEach((card) => {
-      card.render("beforeend");
-    });
+    this.cardDataInstances.forEach((card) => card.render("beforeend"));
+  }
+
+  removeEvent(event) {
+    this.cardDataInstances = this.cardDataInstances.filter(
+      (card) => card.dataObject !== event
+    );
+    this.container.innerHTML = "";
+    this.renderAllEvents();
+  }
+
+  clearEvents() {
+    this.cardDataInstances = [];
+    this.container.innerHTML = "";
   }
 }
