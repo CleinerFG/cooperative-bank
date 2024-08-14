@@ -1,0 +1,7 @@
+.request__appv .card-data__header {
+  color: var(--component-color-success);
+}
+
+.request__pend .card-data__header {
+  color: var(--component-color-fail);
+}
