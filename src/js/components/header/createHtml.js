@@ -1,5 +1,3 @@
-import { innerHTML } from "./../../utils/dom/innerHTML.js";
-
 const htmlStr = `
     <a class="header__brand-name" rel="home">Coperative Bank</a>
     <button id="menu-button" class="btn-unset header__menu-button" aria-label="Menu">
@@ -19,4 +17,7 @@ const htmlStr = `
     </nav>
 `;
 
-export const createHtml = () => innerHTML("header", htmlStr);
+export const createHtml = () => {
+  const header = document.getElementById("header");
+  header.innerHTML = htmlStr;
+};

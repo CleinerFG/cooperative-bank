@@ -1,5 +1,3 @@
-import { innerHTML } from "../../utils/dom/innerHTML.JS";
-
 const htmlStr = `
   <a class="footer__icon-link">
     <img class="icon footer__icon" alt="Footer Icon">
@@ -9,4 +7,7 @@ const htmlStr = `
     <p>By Cleiner Furlani</p>
   </div>
 `;
-export const createHtml = () => innerHTML("footer", htmlStr);
+export const createHtml = () => {
+  const footer = document.getElementById("footer");
+  footer.innerHTML = htmlStr;
+}
