@@ -40,24 +40,55 @@
 
     <section class="section open-requests">
       <h2 class="section__h2">Opened Requests</h2>
-      <table id="open-requests-table" class="table">
-        <thead>
-          <tr>
-            <th>Creditor</th>
-            <th>Date</th>
-            <th>Value</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Kate</td>
-            <td>09/07/2024</td>
-            <td>R$ 450</td>
-            <td>Credit card</td>
-          </tr>
-        </tbody>
-      </table>
+      <article class="card card-data">
+        <header class="card-data__header">Waiting for Response</header>
+        <main class="card-data__content">
+          <div class="card-data__item">
+            <span class="card-data__label">Creditor</span>
+            <span class="card-data__value">Kate Denson</span>
+          </div>
+          <div class="card-data__item">
+            <span class="card-data__label">Date</span>
+            <span class="card-data__value">12/06/2024</span>
+          </div>
+          <div class="card-data__item">
+            <span class="card-data__label">Value</span>
+            <span class="card-data__value">R$ 2.200,00</span>
+          </div>
+          <div class="card-data__item">
+            <span class="card-data__label">Interest Rate</span>
+            <span class="card-data__value">1% p.m</span>
+          </div>
+        </main>
+        <footer class="card-data__footer">
+          <button class="btn btn-action card-data__btn">Cancel Request</button>
+        </footer>
+      </article>
+
+      <article class="card card-data">
+        <header class="card-data__header">Approved</header>
+        <main class="card-data__content">
+          <div class="card-data__item">
+            <span class="card-data__label">Creditor</span>
+            <span class="card-data__value">Kate Denson</span>
+          </div>
+          <div class="card-data__item">
+            <span class="card-data__label">Date</span>
+            <span class="card-data__value">02/05/2024</span>
+          </div>
+          <div class="card-data__item">
+            <span class="card-data__label">Value</span>
+            <span class="card-data__value">R$ 200,00</span>
+          </div>
+          <div class="card-data__item">
+            <span class="card-data__label">Interest Rate</span>
+            <span class="card-data__value">1% p.m</span>
+          </div>
+        </main>
+        <footer class="card-data__footer">
+          <button class="btn card-data__btn">Confirm</button>
+        </footer>
+      </article>
       </div>
     </section>
   </main>
