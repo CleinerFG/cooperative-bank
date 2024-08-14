@@ -21,6 +21,10 @@
   color: var(--color-off-white);
 }
 
+.btn-attention {
+  background-color: var(--component-color-attention);
+}
+
 .btn-fail {
   background-color: var(--component-color-fail);
   color: var(--color-off-white);
@@ -42,4 +46,8 @@
 
 .btn-fail:hover {
   background-color: var(--component-color-fail-hover);
+}
+
+.btn-attention:hover {
+  background-color: var(--component-color-attention-hover);
 }
