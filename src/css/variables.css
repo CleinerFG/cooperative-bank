@@ -9,7 +9,7 @@
   --color-cta: #bf665e;
   --color-cta-hover: hsl(5, 43%, 50%);
   --color-text: #253659;
-  --color-background: #faf9f6; 
+  --color-background: #faf9f6;
   --box-shadow-default: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
   --box-shadow: 0.1rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   --header-height: 3.5rem;
@@ -17,6 +17,8 @@
   --component-border-color: #ccc;
   --component-border-radius: 0.5rem;
   --component-bg-color: #fff;
+  --component-color-success: hsl(120, 100%, 25%);
+  --component-color-fail: hsl(0,  100%,  25%);
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
   --default-font-family: "Roboto Condensed", sans-serif;
@@ -34,10 +36,12 @@
   --color-cta-hover: hsl(5, 43%, 56%);
   --color-text: #faf9f6;
   --color-background: #000;
-  --box-shadow-default: 0 0 .3rem rgba(255, 255, 255, 0.2);
+  --box-shadow-default: 0 0 0.3rem rgba(255, 255, 255, 0.2);
   --box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
 
   --component-border-color: #454545;
   --component-bg-color: #262626;
+  --component-color-success: hsl(120, 100%, 40%);
+  --component-color-fail: hsl(0,  100%,  40%);
   --component-box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.3);
 }
