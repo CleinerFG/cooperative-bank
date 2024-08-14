@@ -41,7 +41,7 @@
     <section class="section open-requests">
       <h2 class="section__h2">Opened Requests</h2>
       <div class="cards open-requests__cards">
-        <article class="card card-data request__pend">
+        <article class="card card-data">
           <header class="card-data__header">Pending</header>
           <main class="card-data__content">
             <div class="card-data__item">
@@ -66,11 +66,12 @@
             </div>
           </main>
           <footer class="card-data__footer">
-            <button class="btn btn-fail card-data__btn">Cancel Request</button>
+            <button class="btn card-data__btn">Cancel Request</button>
           </footer>
         </article>
-        <article class="card card-data request__appv">
-          <header class="card-data__header">Approved</header>
+
+        <article class="card card-data request__success">
+          <header class="card-data__header">Accepted</header>
           <main class="card-data__content">
             <div class="card-data__item">
               <span class="card-data__label">Creditor</span>
@@ -95,6 +96,35 @@
           </main>
           <footer class="card-data__footer">
             <button class="btn btn-success card-data__btn">Confirm</button>
+          </footer>
+        </article>
+
+        <article class="card card-data request__fail">
+          <header class="card-data__header">Denied</header>
+          <main class="card-data__content">
+            <div class="card-data__item">
+              <span class="card-data__label">Creditor</span>
+              <span class="card-data__value">Kate Denson</span>
+            </div>
+            <div class="card-data__item">
+              <span class="card-data__label">Date</span>
+              <span class="card-data__value">05/20/2024</span>
+            </div>
+            <div class="card-data__item">
+              <span class="card-data__label">Value</span>
+              <span class="card-data__value">$ 350,00</span>
+            </div>
+            <div class="card-data__item">
+              <span class="card-data__label">Installments</span>
+              <span class="card-data__value">8 months</span>
+            </div>
+            <div class="card-data__item">
+              <span class="card-data__label">Interest Rate</span>
+              <span class="card-data__value">1% p.m</span>
+            </div>
+          </main>
+          <footer class="card-data__footer">
+            <button class="btn btn-fail card-data__btn">Confirm</button>
           </footer>
         </article>
       </div>
