@@ -16,6 +16,14 @@
   background-color: var(--color-cta);
 }
 
+.btn-success {
+  background-color: var(--component-color-success);
+}
+
+.btn-fail {
+  background-color: var(--component-color-fail);
+}
+
 /* Hover */
 .btn:hover {
   box-shadow: var(--component-box-shadow);
@@ -24,4 +32,12 @@
 
 .btn-action:hover {
   background-color: var(--color-cta-hover);
+}
+
+.btn-success:hover {
+  background-color: var(--component-color-success-hover);
+}
+
+.btn-fail:hover {
+  background-color: var(--component-color-fail-hover);
 }

@@ -18,8 +18,10 @@
   --component-border-color: #ccc;
   --component-border-radius: 0.5rem;
   --component-bg-color: #fff;
-  --component-color-success: hsl(120, 100%, 25%);
-  --component-color-fail: hsl(0, 100%, 25%);
+  --component-color-success: hsl(120, 100%, 35%);
+  --component-color-success-hover: hsl(120, 100%, 32%);
+  --component-color-fail: hsl(0, 100%, 35%);
+  --component-color-fail-hover: hsl(0, 100%, 32%);
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
   --default-font-family: "Roboto Condensed", sans-serif;
@@ -43,7 +45,5 @@
 
   --component-border-color: #454545;
   --component-bg-color: #262626;
-  --component-color-success: hsl(120, 100%, 40%);
-  --component-color-fail: hsl(0, 100%, 40%);
   --component-box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.3);
 }
