@@ -5,8 +5,4 @@ export class Payment extends Event {
     super("Payment", dueDate, value);
     this.creditor = creditor;
   }
-
-  render() {
-    super.render();
-  }
 }

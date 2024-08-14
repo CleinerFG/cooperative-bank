@@ -1,8 +1,6 @@
 import { insertHtml } from "../utils/dom/insertHtml.js";
 import { Event } from "../models/Event.js";
 
-const inv = new Investment("10/05/2024", 500, "CDI");
-
 class CardData {
   constructor(dataObject, parentNode) {
     if (!(dataObject instanceof Event)) {

@@ -4,9 +4,4 @@ export class Event {
     this.dueDate = dueDate;
     this.value = value;
   }
-
-  render() {
-    // Call CardData.render()
-    console.log("Render call");
-  }
 }
