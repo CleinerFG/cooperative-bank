@@ -6,14 +6,6 @@
 
 body {
   color: var(--color-text);
-  min-height: 100vh;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
 }
 
 h1,

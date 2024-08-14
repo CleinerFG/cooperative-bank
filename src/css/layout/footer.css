@@ -1,6 +1,5 @@
 .footer {
   padding: var(--container-padding);
-  margin-top: 3rem;
   background-color: var(--color-secondary);
 
   display: flex;

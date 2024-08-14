@@ -1,0 +1,13 @@
+body {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: var(--container-padding);
+  padding-bottom: 3rem;
+  margin: auto;
+  flex: 1;
+}

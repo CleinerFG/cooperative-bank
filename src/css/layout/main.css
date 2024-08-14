@@ -1,7 +1,5 @@
 .main {
-  margin: auto;
   margin-top: var(--header-height);
-  padding: var(--container-padding);
   background-color: var(--color-background);
 }
 
