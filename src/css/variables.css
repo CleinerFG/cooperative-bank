@@ -9,7 +9,7 @@
   --color-cta: #bf665e;
   --color-cta-hover: hsl(5, 43%, 50%);
   --color-text: #253659;
-  --color-background: #f5f7fa;
+  --color-background: #faf9f6; 
   --box-shadow-default: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
   --box-shadow: 0.1rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   --header-height: 3.5rem;
@@ -24,7 +24,7 @@
 }
 
 [data-theme="dark"] {
-  --color-primary: #f5f7fa;
+  --color-primary: #faf9f6;
   --color-accent: #5a5a5a;
   --color-accent-hover: #777;
   --color-accent-translucent: hsla(174, 90%, 30%, 0.3);
@@ -32,7 +32,7 @@
   --color-detail: hsl(16, 86%, 80%);
   --color-cta: hsl(5, 43%, 50%);
   --color-cta-hover: hsl(5, 43%, 56%);
-  --color-text: #f5f7fa;
+  --color-text: #faf9f6;
   --color-background: #000;
   --box-shadow-default: 0 0 .3rem rgba(255, 255, 255, 0.2);
   --box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
