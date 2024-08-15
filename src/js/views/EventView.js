@@ -1,4 +1,3 @@
-import { insertHtml } from "../utils/dom/insertHtml.js";
 import { Event } from "../models/Event.js";
 
 export class EventView {
@@ -10,7 +9,7 @@ export class EventView {
     this.parentNode = parentNode;
   }
 
-  render(position) {
-    insertHtml(this.parentNode, position, this.event.getHtmlStr());
+  render() {
+    this.parentNode.insertAdjacentHTML("afterbegin", this.event.getHtmlStr());
   }
 }

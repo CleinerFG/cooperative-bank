@@ -23,7 +23,7 @@ export class EventController {
   }
 
   renderEvent(eventView) {
-    eventView.render("afterbegin");
+    eventView.render();
   }
 
   renderAllEvents() {
