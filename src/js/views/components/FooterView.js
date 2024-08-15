@@ -1,7 +1,5 @@
-import pathManager from "../../utils/PathManager.js";
-
 export class FooterView {
-  constructor() {
+  constructor(pathManager) {
     this._htmlStr = `  
     <footer id="footer" class="footer" aria-label="Footer">
     <a class="footer__icon-link">
@@ -14,6 +12,7 @@ export class FooterView {
   </footer>
   `;
     this._parentNode = document.body;
+    this._pathManager = pathManager;
   }
 
   get htmlStr() {
@@ -30,6 +29,14 @@ export class FooterView {
 
   set parentNode(value) {
     this._parentNode = value;
+  }
+
+  get pathManager() {
+    return this._pathManager;
+  }
+
+  set pathManager(value) {
+    this._pathManager = value;
   }
 
   _pathHandler() {
