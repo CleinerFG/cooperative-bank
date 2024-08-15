@@ -37,6 +37,11 @@ export class EventController {
   }
 
   renderAllEvents() {
+    if (!this.cardDataInstances.length) {
+      this.renderEvent(new Event());
+      console.log("render")
+      return;
+    }
     this.cardDataInstances.forEach((card) => card.render("afterbegin"));
   }
 

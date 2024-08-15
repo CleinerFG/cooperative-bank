@@ -44,13 +44,13 @@ export function initEventsHandler() {
   const container = document.querySelector(".events__cards");
   const evController = new EventController(container);
 
-  evController.addEvent(investInstances[0]);
-  evController.addEvent(payInstances[0]);
-  evController.addEvent(investInstances[1]);
-  evController.addEvent(investInstances[2]);
-  evController.addEvent(payInstances[1]);
-  evController.addEvent(investInstances[3]);
-  evController.addEvent(payInstances[2]);
+  // evController.addEvent(investInstances[0]);
+  // evController.addEvent(payInstances[0]);
+  // evController.addEvent(investInstances[1]);
+  // evController.addEvent(investInstances[2]);
+  // evController.addEvent(payInstances[1]);
+  // evController.addEvent(investInstances[3]);
+  // evController.addEvent(payInstances[2]);
 
   // investInstances.forEach((instance) => evController.addEvent(instance));
   // payInstances.forEach((instance) => evController.addEvent(instance));
