@@ -27,24 +27,12 @@ export class HeaderView {
     return this._htmlStr;
   }
 
-  set htmlStr(value) {
-    this._htmlStr = value;
-  }
-
   get parentNode() {
     return this._parentNode;
   }
 
-  set parentNode(value) {
-    this._parentNode = value;
-  }
-
   get pathManager() {
     return this._pathManager;
-  }
-
-  set pathManager(value) {
-    this._pathManager = value;
   }
 
   _menuHandler() {
