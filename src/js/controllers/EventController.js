@@ -1,5 +1,5 @@
 import { Event } from "../models/Event.js";
-import { CardData } from "../views/CardData.js";
+import { EventView } from "../views/EventView.js";
 
 export class EventController {
   constructor(container) {
@@ -7,54 +7,44 @@ export class EventController {
       throw new Error("Container must be a DOM element");
     }
     this.container = container;
-    this.cardDataInstances = [];
+    this.events = [];
   }
 
-  isEventInstance(event) {
-    return event instanceof Event;
-  }
-
-  createCardDataInstance(event) {
-    if (!this.isEventInstance(event)) {
+  createEventView(event) {
+    if (!(event instanceof Event)) {
       throw new Error(`${event} is not an instance of Event`);
     }
-    return new CardData(event, this.container);
+    return new EventView(event, this.container);
   }
 
   addEvent(event) {
-    try {
-      const cardDataInstance = this.createCardDataInstance(event);
-      this.cardDataInstances.push(cardDataInstance);
-      return cardDataInstance;
-    } catch (error) {
-      console.log(error.message);
-    }
+    const eventView = this.createEventView(event);
+    this.events.push(eventView);
   }
 
-  renderEvent(event) {
-    const cardDataInstance = this.addEvent(event);
-    cardDataInstance.render("afterbegin");
+  renderEvent(eventView) {
+    eventView.render("afterbegin");
   }
 
   renderAllEvents() {
-    if (!this.cardDataInstances.length) {
-      this.renderEvent(new Event());
-      console.log("render")
+    if (!this.events.length) {
+      const withoutEv = this.createEventView(new Event());
+      this.renderEvent(withoutEv);
       return;
     }
-    this.cardDataInstances.forEach((card) => card.render("afterbegin"));
+    this.events.forEach((ev) => this.renderEvent(ev));
   }
 
   removeEvent(event) {
-    this.cardDataInstances = this.cardDataInstances.filter(
-      (card) => card.dataObject !== event
+    this.events = this.events.filter(
+      (eventView) => eventView.dataObject !== event
     );
     this.container.innerHTML = "";
     this.renderAllEvents();
   }
 
   clearEvents() {
-    this.cardDataInstances = [];
+    this.events = [];
     this.container.innerHTML = "";
   }
 }
