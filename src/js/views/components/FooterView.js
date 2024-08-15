@@ -2,7 +2,7 @@ import pathManager from "../../utils/PathManager.js";
 
 export class FooterView {
   constructor() {
-    this.htmlStr = `  
+    this._htmlStr = `  
     <footer id="footer" class="footer" aria-label="Footer">
     <a class="footer__icon-link">
       <img class="icon footer__icon" alt="Footer Icon">
@@ -13,10 +13,26 @@ export class FooterView {
     </div>
   </footer>
   `;
-    this.parentNode = document.body;
+    this._parentNode = document.body;
   }
 
-  pathHandler() {
+  get htmlStr() {
+    return this._htmlStr;
+  }
+
+  set htmlStr(value) {
+    this._htmlStr = value;
+  }
+
+  get parentNode() {
+    return this._parentNode;
+  }
+
+  set parentNode(value) {
+    this._parentNode = value;
+  }
+
+  _pathHandler() {
     pathManager.updatePath("asset", ".footer__icon", "icons", "icon-globe.svg");
     pathManager.updatePath("html", ".footer__brand-name", "home", "index.html");
     pathManager.updatePath("html", ".footer__icon-link", "home", "index.html");
@@ -24,6 +40,6 @@ export class FooterView {
 
   render() {
     this.parentNode.insertAdjacentHTML("beforeend", this.htmlStr);
-    this.pathHandler();
+    this._pathHandler();
   }
 }
