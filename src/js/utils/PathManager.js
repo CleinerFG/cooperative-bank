@@ -5,6 +5,7 @@ class PathManager {
   }
 
   updatePath(fileType, selector, node, filename) {
+    console.log({ fileType, selector, node, filename });
     const element = document.querySelector(selector);
     if (fileType === "asset") {
       element.setAttribute("src", this.assetsPaths[node] + filename);
