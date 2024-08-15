@@ -1,6 +1,6 @@
 export class HeaderView {
   constructor(pathManager) {
-    this.htmlStr = `  
+    this._htmlStr = `  
   <header id="header" class="header">
     <a class="header__brand-name" rel="home">Coperative Bank</a>
     <button id="menu-button" class="btn-unset header__menu-button" aria-label="Menu">
@@ -19,11 +19,35 @@ export class HeaderView {
       </ul>
     </nav>
   </header>`;
-    this.parentNode = document.body;
-    this.pathManager = pathManager;
+    this._parentNode = document.body;
+    this._pathManager = pathManager;
   }
 
-  menuHandler() {
+  get htmlStr() {
+    return this._htmlStr;
+  }
+
+  set htmlStr(value) {
+    this._htmlStr = value;
+  }
+
+  get parentNode() {
+    return this._parentNode;
+  }
+
+  set parentNode(value) {
+    this._parentNode = value;
+  }
+
+  get pathManager() {
+    return this._pathManager;
+  }
+
+  set pathManager(value) {
+    this._pathManager = value;
+  }
+
+  _menuHandler() {
     const menuBtn = document.querySelector("#menu-button");
     menuBtn.addEventListener("click", (ev) => {
       menuBtn.classList.toggle("header__menu-button--active");
@@ -32,7 +56,7 @@ export class HeaderView {
     });
   }
 
-  pathHandler() {
+  _pathHandler() {
     this.pathManager.updatePath(
       "html",
       ".header__brand-name",
@@ -49,7 +73,7 @@ export class HeaderView {
 
   render() {
     this.parentNode.insertAdjacentHTML("afterbegin", this.htmlStr);
-    this.menuHandler();
-    this.pathHandler();
+    this._menuHandler();
+    this._pathHandler();
   }
 }
