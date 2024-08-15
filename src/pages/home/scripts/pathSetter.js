@@ -17,4 +17,6 @@ export function initPathSettings() {
       setHref(`#card-link-${pageName}`, dir, `${pageName}`);
     });
   }
+
+  setSrc("#event-img-whithout", "images", "astronaut.svg");
 }

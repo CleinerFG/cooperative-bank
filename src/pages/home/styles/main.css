@@ -26,3 +26,21 @@
   padding: var(--container-padding);
   justify-content: center;
 }
+
+.whithout__events {
+  display: flex;
+  align-items: center;
+}
+
+.info-text {
+  flex: 1;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: justify;
+  padding: var(--container-padding);
+}
+
+.event__img {
+  flex: 1;
+  height: 200px;
+  min-height: 100%;
+}

@@ -7,4 +7,4 @@ import { initEventsHandler } from "./eventsHandler.js";
 initHeaderFooter();
 initPathSettings();
 switchVisibility();
-initEventsHandler();
+// initEventsHandler();
