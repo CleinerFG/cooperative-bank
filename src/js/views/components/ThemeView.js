@@ -1,21 +1,33 @@
 export class ThemeView {
   constructor(pathManager) {
-    this.themeKey = "coperativeBankTheme";
-    this.lightThemeClass = "icon__theme-light";
-    this.body = document.body;
+    this._themeKey = "coperativeBankTheme";
+    this._lightThemeClass = "icon__theme-light";
+    this._body = document.body;
     // Bind ensures that the referenced this  is that of the attribute defined in the class
-    this.toggleTheme = this.toggleTheme.bind(this);
+    this._toggleTheme = this._toggleTheme.bind(this);
     this.pathManager = pathManager;
   }
 
+  get themeKey() {
+    return this._themeKey;
+  }
+
+  get lightThemeClass() {
+    return this._lightThemeClass;
+  }
+
+  get body() {
+    return this._body;
+  }
+
   get bodyTheme() {
-    return this.body.dataset.theme;
+    return this._body.dataset.theme;
   }
 
   set bodyTheme(theme) {
-    this.body.dataset.theme = theme;
+    this._body.dataset.theme = theme;
   }
-  updateThemeIcon(theme) {
+  _updateThemeIcon(theme) {
     this.pathManager.updatePath(
       "asset",
       "#theme-icon",
@@ -24,31 +36,31 @@ export class ThemeView {
     );
   }
 
-  toggleTheme(icons) {
+  _toggleTheme(icons) {
     const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
 
     icons.forEach((icon) => icon.classList.toggle(this.lightThemeClass));
-    this.updateThemeIcon(updatedTheme);
+    this._updateThemeIcon(updatedTheme);
     localStorage.setItem(this.themeKey, updatedTheme);
   }
 
-  applyStoredTheme(icons) {
+  _applyStoredTheme(icons) {
     const storedTheme = localStorage.getItem(this.themeKey);
     if (storedTheme && storedTheme !== this.bodyTheme) {
-      this.updateThemeIcon(storedTheme);
+      this._updateThemeIcon(storedTheme);
       this.bodyTheme = storedTheme;
       icons.forEach((icon) => icon.classList.toggle(this.lightThemeClass));
     }
   }
 
   initializeTheme() {
-    this.updateThemeIcon(this.bodyTheme);
+    this._updateThemeIcon(this.bodyTheme);
     const icons = document.querySelectorAll(".icon");
-    this.applyStoredTheme(icons);
+    this._applyStoredTheme(icons);
     document
       .getElementById("switch-theme-button")
-      .addEventListener("click", () => this.toggleTheme(icons));
+      .addEventListener("click", () => this._toggleTheme(icons));
   }
 }
