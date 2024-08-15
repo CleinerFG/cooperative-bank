@@ -6,6 +6,6 @@ import { ThemeView } from "../views/components/ThemeView.js";
 export function initHeaderFooter() {
   new HeaderView().render();
   new FooterView().render();
-  new ThemeView("coperativeBankTheme", "icon__theme-light").setTheme();
+  new ThemeView("coperativeBankTheme", "icon__theme-light").initializeTheme();
   // setTheme();
 }

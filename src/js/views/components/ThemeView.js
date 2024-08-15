@@ -5,38 +5,44 @@ export class ThemeView {
     this.themeKey = themeKey;
     this.lightThemeClass = lightThemeClass;
     this.body = document.body;
-
     // Bind ensures that the referenced this  is that of the attribute defined in the class
     this.toggleTheme = this.toggleTheme.bind(this);
   }
 
-  setThemeIcon(theme) {
+  get bodyTheme() {
+    return this.body.dataset.theme;
+  }
+
+  set bodyTheme(theme) {
+    this.body.dataset.theme = theme;
+  }
+
+  updateThemeIcon(theme) {
     setSrc("#theme-mode", "theme", `${theme}-mode.svg`);
   }
 
   toggleTheme(icons) {
-    const currentTheme = this.body.dataset.theme;
+    const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
-    this.body.dataset.theme = updatedTheme;
+    this.bodyTheme = updatedTheme;
 
     icons.forEach((icon) => icon.classList.toggle(this.lightThemeClass));
-    this.setThemeIcon(this.body.dataset.theme);
-    localStorage.setItem(this.themeKey, this.body.dataset.theme);
+    this.updateThemeIcon(updatedTheme);
+    localStorage.setItem(this.themeKey, updatedTheme);
   }
 
-  setStoredTheme(icons) {
+  applyStoredTheme(icons) {
     const storedTheme = localStorage.getItem(this.themeKey);
-    if (storedTheme && storedTheme !== this.body.dataset.theme) {
-      console.log(this.body.dataset.theme);
-      this.setThemeIcon(storedTheme);
-      this.body.dataset.theme = storedTheme;
+    if (storedTheme && storedTheme !== this.bodyTheme) {
+      this.updateThemeIcon(storedTheme);
+      this.bodyTheme = storedTheme;
       icons.forEach((icon) => icon.classList.toggle(this.lightThemeClass));
     }
   }
 
-  setTheme() {
+  initializeTheme() {
     const icons = document.querySelectorAll(".icon");
-    this.setStoredTheme(icons);
+    this.applyStoredTheme(icons);
     document
       .getElementById("switch-theme-button")
       .addEventListener("click", () => this.toggleTheme(icons));
