@@ -1,8 +1,32 @@
 export class Event {
   constructor(type, dueDate, value) {
-    this.type = type || "WhithoutEvent";
-    this.dueDate = dueDate;
-    this.value = value;
+    this._type = type || "WithoutEvent";
+    this._dueDate = dueDate;
+    this._value = value;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set type(value) {
+    this._type = value;
+  }
+
+  get dueDate() {
+    return this._dueDate;
+  }
+
+  set dueDate(value) {
+    this._dueDate = value;
+  }
+
+  get value() {
+    return this._value;
+  }
+
+  set value(value) {
+    this._value = value;
   }
 
   getHtmlStr() {
