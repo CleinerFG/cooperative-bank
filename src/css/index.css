@@ -1,7 +1,8 @@
 /* CSS Aggregator */
 @import url("./variables.css");
-@import url(./layout/layout.css);
+@import url("./layout/layout.css");
 @import url("./base/default.css");
+@import url("./base/typography.css");
 @import url("./components/icon.css");
 @import url("./components/table.css");
 @import url("./components/input.css");
