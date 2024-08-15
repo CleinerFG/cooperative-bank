@@ -1,9 +1,16 @@
 import { Event } from "./Event.js";
-
 export class Investment extends Event {
   constructor(dueDate, value, investmentType) {
     super("Investment", dueDate, value);
-    this.investmentType = investmentType;
+    this._investmentType = investmentType;
+  }
+
+  get investmentType() {
+    return this._investmentType;
+  }
+
+  set investmentType(value) {
+    this._investmentType = value;
   }
 
   getHtmlStr() {
