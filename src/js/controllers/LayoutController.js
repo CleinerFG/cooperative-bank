@@ -1,3 +1,4 @@
+import pathManager from "../utils/PathManager.js";
 import { HeaderView } from "../views/components/HeaderView.js";
 import { FooterView } from "../views/components/FooterView.js";
 import { ThemeView } from "../views/components/ThemeView.js";
@@ -5,7 +6,7 @@ import { ThemeView } from "../views/components/ThemeView.js";
 export class LayoutController {
   constructor() {
     this.header = new HeaderView();
-    this.footer = new FooterView();
+    this.footer = new FooterView(pathManager);
     this.theme = new ThemeView("coperativeBankTheme", "icon__theme-light");
   }
 

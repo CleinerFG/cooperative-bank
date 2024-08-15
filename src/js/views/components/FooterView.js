@@ -40,9 +40,24 @@ export class FooterView {
   }
 
   _pathHandler() {
-    pathManager.updatePath("asset", ".footer__icon", "icons", "icon-globe.svg");
-    pathManager.updatePath("html", ".footer__brand-name", "home", "index.html");
-    pathManager.updatePath("html", ".footer__icon-link", "home", "index.html");
+    this.pathManager.updatePath(
+      "asset",
+      ".footer__icon",
+      "icons",
+      "icon-globe.svg"
+    );
+    this.pathManager.updatePath(
+      "html",
+      ".footer__brand-name",
+      "home",
+      "index.html"
+    );
+    this.pathManager.updatePath(
+      "html",
+      ".footer__icon-link",
+      "home",
+      "index.html"
+    );
   }
 
   render() {
