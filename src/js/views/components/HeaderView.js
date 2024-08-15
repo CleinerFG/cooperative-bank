@@ -11,7 +11,7 @@ export class HeaderView {
         <li class="header__menu-item">
           <button class="btn-unset  header__theme-button" id="switch-theme-button" aria-label="Switch Theme">
             <span>Switch Theme</span>
-            <img class="header__theme-icon" id="theme-mode" alt="Theme Mode Icon">
+            <img class="header__theme-icon" id="theme-icon" alt="Theme Mode Icon">
           </button>
         </li>
         <li class="header__menu-item"><a class="header__menu-link">Profile</a></li>

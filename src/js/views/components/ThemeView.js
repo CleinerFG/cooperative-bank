@@ -1,12 +1,11 @@
-import { setSrc } from "../../utils/path-manangers/assetsPaths.js";
-
 export class ThemeView {
-  constructor(themeKey, lightThemeClass) {
-    this.themeKey = themeKey;
-    this.lightThemeClass = lightThemeClass;
+  constructor(pathManager) {
+    this.themeKey = "coperativeBankTheme";
+    this.lightThemeClass = "icon__theme-light";
     this.body = document.body;
     // Bind ensures that the referenced this  is that of the attribute defined in the class
     this.toggleTheme = this.toggleTheme.bind(this);
+    this.pathManager = pathManager;
   }
 
   get bodyTheme() {
@@ -16,9 +15,13 @@ export class ThemeView {
   set bodyTheme(theme) {
     this.body.dataset.theme = theme;
   }
-
   updateThemeIcon(theme) {
-    setSrc("#theme-mode", "theme", `${theme}-mode.svg`);
+    this.pathManager.updatePath(
+      "asset",
+      "#theme-icon",
+      "theme",
+      `${theme}-mode.svg`
+    );
   }
 
   toggleTheme(icons) {
@@ -41,6 +44,7 @@ export class ThemeView {
   }
 
   initializeTheme() {
+    this.updateThemeIcon(this.bodyTheme);
     const icons = document.querySelectorAll(".icon");
     this.applyStoredTheme(icons);
     document

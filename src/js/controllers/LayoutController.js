@@ -7,7 +7,7 @@ export class LayoutController {
   constructor() {
     this.header = new HeaderView(pathManager);
     this.footer = new FooterView(pathManager);
-    this.theme = new ThemeView("coperativeBankTheme", "icon__theme-light");
+    this.theme = new ThemeView(pathManager);
   }
 
   initComponents() {
