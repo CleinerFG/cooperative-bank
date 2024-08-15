@@ -1,5 +1,4 @@
-import { setHref } from "../../utils/path-manangers/htmlPagesPaths.js";
-import { setSrc } from "../../utils/path-manangers/assetsPaths.js";
+import pathManager from "../../utils/PathManager.js";
 
 export class FooterView {
   constructor() {
@@ -18,9 +17,9 @@ export class FooterView {
   }
 
   pathHandler() {
-    setSrc(".footer__icon", "icons", "icon-globe.svg");
-    setHref(".footer__brand-name", "home", "index.html");
-    setHref(".footer__icon-link", "home", "index.html");
+    pathManager.updatePath("asset", ".footer__icon", "icons", "icon-globe.svg");
+    pathManager.updatePath("html", ".footer__brand-name", "home", "index.html");
+    pathManager.updatePath("html", ".footer__icon-link", "home", "index.html");
   }
 
   render() {
