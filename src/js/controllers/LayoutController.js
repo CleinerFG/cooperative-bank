@@ -5,7 +5,7 @@ import { ThemeView } from "../views/components/ThemeView.js";
 
 export class LayoutController {
   constructor() {
-    this.header = new HeaderView();
+    this.header = new HeaderView(pathManager);
     this.footer = new FooterView(pathManager);
     this.theme = new ThemeView("coperativeBankTheme", "icon__theme-light");
   }

@@ -1,8 +1,5 @@
-import { setHref } from "../../utils/path-manangers/htmlPagesPaths.js";
-import { setSrc } from "../../utils/path-manangers/assetsPaths.js";
-
 export class HeaderView {
-  constructor() {
+  constructor(pathManager) {
     this.htmlStr = `  
   <header id="header" class="header">
     <a class="header__brand-name" rel="home">Coperative Bank</a>
@@ -23,6 +20,7 @@ export class HeaderView {
     </nav>
   </header>`;
     this.parentNode = document.body;
+    this.pathManager = pathManager;
   }
 
   menuHandler() {
@@ -35,9 +33,18 @@ export class HeaderView {
   }
 
   pathHandler() {
-    setHref(".header__brand-name", "home", "index.html");
-    setSrc(".header__menu-icon", "icons", "icon-menu.svg");
-    setSrc("#theme-mode", "theme", `${this.parentNode.dataset.theme}-mode.svg`);
+    this.pathManager.updatePath(
+      "html",
+      ".header__brand-name",
+      "home",
+      "index.html"
+    );
+    this.pathManager.updatePath(
+      "asset",
+      ".header__menu-icon",
+      "icons",
+      "icon-menu.svg"
+    );
   }
 
   render() {
