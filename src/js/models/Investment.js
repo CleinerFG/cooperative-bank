@@ -38,5 +38,3 @@ export class Investment extends Event {
     `;
   }
 }
-
-const test = new Investment(10, 1045, 461);

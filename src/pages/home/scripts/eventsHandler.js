@@ -45,10 +45,10 @@ export function initEventsController() {
   const evController = new EventController(container);
 
   // evController.addEvent(investInstances[0]);
-  evController.addEvent(payInstances[0]);
+  // evController.addEvent(payInstances[0]);
   // evController.addEvent(investInstances[1]);
-  // evController.addEvent(investInstances[2]);
-  // evController.addEvent(payInstances[1]);
+  evController.addEvent(investInstances[2]);
+  evController.addEvent(payInstances[1]);
   // evController.addEvent(investInstances[3]);
   evController.addEvent(payInstances[2]);
 

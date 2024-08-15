@@ -3,9 +3,17 @@ import { Event } from "./Event.js";
 export class Payment extends Event {
   constructor(dueDate, value, creditor) {
     super("Payment", dueDate, value);
-    this.creditor = creditor;
+    this._creditor = creditor;
   }
 
+  get creditor() {
+    return this._creditor;
+  }
+
+  set creditor(value) {
+    this._creditor = value;
+  }
+  
   getHtmlStr() {
     return `
     <article class="card card-data event__payment">
