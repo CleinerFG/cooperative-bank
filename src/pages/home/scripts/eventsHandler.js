@@ -40,7 +40,7 @@ const payInstances = dataPayments.map(
   ({ dueDate, value, creditor }) => new Payment(dueDate, value, creditor)
 );
 
-export function initEventsHandler() {
+export function initEventsController() {
   const container = document.querySelector(".events__cards");
   const evController = new EventController(container);
 
