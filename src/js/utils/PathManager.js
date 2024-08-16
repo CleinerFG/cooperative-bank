@@ -1,17 +1,30 @@
 class PathManager {
   constructor(assetsPaths, htmlPaths) {
-    this.assetsPaths = assetsPaths;
-    this.htmlPaths = htmlPaths;
+    this._assetsPaths = assetsPaths;
+    this._htmlPaths = htmlPaths;
   }
 
-  updatePath(fileType, selector, node, filename) {
-    console.log({ fileType, selector, node, filename });
+  get assetsPaths() {
+    return this._assetsPaths;
+  }
+
+  get htmlPaths() {
+    return this._htmlPaths;
+  }
+
+  _fileTypeIsValid(fileType) {
+    return ["html", "asset"].includes(fileType);
+  }
+
+  updatePath(fileType, selector, pathKey, filename) {
+    if (!this._fileTypeIsValid(fileType)) return;
+
     const element = document.querySelector(selector);
     if (fileType === "asset") {
-      element.setAttribute("src", this.assetsPaths[node] + filename);
+      element.setAttribute("src", this.assetsPaths[pathKey] + filename);
       return;
     }
-    element.setAttribute("href", this.htmlPaths[node] + filename);
+    element.setAttribute("href", this.htmlPaths[pathKey] + filename);
   }
 }
 
