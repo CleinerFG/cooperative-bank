@@ -1,30 +1,19 @@
-export class FooterView {
+import { LayoutView } from "./LayoutView.js";
+
+const htmlStr = `  
+<footer id="footer" class="footer" aria-label="Footer">
+<a class="footer__icon-link">
+  <img class="icon footer__icon" alt="Footer Icon">
+</a>
+<div class="footer__content">
+  <a class="footer__brand-name">Coperative Bank</a>
+  <p>By Cleiner Furlani</p>
+</div>
+</footer>`;
+
+export class FooterView extends LayoutView {
   constructor(pathManager) {
-    this._htmlStr = `  
-    <footer id="footer" class="footer" aria-label="Footer">
-    <a class="footer__icon-link">
-      <img class="icon footer__icon" alt="Footer Icon">
-    </a>
-    <div class="footer__content">
-      <a class="footer__brand-name">Coperative Bank</a>
-      <p>By Cleiner Furlani</p>
-    </div>
-  </footer>
-  `;
-    this._parentNode = document.body;
-    this._pathManager = pathManager;
-  }
-
-  get htmlStr() {
-    return this._htmlStr;
-  }
-
-  get parentNode() {
-    return this._parentNode;
-  }
-
-  get pathManager() {
-    return this._pathManager;
+    super(htmlStr, pathManager);
   }
 
   _pathHandler() {
@@ -49,7 +38,7 @@ export class FooterView {
   }
 
   render() {
-    this.parentNode.insertAdjacentHTML("beforeend", this.htmlStr);
+    this.body.insertAdjacentHTML("beforeend", this.htmlStr);
     this._pathHandler();
   }
 }
