@@ -1,9 +1,10 @@
 import { Event } from "../models/Event.js";
 import { EventView } from "../views/EventView.js";
 import { NoEventsView } from "../views/NoEventsView.js";
+import pathManager from "../utils/PathManager.js";
 
 export class EventController {
-  constructor(container, pathManager) {
+  constructor(container) {
     if (!(container instanceof Element)) {
       throw new Error("Container must be a DOM element");
     }
