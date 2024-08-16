@@ -26,7 +26,10 @@ export class Event {
     return `
     <div class="whithout__events">
       <img class="event__img" id="event-img-whithout">
-      <p class="info-text">There are no events, as soon as there is something new we will let you know</p>
+      <div class="event__text">
+        <p class="info-text">There are no events...</p>
+        <p class="info-text">When there is news, we will let you know ;)</p>
+      </div>
     </div>
     `;
   }
