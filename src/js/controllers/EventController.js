@@ -1,13 +1,15 @@
 import { Event } from "../models/Event.js";
 import { EventView } from "../views/EventView.js";
+import { NoEventsView } from "../views/NoEventsView.js";
 
 export class EventController {
-  constructor(container) {
+  constructor(container, pathManager) {
     if (!(container instanceof Element)) {
       throw new Error("Container must be a DOM element");
     }
     this._container = container;
     this._events = [];
+    this._pathManager = pathManager;
   }
 
   get container() {
@@ -31,8 +33,8 @@ export class EventController {
 
   _renderNoEvents() {
     if (!this.events.length) {
-      const noEventView = this._createEventView(new Event());
-      this._renderEventView(noEventView);
+      const noEventView = new NoEventsView(this.container, this._pathManager);
+      noEventView.render();
     }
   }
 

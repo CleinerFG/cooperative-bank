@@ -1,6 +1,7 @@
 import { Investment } from "../../../js/models/Investment.js";
 import { Payment } from "../../../js/models/Payment.js";
 import { EventController } from "../../../js/controllers/EventController.js";
+import pathManager from "../../../js/utils/PathManager.js";
 
 const dataInvests = [
   {
@@ -62,7 +63,7 @@ const payInstances = dataPayments.map(
 
 export function initEventsController() {
   const container = document.querySelector(".events__cards");
-  const evController = new EventController(container);
+  const evController = new EventController(container, pathManager);
 
   // evController.addEvent(investInstances[0]);
   // evController.addEvent(payInstances[0]);
@@ -75,6 +76,6 @@ export function initEventsController() {
   // investInstances.forEach((instance) => evController.addEvent(instance));
   // payInstances.forEach((instance) => evController.addEvent(instance));
   evController.renderAllEvents();
-  // evController.removeEvent(15);
+  evController.removeEvent(15);
   evController.removeEvent(11);
 }

@@ -24,11 +24,4 @@ export function initPathManager() {
       pathManager.updatePath("html", `#card-link-${filename}`, node, filename);
     });
   }
-
-  pathManager.updatePath(
-    "asset",
-    "#event-img-whithout",
-    "images",
-    "astronaut.svg"
-  );
 }
