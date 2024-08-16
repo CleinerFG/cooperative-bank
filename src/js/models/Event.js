@@ -1,6 +1,7 @@
 export class Event {
-  constructor(type, dueDate, value) {
+  constructor(type, eventID, dueDate, value) {
     this._type = type || "WithoutEvent";
+    this._eventID = eventID;
     this._dueDate = dueDate;
     this._value = value;
   }
@@ -11,6 +12,10 @@ export class Event {
 
   set type(value) {
     this._type = value;
+  }
+
+  get eventID() {
+    return this._eventID;
   }
 
   get dueDate() {

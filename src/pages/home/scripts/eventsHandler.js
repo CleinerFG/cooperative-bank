@@ -4,21 +4,25 @@ import { EventController } from "../../../js/controllers/EventController.js";
 
 const dataInvests = [
   {
+    eventID: 10,
     dueDate: "10/05/2024",
     investmentType: "CDB",
     value: "2.200",
   },
   {
+    eventID: 11,
     dueDate: "08/07/2024",
     investmentType: "CDB",
     value: "2.800",
   },
   {
+    eventID: 12,
     dueDate: "09/05/2024",
     investmentType: "LCA",
     value: "3.400",
   },
   {
+    eventID: 13,
     dueDate: "12/07/2024",
     investmentType: "LCI",
     value: "5.800",
@@ -26,18 +30,34 @@ const dataInvests = [
 ];
 
 const dataPayments = [
-  { dueDate: "10/08/2024", value: "200", creditor: "Claudette Morel" },
-  { dueDate: "10/09/2024", value: "300", creditor: "Kate Denson" },
-  { dueDate: "10/10/2024", value: "50", creditor: "Meg Thomas" },
+  {
+    eventID: 14,
+    dueDate: "10/08/2024",
+    value: "200",
+    creditor: "Claudette Morel",
+  },
+  {
+    eventID: 15,
+    dueDate: "10/09/2024",
+    value: "300",
+    creditor: "Kate Denson",
+  },
+  {
+    eventID: 16,
+    dueDate: "15/08/2024",
+    value: "400",
+    creditor: "Meg Thomas",
+  },
 ];
 
 const investInstances = dataInvests.map(
-  ({ dueDate, investmentType, value }) =>
-    new Investment(dueDate, value, investmentType)
+  ({ eventID, dueDate, investmentType, value }) =>
+    new Investment(eventID, dueDate, value, investmentType)
 );
 
 const payInstances = dataPayments.map(
-  ({ dueDate, value, creditor }) => new Payment(dueDate, value, creditor)
+  ({ eventID, dueDate, value, creditor }) =>
+    new Payment(eventID, dueDate, value, creditor)
 );
 
 export function initEventsController() {
@@ -46,9 +66,9 @@ export function initEventsController() {
 
   // evController.addEvent(investInstances[0]);
   // evController.addEvent(payInstances[0]);
-  // evController.addEvent(investInstances[1]);
+  evController.addEvent(investInstances[1]);
   // evController.addEvent(investInstances[2]);
-  // evController.addEvent(payInstances[1]);
+  evController.addEvent(payInstances[1]);
   // evController.addEvent(investInstances[3]);
   // evController.addEvent(payInstances[2]);
 
