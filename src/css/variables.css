@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap");
+
 :root {
   --container-padding: 0.8rem;
   --color-primary: hsl(220, 41%, 25%);
@@ -27,8 +29,9 @@
   --component-color-fail-hover: hsl(0, 100%, 32%);
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
-  --default-font-family: "Roboto Condensed", sans-serif;
-  --title-font-family: "Roboto Slab", sans-serif;
+  --text-font-family: "Roboto Condensed", sans-serif;
+  --title-font-family: "Roboto Slab", serif;
+  --info-font-family: "Open Sans", sans-serif;
 }
 
 [data-theme="dark"] {

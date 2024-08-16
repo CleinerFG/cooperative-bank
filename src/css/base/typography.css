@@ -1,5 +1,5 @@
 .info-text {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: var(--info-font-family);
   text-align: justify;
   padding-bottom: 0.3rem;
 }
