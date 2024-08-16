@@ -6,33 +6,44 @@ export class EventController {
     if (!(container instanceof Element)) {
       throw new Error("Container must be a DOM element");
     }
-    this.container = container;
-    this.events = [];
+    this._container = container;
+    this._events = [];
   }
 
-  createEventView(event) {
+  get container() {
+    return this._container;
+  }
+
+  get events() {
+    return this._events;
+  }
+
+  _createEventView(event) {
     if (!(event instanceof Event)) {
       throw new Error(`${event} is not an instance of Event`);
     }
     return new EventView(event, this.container);
   }
 
-  addEvent(event) {
-    const eventView = this.createEventView(event);
-    this.events.push(eventView);
-  }
-
-  renderEvent(eventView) {
+  _renderEventView(eventView) {
     eventView.render();
   }
 
-  renderAllEvents() {
+  _renderNoEvents() {
     if (!this.events.length) {
-      const withoutEv = this.createEventView(new Event());
-      this.renderEvent(withoutEv);
-      return;
+      const noEventView = this._createEventView(new Event());
+      this._renderEventView(noEventView);
     }
-    this.events.forEach((ev) => this.renderEvent(ev));
+  }
+
+  addEvent(event) {
+    const eventView = this._createEventView(event);
+    this.events.push(eventView);
+  }
+
+  renderAllEvents() {
+    this._renderNoEvents();
+    this.events.forEach((ev) => this._renderEventView(ev));
   }
 
   removeEvent(event) {
