@@ -5,17 +5,17 @@ import { ThemeView } from "../views/ThemeView.js";
 
 export class LayoutController {
   constructor() {
-    this.header = new HeaderView(pathManager);
-    this.footer = new FooterView(pathManager);
-    this.theme = new ThemeView(pathManager);
+    this._header = new HeaderView(pathManager);
+    this._footer = new FooterView(pathManager);
+    this._theme = new ThemeView(pathManager);
   }
 
   initComponents() {
-    this.header.render();
-    this.footer.render();
+    this._header.render();
+    this._footer.render();
   }
 
   initThemeSettings() {
-    this.theme.initializeTheme();
+    this._theme.initializeTheme();
   }
 }
