@@ -16,7 +16,7 @@ export class Payment extends Event {
 
   getHtmlStr() {
     return `
-    <article class="card card-data event__payment">
+    <article id="event-${this.eventID}" class="card card-data event__payment">
       <header class="card-data__header">Payment</header>
       <main class="card-data__content">
         <div class="card-data__item">
