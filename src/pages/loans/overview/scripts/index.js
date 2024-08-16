@@ -1,3 +1,3 @@
-import { initHeaderFooter } from "../../../../js/components/index.js";
+import { initLayoutController } from "../../../../js/controllers/core/layoutCore.js";
 
-initHeaderFooter();
+initLayoutController();

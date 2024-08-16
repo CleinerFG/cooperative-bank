@@ -1,5 +1,5 @@
-import { initHeaderFooter } from "../../../../js/components/index.js";
-import { initPathSettings } from "./pathSetter.js";
+import { initLayoutController } from "../../../../js/controllers/core/layoutCore.js";
 
-initHeaderFooter();
-initPathSettings();
+initLayoutController();
+
+

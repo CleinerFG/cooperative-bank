@@ -1,4 +1,4 @@
-import { LayoutController } from "../../../js/controllers/LayoutController.js";
+import { LayoutController } from "../LayoutController.js";
 
 export function initLayoutController() {
   const ctrl = new LayoutController();
