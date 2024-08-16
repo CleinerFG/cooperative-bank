@@ -28,7 +28,7 @@ export class Event {
       <img class="event__img" id="event-img-whithout">
       <div class="event__text">
         <p class="info-text">There are no events...</p>
-        <p class="info-text">When there is news, we will let you know ;)</p>
+        <p class="info-text">When there is news, we'll let you know ;)</p>
       </div>
     </div>
     `;
