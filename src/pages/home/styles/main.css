@@ -27,17 +27,26 @@
   justify-content: center;
 }
 
-.whithout__events {
-  display: flex;
-  align-items: center;
-}
-
-.event__text {
+.no-events__text {
   flex: 1;
+  margin-right: var(--container-padding);
 }
 
 .event__img {
   flex: 1;
   height: 200px;
   min-height: 100%;
+}
+
+.no-events {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    to top,
+    var(--color-accent-translucent),
+    #ffffff00 90%
+  );
+  background-repeat: no-repeat;
 }

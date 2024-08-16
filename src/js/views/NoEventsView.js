@@ -10,7 +10,7 @@ export class NoEventsView extends EventView {
   _pathHandler() {
     this._pathManager.updatePath(
       "asset",
-      "#event-img-whithout",
+      "#no-events-astronaut",
       "images",
       "astronaut.svg"
     );
