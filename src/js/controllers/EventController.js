@@ -1,52 +1,41 @@
-import { Event } from "../models/Event.js";
 import { EventView } from "../views/EventView.js";
 import { NoEventsView } from "../views/NoEventsView.js";
 import pathManager from "../utils/PathManager.js";
 
 export class EventController {
   constructor(container) {
-    if (!(container instanceof Element)) {
-      throw new Error("Container must be a DOM element");
-    }
     this._container = container;
     this._events = [];
     this._pathManager = pathManager;
   }
 
-  get container() {
-    return this._container;
-  }
-
-  get events() {
-    return this._events;
-  }
-
   _createEventView(event) {
-    if (!(event instanceof Event)) {
-      throw new Error(`${event} is not an instance of Event`);
-    }
-    return new EventView(event, this.container);
+    return new EventView(event, this._container);
+  }
+
+  _createNoEventsView() {
+    return new NoEventsView(this._container, this._pathManager);
   }
 
   _renderEventView(eventView) {
     eventView.render();
   }
 
-  _renderNoEvents() {
-    if (!this.events.length) {
-      const noEventView = new NoEventsView(this.container, this._pathManager);
+  _noEventsHandler() {
+    if (!this._events.length) {
+      const noEventView = this._createNoEventsView();
       noEventView.render();
     }
   }
 
   addEvent(event) {
     const eventView = this._createEventView(event);
-    this.events.push(eventView);
+    this._events.push(eventView);
   }
 
-  renderAllEvents() {
-    this._renderNoEvents();
-    this.events.forEach((ev) => this._renderEventView(ev));
+  renderEvents() {
+    this._noEventsHandler();
+    this._events.forEach((ev) => this._renderEventView(ev));
   }
 
   removeEvent(eventID) {
@@ -55,11 +44,12 @@ export class EventController {
     this._events = this._events.filter(
       (eventView) => eventView.event.eventID !== eventID
     );
-    this._renderNoEvents();
+    this._noEventsHandler();
   }
 
   clearEvents() {
-    this.events = [];
-    this.container.innerHTML = "";
+    this._events = [];
+    this._container.innerHTML = "";
+    this._noEventsHandler();
   }
 }
