@@ -6,14 +6,6 @@ export class Payment extends Event {
     this._creditor = creditor;
   }
 
-  get creditor() {
-    return this._creditor;
-  }
-
-  set creditor(value) {
-    this._creditor = value;
-  }
-
   getHtmlStr() {
     return `
     <article id="event-${this.eventID}" class="card card-data event__payment">
@@ -25,7 +17,7 @@ export class Payment extends Event {
         </div>
         <div class="card-data__item">
           <span class="card-data__label">Creditor</span>
-          <span class="card-data__value">${this.creditor}</span>
+          <span class="card-data__value">${this._creditor}</span>
         </div>
         <div class="card-data__item">
           <span class="card-data__label">Value</span>

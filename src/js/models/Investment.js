@@ -6,14 +6,6 @@ export class Investment extends Event {
     this._investmentType = investmentType;
   }
 
-  get investmentType() {
-    return this._investmentType;
-  }
-
-  set investmentType(value) {
-    this._investmentType = value;
-  }
-
   getHtmlStr() {
     return `
     <article id="event-${this.eventID}" class="card card-data event__investment">
@@ -25,7 +17,7 @@ export class Investment extends Event {
         </div>
         <div class="card-data__item">
           <span class="card-data__label">Type</span>
-          <span class="card-data__value">${this.investmentType}</span>
+          <span class="card-data__value">${this._investmentType}</span>
         </div>
         <div class="card-data__item">
           <span class="card-data__label">Value</span>

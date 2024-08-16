@@ -10,10 +10,6 @@ export class Event {
     return this._type;
   }
 
-  set type(value) {
-    this._type = value;
-  }
-
   get eventID() {
     return this._eventID;
   }
@@ -22,16 +18,8 @@ export class Event {
     return this._dueDate;
   }
 
-  set dueDate(value) {
-    this._dueDate = value;
-  }
-
   get value() {
     return this._value;
-  }
-
-  set value(value) {
-    this._value = value;
   }
 
   getHtmlStr() {
