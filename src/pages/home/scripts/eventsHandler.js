@@ -75,4 +75,6 @@ export function initEventsController() {
   // investInstances.forEach((instance) => evController.addEvent(instance));
   // payInstances.forEach((instance) => evController.addEvent(instance));
   evController.renderAllEvents();
+  // evController.removeEvent(15);
+  evController.removeEvent(11);
 }

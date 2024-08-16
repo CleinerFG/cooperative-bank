@@ -46,12 +46,13 @@ export class EventController {
     this.events.forEach((ev) => this._renderEventView(ev));
   }
 
-  removeEvent(event) {
-    this.events = this.events.filter(
-      (eventView) => eventView.dataObject !== event
+  removeEvent(eventID) {
+    const element = document.getElementById(`event-${eventID}`);
+    element.remove();
+    this._events = this._events.filter(
+      (eventView) => eventView.event.eventID !== eventID
     );
-    this.container.innerHTML = "";
-    this.renderAllEvents();
+    this._renderNoEvents();
   }
 
   clearEvents() {
