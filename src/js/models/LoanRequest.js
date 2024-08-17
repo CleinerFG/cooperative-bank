@@ -32,41 +32,4 @@ class LoanRequest {
   cancelRequest() {
     this._status = 4;
   }
-
-  getHtmlStr() {
-    return `
-    <article id="$request-${this._requestID}" class="card card-data">
-          <header class="card-data__header">${this._status}</header>
-          <main class="card-data__content">
-            <div class="card-data__item">
-              <span class="card-data__label">Creditor</span>
-              <span class="card-data__value">${this._loan.creditor}</span>
-            </div>
-            <div class="card-data__item">
-              <span class="card-data__label">Date</span>
-              <span class="card-data__value">${this._date}</span>
-            </div>
-            <div class="card-data__item">
-              <span class="card-data__label">Value</span>
-              <span class="card-data__value">$ ${this._loan.value}</span>
-            </div>
-            <div class="card-data__item">
-              <span class="card-data__label">Installments</span>
-              <span class="card-data__value">${this._loan.installments} months</span>
-            </div>
-            <div class="card-data__item">
-              <span class="card-data__label">Installment value</span>
-              <span class="card-data__value">$ ${this._loan.calculeInstallmentValue()}</span>
-            </div>
-            <div class="card-data__item">
-              <span class="card-data__label">Interest Rate</span>
-              <span class="card-data__value">${this._loan.interestRate}% p.m</span>
-            </div>
-          </main>
-          <footer class="card-data__footer">
-            <button class="btn card-data__btn">Cancel Request</button>
-          </footer>
-        </article>
-    `;
-  }
 }
