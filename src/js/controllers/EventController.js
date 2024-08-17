@@ -23,8 +23,10 @@ export class EventController {
 
   _noEventsHandler() {
     if (!this._events.length) {
+      const t1 = "There are no events...";
+      const t2 = "When there is news, we'll let you know ; )";
       const noEventView = this._createNoEventsView();
-      noEventView.render();
+      noEventView.render(t1, t2);
     }
   }
 
