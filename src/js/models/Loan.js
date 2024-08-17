@@ -4,7 +4,7 @@ const loanStatus = {
   3: "Finished"
 }
 
-class Loan {
+export class Loan {
   constructor(loanID, description, debtor, creditor, value, installments, interesRate) {
     this._loanID = loanID;
     this._status = 1;

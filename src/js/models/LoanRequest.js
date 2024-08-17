@@ -5,7 +5,7 @@ requestStatus = {
   4: "Canceled"
 }
 
-class LoanRequest {
+export class LoanRequest {
   constructor(requestID, date, loan) {
     this._requestID = requestID;
     this._date = date;
