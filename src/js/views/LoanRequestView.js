@@ -27,7 +27,7 @@ export class LoanRequestView {
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Installment value</span>
-              <span class="card-data__value">$ ${this._loanRequest.loan.calculeInstallmentValue()}</span>
+              <span class="card-data__value">$ ${this._loanRequest.loan.installmentValue}</span>
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Interest Rate</span>

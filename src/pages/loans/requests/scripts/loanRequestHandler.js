@@ -17,7 +17,7 @@ const request = {
   date: "23/07/2024",
 };
 
-const loanObj = new Loan(loanData.loanId, loanData.description, loanData.debtor, loanData.value, loanData.installments, loanData.interestRate);
+const loanObj = new Loan(loanData.loanId, loanData.description, loanData.debtor, loanData.creditor, loanData.value, loanData.installments, loanData.interestRate);
 
 const loanRequestObj = new LoanRequest(request.requestID, request.date, loanObj);
 
