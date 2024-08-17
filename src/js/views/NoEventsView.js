@@ -1,4 +1,3 @@
-import { Event } from "../models/Event.js";
 import { EventView } from "./EventView.js";
 
 export class NoEventsView extends EventView {
