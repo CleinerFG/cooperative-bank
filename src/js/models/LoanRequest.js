@@ -6,17 +6,26 @@ requestStatus = {
 }
 
 class LoanRequest {
-  constructor(requestID, date) {
+  constructor(requestID, date, loan) {
     this._requestID = requestID;
     this._date = date;
     this._status = 1;
-    this._loan = null;
+    this._loan = loan;
+  }
+
+  get requestID() {
+    return this._requestID;
+  }
+
+  get date() {
+    return this._date;
   }
 
   get status() {
-    return this._status;
+    return requestStatus[this._status];
   }
 
+  // server must change
   set status(value) {
     if (value in requestStatus) {
       this._status = value
@@ -25,8 +34,8 @@ class LoanRequest {
     return false;
   }
 
-  newRequest(loan) {
-    this._loan = loan;
+  get loan() {
+    return this._loan;
   }
 
   cancelRequest() {
