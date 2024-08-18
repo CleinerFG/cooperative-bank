@@ -65,4 +65,5 @@ export function initLoanRequestController() {
   const ctrl = new LoanRequestController(container);
   requests.forEach((req) => ctrl.addLoanRequest(req))
   ctrl.renderRequests();
+  ctrl.clearRequests()
 }
