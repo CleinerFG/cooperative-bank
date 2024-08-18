@@ -5,8 +5,20 @@ export class LoanRequestView {
   }
 
   render() {
+    let cssClass = "pending";
+    let btntext = "Cancel Request";
+    switch (this._loanRequest.status) {
+      case "Accepted":
+        cssClass = "success";
+        btntext = "Confirm";
+        break;
+      case "Denied":
+        cssClass = "fail"
+        btntext = "Confirm";
+    }
+
     const htmlStr = `
-    <article id="$request-${this._loanRequest.requestID}" class="card card-data">
+    <article id="$request-${this._loanRequest.requestID}" class="card card-data request__${cssClass}">
           <header class="card-data__header">${this._loanRequest.status}</header>
           <main class="card-data__content">
             <div class="card-data__item">
@@ -35,7 +47,7 @@ export class LoanRequestView {
             </div>
           </main>
           <footer class="card-data__footer">
-            <button class="btn card-data__btn">Cancel Request</button>
+            <button class="btn btn-${cssClass} card-data__btn ">${btntext}</button>
           </footer>
         </article>
     `;

@@ -20,6 +20,7 @@ const request = {
 const loanObj = new Loan(loanData.loanId, loanData.description, loanData.debtor, loanData.creditor, loanData.value, loanData.installments, loanData.interestRate);
 
 const loanRequestObj = new LoanRequest(request.requestID, request.date, loanObj);
+loanRequestObj.status = 3;
 
 export function initLoanRequestController() {
   const container = document.querySelector(".open-requests__cards");
