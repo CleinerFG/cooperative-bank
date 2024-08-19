@@ -1,4 +1,4 @@
-class LoanView {
+export class LoanView {
   constructor(parentNode, loan) {
     this._parentNode = parentNode;
     this._loan = loan;
