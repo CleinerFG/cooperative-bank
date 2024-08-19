@@ -1,8 +1,8 @@
 export class ComponentView {
-  #parentNode;
+  #container;
   #component;
-  constructor(parentNode, component) {
-    this.#parentNode = parentNode;
+  constructor(container, component) {
+    this.#container = container;
     this.#component = component;
   }
 
@@ -10,12 +10,12 @@ export class ComponentView {
     return this.#component;
   }
 
-  get parentNode() {
-    return this.#parentNode;
+  get container() {
+    return this.#container;
   }
 
   render() {
-    // this.#parentNode.insertAdjacentHTML(
+    // this.#container.insertAdjacentHTML(
     //   "afterbegin",
     //   this.#component.getHtmlStr()
     // );

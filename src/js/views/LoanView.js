@@ -1,6 +1,6 @@
 export class LoanView {
-  constructor(parentNode, loan) {
-    this._parentNode = parentNode;
+  constructor(container, loan) {
+    this._container = container;
     this._loan = loan;
   }
 
@@ -63,6 +63,6 @@ export class LoanView {
       </footer>
     </article>
     `;
-    this._parentNode.insertAdjacentHTML("afterbegin", htmlStr);
+    this._container.insertAdjacentHTML("afterbegin", htmlStr);
   }
 }

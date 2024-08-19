@@ -1,8 +1,8 @@
 import { ComponentView } from "./ComponentView.js";
 
 export class NoEventsView extends ComponentView {
-  constructor(parentNode, pathManager) {
-    super(parentNode);
+  constructor(container, pathManager) {
+    super(container);
     this._pathManager = pathManager;
   }
 
@@ -25,7 +25,7 @@ export class NoEventsView extends ComponentView {
       </div>
     </div>
     `;
-    this.parentNode.insertAdjacentHTML("afterbegin", htmlStr);
+    this.container.insertAdjacentHTML("afterbegin", htmlStr);
     this._pathHandler();
   }
 }

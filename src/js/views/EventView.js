@@ -2,8 +2,8 @@ import { ComponentView } from "./ComponentView.js";
 
 export class EventView extends ComponentView {
   #instanceOf;
-  constructor(parentNode, event) {
-    super(parentNode, event);
+  constructor(container, event) {
+    super(container, event);
     this.#instanceOf = event.constructor.name;
   }
 
@@ -49,6 +49,6 @@ export class EventView extends ComponentView {
         </footer>
       </article>
       `;
-    this.parentNode.insertAdjacentHTML("afterbegin", htmlStr);
+    this.container.insertAdjacentHTML("afterbegin", htmlStr);
   }
 }
