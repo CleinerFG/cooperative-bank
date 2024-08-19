@@ -1,12 +1,20 @@
 const loanStatus = {
   1: "Request",
   2: "Active",
-  3: "Finished"
-}
+  3: "Finished",
+};
 
 export class Loan {
-  constructor(loanID, description, debtor, creditor, value, installments, interesRate) {
-    this._loanID = loanID;
+  constructor(
+    id,
+    description,
+    debtor,
+    creditor,
+    value,
+    installments,
+    interesRate
+  ) {
+    this._id = id;
     this._status = 1;
     this._description = description;
     this._debtor = debtor;
@@ -21,9 +29,8 @@ export class Loan {
     this._payments = [];
   }
 
-  // Getters
-  get loanID() {
-    return this._loanID;
+  get id() {
+    return this._id;
   }
 
   get status() {
@@ -79,13 +86,13 @@ export class Loan {
   }
 
   _calculeInstallmentValue() {
-    const valueWithoutFees = (this._value / this._installments);
+    const valueWithoutFees = this._value / this._installments;
     const fees = this._value * (this._interestRate / 100);
     return valueWithoutFees + fees;
   }
 
   _updateRemaningInstallments() {
-    return null
+    return null;
   }
 
   _updateAmountDue() {
@@ -138,6 +145,6 @@ export class Loan {
         <button class="btn card-data__btn">Payments</button>
       </footer>
     </article>
-    `
+    `;
   }
 }
