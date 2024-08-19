@@ -9,6 +9,22 @@ class ComponentController {
     this._pathManager = pathManager;
   }
 
+  get container() {
+    return this._container;
+  }
+
+  get viewClass() {
+    return this._viewClass;
+  }
+
+  get components() {
+    return this._components;
+  }
+
+  get pathManager() {
+    return this._pathManager;
+  }
+
   _createComponentView(component) {
     return new _componentView(this._container, component);
   }
