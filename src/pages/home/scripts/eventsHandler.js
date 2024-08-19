@@ -62,14 +62,12 @@ const payInstances = dataPayments.map(
 
 export function initEventsController() {
   const container = document.querySelector(".events__cards");
-  const investCtrl = new EventController(container, "investment");
-  const payCtrl = new EventController(container, "payment");
+  const ctrl = new EventController(container);
 
-  investInstances.forEach((instance) => investCtrl.addComponent(instance));
-  payInstances.forEach((instance) => payCtrl.addComponent(instance));
-
-  payCtrl.renderComponents();
-  investCtrl.renderComponents();
-  // ctrl.removeComponent(16);
-  // payCtrl.clearComponents();
+  investInstances.forEach((instance) => ctrl.addComponent(instance));
+  payInstances.forEach((instance) => {
+    ctrl.addComponent(instance);
+  });
+  ctrl.renderComponents();
+  // ctrl.clearComponents();
 }
