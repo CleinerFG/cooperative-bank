@@ -1,8 +1,12 @@
 import { Event } from "./Event.js";
 
 export class Payment extends Event {
+  #creditor;
   constructor(eventID, dueDate, value, creditor) {
     super("Payment", eventID, dueDate, value);
-    this._creditor = creditor;
+    this.#creditor = creditor;
+  }
+  get creditor() {
+    return this.#creditor;
   }
 }
