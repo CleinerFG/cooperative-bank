@@ -24,8 +24,9 @@ export class LoanRequestController {
   _noRequestsHandler() {
     if (!this._requests.length) {
       const t1 = "There are no opened requests...";
+      const t2 = "Get a new loan ; )"
       const noEventView = this._createNoEventsView();
-      noEventView.render(t1);
+      noEventView.render(t1, t2);
     }
   }
 
