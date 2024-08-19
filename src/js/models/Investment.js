@@ -2,8 +2,8 @@ import { Event } from "./Event.js";
 
 export class Investment extends Event {
   #investmentType;
-  constructor(eventID, dueDate, value, investmentType) {
-    super(eventID, dueDate, value);
+  constructor(id, dueDate, value, investmentType) {
+    super(id, dueDate, value);
     this.#investmentType = investmentType;
   }
 

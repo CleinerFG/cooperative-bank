@@ -1,24 +1,22 @@
 export class Event {
-  constructor(type, eventID, dueDate, value) {
-    this._type = type || "NoEvents";
-    this._eventID = eventID;
-    this._dueDate = dueDate;
-    this._value = value;
+  #id;
+  #dueDate;
+  #value;
+  constructor(id, dueDate, value) {
+    this.#id = id;
+    this.#dueDate = dueDate;
+    this.#value = value;
   }
 
-  get type() {
-    return this._type;
-  }
-
-  get eventID() {
-    return this._eventID;
+  get id() {
+    return this.#id;
   }
 
   get dueDate() {
-    return this._dueDate;
+    return this.#dueDate;
   }
 
   get value() {
-    return this._value;
+    return this.#value;
   }
 }
