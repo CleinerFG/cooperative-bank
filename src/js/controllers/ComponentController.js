@@ -9,22 +9,6 @@ export class ComponentController {
     this._pathManager = pathManager;
   }
 
-  get container() {
-    return this._container;
-  }
-
-  get viewClass() {
-    return this._viewClass;
-  }
-
-  get components() {
-    return this._components;
-  }
-
-  get pathManager() {
-    return this._pathManager;
-  }
-
   _createComponentView(component) {
     return new this._viewClass(this._container, component);
   }
@@ -33,7 +17,7 @@ export class ComponentController {
     return new NoEventsView(this._container, this._pathManager);
   }
 
-  renderComponentView(componentView) {
+  _renderComponentView(componentView) {
     componentView.render();
   }
 
@@ -54,7 +38,7 @@ export class ComponentController {
     this._components.forEach((view) => view.render());
   }
 
-  removeComponent(componentName, componentID) {
+  _removeComponent(componentName, componentID) {
     const element = document.getElementById(`${componentName}-${componentID}`);
     element.remove();
     this._components = this._components.filter(
@@ -63,7 +47,7 @@ export class ComponentController {
     this._noComponentsHandler();
   }
 
-  clearComponents() {
+  _clearComponents() {
     this._components = [];
     this._container.innerHTML = "";
     this._noComponentsHandler();

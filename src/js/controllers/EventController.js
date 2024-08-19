@@ -6,27 +6,29 @@ export class EventController extends ComponentController {
     super(container, EventView);
   }
 
-  _noEventsHandler() {
+  _noComponentsHandler() {
     const t1 = "There are no events...";
     const t2 = "When there is news, we'll let you know ; )";
-    this.noComponentsHandler(t1, t2);
-  }
-
-  removeEvent(eventID) {
-    this.removeComponent("event", eventID);
+    super._noComponentsHandler(t1, t2);
   }
 
   addEvent(event) {
     super._addComponent(event);
   }
 
+  renderEventView(eventView) {
+    super._renderComponentView(eventView);
+  }
+
   renderEvents() {
     super._renderComponents();
   }
 
-  // clearEvents() {
-  //   this._events = [];
-  //   this._container.innerHTML = "";
-  //   this._noEventsHandler();
-  // }
+  removeEvent(eventID) {
+    super._removeComponent("event", eventID);
+  }
+
+  clearEvents() {
+    super._clearComponents();
+  }
 }

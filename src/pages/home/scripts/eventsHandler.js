@@ -70,5 +70,5 @@ export function initEventsController() {
   ctrl.renderEvents();
   // ctrl.removeEvent(15);
   // ctrl.removeEvent(12);
-  ctrl.clearComponents();
+  ctrl.clearEvents();
 }
