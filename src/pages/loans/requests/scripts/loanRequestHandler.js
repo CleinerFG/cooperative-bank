@@ -44,14 +44,26 @@ const requestData = [
   {
     requestID: 15,
     date: "04/05/2024",
-  }
+  },
 ];
 
 const requests = [];
 for (let i = 0; i < requestData.length; i++) {
-  const loan = new Loan(loanData[i].loanId, loanData[i].description, loanData[i].debtor, loanData[i].creditor, loanData[i].value, loanData[i].installments, loanData[i].interestRate);
+  const loan = new Loan(
+    loanData[i].loanId,
+    loanData[i].description,
+    loanData[i].debtor,
+    loanData[i].creditor,
+    loanData[i].value,
+    loanData[i].installments,
+    loanData[i].interestRate
+  );
 
-  const request = new LoanRequest(requestData[i].requestID, requestData[i].date, loan);
+  const request = new LoanRequest(
+    requestData[i].requestID,
+    requestData[i].date,
+    loan
+  );
 
   requests.push(request);
 }
@@ -63,7 +75,7 @@ requests[2].status = 3;
 export function initLoanRequestController() {
   const container = document.querySelector(".open-requests__cards");
   const ctrl = new LoanRequestController(container);
-  requests.forEach((req) => ctrl.addLoanRequest(req))
-  ctrl.renderRequests();
-  ctrl.clearRequests()
+  requests.forEach((req) => ctrl.addComponent(req));
+  ctrl.renderComponents();
+  ctrl.clearComponents();
 }
