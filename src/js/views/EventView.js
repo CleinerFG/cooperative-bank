@@ -1,31 +1,35 @@
 import { ComponentView } from "./ComponentView.js";
 
 export class EventView extends ComponentView {
+  #instanceOf;
   constructor(parentNode, event) {
     super(parentNode, event);
+    this.#instanceOf = event.constructor.name;
   }
 
-  render(type) {
+  render() {
     let entity;
     let entityValue;
     let btnText;
     let btnClass = "";
-    switch (type) {
-      case "payment":
+    switch (this.#instanceOf) {
+      case "Payment":
         entity = "Creditor";
         entityValue = this.component.creditor;
         btnText = "Pay";
         btnClass = "btn-attention";
         break;
-      case "investment":
+      case "Investment":
         entity = "Type";
         entityValue = this.component.investmentType;
         btnText = "See";
     }
 
     const htmlStr = `
-      <article id="event-${this.eventID}" class="card card-data event__${type}">
-        <header class="card-data__header">${type}</header>
+      <article id="event-${this.eventID}" class="card card-data event__${
+      this.#instanceOf
+    }">
+        <header class="card-data__header">${this.#instanceOf}</header>
         <main class="card-data__content">
           <div class="card-data__item">
             <span class="card-data__label">Due date</span>
