@@ -69,5 +69,5 @@ export function initEventsController() {
 
   ctrl.renderComponents();
   // ctrl.removeComponent(16);
-  ctrl.clearComponents();
+  // ctrl.clearComponents();
 }
