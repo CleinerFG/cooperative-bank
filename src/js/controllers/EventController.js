@@ -12,23 +12,7 @@ export class EventController extends ComponentController {
     super._noComponentsHandler(t1, t2);
   }
 
-  addEvent(event) {
-    super._addComponent(event);
-  }
-
-  renderEventView(eventView) {
-    super._renderComponentView(eventView);
-  }
-
-  renderEvents() {
-    super._renderComponents();
-  }
-
-  removeEvent(eventID) {
+  removeComponent(eventID) {
     super._removeComponent("event", eventID);
-  }
-
-  clearEvents() {
-    super._clearComponents();
   }
 }

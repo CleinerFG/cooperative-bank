@@ -2,54 +2,60 @@ import pathUtil from "../utils/PathManager.js";
 import { NoEventsView } from "../views/NoEventsView.js";
 
 export class ComponentController {
+  #container;
+  #viewClass;
+  #componentsView;
+  #pathManager;
   constructor(container, viewClass, pathManager = pathUtil) {
-    this._container = container;
-    this._viewClass = viewClass;
-    this._components = [];
-    this._pathManager = pathManager;
+    this.#container = container;
+    this.#viewClass = viewClass;
+    this.#componentsView = [];
+    this.#pathManager = pathManager;
   }
 
-  _createComponentView(component) {
-    return new this._viewClass(this._container, component);
+  #createComponentView(component) {
+    return new this.#viewClass(this.#container, component);
   }
 
-  _createNoEventsView() {
-    return new NoEventsView(this._container, this._pathManager);
+  #createNoEventsView() {
+    return new NoEventsView(this.#container, this.#pathManager);
   }
 
-  _renderComponentView(componentView) {
-    componentView.render();
-  }
-
+  // This method must be overwriting in the subclass
   _noComponentsHandler(text1, text2) {
-    if (!this._components.length) {
-      const noEventsView = this._createNoEventsView();
+    if (!this.#componentsView.length) {
+      const noEventsView = this.#createNoEventsView();
       noEventsView.render(text1, text2);
     }
   }
 
-  _addComponent(component) {
-    const componentView = this._createComponentView(component);
-    this._components.push(componentView);
-  }
-
-  _renderComponents() {
-    this._noComponentsHandler();
-    this._components.forEach((view) => view.render());
-  }
-
   _removeComponent(componentName, componentID) {
+    // Changer his visibility in the subclass, and defined componentName
     const element = document.getElementById(`${componentName}-${componentID}`);
     element.remove();
-    this._components = this._components.filter(
+    this.#componentsView = this.#componentsView.filter(
       (view) => view.componentName.id !== componentID
     );
     this._noComponentsHandler();
   }
 
-  _clearComponents() {
-    this._components = [];
-    this._container.innerHTML = "";
+  addComponent(component) {
+    const view = this.#createComponentView(component);
+    this.#componentsView.push(view);
+  }
+
+  renderComponent(view) {
+    view.render();
+  }
+
+  renderComponents() {
+    this._noComponentsHandler();
+    this.#componentsView.forEach((view) => view.render());
+  }
+
+  clearComponents() {
+    this.#componentsView = [];
+    this.#container.innerHTML = "";
     this._noComponentsHandler();
   }
 }
