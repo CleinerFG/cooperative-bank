@@ -1,18 +1,23 @@
 export class ComponentView {
+  #parentNode;
+  #component;
   constructor(parentNode, component) {
-    this._parentNode = parentNode;
-    this._component = component;
+    this.#parentNode = parentNode;
+    this.#component = component;
   }
 
   get component() {
-    return this._component;
+    return this.#component;
   }
 
   get parentNode() {
-    return this._parentNode;
+    return this.#parentNode;
   }
 
   render() {
-    this._parentNode.insertAdjacentHTML("afterbegin", this._component.getHtmlStr());
+    // this.#parentNode.insertAdjacentHTML(
+    //   "afterbegin",
+    //   this.#component.getHtmlStr()
+    // );
   }
 }
