@@ -1,6 +1,6 @@
-import { EventView } from "./EventView.js";
+import { ComponentView } from "./ComponentView.js";
 
-export class NoEventsView extends EventView {
+export class NoEventsView extends ComponentView {
   constructor(parentNode, pathManager) {
     super(parentNode);
     this._pathManager = pathManager;
