@@ -1,4 +1,4 @@
-import { LoanRequestView } from "../views/LoanRequestView.js"
+import { LoanRequestView } from "../views/LoanRequestView.js";
 import { NoEventsView } from "../views/NoEventsView.js";
 import pathManager from "../utils/PathManager.js";
 
@@ -46,6 +46,3 @@ export class LoanRequestController {
     this._noRequestsHandler();
   }
 }
-
-
-
