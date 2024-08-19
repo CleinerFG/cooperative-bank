@@ -16,6 +16,14 @@ export class EventController extends ComponentController {
     this.removeComponent("event", eventID);
   }
 
+  addEvent(event) {
+    super._addComponent(event);
+  }
+
+  renderEvents() {
+    super._renderComponents();
+  }
+
   // clearEvents() {
   //   this._events = [];
   //   this._container.innerHTML = "";

@@ -2,7 +2,7 @@ import { EventView } from "./EventView.js";
 
 export class NoEventsView extends EventView {
   constructor(parentNode, pathManager) {
-    super(null, parentNode);
+    super(parentNode);
     this._pathManager = pathManager;
   }
 

@@ -25,11 +25,11 @@ export class ComponentController {
     return this._pathManager;
   }
 
-  createComponentView(component) {
+  _createComponentView(component) {
     return new this._viewClass(this._container, component);
   }
 
-  createNoEventsView() {
+  _createNoEventsView() {
     return new NoEventsView(this._container, this._pathManager);
   }
 
@@ -37,19 +37,20 @@ export class ComponentController {
     componentView.render();
   }
 
-  noComponentsHandler(text1, text2) {
+  _noComponentsHandler(text1, text2) {
     if (!this._components.length) {
-      const noEventView = this._createNoEventsView();
-      noEventView.render(text1, text2);
+      const noEventsView = this._createNoEventsView();
+      noEventsView.render(text1, text2);
     }
   }
 
-  addComponent(component) {
-    const componentView = this.createComponentView(component);
+  _addComponent(component) {
+    const componentView = this._createComponentView(component);
     this._components.push(componentView);
   }
 
-  renderComponents() {
+  _renderComponents() {
+    this._noComponentsHandler();
     this._components.forEach((view) => view.render());
   }
 
@@ -59,12 +60,12 @@ export class ComponentController {
     this._components = this._components.filter(
       (view) => view.componentName.id !== componentID
     );
-    this.noComponentsHandler();
+    this._noComponentsHandler();
   }
 
   clearComponents() {
     this._components = [];
     this._container.innerHTML = "";
-    this.noComponentsHandler();
+    this._noComponentsHandler();
   }
 }
