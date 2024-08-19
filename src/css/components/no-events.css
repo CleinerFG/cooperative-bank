@@ -3,7 +3,7 @@
   margin-right: var(--container-padding);
 }
 
-.event__img {
+.no-events__img {
   flex: 1;
   height: 200px;
   min-height: 100%;
