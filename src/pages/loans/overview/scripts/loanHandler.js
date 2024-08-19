@@ -3,7 +3,7 @@ import { LoanController } from "../../../../js/controllers/LoanController.js";
 
 const loanData = [
   {
-    loanId: 1334,
+    id: 1334,
     description: "Buy a Cell",
     debtor: "Claudette",
     creditor: "Kate",
@@ -12,7 +12,7 @@ const loanData = [
     interestRate: 2,
   },
   {
-    loanId: 1336,
+    id: 1336,
     description: "Buy food",
     debtor: "Claudette",
     creditor: "Vitorio",
@@ -21,7 +21,7 @@ const loanData = [
     interestRate: 2.1,
   },
   {
-    loanId: 1338,
+    id: 1338,
     description: "Credit card",
     debtor: "Claudette",
     creditor: "Kate",
@@ -31,10 +31,28 @@ const loanData = [
   },
 ];
 
+const loans = loanData.map(
+  (loan) =>
+    new Loan(
+      loan.id,
+      loan.description,
+      loan.debtor,
+      loan.creditor,
+      loan.value,
+      loan.installments,
+      loan.interestRate
+    )
+);
+
 export function initLoanController() {
-  const container = document.querySelector(".payables__cards");
-  const ctrl = new LoanController(container, "payable");
-  loanData.forEach((loan) => ctrl.addComponent(loan));
-  ctrl.renderComponents();
-  // ctrl.clearComponents();
+  const payables = document.querySelector(".payables__cards");
+  const ctrlPayables = new LoanController(payables, "payable");
+  loans.forEach((loan) => ctrlPayables.addComponent(loan));
+  ctrlPayables.renderComponents();
+  // ctrlPayables.clearComponents();
+
+  const receivables = document.querySelector(".receivables__cards");
+  const ctrlReceivables = new LoanController(receivables, "receivables");
+  loans.forEach((loan) => ctrlReceivables.addComponent(loan));
+  ctrlReceivables.renderComponents();
 }
