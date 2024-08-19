@@ -13,10 +13,12 @@ export class LoanView {
         entity = "Creditor";
         entityValue = this._loan.creditor;
         btnText = "Pay Installment";
+        break;
       case "receivable":
         entity = "Debtor";
         entityValue = this._loan.debtor;
         btnText = "Payments";
+        break;
     }
 
     const htmlStr = `

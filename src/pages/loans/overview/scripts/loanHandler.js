@@ -52,7 +52,7 @@ export function initLoanController() {
   // ctrlPayables.clearComponents();
 
   const receivables = document.querySelector(".receivables__cards");
-  const ctrlReceivables = new LoanController(receivables, "receivables");
+  const ctrlReceivables = new LoanController(receivables, "receivable");
   loans.forEach((loan) => ctrlReceivables.addComponent(loan));
   ctrlReceivables.renderComponents();
 }
