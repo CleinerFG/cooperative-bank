@@ -1,7 +1,7 @@
 export class EventView {
-  constructor(event, parentNode) {
-    this._event = event;
+  constructor(parentNode, event) {
     this._parentNode = parentNode;
+    this._event = event;
   }
 
   get event() {

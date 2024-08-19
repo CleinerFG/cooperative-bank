@@ -25,19 +25,19 @@ export class ComponentController {
     return this._pathManager;
   }
 
-  _createComponentView(component) {
-    return new _viewClass(this._container, component);
+  createComponentView(component) {
+    return new this._viewClass(this._container, component);
   }
 
-  _createNoEventsView() {
+  createNoEventsView() {
     return new NoEventsView(this._container, this._pathManager);
   }
 
-  _renderComponentView(componentView) {
+  renderComponentView(componentView) {
     componentView.render();
   }
 
-  _noComponentsHandler(text1, text2) {
+  noComponentsHandler(text1, text2) {
     if (!this._components.length) {
       const noEventView = this._createNoEventsView();
       noEventView.render(text1, text2);
@@ -45,8 +45,12 @@ export class ComponentController {
   }
 
   addComponent(component) {
-    const componentView = this._createComponentView(component);
+    const componentView = this.createComponentView(component);
     this._components.push(componentView);
+  }
+
+  renderComponents() {
+    this._components.forEach((view) => view.render());
   }
 
   removeComponent(componentName, componentID) {

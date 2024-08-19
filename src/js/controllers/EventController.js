@@ -9,11 +9,11 @@ export class EventController extends ComponentController {
   _noEventsHandler() {
     const t1 = "There are no events...";
     const t2 = "When there is news, we'll let you know ; )";
-    this._noComponentsHandler(t1, t2);
+    this.noComponentsHandler(t1, t2);
   }
 
   removeEvent(eventID) {
-    this._removeComponent("event", eventID);
+    this.removeComponent("event", eventID);
   }
 
   // clearEvents() {
