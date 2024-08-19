@@ -1,7 +1,7 @@
 import pathManager from "../utils/PathManager.js";
 import { HeaderView } from "../views/layout/HeaderView.js";
 import { FooterView } from "../views/layout/FooterView.js";
-import { ThemeView } from "../views/ThemeView.js";
+import { ThemeView } from "../views/layout/ThemeView.js";
 
 export class LayoutController {
   constructor() {
