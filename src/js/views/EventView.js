@@ -26,14 +26,14 @@ export class EventView extends ComponentView {
     }
 
     const htmlStr = `
-      <article id="event-${this.eventID}" class="card card-data event__${
+      <article id="event-${this.component.id}" class="card card-data event__${
       this.#instanceOf
     }">
         <header class="card-data__header">${this.#instanceOf}</header>
         <main class="card-data__content">
           <div class="card-data__item">
             <span class="card-data__label">Due date</span>
-            <span class="card-data__value">${this.dueDate}</span>
+            <span class="card-data__value">${this.component.dueDate}</span>
           </div>
           <div class="card-data__item">
             <span class="card-data__label">${entity}</span>
@@ -41,7 +41,7 @@ export class EventView extends ComponentView {
           </div>
           <div class="card-data__item">
             <span class="card-data__label">Value</span>
-            <span class="card-data__value">$ ${this.value}</span>
+            <span class="card-data__value">$ ${this.component.value}</span>
           </div>
         </main>
         <footer class="card-data__footer">
