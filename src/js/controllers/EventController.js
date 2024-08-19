@@ -1,57 +1,24 @@
+import { ComponentController } from "./ComponentController.js";
 import { EventView } from "../views/EventView.js";
-import { NoEventsView } from "../views/NoEventsView.js";
-import pathManager from "../utils/PathManager.js";
 
-export class EventController {
+export class EventController extends ComponentController {
   constructor(container) {
-    this._container = container;
-    this._events = [];
-    this._pathManager = pathManager;
-  }
-
-  _createEventView(event) {
-    return new EventView(event, this._container);
-  }
-
-  _createNoEventsView() {
-    return new NoEventsView(this._container, this._pathManager);
-  }
-
-  _renderEventView(eventView) {
-    eventView.render();
+    super(container, EventView);
   }
 
   _noEventsHandler() {
-    if (!this._events.length) {
-      const t1 = "There are no events...";
-      const t2 = "When there is news, we'll let you know ; )";
-      const noEventView = this._createNoEventsView();
-      noEventView.render(t1, t2);
-    }
-  }
-
-  addEvent(event) {
-    const eventView = this._createEventView(event);
-    this._events.push(eventView);
-  }
-
-  renderEvents() {
-    this._noEventsHandler();
-    this._events.forEach((ev) => this._renderEventView(ev));
+    const t1 = "There are no events...";
+    const t2 = "When there is news, we'll let you know ; )";
+    this._noComponentsHandler(t1, t2);
   }
 
   removeEvent(eventID) {
-    const element = document.getElementById(`event-${eventID}`);
-    element.remove();
-    this._events = this._events.filter(
-      (eventView) => eventView.event.eventID !== eventID
-    );
-    this._noEventsHandler();
+    this._removeComponent("event", eventID);
   }
 
-  clearEvents() {
-    this._events = [];
-    this._container.innerHTML = "";
-    this._noEventsHandler();
-  }
+  // clearEvents() {
+  //   this._events = [];
+  //   this._container.innerHTML = "";
+  //   this._noEventsHandler();
+  // }
 }

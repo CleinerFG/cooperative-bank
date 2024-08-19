@@ -1,7 +1,7 @@
 import pathUtil from "../utils/PathManager.js";
 import { NoEventsView } from "../views/NoEventsView.js";
 
-class ComponentController {
+export class ComponentController {
   constructor(container, viewClass, pathManager = pathUtil) {
     this._container = container;
     this._viewClass = viewClass;
@@ -26,7 +26,7 @@ class ComponentController {
   }
 
   _createComponentView(component) {
-    return new _componentView(this._container, component);
+    return new _viewClass(this._container, component);
   }
 
   _createNoEventsView() {

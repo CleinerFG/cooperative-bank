@@ -64,11 +64,11 @@ export function initEventsController() {
   const container = document.querySelector(".events__cards");
   const ctrl = new EventController(container);
 
-  investInstances.forEach((instance) => ctrl.addEvent(instance));
-  payInstances.forEach((instance) => ctrl.addEvent(instance));
+  investInstances.forEach((instance) => ctrl.addComponent(instance));
+  payInstances.forEach((instance) => ctrl.addComponent(instance));
 
-  ctrl.renderEvents();
+  ctrl.renderComponents();
   // ctrl.removeEvent(15);
   // ctrl.removeEvent(12);
-  ctrl.clearEvents();
+  // ctrl.clearEvents();
 }
