@@ -50,7 +50,7 @@ export class ComponentController {
 
   renderComponents() {
     this._noComponentsHandler();
-    this.#componentsView.forEach((view) => view.render());
+    this.#componentsView.forEach((view) => this.renderComponent(view));
   }
 
   clearComponents() {

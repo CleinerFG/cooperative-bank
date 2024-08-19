@@ -1,7 +1,7 @@
 export class LoanRequestView {
-  constructor(loanRequest, parentNode) {
-    this._loanRequest = loanRequest;
+  constructor(parentNode, loanRequest) {
     this._parentNode = parentNode;
+    this._loanRequest = loanRequest;
   }
 
   render() {
