@@ -57,14 +57,14 @@ export class ComponentController {
     const element = document.getElementById(`${componentName}-${componentID}`);
     element.remove();
     this._components = this._components.filter(
-      (componentView) => componentView.componentName.id !== componentID
+      (view) => view.componentName.id !== componentID
     );
-    this._noEventsHandler();
+    this.noComponentsHandler();
   }
 
   clearComponents() {
     this._components = [];
     this._container.innerHTML = "";
-    this._noEventsHandler();
+    this.noComponentsHandler();
   }
 }
