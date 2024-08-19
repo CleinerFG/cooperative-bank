@@ -1,9 +1,10 @@
 import { ComponentController } from "./ComponentController.js";
 import { LoanView } from "../views/LoanView.js";
 
-class LoanController extends ComponentController {
-  constructor(container) {
+export class LoanController extends ComponentController {
+  constructor(container, type) {
     super(container, LoanView);
+    this._type = type;
   }
 
   _noComponentsHandler() {
@@ -12,8 +13,8 @@ class LoanController extends ComponentController {
     super._noComponentsHandler(t1, t2);
   }
 
-  renderComponent(view, type) {
-    view.render(type);
+  renderComponent(view) {
+    view.render(this._type);
   }
 
   removeComponent(loanID) {
