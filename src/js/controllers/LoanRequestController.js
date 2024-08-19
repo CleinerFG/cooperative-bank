@@ -8,7 +8,7 @@ export class LoanRequestController extends ComponentController {
 
   _noComponentsHandler() {
     const t1 = "There are no opened requests...";
-    const t2 = "Get a new loan ; )";
+    const t2 = "Get a new loan :)";
     super._noComponentsHandler(t1, t2);
   }
 
