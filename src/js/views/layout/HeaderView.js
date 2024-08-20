@@ -21,11 +21,11 @@ const htmlStr = `
 </header>`;
 
 export class HeaderView extends LayoutView {
-  constructor(pathManager) {
-    super(htmlStr, pathManager);
+  constructor() {
+    super(htmlStr, null);
   }
 
-  _menuHandler() {
+  menuHandler() {
     const menuBtn = document.querySelector("#menu-button");
     menuBtn.addEventListener("click", (ev) => {
       menuBtn.classList.toggle("header__menu-button--active");
@@ -34,24 +34,7 @@ export class HeaderView extends LayoutView {
     });
   }
 
-  _pathHandler() {
-    this.pathManager.updatePath(
-      "html",
-      ".header__brand-name",
-      "home",
-      "index.html"
-    );
-    this.pathManager.updatePath(
-      "asset",
-      ".header__menu-icon",
-      "icons",
-      "icon-menu.svg"
-    );
-  }
-
   render() {
     this.body.insertAdjacentHTML("afterbegin", this.htmlStr);
-    this._menuHandler();
-    this._pathHandler();
   }
 }

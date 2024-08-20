@@ -1,7 +1,9 @@
-import { LayoutCtrl } from "../LayoutCtrl.js";
+import { HeaderCtrl } from "../layout/HeaderCtrl.js";
+import { FooterCtrl } from "../layout/FooterCtrl.js";
 
 export function initLayoutController() {
-  const ctrl = new LayoutCtrl();
-  ctrl.initComponents();
-  ctrl.initThemeSettings();
+  const headerCtrl = new HeaderCtrl();
+  headerCtrl.initLayoutComponent();
+  const footerCtrl = new FooterCtrl();
+  footerCtrl.initLayoutComponent();
 }

@@ -12,33 +12,11 @@ const htmlStr = `
 </footer>`;
 
 export class FooterView extends LayoutView {
-  constructor(pathManager) {
-    super(htmlStr, pathManager);
-  }
-
-  _pathHandler() {
-    this.pathManager.updatePath(
-      "asset",
-      ".footer__icon",
-      "icons",
-      "icon-globe.svg"
-    );
-    this.pathManager.updatePath(
-      "html",
-      ".footer__brand-name",
-      "home",
-      "index.html"
-    );
-    this.pathManager.updatePath(
-      "html",
-      ".footer__icon-link",
-      "home",
-      "index.html"
-    );
+  constructor() {
+    super(htmlStr, null);
   }
 
   render() {
     this.body.insertAdjacentHTML("beforeend", this.htmlStr);
-    this._pathHandler();
   }
 }
