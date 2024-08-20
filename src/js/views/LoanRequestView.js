@@ -1,4 +1,4 @@
-import { ComponentView } from "./ComponentView.js";
+import { ComponentView } from "./display/ComponentView.js";
 
 export class LoanRequestView extends ComponentView {
   constructor(container, loanRequest) {
@@ -22,7 +22,7 @@ export class LoanRequestView extends ComponentView {
     let entity = this.component.creditor ? "Creditor" : "Debtor";
     let entityValue = this.component.creditor ?? this.component.debtor;
     btnText = this.component.debtor ? "Approve Loan" : btnText;
-    
+
     const htmlStr = `
     <article id="$request-${this.component.id}" class="card card-data request__${cssClass}">
           <header class="card-data__header">${this.component.status}</header>

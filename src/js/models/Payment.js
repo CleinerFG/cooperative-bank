@@ -1,4 +1,4 @@
-import { Event } from "./Event.js";
+import { Event } from "./display/Event.js";
 
 export class Payment extends Event {
   #creditor;

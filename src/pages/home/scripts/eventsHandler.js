@@ -1,73 +1,60 @@
-import { Investment } from "../../../js/models/Investment.js";
-import { Payment } from "../../../js/models/Payment.js";
-import { EventCtrl } from "../../../js/controllers/EventCtrl.js";
+import { Event } from "../../../js/models/display/Event.js";
+import { EventCtrl } from "../../../js/controllers/display/EventCtrl.js";
 
-const dataInvests = [
+const data = [
   {
-    eventID: 10,
+    id: 1450,
+    type: "Investment",
     dueDate: "10/05/2024",
-    investmentType: "CDB",
     value: "2.200",
   },
   {
-    eventID: 11,
+    id: 1456,
+    type: "Payment",
+    dueDate: "10/09/2024",
+    value: "300",
+  },
+  {
+    id: 15565,
+    type: "Investment",
     dueDate: "08/07/2024",
-    investmentType: "CDB",
     value: "2.800",
   },
   {
-    eventID: 12,
+    id: 515,
+    type: "Investment",
     dueDate: "09/05/2024",
-    investmentType: "LCA",
     value: "3.400",
   },
   {
-    eventID: 13,
-    dueDate: "12/07/2024",
-    investmentType: "LCI",
-    value: "5.800",
-  },
-];
-
-const dataPayments = [
-  {
-    eventID: 14,
+    id: 104,
+    type: "Payment",
     dueDate: "10/08/2024",
     value: "200",
-    creditor: "Claudette Morel",
   },
   {
-    eventID: 15,
-    dueDate: "10/09/2024",
-    value: "300",
-    creditor: "Kate Denson",
+    id: 410,
+    type: "Investment",
+    dueDate: "12/07/2024",
+    value: "5.800",
   },
   {
-    eventID: 16,
+    id: 4610,
+    type: "Payment",
     dueDate: "15/08/2024",
     value: "400",
-    creditor: "Meg Thomas",
   },
 ];
 
-const investInstances = dataInvests.map(
-  ({ eventID, dueDate, investmentType, value }) =>
-    new Investment(eventID, dueDate, value, investmentType)
-);
-
-const payInstances = dataPayments.map(
-  ({ eventID, dueDate, value, creditor }) =>
-    new Payment(eventID, dueDate, value, creditor)
+const events = data.map(
+  (event) => new Event(event.id, event.type, event.dueDate, event.value)
 );
 
 export function initEventsController() {
   const container = document.querySelector(".events__cards");
   const ctrl = new EventCtrl(container);
 
-  investInstances.forEach((instance) => ctrl.addComponent(instance));
-  payInstances.forEach((instance) => {
-    ctrl.addComponent(instance);
-  });
+  events.forEach((event) => ctrl.addComponent(event));
   ctrl.renderComponents();
   // ctrl.clearComponents();
 }
