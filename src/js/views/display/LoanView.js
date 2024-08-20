@@ -4,20 +4,10 @@ export class LoanView extends DisplayView {
   constructor(container, loan) {
     super(container, loan);
   }
-
-  render(type) {
-    let entity;
-    let entityValue;
-    switch (type) {
-      case "payable":
-        entity = "Creditor";
-        entityValue = this.component.creditor;
-        break;
-      case "receivable":
-        entity = "Debtor";
-        entityValue = this.component.debtor;
-        break;
-    }
+  render() {
+    console.log(this.component);
+    const entity = this.component.debtor ? "Debtor" : "Creditor";
+    const entityValue = this.component.debtor ?? this.component.creditor;
 
     const htmlStr = `
     <article class="card card-data">

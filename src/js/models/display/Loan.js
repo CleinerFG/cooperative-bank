@@ -21,7 +21,6 @@ export class Loan {
   constructor(
     id,
     type,
-    status,
     description,
     debtor,
     creditor,
@@ -35,7 +34,6 @@ export class Loan {
   ) {
     this.#id = id;
     this.#type = type;
-    this.#status = status;
     this.#description = description;
     this.#debtor = debtor;
     this.#creditor = creditor;

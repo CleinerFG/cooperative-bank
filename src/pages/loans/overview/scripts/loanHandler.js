@@ -5,7 +5,6 @@ const transactions = [
   {
     id: 1,
     type: "payable",
-    status: "Active",
     description: "Loan for new equipment",
     creditor: "The Trapper",
     date: "15/07/2024",
@@ -19,7 +18,6 @@ const transactions = [
   {
     id: 2,
     type: "receivable",
-    status: "Active",
     description: "Payment for services rendered",
     debtor: "Meg Thomas",
     date: "20/06/2024",
@@ -33,7 +31,6 @@ const transactions = [
   {
     id: 3,
     type: "receivable",
-    status: "Active",
     description: "Loan for medical expenses",
     debtor: "Claudette Morel",
     date: "10/05/2024",
@@ -47,7 +44,6 @@ const transactions = [
   {
     id: 4,
     type: "receivable",
-    status: "Active",
     description: "Loan for travel expenses",
     debtor: "Jake Park",
     date: "01/05/2024",
@@ -61,7 +57,6 @@ const transactions = [
   {
     id: 5,
     type: "payable",
-    status: "Active",
     description: "Payment for rented equipment",
     creditor: "The Wraith",
     date: "05/08/2024",
@@ -82,7 +77,6 @@ const loansPayables = payables.map(
     new Loan(
       loan.id,
       loan.type,
-      loan.status,
       loan.description,
       null,
       loan.creditor,
@@ -101,7 +95,6 @@ const loansReceivables = receivables.map(
     new Loan(
       loan.id,
       loan.type,
-      loan.status,
       loan.description,
       loan.debtor,
       null,
