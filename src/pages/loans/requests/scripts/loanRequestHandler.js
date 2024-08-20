@@ -32,24 +32,11 @@ const requestData = [
   },
 ];
 
-const requests = requestData.map(
-  (req) =>
-    new LoanRequest(
-      req.id,
-      req.status,
-      req.creditor,
-      req.date,
-      req.value,
-      req.installments,
-      req.rate
-    )
-);
-
 const receivedData = [
   {
     id: 20,
     date: "23/07/2024",
-    creditor: "Kate Denson",
+    debtor: "Kate Denson",
     value: 4000,
     installments: 12,
     rate: 2,
@@ -59,7 +46,7 @@ const receivedData = [
     id: 18,
     date: "03/09/2024",
     date: "23/07/2024",
-    creditor: "Vitorio Toscano",
+    debtor: "Vitorio Toscano",
     value: 1000,
     installments: 12,
     rate: 2,
@@ -67,12 +54,27 @@ const receivedData = [
   },
 ];
 
+const requests = requestData.map(
+  (req) =>
+    new LoanRequest(
+      req.id,
+      req.status,
+      null,
+      req.creditor,
+      req.date,
+      req.value,
+      req.installments,
+      req.rate
+    )
+);
+
 const received = receivedData.map(
   (req) =>
     new LoanRequest(
       req.id,
       req.status,
-      req.creditor,
+      req.debtor,
+      null,
       req.date,
       req.value,
       req.installments,
