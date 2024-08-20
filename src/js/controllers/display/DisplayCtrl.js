@@ -1,7 +1,7 @@
 import pathUtil from "../../utils/PathManager.js";
-import { NoEventsView } from "../views/NoEventsView.js";
+import { NoEventsView } from "../../views/display/NoEventsView.js";
 
-export class ComponentCtrl {
+export class DisplayCtrl {
   #container;
   #viewClass;
   #componentsView;
