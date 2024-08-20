@@ -5,146 +5,106 @@ const loanStatus = {
 };
 
 export class Loan {
-  constructor(
-    id,
-    description,
-    debtor,
-    creditor,
-    value,
-    installments,
-    interesRate
-  ) {
-    this._id = id;
-    this._status = 1;
-    this._description = description;
-    this._debtor = debtor;
-    this._creditor = creditor;
-    this._date = null;
-    this._amountDue = null;
-    this._value = value;
-    this._installments = installments;
-    this._interestRate = interesRate;
-    this._installmentValue = this._calculeInstallmentValue();
-    this._remainingInstallments = null;
-    this._payments = [];
+  #id;
+  #status;
+  #description;
+  #debtor;
+  #creditor;
+  #date;
+  #amountDue;
+  #value;
+  #installments;
+  #rate;
+  #installmentValue;
+  #remainingInstallments;
+  #payments;
+  constructor(id, description, debtor, creditor, value, installments, rate) {
+    this.#id = id;
+    this.#status = 1;
+    this.#description = description;
+    this.#debtor = debtor;
+    this.#creditor = creditor;
+    this.#date = null;
+    this.#amountDue = null;
+    this.#value = value;
+    this.#installments = installments;
+    this.#rate = rate;
+    this.#installmentValue = this.calculeInstallmentValue();
+    this.#remainingInstallments = null;
+    this.#payments = [];
   }
 
   get id() {
-    return this._id;
+    return this.#id;
   }
 
   get status() {
-    return loanStatus[this._status];
+    return loanStatus[this.#status];
   }
 
   get description() {
-    return this._description;
+    return this.#description;
   }
 
   get debtor() {
-    return this._debtor;
+    return this.#debtor;
   }
 
   get creditor() {
-    return this._creditor;
+    return this.#creditor;
   }
 
   get date() {
-    return this._date;
+    return this.#date;
   }
 
   get amountDue() {
-    return this._amountDue;
+    return this.#amountDue;
   }
 
   get value() {
-    return this._value;
+    return this.#value;
   }
 
   get installments() {
-    return this._installments;
+    return this.#installments;
   }
 
   get interestRate() {
-    return this._interestRate;
+    return this.#rate;
   }
 
   get installmentValue() {
-    return this._installmentValue;
+    return this.#installmentValue;
   }
 
   get remainingInstallments() {
-    return this._remainingInstallments;
+    return this.#remainingInstallments;
   }
 
   get payments() {
-    return this._payments;
+    return this.#payments;
   }
 
-  get totalLoanCost() {
-    return this._installmentValue * this._installments;
+  #updateRemaningInstallments() {
+    return null;
   }
 
-  _calculeInstallmentValue() {
-    const valueWithoutFees = this._value / this._installments;
-    const fees = this._value * (this._interestRate / 100);
+  #updateAmountDue() {
+    return null;
+  }
+
+  calculeTotalLoanCost() {
+    return this.#installmentValue * this.#installments;
+  }
+
+  calculeInstallmentValue() {
+    const valueWithoutFees = this.#value / this.#installments;
+    const fees = this.#value * (this.#rate / 100);
     return valueWithoutFees + fees;
   }
 
-  _updateRemaningInstallments() {
-    return null;
-  }
-
-  _updateAmountDue() {
-    return null;
-  }
-
   addPayment(pay) {
-    this._payments.push(pay);
-  }
-
-  getHtmlStr() {
-    return `
-    <article id="loan-${this._loanID}" class="card card-data">
-      <header class="card-data__header">Loan ID: ${this._loanID}</header>
-      <main class="card-data__content">
-        <div class="card-data__item">
-          <span class="card-data__label">Debtor</span>
-          <span class="card-data__value">${this._debtor}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Date</span>
-          <span class="card-data__value">${this._date}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Value</span>
-          <span class="card-data__value">$ ${this._value}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Description</span>
-          <span class="card-data__value">${this._description}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Remaining Installments</span>
-          <span class="card-data__value">${this._remainingInstallments}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Installment value</span>
-          <span class="card-data__value">$ ${this._intallmentValue}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Amount Due</span>
-          <span class="card-data__value">$ ${this._amountDue}</span>
-        </div>
-        <div class="card-data__item">
-          <span class="card-data__label">Interest Rate</span>
-          <span class="card-data__value">${this._interestRate}% p.m</span>
-        </div>
-      </main>
-      <footer class="card-data__footer">
-        <button class="btn card-data__btn">Payments</button>
-      </footer>
-    </article>
-    `;
+    this.#payments.push(pay);
   }
 }
