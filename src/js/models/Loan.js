@@ -18,13 +18,23 @@ export class Loan {
   #installmentValue;
   #remainingInstallments;
   #payments;
-  constructor(id, description, debtor, creditor, value, installments, rate) {
+  constructor(
+    id,
+    status,
+    description,
+    debtor,
+    creditor,
+    date,
+    value,
+    installments,
+    rate
+  ) {
     this.#id = id;
-    this.#status = 1;
+    this.#status = status;
     this.#description = description;
     this.#debtor = debtor;
     this.#creditor = creditor;
-    this.#date = null;
+    this.#date = date;
     this.#amountDue = null;
     this.#value = value;
     this.#installments = installments;

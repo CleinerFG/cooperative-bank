@@ -24,7 +24,6 @@ const requestData = [
   {
     id: 15,
     date: "04/05/2024",
-    date: "23/07/2024",
     creditor: "Meg Thomas",
     value: 5000,
     installments: 12,
@@ -37,11 +36,12 @@ const requests = requestData.map(
   (req) =>
     new LoanRequest(
       req.id,
+      req.status,
       req.creditor,
+      req.date,
       req.value,
       req.installments,
-      req.rate,
-      req.status
+      req.rate
     )
 );
 

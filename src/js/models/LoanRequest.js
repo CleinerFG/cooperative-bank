@@ -9,8 +9,8 @@ const requestStatus = {
 
 export class LoanRequest extends Loan {
   #status;
-  constructor(id, creditor, value, installments, rate, status) {
-    super(id, null, null, creditor, value, installments, rate);
+  constructor(id, status, creditor, date, value, installments, rate) {
+    super(id, null, null, null, creditor, date, value, installments, rate);
     this.#status = status;
   }
 
