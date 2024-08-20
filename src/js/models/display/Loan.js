@@ -46,6 +46,62 @@ export class Loan {
     this.#remainingInstallments = remainingInstallments;
   }
 
+  get id() {
+    return this.#id;
+  }
+
+  get type() {
+    return this.#type;
+  }
+
+  get status() {
+    return this.#status;
+  }
+
+  get description() {
+    return this.#description;
+  }
+
+  get debtor() {
+    return this.#debtor;
+  }
+
+  get creditor() {
+    return this.#creditor;
+  }
+
+  get date() {
+    return this.#date;
+  }
+
+  get amountDue() {
+    return this.#amountDue;
+  }
+
+  get value() {
+    return this.#value;
+  }
+
+  get installments() {
+    return this.#installments;
+  }
+
+  get rate() {
+    return this.#rate;
+  }
+
+  get installmentValue() {
+    return this.#installmentValue;
+  }
+
+  get remainingInstallments() {
+    return this.#remainingInstallments;
+  }
+
+  get totalLoanCost() {
+    return this.#installmentValue * this.#installments;
+  }
+
   get totalLoanCost() {
     return this.#installmentValue * this.#installments;
   }

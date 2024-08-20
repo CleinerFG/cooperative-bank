@@ -3,7 +3,7 @@ import { LoanCtrl } from "../../../../js/controllers/display/LoanCtrl.js";
 
 const transactions = [
   {
-    id: 1,
+    id: 15466,
     type: "payable",
     description: "Loan for new equipment",
     creditor: "The Trapper",
@@ -16,7 +16,7 @@ const transactions = [
     remainingInstallments: 8,
   },
   {
-    id: 2,
+    id: 24645,
     type: "receivable",
     description: "Payment for services rendered",
     debtor: "Meg Thomas",
@@ -29,7 +29,7 @@ const transactions = [
     remainingInstallments: 6,
   },
   {
-    id: 3,
+    id: 456453,
     type: "receivable",
     description: "Loan for medical expenses",
     debtor: "Claudette Morel",
@@ -42,7 +42,7 @@ const transactions = [
     remainingInstallments: 6,
   },
   {
-    id: 4,
+    id: 44654,
     type: "receivable",
     description: "Loan for travel expenses",
     debtor: "Jake Park",
@@ -55,7 +55,7 @@ const transactions = [
     remainingInstallments: 4,
   },
   {
-    id: 5,
+    id: 46455,
     type: "payable",
     description: "Payment for rented equipment",
     creditor: "The Wraith",
@@ -115,8 +115,9 @@ export function initLoanController() {
   ctrlPayables.renderComponents();
   // ctrlPayables.clearComponents();
 
-  // const receivables = document.querySelector(".receivables__cards");
-  // const ctrlReceivables = new LoanCtrl(receivables, "receivable");
-  // loans.forEach((loan) => ctrlReceivables.addComponent(loan));
-  // ctrlReceivables.renderComponents();
+  const receivables = document.querySelector(".receivables__cards");
+  const ctrlReceivables = new LoanCtrl(receivables, "receivable");
+  loansReceivables.forEach((loan) => ctrlReceivables.addComponent(loan));
+  ctrlReceivables.renderComponents();
+  // ctrlReceivables.clearComponents();
 }
