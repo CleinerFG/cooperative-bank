@@ -31,8 +31,8 @@ export class LoanRequestView extends DisplayView {
       </button>
     `;
     const footerReceived = `
-      <button class="btn btn-success card-data__btn">Approve Loan</button>
-      <button class="btn btn-fail card-data__btn">Recuse Loan</button>
+      <button class="btn btn-success card-data__btn">Approve</button>
+      <button class="btn btn-fail card-data__btn">Recuse</button>
     `;
     return this.component.debtor ? footerReceived : footerOpened;
   }
