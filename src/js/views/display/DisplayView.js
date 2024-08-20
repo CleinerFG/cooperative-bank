@@ -14,6 +14,12 @@ export class DisplayView {
     return this.#container;
   }
 
+  _getEntityInfo() {
+    const entity = this.component.creditor ? "Creditor" : "Debtor";
+    const entityValue = this.component.creditor ?? this.component.debtor;
+    return { entity, entityValue };
+  }
+
   _renderCardItem(label, value) {
     return `
       <div class="card-data__item">

@@ -16,12 +16,6 @@ export class LoanRequestView extends DisplayView {
     }
   }
 
-  #getEntityInfo() {
-    const entity = this.component.creditor ? "Creditor" : "Debtor";
-    const entityValue = this.component.creditor ?? this.component.debtor;
-    return { entity, entityValue };
-  }
-
   #getFooterStr() {
     const footerOpened = `
       <button class="btn btn-${
@@ -39,7 +33,7 @@ export class LoanRequestView extends DisplayView {
 
   render() {
     const { cssClass } = this.#getCssClassAndButtonText();
-    const { entity, entityValue } = this.#getEntityInfo();
+    const { entity, entityValue } = this._getEntityInfo();
     const footerStr = this.#getFooterStr();
 
     const htmlStr = `
