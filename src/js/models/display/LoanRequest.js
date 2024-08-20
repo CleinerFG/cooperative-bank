@@ -8,5 +8,35 @@ const requestStatus = {
 };
 
 export class LoanRequest extends Loan {
+  #status;
+  constructor(
+    id,
+    status,
+    debtor,
+    creditor,
+    date,
+    value,
+    installments,
+    rate,
+    installmentValue
+  ) {
+    super(
+      id,
+      null,
+      null,
+      debtor,
+      creditor,
+      date,
+      null,
+      value,
+      installments,
+      rate,
+      installmentValue
+    );
+    this.#status = status;
+  }
 
+  get status() {
+    return requestStatus[this.#status];
+  }
 }

@@ -8,6 +8,7 @@ const requestData = [
     creditor: "Kate Denson",
     value: 4000,
     installments: 12,
+    installmentValue: 200,
     rate: 2,
     status: 1,
   },
@@ -18,6 +19,7 @@ const requestData = [
     creditor: "Vitorio Toscano",
     value: 1000,
     installments: 12,
+    installmentValue: 400,
     rate: 2,
     status: 2,
   },
@@ -27,6 +29,7 @@ const requestData = [
     creditor: "Meg Thomas",
     value: 5000,
     installments: 12,
+    installmentValue: 300,
     rate: 2,
     status: 3,
   },
@@ -39,16 +42,17 @@ const receivedData = [
     debtor: "Kate Denson",
     value: 4000,
     installments: 12,
+    installmentValue: 400,
     rate: 2,
     status: 1,
   },
   {
     id: 18,
     date: "03/09/2024",
-    date: "23/07/2024",
     debtor: "Vitorio Toscano",
     value: 1000,
     installments: 12,
+    installmentValue: 400,
     rate: 2,
     status: 1,
   },
@@ -64,7 +68,8 @@ const requests = requestData.map(
       req.date,
       req.value,
       req.installments,
-      req.rate
+      req.rate,
+      req.installmentValue
     )
 );
 
@@ -78,7 +83,8 @@ const received = receivedData.map(
       req.date,
       req.value,
       req.installments,
-      req.rate
+      req.rate,
+      req.installmentValue
     )
 );
 

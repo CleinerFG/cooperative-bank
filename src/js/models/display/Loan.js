@@ -7,7 +7,6 @@ const loanStatus = {
 export class Loan {
   #id;
   #type;
-  #status;
   #description;
   #debtor;
   #creditor;
@@ -52,10 +51,6 @@ export class Loan {
 
   get type() {
     return this.#type;
-  }
-
-  get status() {
-    return this.#status;
   }
 
   get description() {
