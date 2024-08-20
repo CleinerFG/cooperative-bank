@@ -1,6 +1,6 @@
 import { Investment } from "../../../js/models/Investment.js";
 import { Payment } from "../../../js/models/Payment.js";
-import { EventController } from "../../../js/controllers/EventController.js";
+import { EventCtrl } from "../../../js/controllers/EventCtrl.js";
 
 const dataInvests = [
   {
@@ -62,7 +62,7 @@ const payInstances = dataPayments.map(
 
 export function initEventsController() {
   const container = document.querySelector(".events__cards");
-  const ctrl = new EventController(container);
+  const ctrl = new EventCtrl(container);
 
   investInstances.forEach((instance) => ctrl.addComponent(instance));
   payInstances.forEach((instance) => {

@@ -1,7 +1,7 @@
-import { LayoutController } from "../LayoutController.js";
+import { LayoutCtrl } from "../LayoutCtrl.js";
 
 export function initLayoutController() {
-  const ctrl = new LayoutController();
+  const ctrl = new LayoutCtrl();
   ctrl.initComponents();
   ctrl.initThemeSettings();
 }

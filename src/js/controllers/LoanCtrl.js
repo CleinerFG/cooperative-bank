@@ -1,7 +1,7 @@
-import { ComponentController } from "./ComponentController.js";
+import { ComponentCtrl } from "./ComponentCtrl.js";
 import { LoanView } from "../views/LoanView.js";
 
-export class LoanController extends ComponentController {
+export class LoanCtrl extends ComponentCtrl {
   constructor(container, type) {
     super(container, LoanView);
     this._type = type;

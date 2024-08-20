@@ -1,7 +1,7 @@
-import { ComponentController } from "./ComponentController.js";
+import { ComponentCtrl } from "./ComponentCtrl.js";
 import { EventView } from "../views/EventView.js";
 
-export class EventController extends ComponentController {
+export class EventCtrl extends ComponentCtrl {
   constructor(container) {
     super(container, EventView);
   }

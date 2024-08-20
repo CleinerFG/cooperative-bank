@@ -1,6 +1,6 @@
 import { Loan } from "../../../../js/models/Loan.js";
 import { LoanRequest } from "../../../../js/models/LoanRequest.js";
-import { LoanRequestController } from "../../../../js/controllers/LoanRequestController.js";
+import { LoanRequestCtrl } from "../../../../js/controllers/LoanRequestCtrl.js";
 
 const loanData = [
   {
@@ -74,8 +74,8 @@ requests[2].status = 3;
 
 export function initLoanRequestController() {
   const container = document.querySelector(".open-requests__cards");
-  const ctrl = new LoanRequestController(container);
+  const ctrl = new LoanRequestCtrl(container);
   requests.forEach((req) => ctrl.addComponent(req));
   ctrl.renderComponents();
-  ctrl.clearComponents();
+  // ctrl.clearComponents();
 }

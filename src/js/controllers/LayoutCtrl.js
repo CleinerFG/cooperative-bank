@@ -3,7 +3,7 @@ import { HeaderView } from "../views/layout/HeaderView.js";
 import { FooterView } from "../views/layout/FooterView.js";
 import { ThemeView } from "../views/layout/ThemeView.js";
 
-export class LayoutController {
+export class LayoutCtrl {
   constructor() {
     this._header = new HeaderView(pathManager);
     this._footer = new FooterView(pathManager);

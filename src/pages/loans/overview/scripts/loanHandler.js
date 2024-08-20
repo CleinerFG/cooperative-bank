@@ -1,5 +1,5 @@
 import { Loan } from "../../../../js/models/Loan.js";
-import { LoanController } from "../../../../js/controllers/LoanController.js";
+import { LoanCtrl } from "../../../../js/controllers/LoanCtrl.js";
 
 const loanData = [
   {
@@ -46,13 +46,13 @@ const loans = loanData.map(
 
 export function initLoanController() {
   const payables = document.querySelector(".payables__cards");
-  const ctrlPayables = new LoanController(payables, "payable");
+  const ctrlPayables = new LoanCtrl(payables, "payable");
   loans.forEach((loan) => ctrlPayables.addComponent(loan));
   ctrlPayables.renderComponents();
   // ctrlPayables.clearComponents();
 
   const receivables = document.querySelector(".receivables__cards");
-  const ctrlReceivables = new LoanController(receivables, "receivable");
+  const ctrlReceivables = new LoanCtrl(receivables, "receivable");
   loans.forEach((loan) => ctrlReceivables.addComponent(loan));
   ctrlReceivables.renderComponents();
 }
