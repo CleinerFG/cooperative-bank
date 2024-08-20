@@ -1,43 +1,19 @@
-import { ComponentView } from "./ComponentView.js";
+import { DisplayView } from "./DisplayView.js";
 
-export class EventView extends ComponentView {
-  #instanceOf;
+export class EventView extends DisplayView {
   constructor(container, event) {
     super(container, event);
-    this.#instanceOf = event.constructor.name;
   }
 
   render() {
-    let entity;
-    let entityValue;
-    let btnText;
-    let btnClass = "";
-    switch (this.#instanceOf) {
-      case "Payment":
-        entity = "Creditor";
-        entityValue = this.component.creditor;
-        btnText = "Pay";
-        btnClass = "btn-attention";
-        break;
-      case "Investment":
-        entity = "Type";
-        entityValue = this.component.investmentType;
-        btnText = "See";
-    }
-
+    let btnClass = this.component.type === "payment" ? "btn-attention" : "";
     const htmlStr = `
-      <article id="event-${this.component.id}" class="card card-data event__${
-      this.#instanceOf
-    }">
-        <header class="card-data__header">${this.#instanceOf}</header>
+      <article id="event-${this.component.id}" class="card card-data event__${this.component.type}">
+        <header class="card-data__header">${this.component.type}</header>
         <main class="card-data__content">
           <div class="card-data__item">
             <span class="card-data__label">Due date</span>
             <span class="card-data__value">${this.component.dueDate}</span>
-          </div>
-          <div class="card-data__item">
-            <span class="card-data__label">${entity}</span>
-            <span class="card-data__value">${entityValue}</span>
           </div>
           <div class="card-data__item">
             <span class="card-data__label">Value</span>
@@ -45,7 +21,7 @@ export class EventView extends ComponentView {
           </div>
         </main>
         <footer class="card-data__footer">
-          <button class="btn ${btnClass} card-data__btn">${btnText}</button>
+          <button class="btn ${btnClass} card-data__btn">See</button>
         </footer>
       </article>
       `;

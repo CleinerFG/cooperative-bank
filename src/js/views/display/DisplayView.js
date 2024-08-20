@@ -1,4 +1,4 @@
-export class ComponentView {
+export class DisplayView {
   #container;
   #component;
   constructor(container, component) {
@@ -15,9 +15,6 @@ export class ComponentView {
   }
 
   render() {
-    // this.#container.insertAdjacentHTML(
-    //   "afterbegin",
-    //   this.#component.getHtmlStr()
-    // );
+    throw new Error("Must be implemented in the subclass")
   }
 }
