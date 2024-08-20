@@ -1,5 +1,5 @@
-import { LoanRequest } from "../../../../js/models/LoanRequest.js";
-import { LoanRequestCtrl } from "../../../../js/controllers/LoanRequestCtrl.js";
+import { LoanRequest } from "../../../../js/models/display/LoanRequest.js";
+import { LoanRequestCtrl } from "../../../../js/controllers/display/LoanRequestCtrl.js";
 
 const requestData = [
   {

@@ -1,6 +1,6 @@
-import { ComponentView } from "./display/ComponentView.js";
+import { DisplayView } from "./DisplayView.js";
 
-export class LoanRequestView extends ComponentView {
+export class LoanRequestView extends DisplayView {
   constructor(container, loanRequest) {
     super(container, loanRequest);
   }
@@ -18,7 +18,6 @@ export class LoanRequestView extends ComponentView {
         btnText = "Confirm";
     }
 
-    //Use nullish coalescing to define which attribute will be displayed
     let entity = this.component.creditor ? "Creditor" : "Debtor";
     let entityValue = this.component.creditor ?? this.component.debtor;
     btnText = this.component.debtor ? "Approve Loan" : btnText;
