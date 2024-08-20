@@ -13,7 +13,7 @@ const htmlStr = `
 
 export class FooterView extends LayoutView {
   constructor() {
-    super(htmlStr, null);
+    super(htmlStr);
   }
 
   render() {

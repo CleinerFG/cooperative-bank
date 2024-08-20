@@ -1,19 +1,20 @@
 export class LayoutView {
-  constructor(htmlStr, pathManager) {
-    this._htmlStr = htmlStr;
-    this._body = document.body;
-    this._pathManager = pathManager;
+  #htmlStr;
+  #body;
+  constructor(htmlStr) {
+    this.#htmlStr = htmlStr;
+    this.#body = document.body;
   }
 
   get htmlStr() {
-    return this._htmlStr;
+    return this.#htmlStr;
   }
 
   get body() {
-    return this._body;
+    return this.#body;
   }
 
-  get pathManager() {
-    return this._pathManager;
+  render() {
+    throw new Error("Must be implemented in the subclass");
   }
 }

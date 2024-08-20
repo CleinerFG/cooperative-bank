@@ -22,7 +22,7 @@ const htmlStr = `
 
 export class HeaderView extends LayoutView {
   constructor() {
-    super(htmlStr, null);
+    super(htmlStr);
   }
 
   menuHandler() {
