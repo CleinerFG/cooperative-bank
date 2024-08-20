@@ -1,58 +1,129 @@
-import { Loan } from "../../../../js/models/Loan.js";
-import { LoanCtrl } from "../../../../js/controllers/LoanCtrl.js";
+import { Loan } from "../../../../js/models/display/Loan.js";
+import { LoanCtrl } from "../../../../js/controllers/display/LoanCtrl.js";
 
-const loanData = [
+const transactions = [
   {
-    id: 1334,
-    description: "Buy a Cell",
-    debtor: "Claudette",
-    creditor: "Kate",
-    value: 4000,
-    installments: 12,
-    interestRate: 2,
+    id: 1,
+    type: "payable",
+    status: "Active",
+    description: "Loan for new equipment",
+    creditor: "The Trapper",
+    date: "15/07/2024",
+    amountDue: 4200,
+    value: 5000,
+    installments: 10,
+    rate: 1.5,
+    installmentValue: 515,
+    remainingInstallments: 8,
   },
   {
-    id: 1336,
-    description: "Buy food",
-    debtor: "Claudette",
-    creditor: "Vitorio",
-    value: 1100,
-    installments: 4,
-    interestRate: 2.1,
+    id: 2,
+    type: "receivable",
+    status: "Active",
+    description: "Payment for services rendered",
+    debtor: "Meg Thomas",
+    date: "20/06/2024",
+    amountDue: 1500,
+    value: 5000,
+    installments: 10,
+    rate: 2,
+    installmentValue: 500,
+    remainingInstallments: 6,
   },
   {
-    id: 1338,
-    description: "Credit card",
-    debtor: "Claudette",
-    creditor: "Kate",
-    value: 2000,
+    id: 3,
+    type: "receivable",
+    status: "Active",
+    description: "Loan for medical expenses",
+    debtor: "Claudette Morel",
+    date: "10/05/2024",
+    amountDue: 3000,
+    value: 3000,
     installments: 6,
-    interestRate: 2.5,
+    rate: 2,
+    installmentValue: 520,
+    remainingInstallments: 6,
+  },
+  {
+    id: 4,
+    type: "receivable",
+    status: "Active",
+    description: "Loan for travel expenses",
+    debtor: "Jake Park",
+    date: "01/05/2024",
+    amountDue: 1000,
+    value: 2000,
+    installments: 8,
+    rate: 1,
+    installmentValue: 200,
+    remainingInstallments: 4,
+  },
+  {
+    id: 5,
+    type: "payable",
+    status: "Active",
+    description: "Payment for rented equipment",
+    creditor: "The Wraith",
+    date: "05/08/2024",
+    amountDue: 1000,
+    value: 1000,
+    installments: 2,
+    rate: 1,
+    installmentValue: 505,
+    remainingInstallments: 2,
   },
 ];
 
-const loans = loanData.map(
+const payables = transactions.filter((trans) => trans.type === "payable");
+const receivables = transactions.filter((trans) => trans.type === "receivable");
+
+const loansPayables = payables.map(
   (loan) =>
     new Loan(
       loan.id,
+      loan.type,
+      loan.status,
       loan.description,
-      loan.debtor,
+      null,
       loan.creditor,
+      loan.date,
+      loan.amountDue,
       loan.value,
       loan.installments,
-      loan.interestRate
+      loan.rate,
+      loan.installmentValue,
+      loan.remainingInstallments
+    )
+);
+
+const loansReceivables = receivables.map(
+  (loan) =>
+    new Loan(
+      loan.id,
+      loan.type,
+      loan.status,
+      loan.description,
+      loan.debtor,
+      null,
+      loan.date,
+      loan.amountDue,
+      loan.value,
+      loan.installments,
+      loan.rate,
+      loan.installmentValue,
+      loan.remainingInstallments
     )
 );
 
 export function initLoanController() {
-  const payables = document.querySelector(".payables__cards");
-  const ctrlPayables = new LoanCtrl(payables, "payable");
-  loans.forEach((loan) => ctrlPayables.addComponent(loan));
+  const payablesContainer = document.querySelector(".payables__cards");
+  const ctrlPayables = new LoanCtrl(payablesContainer, "payable");
+  loansPayables.forEach((loan) => ctrlPayables.addComponent(loan));
   ctrlPayables.renderComponents();
   // ctrlPayables.clearComponents();
 
-  const receivables = document.querySelector(".receivables__cards");
-  const ctrlReceivables = new LoanCtrl(receivables, "receivable");
-  loans.forEach((loan) => ctrlReceivables.addComponent(loan));
-  ctrlReceivables.renderComponents();
+  // const receivables = document.querySelector(".receivables__cards");
+  // const ctrlReceivables = new LoanCtrl(receivables, "receivable");
+  // loans.forEach((loan) => ctrlReceivables.addComponent(loan));
+  // ctrlReceivables.renderComponents();
 }
