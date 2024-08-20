@@ -3,7 +3,6 @@
   border: 0.1rem solid var(--component-border-color);
   border-radius: var(--component-border-radius);
   padding: var(--container-padding);
-  box-shadow: 0 0 0 #000;
 
   flex: 1;
 }

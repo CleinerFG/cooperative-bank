@@ -3,10 +3,10 @@
   flex-direction: column;
   gap: 0.5rem;
   transition: all 0.2s ease-in-out;
-  box-shadow: 0.1rem 0.1rem 0.3rem #00000067;
+  box-shadow: 0.1rem 0.1rem 0.1rem #00000039;
 }
 
 /* Hover */
 .card:hover {
-  box-shadow: 0.2rem 0.2rem 0.2rem #00000052;
+  box-shadow: 0.2rem 0.3rem 0.2rem #00000052;
 }
