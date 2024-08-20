@@ -45,10 +45,50 @@ const requests = requestData.map(
     )
 );
 
+const receivedData = [
+  {
+    id: 20,
+    date: "23/07/2024",
+    creditor: "Kate Denson",
+    value: 4000,
+    installments: 12,
+    rate: 2,
+    status: 1,
+  },
+  {
+    id: 18,
+    date: "03/09/2024",
+    date: "23/07/2024",
+    creditor: "Vitorio Toscano",
+    value: 1000,
+    installments: 12,
+    rate: 2,
+    status: 1,
+  },
+];
+
+const received = receivedData.map(
+  (req) =>
+    new LoanRequest(
+      req.id,
+      req.status,
+      req.creditor,
+      req.date,
+      req.value,
+      req.installments,
+      req.rate
+    )
+);
+
 export function initLoanRequestController() {
-  const container = document.querySelector(".open-requests__cards");
-  const ctrl = new LoanRequestCtrl(container);
-  requests.forEach((req) => ctrl.addComponent(req));
-  ctrl.renderComponents();
-  // ctrl.clearComponents();
+  const containerOpen = document.querySelector(".open-requests__cards");
+  const ctrlOpen = new LoanRequestCtrl(containerOpen);
+  requests.forEach((req) => ctrlOpen.addComponent(req));
+  ctrlOpen.renderComponents();
+  // ctrlOpen.clearComponents();
+
+  const containerReceived = document.querySelector(".received-requests__cards");
+  const ctrlReceived = new LoanRequestCtrl(containerReceived);
+  received.forEach((req) => ctrlReceived.addComponent(req));
+  ctrlReceived.renderComponents();
 }

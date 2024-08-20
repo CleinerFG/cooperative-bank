@@ -2,7 +2,7 @@ import { ComponentView } from "./ComponentView.js";
 
 export class LoanRequestView extends ComponentView {
   constructor(container, loanRequest) {
-    super(container, loanRequest)
+    super(container, loanRequest);
   }
 
   render() {
@@ -17,7 +17,8 @@ export class LoanRequestView extends ComponentView {
         cssClass = "fail";
         btntext = "Confirm";
     }
-
+    //Use nullish coalescing to define which attribute will be displayed
+    // loanRequest.creditor ?? loanRequest.debtor
     const htmlStr = `
     <article id="$request-${this.component.id}" class="card card-data request__${cssClass}">
           <header class="card-data__header">${this.component.status}</header>
