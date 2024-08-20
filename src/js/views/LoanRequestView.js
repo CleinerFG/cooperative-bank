@@ -1,49 +1,50 @@
-export class LoanRequestView {
+import { ComponentView } from "./ComponentView.js";
+
+export class LoanRequestView extends ComponentView {
   constructor(container, loanRequest) {
-    this._container = container;
-    this._loanRequest = loanRequest;
+    super(container, loanRequest)
   }
 
   render() {
     let cssClass = "pending";
     let btntext = "Cancel Request";
-    switch (this._loanRequest.status) {
+    switch (this.component.status) {
       case "Accepted":
         cssClass = "success";
         btntext = "Confirm";
         break;
       case "Denied":
-        cssClass = "fail"
+        cssClass = "fail";
         btntext = "Confirm";
     }
 
     const htmlStr = `
-    <article id="$request-${this._loanRequest.requestID}" class="card card-data request__${cssClass}">
-          <header class="card-data__header">${this._loanRequest.status}</header>
+    <article id="$request-${this.component.id}" class="card card-data request__${cssClass}">
+          <header class="card-data__header">${this.component.status}</header>
           <main class="card-data__content">
             <div class="card-data__item">
               <span class="card-data__label">Creditor</span>
-              <span class="card-data__value">${this._loanRequest.loan.creditor}</span>
+              <span class="card-data__value">${this.component.creditor}</span>
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Date</span>
-              <span class="card-data__value">${this._loanRequest.date}</span>
+              <span class="card-data__value">${this.component.date}</span>
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Value</span>
-              <span class="card-data__value">$ ${this._loanRequest.loan.value}</span>
+              <span class="card-data__value">$ ${this.component.value}</span>
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Installments</span>
-              <span class="card-data__value">${this._loanRequest.loan.installments} months</span>
+              <span class="card-data__value">${this.component.installments} months</span>
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Installment value</span>
-              <span class="card-data__value">$ ${this._loanRequest.loan.installmentValue}</span>
+              <span class="card-data__value">$ ${this.component.installmentValue}</span>
             </div>
             <div class="card-data__item">
               <span class="card-data__label">Interest Rate</span>
-              <span class="card-data__value">${this._loanRequest.loan.interestRate}% p.m</span>
+              <span class="card-data__value">${this.component.rate}% p.m</span>
             </div>
           </main>
           <footer class="card-data__footer">
@@ -51,6 +52,6 @@ export class LoanRequestView {
           </footer>
         </article>
     `;
-    this._container.insertAdjacentHTML("afterbegin", htmlStr);
+    this.container.insertAdjacentHTML("afterbegin", htmlStr);
   }
 }
