@@ -70,7 +70,7 @@ export class Loan {
     return this.#installments;
   }
 
-  get interestRate() {
+  get rate() {
     return this.#rate;
   }
 
