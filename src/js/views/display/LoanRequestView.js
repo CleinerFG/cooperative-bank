@@ -37,15 +37,6 @@ export class LoanRequestView extends DisplayView {
     return this.component.debtor ? footerReceived : footerOpened;
   }
 
-  #renderCardItem(label, value) {
-    return `
-      <div class="card-data__item">
-        <span class="card-data__label">${label}</span>
-        <span class="card-data__value">${value}</span>
-      </div>
-    `;
-  }
-
   render() {
     const { cssClass } = this.#getCssClassAndButtonText();
     const { entity, entityValue } = this.#getEntityInfo();
@@ -57,18 +48,18 @@ export class LoanRequestView extends DisplayView {
       }" class="card card-data request__${cssClass}">
         <header class="card-data__header">${this.component.status}</header>
         <main class="card-data__content">
-          ${this.#renderCardItem(entity, entityValue)}
-          ${this.#renderCardItem("Date", this.component.date)}
-          ${this.#renderCardItem("Value", `$ ${this.component.value}`)}
-          ${this.#renderCardItem(
+          ${this._renderCardItem(entity, entityValue)}
+          ${this._renderCardItem("Date", this.component.date)}
+          ${this._renderCardItem("Value", `$ ${this.component.value}`)}
+          ${this._renderCardItem(
             "Installments",
             `${this.component.installments} months`
           )}
-          ${this.#renderCardItem(
+          ${this._renderCardItem(
             "Installment value",
             `$ ${this.component.installmentValue}`
           )}
-          ${this.#renderCardItem(
+          ${this._renderCardItem(
             "Interest Rate",
             `${this.component.rate}% p.m`
           )}

@@ -14,7 +14,16 @@ export class DisplayView {
     return this.#container;
   }
 
+  _renderCardItem(label, value) {
+    return `
+      <div class="card-data__item">
+        <span class="card-data__label">${label}</span>
+        <span class="card-data__value">${value}</span>
+      </div>
+    `;
+  }
+
   render() {
-    throw new Error("Must be implemented in the subclass")
+    throw new Error("Must be implemented in the subclass");
   }
 }
