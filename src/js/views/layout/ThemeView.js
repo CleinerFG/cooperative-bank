@@ -1,5 +1,7 @@
+import pathUtil from "../../utils/PathManager.js";
+
 export class ThemeView {
-  constructor(pathManager) {
+  constructor(pathManager = pathUtil) {
     this._pathManager = pathManager;
     this._themeKey = "coperativeBankTheme";
     this._lightThemeClass = "icon__theme-light";
