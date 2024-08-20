@@ -1,4 +1,5 @@
 import { DisplayView } from "./DisplayView.js";
+import { capitalize } from "../../utils/stringUtils.js";
 
 export class EventView extends DisplayView {
   constructor(container, event) {
@@ -6,10 +7,11 @@ export class EventView extends DisplayView {
   }
 
   render() {
-    let btnClass = this.component.type === "payment" ? "btn-attention" : "";
+    const btnClass = this.component.type === "payment" ? "btn-attention" : "";
+    const capitalizedType = capitalize(this.component.type);
     const htmlStr = `
       <article id="event-${this.component.id}" class="card card-data event__${this.component.type}">
-        <header class="card-data__header">${this.component.type}</header>
+        <header class="card-data__header">${capitalizedType}</header>
         <main class="card-data__content">
           <div class="card-data__item">
             <span class="card-data__label">Due date</span>
