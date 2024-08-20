@@ -5,7 +5,7 @@ export class LoanRequestView extends DisplayView {
     super(container, loanRequest);
   }
 
-  #getCssClassAndButtonText() {
+  #getCssClassAndBtnText() {
     switch (this.component.status) {
       case "Accepted":
         return { cssClass: "success", btnText: "Confirm" };
@@ -17,11 +17,10 @@ export class LoanRequestView extends DisplayView {
   }
 
   #getFooterStr() {
+    const { cssClass, btnText } = this.#getCssClassAndBtnText();
     const footerOpened = `
-      <button class="btn btn-${
-        this.#getCssClassAndButtonText().cssClass
-      } card-data__btn">
-        ${this.#getCssClassAndButtonText().btnText}
+      <button class="btn btn-${cssClass} card-data__btn">
+        ${btnText}
       </button>
     `;
     const footerReceived = `
@@ -32,7 +31,7 @@ export class LoanRequestView extends DisplayView {
   }
 
   render() {
-    const { cssClass } = this.#getCssClassAndButtonText();
+    const { cssClass } = this.#getCssClassAndBtnText();
     const { entity, entityValue } = this._getEntityInfo();
     const footerStr = this.#getFooterStr();
 
@@ -55,7 +54,7 @@ export class LoanRequestView extends DisplayView {
           )}
           ${this._renderCardItem(
             "Interest Rate",
-            `${this.component.rate}% p.m`
+            `${this.component.rate}% p.m.`
           )}
         </main>
         <footer class="card-data__footer">
