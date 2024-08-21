@@ -6,9 +6,9 @@ export class LoanCtrl extends DisplayCtrl {
     super(container, LoanView);
   }
 
-  _noComponentsHandler() {
+  _defineNoComponentsSettings() {
     const t1 = "There is nothing...";
-    const t2 = "Waiting for updates";
-    super._noComponentsHandler(t1, t2);
+    const t2 = "Waiting for new loans...";
+    this.noComponentsCtrl.defineTexts(t1, t2);
   }
 }

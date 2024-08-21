@@ -27,9 +27,7 @@ export class DisplayCtrl {
     }
   }
 
-  _defineNoComponentsSettings(
-    t1 = "There is nothing...",
-  ) {
+  _defineNoComponentsSettings(t1 = "There is nothing...") {
     this.noComponentsCtrl.defineTexts(t1);
   }
 
