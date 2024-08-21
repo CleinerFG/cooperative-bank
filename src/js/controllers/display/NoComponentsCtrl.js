@@ -34,7 +34,7 @@ export class NoComponentsCtrl {
     );
   }
 
-  initNoComponents() {
+  init() {
     this.#noComponentsView.render();
     this.#pathHandler;
   }

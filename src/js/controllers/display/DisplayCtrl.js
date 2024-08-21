@@ -1,31 +1,29 @@
-import pathUtil from "../../utils/PathManager.js";
-import { NoEventsView } from "../../views/display/NoEventsView.js";
+import { NoComponentsCtrl } from "./NoComponentsCtrl.js";
 
 export class DisplayCtrl {
   #container;
   #viewClass;
-  #componentsView;
-  #pathManager;
-  constructor(container, viewClass, pathManager = pathUtil) {
+  #componentsViews;
+  #noComponentsCtrl;
+  constructor(container, viewClass) {
     this.#container = container;
     this.#viewClass = viewClass;
-    this.#componentsView = [];
-    this.#pathManager = pathManager;
+    this.#componentsViews = [];
+    this.#noComponentsCtrl = new NoComponentsCtrl(this.#container);
+  }
+
+  get noComponentsCtrl() {
+    return this.#noComponentsCtrl;
   }
 
   #createComponentView(component) {
     return new this.#viewClass(this.#container, component);
   }
 
-  #createNoEventsView() {
-    return new NoEventsView(this.#container, this.#pathManager);
-  }
-
   // This method must be overwriting in the subclass
-  _noComponentsHandler(text1, text2) {
-    if (!this.#componentsView.length) {
-      const noEventsView = this.#createNoEventsView();
-      noEventsView.render(text1, text2);
+  _noComponentsHandler() {
+    if (!this.#componentsViews.length) {
+      this.#noComponentsCtrl.init()
     }
   }
 
@@ -33,7 +31,7 @@ export class DisplayCtrl {
     // Changer his visibility in the subclass, and defined componentName
     const element = document.getElementById(`${componentName}-${componentID}`);
     element.remove();
-    this.#componentsView = this.#componentsView.filter(
+    this.#componentsViews = this.#componentsViews.filter(
       (view) => view.componentName.id !== componentID
     );
     this._noComponentsHandler();
@@ -41,7 +39,7 @@ export class DisplayCtrl {
 
   addComponent(component) {
     const view = this.#createComponentView(component);
-    this.#componentsView.push(view);
+    this.#componentsViews.push(view);
   }
 
   renderComponent(view) {
@@ -50,11 +48,11 @@ export class DisplayCtrl {
 
   renderComponents() {
     this._noComponentsHandler();
-    this.#componentsView.forEach((view) => this.renderComponent(view));
+    this.#componentsViews.forEach((view) => this.renderComponent(view));
   }
 
   clearComponents() {
-    this.#componentsView = [];
+    this.#componentsViews = [];
     this.#container.innerHTML = "";
     this._noComponentsHandler();
   }
