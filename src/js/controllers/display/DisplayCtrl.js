@@ -20,10 +20,9 @@ export class DisplayCtrl {
     return new this.#viewClass(this.#container, component);
   }
 
-  // This method must be overwriting in the subclass
-  _noComponentsHandler() {
+  #noComponentsHandler() {
     if (!this.#componentsViews.length) {
-      this.#noComponentsCtrl.init()
+      this.#noComponentsCtrl.init();
     }
   }
 
@@ -34,7 +33,7 @@ export class DisplayCtrl {
     this.#componentsViews = this.#componentsViews.filter(
       (view) => view.componentName.id !== componentID
     );
-    this._noComponentsHandler();
+    this.#noComponentsHandler();
   }
 
   addComponent(component) {
@@ -47,13 +46,13 @@ export class DisplayCtrl {
   }
 
   renderComponents() {
-    this._noComponentsHandler();
+    this.#noComponentsHandler();
     this.#componentsViews.forEach((view) => this.renderComponent(view));
   }
 
   clearComponents() {
     this.#componentsViews = [];
     this.#container.innerHTML = "";
-    this._noComponentsHandler();
+    this.#noComponentsHandler();
   }
 }
