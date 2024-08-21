@@ -25,13 +25,14 @@ export class NoComponentsCtrl {
     this.#noComponentsView.texts = texts;
   }
 
+  defineImgId(value) {
+    this.#noComponentsView.imgId = value;
+  }
+
   #pathHandler() {
-    this.#pathManager.updatePath(
-      "asset",
-      "#no-events-img",
-      "images",
-      this.#imgFile
-    );
+    console.log("inside path handler");
+    const imgId = this.#noComponentsView.imgId;
+    this.#pathManager.updatePath("asset", `#${imgId}`, "images", this.#imgFile);
   }
 
   init() {

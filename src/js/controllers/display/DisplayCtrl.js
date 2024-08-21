@@ -28,6 +28,7 @@ export class DisplayCtrl {
   }
 
   _defineNoComponentsSettings(t1 = "There is nothing...") {
+    console.log("inside settings")
     this.noComponentsCtrl.defineTexts(t1);
   }
 

@@ -9,5 +9,6 @@ export class LoanRequestCtrl extends DisplayCtrl {
   _defineNoComponentsSettings() {
     const t1 = "There are no requests...";
     this.noComponentsCtrl.defineTexts(t1);
+    this.noComponentsCtrl.defineImgId("request-no-components-img");
   }
 }

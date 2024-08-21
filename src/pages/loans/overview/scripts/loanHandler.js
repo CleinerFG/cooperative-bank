@@ -126,5 +126,5 @@ export function initLoanController() {
   const ctrlReceivables = new LoanCtrl(receivables, 2);
   loansReceivables.forEach((loan) => ctrlReceivables.addComponent(loan));
   ctrlReceivables.renderComponents();
-  // ctrlReceivables.clearComponents();
+  ctrlReceivables.clearComponents();
 }
