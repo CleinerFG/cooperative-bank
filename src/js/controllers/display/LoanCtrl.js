@@ -12,10 +12,6 @@ export class LoanCtrl extends DisplayCtrl {
     super._noComponentsHandler(t1, t2);
   }
 
-  renderComponent(view) {
-    view.render(this._type);
-  }
-
   removeComponent(loanID) {
     super._removeComponent("loan", loanID);
   }
