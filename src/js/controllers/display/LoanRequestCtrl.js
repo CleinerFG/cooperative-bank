@@ -6,9 +6,8 @@ export class LoanRequestCtrl extends DisplayCtrl {
     super(container, LoanRequestView);
   }
 
-  _noComponentsHandler() {
-    const t1 = "There are no opened requests...";
-    const t2 = "Get a new loan :)";
-    super._noComponentsHandler(t1, t2);
+  _defineNoComponentsSettings() {
+    const t1 = "There are no requests...";
+    this.noComponentsCtrl.defineTexts(t1);
   }
 }

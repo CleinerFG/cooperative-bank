@@ -106,5 +106,5 @@ export function initLoanRequestController() {
   const ctrlReceived = new LoanRequestCtrl(containerReceived);
   received.forEach((req) => ctrlReceived.addComponent(req));
   ctrlReceived.renderComponents();
-  // ctrlReceived.clearComponents();
+  ctrlReceived.clearComponents();
 }
