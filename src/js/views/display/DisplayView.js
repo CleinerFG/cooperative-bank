@@ -46,12 +46,7 @@ export class DisplayView {
     return { entity, entityValue };
   }
 
-  selfRemove() {
-    document.getElementById(this.cssId).remove();
-  }
-
   #renderCardItem(label, value) {
-    console.log({ label, value });
     return `
       <div class="card-data__item">
         <span class="card-data__label">${label}</span>
@@ -99,7 +94,11 @@ export class DisplayView {
     `;
   }
 
+  selfRemove() {
+    document.getElementById(this.cssId).remove();
+  }
+
   render() {
-    throw new Error("Must be implemented in the subclass");
+    throw new AbstractMethodError("render");
   }
 }
