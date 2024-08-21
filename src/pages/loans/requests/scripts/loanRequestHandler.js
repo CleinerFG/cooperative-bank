@@ -11,6 +11,7 @@ const requestData = [
     installmentValue: 200,
     rate: 2,
     status: 1,
+    type: 1,
   },
   {
     id: 14,
@@ -22,6 +23,7 @@ const requestData = [
     installmentValue: 400,
     rate: 2,
     status: 2,
+    type: 1,
   },
   {
     id: 15,
@@ -32,6 +34,7 @@ const requestData = [
     installmentValue: 300,
     rate: 2,
     status: 3,
+    type: 1,
   },
 ];
 
@@ -45,6 +48,7 @@ const receivedData = [
     installmentValue: 400,
     rate: 2,
     status: 1,
+    type: 2,
   },
   {
     id: 18,
@@ -55,6 +59,7 @@ const receivedData = [
     installmentValue: 400,
     rate: 2,
     status: 1,
+    type: 2,
   },
 ];
 
@@ -62,6 +67,7 @@ const requests = requestData.map(
   (req) =>
     new LoanRequest(
       req.id,
+      req.type,
       req.status,
       null,
       req.creditor,
@@ -77,6 +83,7 @@ const received = receivedData.map(
   (req) =>
     new LoanRequest(
       req.id,
+      req.type,
       req.status,
       req.debtor,
       null,

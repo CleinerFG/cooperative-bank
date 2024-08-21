@@ -1,5 +1,10 @@
 import { Loan } from "./Loan.js";
 
+const requestTypes = {
+  1: "opened",
+  2: "received",
+};
+
 const requestStatus = {
   1: "Pending",
   2: "Accepted",
@@ -8,9 +13,9 @@ const requestStatus = {
 };
 
 export class LoanRequest extends Loan {
-  #status;
   constructor(
     id,
+    type,
     status,
     debtor,
     creditor,
@@ -22,7 +27,8 @@ export class LoanRequest extends Loan {
   ) {
     super(
       id,
-      null,
+      type,
+      status,
       null,
       debtor,
       creditor,
@@ -31,12 +37,16 @@ export class LoanRequest extends Loan {
       value,
       installments,
       rate,
-      installmentValue
+      installmentValue,
+      null
     );
-    this.#status = status;
+  }
+
+  get type() {
+    return requestTypes[this._type];
   }
 
   get status() {
-    return requestStatus[this.#status];
+    return requestStatus[this._status];
   }
 }

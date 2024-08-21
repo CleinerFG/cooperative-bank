@@ -10,8 +10,6 @@ const loanTypes = {
 
 export class Loan {
   #id;
-  #type;
-  #status;
   #description;
   #debtor;
   #creditor;
@@ -38,8 +36,8 @@ export class Loan {
     remainingInstallments
   ) {
     this.#id = id;
-    this.#type = type;
-    this.#status = status;
+    this._type = type;
+    this._status = status;
     this.#description = description;
     this.#debtor = debtor;
     this.#creditor = creditor;
@@ -57,11 +55,11 @@ export class Loan {
   }
 
   get type() {
-    return loanTypes[this.#type];
+    return loanTypes[this._type];
   }
 
   get status() {
-    return loanStatus[this.#status];
+    return loanStatus[this._status];
   }
 
   get description() {
