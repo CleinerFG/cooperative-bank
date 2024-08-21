@@ -1,3 +1,8 @@
+const eventTypes = {
+  1: "payment",
+  2: "investment",
+};
+
 export class Event {
   #id;
   #type;
@@ -17,7 +22,7 @@ export class Event {
   }
 
   get type() {
-    return this.#type;
+    return eventTypes[this.#type];
   }
 
   get dueDate() {

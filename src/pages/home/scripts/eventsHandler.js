@@ -4,43 +4,43 @@ import { EventCtrl } from "../../../js/controllers/display/EventCtrl.js";
 const data = [
   {
     id: 1450,
-    type: "investment",
+    type: 2,
     dueDate: "10/05/2024",
     value: "2.200",
   },
   {
     id: 1456,
-    type: "payment",
+    type: 1,
     dueDate: "10/09/2024",
     value: "300",
   },
   {
     id: 15565,
-    type: "investment",
+    type: 2,
     dueDate: "08/07/2024",
     value: "2.800",
   },
   {
     id: 515,
-    type: "investment",
+    type: 2,
     dueDate: "09/05/2024",
     value: "3.400",
   },
   {
     id: 104,
-    type: "payment",
+    type: 1,
     dueDate: "10/08/2024",
     value: "200",
   },
   {
     id: 410,
-    type: "investment",
+    type: 2,
     dueDate: "12/07/2024",
     value: "5.800",
   },
   {
     id: 4610,
-    type: "payment",
+    type: 1,
     dueDate: "15/08/2024",
     value: "400",
   },
@@ -56,5 +56,5 @@ export function initEventsController() {
 
   events.forEach((event) => ctrl.addComponent(event));
   ctrl.renderComponents();
-  ctrl.clearComponents();
+  // ctrl.clearComponents();
 }
