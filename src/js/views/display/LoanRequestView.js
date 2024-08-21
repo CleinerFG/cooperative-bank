@@ -16,6 +16,18 @@ export class LoanRequestView extends DisplayView {
     }
   }
 
+  #getLabelValue() {
+    const { entity, entityValue } = this._getEntityInfo();
+    return [
+      { label: entity, value: entityValue },
+      { label: "Date", value: this.component.date },
+      { label: "Value", value: this.component.value },
+      { label: "Installments", value: this.component.installments },
+      { label: "Installment Value", value: this.component.installmentValue },
+      { label: "Interest Rate", value: this.component.rate },
+    ];
+  }
+
   #getFooterStr() {
     const { cssClass, btnText } = this.#getCssClassAndBtnText();
     const footerOpened = `
@@ -32,34 +44,12 @@ export class LoanRequestView extends DisplayView {
 
   render() {
     const { cssClass } = this.#getCssClassAndBtnText();
-    const { entity, entityValue } = this._getEntityInfo();
-    const footerStr = this.#getFooterStr();
-
     const htmlStr = `
-      <article id="request-${this.component.type}-${
-      this.component.id
-    }" class="card card-data request__${cssClass}">
-        <header class="card-data__header">${this.component.status}</header>
-        <main class="card-data__content">
-          ${this._renderCardItem(entity, entityValue)}
-          ${this._renderCardItem("Date", this.component.date)}
-          ${this._renderCardItem("Value", `$ ${this.component.value}`)}
-          ${this._renderCardItem(
-            "Installments",
-            `${this.component.installments} months`
-          )}
-          ${this._renderCardItem(
-            "Installment value",
-            `$ ${this.component.installmentValue}`
-          )}
-          ${this._renderCardItem(
-            "Interest Rate",
-            `${this.component.rate}% p.m.`
-          )}
-        </main>
-        <footer class="card-data__footer">
-          ${footerStr}
-        </footer>
+      <article id="request-${this.component.type}-${this.component.id}" 
+      class="card card-data request__${cssClass}">
+        ${this._createHeaderCard(this.component.status)}
+        ${this._createMainCard(...this.#getLabelValue())}
+        ${this._createFooterCard(this.#getFooterStr())}
       </article>
     `;
 

@@ -20,7 +20,8 @@ export class DisplayView {
     return { entity, entityValue };
   }
 
-  _renderCardItem(label, value) {
+  #renderCardItem(label, value) {
+    console.log({ label, value });
     return `
       <div class="card-data__item">
         <span class="card-data__label">${label}</span>
@@ -38,9 +39,10 @@ export class DisplayView {
   }
 
   _createMainCard(...cardItems) {
-    const itemsStr = cardItems.map((item) =>
-      this._renderCardItem({ label, value }).join("")
-    );
+    const itemsStr = cardItems
+      .map(({ label, value }) => this.#renderCardItem(label, value))
+      .join("");
+
     return `
     <main class="card-data__content">
     ${itemsStr}
