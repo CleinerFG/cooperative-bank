@@ -5,19 +5,43 @@ export class LoanRequestView extends DisplayView {
     super(container, loanRequest);
   }
 
-  #getCssClassAndBtnText() {
+  get #cssId() {
+    return `request-${this.component.type}-${this.component.id}`;
+  }
+
+  get #cssClass() {
     switch (this.component.status) {
       case "Accepted":
-        return { cssClass: "success", btnText: "Confirm" };
+        return `request__success`;
       case "Denied":
-        return { cssClass: "fail", btnText: "Confirm" };
+        return `request__fail`;
       default:
-        return { cssClass: "pending", btnText: "Cancel Request" };
+        return `request__pending`;
     }
   }
 
-  #getLabelValue() {
-    const { entity, entityValue } = this._getEntityInfo();
+  get #btnClass() {
+    switch (this.component.status) {
+      case "Accepted":
+        return "btn-success";
+      case "Denied":
+        return "btn-fail";
+      default:
+        return "btn-pending";
+    }
+  }
+
+  get #btnText() {
+    switch (this.component.status) {
+      case "Accepted" || "Denied":
+        return "Confirm";
+      default:
+        return "Cancel Request";
+    }
+  }
+
+  get #labelValue() {
+    const { entity, entityValue } = this._entityInfo;
     return [
       { label: entity, value: entityValue },
       { label: "Date", value: this.component.date },
@@ -28,31 +52,38 @@ export class LoanRequestView extends DisplayView {
     ];
   }
 
-  #getFooterStr() {
-    const { cssClass, btnText } = this.#getCssClassAndBtnText();
+  get #headerCard() {
+    return this._createHeaderCard(this.component.status);
+  }
+
+  get #mainCard() {
+    return this._createMainCard(...this.#labelValue);
+  }
+
+  get #footerCard() {
     const footerOpened = `
-      <button class="btn btn-${cssClass} card-data__btn">
-        ${btnText}
+      <button class="btn ${this.#btnClass} card-data__btn">
+        ${this.#btnText}
       </button>
     `;
     const footerReceived = `
       <button class="btn btn-success card-data__btn">Approve</button>
       <button class="btn btn-fail card-data__btn">Recuse</button>
     `;
-    return this.component.debtor ? footerReceived : footerOpened;
+    const str =
+      this.component.type === "opened" ? footerOpened : footerReceived;
+    return this._createFooterCard(str);
   }
 
   render() {
-    const { cssClass } = this.#getCssClassAndBtnText();
-    const htmlStr = `
-      <article id="request-${this.component.type}-${this.component.id}" 
-      class="card card-data request__${cssClass}">
-        ${this._createHeaderCard(this.component.status)}
-        ${this._createMainCard(...this.#getLabelValue())}
-        ${this._createFooterCard(this.#getFooterStr())}
-      </article>
-    `;
+    const cardStr = this._createCard(
+      this.#cssId,
+      this.#cssClass,
+      this.#headerCard,
+      this.#mainCard,
+      this.#footerCard
+    );
 
-    this.container.insertAdjacentHTML("afterbegin", htmlStr);
+    this.container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }
