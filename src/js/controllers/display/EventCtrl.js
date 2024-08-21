@@ -6,9 +6,4 @@ export class EventCtrl extends DisplayCtrl {
     super(container, EventView);
   }
 
-  _nofgComponentsHandler() {
-    const t1 = "There are no events...";
-    const t2 = "When there is news, we'll let you know ; )";
-    super._noComponentsHandler(t1, t2);
-  }
 }

@@ -10,6 +10,7 @@ export class DisplayCtrl {
     this.#viewClass = viewClass;
     this.#componentsViews = [];
     this.#noComponentsCtrl = new NoComponentsCtrl(this.#container);
+    this._defineNoComponentsSettings();
   }
 
   get noComponentsCtrl() {
@@ -24,6 +25,12 @@ export class DisplayCtrl {
     if (!this.#componentsViews.length) {
       this.#noComponentsCtrl.init();
     }
+  }
+
+  _defineNoComponentsSettings(
+    t1 = "There is nothing...",
+  ) {
+    this.noComponentsCtrl.defineTexts(t1);
   }
 
   removeComponent(id) {
