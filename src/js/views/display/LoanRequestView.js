@@ -36,9 +36,9 @@ export class LoanRequestView extends DisplayView {
     const footerStr = this.#getFooterStr();
 
     const htmlStr = `
-      <article id="request-${
-        this.component.id
-      }" class="card card-data request__${cssClass}">
+      <article id="request-${this.component.type}-${
+      this.component.id
+    }" class="card card-data request__${cssClass}">
         <header class="card-data__header">${this.component.status}</header>
         <main class="card-data__content">
           ${this._renderCardItem(entity, entityValue)}
