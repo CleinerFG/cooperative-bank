@@ -1,3 +1,5 @@
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+
 export class DisplayView {
   #container;
   #component;
@@ -23,19 +25,19 @@ export class DisplayView {
   }
 
   get _headerCard() {
-    throw new Error("Must be implemented in the subclass");
+    throw new AbstractMethodError("_headerCard");
   }
 
   get _mainCard() {
-    throw new Error("Must be implemented in the subclass");
+    throw new AbstractMethodError("_mainCard");
   }
 
   get _footerCard() {
-    throw new Error("Must be implemented in the subclass");
+    throw new AbstractMethodError("_footerCard");
   }
 
   get _labelValue() {
-    throw new Error("Must be implemented in the subclass");
+    throw new AbstractMethodError("_labelValue");
   }
 
   get _entityInfo() {
