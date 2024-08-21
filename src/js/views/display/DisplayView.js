@@ -14,6 +14,14 @@ export class DisplayView {
     return this.#container;
   }
 
+  get _cssId() {
+    return `card-${this.component.id}`;
+  }
+
+  get _cssClass() {
+    return `card__${this.component.type}`;
+  }
+
   get _headerCard() {
     throw new Error("Must be implemented in the subclass");
   }

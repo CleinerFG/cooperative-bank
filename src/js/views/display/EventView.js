@@ -6,6 +6,14 @@ export class EventView extends DisplayView {
     super(container, event);
   }
 
+  get #cssId() {
+    return `event-${this.component.id}`;
+  }
+
+  get #cssClass() {
+    return `event__${this.component.type}`;
+  }
+
   get #btnClass() {
     return this.component.type === "payment" ? "btn-attention" : "";
   }
@@ -39,15 +47,13 @@ export class EventView extends DisplayView {
   }
 
   render() {
-    const htmlStr = `
-      <article id="event-${this.component.id}" class="card card-data event__${
-      this.component.type
-    }">
-        ${this.#headerCard}
-        ${this.#mainCard}
-        ${this.#footerCard}
-      </article>
-      `;
-    this.container.insertAdjacentHTML("afterbegin", htmlStr);
+    const cardStr = this._createCard(
+      this.#cssId,
+      this.#cssClass,
+      this.#headerCard,
+      this.#mainCard,
+      this.#footerCard
+    );
+    this.container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }
