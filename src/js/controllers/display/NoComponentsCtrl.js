@@ -28,7 +28,7 @@ export class NoComponentsCtrl {
   #pathHandler() {
     this.#pathManager.updatePath(
       "asset",
-      "#no-events-astronaut",
+      "#no-events-img",
       "images",
       this.#imgFile
     );
@@ -36,6 +36,6 @@ export class NoComponentsCtrl {
 
   init() {
     this.#noComponentsView.render();
-    this.#pathHandler;
+    this.#pathHandler();
   }
 }

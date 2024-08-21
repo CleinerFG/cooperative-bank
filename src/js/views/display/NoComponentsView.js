@@ -3,7 +3,7 @@ export class NoComponentsView {
   #texts;
   constructor(container) {
     this.#container = container;
-    this.#texts = [];
+    this.#texts = ["There is nothing..."];
   }
 
   get texts() {
