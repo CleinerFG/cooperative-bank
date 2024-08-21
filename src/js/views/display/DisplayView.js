@@ -29,6 +29,33 @@ export class DisplayView {
     `;
   }
 
+  _createHeaderCard(str) {
+    return `
+      <header class="card-data__header">
+      ${str}
+      </header>
+      `;
+  }
+
+  _createMainCard(...cardItems) {
+    const itemsStr = cardItems.map((item) =>
+      this._renderCardItem({ label, value }).join("")
+    );
+    return `
+    <main class="card-data__content">
+    ${itemsStr}
+    </main>
+    `;
+  }
+
+  _createFooterCard(str) {
+    return `
+    <footer class="card-data__footer">
+      ${str}
+    </footer>
+    `;
+  }
+
   render() {
     throw new Error("Must be implemented in the subclass");
   }
