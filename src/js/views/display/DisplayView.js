@@ -14,7 +14,23 @@ export class DisplayView {
     return this.#container;
   }
 
-  _getEntityInfo() {
+  get _headerCard() {
+    throw new Error("Must be implemented in the subclass");
+  }
+
+  get _mainCard() {
+    throw new Error("Must be implemented in the subclass");
+  }
+
+  get _footerCard() {
+    throw new Error("Must be implemented in the subclass");
+  }
+
+  get _labelValue() {
+    throw new Error("Must be implemented in the subclass");
+  }
+
+  get _entityInfo() {
     const entity = this.component.creditor ? "Creditor" : "Debtor";
     const entityValue = this.component.creditor ?? this.component.debtor;
     return { entity, entityValue };
@@ -55,6 +71,17 @@ export class DisplayView {
     <footer class="card-data__footer">
       ${str}
     </footer>
+    `;
+  }
+
+  _createCard(cssId, cssClass, header, main, footer) {
+    return `
+    <article id="${cssId}" class="card card-data ${cssClass}">
+        ${header}
+        ${main}
+        ${footer}
+      </article>
+  
     `;
   }
 
