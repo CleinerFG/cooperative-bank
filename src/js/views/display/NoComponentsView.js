@@ -16,7 +16,7 @@ export class NoComponentsView {
 
   #infoTexts() {
     const createTagP = (txt) => `<p class="info-text">${txt}</p>`;
-    return arrTexts.map((txt) => createTagP(txt)).join("");
+    return this.#texts.map((txt) => createTagP(txt)).join("");
   }
 
   #createNoEventsContainer() {
