@@ -1,12 +1,17 @@
 const loanStatus = {
-  1: "Request",
-  2: "Active",
-  3: "Finished",
+  1: "active",
+  2: "finished",
+};
+
+const loanTypes = {
+  1: "payable",
+  2: "receivable",
 };
 
 export class Loan {
   #id;
   #type;
+  #status;
   #description;
   #debtor;
   #creditor;
@@ -20,6 +25,7 @@ export class Loan {
   constructor(
     id,
     type,
+    status,
     description,
     debtor,
     creditor,
@@ -33,6 +39,7 @@ export class Loan {
   ) {
     this.#id = id;
     this.#type = type;
+    this.#status = status;
     this.#description = description;
     this.#debtor = debtor;
     this.#creditor = creditor;
@@ -50,7 +57,11 @@ export class Loan {
   }
 
   get type() {
-    return this.#type;
+    return loanTypes[this.#type];
+  }
+
+  get status() {
+    return loanStatus[this.#status];
   }
 
   get description() {
@@ -91,10 +102,6 @@ export class Loan {
 
   get remainingInstallments() {
     return this.#remainingInstallments;
-  }
-
-  get totalLoanCost() {
-    return this.#installmentValue * this.#installments;
   }
 
   get totalLoanCost() {

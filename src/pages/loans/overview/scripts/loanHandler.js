@@ -4,7 +4,8 @@ import { LoanCtrl } from "../../../../js/controllers/display/LoanCtrl.js";
 const transactions = [
   {
     id: 15466,
-    type: "payable",
+    type: 1,
+    status: 1,
     description: "Loan for new equipment",
     creditor: "The Trapper",
     date: "15/07/2024",
@@ -17,7 +18,8 @@ const transactions = [
   },
   {
     id: 24645,
-    type: "receivable",
+    type: 2,
+    status: 1,
     description: "Payment for services rendered",
     debtor: "Meg Thomas",
     date: "20/06/2024",
@@ -30,7 +32,8 @@ const transactions = [
   },
   {
     id: 456453,
-    type: "receivable",
+    type: 2,
+    status: 1,
     description: "Loan for medical expenses",
     debtor: "Claudette Morel",
     date: "10/05/2024",
@@ -43,7 +46,8 @@ const transactions = [
   },
   {
     id: 44654,
-    type: "receivable",
+    type: 2,
+    status: 1,
     description: "Loan for travel expenses",
     debtor: "Jake Park",
     date: "01/05/2024",
@@ -56,7 +60,8 @@ const transactions = [
   },
   {
     id: 46455,
-    type: "payable",
+    type: 1,
+    status: 1,
     description: "Payment for rented equipment",
     creditor: "The Wraith",
     date: "05/08/2024",
@@ -69,14 +74,15 @@ const transactions = [
   },
 ];
 
-const payables = transactions.filter((trans) => trans.type === "payable");
-const receivables = transactions.filter((trans) => trans.type === "receivable");
+const payables = transactions.filter((trans) => trans.type === 1);
+const receivables = transactions.filter((trans) => trans.type === 2);
 
 const loansPayables = payables.map(
   (loan) =>
     new Loan(
       loan.id,
       loan.type,
+      loan.status,
       loan.description,
       null,
       loan.creditor,
@@ -95,6 +101,7 @@ const loansReceivables = receivables.map(
     new Loan(
       loan.id,
       loan.type,
+      loan.status,
       loan.description,
       loan.debtor,
       null,
@@ -110,13 +117,13 @@ const loansReceivables = receivables.map(
 
 export function initLoanController() {
   const payablesContainer = document.querySelector(".payables__cards");
-  const ctrlPayables = new LoanCtrl(payablesContainer, "payable");
+  const ctrlPayables = new LoanCtrl(payablesContainer, 1);
   loansPayables.forEach((loan) => ctrlPayables.addComponent(loan));
   ctrlPayables.renderComponents();
   // ctrlPayables.clearComponents();
 
   const receivables = document.querySelector(".receivables__cards");
-  const ctrlReceivables = new LoanCtrl(receivables, "receivable");
+  const ctrlReceivables = new LoanCtrl(receivables, 2);
   loansReceivables.forEach((loan) => ctrlReceivables.addComponent(loan));
   ctrlReceivables.renderComponents();
   // ctrlReceivables.clearComponents();
