@@ -11,8 +11,4 @@ export class LoanCtrl extends DisplayCtrl {
     const t2 = "Waiting for updates";
     super._noComponentsHandler(t1, t2);
   }
-
-  removeComponent(loanID) {
-    super._removeComponent("loan", loanID);
-  }
 }

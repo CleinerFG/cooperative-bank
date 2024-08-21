@@ -5,7 +5,7 @@ export class LoanRequestView extends DisplayView {
     super(container, loanRequest);
   }
 
-  get #cssId() {
+  get cssId() {
     return `request-${this.component.type}-${this.component.id}`;
   }
 
@@ -77,7 +77,7 @@ export class LoanRequestView extends DisplayView {
 
   render() {
     const cardStr = this._createCard(
-      this.#cssId,
+      this.cssId,
       this.#cssClass,
       this.#headerCard,
       this.#mainCard,

@@ -26,13 +26,11 @@ export class DisplayCtrl {
     }
   }
 
-  _removeComponent(componentName, componentID) {
-    // Changer his visibility in the subclass, and defined componentName
-    const element = document.getElementById(`${componentName}-${componentID}`);
-    element.remove();
-    this.#componentsViews = this.#componentsViews.filter(
-      (view) => view.componentName.id !== componentID
-    );
+  removeComponent(id) {
+    this.#componentsViews = this.#componentsViews.filter((view) => {
+      if (view.component.id === id) view.selfRemove();
+      return view.component.id !== id;
+    });
     this.#noComponentsHandler();
   }
 

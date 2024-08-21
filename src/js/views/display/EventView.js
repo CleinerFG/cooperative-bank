@@ -6,7 +6,7 @@ export class EventView extends DisplayView {
     super(container, event);
   }
 
-  get #cssId() {
+  get cssId() {
     return `event-${this.component.id}`;
   }
 
@@ -48,7 +48,7 @@ export class EventView extends DisplayView {
 
   render() {
     const cardStr = this._createCard(
-      this.#cssId,
+      this.cssId,
       this.#cssClass,
       this.#headerCard,
       this.#mainCard,

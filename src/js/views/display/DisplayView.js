@@ -16,7 +16,7 @@ export class DisplayView {
     return this.#container;
   }
 
-  get _cssId() {
+  get cssId() {
     return `card-${this.component.id}`;
   }
 
@@ -44,6 +44,10 @@ export class DisplayView {
     const entity = this.component.creditor ? "Creditor" : "Debtor";
     const entityValue = this.component.creditor ?? this.component.debtor;
     return { entity, entityValue };
+  }
+
+  selfRemove() {
+    document.getElementById(this.cssId).remove();
   }
 
   #renderCardItem(label, value) {

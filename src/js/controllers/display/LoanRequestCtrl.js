@@ -11,8 +11,4 @@ export class LoanRequestCtrl extends DisplayCtrl {
     const t2 = "Get a new loan :)";
     super._noComponentsHandler(t1, t2);
   }
-
-  removeComponent(requestId) {
-    super._removeComponent("request", requestId);
-  }
 }
