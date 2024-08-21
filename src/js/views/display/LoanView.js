@@ -4,37 +4,64 @@ export class LoanView extends DisplayView {
   constructor(container, loan) {
     super(container, loan);
   }
-  render() {
-    const { entity, entityValue } = this._getEntityInfo();
 
-    const htmlStr = `
-    <article class="card card-data">
-      <header class="card-data__header">Loan ID: ${this.component.id}</header>
-      <main class="card-data__content">
-        ${this._renderCardItem(entity, entityValue)}
-        ${this._renderCardItem("Date", this.component.date)}
-        ${this._renderCardItem("Value", "$ " + this.component.value)}
-        ${this._renderCardItem("Description", this.component.description)}
-        ${this._renderCardItem(
-          "Installments",
-          this.component.installments + " months"
-        )}
-        ${this._renderCardItem(
-          "Remaining Installments",
-          this.component.remainingInstallments
-        )}
-        ${this._renderCardItem(
-          "Installment Value",
-          "$ " + this.component.installmentValue
-        )}
-        ${this._renderCardItem("Amount Due", "$ " + this.component.amountDue)}
-        ${this._renderCardItem("Interest Rate", this.component.rate + "% p.m.")}
-      </main>
-      <footer class="card-data__footer">
-        <button class="btn card-data__btn">Payments</button>
-      </footer>
-    </article>
+  get #cssId() {
+    return `loan-${this.component.id}`;
+  }
+
+  get #cssClass() {
+    return `loan__${this.component.type}`;
+  }
+
+  get #btnClass() {
+    return "";
+  }
+
+  get #btnText() {
+    return "Payments";
+  }
+
+  get #labelValue() {
+    const { entity, entityValue } = this._entityInfo;
+    return [
+      { label: entity, value: entityValue },
+      { label: "Date", value: this.component.date },
+      { label: "Value", value: this.component.value },
+      { label: "Description", value: this.component.description },
+      { label: "Installments", value: this.component.installments },
+      {
+        label: "Remaining Installments",
+        value: this.component.remainingInstallments,
+      },
+      { label: "Installment Value", value: this.component.installmentValue },
+      { label: "Amount Due", value: this.component.amountDue },
+      { label: "Interest Rate", value: this.component.rate },
+    ];
+  }
+
+  get #headerCard() {
+    return this._createHeaderCard(`Loan ID: ${this.component.id}`);
+  }
+
+  get #mainCard() {
+    return this._createMainCard(...this.#labelValue);
+  }
+
+  get #footerCard() {
+    const str = `
+      <button class="btn card-data__btn">${this.#btnText}</button>
     `;
-    this.container.insertAdjacentHTML("afterbegin", htmlStr);
+    return this._createFooterCard(str);
+  }
+
+  render() {
+    const cardStr = this._createCard(
+      this.#cssId,
+      this.#cssClass,
+      this.#headerCard,
+      this.#mainCard,
+      this.#footerCard
+    );
+    this.container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }
