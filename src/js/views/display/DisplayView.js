@@ -17,11 +17,11 @@ export class DisplayView {
   }
 
   get cssId() {
-    return `card-${this.component.id}`;
+    throw new AbstractMethodError("render");
   }
 
   get _cssClass() {
-    return `card__${this.component.type}`;
+    throw new AbstractMethodError("render");
   }
 
   get _headerCard() {

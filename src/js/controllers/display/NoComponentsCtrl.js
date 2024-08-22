@@ -15,7 +15,6 @@ export class NoComponentsCtrl {
   
   #randomImgFile() {
     const n = Math.floor(Math.random() * 4) + 1;
-    console.log(n);
     return `astronaut-${n}.svg`;
   }
 

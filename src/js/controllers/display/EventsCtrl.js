@@ -5,6 +5,7 @@ export class EventsCtrl extends DisplayCtrl {
   constructor(container, category) {
     super(container, EventView, category);
   }
+  
   _defineNoComponentsSettings() {
     super._defineNoComponentsSettings();
     const t1 = "There are no events...";
