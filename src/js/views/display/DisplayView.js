@@ -12,11 +12,7 @@ export class DisplayView {
     return this.#component;
   }
 
-  get container() {
-    return this.#container;
-  }
-
-  get cssId() {
+  get _cssId() {
     throw new AbstractMethodError("render");
   }
 
@@ -83,9 +79,9 @@ export class DisplayView {
     `;
   }
 
-  _createCard(cssId, cssClass, header, main, footer) {
+  _createCard(header, main, footer) {
     return `
-    <article id="${cssId}" class="card card-data ${cssClass}">
+    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
         ${header}
         ${main}
         ${footer}
@@ -95,17 +91,15 @@ export class DisplayView {
   }
 
   selfRemove() {
-    document.getElementById(this.cssId).remove();
+    document.getElementById(this._cssId).remove();
   }
 
   render() {
     const cardStr = this._createCard(
-      this.cssId,
-      this._cssClass,
       this._headerCard,
       this._mainCard,
       this._footerCard
     );
-    this.container.insertAdjacentHTML("afterbegin", cardStr);
+    this.#container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }

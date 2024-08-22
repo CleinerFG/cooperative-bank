@@ -9,7 +9,7 @@ export class LoanRequestView extends DisplayView {
     return `request-${this.component.type}-${this.component.id}`;
   }
 
-  get #cssClass() {
+  get _cssClass() {
     switch (this.component.status) {
       case "Accepted":
         return `request__success`;
@@ -20,7 +20,7 @@ export class LoanRequestView extends DisplayView {
     }
   }
 
-  get #btnClass() {
+  get _btnClass() {
     switch (this.component.status) {
       case "Accepted":
         return "btn-success";
@@ -31,7 +31,7 @@ export class LoanRequestView extends DisplayView {
     }
   }
 
-  get #btnText() {
+  get _btnText() {
     switch (this.component.status) {
       case "Accepted" || "Denied":
         return "Confirm";
@@ -40,7 +40,7 @@ export class LoanRequestView extends DisplayView {
     }
   }
 
-  get #labelValue() {
+  get _labelValue() {
     const { entity, entityValue } = this._entityInfo;
     return [
       { label: entity, value: entityValue },
@@ -52,18 +52,18 @@ export class LoanRequestView extends DisplayView {
     ];
   }
 
-  get #headerCard() {
+  get _headerCard() {
     return this._createHeaderCard(this.component.status);
   }
 
-  get #mainCard() {
-    return this._createMainCard(...this.#labelValue);
+  get _mainCard() {
+    return this._createMainCard(...this._labelValue);
   }
 
-  get #footerCard() {
+  get _footerCard() {
     const footerOpened = `
-      <button class="btn ${this.#btnClass} card-data__btn">
-        ${this.#btnText}
+      <button class="btn ${this._btnClass} card-data__btn">
+        ${this._btnText}
       </button>
     `;
     const footerReceived = `
@@ -78,10 +78,10 @@ export class LoanRequestView extends DisplayView {
   render() {
     const cardStr = this._createCard(
       this.cssId,
-      this.#cssClass,
-      this.#headerCard,
-      this.#mainCard,
-      this.#footerCard
+      this._cssClass,
+      this._headerCard,
+      this._mainCard,
+      this._footerCard
     );
 
     this.container.insertAdjacentHTML("afterbegin", cardStr);

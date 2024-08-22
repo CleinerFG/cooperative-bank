@@ -6,7 +6,7 @@ export class EventView extends DisplayView {
     super(container, event);
   }
 
-  get cssId() {
+  get _cssId() {
     return `event-${this.component.id}`;
   }
 

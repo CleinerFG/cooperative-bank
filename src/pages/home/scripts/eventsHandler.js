@@ -57,5 +57,5 @@ export function initEventsController() {
   events.forEach((event) => ctrl.addComponent(event));
   ctrl.renderComponents();
   ctrl.removeComponent(1450);
-  // ctrl.clearComponents();
+  ctrl.clearComponents();
 }
