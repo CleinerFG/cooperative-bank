@@ -79,12 +79,12 @@ export class DisplayView {
     `;
   }
 
-  _createCard(header, main, footer) {
+  #createCard() {
     return `
     <article id="${this._cssId}" class="card card-data ${this._cssClass}">
-        ${header}
-        ${main}
-        ${footer}
+        ${this._headerCard}
+        ${this._mainCard}
+        ${this._footerCard}
       </article>
   
     `;
@@ -95,11 +95,7 @@ export class DisplayView {
   }
 
   render() {
-    const cardStr = this._createCard(
-      this._headerCard,
-      this._mainCard,
-      this._footerCard
-    );
+    const cardStr = this.#createCard();
     this.#container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }
