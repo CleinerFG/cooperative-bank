@@ -36,6 +36,7 @@ export class LoanView extends DisplayView {
       { label: "Installment Value", value: this.component.installmentValue },
       { label: "Amount Due", value: this.component.amountDue },
       { label: "Interest Rate", value: this.component.rate },
+      { label: "Total Loan Cost", value: this.component.totalLoanCost },
     ];
   }
 
