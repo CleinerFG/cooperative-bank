@@ -33,7 +33,8 @@ export class LoanRequestView extends DisplayView {
 
   get _btnText() {
     switch (this.component.status) {
-      case "Accepted" || "Denied":
+      case "Accepted":
+      case "Denied":
         return "Confirm";
       default:
         return "Cancel Request";
