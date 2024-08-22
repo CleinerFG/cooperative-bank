@@ -1,3 +1,5 @@
+import { monetaryValue } from "../../utils/formatters.js";
+
 const loanStatus = {
   1: "active",
   2: "finished",
@@ -79,11 +81,11 @@ export class Loan {
   }
 
   get amountDue() {
-    return this.#amountDue;
+    return monetaryValue(this.#amountDue);
   }
 
   get value() {
-    return this.#value;
+    return monetaryValue(this.#value);
   }
 
   get installments() {
@@ -95,7 +97,7 @@ export class Loan {
   }
 
   get installmentValue() {
-    return this.#installmentValue;
+    return monetaryValue(this.#installmentValue);
   }
 
   get remainingInstallments() {
@@ -103,6 +105,6 @@ export class Loan {
   }
 
   get totalLoanCost() {
-    return this.#installmentValue * this.#installments;
+    return monetaryValue(this.#installmentValue * this.#installments);
   }
 }

@@ -1,3 +1,5 @@
+import { monetaryValue } from "../../utils/formatters.js";
+
 const eventTypes = {
   1: "payment",
   2: "investment",
@@ -30,6 +32,6 @@ export class Event {
   }
 
   get value() {
-    return this.#value;
+    return monetaryValue(this.#value);
   }
 }
