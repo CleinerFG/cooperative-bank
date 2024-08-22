@@ -1,5 +1,5 @@
 import { Event } from "../../../js/models/display/Event.js";
-import { EventCtrl } from "../../../js/controllers/display/EventCtrl.js";
+import { EventsCtrl } from "../../../js/controllers/display/EventsCtrl.js";
 
 const data = [
   {
@@ -52,7 +52,7 @@ const events = data.map(
 
 export function initEventsController() {
   const container = document.querySelector(".events__cards");
-  const ctrl = new EventCtrl(container, "event");
+  const ctrl = new EventsCtrl(container, "events");
 
   events.forEach((event) => ctrl.addComponent(event));
   ctrl.renderComponents();
