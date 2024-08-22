@@ -1,0 +1,12 @@
+.form-group__input-group:first-child {
+  width: 100%;
+}
+
+.form-group__input-group:nth-child(n + 2) {
+  /* flex: 1; */
+}
+
+
+.input:first-child {
+  width: 100%;
+}
