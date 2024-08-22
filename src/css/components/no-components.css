@@ -1,15 +1,15 @@
-.no-events__text {
+.no-components__text {
   flex: 1;
   margin-right: var(--container-padding);
 }
 
-.no-events__img {
+.no-components__img {
   flex: 1;
   height: 200px;
   min-height: 100%;
 }
 
-.no-events {
+.no-components {
   width: 100%;
   display: flex;
   align-items: center;

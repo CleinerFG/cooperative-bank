@@ -31,9 +31,9 @@ export class NoComponentsView {
 
   #createNoEventsContainer() {
     return `
-    <div class="no-events">
-      <img class="no-events__img" id="${this.#imgId}">
-      <div class="no-events__text">
+    <div class="no-components">
+      <img class="no-components__img" id="${this.#imgId}">
+      <div class="no-components__text">
        ${this.#infoTexts()}
       </div>
     </div>
