@@ -51,6 +51,17 @@ export class DisplayView {
     `;
   }
 
+  #createCard() {
+    return `
+    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
+        ${this._headerCard}
+        ${this._mainCard}
+        ${this._footerCard}
+      </article>
+  
+    `;
+  }
+
   _createHeaderCard(str) {
     return `
       <header class="card-data__header">
@@ -76,17 +87,6 @@ export class DisplayView {
     <footer class="card-data__footer">
       ${str}
     </footer>
-    `;
-  }
-
-  #createCard() {
-    return `
-    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
-        ${this._headerCard}
-        ${this._mainCard}
-        ${this._footerCard}
-      </article>
-  
     `;
   }
 

@@ -5,7 +5,7 @@ export class LoanRequestView extends DisplayView {
     super(container, loanRequest);
   }
 
-  get cssId() {
+  get _cssId() {
     return `request-${this.component.type}-${this.component.id}`;
   }
 
@@ -73,17 +73,5 @@ export class LoanRequestView extends DisplayView {
     const str =
       this.component.type === "opened" ? footerOpened : footerReceived;
     return this._createFooterCard(str);
-  }
-
-  render() {
-    const cardStr = this._createCard(
-      this.cssId,
-      this._cssClass,
-      this._headerCard,
-      this._mainCard,
-      this._footerCard
-    );
-
-    this.container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }
