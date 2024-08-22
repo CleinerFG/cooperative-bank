@@ -117,13 +117,13 @@ const loansReceivables = receivables.map(
 
 export function initLoanController() {
   const payablesContainer = document.querySelector(".payables__cards");
-  const ctrlPayables = new LoanCtrl(payablesContainer, 1);
+  const ctrlPayables = new LoanCtrl(payablesContainer, "payables");
   loansPayables.forEach((loan) => ctrlPayables.addComponent(loan));
   ctrlPayables.renderComponents();
   ctrlPayables.clearComponents();
 
   const receivables = document.querySelector(".receivables__cards");
-  const ctrlReceivables = new LoanCtrl(receivables, 2);
+  const ctrlReceivables = new LoanCtrl(receivables, "receivables");
   loansReceivables.forEach((loan) => ctrlReceivables.addComponent(loan));
   ctrlReceivables.renderComponents();
   ctrlReceivables.clearComponents();

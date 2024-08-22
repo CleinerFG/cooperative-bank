@@ -52,10 +52,10 @@ const events = data.map(
 
 export function initEventsController() {
   const container = document.querySelector(".events__cards");
-  const ctrl = new EventCtrl(container);
+  const ctrl = new EventCtrl(container, "event");
 
   events.forEach((event) => ctrl.addComponent(event));
   ctrl.renderComponents();
   ctrl.removeComponent(1450);
-  // ctrl.clearComponents();
+  ctrl.clearComponents();
 }

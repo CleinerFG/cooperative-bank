@@ -97,13 +97,13 @@ const received = receivedData.map(
 
 export function initLoanRequestController() {
   const containerOpen = document.querySelector(".open-requests__cards");
-  const ctrlOpen = new LoanRequestCtrl(containerOpen);
+  const ctrlOpen = new LoanRequestCtrl(containerOpen, "opened");
   requests.forEach((req) => ctrlOpen.addComponent(req));
   ctrlOpen.renderComponents();
   ctrlOpen.clearComponents();
 
   const containerReceived = document.querySelector(".received-requests__cards");
-  const ctrlReceived = new LoanRequestCtrl(containerReceived);
+  const ctrlReceived = new LoanRequestCtrl(containerReceived, "received");
   received.forEach((req) => ctrlReceived.addComponent(req));
   ctrlReceived.renderComponents();
   ctrlReceived.clearComponents();

@@ -30,7 +30,6 @@ export class NoComponentsCtrl {
   }
 
   #pathHandler() {
-    console.log("inside path handler");
     const imgId = this.#noComponentsView.imgId;
     this.#pathManager.updatePath("asset", `#${imgId}`, "images", this.#imgFile);
   }

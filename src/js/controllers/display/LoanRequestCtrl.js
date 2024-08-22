@@ -2,13 +2,13 @@ import { DisplayCtrl } from "./DisplayCtrl.js";
 import { LoanRequestView } from "../../views/display/LoanRequestView.js";
 
 export class LoanRequestCtrl extends DisplayCtrl {
-  constructor(container) {
-    super(container, LoanRequestView);
+  constructor(container, category) {
+    super(container, LoanRequestView, category);
   }
 
   _defineNoComponentsSettings() {
-    const t1 = "There are no requests...";
+    super._defineNoComponentsSettings()
+    const t1 = `There are no ${this._category} requests...`;
     this.noComponentsCtrl.defineTexts(t1);
-    this.noComponentsCtrl.defineImgId("request-no-components-img");
   }
 }

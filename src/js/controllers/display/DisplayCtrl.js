@@ -5,9 +5,10 @@ export class DisplayCtrl {
   #viewClass;
   #componentsViews;
   #noComponentsCtrl;
-  constructor(container, viewClass) {
+  constructor(container, viewClass, category) {
     this.#container = container;
     this.#viewClass = viewClass;
+    this._category = category;
     this.#componentsViews = [];
     this.#noComponentsCtrl = new NoComponentsCtrl(this.#container);
     this._defineNoComponentsSettings();
@@ -27,9 +28,10 @@ export class DisplayCtrl {
     }
   }
 
-  _defineNoComponentsSettings(t1 = "There is nothing...") {
-    console.log("inside settings")
+  _defineNoComponentsSettings() {
+    const t1 = "There is nothing...";
     this.noComponentsCtrl.defineTexts(t1);
+    this.noComponentsCtrl.defineImgId(`${this._category}-no-components-img`);
   }
 
   removeComponent(id) {
