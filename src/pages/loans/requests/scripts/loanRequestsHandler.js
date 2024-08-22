@@ -1,5 +1,5 @@
 import { LoanRequest } from "../../../../js/models/display/LoanRequest.js";
-import { LoanRequestCtrl } from "../../../../js/controllers/display/LoanRequestCtrl.js";
+import { LoanRequestsCtrl } from "../../../../js/controllers/display/LoanRequestsCtrl.js";
 
 const requestData = [
   {
@@ -95,15 +95,15 @@ const received = receivedData.map(
     )
 );
 
-export function initLoanRequestController() {
+export function initLoanRequestsController() {
   const containerOpen = document.querySelector(".open-requests__cards");
-  const ctrlOpen = new LoanRequestCtrl(containerOpen, "opened");
+  const ctrlOpen = new LoanRequestsCtrl(containerOpen, "opened");
   requests.forEach((req) => ctrlOpen.addComponent(req));
   ctrlOpen.renderComponents();
   ctrlOpen.clearComponents();
 
   const containerReceived = document.querySelector(".received-requests__cards");
-  const ctrlReceived = new LoanRequestCtrl(containerReceived, "received");
+  const ctrlReceived = new LoanRequestsCtrl(containerReceived, "received");
   received.forEach((req) => ctrlReceived.addComponent(req));
   ctrlReceived.renderComponents();
   ctrlReceived.clearComponents();
