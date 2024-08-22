@@ -1,4 +1,4 @@
-import { monetaryValue } from "../../utils/formatters.js";
+import { monetaryValue, percentValue } from "../../utils/formatters.js";
 
 const loanStatus = {
   1: "active",
@@ -93,7 +93,7 @@ export class Loan {
   }
 
   get rate() {
-    return this.#rate;
+    return percentValue(this.#rate);
   }
 
   get installmentValue() {
