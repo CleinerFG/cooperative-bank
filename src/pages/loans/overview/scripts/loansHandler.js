@@ -120,11 +120,11 @@ export function initLoansController() {
   const ctrlPayables = new LoansCtrl(payablesContainer, "payables");
   loansPayables.forEach((loan) => ctrlPayables.addComponent(loan));
   ctrlPayables.renderComponents();
-  ctrlPayables.clearComponents();
+  // ctrlPayables.clearComponents();
 
   const receivables = document.querySelector(".receivables__cards");
   const ctrlReceivables = new LoansCtrl(receivables, "receivables");
   loansReceivables.forEach((loan) => ctrlReceivables.addComponent(loan));
   ctrlReceivables.renderComponents();
-  ctrlReceivables.clearComponents();
+  // ctrlReceivables.clearComponents();
 }
