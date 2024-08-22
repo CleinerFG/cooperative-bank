@@ -1,5 +1,5 @@
 import { initLayoutController } from "../../../../js/controllers/core/layoutCore.js";
-import { initLoanController } from "./loanHandler.js";
+import { initLoansController } from "./loansHandler.js";
 
 initLayoutController();
-initLoanController();
+initLoansController();
