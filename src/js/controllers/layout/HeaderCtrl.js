@@ -6,7 +6,7 @@ export class HeaderCtrl extends LayoutCtrl {
     super(new HeaderView());
   }
 
-  #pathHandler() {
+  _pathHandler() {
     this.pathManager.updatePath(
       "html",
       ".header__brand-name",
@@ -21,9 +21,7 @@ export class HeaderCtrl extends LayoutCtrl {
     );
   }
 
-  initLayoutComponent() {
-    this.layoutView.render();
+  _listenersHandler() {
     this.layoutView.menuHandler();
-    this.#pathHandler();  
   }
 }

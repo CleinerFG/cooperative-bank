@@ -26,4 +26,8 @@ export class FooterCtrl extends LayoutCtrl {
       "index.html"
     );
   }
+
+  _listenersHandler() {
+    return false;
+  }
 }
