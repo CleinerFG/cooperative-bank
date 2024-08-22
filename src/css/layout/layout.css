@@ -7,7 +7,6 @@ body {
 
 main {
   padding: var(--container-padding);
-  padding-bottom: 3rem;
   margin: auto;
   flex: 1;
 }

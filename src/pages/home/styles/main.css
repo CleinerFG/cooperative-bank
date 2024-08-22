@@ -2,6 +2,10 @@
   margin-bottom: 0;
 }
 
+.section:last-child {
+  margin-bottom: 1.5rem;
+}
+
 .statement {
   height: 10rem;
 }
