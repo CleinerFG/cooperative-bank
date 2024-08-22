@@ -10,50 +10,39 @@ export class EventView extends DisplayView {
     return `event-${this.component.id}`;
   }
 
-  get #cssClass() {
+  get _cssClass() {
     return `event__${this.component.type}`;
   }
 
-  get #btnClass() {
+  get _btnClass() {
     return this.component.type === "payment" ? "btn-attention" : "";
   }
 
-  get #btnText() {
+  get _btnText() {
     return this.component.type === "payment" ? "Pay" : "See";
   }
 
-  get #labelValue() {
+  get _labelValue() {
     return [
       { label: "Due Date", value: this.component.dueDate },
       { label: "Value", value: this.component.value },
     ];
   }
 
-  get #headerCard() {
+  get _headerCard() {
     return this._createHeaderCard(capitalize(this.component.type));
   }
 
-  get #mainCard() {
-    return this._createMainCard(...this.#labelValue);
+  get _mainCard() {
+    return this._createMainCard(...this._labelValue);
   }
 
-  get #footerCard() {
+  get _footerCard() {
     const str = `
-      <button class="btn ${this.#btnClass} card-data__btn">
-      ${this.#btnText}
+      <button class="btn ${this._btnClass} card-data__btn">
+      ${this._btnText}
       </button>
     `;
     return this._createFooterCard(str);
-  }
-
-  render() {
-    const cardStr = this._createCard(
-      this.cssId,
-      this.#cssClass,
-      this.#headerCard,
-      this.#mainCard,
-      this.#footerCard
-    );
-    this.container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }

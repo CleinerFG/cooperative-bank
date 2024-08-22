@@ -99,6 +99,13 @@ export class DisplayView {
   }
 
   render() {
-    throw new AbstractMethodError("render");
+    const cardStr = this._createCard(
+      this.cssId,
+      this._cssClass,
+      this._headerCard,
+      this._mainCard,
+      this._footerCard
+    );
+    this.container.insertAdjacentHTML("afterbegin", cardStr);
   }
 }
