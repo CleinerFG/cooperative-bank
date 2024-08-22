@@ -1,18 +1,18 @@
 .no-components__text {
-  flex: 1;
   margin-right: var(--container-padding);
 }
 
 .no-components__img {
-  flex: 1;
   height: 200px;
   min-height: 100%;
 }
 
 .no-components {
   width: 100%;
+  height: fit-content;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 1rem;
   background-image: linear-gradient(
     to top,
