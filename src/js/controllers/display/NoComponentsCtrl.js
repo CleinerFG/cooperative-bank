@@ -10,7 +10,7 @@ export class NoComponentsCtrl {
     this.#container = container;
     this.#noComponentsView = new NoComponentsView(this.#container);
     this.#pathManager = pathManager;
-    this.#imgFile = "astronaut.svg";
+    this.#imgFile = this.#randomImgFile();
   }
 
   get imgFile() {
@@ -19,6 +19,12 @@ export class NoComponentsCtrl {
 
   set imgFile(value) {
     this.#imgFile = value;
+  }
+
+  #randomImgFile() {
+    const n = Math.floor(Math.random() * 4) + 1;
+    console.log(n);
+    return `astronaut-${n}.svg`;
   }
 
   defineTexts(...texts) {
