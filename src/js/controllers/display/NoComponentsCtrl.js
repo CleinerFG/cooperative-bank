@@ -12,15 +12,7 @@ export class NoComponentsCtrl {
     this.#pathManager = pathManager;
     this.#imgFile = this.#randomImgFile();
   }
-
-  get imgFile() {
-    return this.#imgFile;
-  }
-
-  set imgFile(value) {
-    this.#imgFile = value;
-  }
-
+  
   #randomImgFile() {
     const n = Math.floor(Math.random() * 4) + 1;
     console.log(n);
