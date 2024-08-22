@@ -1,0 +1,1 @@
+const str = `R$ ${rounded}`.replace(".", ",");
