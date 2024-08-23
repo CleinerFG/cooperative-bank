@@ -1,5 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
+
 export class PageView {
   #html;
   #theme;
