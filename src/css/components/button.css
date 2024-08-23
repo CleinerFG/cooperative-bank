@@ -1,6 +1,5 @@
 .btn {
-  width: 5rem;
-  height: 2rem;
+  padding: 0.8em 1em;
   border: none;
   border-radius: var(--component-border-radius);
   background-color: var(--color-primary);
