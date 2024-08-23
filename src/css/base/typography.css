@@ -1,3 +1,17 @@
+h1,
+h2,
+h3 {
+  font-family: var(--title-font-family);
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
 .info-text {
   font-family: var(--info-font-family);
   text-align: justify;
