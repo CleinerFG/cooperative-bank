@@ -8,6 +8,10 @@ export class ActionCardView {
     this.#name = name;
   }
 
+  get name() {
+    return this.#name;
+  }
+
   #createCardAction() {
     const capName = capitalize(this.#name);
     const str = `
