@@ -42,7 +42,6 @@ export class ActionCardsCtrl {
   }
 
   #createView(name) {
-    console.log("ctrl:", this.#container)
     return new this.#ActionCardView(this.#container, name);
   }
 
