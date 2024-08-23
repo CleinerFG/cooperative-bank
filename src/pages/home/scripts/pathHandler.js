@@ -12,16 +12,4 @@ export function initPathManager() {
     "icons",
     "icon-visibility-off.svg"
   );
-
-  for (const node in nodes) {
-    nodes[node].forEach((filename) => {
-      pathManager.updatePath(
-        "asset",
-        `#card-icon-${filename}`,
-        "icons",
-        `icon-${filename}.svg`
-      );
-      pathManager.updatePath("html", `#card-link-${filename}`, node, filename);
-    });
-  }
 }

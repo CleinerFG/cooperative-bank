@@ -12,6 +12,7 @@ const investments = {
 
 export function initActionCardsController() {
   const loansContainer = document.querySelector(".loans__cards");
+  console.log({ loansContainer });
   new ActionCardsCtrl(loansContainer, loans);
 
   const investContainer = document.querySelector(".investments__cards");

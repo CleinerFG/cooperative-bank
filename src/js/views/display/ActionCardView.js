@@ -29,6 +29,7 @@ export class ActionCardView {
 
   render() {
     const cardStr = this.#createCardAction();
-    this.#container.insertAdjacentHTML("beforebegin", cardStr);
+    console.log(this.#container);
+    this.#container.insertAdjacentHTML("beforeend", cardStr);
   }
 }
