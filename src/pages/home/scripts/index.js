@@ -1,4 +1,5 @@
 // import "../css/home.css";
+import { ThemeView } from "../../../js/views/layout/ThemeView.js";
 import { initLayoutController } from "../../../js/controllers/core/layoutCore.js";
 import { switchVisibility } from "./visibilityStatementValue.js";
 import { initActionCardsController } from "./actionCardsHandler.js";
@@ -10,3 +11,4 @@ switchVisibility();
 initActionCardsController();
 initEventsController();
 initPathManager();
+new ThemeView().initializeTheme()
