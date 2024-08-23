@@ -47,7 +47,10 @@ export class ThemeView {
     if (storedTheme && storedTheme !== this._bodyTheme) {
       this._updateThemeIcon(storedTheme);
       this._bodyTheme = storedTheme;
-      icons.forEach((icon) => icon.classList.toggle(this.#lightThemeClass));
+      icons.forEach((icon) => {
+        icon.classList.toggle(this.#lightThemeClass);
+        console.log(icon);
+      });
     }
   }
 

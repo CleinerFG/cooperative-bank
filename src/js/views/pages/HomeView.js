@@ -2,9 +2,11 @@ import { PageView } from "./PageView.js";
 import { capitalize } from "../../utils/stringUtils.js";
 
 export class HomeView extends PageView {
-  constructor() {}
+  constructor() {
+    super();
+  }
 
-  #createStatement() {
+  _createStatement() {
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>
@@ -19,7 +21,7 @@ export class HomeView extends PageView {
     `;
   }
 
-  #createSection(name) {
+  _createSection(name) {
     return `
     <section class="section ${name}">
       <h2 class="section__h2">${capitalize(name)}</h2>
@@ -29,15 +31,15 @@ export class HomeView extends PageView {
     `;
   }
 
-  #createAllSections() {
+  _createAllSections() {
     const sections = ["loans", "investments", "events"];
-    return sections.map((sec) => this.#createSection(sec));
+    return sections.map((sec) => this._createSection(sec)).join("");
   }
 
-  _pagecontent() {
+  _pageContent() {
     const content = `
-    ${this.#createStatement()}
-    ${this.#createAllSections()}
+    ${this._createStatement()}
+    ${this._createAllSections()}
     `;
     return content;
   }
