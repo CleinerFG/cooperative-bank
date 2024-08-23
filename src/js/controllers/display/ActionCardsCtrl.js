@@ -3,16 +3,17 @@ import pathUtil from "../../utils/PathManager.js";
 
 export class ActionCardsCtrl {
   #container;
-  #sectionName;
+  #sectionData;
   #pathManager;
   #ActionCardView;
   #viewInstances;
-  constructor(container, sectionName) {
+  constructor(container, sectionData) {
     this.#container = container;
-    this.#sectionName = sectionName;
+    this.#sectionData = sectionData;
     this.#pathManager = pathUtil;
     this.#ActionCardView = ActionCardView;
     this.#viewInstances = [];
+    this.#init();
   }
 
   #defineAssetPath(view) {
@@ -28,7 +29,7 @@ export class ActionCardsCtrl {
     this.#pathManager.updatePath(
       "html",
       `#card-link-${view.name}`,
-      this.#sectionName,
+      this.#sectionData.name,
       view.name
     );
   }
@@ -44,12 +45,19 @@ export class ActionCardsCtrl {
     return new this.#ActionCardView(this.#container, name);
   }
 
-  addActionCard(name) {
-    const view = this.#createView(name);
-    this.#viewInstances.push(view);
+  #renderActionCards() {
+    this.#viewInstances.forEach((view) => view.render());
   }
 
-  renderActionCards() {
-    this.#viewInstances.forEach((view) => view.render());
+  #addActionCards() {
+    const items = this.#sectionData.items;
+    const views = items.map((item) => this.#createView(item));
+    this.#viewInstances = views;
+  }
+
+  #init() {
+    this.#addActionCards();
+    this.#renderActionCards();
+    this.#pathHandler();
   }
 }
