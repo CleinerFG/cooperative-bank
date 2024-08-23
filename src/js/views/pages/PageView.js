@@ -28,6 +28,7 @@ export class PageView {
     </main>
     </body>
     `;
+    console.log(this.#html);
     this.#html.insertAdjacentElement("beforeend", body);
   }
 
