@@ -6,6 +6,22 @@ export class HeaderCtrl extends LayoutCtrl {
     super(new HeaderView());
   }
 
+  _assetsHandler(theme) {
+    this.pathManager.updatePath(
+      "asset",
+      ".header__menu-icon",
+      "icons",
+      "icon-menu.svg"
+    );
+
+    this.pathManager.updatePath(
+      "asset",
+      "#theme-icon",
+      "theme",
+      `${theme}-mode.svg`
+    );
+  }
+
   _pathHandler() {
     this.pathManager.updatePath(
       "html",
