@@ -25,29 +25,29 @@ export class PageView {
     throw new AbstractMethodError("_pageContent");
   }
 
-  _initActionCtrl() {
-    const loans = {
-      name: "loans",
-      items: ["requests", "payments", "overview", "timeline"],
-    };
+  // _initActionCtrl() {
+  //   const loans = {
+  //     name: "loans",
+  //     items: ["requests", "payments", "overview", "timeline"],
+  //   };
 
-    const investments = {
-      name: "investments",
-      items: ["all", "reports"],
-    };
+  //   const investments = {
+  //     name: "investments",
+  //     items: ["all", "reports"],
+  //   };
 
-    const loansContainer = document.querySelector(".loans__cards");
-    new ActionCardsCtrl(loansContainer, loans);
+  //   const loansContainer = document.querySelector(".loans__cards");
+  //   new ActionCardsCtrl(loansContainer, loans);
 
-    const investContainer = document.querySelector(".investments__cards");
-    new ActionCardsCtrl(investContainer, investments);
-  }
+  //   const investContainer = document.querySelector(".investments__cards");
+  //   new ActionCardsCtrl(investContainer, investments);
+  // }
 
   #init() {
     this.#insertContent();
     new HeaderCtrl();
     new FooterCtrl();
-    this._initActionCtrl()
+    // this._initActionCtrl()
     new ThemeView().initializeTheme();
   }
 }

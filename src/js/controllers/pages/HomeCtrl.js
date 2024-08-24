@@ -1,4 +1,4 @@
-import { PageCtrl } from "./PageCtrl";
+import { PageCtrl } from "./PageCtrl.js";
 import { HomeView } from "../../views/pages/HomeView.js";
 import { StatementCtrl } from "../display/StatementCtrl.js";
 import { ActionCardsCtrl } from "../display/ActionCardsCtrl.js";
@@ -10,6 +10,7 @@ export class HomeCtrl extends PageCtrl {
   }
 
   #initStatementController() {
+    console.log("test1")
     const statementContainer = document.querySelector(".statement");
     new StatementCtrl(statementContainer);
   }

@@ -49,7 +49,6 @@ export class ThemeView {
       this._bodyTheme = storedTheme;
       icons.forEach((icon) => {
         icon.classList.toggle(this.#lightThemeClass);
-        console.log(icon);
       });
     }
   }

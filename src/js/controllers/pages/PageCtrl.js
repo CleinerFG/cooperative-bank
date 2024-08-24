@@ -6,7 +6,8 @@ import { ThemeView } from "../../views/layout/ThemeView.js";
 export class PageCtrl {
   #pageView;
   constructor(pageView) {
-    this.#pageView = pageView
+    this.#pageView = pageView;
+    this.#init();
   }
 
   _initControllers() {
@@ -28,8 +29,8 @@ export class PageCtrl {
   }
 
   #init() {
-    this.#initLayout();
     this._initPageView();
-    this._initControllers();
+    // this._initControllers();
+    // this.#initLayout();
   }
 }
