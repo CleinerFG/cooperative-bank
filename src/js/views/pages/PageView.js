@@ -9,17 +9,7 @@ export class PageView {
   #theme;
   constructor() {
     this.#body = document.body;
-    this.#theme = "dark";
     this.#init();
-  }
-
-  get theme() {
-    return this.#theme;
-  }
-
-  set theme(value) {
-    this.#body.dataset.theme = value;
-    this.#theme = value;
   }
 
   #insertContent() {
