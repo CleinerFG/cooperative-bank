@@ -1,10 +1,17 @@
 import { PageCtrl } from "./PageCtrl";
 import { HomeView } from "../../views/pages/HomeView.js";
+import { StatementCtrl } from "../display/StatementCtrl.js";
+import { ActionCardsCtrl } from "../display/ActionCardsCtrl.js";
 import { EventsCtrl } from "../../controllers/display/EventsCtrl.js"
 
 export class HomeCtrl extends PageCtrl {
   constructor() {
     super(HomeView);
+  }
+
+  #initStatementController() {
+    const statementContainer = document.querySelector(".statement");
+    new StatementCtrl(statementContainer);
   }
 
   #initActionCardsController() {
@@ -86,6 +93,7 @@ export class HomeCtrl extends PageCtrl {
   }
 
   _initControllers() {
+    this.#initStatementController();
     this.#initActionCardsController();
     this.#initEventsController();
   }
