@@ -13,7 +13,7 @@ export class PageCtrl {
     throw new AbstractMethodError("_initControllers")
   }
 
-  assetsHandler(theme){
+  assetsHandler(theme) {
     throw new AbstractMethodError
   }
 
@@ -27,4 +27,9 @@ export class PageCtrl {
     new ThemeView();
   }
 
+  #init() {
+    this.#initLayout();
+    this._initPageView();
+    this._initControllers();
+  }
 }
