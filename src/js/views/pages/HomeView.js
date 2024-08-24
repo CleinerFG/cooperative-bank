@@ -10,9 +10,7 @@ export class HomeView extends PageView {
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>
-      <div class="statement__container">
-      
-      </div>
+      <div class="statement__container"></div>
     </section>
     `;
   }

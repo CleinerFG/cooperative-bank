@@ -25,12 +25,12 @@ export class PageCtrl {
   #initLayout() {
     new HeaderCtrl();
     new FooterCtrl();
-    new ThemeView();
+    new ThemeView().initializeTheme();
   }
 
   #init() {
     this._initPageView();
-    // this._initControllers();
-    // this.#initLayout();
+    this._initControllers();
+    this.#initLayout();
   }
 }

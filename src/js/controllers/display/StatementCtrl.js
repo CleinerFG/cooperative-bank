@@ -20,8 +20,8 @@ export class StatementCtrl {
 
   #init() {
     const view = new StatementView(this.#container);
-    this.pathHandler();
     view.render();
+    this.pathHandler();
     view.switchVisibility(this.pathHandler.bind(this))
   }
 }

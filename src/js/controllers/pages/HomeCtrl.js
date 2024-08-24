@@ -3,19 +3,19 @@ import { HomeView } from "../../views/pages/HomeView.js";
 import { StatementCtrl } from "../display/StatementCtrl.js";
 import { ActionCardsCtrl } from "../display/ActionCardsCtrl.js";
 import { EventsCtrl } from "../../controllers/display/EventsCtrl.js"
+import { Event } from "../../models/display/Event.js"
 
 export class HomeCtrl extends PageCtrl {
   constructor() {
     super(HomeView);
   }
 
-  #initStatementController() {
-    console.log("test1")
-    const statementContainer = document.querySelector(".statement");
+  _initStatementController() {
+    const statementContainer = document.querySelector(".statement__container");
     new StatementCtrl(statementContainer);
   }
 
-  #initActionCardsController() {
+  _initActionCardsController() {
     const loans = {
       name: "loans",
       items: ["requests", "payments", "overview", "timeline"],
@@ -33,7 +33,7 @@ export class HomeCtrl extends PageCtrl {
     new ActionCardsCtrl(investContainer, investments);
   }
 
-  #initEventsController() {
+  _initEventsController() {
     // Test data
     const data = [
       {
@@ -94,8 +94,8 @@ export class HomeCtrl extends PageCtrl {
   }
 
   _initControllers() {
-    this.#initStatementController();
-    this.#initActionCardsController();
-    this.#initEventsController();
+    this._initStatementController();
+    this._initActionCardsController();
+    this._initEventsController();
   }
 }

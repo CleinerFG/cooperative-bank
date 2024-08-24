@@ -40,6 +40,6 @@ export class StatementView {
 
 
   render() {
-    this.#container.insertAdjacentHTML("afterbegin", this.#create());
+    this.#container.insertAdjacentHTML("beforeend", this.#create());
   }
 }
