@@ -10,26 +10,24 @@ export class ThemeCtrl {
     this.#init();
   }
 
-  get #theme() {
-    return this.#themeView.bodyTheme;
-  }
-
-  #updateThemeIcon() {
+  #updateThemeIcon(theme) {
     this.#pathManager.updatePath(
       "asset",
       "#theme-icon",
       "theme",
-      `${this.#theme}-mode.svg`
+      `${theme}-mode.svg`
     );
   }
 
-  _updateAssets(assetsHandler) {
-    assetsHandler(this.#theme);
+  updateAssets(assetsHandler) {
+    const theme = this.#themeView.bodyTheme;
+    this.#updateThemeIcon(theme);
+    // assetsHandler(theme);
   }
 
   #init() {
-    this.#updateThemeIcon();
-    this.#themeView.applyStoredTheme();
-    this.#themeView.btnHandler();
+    this.updateAssets();
+    this.#themeView.applyStoredTheme(this.updateAssets.bind(this));
+    this.#themeView.btnHandler(this.updateAssets.bind(this));
   }
 }
