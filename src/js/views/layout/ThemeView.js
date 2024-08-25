@@ -15,11 +15,11 @@ export class ThemeView {
     this.#toggleTheme = this._toggleTheme.bind(this);
   }
 
-  get _bodyTheme() {
+  get bodyTheme() {
     return this.#body.dataset.theme;
   }
 
-  set _bodyTheme(value) {
+  set bodyTheme(value) {
     this.#body.dataset.theme = value;
   }
 
@@ -33,30 +33,27 @@ export class ThemeView {
   }
 
   _toggleTheme(icons) {
-    const currentTheme = this._bodyTheme;
+    const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
-    this._bodyTheme = updatedTheme;
+    this.bodyTheme = updatedTheme;
 
     icons.forEach((icon) => icon.classList.toggle(this.#lightThemeClass));
     this._updateThemeIcon(updatedTheme);
     localStorage.setItem(this.#themeKey, updatedTheme);
   }
 
-  _applyStoredTheme(icons) {
+  applyStoredTheme(icons) {
     const storedTheme = localStorage.getItem(this.#themeKey);
-    if (storedTheme && storedTheme !== this._bodyTheme) {
+    if (storedTheme && storedTheme !== this.bodyTheme) {
       this._updateThemeIcon(storedTheme);
-      this._bodyTheme = storedTheme;
+      this.bodyTheme = storedTheme;
       icons.forEach((icon) => {
         icon.classList.toggle(this.#lightThemeClass);
       });
     }
   }
 
-  initializeTheme() {
-    this._updateThemeIcon(this._bodyTheme);
-    const icons = document.querySelectorAll(".icon");
-    this._applyStoredTheme(icons);
+  btnHandler(icons) {
     document
       .getElementById("switch-theme-button")
       .addEventListener("click", () => this._toggleTheme(icons));

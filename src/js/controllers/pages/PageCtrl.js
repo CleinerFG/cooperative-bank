@@ -1,7 +1,7 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { HeaderCtrl } from "../layout/HeaderCtrl.js";
 import { FooterCtrl } from "../layout/FooterCtrl.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
+import { ThemeCtrl } from "../layout/ThemeCtrl.js";
 
 export class PageCtrl {
   #pageView;
@@ -25,7 +25,7 @@ export class PageCtrl {
   #initLayout() {
     new HeaderCtrl();
     new FooterCtrl();
-    new ThemeView().initializeTheme();
+    new ThemeCtrl();
   }
 
   #init() {
