@@ -24,17 +24,24 @@ export class ThemeView {
     updateAssets();
   }
 
-  applyStoredTheme(updateAssets) {
+  #applyStoredTheme(updateAssets) {
     const storedTheme = localStorage.getItem(this.#themeKey);
-    if (storedTheme && storedTheme !== this.bodyTheme) {
+    if (storedTheme) {
       this.bodyTheme = storedTheme;
-      updateAssets();
+    } else {
+      this.bodyTheme = "dark";
     }
+    updateAssets();
   }
 
-  btnHandler(updateAssets) {
+  #btnHandler(updateAssets) {
     document
       .getElementById("switch-theme-button")
       .addEventListener("click", () => this._toggleTheme(updateAssets));
+  }
+
+  init(updateAssets) {
+    this.#applyStoredTheme(updateAssets);
+    this.#btnHandler(updateAssets);
   }
 }

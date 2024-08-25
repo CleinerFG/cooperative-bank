@@ -26,8 +26,6 @@ export class ThemeCtrl {
   }
 
   #init() {
-    this.updateAssets();
-    this.#themeView.applyStoredTheme(this.updateAssets.bind(this));
-    this.#themeView.btnHandler(this.updateAssets.bind(this));
+    this.#themeView.init(this.updateAssets.bind(this));
   }
 }
