@@ -1,11 +1,9 @@
 export class ThemeView {
   #themeKey;
   #body;
-  #toggleTheme;
   constructor() {
     this.#themeKey = "coperativeBankTheme";
     this.#body = document.body;
-    this.#toggleTheme = this._toggleTheme.bind(this);
   }
 
   get bodyTheme() {
@@ -16,7 +14,7 @@ export class ThemeView {
     this.#body.dataset.theme = value;
   }
 
-  _toggleTheme(updateAssets) {
+  #toggleTheme(updateAssets) {
     const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
@@ -37,7 +35,7 @@ export class ThemeView {
   #btnHandler(updateAssets) {
     document
       .getElementById("switch-theme-button")
-      .addEventListener("click", () => this._toggleTheme(updateAssets));
+      .addEventListener("click", () => this.#toggleTheme(updateAssets));
   }
 
   init(updateAssets) {
