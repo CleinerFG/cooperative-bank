@@ -10,12 +10,12 @@ export class HomeCtrl extends PageCtrl {
     super(HomeView);
   }
 
-  _initStatementController() {
+  _initStatementCtrl() {
     const statementContainer = document.querySelector(".statement__container");
     new StatementCtrl(statementContainer);
   }
 
-  _initActionCardsController() {
+  _initActionCardsCtrl() {
     const loans = {
       name: "loans",
       items: ["requests", "payments", "overview", "timeline"],
@@ -33,7 +33,7 @@ export class HomeCtrl extends PageCtrl {
     new ActionCardsCtrl(investContainer, investments);
   }
 
-  _initEventsController() {
+  _initEventsCtrl() {
     // Test data
     const data = [
       {
@@ -94,8 +94,8 @@ export class HomeCtrl extends PageCtrl {
   }
 
   _initControllers() {
-    this._initStatementController();
-    this._initActionCardsController();
-    this._initEventsController();
+    this._initStatementCtrl();
+    this._initActionCardsCtrl();
+    this._initEventsCtrl();
   }
 }
