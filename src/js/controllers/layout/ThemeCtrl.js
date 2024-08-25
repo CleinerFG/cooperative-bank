@@ -29,8 +29,7 @@ export class ThemeCtrl {
 
   #init() {
     this.#updateThemeIcon();
-    const icons = document.querySelectorAll(".icon");
-    this.#themeView.applyStoredTheme(icons);
-    this.#themeView.btnHandler(icons);
+    this.#themeView.applyStoredTheme();
+    this.#themeView.btnHandler();
   }
 }

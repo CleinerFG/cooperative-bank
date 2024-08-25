@@ -3,13 +3,11 @@ import pathUtil from "../../utils/PathManager.js";
 export class ThemeView {
   #pathManager;
   #themeKey;
-  #lightThemeClass;
   #body;
   #toggleTheme;
   constructor(pathManager = pathUtil) {
     this.#pathManager = pathManager;
     this.#themeKey = "coperativeBankTheme";
-    this.#lightThemeClass = "icon__theme-light";
     this.#body = document.body;
     // Bind ensures that the referenced this  is that of the attribute defined in the class
     this.#toggleTheme = this._toggleTheme.bind(this);
@@ -32,30 +30,26 @@ export class ThemeView {
     );
   }
 
-  _toggleTheme(icons) {
+  _toggleTheme() {
     const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
 
-    icons.forEach((icon) => icon.classList.toggle(this.#lightThemeClass));
     this._updateThemeIcon(updatedTheme);
     localStorage.setItem(this.#themeKey, updatedTheme);
   }
 
-  applyStoredTheme(icons) {
+  applyStoredTheme() {
     const storedTheme = localStorage.getItem(this.#themeKey);
     if (storedTheme && storedTheme !== this.bodyTheme) {
       this._updateThemeIcon(storedTheme);
       this.bodyTheme = storedTheme;
-      icons.forEach((icon) => {
-        icon.classList.toggle(this.#lightThemeClass);
-      });
     }
   }
 
-  btnHandler(icons) {
+  btnHandler() {
     document
       .getElementById("switch-theme-button")
-      .addEventListener("click", () => this._toggleTheme(icons));
+      .addEventListener("click", () => this._toggleTheme());
   }
 }
