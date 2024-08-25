@@ -1,7 +1,0 @@
-.icon {
-  filter: invert(100%) sepia(100%) hue-rotate(180deg);
-}
-
-.icon__theme-light {
-  filter: invert(0);
-}
