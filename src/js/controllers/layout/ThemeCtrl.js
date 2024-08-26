@@ -11,6 +11,11 @@ class ThemeCtrl {
     this.pageAssetHandlers = [];
   }
 
+
+  addLayoutAssetHandler(handler) {
+    this.layoutAssetHandlers.push(handler);
+  }
+
   addPageAssetHandler(handler) {
     this.pageAssetHandlers.push(handler);
   }
@@ -27,6 +32,9 @@ class ThemeCtrl {
   updateAssets() {
     const theme = this.#themeView.bodyTheme;
     this.#updateThemeIcon(theme);
+    this.layoutAssetHandlers.forEach((handler) =>
+      handler(this.#pathManager, theme)
+    );
     this.pageAssetHandlers.forEach((handler) =>
       handler(this.#pathManager, theme)
     );

@@ -9,7 +9,7 @@ export function initLayout() {
   headerCtrl.init();
   footerCtrl.init();
 
-  themeCtrl.addPageAssetHandler(headerCtrl.assetHandler);
-  themeCtrl.addPageAssetHandler(footerCtrl.assetHandler);
+  themeCtrl.addLayoutAssetHandler(headerCtrl.assetHandler);
+  themeCtrl.addLayoutAssetHandler(footerCtrl.assetHandler);
   themeCtrl.init();
 }
