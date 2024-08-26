@@ -5,32 +5,39 @@ import { ThemeCtrl } from "../layout/ThemeCtrl.js";
 
 export class PageCtrl {
   #pageView;
+  #headerCtrl;
+  #footerCtrl;
+  #themeCtrl;
   constructor(pageView) {
+    this.headerCtrl = new HeaderCtrl();
+    this.#footerCtrl = new FooterCtrl();
+    this.#themeCtrl = new ThemeCtrl();
     this.#pageView = pageView;
     this.#init();
   }
 
   _initControllers() {
-    throw new AbstractMethodError("_initControllers")
+    throw new AbstractMethodError("_initControllers");
   }
 
-  assetsHandler(theme) {
-    throw new AbstractMethodError
+  assetsHandler() {
+    this.#themeCtrl.addAssetHandler(this.headerCtrl.assetsHandler.bind(this));
   }
 
   _initPageView() {
-    new this.#pageView()
+    new this.#pageView();
   }
 
-  #initLayout() {
-    new HeaderCtrl();
-    new FooterCtrl();
-    new ThemeCtrl();
+  initLayout() {
+    this.headerCtrl.init();
+    this.#footerCtrl.init();
+    this.#themeCtrl.addAssetHandler(this.headerCtrl.assetsHandler);
+    this.#themeCtrl.init();
   }
 
   #init() {
     this._initPageView();
     this._initControllers();
-    this.#initLayout();
+    this.initLayout();
   }
 }

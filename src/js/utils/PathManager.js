@@ -29,7 +29,8 @@ class PathManager {
 }
 
 const assetsPaths = {
-  icons: "/src/assets/icons/",
+  iconsdark: "/src/assets/icons/dark/",
+  iconslight: "/src/assets/icons/light/",
   images: "/src/assets/images/",
   theme: "/src/assets/theme/",
 };

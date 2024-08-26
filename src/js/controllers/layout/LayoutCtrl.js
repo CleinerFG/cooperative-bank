@@ -7,7 +7,6 @@ export class LayoutCtrl {
   constructor(layoutView, pathManager = pathUtil) {
     this.#layoutView = layoutView;
     this.#pathManager = pathManager;
-    this.#initLayoutComponent();
   }
 
   get layoutView() {
@@ -22,15 +21,15 @@ export class LayoutCtrl {
     throw new AbstractMethodError("_listenetHandler");
   }
 
-  _assetsHandler(theme) {
-    throw new AbstractMethodError("_assetsHandler")
+  assetsHandler(theme) {
+    throw new AbstractMethodError("assetsHandler")
   }
 
   _pathHandler() {
     throw new AbstractMethodError("_pathHandler");
   }
 
-  #initLayoutComponent() {
+  init() {
     this.#layoutView.render();
     this._listenersHandler();
     this._pathHandler();

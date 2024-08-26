@@ -7,7 +7,11 @@ export class ThemeCtrl {
   constructor() {
     this.#themeView = new ThemeView();
     this.#pathManager = pathUtil;
-    this.#init();
+    this.assetHandlers = [];
+  }
+
+  addAssetHandler(handler) {
+    this.assetHandlers.push(handler);
   }
 
   #updateThemeIcon(theme) {
@@ -19,13 +23,13 @@ export class ThemeCtrl {
     );
   }
 
-  updateAssets(assetsHandler) {
+  updateAssets() {
     const theme = this.#themeView.bodyTheme;
     this.#updateThemeIcon(theme);
-    // assetsHandler(theme);
+    this.assetHandlers.forEach((h) => h(this.#pathManager, theme));
   }
 
-  #init() {
+  init() {
     this.#themeView.init(this.updateAssets.bind(this));
   }
 }

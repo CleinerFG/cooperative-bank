@@ -19,6 +19,7 @@ export class ThemeView {
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
     localStorage.setItem(this.#themeKey, updatedTheme);
+    console.log("toggleTheme", this.bodyTheme);
     updateAssets();
   }
 
@@ -29,6 +30,7 @@ export class ThemeView {
     } else {
       this.bodyTheme = "dark";
     }
+    console.log("applyStored", this.bodyTheme);
     updateAssets();
   }
 
