@@ -17,6 +17,21 @@ export class ActionCardsCtrl {
     this.#init();
   }
 
+  get assetHandlers() {
+    const names = this.#viewInstances.map((view) => view.name);
+    const handlers = names.map((name) => {
+      return (pathManager, theme) => {
+        pathManager.updatePath(
+          "asset",
+          `#card-icon-${name}`,
+          `icons${theme}`,
+          `icon-${name}.svg`
+        );
+      };
+    });
+    return handlers;
+  }
+
   #defineHtmlPath(view) {
     this.#pathManager.updatePath(
       "html",
@@ -46,26 +61,9 @@ export class ActionCardsCtrl {
     this.#viewInstances = views;
   }
 
-  #assetHandlers() {
-    const names = this.#viewInstances.map((view) => view.name);
-    const handlers = names.map((name) => {
-      return (pathManager, theme) => {
-        pathManager.updatePath(
-          "asset",
-          `#card-icon-${name}`,
-          `icons${theme}`,
-          `icon-${name}.svg`
-        );
-      };
-    });
-
-    handlers.forEach((handler) => themeCtrl.addPageAssetHandler(handler));
-  }
-
   #init() {
     this.#addActionCards();
     this.#renderActionCards();
-    this.#assetHandlers();
     this.#pathHandler();
   }
 }

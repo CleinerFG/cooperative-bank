@@ -1,10 +1,12 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { initLayout } from "../core/layoutCore.js";
+import { themeCtrl } from "../layout/ThemeCtrl.js";
 
 export class PageCtrl {
   #pageView;
   constructor(pageView) {
     this.#pageView = pageView;
+    this._assetHandlers = [];
     this.#init();
   }
 
@@ -12,13 +14,18 @@ export class PageCtrl {
     throw new AbstractMethodError("_initControllers");
   }
 
-  _initPageView() {
+  #initPageView() {
     new this.#pageView();
   }
 
+  #defineHandlers() {
+    themeCtrl.layoutAssetHandlers = this._assetHandlers;
+  }
+
   #init() {
-    this._initPageView();
+    this.#initPageView();
     this._initControllers();
+    this.#defineHandlers();
     initLayout();
   }
 }

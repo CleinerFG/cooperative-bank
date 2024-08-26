@@ -2,8 +2,8 @@ import { PageCtrl } from "./PageCtrl.js";
 import { HomeView } from "../../views/pages/HomeView.js";
 import { StatementCtrl } from "../display/StatementCtrl.js";
 import { ActionCardsCtrl } from "../display/ActionCardsCtrl.js";
-import { EventsCtrl } from "../../controllers/display/EventsCtrl.js"
-import { Event } from "../../models/display/Event.js"
+import { EventsCtrl } from "../../controllers/display/EventsCtrl.js";
+import { Event } from "../../models/display/Event.js";
 
 export class HomeCtrl extends PageCtrl {
   constructor() {
@@ -27,10 +27,16 @@ export class HomeCtrl extends PageCtrl {
     };
 
     const loansContainer = document.querySelector(".loans__cards");
-    new ActionCardsCtrl(loansContainer, loans);
+    const loansActionCtrl = new ActionCardsCtrl(loansContainer, loans);
+    loansActionCtrl.assetHandlers.forEach((handler) =>
+      this._assetHandlers.push(handler)
+    );
 
     const investContainer = document.querySelector(".investments__cards");
-    new ActionCardsCtrl(investContainer, investments);
+    const investActionCtrl = new ActionCardsCtrl(investContainer, investments);
+    investActionCtrl.assetHandlers.forEach((handler) =>
+      this._assetHandlers.push(handler)
+    );
   }
 
   _initEventsCtrl() {
