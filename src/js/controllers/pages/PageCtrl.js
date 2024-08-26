@@ -1,7 +1,7 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { HeaderCtrl } from "../layout/HeaderCtrl.js";
 import { FooterCtrl } from "../layout/FooterCtrl.js";
-import { ThemeCtrl } from "../layout/ThemeCtrl.js";
+import { themeCtrl } from "../layout/ThemeCtrl.js";
 
 export class PageCtrl {
   #pageView;
@@ -11,7 +11,7 @@ export class PageCtrl {
   constructor(pageView) {
     this.#headerCtrl = new HeaderCtrl();
     this.#footerCtrl = new FooterCtrl();
-    this.#themeCtrl = new ThemeCtrl();
+    this.#themeCtrl = themeCtrl;
     this.#pageView = pageView;
     this.#init();
   }
@@ -20,7 +20,7 @@ export class PageCtrl {
     throw new AbstractMethodError("_initControllers");
   }
 
-  defineAssetHandlers(...handlers) {
+  defineAssetHandlers() {
     this.#themeCtrl.addAssetHandler(this.#headerCtrl.assetHandler);
     this.#themeCtrl.addAssetHandler(this.#footerCtrl.assetHandler);
   }

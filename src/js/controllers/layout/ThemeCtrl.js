@@ -1,7 +1,7 @@
 import { ThemeView } from "../../views/layout/ThemeView.js";
 import pathUtil from "../../utils/PathManager.js";
 
-export class ThemeCtrl {
+class ThemeCtrl {
   #themeView;
   #pathManager;
   constructor() {
@@ -33,3 +33,5 @@ export class ThemeCtrl {
     this.#themeView.init(this.updateAssets.bind(this));
   }
 }
+
+export const themeCtrl = new ThemeCtrl();
