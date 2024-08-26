@@ -10,10 +10,11 @@ export class StatementCtrl {
   }
 
   pathHandler(state = "off") {
+    const theme = "light";
     this.pathManager.updatePath(
       "asset",
       "#visibility-icon",
-      "icons",
+      `icons${theme}`,
       `icon-visibility-${state}.svg`
     );
   }
@@ -22,6 +23,6 @@ export class StatementCtrl {
     const view = new StatementView(this.#container);
     view.render();
     this.pathHandler();
-    view.switchVisibility(this.pathHandler.bind(this))
+    view.switchVisibility(this.pathHandler.bind(this));
   }
 }

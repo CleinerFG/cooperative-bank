@@ -9,40 +9,11 @@ class ThemeCtrl {
     this.#pathManager = pathUtil;
     this.layoutAssetHandlers = [];
     this.pageAssetHandlers = [];
+    // this.init();
   }
 
   get theme() {
     this.#themeView.bodyTheme;
-  }
-
-  addLayoutAssetHandler(handler) {
-    this.layoutAssetHandlers.push(handler);
-  }
-
-  addPageAssetHandler(handler) {
-    this.pageAssetHandlers.push(handler);
-  }
-
-  #setIcons() {
-    const theme = this.#themeView.bodyTheme;
-    console.log(theme);
-    this.#pathManager.updatePath(
-      "asset",
-      "#theme-icon",
-      `icons${theme}`,
-      `${theme}-mode.svg`
-    );
-  }
-
-  updateAssets() {
-    const theme = this.#themeView.bodyTheme;
-    this.#setIcons(theme);
-    this.layoutAssetHandlers.forEach((handler) =>
-      handler(this.#pathManager, theme)
-    );
-    this.pageAssetHandlers.forEach((handler) =>
-      handler(this.#pathManager, theme)
-    );
   }
 
   init() {

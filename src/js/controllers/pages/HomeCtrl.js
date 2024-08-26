@@ -27,16 +27,11 @@ export class HomeCtrl extends PageCtrl {
     };
 
     const loansContainer = document.querySelector(".loans__cards");
-    const loansActionCtrl = new ActionCardsCtrl(loansContainer, loans);
-    loansActionCtrl.assetHandlers.forEach((handler) =>
-      this._assetHandlers.push(handler)
-    );
+    new ActionCardsCtrl(loansContainer, loans);
 
     const investContainer = document.querySelector(".investments__cards");
-    const investActionCtrl = new ActionCardsCtrl(investContainer, investments);
-    investActionCtrl.assetHandlers.forEach((handler) =>
-      this._assetHandlers.push(handler)
-    );
+    new ActionCardsCtrl(investContainer, investments);
+ 
   }
 
   _initEventsCtrl() {

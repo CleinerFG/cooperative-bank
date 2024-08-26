@@ -6,7 +6,7 @@ export class FooterCtrl extends LayoutCtrl {
     super(new FooterView());
   }
 
-  _pathHandler() {
+  #defineHtmlPath() {
     this.pathManager.updatePath(
       "html",
       ".footer__brand-name",
@@ -25,8 +25,14 @@ export class FooterCtrl extends LayoutCtrl {
     return false;
   }
 
-  assetHandler(pathManager, theme) {
-    pathManager.updatePath(
+  _pathHandler() {
+    this.#defineHtmlPath();
+    this.#defineAssetPath();
+  }
+
+  #defineAssetPath() {
+    const theme = "light";
+    this.pathManager.updatePath(
       "asset",
       ".footer__icon",
       `icons${theme}`,

@@ -1,5 +1,5 @@
 import { ActionCardView } from "../../views/display/ActionCardView.js";
-import { themeCtrl } from "../layout/ThemeCtrl.js";
+// import { themeCtrl } from "../layout/ThemeCtrl.js";
 import pathUtil from "../../utils/PathManager.js";
 
 export class ActionCardsCtrl {
@@ -17,19 +17,16 @@ export class ActionCardsCtrl {
     this.#init();
   }
 
-  get assetHandlers() {
-    const names = this.#viewInstances.map((view) => view.name);
-    const handlers = names.map((name) => {
-      return (pathManager, theme) => {
-        pathManager.updatePath(
-          "asset",
-          `#card-icon-${name}`,
-          `icons${theme}`,
-          `icon-${name}.svg`
-        );
-      };
-    });
-    return handlers;
+
+  #defineAssetPath(view) {
+    // const theme = themeCtrl.theme;
+    const theme = "light";
+    this.#pathManager.updatePath(
+      "asset",
+      `#card-icon-${view.name}`,
+      `icons${theme}`,
+      `icon-${view.name}.svg`
+    );
   }
 
   #defineHtmlPath(view) {
@@ -44,6 +41,7 @@ export class ActionCardsCtrl {
   #pathHandler() {
     this.#viewInstances.forEach((view) => {
       this.#defineHtmlPath(view);
+      this.#defineAssetPath(view);
     });
   }
 
