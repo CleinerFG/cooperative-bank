@@ -1,9 +1,15 @@
 import { HeaderCtrl } from "../layout/HeaderCtrl.js";
 import { FooterCtrl } from "../layout/FooterCtrl.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
+import { themeCtrl } from "../../controllers/layout/ThemeCtrl.js";
 
-export function initLayoutController() {
-  new HeaderCtrl();
-  new FooterCtrl();
-  new ThemeView().initializeTheme();
+export function initLayout() {
+  const headerCtrl = new HeaderCtrl();
+  const footerCtrl = new FooterCtrl();
+
+  headerCtrl.init();
+  footerCtrl.init();
+
+  themeCtrl.addPageAssetHandler(headerCtrl.assetHandler);
+  themeCtrl.addPageAssetHandler(footerCtrl.assetHandler);
+  themeCtrl.init();
 }
