@@ -59,7 +59,7 @@ export class ActionCardsCtrl {
       };
     });
 
-    handlers.forEach((handler) => themeCtrl.addAssetHandler(handler));
+    handlers.forEach((handler) => themeCtrl.addPageAssetHandler(handler));
   }
 
   #init() {

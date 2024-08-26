@@ -21,8 +21,8 @@ export class PageCtrl {
   }
 
   defineAssetHandlers() {
-    this.#themeCtrl.addAssetHandler(this.#headerCtrl.assetHandler);
-    this.#themeCtrl.addAssetHandler(this.#footerCtrl.assetHandler);
+    this.#themeCtrl.addPageAssetHandler(this.#headerCtrl.assetHandler);
+    this.#themeCtrl.addPageAssetHandler(this.#footerCtrl.assetHandler);
   }
 
   _initPageView() {
