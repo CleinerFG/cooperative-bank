@@ -19,6 +19,16 @@ class ThemeCtrl {
     this.pageAssetHandlers.push(handler);
   }
 
+  #updateAssetPath(path, theme) {
+    const basePath = "/src/assets/icons/";
+    const iconPattern = /\/([^\/]+)\.svg$/;
+
+    const iconMatch = path.match(iconPattern);
+    const icon = iconMatch[0];
+
+    return basePath + theme + icon;
+  }
+
   #updateThemeIcon(theme) {
     this.#pathManager.updatePath(
       "asset",
