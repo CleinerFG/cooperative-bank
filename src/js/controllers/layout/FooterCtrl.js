@@ -8,12 +8,6 @@ export class FooterCtrl extends LayoutCtrl {
 
   _pathHandler() {
     this.pathManager.updatePath(
-      "asset",
-      ".footer__icon",
-      "icons",
-      "icon-globe.svg"
-    );
-    this.pathManager.updatePath(
       "html",
       ".footer__brand-name",
       "home",
@@ -29,5 +23,14 @@ export class FooterCtrl extends LayoutCtrl {
 
   _listenersHandler() {
     return false;
+  }
+
+  assetHandler(pathManager, theme) {
+    pathManager.updatePath(
+      "asset",
+      ".footer__icon",
+      `icons${theme}`,
+      "icon-globe.svg"
+    );
   }
 }

@@ -6,7 +6,7 @@ export class HeaderCtrl extends LayoutCtrl {
     super(new HeaderView());
   }
 
-  assetsHandler(pathManager, theme) {
+  assetHandler(pathManager, theme) {
     pathManager.updatePath(
       "asset",
       ".header__menu-icon",

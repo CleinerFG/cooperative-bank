@@ -21,8 +21,8 @@ export class LayoutCtrl {
     throw new AbstractMethodError("_listenetHandler");
   }
 
-  assetsHandler(theme) {
-    throw new AbstractMethodError("assetsHandler")
+  assetHandler(pathManager, theme) {
+    throw new AbstractMethodError("assetsHandler");
   }
 
   _pathHandler() {

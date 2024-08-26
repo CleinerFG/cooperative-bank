@@ -9,7 +9,7 @@ export class PageCtrl {
   #footerCtrl;
   #themeCtrl;
   constructor(pageView) {
-    this.headerCtrl = new HeaderCtrl();
+    this.#headerCtrl = new HeaderCtrl();
     this.#footerCtrl = new FooterCtrl();
     this.#themeCtrl = new ThemeCtrl();
     this.#pageView = pageView;
@@ -20,8 +20,9 @@ export class PageCtrl {
     throw new AbstractMethodError("_initControllers");
   }
 
-  assetsHandler() {
-    this.#themeCtrl.addAssetHandler(this.headerCtrl.assetsHandler.bind(this));
+  defineAssetHandlers(...handlers) {
+    this.#themeCtrl.addAssetHandler(this.#headerCtrl.assetHandler);
+    this.#themeCtrl.addAssetHandler(this.#footerCtrl.assetHandler);
   }
 
   _initPageView() {
@@ -29,9 +30,9 @@ export class PageCtrl {
   }
 
   initLayout() {
-    this.headerCtrl.init();
+    this.#headerCtrl.init();
     this.#footerCtrl.init();
-    this.#themeCtrl.addAssetHandler(this.headerCtrl.assetsHandler);
+    this.defineAssetHandlers();
     this.#themeCtrl.init();
   }
 
