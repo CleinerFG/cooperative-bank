@@ -11,7 +11,6 @@ class ThemeCtrl {
     this.pageAssetHandlers = [];
   }
 
-
   addLayoutAssetHandler(handler) {
     this.layoutAssetHandlers.push(handler);
   }
@@ -24,7 +23,7 @@ class ThemeCtrl {
     this.#pathManager.updatePath(
       "asset",
       "#theme-icon",
-      "theme",
+      `icons${theme}`,
       `${theme}-mode.svg`
     );
   }
