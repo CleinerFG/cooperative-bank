@@ -12,6 +12,7 @@ class ThemeCtrl {
 
   addAssetHandler(handler) {
     this.assetHandlers.push(handler);
+    console.log("handlers: ", this.assetHandlers)
   }
 
   #updateThemeIcon(theme) {
