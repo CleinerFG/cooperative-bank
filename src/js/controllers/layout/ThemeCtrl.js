@@ -11,6 +11,10 @@ class ThemeCtrl {
     this.pageAssetHandlers = [];
   }
 
+  get theme() {
+    this.#themeView.bodyTheme;
+  }
+
   addLayoutAssetHandler(handler) {
     this.layoutAssetHandlers.push(handler);
   }
@@ -19,17 +23,9 @@ class ThemeCtrl {
     this.pageAssetHandlers.push(handler);
   }
 
-  #updateAssetPath(path, theme) {
-    const basePath = "/src/assets/icons/";
-    const iconPattern = /\/([^\/]+)\.svg$/;
-
-    const iconMatch = path.match(iconPattern);
-    const icon = iconMatch[0];
-
-    return basePath + theme + icon;
-  }
-
-  #updateThemeIcon(theme) {
+  #setIcons() {
+    const theme = this.#themeView.bodyTheme;
+    console.log(theme);
     this.#pathManager.updatePath(
       "asset",
       "#theme-icon",
@@ -40,7 +36,7 @@ class ThemeCtrl {
 
   updateAssets() {
     const theme = this.#themeView.bodyTheme;
-    this.#updateThemeIcon(theme);
+    this.#setIcons(theme);
     this.layoutAssetHandlers.forEach((handler) =>
       handler(this.#pathManager, theme)
     );
@@ -50,7 +46,7 @@ class ThemeCtrl {
   }
 
   init() {
-    this.#themeView.init(this.updateAssets.bind(this));
+    this.#themeView.init();
   }
 }
 

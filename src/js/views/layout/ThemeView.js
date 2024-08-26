@@ -14,16 +14,28 @@ export class ThemeView {
     this.#body.dataset.theme = value;
   }
 
-  #toggleTheme(updateAssets) {
+  #updateSrcAsset(path, theme) {
+    const basePath = "/src/assets/icons/";
+    const iconPattern = /\/([^\/]+)\.svg$/;
+
+    const iconMatch = path.match(iconPattern);
+    const icon = iconMatch[0];
+
+    return basePath + theme + icon;
+  }
+
+  #updateAssets() {}
+
+  #toggleTheme() {
     const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
     localStorage.setItem(this.#themeKey, updatedTheme);
     console.log("toggleTheme", this.bodyTheme);
-    updateAssets();
+    this.#updateAssets();
   }
 
-  #applyStoredTheme(updateAssets) {
+  #applyStoredTheme() {
     const storedTheme = localStorage.getItem(this.#themeKey);
     if (storedTheme) {
       this.bodyTheme = storedTheme;
@@ -31,17 +43,17 @@ export class ThemeView {
       this.bodyTheme = "dark";
     }
     console.log("applyStored", this.bodyTheme);
-    updateAssets();
+    this.#updateAssets();
   }
 
-  #btnHandler(updateAssets) {
+  #btnHandler() {
     document
       .getElementById("switch-theme-button")
-      .addEventListener("click", () => this.#toggleTheme(updateAssets));
+      .addEventListener("click", () => this.#toggleTheme());
   }
 
-  init(updateAssets) {
-    this.#applyStoredTheme(updateAssets);
-    this.#btnHandler(updateAssets);
+  init() {
+    this.#applyStoredTheme();
+    this.#btnHandler();
   }
 }
