@@ -2,11 +2,14 @@ import { buildAssetPathStr } from "../../utils/stringUtils.js";
 
 export const themeKey = "coperativeBankTheme";
 export class ThemeView {
-  #themeKey;
+  static THEME_KEY = "coperativeBankTheme";
   #body;
   constructor() {
-    this.#themeKey = themeKey;
     this.#body = document.body;
+  }
+
+  static getStoredTheme() {
+    return localStorage.getItem(ThemeView.THEME_KEY) ?? "dark";
   }
 
   get bodyTheme() {
@@ -30,18 +33,12 @@ export class ThemeView {
     const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
-    localStorage.setItem(this.#themeKey, updatedTheme);
+    localStorage.setItem(ThemeView.THEME_KEY, updatedTheme);
     this.#updateAssets(updatedTheme);
   }
 
   #applyStoredTheme() {
-    const storedTheme = localStorage.getItem(this.#themeKey);
-    if (storedTheme) {
-      this.bodyTheme = storedTheme;
-      this.#updateAssets(storedTheme);
-      return;
-    }
-    this.bodyTheme = "dark";
+    this.bodyTheme = ThemeView.getStoredTheme();
   }
 
   #btnHandler() {
