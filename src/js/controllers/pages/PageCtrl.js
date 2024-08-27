@@ -1,6 +1,5 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { LayoutCore } from "../core/LayoutCore.js";
-// import { themeCtrl } from "../layout/ThemeCtrl.js";
 
 export class PageCtrl {
   #pageView;

@@ -4,12 +4,6 @@ export class ThemeCtrl {
   #themeView;
   constructor() {
     this.#themeView = new ThemeView();
-    this.layoutAssetHandlers = [];
-    this.pageAssetHandlers = [];
-  }
-
-  get theme() {
-    this.#themeView.bodyTheme;
   }
 
   init() {
