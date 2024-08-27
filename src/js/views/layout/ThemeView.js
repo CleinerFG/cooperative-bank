@@ -1,3 +1,5 @@
+import { buildAssetPathStr } from "../../utils/stringUtils.js";
+
 export class ThemeView {
   #themeKey;
   #body;
@@ -14,26 +16,31 @@ export class ThemeView {
     this.#body.dataset.theme = value;
   }
 
-  #updateAssets() {}
+  #updateAssets(theme) {
+    const icons = document.querySelectorAll(".icon");
+    icons.forEach((icon) => {
+      const path = icon.src;
+      const newPath = buildAssetPathStr(path, theme);
+      icon.src = newPath;
+    });
+  }
 
   #toggleTheme() {
     const currentTheme = this.bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.bodyTheme = updatedTheme;
     localStorage.setItem(this.#themeKey, updatedTheme);
-    console.log("toggleTheme", this.bodyTheme);
-    this.#updateAssets();
+    this.#updateAssets(updatedTheme);
   }
 
   #applyStoredTheme() {
     const storedTheme = localStorage.getItem(this.#themeKey);
     if (storedTheme) {
       this.bodyTheme = storedTheme;
-    } else {
-      this.bodyTheme = "dark";
+      this.#updateAssets(storedTheme);
+      return;
     }
-    console.log("applyStored", this.bodyTheme);
-    this.#updateAssets();
+    this.bodyTheme = "dark";
   }
 
   #btnHandler() {
