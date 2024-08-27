@@ -17,7 +17,7 @@ class ThemeCtrl {
   }
 
   init() {
-    this.#themeView.init();
+    this.#themeView.init(this.buildAssetPath);
   }
 }
 
