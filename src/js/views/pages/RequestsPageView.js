@@ -1,6 +1,6 @@
 import { PageView } from "./PageView.js";
 
-export class HomeView extends PageView {
+export class RequestsPageView extends PageView {
   constructor() {
     super();
   }

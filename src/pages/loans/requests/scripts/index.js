@@ -1,7 +1,3 @@
-import { initLayoutController } from "../../../../js/controllers/core/layoutCore.js";
-import { initLoanRequestsController } from "./loanRequestsHandler.js";
-import { initPathManager } from "./pathHandler.js";
+import { RequestsPageCtrl } from "../../../../js/controllers/pages/RequestsPageCtrl.js";
 
-initLayoutController();
-initPathManager();
-initLoanRequestsController();
+new RequestsPageCtrl();
