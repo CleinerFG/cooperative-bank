@@ -1,6 +1,6 @@
 import { ThemeView } from "../../views/layout/ThemeView.js";
 
-class ThemeCtrl {
+export class ThemeCtrl {
   #themeView;
   constructor() {
     this.#themeView = new ThemeView();
@@ -16,5 +16,3 @@ class ThemeCtrl {
     this.#themeView.init(this.buildAssetPath);
   }
 }
-
-export const themeCtrl = new ThemeCtrl();
