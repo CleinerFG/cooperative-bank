@@ -8,8 +8,5 @@ export function initLayout() {
 
   headerCtrl.init();
   footerCtrl.init();
-
-  themeCtrl.addLayoutAssetHandler(headerCtrl.assetHandler);
-  themeCtrl.addLayoutAssetHandler(footerCtrl.assetHandler);
   themeCtrl.init();
 }
