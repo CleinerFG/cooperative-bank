@@ -19,7 +19,7 @@ export class HeaderCtrl extends LayoutCtrl {
       "asset",
       "#theme-icon",
       `icons${theme}`,
-      `${theme}-mode.svg`
+      `icon-theme.svg`
     );
   }
 
