@@ -1,6 +1,6 @@
 import { LayoutCtrl } from "./LayoutCtrl.js";
 import { HeaderView } from "../../views/layout/HeaderView.js";
-import { getTheme } from "../../utils/domUtils.js";
+import { ThemeView } from "../../views/layout/ThemeView.js";
 
 export class HeaderCtrl extends LayoutCtrl {
   constructor() {
@@ -8,7 +8,7 @@ export class HeaderCtrl extends LayoutCtrl {
   }
 
   #defineAssetpath() {
-    const theme = getTheme();
+    const theme = ThemeView.getStoredTheme();
     this.pathManager.updatePath(
       "asset",
       ".header__menu-icon",

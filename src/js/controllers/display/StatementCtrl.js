@@ -1,6 +1,6 @@
 import { StatementView } from "../../views/display/StatementView.js";
 import pathUtil from "../../utils/PathManager.js";
-import { getTheme } from "../../utils/domUtils.js";
+import { ThemeView } from "../../views/layout/ThemeView.js";
 
 export class StatementCtrl {
   #container;
@@ -11,7 +11,7 @@ export class StatementCtrl {
   }
 
   pathHandler(state = "off") {
-    const theme = getTheme();
+    const theme = ThemeView.getStoredTheme();
     this.pathManager.updatePath(
       "asset",
       "#visibility-icon",
