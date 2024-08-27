@@ -1,5 +1,6 @@
 import { LayoutCtrl } from "./LayoutCtrl.js";
 import { FooterView } from "../../views/layout/FooterView.js";
+import { getTheme } from "../../utils/domUtils.js";
 
 export class FooterCtrl extends LayoutCtrl {
   constructor() {
@@ -31,7 +32,7 @@ export class FooterCtrl extends LayoutCtrl {
   }
 
   #defineAssetPath() {
-    const theme = "light";
+    const theme = getTheme();
     this.pathManager.updatePath(
       "asset",
       ".footer__icon",

@@ -1,10 +1,11 @@
 import { buildAssetPathStr } from "../../utils/stringUtils.js";
 
+export const themeKey = "coperativeBankTheme";
 export class ThemeView {
   #themeKey;
   #body;
   constructor() {
-    this.#themeKey = "coperativeBankTheme";
+    this.#themeKey = themeKey;
     this.#body = document.body;
   }
 

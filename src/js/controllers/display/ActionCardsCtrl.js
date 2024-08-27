@@ -1,6 +1,6 @@
 import { ActionCardView } from "../../views/display/ActionCardView.js";
-// import { themeCtrl } from "../layout/ThemeCtrl.js";
 import pathUtil from "../../utils/PathManager.js";
+import { getTheme } from "../../utils/domUtils.js";
 
 export class ActionCardsCtrl {
   #container;
@@ -17,10 +17,8 @@ export class ActionCardsCtrl {
     this.#init();
   }
 
-
   #defineAssetPath(view) {
-    // const theme = themeCtrl.theme;
-    const theme = "light";
+    const theme = getTheme();
     this.#pathManager.updatePath(
       "asset",
       `#card-icon-${view.name}`,
