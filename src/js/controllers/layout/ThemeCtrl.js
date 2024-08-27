@@ -7,6 +7,6 @@ export class ThemeCtrl {
   }
 
   init() {
-    this.#themeView.init(this.buildAssetPath);
+    this.#themeView.init();
   }
 }
