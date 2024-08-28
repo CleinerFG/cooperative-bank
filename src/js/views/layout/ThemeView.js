@@ -11,11 +11,11 @@ export class ThemeView {
     return localStorage.getItem(ThemeView.THEME_KEY) ?? "dark";
   }
 
-  get bodyTheme() {
+  get #bodyTheme() {
     return this.#body.dataset.theme;
   }
 
-  set bodyTheme(value) {
+  set #bodyTheme(value) {
     this.#body.dataset.theme = value;
   }
 
@@ -29,15 +29,15 @@ export class ThemeView {
   }
 
   #toggleTheme() {
-    const currentTheme = this.bodyTheme;
+    const currentTheme = this.#bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
-    this.bodyTheme = updatedTheme;
+    this.#bodyTheme = updatedTheme;
     localStorage.setItem(ThemeView.THEME_KEY, updatedTheme);
     this.#updateAssets(updatedTheme);
   }
 
   #applyStoredTheme() {
-    this.bodyTheme = ThemeView.getStoredTheme();
+    this.#bodyTheme = ThemeView.getStoredTheme();
   }
 
   #btnHandler() {

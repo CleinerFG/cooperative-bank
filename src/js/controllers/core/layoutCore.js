@@ -10,10 +10,10 @@ export class LayoutCore {
     this.#themeCtrl = new ThemeCtrl();
     this.#headerCtrl = new HeaderCtrl();
     this.#footerCtrl = new FooterCtrl();
-    this.init();
+    this.#init();
   }
 
-  init() {
+  #init() {
     this.#headerCtrl.init();
     this.#footerCtrl.init();
     this.#themeCtrl.init();
