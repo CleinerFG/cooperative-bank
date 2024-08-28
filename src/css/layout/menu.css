@@ -20,30 +20,42 @@
 
 .header__menu {
   background-color: var(--component-bg-color);
-  border-radius: 0.5rem 0 0.5rem 0.5rem;
+  border-radius: 0.7rem;
   box-shadow: var(--box-shadow);
-  padding: 1rem;
-  display: block;
+  display: none;
   position: absolute;
   top: calc(var(--header-height) - 0.3rem);
   right: calc(var(--container-padding) - 0.3rem);
-  max-height: 0%;
-  opacity: 0;
-  visibility: hidden;
-  overflow: hidden;
 }
 
 .header__menu--block {
-  max-height: 5rem;
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.4s ease-in-out;
+  display: block;
 }
 
 .header__menu-list {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+}
+
+.header__menu-item {
+  height: fit-content;
+  padding: 0.5rem;
+}
+
+.header__menu-item:first-child {
+  border-bottom: solid 0.1rem var(--component-border-color);
+}
+
+.header__menu-item:last-child {
+  border-top: solid 0.1rem var(--component-border-color);
+}
+
+.header__menu-item:nth-child(2) {
+  padding-bottom: 0;
+}
+
+.header__theme-icon {
+  width: 1.2rem;
 }
 
 .header__menu-item:last-child {

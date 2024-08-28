@@ -8,13 +8,14 @@ const htmlStr = `
   </button>
   <nav class="header__menu" aria-label="Main navigation">
     <ul class="header__menu-list">
+      <li class="header__menu-item"><a class="header__menu-link">My Account</a></li>
       <li class="header__menu-item">
         <button class="btn-unset  header__theme-button" id="switch-theme-button" aria-label="Switch Theme">
           <span>Switch Theme</span>
           <img class="icon header__theme-icon" id="theme-icon" alt="Theme Mode Icon">
         </button>
       </li>
-      <li class="header__menu-item"><a class="header__menu-link">Profile</a></li>
+      <li class="header__menu-item"><a class="header__menu-link">Settings</a></li>
       <li class="header__menu-item">Logout</li>
     </ul>
   </nav>
