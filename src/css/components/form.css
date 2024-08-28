@@ -16,8 +16,14 @@
   gap: 1rem;
 }
 
+.input {
+  width: 100%;
+}
+
 .form-group__input-group {
+  width: 100%;
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
   gap: 0.1rem;
 }

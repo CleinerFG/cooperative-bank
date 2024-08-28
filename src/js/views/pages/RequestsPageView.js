@@ -37,8 +37,8 @@ export class RequestsPageView extends PageView {
               class="input form-group__input">
             <button id="search-creditor-button" class="btn-unset form-group__button"aria-label="Search">
               <img id="search-creditor-icon" class="icon" alt="Search Icon">
+            </button>
           </div>
-          </button>
         </div>
         <div class="form-group__input-group">
           <label for="value" class="label form-group__label">Value</label>
@@ -46,8 +46,8 @@ export class RequestsPageView extends PageView {
             class="input form-group__input">
         </div>
         <div class="form-group__input-group">
-          <label for="installments" class="label form-group__label">Number of Installments<label>
-          <input id="installments" type="number" name="installments" placeholder="Installments"
+          <label for="installments" class="label form-group__label">Installments<label>
+          <input id="installments" type="number" name="installments" placeholder="Number of Installments"
             aria-label="Quantity of Installments" class="input form-group__input">
         </div>
         <div class="form-group__input-group">
