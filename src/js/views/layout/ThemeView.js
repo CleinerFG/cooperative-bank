@@ -1,4 +1,4 @@
-import { buildAssetPathStr } from "../../utils/stringUtils.js";
+import { ThemeCtrl } from "../../controllers/layout/ThemeCtrl.js";
 
 export class ThemeView {
   static THEME_KEY = "coperativeBankTheme";
@@ -23,7 +23,7 @@ export class ThemeView {
     const icons = document.querySelectorAll(".icon");
     icons.forEach((icon) => {
       const path = icon.src;
-      const newPath = buildAssetPathStr(path, theme);
+      const newPath = ThemeCtrl.buildAssetPathStr(path, theme);
       icon.src = newPath;
     });
   }
