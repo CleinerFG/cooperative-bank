@@ -43,6 +43,7 @@
 }
 
 .header__menu-item:first-child {
+  font-weight: 460;
   border-bottom: solid 0.1rem var(--component-border-color);
 }
 
