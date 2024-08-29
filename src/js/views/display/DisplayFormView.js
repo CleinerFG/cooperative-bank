@@ -14,6 +14,10 @@ export class DisplayFormView {
     this.#build();
   }
 
+  get _groupData() {
+    throw new AbstractMethodError("_inputGroupValues");
+  }
+
   _createInputGroup(labelText, id, type, placeholder, ariaLabel) {
     return `
     <div class="form-group__input-group">
