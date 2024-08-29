@@ -1,6 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
-export class DisplayFormView {
+export class FormView {
   #container;
   #id;
   #cssClass;

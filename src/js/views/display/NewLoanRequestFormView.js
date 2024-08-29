@@ -1,6 +1,6 @@
-import { DisplayFormView } from "./DisplayFormView.js";
+import { FormView } from "./FormView.js";
 
-export class NewLoanRequestFormView extends DisplayFormView {
+export class NewLoanRequestFormView extends FormView {
   constructor(container, id, cssClass, action, method) {
     super(container, id, cssClass, action, method);
   }
