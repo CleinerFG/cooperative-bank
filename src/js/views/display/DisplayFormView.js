@@ -53,6 +53,6 @@ export class DisplayFormView {
   }
 
   render() {
-    this.#container.append(this.#form);
+    this.#container.insertAdjacentHTML("beforeend", this.#form);
   }
 }

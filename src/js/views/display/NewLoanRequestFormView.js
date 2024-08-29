@@ -40,10 +40,16 @@ export class NewLoanRequestFormView extends DisplayFormView {
 
   _buildInputGroups() {
     const groupData = this._groupData;
-    return groupData.forEach(
-      ({ labelText, id, type, placeholder, ariaLabel }) => {
-        this._createInputGroup(labelText, id, type, placeholder, ariaLabel);
-      }
-    );
+    return groupData
+      .map(({ labelText, id, type, placeholder, ariaLabel }) => {
+        return this._createInputGroup(
+          labelText,
+          id,
+          type,
+          placeholder,
+          ariaLabel
+        );
+      })
+      .join("");
   }
 }

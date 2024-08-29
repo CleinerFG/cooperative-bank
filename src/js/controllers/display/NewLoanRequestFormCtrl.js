@@ -3,6 +3,13 @@ import { NewLoanRequestFormView } from "../../views/display/NewLoanRequestFormVi
 
 export class NewLoanRequestFormCtrl extends DisplayFormCtrl {
   constructor(container) {
-    super(container, NewLoanRequestFormView);
+    super(
+      NewLoanRequestFormView,
+      container,
+      "new-request-form",
+      "new-request",
+      "/",
+      "post"
+    );
   }
 }
