@@ -1,8 +1,8 @@
 import { DisplayFormView } from "./DisplayFormView.js";
 
 export class NewLoanRequestFormView extends DisplayFormView {
-  constructor(id, cssClass, action, method) {
-    super(id, cssClass, action, method);
+  constructor(container, id, cssClass, action, method) {
+    super(container, id, cssClass, action, method);
   }
 
   get _groupData() {

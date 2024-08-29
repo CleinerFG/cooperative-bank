@@ -1,12 +1,14 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class DisplayFormView {
+  #container;
   #id;
   #cssClass;
   #action;
   #method;
   #form = null;
-  constructor(id, cssClass, action, method) {
+  constructor(container, id, cssClass, action, method) {
+    this.#container = container;
     this.#id = id;
     this.#cssClass = cssClass;
     this.#action = action;
@@ -48,5 +50,9 @@ export class DisplayFormView {
        ${this._createSubmitButton()}
     </form>
     `;
+  }
+
+  render() {
+    this.#container.append(this.#form);
   }
 }
