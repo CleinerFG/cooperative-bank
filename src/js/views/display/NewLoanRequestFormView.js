@@ -52,4 +52,8 @@ export class NewLoanRequestFormView extends DisplayFormView {
       })
       .join("");
   }
+
+  _createSubmitButton() {
+    return super._createSubmitButton("Request");
+  }
 }
