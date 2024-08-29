@@ -18,7 +18,7 @@ export class RequestsPageView extends PageView {
 
   _createSectionNewLoan() {
     return `
-    <section class="section new-loan">
+    <section class="section new-request">
       <h2 class="section__h2">New Loan Request</h2>
       <p class="info-text">Provide the necessary information in the form and request a new loan.</p>
     </section>

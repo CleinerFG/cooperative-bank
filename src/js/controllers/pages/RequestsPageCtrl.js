@@ -1,5 +1,6 @@
 import { PageCtrl } from "./PageCtrl.js";
 import { RequestsPageView } from "../../views/pages/RequestsPageView.js";
+import { NewLoanRequestFormCtrl } from "../display/NewLoanRequestFormCtrl.js";
 import { LoanRequestsCtrl } from "../display/LoanRequestsCtrl.js";
 import { openedRequestsData, receivedRequestsData } from "../../testData.js";
 
@@ -9,7 +10,8 @@ export class RequestsPageCtrl extends PageCtrl {
   }
 
   _initFormCtrl() {
-
+    const container = document.querySelector(".new-request");
+    new NewLoanRequestFormCtrl(container);
   }
 
   _initReceivedRequestsCtrl() {
@@ -48,6 +50,7 @@ export class RequestsPageCtrl extends PageCtrl {
   }
 
   _initControllers() {
+    this._initFormCtrl();
     this._initReceivedRequestsCtrl();
     this._initOpenedRequestsCtrl();
   }
