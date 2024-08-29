@@ -1,13 +1,13 @@
-export class DisplaFormCtrl {
+export class DisplayFormCtrl {
   #container;
   #view;
   constructor(container, view) {
     this.#container = container;
     this.#view = new view(container);
-    this.init();
+    this.#init();
   }
 
-  init() {
+  #init() {
     this.#view.render();
   }
 }
