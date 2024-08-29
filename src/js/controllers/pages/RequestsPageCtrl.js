@@ -3,13 +3,13 @@ import { RequestsPageView } from "../../views/pages/RequestsPageView.js";
 import { LoanRequestsCtrl } from "../display/LoanRequestsCtrl.js";
 import { openedRequestsData, receivedRequestsData } from "../../testData.js";
 
-// Change to component - form
-import pathManager from "../../utils/PathManager.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
-
 export class RequestsPageCtrl extends PageCtrl {
   constructor() {
     super(RequestsPageView);
+  }
+
+  _initFormCtrl() {
+
   }
 
   _initReceivedRequestsCtrl() {
@@ -50,8 +50,5 @@ export class RequestsPageCtrl extends PageCtrl {
   _initControllers() {
     this._initReceivedRequestsCtrl();
     this._initOpenedRequestsCtrl();
-
-    //change to component
-    this._initPathManager();
   }
 }
