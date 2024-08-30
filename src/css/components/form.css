@@ -33,3 +33,37 @@
   align-items: center;
   gap: 0.5rem;
 }
+
+.input__container {
+  position: relative;
+}
+
+.research-list {
+  visibility: hidden;
+  width: 99%;
+  border-radius: var(--component-border-radius);
+  max-height: 10rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+}
+
+.research-list__active {
+  background-color: var(--component-bg-color);
+  border: solid 0.2rem var(--component-border-color);
+  visibility: visible;
+}
+
+.research-item {
+  border-radius: 1em;
+  padding: 0.4em;
+}
+
+.research-item:hover {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    var(--color-accent-translucent),
+    transparent
+  );
+}

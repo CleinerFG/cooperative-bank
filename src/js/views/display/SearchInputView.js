@@ -17,6 +17,10 @@ export class SearchInputView {
     element.dataset[`${this.#dataset}Id`] = value;
   }
 
+  #researchListVisibility() {
+    this.resultList.classList.toggle("research-list__active");
+  }
+
   #filterList(query) {
     const normalizedQuery = query.toLowerCase();
     return this.#researchData.filter(({ name }) =>
@@ -53,14 +57,16 @@ export class SearchInputView {
 
   #clearItemsOnBlur = () => {
     setTimeout(() => {
+      this.#researchListVisibility();
       this.resultList.innerHTML = "";
     }, 200);
   };
 
   init() {
-    this.input.addEventListener("click", () =>
-      this.#renderItems(this.#researchData)
-    );
+    this.input.addEventListener("focus", () => {
+      this.#renderItems(this.#researchData);
+      this.#researchListVisibility();
+    });
     this.input.addEventListener("input", this.#handleInput);
     this.input.addEventListener("blur", this.#clearItemsOnBlur);
   }
