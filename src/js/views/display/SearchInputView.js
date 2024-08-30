@@ -36,7 +36,7 @@ export class SearchInputView {
     listItems.forEach(({ id, name }) => {
       const li = document.createElement("li");
 
-      li.className = "query-item";
+      li.className = "research-item";
       this.#setElementDataset(li, id);
       li.textContent = name;
 

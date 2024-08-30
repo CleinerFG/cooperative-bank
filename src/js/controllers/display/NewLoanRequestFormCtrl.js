@@ -16,7 +16,7 @@ export class NewLoanRequestFormCtrl extends DisplayFormCtrl {
 
   _initSearchInputCtrl() {
     const inp = document.querySelector("#creditor");
-    const resList = document.querySelector("#research-ul");
+    const resList = document.querySelector("#research-list");
     new SearchInputCtrl(inp, resList, "creditor");
   }
 

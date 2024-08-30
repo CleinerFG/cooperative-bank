@@ -37,7 +37,7 @@ export class FormView {
       <div class="input__container">
         <input id="${id}" type="text" name="${id}" placeholder="${placeholder}" aria-label="${ariaLabel}"
         class="input form-group__input">
-        <ul id="research-ul"></ul>
+        <ul class="research-list" id="research-list"></ul>
       </div>
     </div>
     `;
