@@ -1,1 +1,18 @@
 @import url("../../css/index.css");
+
+#creditor {
+  width: 100%;
+}
+
+#creditor-result {
+  background-color: #cecece;
+  max-height: 10rem;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#creditor-result li:hover {
+  cursor: pointer;
+  background-color: #a4bdb5;
+}
