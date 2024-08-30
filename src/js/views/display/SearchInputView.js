@@ -26,7 +26,7 @@ export class SearchInputView {
 
   #handleItemClick = (event) => {
     const selectedItem = event.target;
-    this.#setElementDataset(input, this.#getElementDataset(selectedItem));
+    this.#setElementDataset(this.input, this.#getElementDataset(selectedItem));
     this.input.value = selectedItem.textContent;
     this.resultList.innerHTML = "";
   };
