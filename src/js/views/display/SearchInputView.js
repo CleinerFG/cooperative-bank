@@ -1,4 +1,4 @@
-class SearchInputView {
+export class SearchInputView {
   #researchData;
   #dataset;
   constructor(input, resultList, dataset, researchData) {
