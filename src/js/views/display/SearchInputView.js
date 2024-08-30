@@ -1,5 +1,3 @@
-
-
 class SearchInputView {
   #researchData;
   #dataset;
@@ -67,8 +65,3 @@ class SearchInputView {
     this.input.addEventListener("blur", this.#clearItemsOnBlur);
   }
 }
-
-const input = document.querySelector("#creditor");
-const resultList = document.querySelector("#creditor-result");
-
-new SearchInput(input, resultList, "creditor", users);
