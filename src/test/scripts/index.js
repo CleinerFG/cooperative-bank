@@ -70,48 +70,68 @@ const users = [
   "The Xenomorph (Alien)",
 ].sort((a, b) => a.localeCompare(b));
 
+class SearchInput {
+  #researchData;
 
-const creditorInput = document.querySelector("#creditor");
-const creditorResultList = document.querySelector("#creditor-result");
+  constructor(input, resultList, researchData) {
+    this.input = input;
+    this.resultList = resultList;
+    this.#researchData = researchData;
+    this.init();
+  }
 
-creditorInput.addEventListener("click", () => populateCreditorList(users));
-creditorInput.addEventListener("input", handleInput);
-creditorInput.addEventListener("blur", clearCreditorListOnBlur);
+  #filterList(query) {
+    const normalizedQuery = query.toLowerCase();
+    return this.#researchData.filter((item) =>
+      item.toLowerCase().includes(normalizedQuery)
+    );
+  }
 
-function handleInput(event) {
-  const searchQuery = event.target.value.toLowerCase();
-  const filteredCreditors = filterCreditorsByName(searchQuery);
-  populateCreditorList(filteredCreditors);
+  #handleItemClick = (event) => {
+    const selectedItem = event.target.textContent;
+    console.log(`Credor selected: ${selectedItem}`);
+    this.input.value = selectedItem;
+    this.resultList.innerHTML = "";
+  };
+
+  #renderItems(listItems) {
+    this.resultList.innerHTML = "";
+
+    listItems.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.className = "query-item";
+      li.dataset.queryId = index;
+      li.textContent = item;
+
+      li.addEventListener("click", this.#handleItemClick);
+
+      this.resultList.appendChild(li);
+    });
+  }
+
+  #handleInput = (event) => {
+    const query = event.target.value;
+    const filteredList = this.#filterList(query);
+    this.#renderItems(filteredList);
+  };
+
+  #clearItemsOnBlur = () => {
+    setTimeout(() => {
+      this.resultList.innerHTML = "";
+      console.log("Clear items");
+    }, 100);
+  };
+
+  init() {
+    this.input.addEventListener("click", () =>
+      this.#renderItems(this.#researchData)
+    );
+    this.input.addEventListener("input", this.#handleInput);
+    this.input.addEventListener("blur", this.#clearItemsOnBlur);
+  }
 }
 
-function filterCreditorsByName(query) {
-  return users.filter((user) => user.toLowerCase().includes(query));
-}
+const input = document.querySelector("#creditor");
+const resultList = document.querySelector("#creditor-result");
 
-function populateCreditorList(creditors) {
-  creditorResultList.innerHTML = "";
-
-  creditors.forEach((creditor, index) => {
-    const listItem = document.createElement("li");
-    listItem.className = "creditor-item";
-    listItem.dataset.creditorId = index;
-    listItem.textContent = creditor;
-
-    listItem.addEventListener("click", handleCreditorClick);
-
-    creditorResultList.appendChild(listItem);
-  });
-}
-
-function clearCreditorListOnBlur() {
-  setTimeout(() => {
-    creditorResultList.innerHTML = "";
-  }, 200);
-}
-
-function handleCreditorClick(event) {
-  const selectedCreditor = event.target.textContent;
-  console.log(`Credor selecionado: ${selectedCreditor}`);
-  creditorInput.value = selectedCreditor;
-  creditorResultList.innerHTML = "";
-}
+new SearchInput(input, resultList, users);
