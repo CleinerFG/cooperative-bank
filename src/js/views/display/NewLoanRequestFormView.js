@@ -8,13 +8,6 @@ export class NewLoanRequestFormView extends FormView {
   get _groupData() {
     return [
       {
-        labelText: "Search for a Creditor",
-        id: "search-creditor",
-        type: "text",
-        placeholder: "Enter creditor",
-        ariaLabel: "Search Creditor",
-      },
-      {
         labelText: "Value",
         id: "loan-value",
         type: "text",
@@ -38,9 +31,25 @@ export class NewLoanRequestFormView extends FormView {
     ];
   }
 
+  _buildInputSearch() {
+    const inpData = {
+      labelText: "Search for a Creditor",
+      id: "creditor",
+      placeholder: "Enter creditor",
+      ariaLabel: "Search Creditor",
+    };
+
+    return this._createInputSearch(
+      inpData.labelText,
+      inpData.id,
+      inpData.placeholder,
+      inpData.ariaLabel
+    );
+  }
+
   _buildInputGroups() {
-    const groupData = this._groupData;
-    return groupData
+    const inpSearch = this._buildInputSearch();
+    const groupData = this._groupData
       .map(({ labelText, id, type, placeholder, ariaLabel }) => {
         return this._createInputGroup(
           labelText,
@@ -51,6 +60,7 @@ export class NewLoanRequestFormView extends FormView {
         );
       })
       .join("");
+    return inpSearch + groupData;
   }
 
   _createSubmitButton() {

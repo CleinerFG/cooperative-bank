@@ -24,8 +24,21 @@ export class FormView {
     return `
     <div class="form-group__input-group">
       <label for="${id}" class="label form-group__label">${labelText}</label>
-      <input id="${id}" type="${type}" name="value" placeholder="${placeholder}" aria-label="${ariaLabel}"
+      <input id="${id}" type="${type}" name="${id}" placeholder="${placeholder}" aria-label="${ariaLabel}"
       class="input form-group__input">
+    </div>
+    `;
+  }
+
+  _createInputSearch(labelText, id, placeholder, ariaLabel) {
+    return `
+    <div class="form-group__input-group">
+      <label for="${id}" class="label form-group__label">${labelText}</label>
+      <div class="input__container">
+        <input id="${id}" type="text" name="${id}" placeholder="${placeholder}" aria-label="${ariaLabel}"
+        class="input form-group__input">
+        <ul id="research-ul"></ul>
+      </div>
     </div>
     `;
   }
