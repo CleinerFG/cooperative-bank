@@ -1,6 +1,6 @@
-import { DisplayView } from "./DisplayView.js";
+import { ComponentView } from "./ComponentView.js";
 
-export class LoanView extends DisplayView {
+export class LoanView extends ComponentView {
   constructor(container, loan) {
     super(container, loan);
   }

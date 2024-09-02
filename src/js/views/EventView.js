@@ -1,7 +1,7 @@
-import { DisplayView } from "./DisplayView.js";
+import { ComponentView } from "./ComponentView.js";
 import { capitalize } from "../../utils/stringUtils.js";
 
-export class EventView extends DisplayView {
+export class EventView extends ComponentView {
   constructor(container, event) {
     super(container, event);
   }

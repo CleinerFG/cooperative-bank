@@ -1,6 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
-export class DisplayView {
+export class ComponentView {
   #container;
   #component;
   constructor(container, component) {
