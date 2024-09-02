@@ -3,18 +3,39 @@ import pathUtil from "../utils/PathManager.js";
 import { ThemeView } from "../views/layout/ThemeView.js";
 
 export class ActionCardsCtrl {
+  #pathManager = pathUtil;
+  #ActionCardView = ActionCardView;
   #container;
-  #sectionData;
-  #pathManager;
-  #ActionCardView;
+  #section = { name: undefined, items: [] };
+  #type;
   #viewInstances;
-  constructor(container, sectionData) {
-    this.#container = container;
-    this.#sectionData = sectionData;
-    this.#pathManager = pathUtil;
-    this.#ActionCardView = ActionCardView;
+  constructor(type) {
+    this.#type = type;
     this.#viewInstances = [];
     this.#init();
+  }
+
+  #defineSettings() {
+    const settings = {
+      loans: {
+        sectionName: "loans",
+        containerSelector: ".loans__cards",
+        sectionItems: ["requests", "payments", "overview", "timeline"],
+      },
+      investments: {
+        sectionName: "investments",
+        containerSelector: ".investments__cards",
+        sectionItems: ["all", "reports"],
+      },
+    };
+
+    const config = settings[this.#type];
+
+    if (config) {
+      this.#container = document.querySelector(config.containerSelector);
+      this.#section.name = config.sectionName;
+      this.#section.items = config.sectionItems;
+    }
   }
 
   #defineAssetPath(view) {
@@ -31,7 +52,7 @@ export class ActionCardsCtrl {
     this.#pathManager.updatePath(
       "html",
       `#card-link-${view.name}`,
-      this.#sectionData.name,
+      this.#section.name,
       view.name
     );
   }
@@ -47,17 +68,18 @@ export class ActionCardsCtrl {
     return new this.#ActionCardView(this.#container, name);
   }
 
-  #renderActionCards() {
-    this.#viewInstances.forEach((view) => view.render());
-  }
-
   #addActionCards() {
-    const items = this.#sectionData.items;
+    const items = this.#section.items;
     const views = items.map((item) => this.#createView(item));
     this.#viewInstances = views;
   }
 
+  #renderActionCards() {
+    this.#viewInstances.forEach((view) => view.render());
+  }
+
   #init() {
+    this.#defineSettings();
     this.#addActionCards();
     this.#renderActionCards();
     this.#pathHandler();
