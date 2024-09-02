@@ -1,6 +1,6 @@
 import { NoComponentsCtrl } from "./NoComponentsCtrl.js";
 
-export class DisplayCtrl {
+export class ComponentCtrl {
   #container;
   #viewClass;
   #componentsViews;

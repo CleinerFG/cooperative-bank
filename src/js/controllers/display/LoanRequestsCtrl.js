@@ -1,7 +1,7 @@
-import { DisplayCtrl } from "./DisplayCtrl.js";
+import { ComponentCtrl } from "./ComponentCtrl.js";
 import { LoanRequestView } from "../../views/display/LoanRequestView.js";
 
-export class LoanRequestsCtrl extends DisplayCtrl {
+export class LoanRequestsCtrl extends ComponentCtrl {
   constructor(container, category) {
     super(container, LoanRequestView, category);
   }
