@@ -7,7 +7,7 @@ export class PageView {
     this.#init();
   }
 
-  #insertContent() {
+  #render() {
     const main = `
     <main class="main">
     ${this._pageContent()}
@@ -21,6 +21,6 @@ export class PageView {
   }
 
   #init() {
-    this.#insertContent();
+    this.#render();
   }
 }
