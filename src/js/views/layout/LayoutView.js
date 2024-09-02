@@ -1,9 +1,10 @@
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+
 export class LayoutView {
   #htmlStr;
-  #body;
+  #body = document.body;
   constructor(htmlStr) {
     this.#htmlStr = htmlStr;
-    this.#body = document.body;
   }
 
   get htmlStr() {
@@ -15,6 +16,6 @@ export class LayoutView {
   }
 
   render() {
-    throw new Error("Must be implemented in the subclass");
+    throw new AbstractMethodError("render");
   }
 }

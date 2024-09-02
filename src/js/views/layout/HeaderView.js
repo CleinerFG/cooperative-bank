@@ -28,12 +28,16 @@ export class HeaderView extends LayoutView {
 
   menuHandler() {
     const menuBtn = document.querySelector("#menu-button");
-    menuBtn.addEventListener("click", (ev) => {
+    const navMenu = document.querySelector(".header__menu");
+  
+    const toggleMenu = () => {
       menuBtn.classList.toggle("header__menu-button--active");
-      const nav = document.querySelector(".header__menu");
-      nav.classList.toggle("header__menu--block");
-    });
+      navMenu.classList.toggle("header__menu--block");
+    };
+  
+    menuBtn.addEventListener("click", toggleMenu);
   }
+  
 
   render() {
     this.body.insertAdjacentHTML("afterbegin", this.htmlStr);
