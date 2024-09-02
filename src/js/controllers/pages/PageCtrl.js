@@ -1,5 +1,5 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { LayoutCore } from "../core/LayoutCore.js";
+import { LayoutCore } from "../layout/LayoutCore.js";
 
 export class PageCtrl {
   #pageView;
@@ -19,6 +19,6 @@ export class PageCtrl {
   #init() {
     this.#initPageView();
     this._initControllers();
-    new LayoutCore();
+    LayoutCore.init();
   }
 }
