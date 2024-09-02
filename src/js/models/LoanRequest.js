@@ -1,18 +1,17 @@
 import { Loan } from "./Loan.js";
 
-const requestTypes = {
-  1: "opened",
-  2: "received",
-};
-
-const requestStatus = {
-  1: "Pending",
-  2: "Accepted",
-  3: "Denied",
-  4: "Canceled",
-};
-
 export class LoanRequest extends Loan {
+  static descTypes = {
+    1: "opened",
+    2: "received",
+  };
+
+  static descStatus = {
+    1: "Pending",
+    2: "Accepted",
+    3: "Denied",
+    4: "Canceled",
+  };
   constructor(
     id,
     type,
@@ -43,10 +42,10 @@ export class LoanRequest extends Loan {
   }
 
   get type() {
-    return requestTypes[this._type];
+    return LoanRequest.descTypes[this._type];
   }
 
   get status() {
-    return requestStatus[this._status];
+    return LoanRequest.descStatus[this._status];
   }
 }
