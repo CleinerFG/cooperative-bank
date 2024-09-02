@@ -36,8 +36,8 @@ export class ComponentCtrl {
 
   removeComponent(id) {
     this.#componentsViews = this.#componentsViews.filter((view) => {
-      if (view.component.id === id) view.selfRemove();
-      return view.component.id !== id;
+      if (view.componentModel.id === id) view.selfRemove();
+      return view.componentModel.id !== id;
     });
     this.#noComponentsHandler();
   }

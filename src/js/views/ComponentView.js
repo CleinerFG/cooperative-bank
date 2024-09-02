@@ -2,22 +2,22 @@ import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 
 export class ComponentView {
   #container;
-  #component;
-  constructor(container, component) {
+  #componentModel;
+  constructor(container, componentModel) {
     this.#container = container;
-    this.#component = component;
+    this.#componentModel = componentModel;
   }
 
-  get component() {
-    return this.#component;
+  get componentModel() {
+    return this.#componentModel;
   }
 
   get _cssId() {
-    throw new AbstractMethodError("render");
+    throw new AbstractMethodError("_cssId");
   }
 
   get _cssClass() {
-    throw new AbstractMethodError("render");
+    throw new AbstractMethodError("_cssClass");
   }
 
   get _headerCard() {
@@ -37,8 +37,8 @@ export class ComponentView {
   }
 
   get _entityInfo() {
-    const entity = this.component.creditor ? "Creditor" : "Debtor";
-    const entityValue = this.component.creditor ?? this.component.debtor;
+    const entity = this.componentModel.creditor ? "Creditor" : "Debtor";
+    const entityValue = this.componentModel.creditor ?? this.componentModel.debtor;
     return { entity, entityValue };
   }
 

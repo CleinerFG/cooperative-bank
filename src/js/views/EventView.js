@@ -2,35 +2,35 @@ import { ComponentView } from "./ComponentView.js";
 import { capitalize } from "../utils/stringUtils.js";
 
 export class EventView extends ComponentView {
-  constructor(container, event) {
-    super(container, event);
+  constructor(container, eventModel) {
+    super(container, eventModel);
   }
 
   get _cssId() {
-    return `event-${this.component.id}`;
+    return `event-${this.componentModel.id}`;
   }
 
   get _cssClass() {
-    return `event__${this.component.type}`;
+    return `event__${this.componentModel.type}`;
   }
 
   get _btnClass() {
-    return this.component.type === "payment" ? "btn-attention" : "";
+    return this.componentModel.type === "payment" ? "btn-attention" : "";
   }
 
   get _btnText() {
-    return this.component.type === "payment" ? "Pay" : "See";
+    return this.componentModel.type === "payment" ? "Pay" : "See";
   }
 
   get _labelValue() {
     return [
-      { label: "Due Date", value: this.component.dueDate },
-      { label: "Value", value: this.component.value },
+      { label: "Due Date", value: this.componentModel.dueDate },
+      { label: "Value", value: this.componentModel.value },
     ];
   }
 
   get _headerCard() {
-    return this._createHeaderCard(capitalize(this.component.type));
+    return this._createHeaderCard(capitalize(this.componentModel.type));
   }
 
   get _mainCard() {
