@@ -1,10 +1,6 @@
 import { PageView } from "./PageView.js";
 
 export class RequestsPageView extends PageView {
-  constructor() {
-    super();
-  }
-
   _createSectionTakeOut() {
     return `
     <section class="section">

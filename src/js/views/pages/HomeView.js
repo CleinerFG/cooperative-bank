@@ -2,10 +2,6 @@ import { PageView } from "./PageView.js";
 import { capitalize } from "../../utils/stringUtils.js";
 
 export class HomeView extends PageView {
-  constructor() {
-    super();
-  }
-
   _createStatement() {
     return `
     <section class="section statement">
