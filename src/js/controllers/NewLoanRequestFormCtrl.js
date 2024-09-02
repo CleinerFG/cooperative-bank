@@ -3,7 +3,8 @@ import { NewLoanRequestFormView } from "../views/NewLoanRequestFormView.js";
 import { SearchInputCtrl } from "./SearchInputCtrl.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
-  constructor(container) {
+  constructor() {
+    const container = document.querySelector(".new-request");
     super(
       NewLoanRequestFormView,
       container,

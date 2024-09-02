@@ -10,8 +10,7 @@ export class RequestsPageCtrl extends PageCtrl {
   }
 
   _initFormCtrl() {
-    const container = document.querySelector(".new-request");
-    new NewLoanRequestFormCtrl(container);
+    new NewLoanRequestFormCtrl();
   }
 
   _initReceivedRequestsCtrl() {

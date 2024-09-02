@@ -1,12 +1,15 @@
 import { FormView } from "./FormView.js";
 
 export class NewLoanRequestFormView extends FormView {
-  constructor(container, id, cssClass, action, method) {
-    super(container, id, cssClass, action, method);
-  }
-
   get _groupData() {
     return [
+      {
+        labelText: "Description",
+        id: "loan-description",
+        type: "text",
+        placeholder: "Enter description",
+        ariaLabel: "Loan Description",
+      },
       {
         labelText: "Value",
         id: "loan-value",
