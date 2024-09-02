@@ -6,11 +6,11 @@ export class LoanRequestView extends ComponentView {
   }
 
   get _cssId() {
-    return `request-${this.component.type}-${this.component.id}`;
+    return `request-${this.componentModel.type}-${this.componentModel.id}`;
   }
 
   get _cssClass() {
-    switch (this.component.status) {
+    switch (this.componentModel.status) {
       case "Accepted":
         return `request__success`;
       case "Denied":
@@ -21,7 +21,7 @@ export class LoanRequestView extends ComponentView {
   }
 
   get _btnClass() {
-    switch (this.component.status) {
+    switch (this.componentModel.status) {
       case "Accepted":
         return "btn-success";
       case "Denied":
@@ -32,7 +32,7 @@ export class LoanRequestView extends ComponentView {
   }
 
   get _btnText() {
-    switch (this.component.status) {
+    switch (this.componentModel.status) {
       case "Accepted":
       case "Denied":
         return "Confirm";
@@ -45,16 +45,16 @@ export class LoanRequestView extends ComponentView {
     const { entity, entityValue } = this._entityInfo;
     return [
       { label: entity, value: entityValue },
-      { label: "Date", value: this.component.date },
-      { label: "Value", value: this.component.value },
-      { label: "Installments", value: this.component.installments },
-      { label: "Installment Value", value: this.component.installmentValue },
-      { label: "Interest Rate", value: this.component.rate },
+      { label: "Date", value: this.componentModel.date },
+      { label: "Value", value: this.componentModel.value },
+      { label: "Installments", value: this.componentModel.installments },
+      { label: "Installment Value", value: this.componentModel.installmentValue },
+      { label: "Interest Rate", value: this.componentModel.rate },
     ];
   }
 
   get _headerCard() {
-    return this._createHeaderCard(this.component.status);
+    return this._createHeaderCard(this.componentModel.status);
   }
 
   get _mainCard() {
@@ -72,7 +72,7 @@ export class LoanRequestView extends ComponentView {
       <button class="btn btn-fail card-data__btn">Recuse</button>
     `;
     const str =
-      this.component.type === "opened" ? footerOpened : footerReceived;
+      this.componentModel.type === "opened" ? footerOpened : footerReceived;
     return this._createFooterCard(str);
   }
 }

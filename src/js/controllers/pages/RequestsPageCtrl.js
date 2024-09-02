@@ -13,44 +13,23 @@ export class RequestsPageCtrl extends PageCtrl {
     new NewLoanRequestFormCtrl();
   }
 
-  _initReceivedRequestsCtrl() {
-    const container = document.querySelector(".received-requests__cards");
-    const ctrl = new LoanRequestsCtrl(container, "received");
-    receivedRequestsData.forEach((req) => ctrl.addComponent(req));
-    ctrl.renderComponents();
-    // ctrl.clearComponents();
-  }
-
   _initOpenedRequestsCtrl() {
-    const container = document.querySelector(".open-requests__cards");
-    const ctrl = new LoanRequestsCtrl(container, "opened");
+    const ctrl = new LoanRequestsCtrl("opened");
     openedRequestsData.forEach((req) => ctrl.addComponent(req));
     ctrl.renderComponents();
     // ctrl.clearComponents();
   }
 
-  _initPathManager() {
-    pathManager.updatePath(
-      "asset",
-      "#search-creditor-icon",
-      "icons",
-      "icon-search.svg"
-    );
-  }
-
-  _initPathManager() {
-    const theme = ThemeView.getStoredTheme();
-    pathManager.updatePath(
-      "asset",
-      "#search-creditor-icon",
-      `icons${theme}`,
-      "icon-search.svg"
-    );
+  _initReceivedRequestsCtrl() {
+    const ctrl = new LoanRequestsCtrl("received");
+    receivedRequestsData.forEach((req) => ctrl.addComponent(req));
+    ctrl.renderComponents();
+    // ctrl.clearComponents();
   }
 
   _initControllers() {
     this._initFormCtrl();
-    this._initReceivedRequestsCtrl();
     this._initOpenedRequestsCtrl();
+    this._initReceivedRequestsCtrl();
   }
 }
