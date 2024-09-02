@@ -1,8 +1,8 @@
-import { DisplayFormCtrl } from "./DisplayFormCtrl.js";
+import { FormCtrl } from "./FormCtrl.js";
 import { NewLoanRequestFormView } from "../../views/display/NewLoanRequestFormView.js";
 import { SearchInputCtrl } from "./SearchInputCtrl.js";
 
-export class NewLoanRequestFormCtrl extends DisplayFormCtrl {
+export class NewLoanRequestFormCtrl extends FormCtrl {
   constructor(container) {
     super(
       NewLoanRequestFormView,

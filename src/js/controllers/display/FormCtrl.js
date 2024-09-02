@@ -1,6 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
-export class DisplayFormCtrl {
+export class FormCtrl {
   #view;
   constructor(view, container, id, cssClass, action, method) {
     this.#view = new view(container, id, cssClass, action, method);
