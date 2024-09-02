@@ -1,16 +1,16 @@
 import { monetaryValue, percentValue } from "../utils/formatters.js";
 
-const loanStatus = {
-  1: "active",
-  2: "finished",
-};
-
-const loanTypes = {
-  1: "payable",
-  2: "receivable",
-};
-
 export class Loan {
+  static descStatus = {
+    1: "active",
+    2: "finished",
+  };
+
+  static descTypes = {
+    1: "payable",
+    2: "receivable",
+  }
+
   #id;
   #description;
   #debtor;
@@ -57,11 +57,11 @@ export class Loan {
   }
 
   get type() {
-    return loanTypes[this._type];
+    return Loan.descTypes[this._type];
   }
 
   get status() {
-    return loanStatus[this._status];
+    return Loan.descStatus[this._status];
   }
 
   get description() {
