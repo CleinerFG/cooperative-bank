@@ -1,11 +1,10 @@
 import { monetaryValue } from "../utils/formatters.js";
 
-const eventTypes = {
-  1: "payment",
-  2: "investment",
-};
-
 export class Event {
+  static descType = {
+    1: "payment",
+    2: "investment",
+  };
   #id;
   #type;
   #dueDate;
@@ -17,14 +16,12 @@ export class Event {
     this.#value = value;
   }
 
-  // Implement data formatting from the server in the getters
-
   get id() {
     return this.#id;
   }
 
   get type() {
-    return eventTypes[this.#type];
+    return Event.descType[this.#type];
   }
 
   get dueDate() {
