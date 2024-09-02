@@ -3,10 +3,9 @@ import pathUtil from "../../utils/PathManager.js";
 
 export class LayoutCtrl {
   #layoutView;
-  #pathManager;
-  constructor(layoutView, pathManager = pathUtil) {
+  #pathManager = pathUtil;
+  constructor(layoutView) {
     this.#layoutView = layoutView;
-    this.#pathManager = pathManager;
   }
 
   get layoutView() {
