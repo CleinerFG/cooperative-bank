@@ -1,11 +1,6 @@
 import { ThemeView } from "../../views/layout/ThemeView.js";
 
 export class ThemeCtrl {
-  #themeView;
-  constructor() {
-    this.#themeView = new ThemeView();
-  }
-
   static buildAssetPathStr(path, theme) {
     const basePath = "/src/assets/icons/";
     const iconPattern = /\/([^\/]+)\.svg$/;
@@ -17,6 +12,6 @@ export class ThemeCtrl {
   }
 
   init() {
-    this.#themeView.init();
+    new ThemeView().init();
   }
 }

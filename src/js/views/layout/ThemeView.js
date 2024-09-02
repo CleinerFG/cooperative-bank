@@ -2,10 +2,8 @@ import { ThemeCtrl } from "../../controllers/layout/ThemeCtrl.js";
 
 export class ThemeView {
   static THEME_KEY = "coperativeBankTheme";
-  #body;
-  constructor() {
-    this.#body = document.body;
-  }
+  
+  #body = document.body;
 
   static getStoredTheme() {
     return localStorage.getItem(ThemeView.THEME_KEY) ?? "dark";
