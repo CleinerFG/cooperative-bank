@@ -11,8 +11,7 @@ export class HomeCtrl extends PageCtrl {
   }
 
   _initStatementCtrl() {
-    const statementContainer = document.querySelector(".statement__container");
-    new StatementCtrl(statementContainer);
+    new StatementCtrl();
   }
 
   _initActionCardsCtrl() {

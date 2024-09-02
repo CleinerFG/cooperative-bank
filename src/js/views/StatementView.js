@@ -15,7 +15,7 @@ export class StatementView {
     `
   }
 
-  switchVisibility(updatePath) {
+  switchVisibility(assetHandler) {
     document
       .querySelector(".statement__visibility-button")
       .addEventListener("click", (ev) => {
@@ -29,7 +29,7 @@ export class StatementView {
 
         // Switching visibility and SVG file
         const state = visibility === "off" ? "on" : "off";
-        updatePath(state);
+        assetHandler(state);
         button.dataset.visibility = state;
 
         // Showing the total value

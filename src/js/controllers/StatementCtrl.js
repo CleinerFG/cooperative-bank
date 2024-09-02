@@ -1,16 +1,17 @@
-import { StatementView } from "../views/StatementView.js";
 import pathUtil from "../utils/PathManager.js";
+import { StatementView } from "../views/StatementView.js";
 import { ThemeView } from "../views/layout/ThemeView.js";
 
 export class StatementCtrl {
-  #container;
-  constructor(container) {
-    this.#container = container;
+  #view;
+  #container = document.querySelector(".statement__container");
+  constructor() {
+    this.#view = new StatementView(this.#container);
     this.pathManager = pathUtil;
     this.#init();
   }
 
-  pathHandler(state = "off") {
+  assetHandler(state) {
     const theme = ThemeView.getStoredTheme();
     this.pathManager.updatePath(
       "asset",
@@ -21,9 +22,8 @@ export class StatementCtrl {
   }
 
   #init() {
-    const view = new StatementView(this.#container);
-    view.render();
-    this.pathHandler();
-    view.switchVisibility(this.pathHandler.bind(this));
+    this.#view.render();
+    this.assetHandler("off");
+    this.#view.switchVisibility(this.assetHandler.bind(this));
   }
 }
