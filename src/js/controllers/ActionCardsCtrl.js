@@ -1,6 +1,6 @@
-import { ActionCardView } from "../../views/display/ActionCardView.js";
-import pathUtil from "../../utils/PathManager.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
+import { ActionCardView } from "../views/ActionCardView.js";
+import pathUtil from "../utils/PathManager.js";
+import { ThemeView } from "../views/layout/ThemeView.js";
 
 export class ActionCardsCtrl {
   #container;

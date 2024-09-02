@@ -1,5 +1,5 @@
-import { NoComponentsView } from "../../views/display/NoComponentsView.js";
-import pathUtil from "../../utils/PathManager.js";
+import { NoComponentsView } from "../views/NoComponentsView.js";
+import pathUtil from "../utils/PathManager.js";
 
 export class NoComponentsCtrl {
   #container;

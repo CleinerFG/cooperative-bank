@@ -1,6 +1,6 @@
-import { StatementView } from "../../views/display/StatementView.js";
-import pathUtil from "../../utils/PathManager.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
+import { StatementView } from "../views/StatementView.js";
+import pathUtil from "../utils/PathManager.js";
+import { ThemeView } from "../views/layout/ThemeView.js";
 
 export class StatementCtrl {
   #container;

@@ -1,8 +1,8 @@
 import { PageCtrl } from "./PageCtrl.js";
 import { HomeView } from "../../views/pages/HomeView.js";
-import { StatementCtrl } from "../display/StatementCtrl.js";
-import { ActionCardsCtrl } from "../display/ActionCardsCtrl.js";
-import { EventsCtrl } from "../../controllers/display/EventsCtrl.js";
+import { StatementCtrl } from "../StatementCtrl.js";
+import { ActionCardsCtrl } from "../ActionCardsCtrl.js";
+import { EventsCtrl } from "../../controllers/EventsCtrl.js";
 import { eventsData } from "../../testData.js";
 
 export class HomeCtrl extends PageCtrl {

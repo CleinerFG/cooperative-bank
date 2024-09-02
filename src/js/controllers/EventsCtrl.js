@@ -1,5 +1,5 @@
 import { ComponentCtrl } from "./ComponentCtrl.js";
-import { EventView } from "../../views/display/EventView.js";
+import { EventView } from "../views/EventView.js";
 
 export class EventsCtrl extends ComponentCtrl {
   constructor(container, category) {
