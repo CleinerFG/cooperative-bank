@@ -22,7 +22,6 @@ export class StatementCtrl {
   }
 
   #init() {
-    this.#view.render();
     this.assetHandler("off");
     this.#view.switchVisibility(this.assetHandler.bind(this));
   }

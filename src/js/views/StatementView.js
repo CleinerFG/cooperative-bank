@@ -2,6 +2,7 @@ export class StatementView {
   #container;
   constructor(container) {
     this.#container = container;
+    this.#render()
   }
 
   #create() {
@@ -39,7 +40,7 @@ export class StatementView {
   }
 
 
-  render() {
+  #render() {
     this.#container.insertAdjacentHTML("beforeend", this.#create());
   }
 }
