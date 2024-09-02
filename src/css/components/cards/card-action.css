@@ -20,5 +20,5 @@
 /* Hover */
 .card-action:hover {
   background-color: var(--color-accent-hover);
-  transform: scale(105%) translateY(-0.6rem);
+  transform: translateY(-0.6rem);
 }
