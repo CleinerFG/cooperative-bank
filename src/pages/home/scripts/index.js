@@ -1,3 +1,3 @@
-import { HomeCtrl } from "../../../js/controllers/pages/HomeCtrl.js";
+import { HomePageCtrl } from "../../../js/controllers/pages/HomePageCtrl.js";
 
-new HomeCtrl();
+new HomePageCtrl();

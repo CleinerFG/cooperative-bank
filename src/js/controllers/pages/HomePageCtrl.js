@@ -5,7 +5,7 @@ import { ActionCardsCtrl } from "../ActionCardsCtrl.js";
 import { EventsCtrl } from "../../controllers/EventsCtrl.js";
 import { eventsData } from "../../testData.js";
 
-export class HomeCtrl extends PageCtrl {
+export class HomePageCtrl extends PageCtrl {
   constructor() {
     super(HomeView);
   }
