@@ -1,5 +1,5 @@
-import { Event } from "./models/display/Event.js";
-import { LoanRequest } from "./models/display/LoanRequest.js";
+import { Event } from "./models/Event.js";
+import { LoanRequest } from "./models/LoanRequest.js";
 
 // --------------------------------------------------------------------------------
 // Test data Home

@@ -1,12 +1,17 @@
+import { monetaryValue, percentValue } from "../utils/formatters.js";
+
 const loanStatus = {
-  1: "Request",
-  2: "Active",
-  3: "Finished",
+  1: "active",
+  2: "finished",
+};
+
+const loanTypes = {
+  1: "payable",
+  2: "receivable",
 };
 
 export class Loan {
   #id;
-  #status;
   #description;
   #debtor;
   #creditor;
@@ -17,39 +22,46 @@ export class Loan {
   #rate;
   #installmentValue;
   #remainingInstallments;
-  #payments;
   constructor(
     id,
+    type,
     status,
     description,
     debtor,
     creditor,
     date,
+    amountDue,
     value,
     installments,
-    rate
+    rate,
+    installmentValue,
+    remainingInstallments
   ) {
     this.#id = id;
-    this.#status = status;
+    this._type = type;
+    this._status = status;
     this.#description = description;
     this.#debtor = debtor;
     this.#creditor = creditor;
     this.#date = date;
-    this.#amountDue = null;
+    this.#amountDue = amountDue;
     this.#value = value;
     this.#installments = installments;
     this.#rate = rate;
-    this.#installmentValue = this.calculeInstallmentValue();
-    this.#remainingInstallments = null;
-    this.#payments = [];
+    this.#installmentValue = installmentValue;
+    this.#remainingInstallments = remainingInstallments;
   }
 
   get id() {
     return this.#id;
   }
 
+  get type() {
+    return loanTypes[this._type];
+  }
+
   get status() {
-    return loanStatus[this.#status];
+    return loanStatus[this._status];
   }
 
   get description() {
@@ -69,11 +81,11 @@ export class Loan {
   }
 
   get amountDue() {
-    return this.#amountDue;
+    return monetaryValue(this.#amountDue);
   }
 
   get value() {
-    return this.#value;
+    return monetaryValue(this.#value);
   }
 
   get installments() {
@@ -81,40 +93,18 @@ export class Loan {
   }
 
   get rate() {
-    return this.#rate;
+    return percentValue(this.#rate);
   }
 
   get installmentValue() {
-    return this.#installmentValue;
+    return monetaryValue(this.#installmentValue);
   }
 
   get remainingInstallments() {
     return this.#remainingInstallments;
   }
 
-  get payments() {
-    return this.#payments;
-  }
-
-  #updateRemaningInstallments() {
-    return null;
-  }
-
-  #updateAmountDue() {
-    return null;
-  }
-
-  calculeTotalLoanCost() {
-    return this.#installmentValue * this.#installments;
-  }
-
-  calculeInstallmentValue() {
-    const valueWithoutFees = this.#value / this.#installments;
-    const fees = this.#value * (this.#rate / 100);
-    return valueWithoutFees + fees;
-  }
-
-  addPayment(pay) {
-    this.#payments.push(pay);
+  get totalLoanCost() {
+    return monetaryValue(this.#installmentValue * this.#installments);
   }
 }

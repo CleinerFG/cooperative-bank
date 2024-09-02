@@ -1,4 +1,4 @@
-import { monetaryValue } from "../../utils/formatters.js";
+import { monetaryValue } from "../utils/formatters.js";
 
 const eventTypes = {
   1: "payment",
