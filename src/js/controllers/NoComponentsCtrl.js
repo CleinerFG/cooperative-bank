@@ -2,17 +2,14 @@ import { NoComponentsView } from "../views/NoComponentsView.js";
 import pathUtil from "../utils/PathManager.js";
 
 export class NoComponentsCtrl {
-  #container;
   #noComponentsView;
-  #pathManager;
+  #pathManager = pathUtil;
   #imgFile;
-  constructor(container, pathManager = pathUtil) {
-    this.#container = container;
-    this.#noComponentsView = new NoComponentsView(this.#container);
-    this.#pathManager = pathManager;
+  constructor(container) {
+    this.#noComponentsView = new NoComponentsView(container);
     this.#imgFile = this.#randomImgFile();
   }
-  
+
   #randomImgFile() {
     const n = Math.floor(Math.random() * 4) + 1;
     return `astronaut-${n}.svg`;
