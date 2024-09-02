@@ -1,7 +1,7 @@
 import { PageCtrl } from "./PageCtrl.js";
 import { RequestsPageView } from "../../views/pages/RequestsPageView.js";
-import { NewLoanRequestFormCtrl } from "../display/NewLoanRequestFormCtrl.js";
-import { LoanRequestsCtrl } from "../display/LoanRequestsCtrl.js";
+import { NewLoanRequestFormCtrl } from "../NewLoanRequestFormCtrl.js";
+import { LoanRequestsCtrl } from "../LoanRequestsCtrl.js";
 import { openedRequestsData, receivedRequestsData } from "../../testData.js";
 
 export class RequestsPageCtrl extends PageCtrl {

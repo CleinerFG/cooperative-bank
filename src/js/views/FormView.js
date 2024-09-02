@@ -1,4 +1,4 @@
-import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 
 export class FormView {
   #container;

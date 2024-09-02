@@ -1,5 +1,5 @@
-import { SearchInputView } from "../../views/display/SearchInputView.js";
-import { users } from "../../testData.js";
+import { SearchInputView } from "../views/SearchInputView.js";
+import { users } from "../testData.js";
 
 export class SearchInputCtrl {
   #view;

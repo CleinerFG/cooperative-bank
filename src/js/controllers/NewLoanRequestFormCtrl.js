@@ -1,5 +1,5 @@
 import { FormCtrl } from "./FormCtrl.js";
-import { NewLoanRequestFormView } from "../../views/display/NewLoanRequestFormView.js";
+import { NewLoanRequestFormView } from "../views/NewLoanRequestFormView.js";
 import { SearchInputCtrl } from "./SearchInputCtrl.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
