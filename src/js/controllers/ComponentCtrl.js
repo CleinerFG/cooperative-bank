@@ -18,7 +18,7 @@ export class ComponentCtrl {
     return this.#noComponentsCtrl;
   }
 
-  #createComponentView(component) {
+  #createView(component) {
     return new this.#viewClass(this.#container, component);
   }
 
@@ -43,7 +43,7 @@ export class ComponentCtrl {
   }
 
   addComponent(component) {
-    const view = this.#createComponentView(component);
+    const view = this.#createView(component);
     this.#componentsViews.push(view);
   }
 

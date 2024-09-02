@@ -34,9 +34,7 @@ export class HomeCtrl extends PageCtrl {
   }
 
   _initEventsCtrl() {
-    const container = document.querySelector(".events__cards");
-    const ctrl = new EventsCtrl(container, "events");
-
+    const ctrl = new EventsCtrl();
     eventsData.forEach((event) => ctrl.addComponent(event));
     ctrl.renderComponents();
     ctrl.removeComponent(1450);

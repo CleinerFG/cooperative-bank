@@ -2,8 +2,9 @@ import { ComponentCtrl } from "./ComponentCtrl.js";
 import { EventView } from "../views/EventView.js";
 
 export class EventsCtrl extends ComponentCtrl {
-  constructor(container, category) {
-    super(container, EventView, category);
+  constructor() {
+    const container = document.querySelector(".events__cards");
+    super(container, EventView, "event");
   }
   
   _defineNoComponentsSettings() {
