@@ -14,7 +14,7 @@ export class NewLoanRequestFormView extends FormView {
         labelText: "Value",
         id: "loan-value",
         type: "text",
-        placeholder: "Enter value",
+        placeholder: "R$ 0,00",
         ariaLabel: "Loan Value",
       },
       {
@@ -68,5 +68,10 @@ export class NewLoanRequestFormView extends FormView {
 
   _createSubmitButton() {
     return super._createSubmitButton("Request");
+  }
+
+  addValidation() {
+    const loanValueInp = document.querySelector("#loan-value");
+    this._validateInputMonetary(loanValueInp);
   }
 }

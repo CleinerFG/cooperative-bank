@@ -13,7 +13,6 @@ export class FormView {
     this.#cssClass = cssClass;
     this.#action = action;
     this.#method = method;
-    this.#build();
   }
 
   get _groupData() {
@@ -65,7 +64,38 @@ export class FormView {
     `;
   }
 
+  _validateInputMonetary(inp) {
+    inp.addEventListener("input", (e) => {
+      let value = e.target.value.replace(/\D/g, "");
+
+      value = (value / 100).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+
+      e.target.value = value;
+    });
+
+    inp.addEventListener("keydown", (e) => {
+      if ([8, 9, 37, 39, 46].indexOf(e.keyCode) !== -1) {
+        return;
+      }
+      if (
+        (e.keyCode < 48 || e.keyCode > 57) &&
+        (e.keyCode < 96 || e.keyCode > 105)
+      ) {
+        e.preventDefault();
+      }
+    });
+  }
+
+  addValidation() {
+    throw new AbstractMethodError("addValidation");
+  }
+
   render() {
+    this.#build();
     this.#container.insertAdjacentHTML("beforeend", this.#form);
+    this.addValidation();
   }
 }
