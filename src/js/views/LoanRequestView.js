@@ -47,6 +47,7 @@ export class LoanRequestView extends ComponentView {
       { label: entity, value: entityValue },
       { label: "Date", value: this.componentModel.date },
       { label: "Value", value: this.componentModel.value },
+      { label: "Description", value: this.componentModel.description },
       { label: "Installments", value: this.componentModel.installments },
       { label: "Installment Value", value: this.componentModel.installmentValue },
       { label: "Interest Rate", value: this.componentModel.rate },
