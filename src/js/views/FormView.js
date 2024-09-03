@@ -1,5 +1,5 @@
 import { AbstractMethodError } from "../errors/AbstractMethodError.js";
-
+import { monetaryValueToNumber } from "../utils/stringUtils.js";
 export class FormView {
   #container;
   #id;
@@ -72,6 +72,14 @@ export class FormView {
         currency: "BRL",
       });
       e.target.value = value;
+    });
+    inp.addEventListener("blur", (e) => {
+      const value = e.target.value;
+      if (monetaryValueToNumber(value) === 0) {
+        inp.classList.add("inp-error");
+        return;
+      }
+      inp.classList.remove("inp-error");
     });
   }
 
