@@ -67,25 +67,11 @@ export class FormView {
   _validateInputMonetary(inp) {
     inp.addEventListener("input", (e) => {
       let value = e.target.value.replace(/\D/g, "");
-
       value = (value / 100).toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
       });
-
       e.target.value = value;
-    });
-
-    inp.addEventListener("keydown", (e) => {
-      if ([8, 9, 37, 39, 46].indexOf(e.keyCode) !== -1) {
-        return;
-      }
-      if (
-        (e.keyCode < 48 || e.keyCode > 57) &&
-        (e.keyCode < 96 || e.keyCode > 105)
-      ) {
-        e.preventDefault();
-      }
     });
   }
 
