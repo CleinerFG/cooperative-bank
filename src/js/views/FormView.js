@@ -64,6 +64,17 @@ export class FormView {
     `;
   }
 
+  #inpErrorHandler(inp, callBack) {
+    inp.addEventListener("blur", (e) => {
+      const value = e.target.value;
+      if (callBack(value)) {
+        inp.classList.add("inp-error");
+        return;
+      }
+      inp.classList.remove("inp-error");
+    });
+  }
+
   _validateInputMonetary(inp) {
     inp.addEventListener("input", (e) => {
       let value = e.target.value.replace(/\D/g, "");
@@ -73,14 +84,9 @@ export class FormView {
       });
       e.target.value = value;
     });
-    inp.addEventListener("blur", (e) => {
-      const value = e.target.value;
-      if (monetaryValueToNumber(value) === 0) {
-        inp.classList.add("inp-error");
-        return;
-      }
-      inp.classList.remove("inp-error");
-    });
+
+    const checkValidValue = (value) => monetaryValueToNumber(value) === 0;
+    this.#inpErrorHandler(inp, checkValidValue);
   }
 
   addValidation() {
