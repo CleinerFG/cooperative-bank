@@ -1,10 +1,12 @@
 export class InputView {
+  #element;
   constructor(container, id, labelText, placeholder, type = "text") {
     this.container = container;
     this.id = id;
     this.labelText = labelText;
     this.placeholder = placeholder;
     this.type = type;
+    this.#element = document.getElementById(id);
   }
 
   buildDefault() {
@@ -28,6 +30,29 @@ export class InputView {
       </div>
     </div>
     `;
+  }
+
+  errorHandler(callBackValidator) {
+    this.#element.addEventListener("blur", (e) => {
+      const value = e.target.value;
+      console.log(callBackValidator(value));
+      if (callBackValidator(value)) {
+        e.target.classList.add("inp-error");
+        return;
+      }
+      e.target.classList.remove("inp-error");
+    });
+  }
+
+  validateMonetary() {
+    this.#element.addEventListener("input", (e) => {
+      let value = e.target.value.replace(/\D/g, "");
+      value = (value / 100).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+      e.target.value = value;
+    });
   }
 
   render(buildType) {
