@@ -1,5 +1,4 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { monetaryValueToNumber } from "../../utils/stringUtils.js";
 export class FormView {
   #container;
   #id;
@@ -64,38 +63,13 @@ export class FormView {
     `;
   }
 
-  #inpErrorHandler(inp, callBack) {
-    inp.addEventListener("blur", (e) => {
-      const value = e.target.value;
-      if (callBack(value)) {
-        inp.classList.add("inp-error");
-        return;
-      }
-      inp.classList.remove("inp-error");
-    });
-  }
-
-  _validateInputMonetary(inp) {
-    inp.addEventListener("input", (e) => {
-      let value = e.target.value.replace(/\D/g, "");
-      value = (value / 100).toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-      e.target.value = value;
-    });
-
-    const checkValidValue = (value) => monetaryValueToNumber(value) === 0;
-    this.#inpErrorHandler(inp, checkValidValue);
-  }
-
-  addValidation() {
-    throw new AbstractMethodError("addValidation");
+  _addInpValidations() {
+    throw new AbstractMethodError("_addInpValidation");
   }
 
   render() {
     this.#build();
     this.#container.insertAdjacentHTML("beforeend", this.#form);
-    this.addValidation();
+    this._addInpValidations();
   }
 }

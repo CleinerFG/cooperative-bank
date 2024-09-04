@@ -1,23 +1,23 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError.js";
-
 export class InputView {
   #element;
-  constructor(cssId) {
+  constructor(cssId, callBackValidator) {
     this.#element = document.getElementById(cssId);
+    this.#errorHandler(callBackValidator);
   }
 
-  _errorHandler(callBackValidate) {
+  #errorHandler(callBackValidator) {
     this.#element.addEventListener("blur", (e) => {
       const value = e.target.value;
-      if (callBackValidate(value)) {
-        inp.classList.add("inp-error");
+      console.log(callBackValidator(value));
+      if (callBackValidator(value)) {
+        e.target.classList.add("inp-error");
         return;
       }
-      inp.classList.remove("inp-error");
+      e.target.classList.remove("inp-error");
     });
   }
 
-  _validateMonetary() {
+  validateMonetary() {
     this.#element.addEventListener("input", (e) => {
       let value = e.target.value.replace(/\D/g, "");
       value = (value / 100).toLocaleString("pt-BR", {
@@ -26,9 +26,5 @@ export class InputView {
       });
       e.target.value = value;
     });
-  }
-
-  addListeners() {
-    throw new AbstractMethodError("addListeners");
   }
 }
