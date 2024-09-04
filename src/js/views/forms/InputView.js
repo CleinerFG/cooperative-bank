@@ -32,7 +32,7 @@ export class InputView {
     `;
   }
 
-  errorHandler(callBackValidator) {
+  validateFail(callBackValidator) {
     this.#element.addEventListener("blur", (e) => {
       const value = e.target.value;
       console.log(callBackValidator(value));
