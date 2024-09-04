@@ -11,7 +11,7 @@ export class InputView {
     return `
     <div class="form-group__input-group">
       <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
-      <input id="${this.id}" type="${this.type}" name="${id}" placeholder="${placeholder}" aria-label="${this.labelText}"
+      <input id="${this.id}" type="${this.type}" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
       class="input form-group__input">
     </div>
     `;
