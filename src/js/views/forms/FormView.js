@@ -1,5 +1,5 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError.js";
-import { monetaryValueToNumber } from "../utils/stringUtils.js";
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { monetaryValueToNumber } from "../../utils/stringUtils.js";
 export class FormView {
   #container;
   #id;

@@ -1,6 +1,6 @@
 import { PageCtrl } from "./PageCtrl.js";
 import { RequestsPageView } from "../../views/pages/RequestsPageView.js";
-import { NewLoanRequestFormCtrl } from "../NewLoanRequestFormCtrl.js";
+import { NewLoanRequestFormCtrl } from "../forms/NewLoanRequestFormCtrl.js";
 import { LoanRequestsCtrl } from "../LoanRequestsCtrl.js";
 import { openedRequestsData, receivedRequestsData } from "../../testData.js";
 
