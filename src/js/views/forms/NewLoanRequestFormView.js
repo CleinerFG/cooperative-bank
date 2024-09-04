@@ -3,8 +3,14 @@ import { monetaryValueToNumber } from "../../utils/stringUtils.js";
 import { InputValidationView } from "./InputValidationView.js";
 
 export class NewLoanRequestFormView extends FormView {
-  get _groupData() {
+  get _inputsData() {
     return [
+      {
+        labelText: "Search for a Creditor",
+        id: "creditor",
+        placeholder: "Enter creditor",
+        ariaLabel: "Search Creditor",
+      },
       {
         labelText: "Description",
         id: "loan-description",
@@ -36,39 +42,7 @@ export class NewLoanRequestFormView extends FormView {
     ];
   }
 
-  _buildInputSearch() {
-    const inpData = {
-      labelText: "Search for a Creditor",
-      id: "creditor",
-      placeholder: "Enter creditor",
-      ariaLabel: "Search Creditor",
-    };
-
-    return this._createInputSearch(
-      inpData.labelText,
-      inpData.id,
-      inpData.placeholder,
-      inpData.ariaLabel
-    );
-  }
-
-  _buildInputGroups() {
-    const inpSearch = this._buildInputSearch();
-    const groupData = this._groupData
-      .map(({ labelText, id, type, placeholder, ariaLabel }) => {
-        return this._createInputGroup(
-          labelText,
-          id,
-          type,
-          placeholder,
-          ariaLabel
-        );
-      })
-      .join("");
-    return inpSearch + groupData;
-  }
-
-  _createSubmitButton() {
+  _buildSubmitButton() {
     return super._createSubmitButton("Request");
   }
 
