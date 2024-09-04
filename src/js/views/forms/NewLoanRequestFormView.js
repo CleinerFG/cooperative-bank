@@ -1,6 +1,5 @@
 import { FormView } from "./FormView.js";
 import { monetaryValueToNumber } from "../../utils/stringUtils.js";
-import { InputValidationView } from "./InputValidationView.js";
 
 export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
