@@ -1,5 +1,6 @@
 import { FormView } from "./FormView.js";
-import { monetaryValueToNumber } from "../../utils/stringUtils.js";
+import { InputMonetaryCtrl } from "../../controllers/forms/InputMonetaryCtrl.js";
+
 
 export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
@@ -41,13 +42,12 @@ export class NewLoanRequestFormView extends FormView {
     ];
   }
 
+  _buildInputs(){
+    const inpValue = new InputMonetaryCtrl()
+  }
+
   _buildSubmitButton() {
     return super._buildSubmitButton("Request");
   }
 
-  // _addInpValidations() {
-  //   const checkValidValue = (value) => monetaryValueToNumber(value) === 0;
-  //   const valueInp = new InputValidationView("loan-value", checkValidValue);
-  //   valueInp.validateMonetary();
-  // }
 }

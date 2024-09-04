@@ -1,5 +1,5 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { InputView } from "../../views/forms/InputView";
+import { InputView } from "../../views/forms/InputView.js";
 
 export class InputCtrl {
   constructor(container, id, labelText, placeholder, type) {

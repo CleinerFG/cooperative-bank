@@ -1,14 +1,13 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 export class FormView {
   #container;
-  #id;
   #cssClass;
   #action;
   #method;
   #form;
   constructor(container, id, cssClass, action, method) {
     this.#container = container;
-    this.#id = id;
+    this._id = id;
     this.#cssClass = cssClass;
     this.#action = action;
     this.#method = method;
@@ -26,9 +25,9 @@ export class FormView {
 
   #build() {
     this.#form = `
-    <form id="${this.#id}" class="form ${this.#cssClass}" 
+    <form id="${this._id}" class="form ${this.#cssClass}" 
     action="${this.#action}" method="${this.#method}">
-      <div class="form-group">       
+      <div class="form-group-${this._id}">       
       </div>
        ${this._buildSubmitButton()}
     </form>
