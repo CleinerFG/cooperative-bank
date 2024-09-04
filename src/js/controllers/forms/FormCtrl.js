@@ -12,7 +12,7 @@ export class FormCtrl {
   }
 
   #init() {
-    this.#view.render();
+    this.#view.init();
     this._initControllers();
   }
 }
