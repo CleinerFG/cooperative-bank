@@ -1,4 +1,4 @@
-export class InputView {
+export class InputValidationView {
   #element;
   constructor(cssId, callBackValidator) {
     this.#element = document.getElementById(cssId);
