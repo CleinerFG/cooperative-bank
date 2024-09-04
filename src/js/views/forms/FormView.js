@@ -5,7 +5,7 @@ export class FormView {
   #cssClass;
   #action;
   #method;
-  #form = null;
+  #form;
   constructor(container, id, cssClass, action, method) {
     this.#container = container;
     this.#id = id;
@@ -24,29 +24,23 @@ export class FormView {
     `;
   }
 
-  _buildInputGroups() {
-    throw new AbstractMethodError("_buildInputGroups");
-  }
-
   #build() {
     this.#form = `
     <form id="${this.#id}" class="form ${this.#cssClass}" 
     action="${this.#action}" method="${this.#method}">
-      <div class="form-group">
-        ${this._buildInputGroups()}        
+      <div class="form-group">       
       </div>
-       ${this._createSubmitButton()}
+       ${this._buildSubmitButton()}
     </form>
     `;
   }
 
-  _addInpValidations() {
-    throw new AbstractMethodError("_addInpValidation");
+  #render() {
+    this.#container.insertAdjacentHTML("beforeend", this.#form);
   }
 
-  render() {
+  init() {
     this.#build();
-    this.#container.insertAdjacentHTML("beforeend", this.#form);
-    this._addInpValidations();
+    this.#render();
   }
 }

@@ -43,12 +43,12 @@ export class NewLoanRequestFormView extends FormView {
   }
 
   _buildSubmitButton() {
-    return super._createSubmitButton("Request");
+    return super._buildSubmitButton("Request");
   }
 
-  _addInpValidations() {
-    const checkValidValue = (value) => monetaryValueToNumber(value) === 0;
-    const valueInp = new InputValidationView("loan-value", checkValidValue);
-    valueInp.validateMonetary();
-  }
+  // _addInpValidations() {
+  //   const checkValidValue = (value) => monetaryValueToNumber(value) === 0;
+  //   const valueInp = new InputValidationView("loan-value", checkValidValue);
+  //   valueInp.validateMonetary();
+  // }
 }

@@ -15,13 +15,13 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
     );
   }
 
-  _initSearchInputCtrl() {
-    const inp = document.querySelector("#creditor");
-    const resList = document.querySelector("#research-list");
-    new SearchInputCtrl(inp, resList, "creditor");
-  }
+  // _initSearchInputCtrl() {
+  //   const inp = document.querySelector("#creditor");
+  //   const resList = document.querySelector("#research-list");
+  //   new SearchInputCtrl(inp, resList, "creditor");
+  // }
 
   _initControllers() {
-    this._initSearchInputCtrl();
+    // this._initSearchInputCtrl();
   }
 }
