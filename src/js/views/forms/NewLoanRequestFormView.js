@@ -45,4 +45,11 @@ export class NewLoanRequestFormView extends FormView {
       },
     ];
   }
+
+  get _inputSubmitData() {
+    return {
+      labelText: "Request",
+      id: "loan-submit",
+    };
+  }
 }

@@ -30,6 +30,10 @@ export class FormView {
     throw new AbstractMethodError("_inputsData");
   }
 
+  get _inputSubmitData() {
+    throw new AbstractMethodError("_inputSubmitData");
+  }
+
   get inputViews() {
     return this.#inputViews;
   }
@@ -74,8 +78,8 @@ export class FormView {
   }
 
   #createInputSubmit() {
-    const [{ id, category, labelText }] = this._inputsData.slice(-1);
-    const view = new InputView(this._formElement, category, id, labelText);
+    const { id, labelText } = this._inputSubmitData;
+    const view = new InputView(this._formElement, "submit", id, labelText);
     view.init();
     this.#inputSubmitView = view;
   }
