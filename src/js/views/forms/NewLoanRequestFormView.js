@@ -48,16 +48,18 @@ export class NewLoanRequestFormView extends FormView {
   }
 
   _createInputs() {
-    this._inputsData
+    this.inputViews = this._inputsData
       .slice(0, -1)
-      .forEach(({ id, category, labelText, placeholder }) => {
-        new InputView(
+      .map(({ id, category, labelText, placeholder }) => {
+        const view = new InputView(
           this._formGroupElement,
           category,
           id,
           labelText,
           placeholder
-        ).init();
+        );
+        view.init();
+        return view;
       });
 
     const addSubmitBtn = () => {
@@ -70,5 +72,6 @@ export class NewLoanRequestFormView extends FormView {
   init() {
     super.init();
     this._createInputs();
+    console.log("Input views", this.inputViews);
   }
 }

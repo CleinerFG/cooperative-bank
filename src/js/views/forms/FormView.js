@@ -7,12 +7,14 @@ export class FormView {
   #action; // String
   #method; // String
   #htmlStr; // String
+  #inputViews; // Array [InputView,]
   constructor(container, id, cssClass, action, method) {
     this.#container = container;
     this._id = id;
     this.#cssClass = cssClass;
     this.#action = action;
     this.#method = method;
+    this.#inputViews = [];
   }
 
   get _formElement() {
@@ -25,6 +27,18 @@ export class FormView {
 
   get _inputsData() {
     throw new AbstractMethodError("_inputsData");
+  }
+
+  get inputViews() {
+    return this.#inputViews;
+  }
+
+  set inputViews(value) {
+    this.#inputViews = value;
+  }
+
+  _addInputView(inpView) {
+    this.#inputViews.push(inpView);
   }
 
   #build() {
