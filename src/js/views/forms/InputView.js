@@ -1,5 +1,5 @@
 export class InputView {
-  #element;
+  #inputElement;
   #htmlStr;
   constructor(container, category, id, labelText, placeholder) {
     this.container = container;
@@ -7,7 +7,10 @@ export class InputView {
     this.id = id;
     this.labelText = labelText;
     this.placeholder = placeholder;
-    this.#element = document.getElementById(id);
+  }
+
+  get inputElement() {
+    return this.#inputElement;
   }
 
   #buildDefault() {
@@ -55,16 +58,21 @@ export class InputView {
       default:
         throw new Error(`InputView category="${this.category}" is invalid`);
     }
-    console.table(this);
   }
 
   #render() {
     this.container.insertAdjacentHTML("beforeend", this.#htmlStr);
   }
 
+  #defineGetterDomElement() {
+    this.#inputElement = document.getElementById(this.id);
+  }
+
   init() {
     this.#build();
     this.#render();
+    this.#defineGetterDomElement();
+    console.table(this);
   }
 
   // validateFail(callBackValidator) {
