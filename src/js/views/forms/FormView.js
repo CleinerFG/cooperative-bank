@@ -1,4 +1,5 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { InputView } from "./InputView.js";
 export class FormView {
   #container; // DOM element
   #formElement; // DOM element
@@ -7,14 +8,14 @@ export class FormView {
   #action; // String
   #method; // String
   #htmlStr; // String
-  #inputViews; // Array [InputView,]
+  #inputViews = []; // Array [InputView,]
+  #inputSubmitView; // InputView
   constructor(container, id, cssClass, action, method) {
     this.#container = container;
     this._id = id;
     this.#cssClass = cssClass;
     this.#action = action;
     this.#method = method;
-    this.#inputViews = [];
   }
 
   get _formElement() {
@@ -33,12 +34,8 @@ export class FormView {
     return this.#inputViews;
   }
 
-  set inputViews(value) {
-    this.#inputViews = value;
-  }
-
-  _addInputView(inpView) {
-    this.#inputViews.push(inpView);
+  get inputSubmitView() {
+    return this.#inputSubmitView;
   }
 
   #build() {
@@ -60,9 +57,34 @@ export class FormView {
     this.#formGroupElement = document.getElementById(`form-group-${this._id}`);
   }
 
+  #createInputs() {
+    this.#inputViews = this._inputsData
+      .slice(0, -1)
+      .map(({ id, category, labelText, placeholder }) => {
+        const view = new InputView(
+          this._formGroupElement,
+          category,
+          id,
+          labelText,
+          placeholder
+        );
+        view.init();
+        return view;
+      });
+  }
+
+  #createInputSubmit() {
+    const [{ id, category, labelText }] = this._inputsData.slice(-1);
+    const view = new InputView(this._formElement, category, id, labelText);
+    view.init();
+    this.#inputSubmitView = view;
+  }
+
   init() {
     this.#build();
     this.#render();
     this.#defineGettersDomElements();
+    this.#createInputs();
+    this.#createInputSubmit();
   }
 }

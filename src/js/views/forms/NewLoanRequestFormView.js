@@ -1,5 +1,4 @@
 import { FormView } from "./FormView.js";
-import { InputView } from "./InputView.js";
 
 export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
@@ -45,33 +44,5 @@ export class NewLoanRequestFormView extends FormView {
         id: "loan-submit",
       },
     ];
-  }
-
-  _createInputs() {
-    this.inputViews = this._inputsData
-      .slice(0, -1)
-      .map(({ id, category, labelText, placeholder }) => {
-        const view = new InputView(
-          this._formGroupElement,
-          category,
-          id,
-          labelText,
-          placeholder
-        );
-        view.init();
-        return view;
-      });
-
-    const addSubmitBtn = () => {
-      const [{ id, category, labelText }] = this._inputsData.slice(-1);
-      new InputView(this._formElement, category, id, labelText).init();
-    };
-    addSubmitBtn();
-  }
-
-  init() {
-    super.init();
-    this._createInputs();
-    console.log("Input views", this.inputViews);
   }
 }
