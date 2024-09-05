@@ -1,5 +1,6 @@
 export class InputView {
   #element;
+  #htmlStr;
   constructor(container, id, labelText, placeholder, type = "text") {
     this.container = container;
     this.id = id;
@@ -10,7 +11,7 @@ export class InputView {
   }
 
   buildDefault() {
-    return `
+    this.#htmlStr = `
     <div class="form-group__input-group">
       <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
       <input id="${this.id}" type="${this.type}" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
@@ -21,7 +22,7 @@ export class InputView {
   }
 
   buildSearch() {
-    return `
+    this.#htmlStr = `
     <div class="form-group__input-group">
       <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
       <div class="input__container">
@@ -57,7 +58,7 @@ export class InputView {
     });
   }
 
-  render(buildType) {
-    this.container.insertAdjacentHTML("beforeend", buildType);
+  render() {
+    this.container.insertAdjacentHTML("beforeend", this.#htmlStr);
   }
 }
