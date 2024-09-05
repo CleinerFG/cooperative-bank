@@ -1,6 +1,5 @@
 import { FormView } from "./FormView.js";
-import { InputMonetaryCtrl } from "../../controllers/forms/InputMonetaryCtrl.js";
-
+import { InputView } from "./InputView.js";
 
 export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
@@ -42,12 +41,11 @@ export class NewLoanRequestFormView extends FormView {
     ];
   }
 
-  _buildInputs(){
-    const inpValue = new InputMonetaryCtrl()
+  _buildInputs() {
+    new InputView()
   }
 
   _buildSubmitButton() {
     return super._buildSubmitButton("Request");
   }
-
 }

@@ -1,6 +1,8 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 export class FormView {
   #container;
+  #element;
+  #formGroupElement;
   #cssClass;
   #action;
   #method;
@@ -11,6 +13,14 @@ export class FormView {
     this.#cssClass = cssClass;
     this.#action = action;
     this.#method = method;
+  }
+
+  get _element() {
+    return this.#element;
+  }
+
+  get _formGroupElement() {
+    return this.#formGroupElement;
   }
 
   get _inputsData() {
@@ -38,8 +48,14 @@ export class FormView {
     this.#container.insertAdjacentHTML("beforeend", this.#form);
   }
 
+  #setElements() {
+    this.#element = document.getElementById(this._id);
+    this.#formGroupElement = document.getElementById(`form-group-${this._id}`);
+  }
+
   init() {
     this.#build();
     this.#render();
+    this.#setElements();
   }
 }
