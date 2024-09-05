@@ -5,49 +5,62 @@ export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
     return [
       {
-        labelText: "Search for a Creditor",
         id: "creditor",
+        category: "search",
+        labelText: "Search for a Creditor",
         placeholder: "Enter creditor",
         ariaLabel: "Search Creditor",
       },
       {
+        category: "default",
         labelText: "Description",
         id: "loan-description",
-        type: "text",
         placeholder: "Enter description",
         ariaLabel: "Loan Description",
       },
       {
+        category: "default",
         labelText: "Value",
         id: "loan-value",
-        type: "text",
         placeholder: "R$ 0,00",
         ariaLabel: "Loan Value",
       },
       {
+        category: "default",
         labelText: "Installments",
         id: "loan-installments",
-        type: "text",
         placeholder: "Enter installments",
         ariaLabel: "Quantity of Installments",
       },
       {
+        category: "default",
         labelText: "Interest Rate",
         id: "loan-rate",
-        type: "text",
         placeholder: "Enter rate",
         ariaLabel: "Interest Rate",
+      },
+      {
+        category: "submit",
+        labelText: "Request",
+        id: "loan-submit",
       },
     ];
   }
 
   _createInputs() {
-    
-    
+    this._inputsData.forEach(({ id, category, labelText, placeholder }) => {
+      new InputView(
+        this._formGroupElement,
+        category,
+        id,
+        labelText,
+        placeholder
+      ).init();
+    });
   }
 
   init() {
     super.init();
-    this._createInputs();
+    // this._createInputs();
   }
 }

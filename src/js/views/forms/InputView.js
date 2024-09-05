@@ -55,6 +55,7 @@ export class InputView {
       default:
         throw new Error(`InputView category="${this.category}" is invalid`);
     }
+    console.table(this);
   }
 
   #render() {
