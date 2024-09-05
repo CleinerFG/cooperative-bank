@@ -41,8 +41,13 @@ export class NewLoanRequestFormView extends FormView {
     ];
   }
 
-  _buildInputs() {
-    new InputView()
+  _createInputs() {
+    
+    
   }
 
+  init() {
+    super.init();
+    this._createInputs();
+  }
 }
