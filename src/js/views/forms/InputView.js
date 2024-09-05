@@ -15,6 +15,7 @@ export class InputView {
       <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
       <input id="${this.id}" type="${this.type}" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
       class="input form-group__input">
+      <span id="${this.id}-error"></span>
     </div>
     `;
   }
@@ -28,6 +29,7 @@ export class InputView {
         class="input form-group__input">
         <ul class="research-list" id="research-list-${this.id}"></ul>
       </div>
+      <span id="${this.id}-error"></span>
     </div>
     `;
   }
