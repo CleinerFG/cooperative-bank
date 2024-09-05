@@ -26,7 +26,7 @@ export class InputView {
 
   #buildSubmit() {
     this.#htmlStr = `
-    <input id="${id}" class="btn btn-action" type="submit" value="${this.labelText}">
+    <input id="${this.id}" class="btn btn-action" type="submit" value="${this.labelText}">
     `;
   }
 
@@ -72,7 +72,6 @@ export class InputView {
     this.#build();
     this.#render();
     this.#defineGetterDomElement();
-    console.table(this);
   }
 
   // validateFail(callBackValidator) {
