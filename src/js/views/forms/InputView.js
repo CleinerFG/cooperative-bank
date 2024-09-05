@@ -1,6 +1,6 @@
 export class InputView {
-  #inputElement;
-  #htmlStr;
+  #inputElement; // DOM element
+  #htmlStr; // String
   constructor(container, category, id, labelText, placeholder) {
     this.container = container;
     this.category = category;
