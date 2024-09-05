@@ -1,12 +1,11 @@
 export class InputView {
   #element;
   #htmlStr;
-  constructor(container, id, labelText, placeholder, type = "text") {
+  constructor(container, id, labelText, placeholder) {
     this.container = container;
     this.id = id;
     this.labelText = labelText;
     this.placeholder = placeholder;
-    this.type = type;
     this.#element = document.getElementById(id);
   }
 
@@ -18,6 +17,12 @@ export class InputView {
       class="input form-group__input">
       <span id="${this.id}-error"></span>
     </div>
+    `;
+  }
+
+  buildSubmit() {
+    this.#htmlStr = `
+    <input id="${id}" class="btn btn-action" type="submit" value="${this.labelText}">
     `;
   }
 

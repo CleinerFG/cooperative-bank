@@ -29,7 +29,7 @@ export class FormView {
 
   _buildSubmitButton(text) {
     return `
-    <button class="btn btn-action" type="submit">${text}</button>
+    <input class="btn btn-action" type="submit" value="${text}">
     `;
   }
 
