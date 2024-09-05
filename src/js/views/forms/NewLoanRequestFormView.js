@@ -45,7 +45,4 @@ export class NewLoanRequestFormView extends FormView {
     new InputView()
   }
 
-  _buildSubmitButton() {
-    return super._buildSubmitButton("Request");
-  }
 }

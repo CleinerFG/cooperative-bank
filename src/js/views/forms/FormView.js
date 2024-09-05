@@ -1,12 +1,12 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 export class FormView {
-  #container;
-  #element;
-  #formGroupElement;
-  #cssClass;
-  #action;
-  #method;
-  #form;
+  #container; // DOM element
+  #formElement; // DOM element
+  #formGroupElement; // DOM element
+  #cssClass; // String
+  #action; // String
+  #method; // String
+  #htmlStr; // String
   constructor(container, id, cssClass, action, method) {
     this.#container = container;
     this._id = id;
@@ -15,8 +15,8 @@ export class FormView {
     this.#method = method;
   }
 
-  get _element() {
-    return this.#element;
+  get _formElement() {
+    return this.#formElement;
   }
 
   get _formGroupElement() {
@@ -27,35 +27,28 @@ export class FormView {
     throw new AbstractMethodError("_inputsData");
   }
 
-  _buildSubmitButton(text) {
-    return `
-    <input class="btn btn-action" type="submit" value="${text}">
-    `;
-  }
-
   #build() {
-    this.#form = `
+    this.#htmlStr = `
     <form id="${this._id}" class="form ${this.#cssClass}" 
     action="${this.#action}" method="${this.#method}">
       <div class="form-group-${this._id}">       
       </div>
-       ${this._buildSubmitButton()}
     </form>
     `;
   }
 
   #render() {
-    this.#container.insertAdjacentHTML("beforeend", this.#form);
+    this.#container.insertAdjacentHTML("beforeend", this.#htmlStr);
   }
 
-  #setElements() {
-    this.#element = document.getElementById(this._id);
+  #defineGettersDomElements() {
+    this.#formElement = document.getElementById(this._id);
     this.#formGroupElement = document.getElementById(`form-group-${this._id}`);
   }
 
   init() {
     this.#build();
     this.#render();
-    this.#setElements();
+    this.#defineGettersDomElements();
   }
 }
