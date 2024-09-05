@@ -31,7 +31,7 @@ export class FormView {
     this.#htmlStr = `
     <form id="${this._id}" class="form ${this.#cssClass}" 
     action="${this.#action}" method="${this.#method}">
-      <div id="form-group-${this._id}">       
+      <div id="form-group-${this._id}" class="form-group">       
       </div>
     </form>
     `;
