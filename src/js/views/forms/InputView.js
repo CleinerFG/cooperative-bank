@@ -1,10 +1,22 @@
 export class InputView {
   #inputElement; // DOM element
   #htmlStr; // String
-  constructor(container, category, id, labelText, placeholder) {
+  #strictRules; // Array
+  #formatter; // String
+  constructor(
+    container,
+    id,
+    category,
+    strictRules,
+    formatter,
+    labelText,
+    placeholder
+  ) {
     this.container = container;
-    this.category = category;
     this.id = id;
+    this.category = category;
+    this.#strictRules = strictRules;
+    this.#formatter = formatter;
     this.labelText = labelText;
     this.placeholder = placeholder;
   }
@@ -60,7 +72,7 @@ export class InputView {
     actions[method]();
   }
 
-  #validate(customRule){
+  #validate(customRule) {
     this.#inputElement.addEventListener("blur", (ev) => {
       const value = ev.target.value;
       if (value === "" || customRule(value)) {
@@ -71,14 +83,14 @@ export class InputView {
     });
   }
 
-  strictNumber() {
+  #strictNumber() {
     this.#inputElement.addEventListener("input", (ev) => {
       let value = ev.target.value.replace(/\D/g, "");
       ev.target.value = value;
     });
   }
 
-  formatMonetary() {
+  #formatMonetary() {
     this.#inputElement.addEventListener("input", (e) => {
       console.log(e.target.value);
       let value = e.target.value;
