@@ -72,16 +72,12 @@ export class InputView {
 
   validateMonetary() {
     this.#inputElement.addEventListener("input", (e) => {
-      // let value = e.target.value.replace(/\D/g, "");
-      // value = (value / 100).toLocaleString("pt-BR", {
-      //   style: "currency",
-      //   currency: "BRL",
-      // });
-      // e.target.value = value;
-      const value = (e.target.value = (value / 100).toLocaleString("pt-BR", {
+      console.log(e.target.value);
+      let value = e.target.value;
+      value = (value / 100).toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
-      }));
+      });
       e.target.value = value;
     });
   }

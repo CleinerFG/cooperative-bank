@@ -9,8 +9,8 @@ export class InputCtrl {
   _defaultValidators() {}
 
   _customValidators() {
-    console.log("custom validators")
     this.#inputView.validateNumber();
+    this.#inputView.validateMonetary();
   }
 
   init() {
