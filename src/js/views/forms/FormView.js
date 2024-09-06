@@ -62,23 +62,21 @@ export class FormView {
   }
 
   #createInputs() {
-    this.#inputViews = this._inputsData
-      .slice(0, -1)
-      .map(
-        ({ id, category, strictRules, formatter, labelText, placeholder }) => {
-          const view = new InputView(
-            this._formGroupElement,
-            id,
-            category,
-            strictRules,
-            formatter,
-            labelText,
-            placeholder
-          );
-          view.init();
-          return view;
-        }
-      );
+    this.#inputViews = this._inputsData.map(
+      ({ id, category, strictRules, formatter, labelText, placeholder }) => {
+        const view = new InputView(
+          this._formGroupElement,
+          id,
+          category,
+          strictRules,
+          formatter,
+          labelText,
+          placeholder
+        );
+        view.init();
+        return view;
+      }
+    );
   }
 
   #createInputSubmit() {
