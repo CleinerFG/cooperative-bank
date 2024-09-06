@@ -3,6 +3,14 @@ export class InputView {
   #htmlStr; // String
   #strictRules; // Array
   #formatter; // String
+  #strictMethods = {
+    number: () => {
+      this.#inputElement.addEventListener("input", (ev) => {
+        let value = ev.target.value.replace(/\D/g, "");
+        ev.target.value = value;
+      });
+    },
+  };
   constructor(
     container,
     id,
@@ -83,6 +91,14 @@ export class InputView {
     });
   }
 
+  #defineStrictRules() {
+    if (this.#strictRules) {
+      this.#strictRules.forEach((rule) => {
+        this.#strictMethods[rule]();
+      });
+    }
+  }
+
   #strictNumber() {
     this.#inputElement.addEventListener("input", (ev) => {
       let value = ev.target.value.replace(/\D/g, "");
@@ -107,5 +123,6 @@ export class InputView {
     this.#render();
     this.#defineGetterDomElement();
     this.#validate();
+    this.#defineStrictRules();
   }
 }
