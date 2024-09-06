@@ -51,15 +51,23 @@ export class InputView {
     this.#inputElement = document.getElementById(this.id);
   }
 
-  validateFail(callBackValidator) {
-    this.#inputElement.addEventListener("blur", (e) => {
-      const value = e.target.value;
-      console.log(callBackValidator(value));
-      if (callBackValidator(value)) {
-        e.target.classList.add("inp-error");
+  #failValidationHandler(method) {
+    const actions = {
+      add: () => this.#inputElement.classList.add("inp-error"),
+      remove: () => this.#inputElement.classList.remove("inp-error"),
+    };
+
+    actions[method]();
+  }
+
+  #validateEmpty() {
+    this.#inputElement.addEventListener("blur", (ev) => {
+      const value = ev.target.value;
+      if (value === "") {
+        this.#failValidationHandler("add");
         return;
       }
-      e.target.classList.remove("inp-error");
+      this.#failValidationHandler("remove");
     });
   }
 
@@ -86,5 +94,6 @@ export class InputView {
     this.#build();
     this.#render();
     this.#defineGetterDomElement();
+    this.#validateEmpty();
   }
 }

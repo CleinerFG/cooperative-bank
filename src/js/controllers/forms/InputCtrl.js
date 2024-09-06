@@ -17,8 +17,8 @@ export class InputCtrl {
   }
 
   init() {
-    this._defaultValidators();
-    this._customValidators();
-    this._defineFormatters();
+    // this._defaultValidators();
+    // this._customValidators();
+    // this._defineFormatters();
   }
 }
