@@ -70,7 +70,7 @@ export class InputView {
     });
   }
 
-  validateMonetary() {
+  formatMonetary() {
     this.#inputElement.addEventListener("input", (e) => {
       console.log(e.target.value);
       let value = e.target.value;

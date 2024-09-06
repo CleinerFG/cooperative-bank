@@ -6,15 +6,19 @@ export class InputCtrl {
     this.#inputView = inputView;
   }
 
+  _defineFormatters() {
+    this.#inputView.formatMonetary();
+  }
+
   _defaultValidators() {}
 
   _customValidators() {
     this.#inputView.validateNumber();
-    this.#inputView.validateMonetary();
   }
 
   init() {
     this._defaultValidators();
     this._customValidators();
+    this._defineFormatters();
   }
 }
