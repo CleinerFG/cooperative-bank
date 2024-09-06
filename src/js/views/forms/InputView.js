@@ -66,7 +66,7 @@ export class InputView {
   validateNumber() {
     this.#inputElement.addEventListener("input", (ev) => {
       let value = ev.target.value.replace(/\D/g, "");
-      e.target.value = value;
+      ev.target.value = value;
     });
   }
 

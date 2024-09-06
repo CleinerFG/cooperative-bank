@@ -1,15 +1,16 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class InputCtrl {
-  #inputElement;
-  constructor(inputElement) {
-    this.#inputElement = inputElement;
+  #inputView;
+  constructor(inputView) {
+    this.#inputView = inputView;
   }
 
   _defaultValidators() {}
 
   _customValidators() {
-    this.#inputElement.validateNumber();
+    console.log("custom validators")
+    this.#inputView.validateNumber();
   }
 
   init() {
