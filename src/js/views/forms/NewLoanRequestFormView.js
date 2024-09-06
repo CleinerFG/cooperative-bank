@@ -21,7 +21,7 @@ export class NewLoanRequestFormView extends FormView {
       {
         id: "loan-value",
         category: "default",
-        validators:["number"],
+        strictRules:["number"],
         formatters:["monetary"],
         labelText: "Value",
         placeholder: "R$ 0,00",
@@ -30,7 +30,7 @@ export class NewLoanRequestFormView extends FormView {
       {
         id: "loan-installments",
         category: "default",
-        validators:["number"],
+        strictRules:["number"],
         labelText: "Installments",
         placeholder: "Enter installments",
         ariaLabel: "Quantity of Installments",
@@ -38,7 +38,7 @@ export class NewLoanRequestFormView extends FormView {
       {
         id: "loan-rate",
         category: "default",
-        validators:["number"],
+        strictRules:["number"],
         formatters:["percentage"],
         labelText: "Interest Rate",
         placeholder: "Enter rate",
