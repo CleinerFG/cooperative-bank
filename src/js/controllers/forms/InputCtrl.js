@@ -1,22 +1,17 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { InputView } from "../../views/forms/InputView.js";
 
 export class InputCtrl {
-  constructor(container, id, labelText, placeholder, type) {
-    this._view = new InputView(container, id, labelText, placeholder, type);
+  #inputElement;
+  constructor(inputElement) {
+    this.#inputElement = inputElement;
   }
 
-  _build() {
-    throw new AbstractMethodError("build");
-  }
+  _defaultValidators() {}
 
-  _defineValidations() {
-    throw new AbstractMethodError("defineValidations");
-  }
+  _customValidators() {}
 
   init() {
-    this._build();
-    this._view.render();
-    this._defineValidations();
+    this._defaultValidators();
+    this._customValidators();
   }
 }
