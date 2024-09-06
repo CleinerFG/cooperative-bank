@@ -39,11 +39,6 @@ export class NewLoanRequestFormView extends FormView {
         placeholder: "Enter rate",
         ariaLabel: "Interest Rate",
       },
-      {
-        category: "submit",
-        labelText: "Request",
-        id: "loan-submit",
-      },
     ];
   }
 
