@@ -11,6 +11,22 @@ export class InputView {
       });
     },
   };
+  #formatterMethods = {
+    monetary: () => {
+      this.#inputElement.addEventListener("input", (e) => {
+        console.log(e.target.value);
+        let value = e.target.value;
+        value = (value / 100).toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        e.target.value = value;
+      });
+    },
+    percentage: ()=>{
+      // Format in percentage -> 0,00%
+    }
+  };
   constructor(
     container,
     id,
@@ -99,23 +115,10 @@ export class InputView {
     }
   }
 
-  #strictNumber() {
-    this.#inputElement.addEventListener("input", (ev) => {
-      let value = ev.target.value.replace(/\D/g, "");
-      ev.target.value = value;
-    });
-  }
-
-  #formatMonetary() {
-    this.#inputElement.addEventListener("input", (e) => {
-      console.log(e.target.value);
-      let value = e.target.value;
-      value = (value / 100).toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-      e.target.value = value;
-    });
+  #defineFormatter() {
+    if (this.#formatter) {
+      this.#formatterMethods[this.#formatter]()
+    }
   }
 
   init() {
@@ -124,5 +127,6 @@ export class InputView {
     this.#defineGetterDomElement();
     this.#validate();
     this.#defineStrictRules();
+    this.#defineFormatter();
   }
 }

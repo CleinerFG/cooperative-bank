@@ -39,7 +39,7 @@ export class NewLoanRequestFormView extends FormView {
         id: "loan-rate",
         category: "default",
         strictRules:["number"],
-        formatter:["percentage"],
+        formatter:["percentage"], 
         labelText: "Interest Rate",
         placeholder: "Enter rate",
         ariaLabel: "Interest Rate",
