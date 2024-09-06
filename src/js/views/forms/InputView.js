@@ -111,10 +111,11 @@ export class InputView {
     actions[method]();
   }
 
-  #validate(customRule) {
+  #validate(customRule = () => {}) {
     this.#inputElement.addEventListener("blur", (ev) => {
       const value = ev.target.value;
       if (value === "" || customRule(value)) {
+        console.log(`Value in ${this.#id} - inside: ${value}`);
         this.#failValidationHandler("add");
         return;
       }
