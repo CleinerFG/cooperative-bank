@@ -13,51 +13,34 @@ export class InputView {
     return this.#inputElement;
   }
 
-  #buildDefault() {
-    this.#htmlStr = `
-    <div class="form-group__input-group">
-      <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
-      <input id="${this.id}" type="${this.type}" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
-      class="input form-group__input">
-      <span id="${this.id}-error"></span>
-    </div>
-    `;
-  }
+  get #inputCategory() {
+    return {
+      default: `
+        <div class="form-group__input-group">
+          <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
+          <input id="${this.id}" type="${this.type}" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
+            class="input form-group__input">
+          <span id="${this.id}-error"></span>
+        </div>`,
 
-  #buildSubmit() {
-    this.#htmlStr = `
-    <input id="${this.id}" class="btn btn-action" type="submit" value="${this.labelText}">
-    `;
-  }
+      submit: `
+        <input id="${this.id}" class="btn btn-action" type="submit" value="${this.labelText}">`,
 
-  #buildSearch() {
-    this.#htmlStr = `
-    <div class="form-group__input-group">
-      <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
-      <div class="input__container">
-        <input id="${this.id}" type="text" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
-        class="input form-group__input">
-        <ul class="research-list" id="research-list-${this.id}"></ul>
-      </div>
-      <span id="${this.id}-error"></span>
-    </div>
-    `;
+      search: `
+        <div class="form-group__input-group">
+          <label for="${this.id}" class="label form-group__label">${this.labelText}</label>
+          <div class="input__container">
+            <input id="${this.id}" type="text" name="${this.id}" placeholder="${this.placeholder}" aria-label="${this.labelText}"
+              class="input form-group__input">
+            <ul class="research-list" id="research-list-${this.id}"></ul>
+          </div>
+          <span id="${this.id}-error"></span>
+        </div>`,
+    };
   }
 
   #build() {
-    switch (this.category) {
-      case "default":
-        this.#buildDefault();
-        break;
-      case "submit":
-        this.#buildSubmit();
-        break;
-      case "search":
-        this.#buildSearch();
-        break;
-      default:
-        throw new Error(`InputView category="${this.category}" is invalid`);
-    }
+    this.#htmlStr = this.#inputCategory[this.category];
   }
 
   #render() {
