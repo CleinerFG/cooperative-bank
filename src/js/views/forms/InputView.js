@@ -60,10 +60,10 @@ export class InputView {
     actions[method]();
   }
 
-  #validateEmpty() {
+  #validate(customRule){
     this.#inputElement.addEventListener("blur", (ev) => {
       const value = ev.target.value;
-      if (value === "") {
+      if (value === "" || customRule(value)) {
         this.#failValidationHandler("add");
         return;
       }
@@ -71,7 +71,7 @@ export class InputView {
     });
   }
 
-  validateNumber() {
+  strictNumber() {
     this.#inputElement.addEventListener("input", (ev) => {
       let value = ev.target.value.replace(/\D/g, "");
       ev.target.value = value;
@@ -94,6 +94,6 @@ export class InputView {
     this.#build();
     this.#render();
     this.#defineGetterDomElement();
-    this.#validateEmpty();
+    this.#validate();
   }
 }
