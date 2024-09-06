@@ -8,7 +8,9 @@ export class InputCtrl {
 
   _defaultValidators() {}
 
-  _customValidators() {}
+  _customValidators() {
+    this.#inputElement.validateNumber();
+  }
 
   init() {
     this._defaultValidators();

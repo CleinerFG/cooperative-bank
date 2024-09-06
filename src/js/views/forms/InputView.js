@@ -51,32 +51,44 @@ export class InputView {
     this.#inputElement = document.getElementById(this.id);
   }
 
+  validateFail(callBackValidator) {
+    this.#inputElement.addEventListener("blur", (e) => {
+      const value = e.target.value;
+      console.log(callBackValidator(value));
+      if (callBackValidator(value)) {
+        e.target.classList.add("inp-error");
+        return;
+      }
+      e.target.classList.remove("inp-error");
+    });
+  }
+
+  validateNumber() {
+    this.#inputElement.addEventListener("input", (ev) => {
+      let value = ev.target.value.replace(/\D/g, "");
+      e.target.value = value;
+    });
+  }
+
+  validateMonetary() {
+    this.#inputElement.addEventListener("input", (e) => {
+      // let value = e.target.value.replace(/\D/g, "");
+      // value = (value / 100).toLocaleString("pt-BR", {
+      //   style: "currency",
+      //   currency: "BRL",
+      // });
+      // e.target.value = value;
+      const value = (e.target.value = (value / 100).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }));
+      e.target.value = value;
+    });
+  }
+
   init() {
     this.#build();
     this.#render();
     this.#defineGetterDomElement();
   }
-
-  // validateFail(callBackValidator) {
-  //   this.#element.addEventListener("blur", (e) => {
-  //     const value = e.target.value;
-  //     console.log(callBackValidator(value));
-  //     if (callBackValidator(value)) {
-  //       e.target.classList.add("inp-error");
-  //       return;
-  //     }
-  //     e.target.classList.remove("inp-error");
-  //   });
-  // }
-
-  // validateMonetary() {
-  //   this.#element.addEventListener("input", (e) => {
-  //     let value = e.target.value.replace(/\D/g, "");
-  //     value = (value / 100).toLocaleString("pt-BR", {
-  //       style: "currency",
-  //       currency: "BRL",
-  //     });
-  //     e.target.value = value;
-  //   });
-  // }
 }
