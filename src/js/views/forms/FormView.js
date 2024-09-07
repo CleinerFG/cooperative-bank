@@ -95,9 +95,9 @@ export class FormView {
     this.#inputSubmitView = view;
   }
 
-  _defineInputControllers() {
-    throw new AbstractMethodError("_defineInputControllers");
-  }
+  // _defineInputControllers() {
+  //   throw new AbstractMethodError("_defineInputControllers");
+  // }
 
   init() {
     this.#build();
@@ -105,6 +105,6 @@ export class FormView {
     this.#defineGettersDomElements();
     this.#createInputs();
     this.#createInputSubmit();
-    this._defineInputControllers();
+    // this._defineInputControllers();
   }
 }

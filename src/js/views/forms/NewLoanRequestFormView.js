@@ -1,5 +1,4 @@
 import { FormView } from "./FormView.js";
-import { InputCtrl } from "../../controllers/forms/InputCtrl.js";
 
 export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
@@ -55,11 +54,5 @@ export class NewLoanRequestFormView extends FormView {
       labelText: "Request",
       id: "loan-submit",
     };
-  }
-
-  _defineInputControllers() {
-    const valueInpView = this.inputViews[2];
-    const inpCtrl = new InputCtrl(valueInpView);
-    inpCtrl.init()
   }
 }
