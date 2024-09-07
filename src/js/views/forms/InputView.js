@@ -1,6 +1,7 @@
 export class InputView {
   #container; // DOM element
   #id; // String
+  #inputmode; //String
   #category; // String
   #strictRules; // Array
   #formatter; // String
@@ -35,6 +36,7 @@ export class InputView {
   constructor(
     container,
     id,
+    inputmode,
     category,
     strictRules,
     formatter,
@@ -43,6 +45,7 @@ export class InputView {
   ) {
     this.#container = container;
     this.#id = id;
+    this.#inputmode = inputmode ?? "text";
     this.#category = category;
     this.#strictRules = strictRules;
     this.#formatter = formatter;
@@ -58,30 +61,25 @@ export class InputView {
     return {
       default: `
         <div class="form-group__input-group">
-          <label for="${this.#id}" class="label form-group__label">${
-        this.#labelText
-      }</label>
-          <input id="${this.#id}" type="${this.type}" name="${
-        this.#id
-      }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
+          <label for="${this.#id}" class="label form-group__label">${this.#labelText
+        }</label>
+          <input id="${this.#id}" type="text" inputmode="${this.#inputmode}" name="${this.#id
+        }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
             class="input form-group__input">
           <span id="${this.#id}-error"></span>
         </div>`,
 
       submit: `
-        <input id="${this.#id}" class="btn btn-action" type="submit" value="${
-        this.#labelText
-      }">`,
+        <input id="${this.#id}" class="btn btn-action" type="submit" value="${this.#labelText
+        }">`,
 
       search: `
         <div class="form-group__input-group">
-          <label for="${this.#id}" class="label form-group__label">${
-        this.#labelText
-      }</label>
+          <label for="${this.#id}" class="label form-group__label">${this.#labelText
+        }</label>
           <div class="input__container">
-            <input id="${this.#id}" type="text" name="${
-        this.#id
-      }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
+            <input id="${this.#id}" type="text" name="${this.#id
+        }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
               class="input form-group__input">
             <ul class="research-list" id="research-list-${this.#id}"></ul>
           </div>
@@ -111,7 +109,7 @@ export class InputView {
     actions[method]();
   }
 
-  #validate(customRule = () => {}) {
+  #validate(customRule = () => { }) {
     this.#inputElement.addEventListener("blur", (ev) => {
       const value = ev.target.value;
       if (value === "" || customRule(value)) {

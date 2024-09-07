@@ -20,6 +20,7 @@ export class NewLoanRequestFormView extends FormView {
       },
       {
         id: "loan-value",
+        inputmode: "numeric",
         category: "default",
         strictRules:["number"],
         formatter:["monetary"],
@@ -29,6 +30,7 @@ export class NewLoanRequestFormView extends FormView {
       },
       {
         id: "loan-installments",
+        inputmode: "numeric",
         category: "default",
         strictRules:["number"],
         labelText: "Installments",
@@ -37,6 +39,7 @@ export class NewLoanRequestFormView extends FormView {
       },
       {
         id: "loan-rate",
+        inputmode: "numeric",
         category: "default",
         strictRules:["number"],
         formatter:["percentage"], 

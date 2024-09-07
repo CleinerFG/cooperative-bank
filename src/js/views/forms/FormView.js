@@ -63,10 +63,11 @@ export class FormView {
 
   #createInputs() {
     this.#inputViews = this._inputsData.map(
-      ({ id, category, strictRules, formatter, labelText, placeholder }) => {
+      ({ id, inputmode, category, strictRules, formatter, labelText, placeholder }) => {
         const view = new InputView(
           this._formGroupElement,
           id,
+          inputmode,
           category,
           strictRules,
           formatter,
@@ -84,6 +85,7 @@ export class FormView {
     const view = new InputView(
       this._formElement,
       id,
+      null,
       "submit",
       null,
       null,
