@@ -1,17 +1,18 @@
 import { InputView } from "./InputView.js";
+import { users } from "../../testData.js";
 
 export class SearchInputView extends InputView {
-  #researchData;
+  #researchData = users; //test data in view
 
   set researchData(value) {
     this.#researchData = value
   }
 
-  get #researchList() {
+  get #researchListElement() {
     return document.getElementById(`research-list-${this._id}`)
   }
 
- get #dataset() {
+  get #dataset() {
     return this._inputElement.dataset.valueId;
   }
 
@@ -20,7 +21,7 @@ export class SearchInputView extends InputView {
   }
 
   #researchListVisibility() {
-    this.resultList.classList.toggle("research-list__active");
+    this.#researchListElement.classList.toggle("research-list__active");
   }
 
   #filterList(query) {
@@ -32,18 +33,18 @@ export class SearchInputView extends InputView {
 
   #handleItemClick = (event) => {
     const selectedItem = event.target;
-    // this.#setElementDataset(this.input, this.#getElementDataset(selectedItem));
+    this._inputElement.dataset.valueId = selectedItem.dataset.itemValueId
     this.input.value = selectedItem.textContent;
     this.resultList.innerHTML = "";
   };
 
   #renderItems(listItems) {
-    this.resultList.innerHTML = "";
+    this.#researchListElement.innerHTML = "";
     listItems.forEach(({ id, name }) => {
       const li = document.createElement("li");
 
       li.className = "research-item";
-      // this.#setElementDataset(li, id);
+      li.dataset.itemValueId = id
       li.textContent = name;
 
       li.addEventListener("click", this.#handleItemClick);
@@ -65,11 +66,11 @@ export class SearchInputView extends InputView {
   };
 
   init() {
-    this.input.addEventListener("focus", () => {
+    this._inputElement.addEventListener("focus", () => {
       this.#renderItems(this.#researchData);
       this.#researchListVisibility();
     });
-    this.input.addEventListener("input", this.#handleInput);
-    this.input.addEventListener("blur", this.#clearItemsOnBlur);
+    this._inputElement.addEventListener("input", this.#handleInput);
+    this._inputElement.addEventListener("blur", this.#clearItemsOnBlur);
   }
 }
