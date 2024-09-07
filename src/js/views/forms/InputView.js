@@ -1,6 +1,5 @@
 export class InputView {
   #container; // DOM element
-  #id; // String
   #inputmode; //String
   #category; // String
   #strictRules; // Array
@@ -8,10 +7,9 @@ export class InputView {
   #labelText; // String
   #placeholder; // String
   #htmlStr; // String
-  #inputElement; // DOM element
   #strictMethods = {
     number: () => {
-      this.#inputElement.addEventListener("input", (ev) => {
+      this._inputElement.addEventListener("input", (ev) => {
         let value = ev.target.value.replace(/\D/g, "");
         ev.target.value = value;
       });
@@ -19,7 +17,7 @@ export class InputView {
   };
   #formatterMethods = {
     monetary: () => {
-      this.#inputElement.addEventListener("input", (e) => {
+      this._inputElement.addEventListener("input", (e) => {
         console.log(e.target.value);
         let value = e.target.value;
         value = (value / 100).toLocaleString("pt-BR", {
@@ -44,7 +42,7 @@ export class InputView {
     placeholder
   ) {
     this.#container = container;
-    this.#id = id;
+    this._id = id;
     this.#inputmode = inputmode ?? "text";
     this.#category = category;
     this.#strictRules = strictRules;
@@ -54,36 +52,36 @@ export class InputView {
   }
 
   get inputElement() {
-    return this.#inputElement;
+    return this._inputElement;
   }
 
   get #inputCategory() {
     return {
       default: `
         <div class="form-group__input-group">
-          <label for="${this.#id}" class="label form-group__label">${this.#labelText
+          <label for="${this._id}" class="label form-group__label">${this.#labelText
         }</label>
-          <input id="${this.#id}" type="text" inputmode="${this.#inputmode}" name="${this.#id
+          <input id="${this._id}" type="text" inputmode="${this.#inputmode}" name="${this._id
         }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
             class="input form-group__input">
-          <span id="${this.#id}-error"></span>
+          <span id="${this._id}-error"></span>
         </div>`,
 
       submit: `
-        <input id="${this.#id}" class="btn btn-action" type="submit" value="${this.#labelText
+        <input id="${this._id}" class="btn btn-action" type="submit" value="${this.#labelText
         }">`,
 
       search: `
         <div class="form-group__input-group">
-          <label for="${this.#id}" class="label form-group__label">${this.#labelText
+          <label for="${this._id}" class="label form-group__label">${this.#labelText
         }</label>
           <div class="input__container">
-            <input id="${this.#id}" type="text" name="${this.#id
+            <input id="${this._id}" data-value-id="" type="text" name="${this._id
         }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
               class="input form-group__input">
-            <ul class="research-list" id="research-list-${this.#id}"></ul>
+            <ul class="research-list" id="research-list-${this._id}"></ul>
           </div>
-          <span id="${this.#id}-error"></span>
+          <span id="${this._id}-error"></span>
         </div>`,
     };
   }
@@ -97,23 +95,23 @@ export class InputView {
   }
 
   #defineGetterDomElement() {
-    this.#inputElement = document.getElementById(this.#id);
+    this._inputElement = document.getElementById(this._id);
   }
 
   #failValidationHandler(method) {
     const actions = {
-      add: () => this.#inputElement.classList.add("inp-error"),
-      remove: () => this.#inputElement.classList.remove("inp-error"),
+      add: () => this._inputElement.classList.add("inp-error"),
+      remove: () => this._inputElement.classList.remove("inp-error"),
     };
 
     actions[method]();
   }
 
   #validate(customRule = () => { }) {
-    this.#inputElement.addEventListener("blur", (ev) => {
+    this._inputElement.addEventListener("blur", (ev) => {
       const value = ev.target.value;
       if (value === "" || customRule(value)) {
-        console.log(`Value in ${this.#id} - inside: ${value}`);
+        console.log(`Value in ${this._id} - inside: ${value}`);
         this.#failValidationHandler("add");
         return;
       }

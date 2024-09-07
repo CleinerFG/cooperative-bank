@@ -1,20 +1,22 @@
-export class SearchInputView {
+import { InputView } from "./InputView.js";
+
+export class SearchInputView extends InputView {
   #researchData;
-  #dataset;
-  constructor(input, resultList, dataset, researchData) {
-    this.input = input;
-    this.resultList = resultList;
-    this.#dataset = dataset;
-    this.#researchData = researchData;
-    this.init();
+
+  set researchData(value) {
+    this.#researchData = value
   }
 
-  #getElementDataset(element) {
-    return element.dataset[`${this.#dataset}Id`];
+  get #researchList() {
+    return document.getElementById(`research-list-${this._id}`)
   }
 
-  #setElementDataset(element, value) {
-    element.dataset[`${this.#dataset}Id`] = value;
+ get #dataset() {
+    return this._inputElement.dataset.valueId;
+  }
+
+  set #dataset(value) {
+    this._inputElement.dataset.valueId = value;
   }
 
   #researchListVisibility() {
@@ -30,7 +32,7 @@ export class SearchInputView {
 
   #handleItemClick = (event) => {
     const selectedItem = event.target;
-    this.#setElementDataset(this.input, this.#getElementDataset(selectedItem));
+    // this.#setElementDataset(this.input, this.#getElementDataset(selectedItem));
     this.input.value = selectedItem.textContent;
     this.resultList.innerHTML = "";
   };
@@ -41,7 +43,7 @@ export class SearchInputView {
       const li = document.createElement("li");
 
       li.className = "research-item";
-      this.#setElementDataset(li, id);
+      // this.#setElementDataset(li, id);
       li.textContent = name;
 
       li.addEventListener("click", this.#handleItemClick);
