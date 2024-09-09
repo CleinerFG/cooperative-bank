@@ -40,8 +40,7 @@ export class SearchInputView extends InputView {
     const selectedItem = event.target;
     this._inputElement.dataset.valueId = selectedItem.dataset.itemValueId;
     this._inputElement.value = selectedItem.textContent;
-    this.#researchListElement.innerHTML = "";
-    this._failValidationHandler("remove");
+    this._clearItems();
   };
 
   #renderItems(listItems) {
@@ -54,6 +53,10 @@ export class SearchInputView extends InputView {
       li.textContent = name;
 
       li.addEventListener("click", this.#handleItemClick);
+      li.addEventListener("mousedown", (ev) => {
+        ev.preventDefault();
+        this._inputElement.focus();
+      });
       this.#researchListElement.appendChild(li);
     });
   }
@@ -64,12 +67,9 @@ export class SearchInputView extends InputView {
     this.#renderItems(filteredList);
   }
 
-  _clearItemsOnBlur(ev) {
-    console.log(`Clear: ${ev.target.value}`);
-    setTimeout(() => {
-      this.#researchListVisibility();
-      this.#researchListElement.innerHTML = "";
-    }, 200);
+  _clearItems() {
+    this.#researchListVisibility();
+    this.#researchListElement.innerHTML = "";
   }
 
   _init() {
@@ -79,9 +79,6 @@ export class SearchInputView extends InputView {
       this.#researchListVisibility();
     });
     this._inputElement.addEventListener("input", this._handleInput.bind(this));
-    this._inputElement.addEventListener(
-      "blur",
-      this._clearItemsOnBlur.bind(this)
-    );
+    this._inputElement.addEventListener("blur", this._clearItems.bind(this));
   }
 }
