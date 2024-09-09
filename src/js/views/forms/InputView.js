@@ -1,6 +1,7 @@
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+
 export class InputView {
   #container; // DOM element
-  #category; // String
   #strictRules; // Array
   #formatter; // String
   #strictMethods = {
@@ -53,25 +54,20 @@ export class InputView {
     return {
       default: `
         <div class="form-group__input-group">
-          <label for="${this._id}" class="label form-group__label">${this._labelText
-        }</label>
-          <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id
-        }" placeholder="${this._placeholder}" aria-label="${this._labelText}"
+          <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
+          <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
             class="input form-group__input">
           <span id="${this._id}-error"></span>
         </div>`,
 
       submit: `
-        <input id="${this._id}" class="btn btn-action" type="submit" value="${this._labelText
-        }">`,
+        <input id="${this._id}" class="btn btn-action" type="submit" value="${this._labelText}">`,
 
       search: `
         <div class="form-group__input-group">
-          <label for="${this._id}" class="label form-group__label">${this._labelText
-        }</label>
+          <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
           <div class="input__container">
-            <input id="${this._id}" data-value-id="" type="text" name="${this._id
-        }" placeholder="${this._placeholder}" aria-label="${this._labelText}"
+            <input id="${this._id}" data-value-id="" type="text" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
               class="input form-group__input">
             <ul class="research-list" id="research-list-${this._id}"></ul>
           </div>
@@ -80,8 +76,12 @@ export class InputView {
     };
   }
 
+  _build() {
+    throw new AbstractMethodError("_build");
+  }
+
   _render() {
-    this.#container.insertAdjacentHTML("beforeend", this._htmlStr);
+    this.#container.insertAdjacentHTML("beforeend", this._build());
   }
 
   #defineGetterDomElement() {
@@ -97,7 +97,7 @@ export class InputView {
     actions[method]();
   }
 
-  #validate(customRule = () => { }) {
+  #validate(customRule = () => {}) {
     this._inputElement.addEventListener("blur", (ev) => {
       const value = ev.target.value;
       if (value === "" || customRule(value)) {
