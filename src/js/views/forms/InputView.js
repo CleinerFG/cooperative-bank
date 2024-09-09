@@ -3,7 +3,6 @@ export class InputView {
   #category; // String
   #strictRules; // Array
   #formatter; // String
-  #htmlStr; // String
   #strictMethods = {
     number: () => {
       this._inputElement.addEventListener("input", (ev) => {
@@ -32,7 +31,6 @@ export class InputView {
     container,
     id,
     inputmode,
-    category,
     strictRules,
     formatter,
     labelText,
@@ -41,7 +39,6 @@ export class InputView {
     this.#container = container;
     this._id = id;
     this._inputmode = inputmode ?? "text";
-    this.#category = category;
     this.#strictRules = strictRules;
     this.#formatter = formatter;
     this._labelText = labelText;
@@ -83,12 +80,8 @@ export class InputView {
     };
   }
 
-  #build() {
-    this.#htmlStr = this.#inputCategory[this.#category];
-  }
-
-  #render() {
-    this.#container.insertAdjacentHTML("beforeend", this.#htmlStr);
+  _render() {
+    this.#container.insertAdjacentHTML("beforeend", this._htmlStr);
   }
 
   #defineGetterDomElement() {
@@ -131,8 +124,7 @@ export class InputView {
   }
 
   init() {
-    this.#build();
-    this.#render();
+    this._render();
     this.#defineGetterDomElement();
     this.#validate();
     this.#defineStrictRules();

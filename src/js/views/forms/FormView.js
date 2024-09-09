@@ -103,8 +103,8 @@ export class FormView {
     this.#build();
     this.#render();
     this.#defineGettersDomElements();
-    this.#createInputs();
-    this.#createInputSubmit();
+    // this.#createInputs();
+    // this.#createInputSubmit();
     // this._defineInputControllers();
   }
 }
