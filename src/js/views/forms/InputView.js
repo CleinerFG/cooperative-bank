@@ -9,6 +9,10 @@ export class InputView {
       const value = ev.target.value;
       return value === "" ? true : false;
     },
+    function zeroValue(ev) {
+      const value = ev.target.value;
+      return value === "R$ 0,00" || value === "0";
+    },
   ];
   #strictMethods = {
     number: () => {
@@ -21,7 +25,6 @@ export class InputView {
   #formatterMethods = {
     monetary: () => {
       this._inputElement.addEventListener("input", (e) => {
-        console.log(e.target.value);
         let value = e.target.value;
         value = (value / 100).toLocaleString("pt-BR", {
           style: "currency",
@@ -85,6 +88,7 @@ export class InputView {
   _validators() {
     this._inputElement.addEventListener("blur", (ev) => {
       const results = this.#validators.map((validator) => validator(ev));
+      console.log(results);
       if (results.some((res) => res === true)) {
         this._failValidationHandler("add");
         return;
