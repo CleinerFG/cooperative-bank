@@ -1,6 +1,7 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { DefaultInputView } from "./DefaultInputView.js";
 import { SearchInputView } from "./SearchInputView.js";
+import { SubmitInputView } from "./SubmitInputView.js";
 export class FormView {
   #container; // DOM element
   #formElement; // DOM element
@@ -99,14 +100,7 @@ export class FormView {
 
   #createInputSubmit() {
     const { id, labelText } = this._inputSubmitData;
-    const view = new InputView(
-      this._formElement,
-      id,
-      null,
-      null,
-      null,
-      labelText
-    );
+    const view = new SubmitInputView(this._formElement, id, labelText);
     view.init();
     this.#inputSubmitView = view;
   }
@@ -119,8 +113,8 @@ export class FormView {
     this.#build();
     this.#render();
     this.#defineGettersDomElements();
-    // this.#createInputs();
-    // this.#createInputSubmit();
+    this.#createInputs();
+    this.#createInputSubmit();
     // this._defineInputControllers();
   }
 }
