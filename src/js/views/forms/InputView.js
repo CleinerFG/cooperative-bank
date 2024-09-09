@@ -1,11 +1,8 @@
 export class InputView {
   #container; // DOM element
-  #inputmode; //String
   #category; // String
   #strictRules; // Array
   #formatter; // String
-  #labelText; // String
-  #placeholder; // String
   #htmlStr; // String
   #strictMethods = {
     number: () => {
@@ -43,12 +40,12 @@ export class InputView {
   ) {
     this.#container = container;
     this._id = id;
-    this.#inputmode = inputmode ?? "text";
+    this._inputmode = inputmode ?? "text";
     this.#category = category;
     this.#strictRules = strictRules;
     this.#formatter = formatter;
-    this.#labelText = labelText;
-    this.#placeholder = placeholder;
+    this._labelText = labelText;
+    this._placeholder = placeholder;
   }
 
   get inputElement() {
@@ -59,25 +56,25 @@ export class InputView {
     return {
       default: `
         <div class="form-group__input-group">
-          <label for="${this._id}" class="label form-group__label">${this.#labelText
+          <label for="${this._id}" class="label form-group__label">${this._labelText
         }</label>
-          <input id="${this._id}" type="text" inputmode="${this.#inputmode}" name="${this._id
-        }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
+          <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id
+        }" placeholder="${this._placeholder}" aria-label="${this._labelText}"
             class="input form-group__input">
           <span id="${this._id}-error"></span>
         </div>`,
 
       submit: `
-        <input id="${this._id}" class="btn btn-action" type="submit" value="${this.#labelText
+        <input id="${this._id}" class="btn btn-action" type="submit" value="${this._labelText
         }">`,
 
       search: `
         <div class="form-group__input-group">
-          <label for="${this._id}" class="label form-group__label">${this.#labelText
+          <label for="${this._id}" class="label form-group__label">${this._labelText
         }</label>
           <div class="input__container">
             <input id="${this._id}" data-value-id="" type="text" name="${this._id
-        }" placeholder="${this.#placeholder}" aria-label="${this.#labelText}"
+        }" placeholder="${this._placeholder}" aria-label="${this._labelText}"
               class="input form-group__input">
             <ul class="research-list" id="research-list-${this._id}"></ul>
           </div>
