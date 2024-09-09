@@ -1,5 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { InputView } from "./InputView.js";
+import { DefaultInputView } from "./DefaultInputView.js";
+import { SearchInputView } from "./SearchInputView.js";
 export class FormView {
   #container; // DOM element
   #formElement; // DOM element
@@ -62,13 +63,29 @@ export class FormView {
   }
 
   #createInputs() {
+    const setInpView = (category) => {
+      const categoryView = {
+        default: DefaultInputView,
+        search: SearchInputView,
+      };
+      return categoryView[category];
+    };
+
     this.#inputViews = this._inputsData.map(
-      ({ id, inputmode, category, strictRules, formatter, labelText, placeholder }) => {
-        const view = new InputView(
+      ({
+        id,
+        inputmode,
+        category,
+        strictRules,
+        formatter,
+        labelText,
+        placeholder,
+      }) => {
+        const InpViewClass = setInpView(category);
+        const view = new InpViewClass(
           this._formGroupElement,
           id,
           inputmode,
-          category,
           strictRules,
           formatter,
           labelText,
@@ -86,7 +103,6 @@ export class FormView {
       this._formElement,
       id,
       null,
-      "submit",
       null,
       null,
       labelText
