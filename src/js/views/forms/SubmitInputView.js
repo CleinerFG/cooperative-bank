@@ -9,4 +9,8 @@ export class SubmitInputView extends InputView {
     return `
       <input id="${this._id}" class="btn btn-action" type="submit" value="${this._labelText}">`;
   }
+
+  _init() {
+    this._render();
+  }
 }
