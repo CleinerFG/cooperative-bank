@@ -7,7 +7,6 @@ export class InputView {
   #validators = [
     function emptyValue(ev) {
       const value = ev.target.value;
-      console.log("empty validator");
       return value === "" ? true : false;
     },
   ];
@@ -93,18 +92,6 @@ export class InputView {
       this._failValidationHandler("remove");
     });
   }
-
-  // #emptyValueValidator() {
-  //   this._inputElement.addEventListener("blur", (ev) => {
-  //     const value = ev.target.value;
-  //     if (value === "") {
-  //       console.log(`Value in ${this._id} - inside: ${value}`);
-  //       this._failValidationHandler("add");
-  //       return;
-  //     }
-  //     this._failValidationHandler("remove");
-  //   });
-  // }
 
   #defineStrictRules() {
     if (this.#strictRules) {
