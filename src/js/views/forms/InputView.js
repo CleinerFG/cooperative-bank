@@ -63,7 +63,7 @@ export class InputView {
     this._inputElement = document.getElementById(this._id);
   }
 
-  #failValidationHandler(method) {
+  _failValidationHandler(method) {
     const actions = {
       add: () => this._inputElement.classList.add("inp-error"),
       remove: () => this._inputElement.classList.remove("inp-error"),
@@ -77,10 +77,10 @@ export class InputView {
       const value = ev.target.value;
       if (value === "" || customRule(value)) {
         console.log(`Value in ${this._id} - inside: ${value}`);
-        this.#failValidationHandler("add");
+        this._failValidationHandler("add");
         return;
       }
-      this.#failValidationHandler("remove");
+      this._failValidationHandler("remove");
     });
   }
 

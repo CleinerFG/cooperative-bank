@@ -25,14 +25,6 @@ export class SearchInputView extends InputView {
     return document.getElementById(`research-list-${this._id}`);
   }
 
-  get #dataset() {
-    return this._inputElement.dataset.valueId;
-  }
-
-  set #dataset(value) {
-    this._inputElement.dataset.valueId = value;
-  }
-
   #researchListVisibility() {
     this.#researchListElement.classList.toggle("research-list__active");
   }
@@ -47,8 +39,9 @@ export class SearchInputView extends InputView {
   #handleItemClick = (event) => {
     const selectedItem = event.target;
     this._inputElement.dataset.valueId = selectedItem.dataset.itemValueId;
-    this.input.value = selectedItem.textContent;
-    this.resultList.innerHTML = "";
+    this._inputElement.value = selectedItem.textContent;
+    this.#researchListElement.innerHTML = "";
+    this._failValidationHandler("remove");
   };
 
   #renderItems(listItems) {
@@ -61,29 +54,34 @@ export class SearchInputView extends InputView {
       li.textContent = name;
 
       li.addEventListener("click", this.#handleItemClick);
-      this.resultList.appendChild(li);
+      this.#researchListElement.appendChild(li);
     });
   }
 
-  #handleInput = (event) => {
+  _handleInput(event) {
     const query = event.target.value;
     const filteredList = this.#filterList(query);
     this.#renderItems(filteredList);
-  };
+  }
 
-  #clearItemsOnBlur = () => {
+  _clearItemsOnBlur(ev) {
+    console.log(`Clear: ${ev.target.value}`);
     setTimeout(() => {
       this.#researchListVisibility();
-      this.resultList.innerHTML = "";
+      this.#researchListElement.innerHTML = "";
     }, 200);
-  };
+  }
 
-  init() {
+  _init() {
+    super._init();
     this._inputElement.addEventListener("focus", () => {
       this.#renderItems(this.#researchData);
       this.#researchListVisibility();
     });
-    this._inputElement.addEventListener("input", this.#handleInput);
-    this._inputElement.addEventListener("blur", this.#clearItemsOnBlur);
+    this._inputElement.addEventListener("input", this._handleInput.bind(this));
+    this._inputElement.addEventListener(
+      "blur",
+      this._clearItemsOnBlur.bind(this)
+    );
   }
 }

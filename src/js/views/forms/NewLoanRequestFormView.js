@@ -3,13 +3,13 @@ import { FormView } from "./FormView.js";
 export class NewLoanRequestFormView extends FormView {
   get _inputsData() {
     return [
-      // {
-      //   id: "creditor",
-      //   category: "search",
-      //   labelText: "Search for a Creditor",
-      //   placeholder: "Enter creditor",
-      //   ariaLabel: "Search Creditor",
-      // },
+      {
+        id: "creditor",
+        category: "search",
+        labelText: "Search for a Creditor",
+        placeholder: "Enter creditor",
+        ariaLabel: "Search Creditor",
+      },
       {
         id: "loan-description",
         category: "default",
