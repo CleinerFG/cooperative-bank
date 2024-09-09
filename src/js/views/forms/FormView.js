@@ -83,7 +83,7 @@ export class FormView {
         placeholder,
       }) => {
         const InpViewClass = setInpView(category);
-        const view = new InpViewClass(
+        return new InpViewClass(
           this._formGroupElement,
           id,
           inputmode,
@@ -92,17 +92,17 @@ export class FormView {
           labelText,
           placeholder
         );
-        view.init();
-        return view;
       }
     );
   }
 
   #createInputSubmit() {
     const { id, labelText } = this._inputSubmitData;
-    const view = new SubmitInputView(this._formElement, id, labelText);
-    view.init();
-    this.#inputSubmitView = view;
+    this.#inputSubmitView = new SubmitInputView(
+      this._formElement,
+      id,
+      labelText
+    );
   }
 
   // _defineInputControllers() {

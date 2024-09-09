@@ -44,6 +44,7 @@ export class InputView {
     this.#formatter = formatter;
     this._labelText = labelText;
     this._placeholder = placeholder;
+    this._init();
   }
 
   get inputElement() {
@@ -123,7 +124,7 @@ export class InputView {
     }
   }
 
-  init() {
+  _init() {
     this._render();
     this.#defineGetterDomElement();
     this.#validate();
