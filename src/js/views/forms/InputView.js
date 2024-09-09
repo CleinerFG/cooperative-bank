@@ -51,32 +51,6 @@ export class InputView {
     return this._inputElement;
   }
 
-  get #inputCategory() {
-    return {
-      default: `
-        <div class="form-group__input-group">
-          <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
-          <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
-            class="input form-group__input">
-          <span id="${this._id}-error"></span>
-        </div>`,
-
-      submit: `
-        <input id="${this._id}" class="btn btn-action" type="submit" value="${this._labelText}">`,
-
-      search: `
-        <div class="form-group__input-group">
-          <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
-          <div class="input__container">
-            <input id="${this._id}" data-value-id="" type="text" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
-              class="input form-group__input">
-            <ul class="research-list" id="research-list-${this._id}"></ul>
-          </div>
-          <span id="${this._id}-error"></span>
-        </div>`,
-    };
-  }
-
   _build() {
     throw new AbstractMethodError("_build");
   }
