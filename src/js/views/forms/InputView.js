@@ -4,6 +4,13 @@ export class InputView {
   #container; // DOM element
   #strictRules; // Array
   #formatter; // String
+  #validators = [
+    function emptyValue(ev) {
+      const value = ev.target.value;
+      console.log("empty validator");
+      return value === "" ? true : false;
+    },
+  ];
   #strictMethods = {
     number: () => {
       this._inputElement.addEventListener("input", (ev) => {
@@ -72,17 +79,32 @@ export class InputView {
     actions[method]();
   }
 
-  #validate(customRule = () => {}) {
+  _addValidator(validator) {
+    this.#validators.push(validator);
+  }
+
+  _validators() {
     this._inputElement.addEventListener("blur", (ev) => {
-      const value = ev.target.value;
-      if (value === "" || customRule(value)) {
-        console.log(`Value in ${this._id} - inside: ${value}`);
+      const results = this.#validators.map((validator) => validator(ev));
+      if (results.some((res) => res === true)) {
         this._failValidationHandler("add");
         return;
       }
       this._failValidationHandler("remove");
     });
   }
+
+  // #emptyValueValidator() {
+  //   this._inputElement.addEventListener("blur", (ev) => {
+  //     const value = ev.target.value;
+  //     if (value === "") {
+  //       console.log(`Value in ${this._id} - inside: ${value}`);
+  //       this._failValidationHandler("add");
+  //       return;
+  //     }
+  //     this._failValidationHandler("remove");
+  //   });
+  // }
 
   #defineStrictRules() {
     if (this.#strictRules) {
@@ -101,7 +123,7 @@ export class InputView {
   _init() {
     this._render();
     this.#defineGetterDomElement();
-    this.#validate();
+    this._validators();
     this.#defineStrictRules();
     this.#defineFormatter();
   }
