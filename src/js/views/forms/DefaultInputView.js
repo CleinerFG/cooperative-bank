@@ -10,4 +10,9 @@ export class DefaultInputView extends InputView {
       <span id="${this._id}-error"></span>
     </div>`;
   }
+
+  _init(){
+    super._init()
+    this._setValidators()
+  }
 }
