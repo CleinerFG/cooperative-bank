@@ -25,8 +25,8 @@ export class SearchInputView extends InputView {
     return document.getElementById(`research-list-${this._id}`);
   }
 
-  #researchListVisibility() {
-    this.#researchListElement.classList.toggle("research-list__active");
+  #researchListVisibility(method) {
+    this.#researchListElement.classList[method]("research-list__active");
   }
 
   #filterList(query) {
@@ -44,9 +44,11 @@ export class SearchInputView extends InputView {
   };
 
   #renderItems(listItems) {
+    this.#researchListVisibility("add");
     this.#researchListElement.innerHTML = "";
     listItems.forEach(({ id, name }) => {
       const li = document.createElement("li");
+      
 
       li.className = "research-item";
       li.dataset.itemValueId = id;
@@ -57,7 +59,7 @@ export class SearchInputView extends InputView {
         ev.preventDefault();
         this._inputElement.focus();
       });
-      this.#researchListElement.appendChild(li);
+      this.#researchListElement.insertAdjacentElement("beforeend", li);
     });
   }
 
@@ -68,7 +70,7 @@ export class SearchInputView extends InputView {
   }
 
   _clearItems() {
-    this.#researchListVisibility();
+    this.#researchListVisibility("remove");
     this.#researchListElement.innerHTML = "";
   }
 
@@ -76,12 +78,11 @@ export class SearchInputView extends InputView {
     super._init();
     this._addValidator((ev) => {
       const valueId = ev.target.dataset.valueId;
-      return !(this.#researchData.some((item) => item.id === Number(valueId)));
+      return !this.#researchData.some((item) => item.id === Number(valueId));
     });
     this._initValidators();
     this._inputElement.addEventListener("focus", () => {
       this.#renderItems(this.#researchData);
-      this.#researchListVisibility();
     });
     this._inputElement.addEventListener("input", this._handleInput.bind(this));
     this._inputElement.addEventListener("blur", this._clearItems.bind(this));
