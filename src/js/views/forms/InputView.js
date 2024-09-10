@@ -7,11 +7,12 @@ export class InputView {
   #validators = [
     function emptyValue(ev) {
       const value = ev.target.value;
-      return value === "" ? true : false;
+      return value === "";
     },
     function zeroValue(ev) {
       const value = ev.target.value;
-      return value === "R$ 0,00" || value === "0";
+      const regex = /R\$\s*0,00|^0+/;
+      return regex.test(value);
     },
   ];
   #formatterMethods = {
@@ -99,7 +100,7 @@ export class InputView {
   }
 
   #setFormatter() {
-    console.log(this.#formatter)
+    console.log(this.#formatter);
     this.#formatterMethods[this.#formatter]?.();
   }
 
