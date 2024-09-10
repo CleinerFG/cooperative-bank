@@ -27,7 +27,13 @@ export class InputView {
       });
     },
     percentage: () => {
-      // Format in percentage -> 0,00%
+      this._inputElement.addEventListener("input", (e) => {
+        let value = e.target.value;
+        value = (parseFloat(value) / 100).toFixed(2).replace(".", ",");
+        e.target.value = `${value}%`;
+        const cursorPosition = e.target.value.length - 1;
+        e.target.setSelectionRange(cursorPosition, cursorPosition);
+      });
     },
   };
   constructor(
