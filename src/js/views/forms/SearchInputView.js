@@ -31,9 +31,11 @@ export class SearchInputView extends InputView {
 
   #filterList(query) {
     const normalizedQuery = query.toLowerCase();
-    return this.#researchData.filter(({ name }) =>
+    const noResult = [{ id: 0, name: "There is no one with that name" }];
+    const queryResult = this.#researchData.filter(({ name }) =>
       name.toLowerCase().includes(normalizedQuery)
     );
+    return queryResult.length === 0 ? noResult : queryResult;
   }
 
   #handleItemClick = (event) => {
@@ -48,13 +50,12 @@ export class SearchInputView extends InputView {
     this.#researchListElement.innerHTML = "";
     listItems.forEach(({ id, name }) => {
       const li = document.createElement("li");
-      
 
       li.className = "research-item";
       li.dataset.itemValueId = id;
       li.textContent = name;
 
-      li.addEventListener("click", this.#handleItemClick);
+      if (id !== 0) li.addEventListener("click", this.#handleItemClick);
       li.addEventListener("mousedown", (ev) => {
         ev.preventDefault();
         this._inputElement.focus();
