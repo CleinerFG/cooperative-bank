@@ -98,16 +98,15 @@ export class InputView {
     }
   }
 
-  #defineFormatter() {
-    if (this.#formatter) {
-      this.#formatterMethods[this.#formatter]();
-    }
+  #setFormatter() {
+    console.log(this.#formatter)
+    this.#formatterMethods[this.#formatter]?.();
   }
 
   _init() {
     this._render();
     this.#defineGetterDomElement();
     this.#setStrictToNumber();
-    this.#defineFormatter();
+    this.#setFormatter();
   }
 }
