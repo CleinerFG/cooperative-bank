@@ -2,7 +2,7 @@ import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class InputView {
   #container; // DOM element
-  #strictRules; // Array
+  #strictToNumber; // Bool
   #formatter; // String
   #validators = [
     function emptyValue(ev) {
@@ -14,14 +14,6 @@ export class InputView {
       return value === "R$ 0,00" || value === "0";
     },
   ];
-  #strictMethods = {
-    number: () => {
-      this._inputElement.addEventListener("input", (ev) => {
-        let value = ev.target.value.replace(/\D/g, "");
-        ev.target.value = value;
-      });
-    },
-  };
   #formatterMethods = {
     monetary: () => {
       this._inputElement.addEventListener("input", (e) => {
@@ -41,7 +33,7 @@ export class InputView {
     container,
     id,
     inputmode,
-    strictRules,
+    strictToNumber,
     formatter,
     labelText,
     placeholder
@@ -49,7 +41,7 @@ export class InputView {
     this.#container = container;
     this._id = id;
     this._inputmode = inputmode ?? "text";
-    this.#strictRules = strictRules;
+    this.#strictToNumber = strictToNumber;
     this.#formatter = formatter;
     this._labelText = labelText;
     this._placeholder = placeholder;
@@ -97,10 +89,11 @@ export class InputView {
     });
   }
 
-  #defineStrictRules() {
-    if (this.#strictRules) {
-      this.#strictRules.forEach((rule) => {
-        this.#strictMethods[rule]();
+  #setStrictToNumber() {
+    if (this.#strictToNumber) {
+      this._inputElement.addEventListener("input", (ev) => {
+        let value = ev.target.value.replace(/\D/g, "");
+        ev.target.value = value;
       });
     }
   }
@@ -114,7 +107,7 @@ export class InputView {
   _init() {
     this._render();
     this.#defineGetterDomElement();
-    this.#defineStrictRules();
+    this.#setStrictToNumber();
     this.#defineFormatter();
   }
 }

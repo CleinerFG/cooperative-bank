@@ -77,7 +77,7 @@ export class FormView {
         id,
         inputmode,
         category,
-        strictRules,
+        strictToNumber,
         formatter,
         labelText,
         placeholder,
@@ -87,7 +87,7 @@ export class FormView {
           this._formGroupElement,
           id,
           inputmode,
-          strictRules,
+          strictToNumber,
           formatter,
           labelText,
           placeholder
