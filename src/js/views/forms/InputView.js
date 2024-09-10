@@ -85,7 +85,7 @@ export class InputView {
     this.#validators.push(validator);
   }
 
-  _validators() {
+  _initValidators() {
     this._inputElement.addEventListener("blur", (ev) => {
       const results = this.#validators.map((validator) => validator(ev));
       console.log(results);
@@ -114,7 +114,6 @@ export class InputView {
   _init() {
     this._render();
     this.#defineGetterDomElement();
-    this._validators();
     this.#defineStrictRules();
     this.#defineFormatter();
   }

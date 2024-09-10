@@ -74,6 +74,11 @@ export class SearchInputView extends InputView {
 
   _init() {
     super._init();
+    this._addValidator((ev) => {
+      const valueId = ev.target.dataset.valueId;
+      return !(this.#researchData.some((item) => item.id === Number(valueId)));
+    });
+    this._initValidators();
     this._inputElement.addEventListener("focus", () => {
       this.#renderItems(this.#researchData);
       this.#researchListVisibility();
