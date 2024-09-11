@@ -10,7 +10,7 @@ export class SubmitInputView extends InputView {
       <input id="${this._id}" class="btn btn-action" type="submit" value="${this._labelText}">`;
   }
 
-  _init() {
-    this._render();
+  _settersHandler() {
+    super._settersHandler(["stringToNumber", "formatter", "validators"]);
   }
 }

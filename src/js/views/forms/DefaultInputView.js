@@ -10,8 +10,4 @@ export class DefaultInputView extends InputView {
       <span id="${this._id}-error" class="error-message"></span>
     </div>`;
   }
-
-  _init() {
-    super._init();
-  }
 }
