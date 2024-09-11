@@ -15,7 +15,7 @@ export class InputView {
     },
     (ev) => {
       const value = ev.target.value;
-      const regex = /0,00|^0+$/;
+      const regex = /R\$\s0,00|0,00\s%|^0+$/;
       if (regex.test(value)) throw new ZeroValueError(this._id);
     },
   ];
