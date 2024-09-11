@@ -11,8 +11,9 @@ export class InputView {
     },
     function zeroValue(ev) {
       const value = ev.target.value;
-      const regex = /R\$\s*0,00|0,00\s%|^0+/;
-      // const regex = /0,00\s%/;
+      // const regex = /R\$\s*0,00|0,00\s%|^0+$/;
+      const regex = /0,00|^0+$/
+      console.log("value:", value);
       return regex.test(value);
     },
   ];
@@ -101,7 +102,7 @@ export class InputView {
     if (this.#strictToNumber) {
       this._inputElement.addEventListener("input", (ev) => {
         let value = ev.target.value.replace(/\D/g, "");
-        value = Number(value)
+        value = Number(value);
         ev.target.value = value;
       });
     }
