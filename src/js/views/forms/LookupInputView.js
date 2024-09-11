@@ -8,6 +8,7 @@ export class LookupInputView extends InputView {
         <div class="input__container">
           <input id="${this._id}" type="text" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
           class="input form-group__input">
+           <img class="icon" id="search-icon" alt="Search Icon">
           <input id="${this._id}-result" type="text" class="input form-group__input" disabled>
         </div>
         <span id="${this._id}-error" class="error-message""></span>
