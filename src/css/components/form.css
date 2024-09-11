@@ -28,10 +28,13 @@
   gap: 0.1rem;
 }
 
-.form-group__input-container {
+.input__container {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.input__container input:first-child{
+  width: 7.5rem;
 }
 
 .input__container {

@@ -1,5 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { DefaultInputView } from "./DefaultInputView.js";
+import { LookupInputView } from "./LookupInputView.js";
 import { SearchInputView } from "./SearchInputView.js";
 import { SubmitInputView } from "./SubmitInputView.js";
 export class FormView {
@@ -67,7 +68,7 @@ export class FormView {
     const setInpView = (category) => {
       const categoryView = {
         default: DefaultInputView,
-        search: SearchInputView,
+        search: LookupInputView,
       };
       return categoryView[category];
     };
@@ -114,7 +115,7 @@ export class FormView {
 
         if (index < inputs.length - 1) {
           inputs[index + 1].focus();
-        } else{
+        } else {
           inputs[0].focus();
         }
       }
