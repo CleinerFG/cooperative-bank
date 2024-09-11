@@ -1,5 +1,6 @@
 import { InputView } from "./InputView.js";
 import { users } from "../../testData.js";
+import { OutsideValueError } from "../../errors/OutsideValueError.js";
 
 export class SearchInputView extends InputView {
   #researchData = users; //test data in view
@@ -79,10 +80,10 @@ export class SearchInputView extends InputView {
     super._init();
     this._addValidator((ev) => {
       const valueId = ev.target.dataset.valueId;
-      const status = !this.#researchData.some(
+      const condition = !this.#researchData.some(
         (item) => item.id === Number(valueId)
       );
-      return { status, message: "out of the list" };
+      if (condition) throw new OutsideValueError(this._id);
     });
     this._updateValidators();
     this._inputElement.addEventListener("focus", () => {

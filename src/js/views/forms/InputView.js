@@ -1,18 +1,20 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { EmptyValueError } from "../../errors/EmptyValueError.js";
+import { ZeroValueError } from "../../errors/ZeroValueError.js";
 
 export class InputView {
   #container; // DOM element
   #strictToNumber; // Bool
   #formatter; // String
   #validators = [
-    function emptyValue(ev) {
+    (ev) => {
       const value = ev.target.value;
-      return { status: value === "", message: "empty" };
+      if (value === "") throw new EmptyValueError(this._id);
     },
-    function zeroValue(ev) {
+    (ev) => {
       const value = ev.target.value;
       const regex = /0,00|^0+$/;
-      return { status: regex.test(value), message: "zero" };
+      if (regex.test(value)) throw new ZeroValueError(this._id);
     },
   ];
   #formatterMethods = {
@@ -79,16 +81,15 @@ export class InputView {
 
   #setValidators() {
     this._inputElement.addEventListener("blur", (ev) => {
-      const results = this.#validators.map((validator) => validator(ev));
-      const error = results.find((res) => res.status === true);
-      if (error) {
+      try {
+        this.#validators.forEach((validator) => validator(ev));
+        this.#failValidationHandler("remove", "");
+      } catch (error) {
         this.#failValidationHandler(
           "add",
-          `The ${this._id.replace(/-/, " ")} can't be ${error.message}`
+          error.message
         );
-        return;
       }
-      this.#failValidationHandler("remove", "");
     });
   }
 
