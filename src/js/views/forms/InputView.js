@@ -78,13 +78,7 @@ export class InputView {
     this.#formatterMethods[this.#formatter]?.();
   }
 
-  #failValidationHandler(method, errorMessage) {
-    const span = document.querySelector(`#${this._id}-error`);
-    span.innerHTML = errorMessage;
-    this._inputElement.classList[method]("inp-error");
-  }
-
-  _setValidators() {
+  #setValidators() {
     this._inputElement.addEventListener("blur", (ev) => {
       const results = this.#validators.map((validator) => validator(ev));
       const error = results.find((res) => res.status === true);
@@ -99,8 +93,18 @@ export class InputView {
     });
   }
 
+  #failValidationHandler(method, errorMessage) {
+    const span = document.querySelector(`#${this._id}-error`);
+    span.innerHTML = errorMessage;
+    this._inputElement.classList[method]("inp-error");
+  }
+
   _addValidator(validator) {
     this.#validators.push(validator);
+  }
+
+  _updateValidators() {
+    this.#setValidators();
   }
 
   _build() {
@@ -116,5 +120,6 @@ export class InputView {
     this.#setGetterDomElement();
     this.#setStrictToNumber();
     this.#setFormatter();
+    this.#setValidators();
   }
 }

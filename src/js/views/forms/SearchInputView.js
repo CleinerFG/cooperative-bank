@@ -84,7 +84,7 @@ export class SearchInputView extends InputView {
       );
       return { status, message: "out of the list" };
     });
-    this._setValidators();
+    this._updateValidators();
     this._inputElement.addEventListener("focus", () => {
       this.#renderItems(this.#researchData);
     });

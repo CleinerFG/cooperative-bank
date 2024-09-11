@@ -13,6 +13,5 @@ export class DefaultInputView extends InputView {
 
   _init() {
     super._init();
-    this._setValidators();
   }
 }
