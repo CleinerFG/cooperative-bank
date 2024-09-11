@@ -1,6 +1,8 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { EmptyValueError } from "../../errors/EmptyValueError.js";
-import { ZeroValueError } from "../../errors/ZeroValueError.js";
+import {
+  EmptyValueError,
+  ZeroValueError,
+} from "../../errors/InputValidationError.js";
 
 export class InputView {
   #container; // DOM element
@@ -85,10 +87,7 @@ export class InputView {
         this.#validators.forEach((validator) => validator(ev));
         this.#failValidationHandler("remove", "");
       } catch (error) {
-        this.#failValidationHandler(
-          "add",
-          error.message
-        );
+        this.#failValidationHandler("add", error.message);
       }
     });
   }

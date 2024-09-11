@@ -1,6 +1,6 @@
 import { InputView } from "./InputView.js";
 import { users } from "../../testData.js";
-import { OutsideValueError } from "../../errors/OutsideValueError.js";
+import { OutsideValueError } from "../../errors/InputValidationError.js";
 
 export class SearchInputView extends InputView {
   #researchData = users; //test data in view
