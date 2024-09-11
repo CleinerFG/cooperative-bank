@@ -7,14 +7,12 @@ export class InputView {
   #validators = [
     function emptyValue(ev) {
       const value = ev.target.value;
-      return value === "";
+      return { status: value === "", message: "empty" };
     },
     function zeroValue(ev) {
       const value = ev.target.value;
-      // const regex = /R\$\s*0,00|0,00\s%|^0+$/;
-      const regex = /0,00|^0+$/
-      console.log("value:", value);
-      return regex.test(value);
+      const regex = /0,00|^0+$/;
+      return { status: regex.test(value), message: "zero" };
     },
   ];
   #formatterMethods = {
@@ -89,8 +87,7 @@ export class InputView {
   _setValidators() {
     this._inputElement.addEventListener("blur", (ev) => {
       const results = this.#validators.map((validator) => validator(ev));
-      console.log(results);
-      if (results.some((res) => res === true)) {
+      if (results.some((res) => res.status === true)) {
         this._failValidationHandler("add");
         return;
       }
