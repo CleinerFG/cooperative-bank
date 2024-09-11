@@ -11,7 +11,8 @@ export class InputView {
     },
     function zeroValue(ev) {
       const value = ev.target.value;
-      const regex = /R\$\s*0,00|^0+/;
+      const regex = /R\$\s*0,00|0,00\s%|^0+/;
+      // const regex = /0,00\s%/;
       return regex.test(value);
     },
   ];
@@ -30,8 +31,8 @@ export class InputView {
       this._inputElement.addEventListener("input", (e) => {
         let value = e.target.value;
         value = (parseFloat(value) / 100).toFixed(2).replace(".", ",");
-        e.target.value = `${value}%`;
-        const cursorPosition = e.target.value.length - 1;
+        e.target.value = `${value} %`;
+        const cursorPosition = e.target.value.length - 2;
         e.target.setSelectionRange(cursorPosition, cursorPosition);
       });
     },
@@ -100,6 +101,7 @@ export class InputView {
     if (this.#strictToNumber) {
       this._inputElement.addEventListener("input", (ev) => {
         let value = ev.target.value.replace(/\D/g, "");
+        value = Number(value)
         ev.target.value = value;
       });
     }
