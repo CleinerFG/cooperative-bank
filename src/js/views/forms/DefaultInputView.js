@@ -7,12 +7,12 @@ export class DefaultInputView extends InputView {
       <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
       <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
       class="input form-group__input">
-      <span id="${this._id}-error"></span>
+      <span id="${this._id}-error" class="error-message"></span>
     </div>`;
   }
 
-  _init(){
-    super._init()
-    this._setValidators()
+  _init() {
+    super._init();
+    this._setValidators();
   }
 }

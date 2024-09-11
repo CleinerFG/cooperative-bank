@@ -23,3 +23,7 @@
 .inp-error {
   border-color: var(--component-color-fail);
 }
+
+.error-message {
+  color: var(--component-color-fail);
+}

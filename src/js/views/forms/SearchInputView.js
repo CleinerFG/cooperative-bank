@@ -13,7 +13,7 @@ export class SearchInputView extends InputView {
           class="input form-group__input">
           <ul class="research-list" id="research-list-${this._id}"></ul>
         </div>
-        <span id="${this._id}-error"></span>
+        <span id="${this._id}-error" class="error-message""></span>
       </div>`;
   }
 

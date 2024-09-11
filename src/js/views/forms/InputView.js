@@ -71,13 +71,10 @@ export class InputView {
     this._inputElement = document.getElementById(this._id);
   }
 
-  _failValidationHandler(method) {
-    const actions = {
-      add: () => this._inputElement.classList.add("inp-error"),
-      remove: () => this._inputElement.classList.remove("inp-error"),
-    };
-
-    actions[method]();
+  _failValidationHandler(method, errorMessage) {
+    const span = document.querySelector(`#${this._id}-error`);
+    span.innerHTML = errorMessage;
+    this._inputElement.classList[method]("inp-error")
   }
 
   _addValidator(validator) {
@@ -87,11 +84,15 @@ export class InputView {
   _setValidators() {
     this._inputElement.addEventListener("blur", (ev) => {
       const results = this.#validators.map((validator) => validator(ev));
-      if (results.some((res) => res.status === true)) {
-        this._failValidationHandler("add");
+      const error = results.find((res) => res.status === true);
+      if (error) {
+        this._failValidationHandler(
+          "add",
+          `The ${this._id.replace(/-/, " ")} can't be ${error.message}`
+        );
         return;
       }
-      this._failValidationHandler("remove");
+      this._failValidationHandler("remove", "");
     });
   }
 
