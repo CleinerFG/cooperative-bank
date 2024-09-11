@@ -59,41 +59,8 @@ export class InputView {
     return this._inputElement;
   }
 
-  _build() {
-    throw new AbstractMethodError("_build");
-  }
-
-  _render() {
-    this.#container.insertAdjacentHTML("beforeend", this._build());
-  }
-
-  #defineGetterDomElement() {
+  #setGetterDomElement() {
     this._inputElement = document.getElementById(this._id);
-  }
-
-  _failValidationHandler(method, errorMessage) {
-    const span = document.querySelector(`#${this._id}-error`);
-    span.innerHTML = errorMessage;
-    this._inputElement.classList[method]("inp-error")
-  }
-
-  _addValidator(validator) {
-    this.#validators.push(validator);
-  }
-
-  _setValidators() {
-    this._inputElement.addEventListener("blur", (ev) => {
-      const results = this.#validators.map((validator) => validator(ev));
-      const error = results.find((res) => res.status === true);
-      if (error) {
-        this._failValidationHandler(
-          "add",
-          `The ${this._id.replace(/-/, " ")} can't be ${error.message}`
-        );
-        return;
-      }
-      this._failValidationHandler("remove", "");
-    });
   }
 
   #setStrictToNumber() {
@@ -111,9 +78,42 @@ export class InputView {
     this.#formatterMethods[this.#formatter]?.();
   }
 
+  #failValidationHandler(method, errorMessage) {
+    const span = document.querySelector(`#${this._id}-error`);
+    span.innerHTML = errorMessage;
+    this._inputElement.classList[method]("inp-error");
+  }
+
+  _setValidators() {
+    this._inputElement.addEventListener("blur", (ev) => {
+      const results = this.#validators.map((validator) => validator(ev));
+      const error = results.find((res) => res.status === true);
+      if (error) {
+        this.#failValidationHandler(
+          "add",
+          `The ${this._id.replace(/-/, " ")} can't be ${error.message}`
+        );
+        return;
+      }
+      this.#failValidationHandler("remove", "");
+    });
+  }
+
+  _addValidator(validator) {
+    this.#validators.push(validator);
+  }
+
+  _build() {
+    throw new AbstractMethodError("_build");
+  }
+
+  _render() {
+    this.#container.insertAdjacentHTML("beforeend", this._build());
+  }
+
   _init() {
     this._render();
-    this.#defineGetterDomElement();
+    this.#setGetterDomElement();
     this.#setStrictToNumber();
     this.#setFormatter();
   }
