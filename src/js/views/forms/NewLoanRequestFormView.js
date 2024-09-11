@@ -11,14 +11,14 @@ export class NewLoanRequestFormView extends FormView {
         ariaLabel: "Search Creditor",
       },
       {
-        id: "loan-description",
+        id: "description",
         category: "default",
         labelText: "Description",
         placeholder: "Enter description",
         ariaLabel: "Loan Description",
       },
       {
-        id: "loan-value",
+        id: "value",
         inputmode: "numeric",
         category: "default",
         strictToNumber: true,
@@ -28,7 +28,7 @@ export class NewLoanRequestFormView extends FormView {
         ariaLabel: "Loan Value",
       },
       {
-        id: "loan-installments",
+        id: "installments",
         inputmode: "numeric",
         category: "default",
         strictToNumber: true,
@@ -37,7 +37,7 @@ export class NewLoanRequestFormView extends FormView {
         ariaLabel: "Quantity of Installments",
       },
       {
-        id: "loan-rate",
+        id: "rate",
         inputmode: "numeric",
         category: "default",
         strictToNumber: true,
@@ -52,7 +52,7 @@ export class NewLoanRequestFormView extends FormView {
   get _inputSubmitData() {
     return {
       labelText: "Request",
-      id: "loan-submit",
+      id: "submit",
     };
   }
 }
