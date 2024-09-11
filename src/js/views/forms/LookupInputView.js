@@ -1,4 +1,6 @@
 import { InputView } from "./InputView.js";
+import { ThemeView } from "../layout/ThemeView.js";
+import pathManager from "../../utils/PathManager.js";
 
 export class LookupInputView extends InputView {
   _build() {
@@ -13,5 +15,20 @@ export class LookupInputView extends InputView {
         </div>
         <span id="${this._id}-error" class="error-message""></span>
       </div>`;
+  }
+
+  _defineAssetPath() {
+    const theme = ThemeView.getStoredTheme();
+    pathManager.updatePath(
+      "asset",
+      "#search-icon",
+      `icons${theme}`,
+      "icon-search.svg"
+    );
+  }
+
+  _init(){
+    super._init()
+    this._defineAssetPath()
   }
 }
