@@ -105,6 +105,22 @@ export class FormView {
     );
   }
 
+  #changeElementsFocus() {
+    this._formElement.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter") {
+        ev.preventDefault();
+        const inputs = Array.from(this._formElement.querySelectorAll("input"));
+        const index = inputs.indexOf(document.activeElement);
+
+        if (index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        } else{
+          inputs[0].focus();
+        }
+      }
+    });
+  }
+
   // _defineInputControllers() {
   //   throw new AbstractMethodError("_defineInputControllers");
   // }
@@ -115,6 +131,7 @@ export class FormView {
     this.#defineGettersDomElements();
     this.#createInputs();
     this.#createInputSubmit();
+    this.#changeElementsFocus();
     // this._defineInputControllers();
   }
 }
