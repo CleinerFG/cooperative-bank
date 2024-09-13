@@ -64,6 +64,10 @@ export const eventsData = apiDataEvents.map(
 
 export const users = [
   {
+    id: 1,
+    name: "Cooperative Bank Creditor"
+  },
+  {
     id: 417764,
     name: "Ace Visconti",
   },
