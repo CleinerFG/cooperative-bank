@@ -5,12 +5,8 @@ import { users } from "../../testData.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
 
 export class LookupInputView extends InputView {
-  #DEFAULT_DATA_ID = 1;
+  // #DEFAULT_DATA_ID = 1;
   #dataList = users;
-  constructor(params) {
-    super(params);
-    this._setDefaultItem();
-  }
 
   _build() {
     return `
@@ -68,10 +64,10 @@ export class LookupInputView extends InputView {
     );
   }
 
-  _setDefaultItem() {
-    this._inputElement.value = this.#DEFAULT_DATA_ID;
-    this._searchBtnHandler();
-  }
+  // _setDefaultItem() {
+  //   this._inputElement.value = this.#DEFAULT_DATA_ID;
+  //   this._searchBtnHandler();
+  // }
 
   _validationHandler() {
     this._addValidator(() => {
@@ -82,8 +78,8 @@ export class LookupInputView extends InputView {
     this._updateValidators();
   }
 
-  _init() {
-    super._init();
+  init() {
+    super.init();
     this._setListeners();
     this._validationHandler();
   }

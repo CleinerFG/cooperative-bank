@@ -48,7 +48,6 @@ export class InputView {
     this.#formatter = params.formatter;
     this._labelText = params.labelText;
     this._placeholder = params.placeholder;
-    this._init();
   }
 
   get inputElement() {
@@ -119,7 +118,7 @@ export class InputView {
     }
   }
 
-  _init() {
+  init() {
     this.#render();
     this._settersHandler();
   }

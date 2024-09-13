@@ -1,10 +1,13 @@
 import { users } from "../../testData.js";
-import { pathManager } from "../../utils/PathManager.js";
+import pathManager from "../../utils/PathManager.js";
+import { ThemeView } from "../../views/layout/ThemeView.js";
 import { LookupInputView } from "../../views/forms/LookupInputView.js";
 import { DefaultInputCtrl } from "./DefaultInputCtrl.js";
 
 export class LookupInputCtrl extends DefaultInputCtrl {
-  _viewClass = LookupInputView;
+  get _viewClass() {
+    return LookupInputView;
+  }
 
   _getDataFromApi() {
     return users;

@@ -1,7 +1,8 @@
+import { DefaultInputCtrl } from "../../controllers/forms/DefaultInputCtrl.js";
+import { LookupInputCtrl } from "../../controllers/forms/LookupInputCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { DefaultInputView } from "./DefaultInputView.js";
 import { LookupInputView } from "./LookupInputView.js";
-import { SearchInputView } from "./SearchInputView.js";
 import { SubmitInputView } from "./SubmitInputView.js";
 export class FormView {
   #container; // DOM element
@@ -11,7 +12,7 @@ export class FormView {
   #action; // String
   #method; // String
   #htmlStr; // String
-  #inputViews = []; // Array [InputView,]
+  #inputCtrls = []; // Array
   #inputSubmitView; // InputView
   constructor(container, id, cssClass, action, method) {
     this.#container = container;
@@ -37,8 +38,8 @@ export class FormView {
     throw new AbstractMethodError("_inputSubmitData");
   }
 
-  get inputViews() {
-    return this.#inputViews;
+  get inputControllers() {
+    return this.#inputCtrls;
   }
 
   get inputSubmitView() {
@@ -65,18 +66,18 @@ export class FormView {
   }
 
   #createInputs() {
-    const setInpView = (category) => {
-      const categoryView = {
-        default: DefaultInputView,
-        search: LookupInputView,
+    const setInpCtrl = (category) => {
+      const categoryCtlr = {
+        default: DefaultInputCtrl,
+        search: LookupInputCtrl,
       };
-      return categoryView[category];
+      return categoryCtlr[category];
     };
 
-    this.#inputViews = this._inputsParams.map((params) => {
-      const InpViewClass = setInpView(params.category);
+    this.#inputCtrls = this._inputsParams.map((params) => {
+      const InpCtrlClass = setInpCtrl(params.category);
       params.container = this._formGroupElement;
-      return new InpViewClass(params);
+      return new InpCtrlClass(params);
     });
   }
 
@@ -108,17 +109,12 @@ export class FormView {
     });
   }
 
-  // _defineInputControllers() {
-  //   throw new AbstractMethodError("_defineInputControllers");
-  // }
-
   init() {
     this.#build();
     this.#render();
     this.#defineGettersDomElements();
     this.#createInputs();
-    this.#createInputSubmit();
+    // this.#createInputSubmit();
     this.#changeElementsFocus();
-    // this._defineInputControllers();
   }
 }
