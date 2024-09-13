@@ -7,24 +7,8 @@ import { NoSuchItemError } from "../../errors/InputValidationError.js";
 export class LookupInputView extends InputView {
   #DEFAULT_DATA_ID = 1;
   #dataList = users;
-  constructor(
-    container,
-    id,
-    inputmode,
-    strictToNumber,
-    formatter,
-    labelText,
-    placeholder
-  ) {
-    super(
-      container,
-      id,
-      inputmode,
-      strictToNumber,
-      formatter,
-      labelText,
-      placeholder
-    );
+  constructor(params) {
+    super(params);
     this._setDefaultItem();
   }
 

@@ -73,37 +73,17 @@ export class FormView {
       return categoryView[category];
     };
 
-    this.#inputViews = this._inputsData.map(
-      ({
-        id,
-        inputmode,
-        category,
-        strictToNumber,
-        formatter,
-        labelText,
-        placeholder,
-      }) => {
-        const InpViewClass = setInpView(category);
-        return new InpViewClass(
-          this._formGroupElement,
-          id,
-          inputmode,
-          strictToNumber,
-          formatter,
-          labelText,
-          placeholder
-        );
-      }
-    );
+    this.#inputViews = this._inputsData.map((params) => {
+      const InpViewClass = setInpView(params.category);
+      params.container = this._formGroupElement;
+      return new InpViewClass(params);
+    });
   }
 
   #createInputSubmit() {
-    const { id, labelText } = this._inputSubmitData;
-    this.#inputSubmitView = new SubmitInputView(
-      this._formElement,
-      id,
-      labelText
-    );
+    const params = this._inputSubmitData;
+    params.container = this._formElement;
+    this.#inputSubmitView = new SubmitInputView(params);
   }
 
   #changeElementsFocus() {

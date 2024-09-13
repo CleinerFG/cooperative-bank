@@ -40,22 +40,14 @@ export class InputView {
       });
     },
   };
-  constructor(
-    container,
-    id,
-    inputmode,
-    strictToNumber,
-    formatter,
-    labelText,
-    placeholder
-  ) {
-    this.#container = container;
-    this._id = id;
-    this._inputmode = inputmode ?? "text";
-    this.#strictToNumber = strictToNumber;
-    this.#formatter = formatter;
-    this._labelText = labelText;
-    this._placeholder = placeholder;
+  constructor(params) {
+    this.#container = params.container;
+    this._id = params.id;
+    this._inputmode = params.inputmode ?? "text";
+    this.#strictToNumber = params.strictToNumber;
+    this.#formatter = params.formatter;
+    this._labelText = params.labelText;
+    this._placeholder = params.placeholder;
     this._init();
   }
 
