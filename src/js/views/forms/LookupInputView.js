@@ -35,7 +35,6 @@ export class LookupInputView extends InputView {
   }
 
   _searchBtnHandler() {
-    document.getElementById("search-icon").addEventListener("click", (ev) => {
       const dataId = this._inputElement.value;
       try {
         const item = this.#getDataWithId(Number(dataId));
@@ -45,7 +44,11 @@ export class LookupInputView extends InputView {
         this._inputResultElement.value = "";
         this._failMessageHandler("add", error.message)
       }
-    });
+  }
+
+  _setListeners(){
+    const icon = document.getElementById("search-icon")
+    icon.addEventListener("click", this._searchBtnHandler.bind(this))
   }
 
   _setDefaultOption() {
@@ -67,6 +70,6 @@ export class LookupInputView extends InputView {
     super._init();
     this._defineAssetPath();
     this._setDefaultOption();
-    this._searchBtnHandler();
+    this._setListeners();
   }
 }

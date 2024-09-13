@@ -85,9 +85,9 @@ export class InputView {
     this._inputElement.addEventListener("blur", (ev) => {
       try {
         this.#validators.forEach((validator) => validator(ev));
-        this._failHandler("remove", "");
+        this._failMessageHandler("remove", "");
       } catch (error) {
-        this._failHandler("add", error.message);
+        this._failMessageHandler("add", error.message);
       }
     });
   }
