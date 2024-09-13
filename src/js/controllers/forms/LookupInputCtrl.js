@@ -5,16 +5,23 @@ import { LookupInputView } from "../../views/forms/LookupInputView.js";
 import { DefaultInputCtrl } from "./DefaultInputCtrl.js";
 
 export class LookupInputCtrl extends DefaultInputCtrl {
-  get _viewClass() {
-    return LookupInputView;
-  }
-
   get defaultDataItem() {
     // From API
     return {
       id: 1000,
       name: "Cooperative Bank Creditor",
     };
+  }
+
+  get _viewClass() {
+    return LookupInputView;
+  }
+
+  _init() {
+    this._view.dataList = this._getDataFromApi();
+    this._view.defaultDataItem = this.defaultDataItem;
+    this._view.init();
+    this._defineAssetPath();
   }
 
   _getDataFromApi() {
@@ -29,12 +36,5 @@ export class LookupInputCtrl extends DefaultInputCtrl {
       `icons${theme}`,
       "icon-search.svg"
     );
-  }
-
-  _init() {
-    this._view.dataList = this._getDataFromApi();
-    this._view.defaultDataItem = this.defaultDataItem;
-    this._view.init();
-    this._defineAssetPath();
   }
 }
