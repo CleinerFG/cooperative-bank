@@ -40,9 +40,10 @@ export class LookupInputView extends InputView {
       try {
         const item = this.#getDataWithId(Number(dataId));
         this._inputResultElement.value = item.name;
+        this._failMessageHandler("remove", "")
       } catch (error) {
         this._inputResultElement.value = "";
-        console.log(error.message);
+        this._failMessageHandler("add", error.message)
       }
     });
   }
