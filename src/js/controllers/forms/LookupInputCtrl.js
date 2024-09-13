@@ -1,11 +1,26 @@
-import { users } from "../../testData.js"
+import { users } from "../../testData.js";
+import { pathManager } from "../../utils/PathManager.js";
 
 export class LookupInputCtrl {
   constructor(view) {
-    this.view = view
+    this.view = view;
+    this._init();
   }
   #getDataFromApi() {
-    // Data prototype
-    return users
+    return users;
+  }
+
+  _defineAssetPath() {
+    const theme = ThemeView.getStoredTheme();
+    pathManager.updatePath(
+      "asset",
+      "#search-icon",
+      `icons${theme}`,
+      "icon-search.svg"
+    );
+  }
+
+  _init() {
+    this._defineAssetPath();
   }
 }

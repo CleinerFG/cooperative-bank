@@ -1,6 +1,6 @@
 import { InputView } from "./InputView.js";
-import { ThemeView } from "../layout/ThemeView.js";
-import pathManager from "../../utils/PathManager.js";
+// import { ThemeView } from "../layout/ThemeView.js";
+// import pathManager from "../../utils/PathManager.js";
 import { users } from "../../testData.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
 
@@ -82,20 +82,8 @@ export class LookupInputView extends InputView {
     this._updateValidators();
   }
 
-  _defineAssetPath() {
-    const theme = ThemeView.getStoredTheme();
-    pathManager.updatePath(
-      "asset",
-      "#search-icon",
-      `icons${theme}`,
-      "icon-search.svg"
-    );
-  }
-
   _init() {
     super._init();
-    this._defineAssetPath();
-    // this._setDefaultItem();
     this._setListeners();
     this._validationHandler();
   }
