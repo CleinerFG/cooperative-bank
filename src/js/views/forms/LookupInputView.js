@@ -17,6 +17,15 @@ export class LookupInputView extends InputView {
       </div>`;
   }
 
+  get _inputResult(){
+    return document.getElementById(`${this._id}-result`)
+  }
+
+  _setDefaultOption() {
+    this.inputElement.value = 1
+    this._inputResult.value = "Cooperative Bank Creditor"
+  }
+
   _defineAssetPath() {
     const theme = ThemeView.getStoredTheme();
     pathManager.updatePath(
@@ -30,5 +39,6 @@ export class LookupInputView extends InputView {
   _init(){
     super._init()
     this._defineAssetPath()
+    this._setDefaultOption()
   }
 }
