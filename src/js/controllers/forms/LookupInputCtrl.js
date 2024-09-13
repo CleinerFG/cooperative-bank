@@ -24,7 +24,7 @@ export class LookupInputCtrl extends DefaultInputCtrl {
   }
 
   _init() {
-    this._view.dataList = this._getDataFromApi;
+    this._view.dataList = this._getDataFromApi();
     this._view.init();
     this._defineAssetPath();
   }

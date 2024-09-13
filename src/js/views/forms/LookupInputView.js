@@ -79,6 +79,7 @@ export class LookupInputView extends InputView {
   }
 
   init() {
+    console.log(this.#dataList);
     super.init();
     this._setListeners();
     this._validationHandler();
