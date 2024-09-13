@@ -1,7 +1,7 @@
 import { FormView } from "./FormView.js";
 
 export class NewLoanRequestFormView extends FormView {
-  get _inputsData() {
+  get _inputsParams() {
     return [
       {
         id: "creditor",
@@ -50,10 +50,10 @@ export class NewLoanRequestFormView extends FormView {
     ];
   }
 
-  get _inputSubmitData() {
+  get _inputSubmitParams() {
     return {
-      labelText: "Request",
       id: "submit",
+      labelText: "Request",
     };
   }
 }

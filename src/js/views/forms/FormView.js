@@ -29,11 +29,11 @@ export class FormView {
     return this.#formGroupElement;
   }
 
-  get _inputsData() {
+  get _inputsParams() {
     throw new AbstractMethodError("_inputsData");
   }
 
-  get _inputSubmitData() {
+  get _inputSubmitParams() {
     throw new AbstractMethodError("_inputSubmitData");
   }
 
@@ -73,7 +73,7 @@ export class FormView {
       return categoryView[category];
     };
 
-    this.#inputViews = this._inputsData.map((params) => {
+    this.#inputViews = this._inputsParams.map((params) => {
       const InpViewClass = setInpView(params.category);
       params.container = this._formGroupElement;
       return new InpViewClass(params);
@@ -81,7 +81,7 @@ export class FormView {
   }
 
   #createInputSubmit() {
-    const params = this._inputSubmitData;
+    const params = this._inputSubmitParams;
     params.container = this._formElement;
     this.#inputSubmitView = new SubmitInputView(params);
   }
