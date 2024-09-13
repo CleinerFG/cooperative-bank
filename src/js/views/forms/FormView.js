@@ -114,7 +114,13 @@ export class FormView {
         const index = inputs.indexOf(document.activeElement);
 
         if (index < inputs.length - 1) {
-          inputs[index + 1].focus();
+          const nextInput = inputs[index + 1];
+          if (nextInput.disabled) {
+            const secondNextInput = inputs[index + 2];
+            secondNextInput.focus();
+          } else {
+            nextInput.focus();
+          }
         } else {
           inputs[0].focus();
         }
