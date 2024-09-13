@@ -29,18 +29,21 @@ export class LookupInputView extends InputView {
   }
 
   #getDataWithId(dataId) {
-    
-    return this.#dataList.find((item) => item.id === dataId);
+    const item = this.#dataList.find((item) => item.id === dataId);
+    if (item) return item;
+    throw new NoSuchItemError(this._id);
   }
 
   _searchBtnHandler() {
     const dataId = this._inputElement.value;
-    const item = this.#getDataWithId(Number(dataId));
-    if (item) {
+    try {
+      const item = this.#getDataWithId(Number(dataId));
       this._inputResultElement.value = item.name;
-      return;
+      this._failMessageHandler("remove", "");
+    } catch (error) {
+      this._inputResultElement.value = "";
+      this._failMessageHandler("add", error.message);
     }
-    this._inputResultElement.value = "";
   }
 
   _enterPressHandler(ev) {
