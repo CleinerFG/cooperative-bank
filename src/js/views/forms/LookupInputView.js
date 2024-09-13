@@ -13,11 +13,12 @@ export class LookupInputView extends InputView {
     this.#defaultDataItem = item;
   }
 
-  init() {
-    super.init();
-    this._setDefaultItem();
-    this._setListeners();
-    this._validationHandler();
+  get _inputResultElement() {
+    return document.getElementById(`${this._id}-result`);
+  }
+
+  get _searchIconElement() {
+    return document.getElementById("search-icon");
   }
 
   _build() {
@@ -36,14 +37,19 @@ export class LookupInputView extends InputView {
       </div>`;
   }
 
-  _setDefaultItem() {
-    this._inputElement.value = this.#defaultDataItem.id;
-    this._handleSearch();
+  #getDataWithId(dataId) {
+    const item = this.#dataList.find((item) => item.id === dataId);
+    if (item) return item;
+    throw new NoSuchItemError(this._id);
   }
 
-  _setListeners() {
-    this._searchIconElement.addEventListener("click", this._handleSearch.bind(this));
-    this._inputElement.addEventListener("keydown", this._handleEnterPress.bind(this));
+  _performSearch() {
+    const dataId = this._inputElement.value;
+    return this.#getDataWithId(Number(dataId));
+  }
+
+  _updateResult(item) {
+    this._inputResultElement.value = item ? item.name : "";
   }
 
   _handleSearch() {
@@ -63,19 +69,20 @@ export class LookupInputView extends InputView {
     }
   }
 
-  _performSearch() {
-    const dataId = this._inputElement.value;
-    return this.#getDataWithId(Number(dataId));
+  _setDefaultItem() {
+    this._inputElement.value = this.#defaultDataItem.id;
+    this._handleSearch();
   }
 
-  _updateResult(item) {
-    this._inputResultElement.value = item ? item.name : "";
-  }
-
-  #getDataWithId(dataId) {
-    const item = this.#dataList.find((item) => item.id === dataId);
-    if (item) return item;
-    throw new NoSuchItemError(this._id);
+  _setListeners() {
+    this._searchIconElement.addEventListener(
+      "click",
+      this._handleSearch.bind(this)
+    );
+    this._inputElement.addEventListener(
+      "keydown",
+      this._handleEnterPress.bind(this)
+    );
   }
 
   _validationHandler() {
@@ -87,11 +94,10 @@ export class LookupInputView extends InputView {
     this._updateValidators();
   }
 
-  get _inputResultElement() {
-    return document.getElementById(`${this._id}-result`);
-  }
-
-  get _searchIconElement() {
-    return document.getElementById("search-icon");
+  init() {
+    super.init();
+    this._setDefaultItem();
+    this._setListeners();
+    this._validationHandler();
   }
 }

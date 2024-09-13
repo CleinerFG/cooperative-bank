@@ -17,13 +17,6 @@ export class LookupInputCtrl extends DefaultInputCtrl {
     return LookupInputView;
   }
 
-  _init() {
-    this._view.dataList = this._getDataFromApi();
-    this._view.defaultDataItem = this.defaultDataItem;
-    this._view.init();
-    this._defineAssetPath();
-  }
-
   _getDataFromApi() {
     return users;
   }
@@ -36,5 +29,12 @@ export class LookupInputCtrl extends DefaultInputCtrl {
       `icons${theme}`,
       "icon-search.svg"
     );
+  }
+
+  _init() {
+    this._view.dataList = this._getDataFromApi();
+    this._view.defaultDataItem = this.defaultDataItem;
+    this._view.init();
+    this._defineAssetPath();
   }
 }

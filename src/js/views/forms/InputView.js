@@ -55,26 +55,12 @@ export class InputView {
     return this._inputElement;
   }
 
-  init() {
-    this.#render();
-    this._settersHandler();
+  _build() {
+    throw new AbstractMethodError("_build");
   }
 
   #render() {
     this.#container.insertAdjacentHTML("beforeend", this._build());
-  }
-
-  _settersHandler(keysToRemove) {
-    const setterMethods = {
-      getterDomElement: this.#setGetterDomElement.bind(this),
-      stringToNumber: this.#setStrictToNumber.bind(this),
-      formatter: this.#setFormatter.bind(this),
-      validators: this.#setValidators.bind(this),
-    };
-    if (keysToRemove) keysToRemove.forEach((key) => delete setterMethods[key]);
-    for (const key in setterMethods) {
-      setterMethods[key]();
-    }
   }
 
   #setGetterDomElement() {
@@ -93,6 +79,12 @@ export class InputView {
 
   #setFormatter() {
     this.#formatterMethods[this.#formatter]?.();
+  }
+
+  _failMessageHandler(method, errorMessage) {
+    const span = document.querySelector(`#${this._id}-error`);
+    span.innerHTML = errorMessage;
+    this._inputElement.classList[method]("inp-error");
   }
 
   #setValidators() {
@@ -114,13 +106,21 @@ export class InputView {
     this.#setValidators();
   }
 
-  _failMessageHandler(method, errorMessage) {
-    const span = document.querySelector(`#${this._id}-error`);
-    span.innerHTML = errorMessage;
-    this._inputElement.classList[method]("inp-error");
+  _settersHandler(keysToRemove) {
+    const setterMethods = {
+      getterDomElement: this.#setGetterDomElement.bind(this),
+      stringToNumber: this.#setStrictToNumber.bind(this),
+      formatter: this.#setFormatter.bind(this),
+      validators: this.#setValidators.bind(this),
+    };
+    if (keysToRemove) keysToRemove.forEach((key) => delete setterMethods[key]);
+    for (const key in setterMethods) {
+      setterMethods[key]();
+    }
   }
 
-  _build() {
-    throw new AbstractMethodError("_build");
+  init() {
+    this.#render();
+    this._settersHandler();
   }
 }

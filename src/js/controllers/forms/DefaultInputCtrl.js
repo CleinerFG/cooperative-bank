@@ -6,11 +6,12 @@ export class DefaultInputCtrl {
     this._init();
   }
 
+  get _viewClass() {
+    return DefaultInputView;
+  }
+
   _init() {
     this._view.init();
   }
 
-  get _viewClass() {
-    return DefaultInputView;
-  }
 }
