@@ -1,12 +1,12 @@
 import { users } from "../../testData.js";
 import { pathManager } from "../../utils/PathManager.js";
+import { LookupInputView } from "../../views/forms/LookupInputView.js";
+import { DefaultInputCtrl } from "./DefaultInputCtrl.js";
 
-export class LookupInputCtrl {
-  constructor(view) {
-    this.view = view;
-    this._init();
-  }
-  #getDataFromApi() {
+export class LookupInputCtrl extends DefaultInputCtrl {
+  _viewClass = LookupInputView;
+
+  _getDataFromApi() {
     return users;
   }
 
@@ -21,6 +21,8 @@ export class LookupInputCtrl {
   }
 
   _init() {
+    this._view.dataList = this._getDataFromApi;
+    this._view.init();
     this._defineAssetPath();
   }
 }
