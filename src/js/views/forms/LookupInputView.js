@@ -1,8 +1,10 @@
 import { InputView } from "./InputView.js";
 import { ThemeView } from "../layout/ThemeView.js";
 import pathManager from "../../utils/PathManager.js";
+import { users } from "../../testData.js";
 
 export class LookupInputView extends InputView {
+  #dataList = users;
   _build() {
     return `
       <div class="form-group__input-group">
@@ -17,13 +19,31 @@ export class LookupInputView extends InputView {
       </div>`;
   }
 
-  get _inputResult(){
-    return document.getElementById(`${this._id}-result`)
+  set dataList(list) {
+    this.#dataList = list;
+  }
+
+  get _inputResultElement() {
+    return document.getElementById(`${this._id}-result`);
+  }
+
+  #getDataWithId(dataId) {
+    const item = this.#dataList.find((item) => item.id === dataId);
+    if (item) return item;
+    // throw error here - Undefined item
+  }
+
+  _searchBtnHandler() {
+    document.getElementById("search-icon").addEventListener("click", (ev) => {
+      const dataId = this._inputElement.value;
+      const item = this.#getDataWithId(Number(dataId));
+      this._inputResultElement.value = item.name;
+    });
   }
 
   _setDefaultOption() {
-    this.inputElement.value = 1
-    this._inputResult.value = "Cooperative Bank Creditor"
+    this._inputElement.value = 1;
+    this._inputResultElement.value = "Cooperative Bank Creditor";
   }
 
   _defineAssetPath() {
@@ -36,9 +56,10 @@ export class LookupInputView extends InputView {
     );
   }
 
-  _init(){
-    super._init()
-    this._defineAssetPath()
-    this._setDefaultOption()
+  _init() {
+    super._init();
+    this._defineAssetPath();
+    this._setDefaultOption();
+    this._searchBtnHandler();
   }
 }
