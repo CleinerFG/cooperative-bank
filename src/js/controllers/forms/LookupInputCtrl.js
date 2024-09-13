@@ -9,6 +9,14 @@ export class LookupInputCtrl extends DefaultInputCtrl {
     return LookupInputView;
   }
 
+  get defaultDataItem() {
+    // From API
+    return {
+      id: 1000,
+      name: "Cooperative Bank Creditor",
+    };
+  }
+
   _getDataFromApi() {
     return users;
   }
@@ -25,6 +33,7 @@ export class LookupInputCtrl extends DefaultInputCtrl {
 
   _init() {
     this._view.dataList = this._getDataFromApi();
+    this._view.defaultDataItem = this.defaultDataItem;
     this._view.init();
     this._defineAssetPath();
   }
