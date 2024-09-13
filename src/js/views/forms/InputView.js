@@ -6,7 +6,7 @@ import {
 
 export class InputView {
   #container; // DOM element
-  #strictToNumber; // Bool
+  #strictToNumber; // Boolean
   #formatter; // String
   #validators = [
     (ev) => {
@@ -40,6 +40,7 @@ export class InputView {
       });
     },
   };
+
   constructor(params) {
     this.#container = params.container;
     this._id = params.id;
@@ -52,6 +53,28 @@ export class InputView {
 
   get inputElement() {
     return this._inputElement;
+  }
+
+  init() {
+    this.#render();
+    this._settersHandler();
+  }
+
+  #render() {
+    this.#container.insertAdjacentHTML("beforeend", this._build());
+  }
+
+  _settersHandler(keysToRemove) {
+    const setterMethods = {
+      getterDomElement: this.#setGetterDomElement.bind(this),
+      stringToNumber: this.#setStrictToNumber.bind(this),
+      formatter: this.#setFormatter.bind(this),
+      validators: this.#setValidators.bind(this),
+    };
+    if (keysToRemove) keysToRemove.forEach((key) => delete setterMethods[key]);
+    for (const key in setterMethods) {
+      setterMethods[key]();
+    }
   }
 
   #setGetterDomElement() {
@@ -83,20 +106,6 @@ export class InputView {
     });
   }
 
-  _failMessageHandler(method, errorMessage) {
-    const span = document.querySelector(`#${this._id}-error`);
-    span.innerHTML = errorMessage;
-    this._inputElement.classList[method]("inp-error");
-  }
-
-  #render() {
-    this.#container.insertAdjacentHTML("beforeend", this._build());
-  }
-
-  _build() {
-    throw new AbstractMethodError("_build");
-  }
-
   _addValidator(validator) {
     this.#validators.push(validator);
   }
@@ -105,21 +114,13 @@ export class InputView {
     this.#setValidators();
   }
 
-  _settersHandler(keysToRemove) {
-    const setterMethods = {
-      getterDomElement: this.#setGetterDomElement.bind(this),
-      stringToNumber: this.#setStrictToNumber.bind(this),
-      formatter: this.#setFormatter.bind(this),
-      validators: this.#setValidators.bind(this),
-    };
-    if (keysToRemove) keysToRemove.forEach((key) => delete setterMethods[key]);
-    for (const key in setterMethods) {
-      setterMethods[key]();
-    }
+  _failMessageHandler(method, errorMessage) {
+    const span = document.querySelector(`#${this._id}-error`);
+    span.innerHTML = errorMessage;
+    this._inputElement.classList[method]("inp-error");
   }
 
-  init() {
-    this.#render();
-    this._settersHandler();
+  _build() {
+    throw new AbstractMethodError("_build");
   }
 }
