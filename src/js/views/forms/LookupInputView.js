@@ -35,20 +35,31 @@ export class LookupInputView extends InputView {
   }
 
   _searchBtnHandler() {
-      const dataId = this._inputElement.value;
-      try {
-        const item = this.#getDataWithId(Number(dataId));
-        this._inputResultElement.value = item.name;
-        this._failMessageHandler("remove", "")
-      } catch (error) {
-        this._inputResultElement.value = "";
-        this._failMessageHandler("add", error.message)
-      }
+    const dataId = this._inputElement.value;
+    try {
+      const item = this.#getDataWithId(Number(dataId));
+      this._inputResultElement.value = item.name;
+      this._failMessageHandler("remove", "");
+    } catch (error) {
+      this._inputResultElement.value = "";
+      this._failMessageHandler("add", error.message);
+    }
   }
 
-  _setListeners(){
-    const icon = document.getElementById("search-icon")
-    icon.addEventListener("click", this._searchBtnHandler.bind(this))
+  _enterPressHandler(ev) {
+    if (ev.key === "Enter") {
+      console.log(ev.key);
+      this._searchBtnHandler();
+    }
+  }
+
+  _setListeners() {
+    const icon = document.getElementById("search-icon");
+    icon.addEventListener("click", this._searchBtnHandler.bind(this));
+    this._inputElement.addEventListener(
+      "keydown",
+      this._enterPressHandler.bind(this)
+    );
   }
 
   _setDefaultOption() {
