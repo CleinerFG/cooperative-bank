@@ -23,3 +23,9 @@ export class OutsideValueError extends InputValidationError {
     super(inputName, "can't be outside the list");
   }
 }
+
+export class NoSuchItemError extends InputValidationError {
+  constructor(inputName) {
+    super(inputName, "not found")
+  }
+}

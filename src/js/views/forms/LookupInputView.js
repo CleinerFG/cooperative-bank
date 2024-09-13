@@ -2,6 +2,7 @@ import { InputView } from "./InputView.js";
 import { ThemeView } from "../layout/ThemeView.js";
 import pathManager from "../../utils/PathManager.js";
 import { users } from "../../testData.js";
+import { NoSuchItemError } from "../../errors/InputValidationError.js";
 
 export class LookupInputView extends InputView {
   #dataList = users;
@@ -30,14 +31,19 @@ export class LookupInputView extends InputView {
   #getDataWithId(dataId) {
     const item = this.#dataList.find((item) => item.id === dataId);
     if (item) return item;
-    // throw error here - Undefined item
+    throw new NoSuchItemError(this._id);
   }
 
   _searchBtnHandler() {
     document.getElementById("search-icon").addEventListener("click", (ev) => {
       const dataId = this._inputElement.value;
-      const item = this.#getDataWithId(Number(dataId));
-      this._inputResultElement.value = item.name;
+      try {
+        const item = this.#getDataWithId(Number(dataId));
+        this._inputResultElement.value = item.name;
+      } catch (error) {
+        this._inputResultElement.value = "";
+        console.log(error.message);
+      }
     });
   }
 
