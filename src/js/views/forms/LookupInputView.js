@@ -29,21 +29,18 @@ export class LookupInputView extends InputView {
   }
 
   #getDataWithId(dataId) {
-    const item = this.#dataList.find((item) => item.id === dataId);
-    if (item) return item;
-    throw new NoSuchItemError(this._id);
+    
+    return this.#dataList.find((item) => item.id === dataId);
   }
 
   _searchBtnHandler() {
     const dataId = this._inputElement.value;
-    try {
-      const item = this.#getDataWithId(Number(dataId));
+    const item = this.#getDataWithId(Number(dataId));
+    if (item) {
       this._inputResultElement.value = item.name;
-      this._failMessageHandler("remove", "");
-    } catch (error) {
-      this._inputResultElement.value = "";
-      this._failMessageHandler("add", error.message);
+      return;
     }
+    this._inputResultElement.value = "";
   }
 
   _enterPressHandler(ev) {
@@ -67,6 +64,15 @@ export class LookupInputView extends InputView {
     this._inputResultElement.value = "Cooperative Bank Creditor";
   }
 
+  _validationHandler() {
+    this._addValidator(() => {
+      if (this._inputResultElement.value === "") {
+        throw new NoSuchItemError(this._id);
+      }
+    });
+    this._updateValidators();
+  }
+
   _defineAssetPath() {
     const theme = ThemeView.getStoredTheme();
     pathManager.updatePath(
@@ -82,5 +88,6 @@ export class LookupInputView extends InputView {
     this._defineAssetPath();
     this._setDefaultOption();
     this._setListeners();
+    this._validationHandler();
   }
 }
