@@ -17,7 +17,7 @@ export class LookupInputCtrl extends DefaultInputCtrl {
     return LookupInputView;
   }
 
-  _getDataFromApi() {
+  get _dataFromApi() {
     return users;
   }
 
@@ -32,7 +32,7 @@ export class LookupInputCtrl extends DefaultInputCtrl {
   }
 
   _init() {
-    this._view.dataList = this._getDataFromApi();
+    this._view.dataList = this._dataFromApi;
     this._view.defaultDataItem = this.defaultDataItem;
     this._view.init();
     this._defineAssetPath();
