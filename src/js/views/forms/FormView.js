@@ -1,5 +1,6 @@
 import { DefaultInputCtrl } from "../../controllers/forms/DefaultInputCtrl.js";
 import { LookupInputCtrl } from "../../controllers/forms/LookupInputCtrl.js";
+import { SubmitInputCtrl } from "../../controllers/forms/SubmitInputCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { DefaultInputView } from "./DefaultInputView.js";
 import { LookupInputView } from "./LookupInputView.js";
@@ -84,7 +85,7 @@ export class FormView {
   #createInputSubmit() {
     const params = this._inputSubmitParams;
     params.container = this._formElement;
-    this.#inputSubmitView = new SubmitInputView(params);
+    this.#inputSubmitView = new SubmitInputCtrl(params);
   }
 
   #changeElementsFocus() {
@@ -114,7 +115,7 @@ export class FormView {
     this.#render();
     this.#defineGettersDomElements();
     this.#createInputs();
-    // this.#createInputSubmit();
+    this.#createInputSubmit();
     this.#changeElementsFocus();
   }
 }
