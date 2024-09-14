@@ -7,12 +7,7 @@ export class FormCtrl {
     this.#init();
   }
 
-  _initControllers() {
-    throw new AbstractMethodError("_initControllers");
-  }
-
   #init() {
     this.#view.init();
-    this._initControllers();
   }
 }
