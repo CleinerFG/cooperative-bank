@@ -388,20 +388,8 @@ const apiDataOpenedRequests = [
 ];
 
 export const openedRequestsData = apiDataOpenedRequests.map(
-  (req) =>
-    new LoanRequest(
-      req.id,
-      req.type,
-      req.status,
-      req.description,
-      null,
-      req.creditor,
-      req.date,
-      req.value,
-      req.installments,
-      req.rate,
-      req.installmentValue
-    )
+  (params) =>
+    new LoanRequest(params)
 );
 
 // Loans/requests: Received Requests
@@ -434,18 +422,6 @@ const apiDataReceivedRequests = [
 ];
 
 export const receivedRequestsData = apiDataReceivedRequests.map(
-  (req) =>
-    new LoanRequest(
-      req.id,
-      req.type,
-      req.status,
-      req.description,
-      req.debtor,
-      null,
-      req.date,
-      req.value,
-      req.installments,
-      req.rate,
-      req.installmentValue
-    )
+  (params) =>
+    new LoanRequest(params)
 );

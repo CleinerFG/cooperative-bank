@@ -12,35 +12,6 @@ export class LoanRequest extends Loan {
     3: "Denied",
     4: "Canceled",
   };
-  constructor(
-    id,
-    type,
-    status,
-    description,
-    debtor,
-    creditor,
-    date,
-    value,
-    installments,
-    rate,
-    installmentValue
-  ) {
-    super(
-      id,
-      type,
-      status,
-      description,
-      debtor,
-      creditor,
-      date,
-      null,
-      value,
-      installments,
-      rate,
-      installmentValue,
-      null
-    );
-  }
 
   get type() {
     return LoanRequest.descTypes[this._type];

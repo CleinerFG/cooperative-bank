@@ -22,34 +22,20 @@ export class Loan {
   #rate;
   #installmentValue;
   #remainingInstallments;
-  constructor(
-    id,
-    type,
-    status,
-    description,
-    debtor,
-    creditor,
-    date,
-    amountDue,
-    value,
-    installments,
-    rate,
-    installmentValue,
-    remainingInstallments
-  ) {
-    this.#id = id;
-    this._type = type;
-    this._status = status;
-    this.#description = description;
-    this.#debtor = debtor;
-    this.#creditor = creditor;
-    this.#date = date;
-    this.#amountDue = amountDue;
-    this.#value = value;
-    this.#installments = installments;
-    this.#rate = rate;
-    this.#installmentValue = installmentValue;
-    this.#remainingInstallments = remainingInstallments;
+  constructor(params) {
+    this.#id = params.id;
+    this._type = params.type;
+    this._status = params.status;
+    this.#description = params.description;
+    this.#debtor = params.debtor;
+    this.#creditor = params.creditor;
+    this.#date = params.date;
+    this.#amountDue = params.amountDue;
+    this.#value = params.value;
+    this.#installments = params.installments;
+    this.#rate = params.rate;
+    this.#installmentValue = params.installmentValue;
+    this.#remainingInstallments = params.remainingInstallments;
   }
 
   get id() {
