@@ -1,5 +1,5 @@
 import { ComponentCtrl } from "./ComponentCtrl.js";
-import { LoanView } from "../../views/display/LoanView.js";
+import { LoanView } from "../views/LoanView.js";
 
 export class LoansCtrl extends ComponentCtrl {
   constructor(container, category) {
