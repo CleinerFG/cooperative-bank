@@ -1,4 +1,3 @@
-import { Event } from "./models/Event.js";
 import { LoanRequest } from "./models/LoanRequest.js";
 import { Loan } from "./models/Loan.js";
 // --------------------------------------------------------------------------------
@@ -7,7 +6,7 @@ import { Loan } from "./models/Loan.js";
 
 // Home: Section Events
 
-const apiDataEvents = [
+export const apiDataEvents = [
   {
     id: 1450,
     type: 2,
@@ -51,8 +50,6 @@ const apiDataEvents = [
     value: 400,
   },
 ];
-
-export const eventsData = apiDataEvents.map((params) => new Event(params));
 
 // --------------------------------------------------------------------------------
 // Test data Loans/requests

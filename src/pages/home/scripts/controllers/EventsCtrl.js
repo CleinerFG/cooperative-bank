@@ -1,4 +1,4 @@
-import { ComponentCtrl } from "./ComponentCtrl.js";
+import { ComponentCtrl } from "../../../../js/controllers/ComponentCtrl.js";
 import { EventView } from "../views/EventView.js";
 
 export class EventsCtrl extends ComponentCtrl {
@@ -6,7 +6,7 @@ export class EventsCtrl extends ComponentCtrl {
     const container = document.querySelector(".events__cards");
     super(container, EventView, "event");
   }
-  
+
   _defineNoComponentsSettings() {
     super._defineNoComponentsSettings();
     const t1 = "There are no events...";

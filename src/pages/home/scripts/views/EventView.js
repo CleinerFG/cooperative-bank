@@ -1,5 +1,5 @@
-import { ComponentView } from "./ComponentView.js";
-import { capitalize } from "../utils/stringUtils.js";
+import { ComponentView } from "../../../../js/views/ComponentView.js";
+import { capitalize } from "../../../../js/utils/stringUtils.js";
 
 export class EventView extends ComponentView {
   constructor(container, eventModel) {

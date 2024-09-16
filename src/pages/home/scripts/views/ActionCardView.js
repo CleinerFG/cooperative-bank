@@ -1,4 +1,4 @@
-import { capitalize } from "../utils/stringUtils.js";
+import { capitalize } from "../../../../js/utils/stringUtils.js";
 
 export class ActionCardView {
   #container;

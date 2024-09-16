@@ -1,4 +1,4 @@
-import { monetaryValue } from "../utils/formatters.js";
+import { monetaryValue } from "../../../../js/utils/formatters.js";
 
 export class Event {
   static descType = {
