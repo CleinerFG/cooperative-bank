@@ -53,7 +53,7 @@ const apiDataEvents = [
 ];
 
 export const eventsData = apiDataEvents.map(
-  (event) => new Event(event.id, event.type, event.dueDate, event.value)
+  (params) => new Event(params)
 );
 
 // --------------------------------------------------------------------------------

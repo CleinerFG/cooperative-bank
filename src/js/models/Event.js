@@ -9,11 +9,11 @@ export class Event {
   #type;
   #dueDate;
   #value;
-  constructor(id, type, dueDate, value) {
-    this.#id = id;
-    this.#type = type;
-    this.#dueDate = dueDate;
-    this.#value = value;
+  constructor(params) {
+    this.#id = params.id;
+    this.#type = params.type;
+    this.#dueDate = params.dueDate;
+    this.#value = params.value;
   }
 
   get id() {
