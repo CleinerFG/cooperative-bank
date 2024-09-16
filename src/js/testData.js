@@ -1,6 +1,6 @@
 import { Event } from "./models/Event.js";
 import { LoanRequest } from "./models/LoanRequest.js";
-
+import { Loan } from "./models/Loan.js";
 // --------------------------------------------------------------------------------
 // Test data Home
 // --------------------------------------------------------------------------------
@@ -52,9 +52,7 @@ const apiDataEvents = [
   },
 ];
 
-export const eventsData = apiDataEvents.map(
-  (params) => new Event(params)
-);
+export const eventsData = apiDataEvents.map((params) => new Event(params));
 
 // --------------------------------------------------------------------------------
 // Test data Loans/requests
@@ -65,7 +63,7 @@ export const eventsData = apiDataEvents.map(
 export const users = [
   {
     id: 1000,
-    name: "Cooperative Bank Creditor"
+    name: "Cooperative Bank Creditor",
   },
   {
     id: 417764,
@@ -388,8 +386,7 @@ const apiDataOpenedRequests = [
 ];
 
 export const openedRequestsData = apiDataOpenedRequests.map(
-  (params) =>
-    new LoanRequest(params)
+  (params) => new LoanRequest(params)
 );
 
 // Loans/requests: Received Requests
@@ -422,6 +419,92 @@ const apiDataReceivedRequests = [
 ];
 
 export const receivedRequestsData = apiDataReceivedRequests.map(
-  (params) =>
-    new LoanRequest(params)
+  (params) => new LoanRequest(params)
+);
+
+// --------------------------------------------------------------------------------
+// Test data Loans/overview
+// --------------------------------------------------------------------------------
+// Loans/overwiew: Receivables
+
+const transactions = [
+  {
+    id: 15466,
+    type: 1,
+    status: 1,
+    description: "Loan for new equipment",
+    creditor: "The Trapper",
+    date: "15/07/2024",
+    amountDue: 4200,
+    value: 5000,
+    installments: 10,
+    rate: 1.5,
+    installmentValue: 515,
+    remainingInstallments: 8,
+  },
+  {
+    id: 24645,
+    type: 2,
+    status: 1,
+    description: "Payment for services rendered",
+    debtor: "Meg Thomas",
+    date: "20/06/2024",
+    amountDue: 1500,
+    value: 5000,
+    installments: 10,
+    rate: 2,
+    installmentValue: 500,
+    remainingInstallments: 6,
+  },
+  {
+    id: 456453,
+    type: 2,
+    status: 1,
+    description: "Loan for medical expenses",
+    debtor: "Claudette Morel",
+    date: "10/05/2024",
+    amountDue: 3000,
+    value: 3000,
+    installments: 6,
+    rate: 2,
+    installmentValue: 520,
+    remainingInstallments: 6,
+  },
+  {
+    id: 44654,
+    type: 2,
+    status: 1,
+    description: "Loan for travel expenses",
+    debtor: "Jake Park",
+    date: "01/05/2024",
+    amountDue: 1000,
+    value: 2000,
+    installments: 8,
+    rate: 1,
+    installmentValue: 200,
+    remainingInstallments: 4,
+  },
+  {
+    id: 46455,
+    type: 1,
+    status: 1,
+    description: "Payment for rented equipment",
+    creditor: "The Wraith",
+    date: "05/08/2024",
+    amountDue: 1000,
+    value: 1000,
+    installments: 2,
+    rate: 1,
+    installmentValue: 505,
+    remainingInstallments: 2,
+  },
+];
+
+const payables = transactions.filter((trans) => trans.type === 1);
+const receivables = transactions.filter((trans) => trans.type === 2);
+
+export const apiDataLoansPayables = payables.map((params) => new Loan(params));
+
+export const apiDataLoansReceivables = receivables.map(
+  (params) => new Loan(params)
 );
