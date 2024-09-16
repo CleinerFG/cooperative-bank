@@ -1,6 +1,6 @@
 import { monetaryValue } from "../../../../js/utils/formatters.js";
 
-export class Event {
+export class EventModel {
   static descType = {
     1: "payment",
     2: "investment",
@@ -21,7 +21,7 @@ export class Event {
   }
 
   get type() {
-    return Event.descType[this.#type];
+    return EventModel.descType[this.#type];
   }
 
   get dueDate() {
