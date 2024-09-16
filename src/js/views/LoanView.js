@@ -6,11 +6,11 @@ export class LoanView extends ComponentView {
   }
 
   get _cssId() {
-    return `loan-${this.component.id}`;
+    return `loan-${this.componentModel.id}`;
   }
 
   get _cssClass() {
-    return `loan__${this.component.type}`;
+    return `loan__${this.componentModel.type}`;
   }
 
   get _btnClass() {
@@ -25,23 +25,23 @@ export class LoanView extends ComponentView {
     const { entity, entityValue } = this._entityInfo;
     return [
       { label: entity, value: entityValue },
-      { label: "Date", value: this.component.date },
-      { label: "Value", value: this.component.value },
-      { label: "Description", value: this.component.description },
-      { label: "Installments", value: this.component.installments },
+      { label: "Date", value: this.componentModel.date },
+      { label: "Value", value: this.componentModel.value },
+      { label: "Description", value: this.componentModel.description },
+      { label: "Installments", value: this.componentModel.installments },
       {
         label: "Remaining Installments",
-        value: this.component.remainingInstallments,
+        value: this.componentModel.remainingInstallments,
       },
-      { label: "Installment Value", value: this.component.installmentValue },
-      { label: "Amount Due", value: this.component.amountDue },
-      { label: "Interest Rate", value: this.component.rate },
-      { label: "Total Loan Cost", value: this.component.totalLoanCost },
+      { label: "Installment Value", value: this.componentModel.installmentValue },
+      { label: "Amount Due", value: this.componentModel.amountDue },
+      { label: "Interest Rate", value: this.componentModel.rate },
+      { label: "Total Loan Cost", value: this.componentModel.totalLoanCost },
     ];
   }
 
   get _headerCard() {
-    return this._createHeaderCard(`Loan ID: ${this.component.id}`);
+    return this._createHeaderCard(`Loan ID: ${this.componentModel.id}`);
   }
 
   get _mainCard() {
