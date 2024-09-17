@@ -1,4 +1,3 @@
-import { Loan } from "./models/Loan.js";
 // --------------------------------------------------------------------------------
 // Test data Home
 // --------------------------------------------------------------------------------
@@ -489,11 +488,6 @@ const transactions = [
   },
 ];
 
-const payables = transactions.filter((trans) => trans.type === 1);
-const receivables = transactions.filter((trans) => trans.type === 2);
+export const apiDataLoansPayables = transactions.filter((trans) => trans.type === 1);
 
-export const apiDataLoansPayables = payables.map((params) => new Loan(params));
-
-export const apiDataLoansReceivables = receivables.map(
-  (params) => new Loan(params)
-);
+export const apiDataLoansReceivables = transactions.filter((trans) => trans.type === 2);

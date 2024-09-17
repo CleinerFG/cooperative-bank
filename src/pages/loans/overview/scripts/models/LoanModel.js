@@ -1,5 +1,8 @@
 import { TransactionModel } from "../../../../../js/models/TransactionModel.js";
-// import { monetaryValue, percentValue } from "../utils/formatters.js";
+import {
+  monetaryValue,
+  percentValue,
+} from "../../../../../js/utils/formatters.js";
 
 export class LoanModel extends TransactionModel {
   static descStatus = {
@@ -13,14 +16,13 @@ export class LoanModel extends TransactionModel {
   };
 
   constructor(params) {
-    super(params)
+    super(params);
     this._amountDue = params.amountDue;
     this._installments = params.installments;
     this._rate = params.rate;
     this._installmentValue = params.installmentValue;
     this._remainingInstallments = params.remainingInstallments;
   }
-
 
   get type() {
     return LoanModel.descTypes[this._type];
