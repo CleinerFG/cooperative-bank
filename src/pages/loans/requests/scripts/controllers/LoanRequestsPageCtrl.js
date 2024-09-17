@@ -1,6 +1,6 @@
 import { PageCtrl } from "../../../../../js/controllers/pages/PageCtrl.js";
 import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
-// import { NewLoanRequestFormCtrl } from "../forms/NewLoanRequestFormCtrl.js";
+import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { LoanRequestsCtrl } from "./LoanRequestsCtrl.js";
 import {
@@ -13,9 +13,9 @@ export class LoanRequestsPageCtrl extends PageCtrl {
     super(LoanRequestsPageView);
   }
 
-  // _initFormCtrl() {
-  //   new NewLoanRequestFormCtrl();
-  // }
+  _initFormCtrl() {
+    new NewLoanRequestFormCtrl();
+  }
 
   _initOpenedRequestsCtrl() {
     const ctrl = new LoanRequestsCtrl("opened");
@@ -32,7 +32,7 @@ export class LoanRequestsPageCtrl extends PageCtrl {
   }
 
   _initControllers() {
-    // this._initFormCtrl();
+    this._initFormCtrl();
     this._initOpenedRequestsCtrl();
     this._initReceivedRequestsCtrl();
   }

@@ -1,4 +1,4 @@
-import { FormView } from "./FormView.js";
+import { FormView } from "../../../../../js/views/forms/FormView.js";
 
 export class NewLoanRequestFormView extends FormView {
   get _inputsParams() {
