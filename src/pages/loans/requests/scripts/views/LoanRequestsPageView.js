@@ -1,6 +1,6 @@
-import { PageView } from "./PageView.js";
+import { PageView } from "../../../../../js/views/pages/PageView.js";
 
-export class RequestsPageView extends PageView {
+export class LoanRequestsPageView extends PageView {
   _createSectionTakeOut() {
     return `
     <section class="section">
