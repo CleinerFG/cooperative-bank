@@ -1,4 +1,4 @@
-import { PageCtrl } from "../../../../../js/controllers/pages/PageCtrl.js";
+import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { OverviewPageView } from "../views/OverviewPageView.js";
 import { LoansCtrl } from "./LoansCtrl.js";
 import {

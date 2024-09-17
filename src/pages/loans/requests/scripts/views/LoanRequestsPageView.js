@@ -1,4 +1,4 @@
-import { PageView } from "../../../../../js/views/pages/PageView.js";
+import { PageView } from "../../../../../js/views/PageView.js";
 
 export class LoanRequestsPageView extends PageView {
   _createSectionTakeOut() {

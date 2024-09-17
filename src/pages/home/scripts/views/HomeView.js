@@ -1,4 +1,4 @@
-import { PageView } from "../../../../js/views/pages/PageView.js";
+import { PageView } from "../../../../js/views/PageView.js";
 import { capitalize } from "../../../../js/utils/stringUtils.js";
 
 export class HomeView extends PageView {

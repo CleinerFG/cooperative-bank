@@ -1,4 +1,4 @@
-import { PageCtrl } from "../../../../js/controllers/pages/PageCtrl.js";
+import { PageCtrl } from "../../../../js/controllers/PageCtrl.js";
 import { HomeView } from "../views/HomeView.js";
 import { StatementCtrl } from "../controllers/StatementCtrl.js";
 import { ActionCardsCtrl } from "../controllers/ActionCardsCtrl.js";

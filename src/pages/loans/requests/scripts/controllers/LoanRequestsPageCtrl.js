@@ -1,4 +1,4 @@
-import { PageCtrl } from "../../../../../js/controllers/pages/PageCtrl.js";
+import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
 import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";

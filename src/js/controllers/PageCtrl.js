@@ -1,5 +1,5 @@
-import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { LayoutCore } from "../layout/LayoutCore.js";
+import { AbstractMethodError } from "../errors/AbstractMethodError.js";
+import { LayoutCore } from "./layout/LayoutCore.js";
 
 export class PageCtrl {
   #pageView;
