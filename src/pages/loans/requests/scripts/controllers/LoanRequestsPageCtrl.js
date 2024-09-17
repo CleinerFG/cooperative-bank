@@ -2,6 +2,10 @@ import { PageCtrl } from "../../../../../js/controllers/pages/PageCtrl.js";
 import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
 // import { NewLoanRequestFormCtrl } from "../forms/NewLoanRequestFormCtrl.js";
 import { LoanRequestsCtrl } from "./LoanRequestsCtrl.js";
+import {
+  apiDataOpenedRequests,
+  apiDataReceivedRequests,
+} from "../../../../../js/testData.js";
 
 export class LoanRequestsPageCtrl extends PageCtrl {
   constructor() {

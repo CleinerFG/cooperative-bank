@@ -1,4 +1,3 @@
-import { LoanRequest } from "./models/LoanRequest.js";
 import { Loan } from "./models/Loan.js";
 // --------------------------------------------------------------------------------
 // Test data Home
@@ -342,7 +341,7 @@ export const users = [
 
 // Loans/requests: Opened Requests
 
-const apiDataOpenedRequests = [
+export const apiDataOpenedRequests = [
   {
     id: 12,
     date: "23/07/2024",
@@ -382,13 +381,9 @@ const apiDataOpenedRequests = [
   },
 ];
 
-export const openedRequestsData = apiDataOpenedRequests.map(
-  (params) => new LoanRequest(params)
-);
-
 // Loans/requests: Received Requests
 
-const apiDataReceivedRequests = [
+export const apiDataReceivedRequests = [
   {
     id: 20,
     date: "23/07/2024",
@@ -415,9 +410,6 @@ const apiDataReceivedRequests = [
   },
 ];
 
-export const receivedRequestsData = apiDataReceivedRequests.map(
-  (params) => new LoanRequest(params)
-);
 
 // --------------------------------------------------------------------------------
 // Test data Loans/overview
