@@ -1,4 +1,4 @@
-import { ComponentCtrl } from "./ComponentCtrl.js";
+import { ComponentCtrl } from "../../../../../js/controllers/ComponentCtrl.js";
 import { LoanView } from "../views/LoanView.js";
 
 export class LoansCtrl extends ComponentCtrl {

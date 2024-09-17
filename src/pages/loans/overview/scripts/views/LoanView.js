@@ -1,4 +1,4 @@
-import { ComponentView } from "./ComponentView.js";
+import { ComponentView } from "../../../../../js/views/ComponentView.js";
 
 export class LoanView extends ComponentView {
   constructor(container, loan) {
@@ -33,7 +33,10 @@ export class LoanView extends ComponentView {
         label: "Remaining Installments",
         value: this.componentModel.remainingInstallments,
       },
-      { label: "Installment Value", value: this.componentModel.installmentValue },
+      {
+        label: "Installment Value",
+        value: this.componentModel.installmentValue,
+      },
       { label: "Amount Due", value: this.componentModel.amountDue },
       { label: "Interest Rate", value: this.componentModel.rate },
       { label: "Total Loan Cost", value: this.componentModel.totalLoanCost },
