@@ -2,9 +2,7 @@ import { DefaultInputCtrl } from "../../controllers/forms/DefaultInputCtrl.js";
 import { LookupInputCtrl } from "../../controllers/forms/LookupInputCtrl.js";
 import { SubmitInputCtrl } from "../../controllers/forms/SubmitInputCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { DefaultInputView } from "./DefaultInputView.js";
-import { LookupInputView } from "./LookupInputView.js";
-import { SubmitInputView } from "./SubmitInputView.js";
+
 export class FormView {
   #container; // DOM element
   #formElement; // DOM element
@@ -15,12 +13,12 @@ export class FormView {
   #htmlStr; // String
   #inputCtrls = []; // Array
   #inputSubmitView; // InputView
-  constructor(container, id, cssClass, action, method) {
-    this.#container = container;
-    this._id = id;
-    this.#cssClass = cssClass;
-    this.#action = action;
-    this.#method = method;
+  constructor(params) {
+    this.#container = params.container;
+    this._id = params.id;
+    this.#cssClass = params.cssClass;
+    this.#action = params.action;
+    this.#method = params.method;
   }
 
   get _formElement() {
