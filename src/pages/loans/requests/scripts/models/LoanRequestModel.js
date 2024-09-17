@@ -1,6 +1,6 @@
-import { Loan } from "./Loan.js";
+import { Loan } from "../../../../../js/models/Loan.js";
 
-export class LoanRequest extends Loan {
+export class LoanRequestModel extends Loan {
   static descTypes = {
     1: "opened",
     2: "received",
@@ -14,10 +14,10 @@ export class LoanRequest extends Loan {
   };
 
   get type() {
-    return LoanRequest.descTypes[this._type];
+    return LoanRequestModel.descTypes[this._type];
   }
 
   get status() {
-    return LoanRequest.descStatus[this._status];
+    return LoanRequestModel.descStatus[this._status];
   }
 }
