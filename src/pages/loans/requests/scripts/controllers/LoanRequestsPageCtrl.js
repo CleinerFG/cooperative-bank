@@ -4,7 +4,7 @@ import { NewLoanRequestFormCtrl } from "../forms/NewLoanRequestFormCtrl.js";
 import { LoanRequestsCtrl } from "../LoanRequestsCtrl.js";
 import { openedRequestsData, receivedRequestsData } from "../../testData.js";
 
-export class RequestsPageCtrl extends PageCtrl {
+export class LoanRequestsPageCtrl extends PageCtrl {
   constructor() {
     super(RequestsPageView);
   }

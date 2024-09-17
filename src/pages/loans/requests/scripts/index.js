@@ -1,3 +1,3 @@
-import { RequestsPageCtrl } from "../../../../js/controllers/pages/RequestsPageCtrl.js";
+import { LoanRequestsPageCtrl } from "./controllers/LoanRequestsPageCtrl.js";
 
-new RequestsPageCtrl();
+new LoanRequestsPageCtrl();
