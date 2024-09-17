@@ -1,44 +1,38 @@
 import { monetaryValue, percentValue } from "../utils/formatters.js";
 
 export class TransactionModel {
-  #id;
-  #description;
-  #debtor;
-  #creditor;
-  #date;
-  #value;
   constructor(params) {
-    this.#id = params.id;
+    this._id = params.id;
     this._type = params.type;
     this._status = params.status;
-    this.#description = params.description;
-    this.#debtor = params.debtor;
-    this.#creditor = params.creditor;
-    this.#date = params.date;
-    this.#value = params.value;
+    this._description = params.description;
+    this._debtor = params.debtor;
+    this._creditor = params.creditor;
+    this._date = params.date;
+    this._value = params.value;
   }
 
   get id() {
-    return this.#id;
+    return this._id;
   }
 
   get description() {
-    return this.#description;
+    return this._description;
   }
 
   get debtor() {
-    return this.#debtor;
+    return this._debtor;
   }
 
   get creditor() {
-    return this.#creditor;
+    return this._creditor;
   }
 
   get date() {
-    return this.#date;
+    return this._date;
   }
 
   get value() {
-    return monetaryValue(this.#value);
+    return monetaryValue(this._value);
   }
 }
