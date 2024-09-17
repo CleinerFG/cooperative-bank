@@ -1,4 +1,4 @@
-import { PageView } from "./PageView.js";
+import { PageView } from "../../../../../js/views/pages/PageView.js";
 
 export class OverviewPageView extends PageView {
   _createSectionInitial() {

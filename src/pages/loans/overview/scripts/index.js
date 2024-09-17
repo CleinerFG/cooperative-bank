@@ -1,3 +1,3 @@
-import { OverviewPageCtrl } from "../../../../js/controllers/pages/OverviewPageCtrl.js";
+import { OverviewPageCtrl } from "./controllers/OverviewPageCtrl.js";
 
 new OverviewPageCtrl()
