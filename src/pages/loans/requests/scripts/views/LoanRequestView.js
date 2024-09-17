@@ -1,4 +1,4 @@
-import { ComponentView } from "./ComponentView.js";
+import { ComponentView } from "../../../../../js/views/ComponentView.js";
 
 export class LoanRequestView extends ComponentView {
   constructor(container, loanRequest) {
