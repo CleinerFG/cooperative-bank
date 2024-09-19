@@ -16,10 +16,16 @@ export class WindowModalView {
   #build() {
     return `
     <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        ${this.#currentModalContent}
-      </div>
+      <article class="modal__body">
+        <header class="modal__header">
+          <button class="modal__close-btn" aria-label="Close window">
+            &times;
+          </button>
+        </header>
+        <section class="modal__content">
+          ${this.#currentModalContent}
+        </section>
+      </article>
     </div>
     `;
   }
@@ -30,7 +36,7 @@ export class WindowModalView {
 
   #defineListeners() {
     const modalElement = document.getElementById("modal");
-    const closeModalBtn = document.querySelector(".close-btn");
+    const closeModalBtn = document.querySelector(".modal__close-btn");
     closeModalBtn.addEventListener("click", () => {
       modalElement.remove();
     });
