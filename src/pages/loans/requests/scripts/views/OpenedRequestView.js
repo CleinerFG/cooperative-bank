@@ -78,7 +78,9 @@ export class OpenedRequestView extends ComponentView {
 
   _windowModalHandler() {
     this._btnElement.addEventListener("click", () => {
-      new WindowModalView();
+      const modal = new WindowModalView();
+      modal.modalContent = "confirmWithPassword";
+      modal.init();
     });
   }
 }

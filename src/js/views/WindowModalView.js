@@ -1,13 +1,13 @@
 export class WindowModalView {
   #modalContentTypes = {
     confirmWithPassword: `
-    <p>Test confirm with password</p>
+    <h2>Confirm With Password</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas vero id obcaecati modi sapiente fuga animi
+        veritatis eligendi, qui enim accusantium numquam? Repudiandae sint labore vel, officia nesciunt pariatur soluta.
+      </p>
     `,
   };
   #currentModalContent;
-  constructor() {
-    this.#init();
-  }
 
   set modalContent(type) {
     this.#currentModalContent = this.#modalContentTypes[type];
@@ -36,7 +36,7 @@ export class WindowModalView {
     });
   }
 
-  #init() {
+  init() {
     this.#render();
     this.#defineListeners();
   }
