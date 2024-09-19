@@ -34,6 +34,11 @@ export class ComponentCtrl {
     this.noComponentsCtrl.defineImgId(`${this._category}-no-components-img`);
   }
 
+  addComponent(component) {
+    const view = this.#createView(component);
+    this.#componentsViews.push(view);
+  }
+
   removeComponent(id) {
     this.#componentsViews = this.#componentsViews.filter((view) => {
       if (view.componentModel.id === id) view.selfRemove();
@@ -42,30 +47,14 @@ export class ComponentCtrl {
     this.#noComponentsHandler();
   }
 
-  addComponent(component) {
-    const view = this.#createView(component);
-    this.#componentsViews.push(view);
-  }
-
-  // Delete this method
-  renderComponent(view) {
-    view.render();
-  }
-
-  // Old method init components
-  renderComponents() {
+  clearComponents() {
+    this.#componentsViews = [];
+    this.#container.innerHTML = "";
     this.#noComponentsHandler();
-    this.#componentsViews.forEach((view) => this.renderComponent(view));
   }
 
   initComponents() {
     this.#noComponentsHandler();
     this.#componentsViews.forEach((view) => view.init());
-  }
-
-  clearComponents() {
-    this.#componentsViews = [];
-    this.#container.innerHTML = "";
-    this.#noComponentsHandler();
   }
 }
