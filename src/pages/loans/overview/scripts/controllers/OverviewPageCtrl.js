@@ -18,7 +18,7 @@ export class OverviewPageCtrl extends PageCtrl {
     apiDataLoansReceivables.forEach((params) =>
       ctrl.addComponent(new LoanModel(params))
     );
-    ctrl.renderComponents();
+    ctrl.initComponents();
   }
 
   _initLoansPayablesCtrl() {
@@ -27,7 +27,7 @@ export class OverviewPageCtrl extends PageCtrl {
     apiDataLoansPayables.forEach((params) =>
       ctrl.addComponent(new LoanModel(params))
     );
-    ctrl.renderComponents();
+    ctrl.initComponents();
   }
 
   _initControllers() {

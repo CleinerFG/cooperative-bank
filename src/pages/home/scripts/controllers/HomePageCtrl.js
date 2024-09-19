@@ -24,7 +24,7 @@ export class HomePageCtrl extends PageCtrl {
     const eventsData = apiDataEvents.map((params) => new EventModel(params));
     const ctrl = new EventsCtrl();
     eventsData.forEach((event) => ctrl.addComponent(event));
-    ctrl.renderComponents();
+    ctrl.initComponents();
     ctrl.removeComponent(1450);
     // ctrl.clearComponents();
   }
