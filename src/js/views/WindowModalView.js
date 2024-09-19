@@ -1,12 +1,16 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError";
-
 export class WindowModalView {
+  #modalContentTypes = {
+    confirmWithPassword: `
+    <p>Test confirm with password</p>
+    `
+  };
+  #currentModalContent;
   constructor() {
     this.#init();
   }
 
-  get _modalContent() {
-    throw new AbstractMethodError("_buildContent");
+  set modalContent(type) {
+    this.#currentModalContent = this.#modalContentTypes[type];
   }
 
   #build() {
@@ -14,7 +18,7 @@ export class WindowModalView {
     <div id="modal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
-        ${this._modalContent}
+        ${this.#currentModalContent}
       </div>
     </div>
     `;
@@ -33,4 +37,3 @@ export class WindowModalView {
     this.#defineListeners();
   }
 }
-
