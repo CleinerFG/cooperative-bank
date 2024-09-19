@@ -2,7 +2,7 @@ export class WindowModalView {
   #modalContentTypes = {
     confirmWithPassword: `
     <p>Test confirm with password</p>
-    `
+    `,
   };
   #currentModalContent;
   constructor() {
@@ -24,16 +24,20 @@ export class WindowModalView {
     `;
   }
 
+  #render() {
+    document.body.insertAdjacentHTML("beforeend", this.#build());
+  }
+
   #defineListeners() {
     const modalElement = document.getElementById("modal");
     const closeModalBtn = document.querySelector(".close-btn");
     closeModalBtn.addEventListener("click", () => {
-      modalElement.style.display = "none";
+      modalElement.remove();
     });
   }
 
   #init() {
-    this.#build();
+    this.#render();
     this.#defineListeners();
   }
 }
