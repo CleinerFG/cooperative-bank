@@ -3,6 +3,7 @@ import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
 import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { LoanRequestsCtrl } from "./LoanRequestsCtrl.js";
+import { OpenedRequestsCtrl } from "./OpenedRequestsCtrl.js";
 import {
   apiDataOpenedRequests,
   apiDataReceivedRequests,
@@ -18,15 +19,19 @@ export class LoanRequestsPageCtrl extends PageCtrl {
   }
 
   _initOpenedRequestsCtrl() {
-    const ctrl = new LoanRequestsCtrl("opened");
-    apiDataOpenedRequests.forEach((params) => ctrl.addComponent(new LoanRequestModel(params)));
+    const ctrl = new OpenedRequestsCtrl();
+    apiDataOpenedRequests.forEach((params) =>
+      ctrl.addComponent(new LoanRequestModel(params))
+    );
     ctrl.renderComponents();
     // ctrl.clearComponents();
   }
 
   _initReceivedRequestsCtrl() {
     const ctrl = new LoanRequestsCtrl("received");
-    apiDataReceivedRequests.forEach((params) => ctrl.addComponent(new LoanRequestModel(params)));
+    apiDataReceivedRequests.forEach((params) =>
+      ctrl.addComponent(new LoanRequestModel(params))
+    );
     ctrl.renderComponents();
     // ctrl.clearComponents();
   }
