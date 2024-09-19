@@ -23,7 +23,7 @@ export class LoanRequestsPageCtrl extends PageCtrl {
     apiDataOpenedRequests.forEach((params) =>
       ctrl.addComponent(new LoanRequestModel(params))
     );
-    ctrl.renderComponents();
+    ctrl.initComponents();
     // ctrl.clearComponents();
   }
 
@@ -32,7 +32,7 @@ export class LoanRequestsPageCtrl extends PageCtrl {
     apiDataReceivedRequests.forEach((params) =>
       ctrl.addComponent(new LoanRequestModel(params))
     );
-    ctrl.renderComponents();
+    ctrl.initComponents();
     // ctrl.clearComponents();
   }
 

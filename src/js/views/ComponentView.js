@@ -100,6 +100,7 @@ export class ComponentView {
     document.getElementById(this._cssId).remove();
   }
 
+  // change method visibility
   render() {
     const cardStr = this.#createCard();
     this.#container.insertAdjacentHTML("afterbegin", cardStr);

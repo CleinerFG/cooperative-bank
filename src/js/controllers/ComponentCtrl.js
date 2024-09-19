@@ -47,13 +47,20 @@ export class ComponentCtrl {
     this.#componentsViews.push(view);
   }
 
+  // Delete this method
   renderComponent(view) {
     view.render();
   }
 
+  // Old method init components
   renderComponents() {
     this.#noComponentsHandler();
     this.#componentsViews.forEach((view) => this.renderComponent(view));
+  }
+
+  initComponents() {
+    this.#noComponentsHandler();
+    this.#componentsViews.forEach((view) => view.init());
   }
 
   clearComponents() {
