@@ -1,6 +1,6 @@
-import { LoanRequestView } from "./LoanRequestView.js";
+import { ComponentView } from "../../../../../js/views/ComponentView.js";
 
-export class OpenedRequestView extends LoanRequestView {
+export class OpenedRequestView extends ComponentView {
   get _cssId() {
     return `request-opened-${this.componentModel.id}`;
   }

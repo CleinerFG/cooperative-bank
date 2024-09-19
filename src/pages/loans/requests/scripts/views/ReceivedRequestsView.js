@@ -1,6 +1,6 @@
-import { LoanRequestView } from "./LoanRequestView.js";
+import { ComponentView } from "../../../../../js/views/ComponentView.js";
 
-export class ReceivedRequestView extends LoanRequestView {
+export class ReceivedRequestView extends ComponentView {
   get approveBtnElement() {
     return document.getElementById(
       `btn-received-request-approve-${this.componentModel.id}`
