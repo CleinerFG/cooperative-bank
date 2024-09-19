@@ -21,14 +21,6 @@
   text-align: center;
 }
 
-.modal__header {
-  border-top-left-radius: var(--component-border-radius);
-  border-top-right-radius: var(--component-border-radius);
-  background-color: #a4a4a4;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .modal__content {
   padding: var(--container-padding);
 }

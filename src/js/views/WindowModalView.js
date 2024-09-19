@@ -13,19 +13,21 @@ export class WindowModalView {
     this.#currentModalContent = this.#modalContentTypes[type];
   }
 
+  set #bodyOverflow(value) {
+    document.body.style.overflow = value;
+  }
+
   #build() {
     return `
     <div id="modal" class="modal">
-      <article class="modal__body">
-        <header class="modal__header">
-          <button class="modal__close-btn" aria-label="Close window">
-            &times;
-          </button>
-        </header>
-        <section class="modal__content">
-          ${this.#currentModalContent}
-        </section>
-      </article>
+    <article class="modal__body">
+      <button class="modal__close-btn" aria-label="Close window">
+        &times;
+      </button>
+      <section class="modal__content">
+        ${this.#currentModalContent}
+      </section>
+    </article>
     </div>
     `;
   }
@@ -39,10 +41,12 @@ export class WindowModalView {
     const closeModalBtn = document.querySelector(".modal__close-btn");
     closeModalBtn.addEventListener("click", () => {
       modalElement.remove();
+      this.#bodyOverflow = "";
     });
   }
 
   init() {
+    this.#bodyOverflow = "hidden";
     this.#render();
     this.#defineListeners();
   }
