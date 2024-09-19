@@ -2,7 +2,7 @@ import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
 import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
-import { LoanRequestsCtrl } from "./LoanRequestsCtrl.js";
+import { ReceivedRequestsCtrl } from "./ReceivedRequestsCtrl.js";
 import { OpenedRequestsCtrl } from "./OpenedRequestsCtrl.js";
 import {
   apiDataOpenedRequests,
@@ -28,7 +28,7 @@ export class LoanRequestsPageCtrl extends PageCtrl {
   }
 
   _initReceivedRequestsCtrl() {
-    const ctrl = new LoanRequestsCtrl("received");
+    const ctrl = new ReceivedRequestsCtrl();
     apiDataReceivedRequests.forEach((params) =>
       ctrl.addComponent(new LoanRequestModel(params))
     );
