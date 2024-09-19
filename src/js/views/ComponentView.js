@@ -38,7 +38,8 @@ export class ComponentView {
 
   get _entityInfo() {
     const entity = this.componentModel.creditor ? "Creditor" : "Debtor";
-    const entityValue = this.componentModel.creditor ?? this.componentModel.debtor;
+    const entityValue =
+      this.componentModel.creditor ?? this.componentModel.debtor;
     return { entity, entityValue };
   }
 
@@ -90,6 +91,11 @@ export class ComponentView {
     `;
   }
 
+  _windowModalHandler() {
+    // If there is any modal window
+    // Implement it in the subclass
+  }
+
   selfRemove() {
     document.getElementById(this._cssId).remove();
   }
@@ -97,5 +103,10 @@ export class ComponentView {
   render() {
     const cardStr = this.#createCard();
     this.#container.insertAdjacentHTML("afterbegin", cardStr);
+  }
+
+  init() {
+    this.render();
+    this._windowModalHandler();
   }
 }

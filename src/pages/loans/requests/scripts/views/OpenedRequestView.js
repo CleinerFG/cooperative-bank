@@ -1,4 +1,5 @@
 import { ComponentView } from "../../../../../js/views/ComponentView.js";
+import { WindowModalView } from "../../../../../js/views/WindowModalView.js";
 
 export class OpenedRequestView extends ComponentView {
   get _cssId() {
@@ -37,12 +38,6 @@ export class OpenedRequestView extends ComponentView {
     }
   }
 
-  get btnElement() {
-    return document.getElementById(
-      `btn-opened-request-${this.componentModel.id}`
-    );
-  }
-
   get _labelValue() {
     return [
       { label: "Creditor", value: this.componentModel.creditor },
@@ -73,5 +68,17 @@ export class OpenedRequestView extends ComponentView {
       </button>
     `;
     return this._createFooterCard(str);
+  }
+
+  get _btnElement() {
+    return document.getElementById(
+      `btn-opened-request-${this.componentModel.id}`
+    );
+  }
+
+  _windowModalHandler() {
+    this._btnElement.addEventListener("click", () => {
+      new WindowModalView();
+    });
   }
 }
