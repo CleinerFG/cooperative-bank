@@ -1,10 +1,10 @@
 import { ModalView } from "./ModalView.js";
 import { DefaultInputView } from "../forms/DefaultInputView.js";
 
-export class ConfirmWithPassModalView extends ModalView {
+export class ConfirmPassModalView extends ModalView {
   get _modalContent() {
     return `
-      <h2>Confirm With Password</h2>
+      <h2>Confirm Password</h2>
       <p>To confirm your action, enter the numeric transaction password</p>
     `;
   }
