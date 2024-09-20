@@ -1,6 +1,8 @@
 const API_VALUE = 156560;
 const divValue = document.querySelector("#value");
-const button = document.querySelector("#btn-value");
+const btnDivValue = document.querySelector("#btn-value");
+const inpPass = document.querySelector("#password");
+const btnInpPass = document.querySelector("#btn-pass");
 
 const hiddenValueTemplate = `
   R$
@@ -23,7 +25,7 @@ function updateValue() {
 
 function toggleVisibility() {
   const isVisible = divValue.dataset.visibility === "on";
-  
+
   if (isVisible) {
     divValue.innerHTML = hiddenValueTemplate;
     divValue.dataset.visibility = "off";
@@ -33,9 +35,16 @@ function toggleVisibility() {
   }
 }
 
+function toggleInpType() {
+  let type = "text";
+  if (inpPass.type === "text") type = "password";
+  inpPass.type = type;
+}
+
 function init() {
   updateValue();
-  button.addEventListener("click", toggleVisibility);
+  btnDivValue.addEventListener("click", toggleVisibility);
+  btnInpPass.addEventListener("click", toggleInpType);
 }
 
 init();

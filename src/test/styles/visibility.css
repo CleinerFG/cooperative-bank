@@ -40,7 +40,7 @@ main {
   border-radius: 50%;
 }
 
-button#btn-value {
+button {
   padding: 0.5rem 1rem;
   background-color: #007BFF;
   color: white;
@@ -49,6 +49,6 @@ button#btn-value {
   cursor: pointer;
 }
 
-button#btn-value:hover {
+button:hover {
   background-color: #0056b3;
 }
