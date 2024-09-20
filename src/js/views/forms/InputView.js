@@ -44,6 +44,7 @@ export class InputView {
   constructor(params) {
     this.#container = params.container;
     this._id = params.id;
+    this._type = params.type ?? "text";
     this._inputmode = params.inputmode ?? "text";
     this.#strictToNumber = params.strictToNumber;
     this.#formatter = params.formatter;

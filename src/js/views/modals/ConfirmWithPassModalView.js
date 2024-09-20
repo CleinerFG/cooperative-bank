@@ -13,9 +13,8 @@ export class ConfirmWithPassModalView extends ModalView {
     const params = {
       container: document.querySelector(".modal__content"),
       id: "password",
-      inputmode: "number",
+      type: "password",
       strictToNumber: true,
-      // labelText: "Password",
     };
     const inpView = new DefaultInputView(params);
     inpView.init();
