@@ -1,4 +1,4 @@
-export class WindowModalView {
+export class ModalView {
   #modalContentTypes = {
     confirmWithPassword: `
     <h2>Confirm With Password</h2>

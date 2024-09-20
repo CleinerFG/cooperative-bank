@@ -91,7 +91,7 @@ export class ComponentView {
     `;
   }
 
-  _windowModalHandler() {
+  _modalHandler() {
     // If there is any modal window
     // Implement it in the subclass
   }
@@ -107,6 +107,6 @@ export class ComponentView {
 
   init() {
     this.#render();
-    this._windowModalHandler();
+    this._modalHandler();
   }
 }
