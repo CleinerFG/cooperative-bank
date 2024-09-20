@@ -72,7 +72,6 @@ export class InputView {
     if (this.#strictToNumber) {
       this._inputElement.addEventListener("input", (ev) => {
         let value = ev.target.value.replace(/\D/g, "");
-        value = Number(value);
         ev.target.value = value;
       });
     }
