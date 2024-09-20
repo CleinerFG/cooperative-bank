@@ -6,12 +6,14 @@ export class ConfirmPassModalView extends ModalView {
     return `
       <h2>Confirm Password</h2>
       <p>To confirm your action, enter the numeric transaction password</p>
+      <div class="modal__inp-container"></div>
+      <button class="btn">Confirm</button>
     `;
   }
 
   _inputHandler() {
     const params = {
-      container: document.querySelector(".modal__content"),
+      container: document.querySelector(".modal__inp-container"),
       id: "password",
       type: "password",
       strictToNumber: true,
