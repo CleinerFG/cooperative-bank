@@ -1,12 +1,28 @@
 import { ModalView } from "./ModalView.js";
+import { DefaultInputView } from "../forms/DefaultInputView.js";
 
 export class ConfirmWithPassModalView extends ModalView {
   get _modalContent() {
     return `
       <h2>Confirm With Password</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas vero id       ocaecati modi sapiente fuga animi
-      veritatis eligendi, qui enim accusantium numquam? Repudiandae sint labore vel, officia nesciunt pariatur soluta.
-      </p>
+      <p>To confirm your action, enter the numeric transaction password</p>
     `;
+  }
+
+  _inputHandler() {
+    const params = {
+      container: document.querySelector(".modal__content"),
+      id: "password",
+      inputmode: "number",
+      strictToNumber: true,
+      // labelText: "Password",
+    };
+    const inpView = new DefaultInputView(params);
+    inpView.init();
+  }
+
+  _init() {
+    super._init();
+    this._inputHandler();
   }
 }

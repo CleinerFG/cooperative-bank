@@ -2,7 +2,7 @@ import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class ModalView {
   constructor(){
-    this.#init()
+    this._init()
   }
 
   get _modalContent() {
@@ -41,7 +41,7 @@ export class ModalView {
     });
   }
 
-  #init() {
+  _init() {
     this.#bodyOverflow = "hidden";
     this.#render();
     this.#defineListeners();
