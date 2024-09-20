@@ -17,6 +17,7 @@
   background-color: var(--color-background);
   border-radius: var(--component-border-radius);
   max-width: 400px;
+  position: relative;
 }
 
 .modal__content {
@@ -30,7 +31,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  float: right;
+  top: 0;
+  right: 0;
+  position: absolute;
   color: var(--color-cta);
   border-top-right-radius: var(--component-border-radius);
   font-size: 2rem;
