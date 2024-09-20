@@ -1,5 +1,5 @@
 import { ComponentView } from "../../../../../js/views/ComponentView.js";
-import { ModalView } from "../../../../../js/views/ModalView.js";
+import { ConfirmWithPassModalView } from "../../../../../js/views/modals/ConfirmWithPassModalView.js";
 
 export class OpenedRequestView extends ComponentView {
   get _cssId() {
@@ -78,9 +78,7 @@ export class OpenedRequestView extends ComponentView {
 
   _modalHandler() {
     this._btnElement.addEventListener("click", () => {
-      const modal = new ModalView();
-      modal.modalContent = "confirmWithPassword";
-      modal.init();
+      new ConfirmWithPassModalView();
     });
   }
 }

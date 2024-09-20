@@ -1,16 +1,12 @@
-export class ModalView {
-  #modalContentTypes = {
-    confirmWithPassword: `
-    <h2>Confirm With Password</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas vero id obcaecati modi sapiente fuga animi
-        veritatis eligendi, qui enim accusantium numquam? Repudiandae sint labore vel, officia nesciunt pariatur soluta.
-      </p>
-    `,
-  };
-  #currentModalContent;
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
-  set modalContent(type) {
-    this.#currentModalContent = this.#modalContentTypes[type];
+export class ModalView {
+  constructor(){
+    this.#init()
+  }
+
+  get _modalContent() {
+    throw new AbstractMethodError("_modalContent");
   }
 
   set #bodyOverflow(value) {
@@ -25,7 +21,7 @@ export class ModalView {
         &times;
       </button>
       <section class="modal__content">
-        ${this.#currentModalContent}
+        ${this._modalContent}
       </section>
     </article>
     </div>
@@ -45,7 +41,7 @@ export class ModalView {
     });
   }
 
-  init() {
+  #init() {
     this.#bodyOverflow = "hidden";
     this.#render();
     this.#defineListeners();
