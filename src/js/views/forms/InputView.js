@@ -47,8 +47,8 @@ export class InputView {
     this._inputmode = params.inputmode ?? "text";
     this.#strictToNumber = params.strictToNumber;
     this.#formatter = params.formatter;
-    this._labelText = params.labelText;
-    this._placeholder = params.placeholder;
+    this._labelText = params.labelText ?? "";
+    this._placeholder = params.placeholder ?? "";
   }
 
   get inputElement() {
