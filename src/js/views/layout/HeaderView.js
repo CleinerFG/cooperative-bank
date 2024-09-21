@@ -35,8 +35,18 @@ export class HeaderView extends LayoutView {
       navMenu.classList.toggle("header__menu--block");
     };
   
+    const closeMenuOnClickOutside = (ev) => {
+      if (!menuBtn.contains(ev.target) && !navMenu.contains(ev.target)) {
+        menuBtn.classList.remove("header__menu-button--active");
+        navMenu.classList.remove("header__menu--block");
+      }
+    };
+
     menuBtn.addEventListener("click", toggleMenu);
+    
+    window.addEventListener("click", closeMenuOnClickOutside);
   }
+  
   
 
   render() {
