@@ -119,8 +119,13 @@ export class InputView {
     }
   }
 
+  _listenersHandler() {
+    // Custom handler must be implemented in the subclass
+  }
+
   init() {
     this.#render();
     this._settersHandler();
+    this._listenersHandler();
   }
 }

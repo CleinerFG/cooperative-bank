@@ -1,5 +1,5 @@
 import { ModalView } from "./ModalView.js";
-import { DefaultInputView } from "../forms/DefaultInputView.js";
+import { SwitchVisibilityInputView } from "../forms/SwitchVisibilityInputView.js";
 
 export class ConfirmPassModalView extends ModalView {
   get _modalContent() {
@@ -18,7 +18,7 @@ export class ConfirmPassModalView extends ModalView {
       type: "password",
       strictToNumber: true,
     };
-    const inpView = new DefaultInputView(params);
+    const inpView = new SwitchVisibilityInputView(params);
     inpView.init();
   }
 
