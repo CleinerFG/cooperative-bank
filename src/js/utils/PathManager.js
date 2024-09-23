@@ -1,3 +1,11 @@
+// Update class to default get stored theme from themeView
+// Change visibility attr
+// update path must be static
+// create two methods for: html files and assets
+// assetsPaths and htmlPaths must be a private class attr
+// export static methods, not the instance class
+
+
 class PathManager {
   constructor(assetsPaths, htmlPaths) {
     this._assetsPaths = assetsPaths;
