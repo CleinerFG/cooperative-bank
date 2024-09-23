@@ -22,28 +22,23 @@ export class SwitchVisibilityInputView extends InputView {
     this._inputElement.type = type;
   }
 
-  _switchVisibility(ev, assetHandler) {
-    // const btn = document.querySelector(`${this._id}-visibility"`);
-    const btn = ev.currentTarget;
-    btn.addEventListener("click", () => {
-      const visibility = this._inputElement.dataset.visibility;
-      // Alternative text
-      const alt = visibility === "on" ? "Closed eye" : "Opened eye";
-      document.querySelector(".inp__visibility-icon").setAttribute("alt", alt);
+  _switchVisibility(assetHandler) {
+    const icon = document.querySelector(".inp__visibility-icon");
+    const currentState = this._inputElement.dataset.visibility;
 
-      // Switching visibility and SVG file
-      const state = visibility === "off" ? "on" : "off";
-      // assetHandler(state);
-      this._inputElement.dataset.visibility = state;
-    });
+    const alt = currentState === "on" ? "Closed eye" : "Opened eye";
+    icon.setAttribute("alt", alt);
+
+    const newState = currentState === "off" ? "on" : "off";
+    // assetHandler(newState);
+    this._inputElement.dataset.visibility = newState;
   }
 
   _listenersHandler() {
     const btnSwitch = document.querySelector(`#${this._id}-visibility`);
-    btnSwitch.addEventListener("click", (ev) => {
-      // this._toggleInpType.bind(this);
+    btnSwitch.addEventListener("click", () => {
+      this._switchVisibility(undefined);
       this._toggleInpType();
-      this._switchVisibility(ev, undefined);
     });
   }
 }
