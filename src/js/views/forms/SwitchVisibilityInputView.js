@@ -30,14 +30,14 @@ export class SwitchVisibilityInputView extends InputView {
     icon.setAttribute("alt", alt);
 
     const newState = currentState === "off" ? "on" : "off";
-    // assetHandler(newState);
+    assetHandler(newState);
     this._inputElement.dataset.visibility = newState;
   }
 
-  _listenersHandler() {
+  _listenersHandler(assetHandler) {
     const btnSwitch = document.querySelector(`#${this._id}-visibility`);
     btnSwitch.addEventListener("click", () => {
-      this._switchVisibility(undefined);
+      this._switchVisibility(assetHandler);
       this._toggleInpType();
     });
   }

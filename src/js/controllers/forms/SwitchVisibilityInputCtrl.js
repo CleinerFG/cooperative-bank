@@ -1,3 +1,4 @@
+import { DefaultInputCtrl } from "./DefaultInputCtrl.js";
 import { SwitchVisibilityInputView } from "../../views/forms/SwitchVisibilityInputView.js";
 import { ThemeView } from "../../views/layout/ThemeView.js";
 import pathManager from "../../utils/PathManager.js";
@@ -7,13 +8,18 @@ export class SwitchVisibilityInputCtrl extends DefaultInputCtrl {
     return SwitchVisibilityInputView;
   }
 
-  _defineAssetPath() {
+  assetHandler(state) {
     const theme = ThemeView.getStoredTheme();
-    // pathManager.updatePath();
+    pathManager.updatePath(
+      "asset",
+      "#visibility-icon",
+      `icons${theme}`,
+      `icon-visibility-${state}.svg`
+    );
   }
 
   _init() {
     super._init();
-    this._defineAssetPath();
+    this.assetHandler("off")
   }
 }
