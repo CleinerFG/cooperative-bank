@@ -1,4 +1,4 @@
-import { ThemeCtrl } from "../../controllers/layout/ThemeCtrl.js";
+import { LayoutCtrl } from "../../controllers/LayoutCtrl.js";
 
 export class ThemeView {
   static THEME_KEY = "coperativeBankTheme";
@@ -25,7 +25,7 @@ export class ThemeView {
     const icons = document.querySelectorAll(".icon");
     icons.forEach((icon) => {
       const path = icon.src;
-      const newPath = ThemeCtrl.buildAssetPathStr(path, theme);
+      const newPath = LayoutCtrl.buildAssetPathStr(path, theme);
       icon.src = newPath;
     });
   }
