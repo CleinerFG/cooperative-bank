@@ -1,11 +1,13 @@
+import { PathManager } from "../../../../js/utils/PathManager.js";
+
 export class StatementView {
   #container;
-  constructor(container) {
-    this.#container = container;
-    this.#render()
+  constructor() {
+    this.#container = document.querySelector(".statement__container");
+    this.#init();
   }
 
-  #create() {
+  #build() {
     return `
       <div class="statement__total">R$ <span id="total-value" class="statement__total-value"
           data-visibility="off">******</span></div>
@@ -13,10 +15,10 @@ export class StatementView {
         <img id="visibility-icon" class="icon statement__visibility-icon" alt="Closed eye">
       </button>
 
-    `
+    `;
   }
 
-  switchVisibility(assetHandler) {
+  #switchVisibility() {
     document
       .querySelector(".statement__visibility-button")
       .addEventListener("click", (ev) => {
@@ -30,7 +32,10 @@ export class StatementView {
 
         // Switching visibility and SVG file
         const state = visibility === "off" ? "on" : "off";
-        assetHandler(state);
+        PathManager.updateIcon(
+          "#visibility-icon",
+          `icon-visibility-${state}.svg`
+        );
         button.dataset.visibility = state;
 
         // Showing the total value
@@ -39,8 +44,17 @@ export class StatementView {
       });
   }
 
-
   #render() {
-    this.#container.insertAdjacentHTML("beforeend", this.#create());
+    this.#container.insertAdjacentHTML("beforeend", this.#build());
+  }
+
+  #pathHandler() {
+    PathManager.updateIcon("#visibility-icon", `icon-visibility-off.svg`);
+  }
+
+  #init() {
+    this.#render();
+    this.#pathHandler();
+    this.#switchVisibility();
   }
 }

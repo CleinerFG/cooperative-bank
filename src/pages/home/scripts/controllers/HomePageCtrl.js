@@ -1,6 +1,6 @@
 import { PageCtrl } from "../../../../js/controllers/PageCtrl.js";
 import { HomeView } from "../views/HomeView.js";
-// import { StatementCtrl } from "../controllers/StatementCtrl.js";
+import { StatementCtrl } from "../controllers/StatementCtrl.js";
 import { ActionCardsCtrl } from "../controllers/ActionCardsCtrl.js";
 // import { EventsCtrl } from "./EventsCtrl.js";
 // import {EventModel} from "../models/EventModel.js"
@@ -29,7 +29,7 @@ export class HomePageCtrl extends PageCtrl {
   }
 
   _initControllers() {
-    // this._initStatementCtrl();
+    this._initStatementCtrl();
     this._initActionCardsCtrl();
     // this._initEventsCtrl();
   }
