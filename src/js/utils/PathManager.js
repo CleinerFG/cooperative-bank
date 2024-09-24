@@ -1,53 +1,39 @@
-// Update class to default get stored theme from themeView
-// Change visibility attr
-// update path must be static
-// create two methods for: html files and assets
-// assetsPaths and htmlPaths must be a private class attr
-// export static methods, not the instance class
+import { ThemeView } from "../../js/views/layout/ThemeView.js";
 
+export class PathManager {
+  static #assetsPaths = {
+    iconsdark: "/src/assets/icons/dark/",
+    iconslight: "/src/assets/icons/light/",
+    images: "/src/assets/images/",
+  };
 
-class PathManager {
-  constructor(assetsPaths, htmlPaths) {
-    this._assetsPaths = assetsPaths;
-    this._htmlPaths = htmlPaths;
+  static #htmlPaths = {
+    home: "/src/pages/home/",
+    menu: "/src/pages/menu/",
+    loans: "/src/pages/loans/",
+    investments: "/src/pages/investments/",
+  };
+
+  static getElement(selector) {
+    return document.querySelector(selector);
   }
 
-  get assetsPaths() {
-    return this._assetsPaths;
+  static updateAsset(selector, filename) {
+    const element = PathManager.getElement(selector);
+    element.setAttribute("src", PathManager.#assetsPaths["images"] + filename);
   }
 
-  get htmlPaths() {
-    return this._htmlPaths;
+  static updateIcon(selector, filename) {
+    const element = PathManager.getElement(selector);
+    const theme = ThemeView.getStoredTheme();
+    element.setAttribute(
+      "src",
+      PathManager.#assetsPaths[`icons${theme}`] + filename
+    );
   }
 
-  _fileTypeIsValid(fileType) {
-    return ["html", "asset"].includes(fileType);
-  }
-
-  updatePath(fileType, selector, pathKey, filename) {
-    if (!this._fileTypeIsValid(fileType)) return;
-
-    const element = document.querySelector(selector);
-    if (fileType === "asset") {
-      element.setAttribute("src", this.assetsPaths[pathKey] + filename);
-      return;
-    }
-    element.setAttribute("href", this.htmlPaths[pathKey] + filename);
+  static updateHtml(selector, pathKey, filename) {
+    const element = PathManager.getElement(selector);
+    element.setAttribute("href", PathManager.#htmlPaths[pathKey] + filename);
   }
 }
-
-const assetsPaths = {
-  iconsdark: "/src/assets/icons/dark/",
-  iconslight: "/src/assets/icons/light/",
-  images: "/src/assets/images/",
-  theme: "/src/assets/theme/",
-};
-
-const htmlPaths = {
-  home: "/src/pages/home/",
-  menu: "/src/pages/menu/",
-  loans: "/src/pages/loans/",
-  investments: "/src/pages/investments/",
-};
-
-export default new PathManager(assetsPaths, htmlPaths);
