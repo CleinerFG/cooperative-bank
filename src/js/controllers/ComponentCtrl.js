@@ -1,21 +1,16 @@
-import { NoComponentsCtrl } from "./NoComponentsCtrl.js";
+import { NoComponentsView } from "../views/NoComponentsView.js";
 
 export class ComponentCtrl {
   #container;
   #viewClass;
   #componentsViews;
-  #noComponentsCtrl;
   constructor(container, viewClass, category) {
     this.#container = container;
     this.#viewClass = viewClass;
     this._category = category;
     this.#componentsViews = [];
-    this.#noComponentsCtrl = new NoComponentsCtrl(this.#container);
+    this._noComponentsView = new NoComponentsView(this.#container);
     this._defineNoComponentsSettings();
-  }
-
-  get noComponentsCtrl() {
-    return this.#noComponentsCtrl;
   }
 
   #createView(component) {
@@ -24,14 +19,14 @@ export class ComponentCtrl {
 
   #noComponentsHandler() {
     if (!this.#componentsViews.length) {
-      this.#noComponentsCtrl.init();
+      this._noComponentsView.init();
     }
   }
 
   _defineNoComponentsSettings() {
     const t1 = "There is nothing...";
-    this.noComponentsCtrl.defineTexts(t1);
-    this.noComponentsCtrl.defineImgId(`${this._category}-no-components-img`);
+    this._noComponentsView.defineTexts(t1);
+    this._noComponentsView.imgId = `${this._category}-no-components-img`;
   }
 
   addComponent(component) {

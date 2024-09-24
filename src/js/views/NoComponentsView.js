@@ -1,3 +1,5 @@
+import { PathManager } from "../utils/PathManager.js";
+
 export class NoComponentsView {
   #container;
   #texts;
@@ -24,6 +26,10 @@ export class NoComponentsView {
     this.#imgId = value;
   }
 
+  defineTexts(...texts) {
+    this.#texts = texts;
+  }
+
   #infoTexts() {
     const createTagP = (txt) => `<p class="info-text">${txt}</p>`;
     return this.#texts.map((txt) => createTagP(txt)).join("");
@@ -43,5 +49,19 @@ export class NoComponentsView {
   render() {
     const noEventsStr = this.#createNoEventsContainer();
     this.#container.insertAdjacentHTML("afterbegin", noEventsStr);
+  }
+
+  #randomImgFile() {
+    const n = Math.floor(Math.random() * 4) + 1;
+    return `astronaut-${n}.svg`;
+  }
+
+  #pathHandler() {
+    PathManager.updateAsset(`#${this.#imgId}`, this.#randomImgFile());
+  }
+
+  init() {
+    this.render();
+    this.#pathHandler();
   }
 }
