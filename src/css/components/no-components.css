@@ -1,15 +1,10 @@
-.no-components__text {
-  margin-right: var(--container-padding);
-}
-
-.no-components__img {
-  height: 200px;
-  min-height: 100%;
+.no-components__text .info-text {
+  text-align: center;
 }
 
 .no-components {
   width: 100%;
-  height: fit-content;
+  padding: var(--container-padding);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,4 +16,19 @@
   );
   background-repeat: no-repeat;
   box-shadow: -0rem 0.2rem 0.1rem #0000002b;
+}
+
+.no-components > * {
+  flex: 1;
+  width: 50%;
+}
+
+@media screen and (max-width: 369px) {
+  .no-components {
+    flex-direction: column;
+  }
+
+  .no-components__img {
+    width: 100%;
+  }
 }
