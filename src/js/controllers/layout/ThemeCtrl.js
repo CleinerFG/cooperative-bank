@@ -12,6 +12,6 @@ export class ThemeCtrl {
   }
 
   init() {
-    new ThemeView().init();
+    new ThemeView();
   }
 }

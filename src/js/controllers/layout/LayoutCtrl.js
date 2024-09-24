@@ -1,32 +1,15 @@
-import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { PathManager } from "../../utils/PathManager.js";
+import { HeaderView } from "../../views/layout/HeaderView.js";
+import { FooterView } from "../../views/layout/FooterView.js";
+import { ThemeView } from "../../views/layout/ThemeView.js";
 
 export class LayoutCtrl {
-  #layoutView;
-  #pathManager = PathManager;
-  constructor(layoutView) {
-    this.#layoutView = layoutView;
+  constructor() {
+    this.#init();
   }
 
-  get layoutView() {
-    return this.#layoutView;
-  }
-
-  get pathManager() {
-    return this.#pathManager;
-  }
-
-  _listenersHandler() {
-    throw new AbstractMethodError("_listenetHandler");
-  }
-
-  _pathHandler() {
-    throw new AbstractMethodError("_pathHandler");
-  }
-
-  init() {
-    this.#layoutView.render();
-    this._listenersHandler();
-    this._pathHandler();
+  #init() {
+    new HeaderView();
+    new FooterView();
+    new ThemeView();
   }
 }

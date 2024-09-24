@@ -1,21 +1,26 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class LayoutView {
-  #htmlStr;
-  #body = document.body;
-  constructor(htmlStr) {
-    this.#htmlStr = htmlStr;
+  constructor() {
+    this._body = document.body;
+    this._init();
   }
 
-  get htmlStr() {
-    return this.#htmlStr;
-  }
-
-  get body() {
-    return this.#body;
-  }
-
-  render() {
+  _render() {
     throw new AbstractMethodError("render");
+  }
+
+  _pathHandler() {
+    throw new AbstractMethodError("_pathHandler");
+  }
+
+  _initListeners() {
+    throw new AbstractMethodError("_initListeners");
+  }
+
+  _init() {
+    this._render();
+    this._pathHandler();
+    this._initListeners();
   }
 }
