@@ -25,7 +25,7 @@ export class HomePageCtrl extends PageCtrl {
     eventsData.forEach((event) => ctrl.addComponent(event));
     ctrl.initComponents();
     ctrl.removeComponent(1450);
-    ctrl.clearComponents();
+    // ctrl.clearComponents();
   }
 
   _initControllers() {

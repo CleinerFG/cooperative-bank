@@ -28,5 +28,5 @@
 .loans__cards,
 .investments__cards {
   padding: var(--container-padding);
-  justify-content: center;
+  
 }

@@ -15,14 +15,16 @@ export class ActionCardView {
   #createCardAction() {
     const capName = capitalize(this.#name);
     const str = `
-    <a id="card-link-${this.#name}" class="card-action__link" rel="next">
-      <div class="card card-action">
-        <img id="card-icon-${this.#name}" 
-          class="icon card-action__icon" 
-          alt="${capName} Icon">
-        <span class="label card-action__label">${capName}</span>
-      </div>
-    </a>
+    <div class="card-action__container">
+      <a id="card-link-${this.#name}" class="card-action__link" rel="next">
+        <div class="card card-action">
+          <img id="card-icon-${this.#name}"
+            class="icon card-action__icon"
+            alt="${capName} Icon">
+          <span class="label card-action__label">${capName}</span>
+        </div>
+      </a>
+    </div>
     `;
     return str;
   }
