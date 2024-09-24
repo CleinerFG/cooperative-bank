@@ -22,3 +22,6 @@ export class PageCtrl {
     new LayoutCtrl();
   }
 }
+
+
+// Update init page view without a method, init on constructor, #init more clean
