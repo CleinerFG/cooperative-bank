@@ -1,9 +1,8 @@
 import { NoComponentsView } from "../views/NoComponentsView.js";
-import pathUtil from "../utils/PathManager.js";
+import { PathManager } from "../utils/PathManager.js";
 
 export class NoComponentsCtrl {
   #noComponentsView;
-  #pathManager = pathUtil;
   #imgFile;
   constructor(container) {
     this.#noComponentsView = new NoComponentsView(container);
@@ -25,7 +24,7 @@ export class NoComponentsCtrl {
 
   #pathHandler() {
     const imgId = this.#noComponentsView.imgId;
-    this.#pathManager.updatePath("asset", `#${imgId}`, "images", this.#imgFile);
+    PathManager.updateAsset(`#${imgId}`, this.#imgFile);
   }
 
   init() {
