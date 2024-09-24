@@ -1,29 +1,18 @@
 import { LayoutCtrl } from "./LayoutCtrl.js";
 import { FooterView } from "../../views/layout/FooterView.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
 
 export class FooterCtrl extends LayoutCtrl {
   constructor() {
     super(new FooterView());
   }
 
-  #defineHtmlPath() {
-    this.pathManager.updatePath(
-      "html",
-      ".footer__brand-name",
-      "home",
-      "index.html"
-    );
-    this.pathManager.updatePath(
-      "html",
-      ".footer__icon-link",
-      "home",
-      "index.html"
-    );
+  #defineAssetPath() {
+    this.pathManager.updateIcon(".footer__icon", "icon-globe.svg");
   }
 
-  _listenersHandler() {
-    return false;
+  #defineHtmlPath() {
+    this.pathManager.updateHtml(".footer__brand-name", "home", "index.html");
+    this.pathManager.updateHtml(".footer__icon-link", "home", "index.html");
   }
 
   _pathHandler() {
@@ -31,13 +20,7 @@ export class FooterCtrl extends LayoutCtrl {
     this.#defineAssetPath();
   }
 
-  #defineAssetPath() {
-    const theme = ThemeView.getStoredTheme();
-    this.pathManager.updatePath(
-      "asset",
-      ".footer__icon",
-      `icons${theme}`,
-      "icon-globe.svg"
-    );
+  _listenersHandler() {
+    return false;
   }
 }

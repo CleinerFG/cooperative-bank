@@ -1,6 +1,5 @@
 import { LayoutCtrl } from "./LayoutCtrl.js";
 import { HeaderView } from "../../views/layout/HeaderView.js";
-import { ThemeView } from "../../views/layout/ThemeView.js";
 
 export class HeaderCtrl extends LayoutCtrl {
   constructor() {
@@ -8,29 +7,11 @@ export class HeaderCtrl extends LayoutCtrl {
   }
 
   #defineAssetpath() {
-    const theme = ThemeView.getStoredTheme();
-    this.pathManager.updatePath(
-      "asset",
-      ".header__menu-icon",
-      `icons${theme}`,
-      "icon-menu.svg"
-    );
-
-    this.pathManager.updatePath(
-      "asset",
-      "#theme-icon",
-      `icons${theme}`,
-      `icon-theme.svg`
-    );
+    this.pathManager.updateIcon(".header__menu-icon", "icon-menu.svg");
+    this.pathManager.updateIcon("#theme-icon", "icon-theme.svg");
   }
-
   #defineHtmlPath() {
-    this.pathManager.updatePath(
-      "html",
-      ".header__brand-name",
-      "home",
-      "index.html"
-    );
+    this.pathManager.updateHtml(".header__brand-name", "home", "index.html");
   }
 
   _pathHandler() {

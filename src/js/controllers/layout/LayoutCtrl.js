@@ -1,9 +1,9 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import pathUtil from "../../utils/PathManager.js";
+import { PathManager } from "../../utils/PathManager.js";
 
 export class LayoutCtrl {
   #layoutView;
-  #pathManager = pathUtil;
+  #pathManager = PathManager;
   constructor(layoutView) {
     this.#layoutView = layoutView;
   }
