@@ -1,9 +1,7 @@
 import { ActionCardView } from "../views/ActionCardView.js";
-import pathUtil from "../../../../js/utils/PathManager.js";
-import { ThemeView } from "../../../../js/views/layout/ThemeView.js";
+import { PathManager } from "../../../../js/utils/PathManager.js";
 
 export class ActionCardsCtrl {
-  #pathManager = pathUtil;
   #ActionCardView = ActionCardView;
   #container;
   #section = { name: undefined, items: [] };
@@ -39,18 +37,11 @@ export class ActionCardsCtrl {
   }
 
   #defineAssetPath(view) {
-    const theme = ThemeView.getStoredTheme();
-    this.#pathManager.updatePath(
-      "asset",
-      `#card-icon-${view.name}`,
-      `icons${theme}`,
-      `icon-${view.name}.svg`
-    );
+    PathManager.updateIcon(`#card-icon-${view.name}`, `icon-${view.name}.svg`);
   }
 
   #defineHtmlPath(view) {
-    this.#pathManager.updatePath(
-      "html",
+    PathManager.updateHtml(
       `#card-link-${view.name}`,
       this.#section.name,
       view.name
@@ -68,20 +59,20 @@ export class ActionCardsCtrl {
     return new this.#ActionCardView(this.#container, name);
   }
 
-  #addActionCards() {
+  #addViews() {
     const items = this.#section.items;
     const views = items.map((item) => this.#createView(item));
     this.#viewInstances = views;
   }
 
-  #renderActionCards() {
+  #render() {
     this.#viewInstances.forEach((view) => view.render());
   }
 
   #init() {
     this.#defineSettings();
-    this.#addActionCards();
-    this.#renderActionCards();
+    this.#addViews();
+    this.#render();
     this.#pathHandler();
   }
 }
