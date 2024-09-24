@@ -2,76 +2,64 @@ import { ActionCardView } from "../views/ActionCardView.js";
 import { PathManager } from "../../../../js/utils/PathManager.js";
 
 export class ActionCardsCtrl {
-  #ActionCardView = ActionCardView;
-  #container;
-  #section = { name: undefined, items: [] };
-  #type;
-  #viewInstances;
-  constructor(type) {
-    this.#type = type;
-    this.#viewInstances = [];
+  #sections = [
+    {
+      name: "loans",
+      containerSelector: ".loans__cards",
+      items: ["requests", "payments", "overview", "timeline"],
+      viewInstances: [],
+    },
+    {
+      name: "investments",
+      containerSelector: ".investments__cards",
+      items: ["all", "reports"],
+      viewInstances: [],
+    },
+  ];
+  #viewClass = ActionCardView;
+  constructor() {
     this.#init();
   }
 
-  #defineSettings() {
-    const settings = {
-      loans: {
-        sectionName: "loans",
-        containerSelector: ".loans__cards",
-        sectionItems: ["requests", "payments", "overview", "timeline"],
-      },
-      investments: {
-        sectionName: "investments",
-        containerSelector: ".investments__cards",
-        sectionItems: ["all", "reports"],
-      },
-    };
-
-    const config = settings[this.#type];
-
-    if (config) {
-      this.#container = document.querySelector(config.containerSelector);
-      this.#section.name = config.sectionName;
-      this.#section.items = config.sectionItems;
-    }
+  #getContainer(sectionName) {
+    const selector = `.${sectionName}__cards`;
+    return document.querySelector(selector);
   }
 
   #defineAssetPath(view) {
     PathManager.updateIcon(`#card-icon-${view.name}`, `icon-${view.name}.svg`);
   }
 
-  #defineHtmlPath(view) {
-    PathManager.updateHtml(
-      `#card-link-${view.name}`,
-      this.#section.name,
-      view.name
-    );
+  #defineHtmlPath(viewName, sectionName) {
+    PathManager.updateHtml(`#card-link-${viewName}`, sectionName, viewName);
   }
 
   #pathHandler() {
-    this.#viewInstances.forEach((view) => {
-      this.#defineHtmlPath(view);
-      this.#defineAssetPath(view);
+    this.#sections.forEach((section) => {
+      section.viewInstances.forEach((view) => {
+        this.#defineAssetPath(view);
+        this.#defineHtmlPath(view.name, section.name);
+      });
     });
   }
 
-  #createView(name) {
-    return new this.#ActionCardView(this.#container, name);
-  }
-
-  #addViews() {
-    const items = this.#section.items;
-    const views = items.map((item) => this.#createView(item));
-    this.#viewInstances = views;
+  #addViewInstances() {
+    this.#sections.forEach((section) => {
+      const instances = section.items.map((item) => {
+        return new this.#viewClass(this.#getContainer(section.name), item);
+      });
+      section.viewInstances = instances;
+    });
   }
 
   #render() {
-    this.#viewInstances.forEach((view) => view.render());
+    this.#sections.forEach((section) => {
+      section.viewInstances.forEach((view) => view.render());
+    });
   }
 
   #init() {
-    this.#defineSettings();
-    this.#addViews();
+    this.#addViewInstances();
     this.#render();
     this.#pathHandler();
   }

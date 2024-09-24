@@ -16,8 +16,7 @@ export class HomePageCtrl extends PageCtrl {
   }
 
   _initActionCardsCtrl() {
-    new ActionCardsCtrl("loans");
-    new ActionCardsCtrl("investments");
+    new ActionCardsCtrl();
   }
 
   _initEventsCtrl() {
