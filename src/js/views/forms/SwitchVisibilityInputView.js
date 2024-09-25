@@ -1,4 +1,5 @@
 import { InputView } from "./InputView.js";
+import { PathManager } from "../../utils/PathManager.js";
 
 export class SwitchVisibilityInputView extends InputView {
   _build() {
@@ -22,7 +23,7 @@ export class SwitchVisibilityInputView extends InputView {
     this._inputElement.type = type;
   }
 
-  _switchVisibility(assetHandler) {
+  _switchVisibility() {
     const icon = document.querySelector(".inp__visibility-icon");
     const currentState = this._inputElement.dataset.visibility;
 
@@ -30,15 +31,25 @@ export class SwitchVisibilityInputView extends InputView {
     icon.setAttribute("alt", alt);
 
     const newState = currentState === "off" ? "on" : "off";
-    assetHandler(newState);
+    this._defineIconPath(newState);
     this._inputElement.dataset.visibility = newState;
   }
 
-  _listenersHandler(assetHandler) {
+  _listenersHandler() {
     const btnSwitch = document.querySelector(`#${this._id}-visibility`);
     btnSwitch.addEventListener("click", () => {
-      this._switchVisibility(assetHandler);
+      this._switchVisibility();
       this._toggleInpType();
     });
+  }
+
+  _defineIconPath(state) {
+    PathManager.updateIcon("#visibility-icon", `icon-visibility-${state}.svg`);
+  }
+
+  init() {
+    super.init();
+    this._listenersHandler();
+    this._defineIconPath("off");
   }
 }
