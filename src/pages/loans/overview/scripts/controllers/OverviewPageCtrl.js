@@ -19,6 +19,7 @@ export class OverviewPageCtrl extends PageCtrl {
       ctrl.addComponent(new LoanModel(params))
     );
     ctrl.initComponents();
+    // ctrl.clearComponents();
   }
 
   _initLoansPayablesCtrl() {
@@ -28,6 +29,7 @@ export class OverviewPageCtrl extends PageCtrl {
       ctrl.addComponent(new LoanModel(params))
     );
     ctrl.initComponents();
+    ctrl.clearComponents();
   }
 
   _initControllers() {

@@ -10,6 +10,6 @@ export class LoansCtrl extends ComponentCtrl {
     super._defineNoComponentsSettings();
     const t1 = "There is nothing...";
     const t2 = `Waiting for new ${this._category} loans...`;
-    this.noComponentsCtrl.defineTexts(t1, t2);
+    this._noComponentsView.defineTexts(t1, t2);
   }
 }
