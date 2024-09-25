@@ -64,8 +64,8 @@ export class LookupInputView extends InputView {
     }
   }
 
-  _handleEnterPress(ev) {
-    if (ev.key === "Enter") {
+  _handleLostFocus(ev) {
+    if (ev.key === "Enter" || ev.key === "Tab") {
       this._handleSearch();
     }
   }
@@ -82,7 +82,7 @@ export class LookupInputView extends InputView {
     );
     this._inputElement.addEventListener(
       "keydown",
-      this._handleEnterPress.bind(this)
+      this._handleLostFocus.bind(this)
     );
   }
 
