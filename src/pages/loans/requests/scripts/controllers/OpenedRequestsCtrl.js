@@ -10,6 +10,6 @@ export class OpenedRequestsCtrl extends ComponentCtrl {
   _defineNoComponentsSettings() {
     super._defineNoComponentsSettings();
     const t1 = `There are no opened requests...`;
-    this.noComponentsCtrl.defineTexts(t1);
+    this._noComponentsView.defineTexts(t1);
   }
 }
