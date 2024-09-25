@@ -30,7 +30,12 @@
 
 .input__container {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.input__container input:first-child{
+  width: 7.5rem;
 }
 
 .research-list {

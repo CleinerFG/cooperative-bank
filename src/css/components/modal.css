@@ -42,3 +42,11 @@
   height: 2rem;
   border: none;
 }
+
+.modal__inp-container .input__container {
+  flex-wrap: nowrap;
+}
+
+.modal__inp-container #password {
+  width: 100%;
+}
