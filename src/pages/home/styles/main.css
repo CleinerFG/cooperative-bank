@@ -28,5 +28,27 @@
 .loans__cards,
 .investments__cards {
   padding: var(--container-padding);
-  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 500px) {
+  .loans__cards,
+  .investments__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .loans__cards,
+  .investments__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 270px) {
+    .loans__cards,
+    .investments__cards {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }

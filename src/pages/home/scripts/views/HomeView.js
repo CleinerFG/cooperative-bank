@@ -15,7 +15,9 @@ export class HomeView extends PageView {
     return `
     <section class="section ${name}">
       <h2 class="section__h2">${capitalize(name)}</h2>
-      <div class="cards ${name}__cards">
+      <div class="cards-container">
+        <div class="cards ${name}__cards">
+        </div>
       </div>
     </section>
     `;
