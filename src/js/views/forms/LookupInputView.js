@@ -1,5 +1,6 @@
 import { InputView } from "./InputView.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
+import { PathManager } from "../../utils/PathManager.js";
 
 export class LookupInputView extends InputView {
   #dataList;
@@ -94,10 +95,15 @@ export class LookupInputView extends InputView {
     this._updateValidators();
   }
 
+  _defineIconPath() {
+    PathManager.updateIcon("#search-icon", "icon-search.svg");
+  }
+
   init() {
     super.init();
     this._setDefaultItem();
     this._setListeners();
     this._validationHandler();
+    this._defineIconPath();
   }
 }
