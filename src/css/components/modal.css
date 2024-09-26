@@ -43,10 +43,11 @@
   border: none;
 }
 
-.modal__inp-container .input__container {
+.modal__form .input__container {
   flex-wrap: nowrap;
 }
 
-.modal__inp-container #password {
+.modal__form .modal-btn {
+  background-color: var(--color-primary);
   width: 100%;
 }

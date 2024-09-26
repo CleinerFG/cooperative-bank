@@ -30,7 +30,7 @@ export class LookupInputView extends InputView {
       <div class="form-group__input-group">
         <label for="${inputId}" class="label form-group__label">${this._labelText}</label>
         <div class="input__container">
-          <input id="${inputId}" type="text" name="${inputId}" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="input form-group__input">
+          <input id="${inputId}" type="text" name="${inputId}" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="input form-group__input inp__lookup ${this._cssClass}">
           <img class="icon" id="search-icon" alt="Search Icon">
           <input id="${resultId}" type="text" class="input form-group__input" disabled>
         </div>

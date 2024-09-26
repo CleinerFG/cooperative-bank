@@ -5,6 +5,7 @@ export class PassModalFormView extends FormView {
     return [
       {
         id: "confirm-pass",
+        cssClass: "switch-visibility",
         type: "password",
         category: "switchVisibility",
         strictToNumber: true,
@@ -16,6 +17,7 @@ export class PassModalFormView extends FormView {
   get _inputSubmitParams() {
     return {
       id: "modal-confirm",
+      cssClass: "modal-btn",
       labelText: "Confirm",
     };
   }

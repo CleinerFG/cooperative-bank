@@ -11,13 +11,10 @@
 }
 
 .form-group {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-}
-
-.input {
-  width: 100%;
 }
 
 .form-group__input-group {
@@ -32,10 +29,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.input__container input:first-child{
-  width: 7.5rem;
 }
 
 .research-list {

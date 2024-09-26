@@ -1,4 +1,5 @@
 .input {
+  width: 100%;
   font-size: 1rem;
   padding: 0.8rem 0.5rem;
   box-sizing: border-box;
@@ -21,4 +22,8 @@
 
 .error-message {
   color: var(--component-color-fail);
+}
+
+.inp__lookup {
+  width: 7.5rem;
 }
