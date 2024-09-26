@@ -5,6 +5,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
   constructor() {
     const params = {
       view: NewLoanRequestFormView,
+      id: "new-request-form",
       container: document.querySelector(".new-request"),
       cssClass: "new-request-form",
       action: "/",
