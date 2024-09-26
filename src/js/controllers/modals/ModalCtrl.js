@@ -1,17 +1,11 @@
-import { AbstractMethodError } from "../../errors/AbstractMethodError";
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class ModalCtrl {
-  #view;
   constructor() {
-    this.#view = new this._viewClass();
-    this.#init();
+    new this._viewClass();
   }
 
   get _viewClass() {
     new AbstractMethodError("_viewClass");
-  }
-
-  #init() {
-    this.#view.init();
   }
 }

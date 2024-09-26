@@ -1,5 +1,5 @@
+import { ConfirmPassModalCtrl } from "../../../../../js/controllers/modals/ConfirmPassModalCtrl.js";
 import { ComponentView } from "../../../../../js/views/ComponentView.js";
-import { ConfirmPassModalView } from "../../../../../js/views/modals/ConfirmPassModalView.js";
 
 export class OpenedRequestView extends ComponentView {
   get _cssId() {
@@ -77,8 +77,8 @@ export class OpenedRequestView extends ComponentView {
   }
 
   _modalHandler() {
-    this._btnElement.addEventListener("click", () => {
-      new ConfirmPassModalView();
+    this._btnElement.addEventListener("click", () => {    
+      new ConfirmPassModalCtrl();
     });
   }
 }
