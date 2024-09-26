@@ -15,7 +15,7 @@ export class PassModalFormView extends FormView {
 
   get _inputSubmitParams() {
     return {
-      id: "submit",
+      id: "modal-confirm",
       labelText: "Confirm",
     };
   }

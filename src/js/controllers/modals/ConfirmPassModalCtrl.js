@@ -1,10 +1,13 @@
-import { ConfirmPassModalView } from "../../views/modals/ConfirmPassModalView.js";
 import { ModalCtrl } from "./ModalCtrl.js";
+import { ConfirmPassModalView } from "../../views/modals/ConfirmPassModalView.js";
+import { PassModalFormCtrl } from "./PassModalFormCtrl.js";
 
 export class ConfirmPassModalCtrl extends ModalCtrl {
   get _viewClass() {
-    console.log("here");
-
     return ConfirmPassModalView;
+  }
+
+  _initControllers() {
+    new PassModalFormCtrl();
   }
 }
