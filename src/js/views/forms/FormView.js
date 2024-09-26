@@ -1,4 +1,4 @@
-import { DefaultInputCtrl } from "../../controllers/forms/DefaultInputCtrl.js";
+import { InputCtrl } from "../../controllers/forms/InputCtrl.js";
 import { LookupInputCtrl } from "../../controllers/forms/LookupInputCtrl.js";
 import { SubmitInputCtrl } from "../../controllers/forms/SubmitInputCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
@@ -16,7 +16,7 @@ export class FormView {
   constructor(params) {
     this.#container = params.container;
     this._id = params.id;
-    this.#cssClass = params.cssClass;
+    this.#cssClass = params.cssClass ?? "";
     this.#action = params.action;
     this.#method = params.method;
   }
@@ -66,11 +66,11 @@ export class FormView {
 
   #createInputs() {
     const setInpCtrl = (category) => {
-      const categoryCtlr = {
-        default: DefaultInputCtrl,
+      const categoryCtrl = {
+        default: InputCtrl,
         search: LookupInputCtrl,
       };
-      return categoryCtlr[category];
+      return categoryCtrl[category];
     };
 
     this.#inputCtrls = this._inputsParams.map((params) => {

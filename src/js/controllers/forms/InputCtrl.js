@@ -1,6 +1,6 @@
 import { DefaultInputView } from "../../views/forms/DefaultInputView.js";
 
-export class DefaultInputCtrl {
+export class InputCtrl {
   constructor(params) {
     this._view = new this._viewClass(params);
     this._init();

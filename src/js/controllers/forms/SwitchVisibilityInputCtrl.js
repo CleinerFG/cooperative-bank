@@ -1,12 +1,8 @@
-import { DefaultInputCtrl } from "./DefaultInputCtrl.js";
+import { InputCtrl } from "./InputCtrl.js";
 import { SwitchVisibilityInputView } from "../../views/forms/SwitchVisibilityInputView.js";
 
-export class SwitchVisibilityInputCtrl extends DefaultInputCtrl {
+export class SwitchVisibilityInputCtrl extends InputCtrl {
   get _viewClass() {
     return SwitchVisibilityInputView;
-  }
-
-  _validationValueApi(){
-    // Checek value on api
   }
 }

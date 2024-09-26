@@ -1,8 +1,8 @@
 import { users } from "../../testData.js";
 import { LookupInputView } from "../../views/forms/LookupInputView.js";
-import { DefaultInputCtrl } from "./DefaultInputCtrl.js";
+import { InputCtrl } from "./InputCtrl.js";
 
-export class LookupInputCtrl extends DefaultInputCtrl {
+export class LookupInputCtrl extends InputCtrl {
   get defaultDataItem() {
     // From API
     return {
