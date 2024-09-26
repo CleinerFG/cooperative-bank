@@ -1,5 +1,6 @@
 import { InputCtrl } from "../../controllers/forms/InputCtrl.js";
 import { LookupInputCtrl } from "../../controllers/forms/LookupInputCtrl.js";
+import { SwitchVisibilityInputCtrl } from "../../controllers/forms/SwitchVisibilityInputCtrl.js";
 import { SubmitInputCtrl } from "../../controllers/forms/SubmitInputCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
@@ -68,7 +69,8 @@ export class FormView {
     const setInpCtrl = (category) => {
       const categoryCtrl = {
         default: InputCtrl,
-        search: LookupInputCtrl,
+        lookup: LookupInputCtrl,
+        switchVisibility: SwitchVisibilityInputCtrl,
       };
       return categoryCtrl[category];
     };

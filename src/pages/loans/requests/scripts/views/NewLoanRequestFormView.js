@@ -5,7 +5,7 @@ export class NewLoanRequestFormView extends FormView {
     return [
       {
         id: "creditor",
-        category: "search",
+        category: "lookup",
         strictToNumber: true,
         labelText: "Search for a Creditor",
         placeholder: "Enter creditor",
