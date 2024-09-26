@@ -9,7 +9,7 @@ export class SwitchVisibilityInputView extends InputView {
       <div class="input__container container__${this._cssClass}">
         <input id="${this._id}" type="${this._type}" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
         class="input form-group__input inp-${this._cssClass}" data-visibility="off">
-        <button id="${this._id}-visibility" class="btn-unset">
+        <button id="${this._id}-visibility" type="button" class="btn-unset">
           <img id="visibility-icon" class="icon inp__visibility-icon" alt="Closed eye">
         </button>
       </div>

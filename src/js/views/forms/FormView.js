@@ -22,7 +22,7 @@ export class FormView {
     this.#method = params.method;
   }
 
-  get _formElement() {
+  get formElement() {
     return this.#formElement;
   }
 
@@ -84,15 +84,15 @@ export class FormView {
 
   #createInputSubmit() {
     const params = this._inputSubmitParams;
-    params.container = this._formElement;
+    params.container = this.formElement;
     this.#inputSubmitView = new SubmitInputCtrl(params);
   }
 
   #changeElementsFocus() {
-    this._formElement.addEventListener("keydown", (ev) => {
+    this.formElement.addEventListener("keydown", (ev) => {
       if (ev.key === "Enter") {
         ev.preventDefault();
-        const inputs = Array.from(this._formElement.querySelectorAll("input"));
+        const inputs = Array.from(this.formElement.querySelectorAll("input"));
         const index = inputs.indexOf(document.activeElement);
 
         if (index < inputs.length - 1) {
