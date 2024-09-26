@@ -18,7 +18,7 @@ export class LookupInputView extends InputView {
     return document.getElementById(`${this._id}-result`);
   }
 
-  get _searchIconElement() {
+  get _searchElement() {
     return document.getElementById("search-icon");
   }
 
@@ -31,7 +31,7 @@ export class LookupInputView extends InputView {
         <label for="${inputId}" class="label form-group__label">${this._labelText}</label>
         <div class="input__container">
           <input id="${inputId}" type="text" name="${inputId}" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="input form-group__input inp__lookup ${this._cssClass}">
-          <img class="icon" id="search-icon" alt="Search Icon">
+          <button type="button" class="btn-unset"><img class="icon" id="search-icon" alt="Search Icon"></button>
           <input id="${resultId}" type="text" class="input form-group__input" disabled>
         </div>
         <span id="${errorId}" class="error-message"></span>
@@ -76,7 +76,7 @@ export class LookupInputView extends InputView {
   }
 
   _setListeners() {
-    this._searchIconElement.addEventListener(
+    this._searchElement.addEventListener(
       "click",
       this._handleSearch.bind(this)
     );
