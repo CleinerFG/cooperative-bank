@@ -27,3 +27,7 @@
 .inp__lookup {
   width: 7.5rem;
 }
+
+input.btn {
+  cursor: pointer;
+}
