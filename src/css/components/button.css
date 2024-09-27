@@ -50,3 +50,7 @@
 .btn-attention:hover {
   background-color: var(--component-color-attention-hover);
 }
+
+.btn:focus {
+  outline: none;
+}
