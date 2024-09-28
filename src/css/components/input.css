@@ -1,4 +1,4 @@
-.input {
+.inp {
   width: 100%;
   font-size: 1rem;
   padding: 0.8rem 0.5rem;
@@ -10,7 +10,7 @@
   color: var(--color-font);
 }
 
-.input:focus {
+.inp:focus {
   border-color: var(--color-accent);
   box-shadow: var(--component-box-shadow);
   outline: none;

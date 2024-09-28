@@ -17,7 +17,7 @@
   gap: 1rem;
 }
 
-.form-group__input-group {
+.form-group__inp-group {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -25,7 +25,7 @@
   gap: 0.1rem;
 }
 
-.input__container {
+.inp__container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;

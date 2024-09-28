@@ -27,12 +27,12 @@ export class LookupInputView extends InputView {
     const resultId = `${this._id}-result`;
     const errorId = `${this._id}-error`;
     return `
-      <div class="form-group__input-group">
+      <div class="form-group__inp-group">
         <label for="${inputId}" class="label form-group__label">${this._labelText}</label>
-        <div class="input__container">
-          <input id="${inputId}" type="text" name="${inputId}" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="input form-group__input inp__lookup ${this._cssClass}">
+        <div class="inp__container">
+          <input id="${inputId}" type="text" name="${inputId}" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="inp form-group__inp inp__lookup ${this._cssClass}">
           <button type="button" class="btn-unset"><img class="icon" id="search-icon" alt="Search Icon"></button>
-          <input id="${resultId}" type="text" class="input form-group__input" disabled>
+          <input id="${resultId}" type="text" class="inp form-group__inp" disabled>
         </div>
         <span id="${errorId}" class="error-message"></span>
       </div>`;
