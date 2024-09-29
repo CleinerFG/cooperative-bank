@@ -1,7 +1,7 @@
 import { InputCtrl } from "../../controllers/forms/InputCtrl.js";
-import { LookupInputCtrl } from "../../controllers/forms/LookupInputCtrl.js";
-import { SwitchVisibilityInputCtrl } from "../../controllers/forms/SwitchVisibilityInputCtrl.js";
-import { SubmitInputCtrl } from "../../controllers/forms/SubmitInputCtrl.js";
+import { LookupInpCtrl } from "../../controllers/forms/LookupInpCtrl.js";
+import { SwitchVisibilityInpCtrl } from "../../controllers/forms/SwitchVisibilityInpCtrl.js";
+import { SubmitInpCtrl } from "../../controllers/forms/SubmitInpCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class FormView {
@@ -69,8 +69,8 @@ export class FormView {
     const setInpCtrl = (category) => {
       const categoryCtrl = {
         default: InputCtrl,
-        lookup: LookupInputCtrl,
-        switchVisibility: SwitchVisibilityInputCtrl,
+        lookup: LookupInpCtrl,
+        switchVisibility: SwitchVisibilityInpCtrl,
       };
       return categoryCtrl[category];
     };
@@ -85,7 +85,7 @@ export class FormView {
   #createInputSubmit() {
     const params = this._inputSubmitParams;
     params.container = this.formElement;
-    this.#inputSubmitView = new SubmitInputCtrl(params);
+    this.#inputSubmitView = new SubmitInpCtrl(params);
   }
 
   #changeElementsFocus() {

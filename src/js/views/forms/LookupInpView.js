@@ -2,7 +2,7 @@ import { InputView } from "./InputView.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
 import { PathManager } from "../../utils/PathManager.js";
 
-export class LookupInputView extends InputView {
+export class LookupInpView extends InputView {
   #dataList;
   #defaultDataItem;
 

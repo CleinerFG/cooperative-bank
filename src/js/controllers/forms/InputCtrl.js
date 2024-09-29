@@ -1,4 +1,4 @@
-import { DefaultInputView } from "../../views/forms/DefaultInputView.js";
+import { DefaultInpView } from "../../views/forms/DefaultInpView.js";
 
 export class InputCtrl {
   constructor(params) {
@@ -7,7 +7,7 @@ export class InputCtrl {
   }
 
   get _viewClass() {
-    return DefaultInputView;
+    return DefaultInpView;
   }
 
   _init() {

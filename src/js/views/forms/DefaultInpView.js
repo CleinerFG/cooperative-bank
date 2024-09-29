@@ -1,6 +1,6 @@
 import { InputView } from "./InputView.js";
 
-export class DefaultInputView extends InputView {
+export class DefaultInpView extends InputView {
   _build() {
     return `
     <div class="form-group__inp-group">

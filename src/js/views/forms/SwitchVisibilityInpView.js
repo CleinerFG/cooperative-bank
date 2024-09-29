@@ -1,7 +1,7 @@
 import { InputView } from "./InputView.js";
 import { PathManager } from "../../utils/PathManager.js";
 
-export class SwitchVisibilityInputView extends InputView {
+export class SwitchVisibilityInpView extends InputView {
   _build() {
     return `
     <div class="form-group__inp-group">
