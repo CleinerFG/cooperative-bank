@@ -7,7 +7,7 @@ export class PasswordInpView extends InputView {
     <div class="form-group__inp-group">
       <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
       <div class="inp__container container__${this._cssClass}">
-        <input id="${this._id}" type="${this._type}" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
+        <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
         class="inp form-group__inp inp-${this._cssClass}" data-visibility="off">
         <button id="${this._id}-visibility" type="button" class="btn-unset">
           <img id="visibility-icon" class="icon inp__visibility-icon" alt="Closed eye">
