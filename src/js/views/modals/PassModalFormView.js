@@ -7,7 +7,7 @@ export class PassModalFormView extends FormView {
         id: "confirm-pass",
         cssClass: "switch-visibility",
         type: "password",
-        category: "switchVisibility",
+        category: "password",
         strictToNumber: true,
         ariaLabel: "Password",
       },
