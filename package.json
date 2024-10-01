@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "server": "json-server --watch db.json"
   },
   "keywords": [
     "bank",
@@ -24,6 +25,7 @@
     "css-minimizer-webpack-plugin": "^7.0.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.0",
+    "json-server": "^1.0.0-beta.3",
     "mini-css-extract-plugin": "^2.9.0",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4"
