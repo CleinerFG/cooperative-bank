@@ -340,8 +340,7 @@
       "value": 4000,
       "installments": 12,
       "rate": 2,
-      "status": 1,
-      "type": 1
+      "status": 1
     },
     {
       "id": 14,
@@ -351,8 +350,7 @@
       "value": 1000,
       "installments": 48,
       "rate": 2,
-      "status": 2,
-      "type": 1
+      "status": 2
     },
     {
       "id": 15,
@@ -362,8 +360,7 @@
       "value": 5000,
       "installments": 12,
       "rate": 2,
-      "status": 3,
-      "type": 1
+      "status": 3
     }
   ],
   "received-requests": [
@@ -375,8 +372,7 @@
       "value": 4000,
       "installments": 12,
       "rate": 2,
-      "status": 1,
-      "type": 2
+      "status": 1
     },
     {
       "id": 18,
@@ -386,8 +382,7 @@
       "value": 1000,
       "installments": 12,
       "rate": 2,
-      "status": 1,
-      "type": 2
+      "status": 1
     }
   ],
   "loans-payables": [

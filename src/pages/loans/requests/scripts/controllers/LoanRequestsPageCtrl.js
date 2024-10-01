@@ -1,13 +1,8 @@
 import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
 import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
-import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { ReceivedRequestsCtrl } from "./ReceivedRequestsCtrl.js";
 import { OpenedRequestsCtrl } from "./OpenedRequestsCtrl.js";
-import {
-  apiDataOpenedRequests,
-  apiDataReceivedRequests,
-} from "../../../../../js/testData.js";
 
 export class LoanRequestsPageCtrl extends PageCtrl {
   constructor() {
@@ -19,21 +14,11 @@ export class LoanRequestsPageCtrl extends PageCtrl {
   }
 
   _initOpenedRequestsCtrl() {
-    const ctrl = new OpenedRequestsCtrl();
-    apiDataOpenedRequests.forEach((params) =>
-      ctrl.addComponent(new LoanRequestModel(params))
-    );
-    ctrl.initComponents();
-    // ctrl.clearComponents();
+    new OpenedRequestsCtrl();
   }
 
   _initReceivedRequestsCtrl() {
-    const ctrl = new ReceivedRequestsCtrl();
-    apiDataReceivedRequests.forEach((params) =>
-      ctrl.addComponent(new LoanRequestModel(params))
-    );
-    ctrl.initComponents();
-    // ctrl.clearComponents();
+    new ReceivedRequestsCtrl()
   }
 
   _initControllers() {

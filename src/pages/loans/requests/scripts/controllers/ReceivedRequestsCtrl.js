@@ -1,10 +1,15 @@
-import { ComponentCtrl } from "../../../../../js/controllers/ComponentCtrl.js";
+import { ComponentsCtrl } from "../../../../../js/controllers/ComponentsCtrl.js";
 import { ReceivedRequestView } from "../views/ReceivedRequestsView.js";
+import { LoanRequestModel } from "../models/LoanRequestModel.js";
 
-export class ReceivedRequestsCtrl extends ComponentCtrl {
+export class ReceivedRequestsCtrl extends ComponentsCtrl {
   constructor() {
     const container = document.querySelector(".received-requests__cards");
-    super(container, ReceivedRequestView, "received");
+    super(container, ReceivedRequestView, LoanRequestModel, "received");
+  }
+
+  get _endpoint() {
+    return "received-requests";
   }
 
   _defineNoComponentsSettings() {
