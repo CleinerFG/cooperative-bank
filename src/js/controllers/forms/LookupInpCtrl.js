@@ -1,10 +1,8 @@
-import { users } from "../../testData.js";
 import { LookupInpView } from "../../views/forms/LookupInpView.js";
 import { InputCtrl } from "./InputCtrl.js";
 
 export class LookupInpCtrl extends InputCtrl {
   get defaultDataItem() {
-    // From API
     return {
       id: 1000,
       name: "Cooperative Bank Creditor",
@@ -15,12 +13,14 @@ export class LookupInpCtrl extends InputCtrl {
     return LookupInpView;
   }
 
-  get _dataFromApi() {
-    return users;
+  async _fetchFromApi() {
+    const response = await fetch("http://localhost:3000/users");
+    const users = await response.json();
+    this._view.dataList = users;
   }
 
   _init() {
-    this._view.dataList = this._dataFromApi;
+    this._fetchFromApi();
     this._view.defaultDataItem = this.defaultDataItem;
     this._view.init();
   }

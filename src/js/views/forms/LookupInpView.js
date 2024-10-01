@@ -72,7 +72,7 @@ export class LookupInpView extends InputView {
 
   _setDefaultItem() {
     this._inputElement.value = this.#defaultDataItem.id;
-    this._handleSearch();
+    this._inputResultElement.value = this.#defaultDataItem.name;
   }
 
   _setListeners() {
