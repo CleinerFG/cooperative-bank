@@ -1,11 +1,6 @@
 import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { OverviewPageView } from "../views/OverviewPageView.js";
 import { LoansCtrl } from "./LoansCtrl.js";
-import {
-  apiDataLoansReceivables,
-  apiDataLoansPayables,
-} from "../../../../../js/testData.js";
-import { LoanModel } from "../models/LoanModel.js";
 
 export class OverviewPageCtrl extends PageCtrl {
   constructor() {
@@ -14,22 +9,12 @@ export class OverviewPageCtrl extends PageCtrl {
 
   _initLoansReceivablesCtrl() {
     const container = document.querySelector(".receivables__cards");
-    const ctrl = new LoansCtrl(container, "receivable");
-    apiDataLoansReceivables.forEach((params) =>
-      ctrl.addComponent(new LoanModel(params))
-    );
-    ctrl.initComponents();
-    // ctrl.clearComponents();
+    new LoansCtrl(container, "receivable");
   }
 
   _initLoansPayablesCtrl() {
     const container = document.querySelector(".payables__cards");
-    const ctrl = new LoansCtrl(container, "payable");
-    apiDataLoansPayables.forEach((params) =>
-      ctrl.addComponent(new LoanModel(params))
-    );
-    ctrl.initComponents();
-    ctrl.clearComponents();
+    new LoansCtrl(container, "payable");
   }
 
   _initControllers() {

@@ -1,9 +1,14 @@
-import { ComponentCtrl } from "../../../../../js/controllers/ComponentCtrl.js";
+import { ComponentsCtrl } from "../../../../../js/controllers/ComponentsCtrl.js";
+import { LoanModel } from "../models/LoanModel.js";
 import { LoanView } from "../views/LoanView.js";
 
-export class LoansCtrl extends ComponentCtrl {
+export class LoansCtrl extends ComponentsCtrl {
   constructor(container, category) {
-    super(container, LoanView, category);
+    super(container, LoanView, LoanModel, category);
+  }
+
+  get _endpoint() {
+    return "loans-payables";
   }
 
   _defineNoComponentsSettings() {
