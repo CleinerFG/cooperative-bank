@@ -3,8 +3,6 @@ import { HomeView } from "../views/HomeView.js";
 import { StatementCtrl } from "../controllers/StatementCtrl.js";
 import { ActionCardsCtrl } from "../controllers/ActionCardsCtrl.js";
 import { EventsCtrl } from "./EventsCtrl.js";
-import {EventModel} from "../models/EventModel.js"
-import { apiDataEvents } from "../../../../js/testData.js";
 
 export class HomePageCtrl extends PageCtrl {
   constructor() {
@@ -20,11 +18,9 @@ export class HomePageCtrl extends PageCtrl {
   }
 
   _initEventsCtrl() {
-    const eventsData = apiDataEvents.map((params) => new EventModel(params));
     const ctrl = new EventsCtrl();
-    eventsData.forEach((event) => ctrl.addComponent(event));
-    ctrl.initComponents();
-    ctrl.removeComponent(1450);
+    // ctrl.initComponents();
+    // ctrl.removeComponent(1450);
     // ctrl.clearComponents();
   }
 

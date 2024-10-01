@@ -1,10 +1,15 @@
-import { ComponentCtrl } from "../../../../js/controllers/ComponentCtrl.js";
+import { ComponentsCtrl } from "../../../../js/controllers/ComponentsCtrl.js";
+import { EventModel } from "../models/EventModel.js";
 import { EventView } from "../views/EventView.js";
 
-export class EventsCtrl extends ComponentCtrl {
+export class EventsCtrl extends ComponentsCtrl {
   constructor() {
     const container = document.querySelector(".events__cards");
-    super(container, EventView, "event");
+    super(container, EventView, EventModel, "event");
+  }
+
+  get _endpoint() {
+    return "events";
   }
 
   _defineNoComponentsSettings() {
