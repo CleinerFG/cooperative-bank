@@ -13,4 +13,18 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
     };
     super(params);
   }
+
+  get _endpoint() {
+    new AbstractMethodError("http://localhost:3000/opened-requests");
+  }
+
+  get _formData() {
+    const creditor = document.querySelector("#creditor").value;
+    const description = document.querySelector("#description").value;
+    const value = document.querySelector("#value").value;
+    const installments = document.querySelector("#installments").value;
+    const rate = document.querySelector("#rate").value;
+
+    return { creditor, description, value, installments, rate };
+  }
 }

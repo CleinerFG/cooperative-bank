@@ -1,3 +1,5 @@
+import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+
 export class FormCtrl {
   #view;
   constructor(params) {
@@ -5,11 +7,28 @@ export class FormCtrl {
     this.#init();
   }
 
+  get _endpoint() {
+    new AbstractMethodError("_endpoint");
+  }
+
+  get _formData() {
+    new AbstractMethodError("_formData");
+  }
+
+  async #fetchToApi(data) {
+    fetch("http://localhost:3000/opened-requests", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  }
+
   #submitHandler() {
     this.#view.formElement.addEventListener("submit", (ev) => {
-      console.log("Submit was actived");
-      
       ev.preventDefault();
+      this.#fetchToApi(this._formData);
     });
   }
 
