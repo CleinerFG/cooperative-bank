@@ -52,26 +52,6 @@ export class ComponentsCtrl {
     this._noComponentsView.imgId = `${this._category}-no-components-img`;
   }
 
-  removeComponent(id) {
-    this.#componentsViews = this.#componentsViews.filter((view) => {
-      if (view.componentModel.id === id) view.selfRemove();
-      return view.componentModel.id !== id;
-    });
-    this.#noComponentsHandler();
-  }
-
-  clearComponents() {
-    this.#componentsViews = [];
-    this.#container.innerHTML = "";
-    this.#noComponentsHandler();
-  }
-
-  // async initComponents() {
-  //   await this.#createComponents();
-  //   this.#componentsViews.forEach((view) => view.init());
-  //   this.#noComponentsHandler();
-  // }
-
   async #init() {
     await this.#createComponents();
     this.#componentsViews.forEach((view) => view.init());
