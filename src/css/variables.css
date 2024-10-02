@@ -29,6 +29,10 @@
   --component-color-fail-hover: hsl(0, 100%, 32%);
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
+  --skeleton-start: rgba(0, 0, 0, 0.3);
+  --skeleton-middle: rgba(0, 0, 0, 0.1);
+  --skeleton-end: rgba(0, 0, 0, 0.3);
+
   --text-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", serif;
   --info-font-family: "Open Sans", sans-serif;
@@ -49,4 +53,8 @@
 
   --component-border-color: #454545;
   --component-bg-color: #212122;
+
+  --skeleton-start: rgba(255, 255, 255, 0.3);
+  --skeleton-middle: rgba(255, 255, 255, 0.1);
+  --skeleton-end: rgba(255, 255, 255, 0.3);
 }

@@ -52,7 +52,7 @@ export class ComponentsCtrl {
       this.#componentsViews.forEach((view) => view.init());
       this.#loadCardsView.remove();
       this.#noComponentsHandler();
-    }, 5000);
+    }, 3000);
   }
 
   #noComponentsHandler() {

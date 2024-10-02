@@ -6,12 +6,12 @@
   border-radius: var(--component-border-radius);
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.1) 100%
+    var(--skeleton-start) 0%,
+    var(--skeleton-middle) 50%,
+    var(--skeleton-end) 100%
   );
   background-size: 200% 100%;
-  animation: loading 5s infinite;
+  animation: loading 2s linear infinite;
 }
 
 @keyframes loading {
@@ -19,7 +19,7 @@
     background-position: 200% 0;
   }
   100% {
-    background-position: -200% 0;
+    background-position: 0% 0;
   }
 }
 
