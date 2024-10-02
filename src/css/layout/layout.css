@@ -5,8 +5,9 @@ body {
   flex-direction: column;
 }
 
-main {
+.main {
+  margin-top: var(--header-height);
+  background-color: var(--color-background);
   padding: var(--container-padding);
-  margin: auto;
   flex: 1;
 }
