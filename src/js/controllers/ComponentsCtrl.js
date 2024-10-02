@@ -1,21 +1,24 @@
 import { LoadingCardView } from "../views/LoadingCardView.js";
 import { NoComponentsView } from "../views/NoComponentsView.js";
-
+import { simulateWait } from "../utils/tests.js";
 export class ComponentsCtrl {
-  #container;
-  #viewClass;
-  #modelClass;
-  #componentsViews;
-  #loadCardsView;
-  constructor(container, viewClass, modelClass, category) {
-    this.#container = container;
-    this.#viewClass = viewClass;
-    this.#modelClass = modelClass;
+  #containerElement;
+  #ComponentViewClass;
+  #ComponentModelClass;
+  #componentsViews = [];
+  #loadCardView;
+  constructor(
+    containerElement,
+    ComponentViewClass,
+    ComponentModelClass,
+    category
+  ) {
+    this.#containerElement = containerElement;
+    this.#ComponentViewClass = ComponentViewClass;
+    this.#ComponentModelClass = ComponentModelClass;
+    this.#loadCardView = new LoadingCardView(this.containerElement);
+    this._noComponentsView = new NoComponentsView(this.#containerElement);
     this._category = category;
-    this.#componentsViews = [];
-    this._noComponentsView = new NoComponentsView(this.#container);
-    this.#loadCardsView = new LoadingCardView(this.container);
-    this._defineNoComponentsSettings();
     this.#init();
   }
 
@@ -23,42 +26,20 @@ export class ComponentsCtrl {
     return "";
   }
 
-  get container() {
-    return this.#container;
-  }
-
-  #createView(model) {
-    return new this.#viewClass(this.#container, model);
-  }
-
-  #addComponent(params) {
-    const model = new this.#modelClass(params);
-    const view = this.#createView(model);
-    this.#componentsViews.push(view);
+  get containerElement() {
+    return this.#containerElement;
   }
 
   async #fetchFromApi() {
-    const response = await fetch(`http://localhost:3000/${this._endpoint}`);
-    const data = await response.json();
-    return data;
+    const url = `http://localhost:3000/${this._endpoint}`;
+    const response = await fetch(url);
+    return await response.json();
   }
 
-  async #createComponents() {
-    this.#loadCardsView.render();
-    // setTimeout - simulate the server response
-    setTimeout(async () => {
-      const data = await this.#fetchFromApi();
-      data.forEach((params) => this.#addComponent(params));
-      this.#componentsViews.forEach((view) => view.init());
-      this.#loadCardsView.remove();
-      this.#noComponentsHandler();
-    }, 3000);
-  }
-
-  #noComponentsHandler() {
-    if (!this.#componentsViews.length) {
-      this._noComponentsView.init();
-    }
+  #addComponent(params) {
+    const model = new this.#ComponentModelClass(params);
+    const view = new this.#ComponentViewClass(this.#containerElement, model);
+    this.#componentsViews.push(view);
   }
 
   _defineNoComponentsSettings() {
@@ -67,7 +48,28 @@ export class ComponentsCtrl {
     this._noComponentsView.imgId = `${this._category}-no-components-img`;
   }
 
+  async #createComponents() {
+    this.#loadCardView.render();
+    // Simulate the wait time when loading data
+    await simulateWait(2);
+    try {
+      const data = await this.#fetchFromApi();
+      if (data.length) {
+        data.forEach((params) => this.#addComponent(params));
+        this.#componentsViews.forEach((view) => view.init());
+      } else {
+        this._noComponentsView.init();
+      }
+    } catch (error) {
+      // Implement: card server error.
+      console.log("Server error:", error);
+    } finally {
+      this.#loadCardView.remove();
+    }
+  }
+
   #init() {
+    this._defineNoComponentsSettings();
     this.#createComponents();
   }
 }
