@@ -23,10 +23,18 @@
   }
 }
 
+.card-data.loading .card-data__header {
+  border: none;
+}
+
+.card-data.loading .card-data__item {
+  border: none;
+}
+
 .card-data.loading .card-data__label {
   width: 30%;
 }
 
 .card-data.loading .card-data__value {
-  width: 60%;
+  width: 70%;
 }
