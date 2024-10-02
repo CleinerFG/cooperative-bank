@@ -28,7 +28,7 @@ export class LoadingCardView {
   }
 
   render() {
-    this.#container.insertAdjacentHTML("beforend", this.#template);
+    this.#container.insertAdjacentHTML("beforeend", this.#template);
   }
 
   remove() {

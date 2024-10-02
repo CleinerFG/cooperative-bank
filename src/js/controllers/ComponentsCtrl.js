@@ -1,3 +1,4 @@
+import { LoadingCardView } from "../views/LoadingCardView.js";
 import { NoComponentsView } from "../views/NoComponentsView.js";
 
 export class ComponentsCtrl {
@@ -5,6 +6,7 @@ export class ComponentsCtrl {
   #viewClass;
   #modelClass;
   #componentsViews;
+  #loadCardsView;
   constructor(container, viewClass, modelClass, category) {
     this.#container = container;
     this.#viewClass = viewClass;
@@ -12,12 +14,17 @@ export class ComponentsCtrl {
     this._category = category;
     this.#componentsViews = [];
     this._noComponentsView = new NoComponentsView(this.#container);
+    this.#loadCardsView = new LoadingCardView(this.container);
     this._defineNoComponentsSettings();
     this.#init();
   }
 
   get _endpoint() {
     return "";
+  }
+
+  get container() {
+    return this.#container;
   }
 
   #createView(model) {
@@ -32,12 +39,20 @@ export class ComponentsCtrl {
 
   async #fetchFromApi() {
     const response = await fetch(`http://localhost:3000/${this._endpoint}`);
-    return await response.json();
+    const data = await response.json();
+    return data;
   }
 
   async #createComponents() {
-    const data = await this.#fetchFromApi();
-    data.forEach((params) => this.#addComponent(params));
+    this.#loadCardsView.render();
+    // setTimeout - simulate the server response
+    setTimeout(async () => {
+      const data = await this.#fetchFromApi();
+      data.forEach((params) => this.#addComponent(params));
+      this.#componentsViews.forEach((view) => view.init());
+      this.#loadCardsView.remove();
+      this.#noComponentsHandler();
+    }, 2000);
   }
 
   #noComponentsHandler() {
@@ -52,9 +67,7 @@ export class ComponentsCtrl {
     this._noComponentsView.imgId = `${this._category}-no-components-img`;
   }
 
-  async #init() {
-    await this.#createComponents();
-    this.#componentsViews.forEach((view) => view.init());
-    this.#noComponentsHandler();
+  #init() {
+    this.#createComponents();
   }
 }
