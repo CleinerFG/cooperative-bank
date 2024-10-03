@@ -34,19 +34,21 @@ export class StateCardView {
 
   #getLoadingTemplate() {
     return this.#buildTemplate(`
-      <header class="card-data__header"></header>
-      <main class="card-data__content">
+      <header class="card-state__header"></header>
+      <main class="card-state__content">
         ${this.#buildLoadingItems(3)}
       </main>
-      <footer class="card-data__footer"></footer>
-    `, "card-data loading");
+      <footer class="card-state__footer"></footer>
+    `, "card-state__loading");
   }
 
   #getEmptyTemplate() {
     const imgId = `${this.#category}-${this.#type}-img`;
     return this.#buildTemplate(`
       <img id="${imgId}" class="card-state-img">
-      <div class="card-state__text">${this.#buildEmptyCardsTexts()}</div>
+      <div class="card-state__text">
+        ${this.#buildEmptyCardsTexts()}
+      </div>
     `, "card-state__empty");
   }
 
@@ -63,9 +65,9 @@ export class StateCardView {
 
   #buildLoadingItems(count) {
     return Array(count).fill(`
-      <div class="card-data__item">
-        <span class="card-data__label"></span>
-        <span class="card-data__value"></span>
+      <div class="card-state__item">
+        <span class="card-state__label"></span>
+        <span class="card-state__value"></span>
       </div>
     `).join("");
   }

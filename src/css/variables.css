@@ -29,6 +29,8 @@
   --component-color-fail-hover: hsl(0, 100%, 32%);
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
+  --card-state-box-shadow: -0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+
   --skeleton-start: rgba(0, 0, 0, 0.3);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
   --skeleton-end: rgba(0, 0, 0, 0.3);

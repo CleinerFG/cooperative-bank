@@ -59,10 +59,10 @@ export class ComponentsCtrl {
 
   async #createComponents() {
     this.#StateCardView.type = "loading";
-    await simulateWait(3);
+    await simulateWait(100);
     try {
       const data = await this.#fetchFromApi();
-      if (data.length) {
+      if (data.length<0) {
         this.#containerElement.innerHTML = "";
         data.forEach((params) => this.#addComponent(params));
         this.#componentsViews.forEach((view) => view.init());

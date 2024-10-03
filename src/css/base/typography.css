@@ -15,5 +15,4 @@ h2 {
 .info-text {
   font-family: var(--info-font-family);
   text-align: justify;
-  padding-bottom: 0.3rem;
 }

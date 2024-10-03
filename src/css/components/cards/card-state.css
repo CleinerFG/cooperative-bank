@@ -1,21 +1,82 @@
+.card-state {
+  width: 100%;
+  border-radius: var(--component-border-radius);
+  box-shadow: var(--card-state-box-shadow);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-state__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.card-state__header,
+.card-state__label,
+.card-state__value,
+.card-state__footer {
+  height: 1.5rem;
+  border-radius: var(--component-border-radius);
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-start) 0%,
+    var(--skeleton-middle) 50%,
+    var(--skeleton-end) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+.card-state__item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-state__label {
+  width: 30%;
+}
+
+.card-state__value {
+  width: 70%;
+}
+
+.card-state__text {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .card-state__text .info-text {
   text-align: center;
 }
 
-.card-state__empty {
-  width: 100%;
+.card-state__loading {
+  flex-direction: column;
+  background-color: var(--component-bg-color);
+  border: 0.1rem solid var(--component-border-color);
   padding: var(--container-padding);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
+}
+
+.card-state__empty {
   background-image: linear-gradient(
     to top,
     var(--color-accent-translucent),
     #ffffff00 90%
   );
-  background-repeat: no-repeat;
-  box-shadow: -0rem 0.2rem 0.1rem #0000002b;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
 
 .card-state__empty > * {
@@ -26,6 +87,11 @@
 @media screen and (max-width: 369px) {
   .card-state__empty {
     flex-direction: column;
+  }
+
+  .card-state__text {
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 
   .card-state__img {
