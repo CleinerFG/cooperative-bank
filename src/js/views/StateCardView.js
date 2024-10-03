@@ -38,9 +38,7 @@ export class StateCardView {
       <article class="card-state card-state__empty">
         <img id="${this.#category}-${this.#type}-img" class="card-state-img">
         <div class="card-state__text">
-        ${this.#buildNoCardsTexts()}
-        <p class="info-text">Test test test 1</p>
-        <p class="info-text">Test test test 2</p>
+        ${this.#buildEmptyCardsTexts()}
         </div>
       </article>
     `;
@@ -74,7 +72,7 @@ export class StateCardView {
     this.#noCardsTexts = texts;
   }
 
-  #buildNoCardsTexts() {
+  #buildEmptyCardsTexts() {
     const createTagP = (txt) => `<p class="info-text">${txt}</p>`;
     return this.#noCardsTexts.map((txt) => createTagP(txt)).join("");
   }

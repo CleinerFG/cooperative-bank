@@ -44,6 +44,7 @@ export class ComponentsCtrl {
       this.containerElement,
       this.category
     );
+    this._defineEmptyCardsTexts();
   }
 
   #addComponent(params) {
@@ -52,20 +53,17 @@ export class ComponentsCtrl {
     this.#componentsViews.push(view);
   }
 
-  _defineNoComponentsSettings() {
-    // const t1 = "There is nothing...";
-    // this._noComponentsView.defineTexts(t1);
-    // this._noComponentsView.imgId = `${this._category}-no-components-img`;
+  _defineEmptyCardsTexts(...texts) {
+    this.#StateCardView.defineTexts(...texts);
   }
 
   async #createComponents() {
     this.#StateCardView.type = "loading";
     this.#StateCardView.init();
-    await simulateWait(0);
+    await simulateWait(10);
     try {
       const data = await this.#fetchFromApi();
-      // if (data.length)
-      if (false) {
+      if (data.length) {
         this.#StateCardView.remove();
         data.forEach((params) => this.#addComponent(params));
         this.#componentsViews.forEach((view) => view.init());
@@ -84,7 +82,6 @@ export class ComponentsCtrl {
 
   #init() {
     this.#initCardState();
-    this._defineNoComponentsSettings();
     this.#createComponents();
   }
 }

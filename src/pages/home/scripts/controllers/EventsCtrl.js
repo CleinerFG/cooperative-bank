@@ -12,10 +12,9 @@ export class EventsCtrl extends ComponentsCtrl {
     return "events";
   }
 
-  // _defineNoComponentsSettings() {
-  //   super._defineNoComponentsSettings();
-  //   const t1 = "There are no events...";
-  //   const t2 = "When there is news, we'll let you know ; )";
-  //   this._noComponentsView.defineTexts(t1, t2);
-  // }
+  _defineEmptyCardsTexts() {
+    const t1 = "There are no events...";
+    const t2 = "When there is news, we'll let you know ; )";
+    super._defineEmptyCardsTexts(t1, t2);
+  }
 }
