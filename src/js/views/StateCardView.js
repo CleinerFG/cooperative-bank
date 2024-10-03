@@ -35,13 +35,14 @@ export class StateCardView {
 
   get #emptyTemplate() {
     return `
-      <div class="card-state">
+      <article class="card-state card-state__empty">
         <img id="${this.#category}-${this.#type}-img" class="card-state-img">
         <div class="card-state__text">
         ${this.#buildNoCardsTexts()}
-        test test test test
+        <p class="info-text">Test test test 1</p>
+        <p class="info-text">Test test test 2</p>
         </div>
-      </div>
+      </article>
     `;
   }
 
@@ -88,14 +89,16 @@ export class StateCardView {
   }
 
   #randomImgFile() {
-    const n = this.#type === "empty" ? 4 : 2;
-    Math.floor(Math.random() * n) + 1;
+    const imgCount = this.#type === "empty" ? 4 : 2;
+    const n = Math.floor(Math.random() * imgCount) + 1;
     return `${this.#type}-${n}.svg`;
   }
 
   #pathHandler() {
     if (this.#type === "error" || this.#type === "empty") {
       const imgFile = this.#randomImgFile();
+      console.log(imgFile);
+
       PathManager.updateAsset(`#${this.category}-${this.type}-img`, imgFile);
     }
   }

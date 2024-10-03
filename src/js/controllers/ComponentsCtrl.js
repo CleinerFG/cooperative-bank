@@ -61,11 +61,12 @@ export class ComponentsCtrl {
   async #createComponents() {
     this.#StateCardView.type = "loading";
     this.#StateCardView.init();
-    await simulateWait(2);
+    await simulateWait(0);
     try {
       const data = await this.#fetchFromApi();
       // if (data.length)
       if (false) {
+        this.#StateCardView.remove();
         data.forEach((params) => this.#addComponent(params));
         this.#componentsViews.forEach((view) => view.init());
       } else {
