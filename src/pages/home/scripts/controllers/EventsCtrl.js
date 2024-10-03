@@ -5,7 +5,7 @@ import { EventView } from "../views/EventView.js";
 export class EventsCtrl extends ComponentsCtrl {
   constructor() {
     const container = document.querySelector(".events__cards");
-    super(container, EventView, EventModel, "event");
+    super(container, EventView, EventModel, "events");
   }
 
   get _endpoint() {

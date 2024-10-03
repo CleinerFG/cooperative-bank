@@ -10,14 +10,10 @@ export class StateCardView {
     this.#category = category;
   }
 
-  get category() {
-    return this.#category;
-  }
-
   set type(value) {
     if (this.#type) this.#remove();
     this.#type = value;
-    this.#renderState();
+    this.#initState();
   }
 
   defineTexts(...texts) {
@@ -57,10 +53,10 @@ export class StateCardView {
     return this.#buildTemplate(`
       <img id="${imgId}" class="card-state__img">
       <div class="card-state__text">
-        <p class="info-text">Oops! Something went wrong while trying to load the data.</p>
+        <p class="info-text">Oops! Something went wrong while trying to load the ${this.#category} data.</p>
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
-    `, "error");
+    `, "card-state__error");
   }
 
   #buildLoadingItems(count) {
@@ -106,7 +102,7 @@ export class StateCardView {
     this.#container.querySelector(".card-state").remove();
   }
 
-  #renderState() {
+  #initState() {
     this.#render();
     this.#pathHandler();
   }

@@ -52,12 +52,11 @@
 
 .card-state__text {
   margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .card-state__text .info-text {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
   text-align: center;
 }
 
@@ -68,7 +67,8 @@
   padding: var(--container-padding);
 }
 
-.card-state__empty {
+.card-state__empty,
+.card-state__error {
   background-image: linear-gradient(
     to top,
     var(--color-accent-translucent),
@@ -79,14 +79,17 @@
   gap: 0;
 }
 
-.card-state__empty > * {
+.card-state__empty > *,
+.card-state__error > * {
   flex: 1;
   width: 50%;
 }
 
 @media screen and (max-width: 369px) {
-  .card-state__empty {
-    flex-direction: column;
+  .card-state__empty,
+  .card-state__error {
+    flex-direction: column-reverse;
+    margin-top: 0.5rem;
   }
 
   .card-state__text {

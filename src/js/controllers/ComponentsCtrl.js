@@ -59,10 +59,10 @@ export class ComponentsCtrl {
 
   async #createComponents() {
     this.#StateCardView.type = "loading";
-    await simulateWait(100);
+    await simulateWait(2);
     try {
       const data = await this.#fetchFromApi();
-      if (data.length<0) {
+      if (data.length) {
         this.#containerElement.innerHTML = "";
         data.forEach((params) => this.#addComponent(params));
         this.#componentsViews.forEach((view) => view.init());
@@ -70,8 +70,7 @@ export class ComponentsCtrl {
         this.#StateCardView.type = "empty";
       }
     } catch (error) {
-      // Implement: card server error.
-      console.log("Server error:", error);
+      this.#StateCardView.type = "error";
     }
   }
 
