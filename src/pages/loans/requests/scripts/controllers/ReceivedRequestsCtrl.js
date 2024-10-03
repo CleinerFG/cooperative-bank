@@ -12,9 +12,8 @@ export class ReceivedRequestsCtrl extends ComponentsCtrl {
     return "received-requests";
   }
 
-  _defineNoComponentsSettings() {
-    super._defineNoComponentsSettings();
+  _defineEmptyCardsTexts() {
     const t1 = `There are no received requests...`;
-    this._noComponentsView.defineTexts(t1);
+    super._defineEmptyCardsTexts(t1);
   }
 }

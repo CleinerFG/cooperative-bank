@@ -5,17 +5,16 @@ import { LoanView } from "../views/LoanView.js";
 export class LoansPayablesCtrl extends ComponentsCtrl {
   constructor() {
     const container = document.querySelector(".payables__cards");
-    super(container, LoanView, LoanModel, "receivables");
+    super(container, LoanView, LoanModel, "payables");
   }
 
   get _endpoint() {
     return "loans-payables";
   }
 
-  _defineNoComponentsSettings() {
-    super._defineNoComponentsSettings();
+  _defineEmptyCardsTexts() {
     const t1 = "There is nothing...";
     const t2 = `Waiting for new payables loans...`;
-    this._noComponentsView.defineTexts(t1, t2);
+    super._defineEmptyCardsTexts(t1, t2);
   }
 }

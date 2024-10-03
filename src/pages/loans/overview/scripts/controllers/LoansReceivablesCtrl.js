@@ -12,10 +12,9 @@ export class LoansReceivablesCtrl extends ComponentsCtrl {
     return "loans-receivables";
   }
 
-  _defineNoComponentsSettings() {
-    super._defineNoComponentsSettings();
+  _defineEmptyCardsTexts() {
     const t1 = "There is nothing...";
     const t2 = `Waiting for new receivables loans...`;
-    this._noComponentsView.defineTexts(t1, t2);
+    super._defineEmptyCardsTexts(t1, t2);
   }
 }
