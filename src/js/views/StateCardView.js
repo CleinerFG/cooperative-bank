@@ -5,9 +5,15 @@ export class StateCardView {
   #category;
   #type;
   #noCardsTexts = [];
-  #templates = {
-    loading: `
-      <article class="card card-data loading">
+  constructor(container, category) {
+    this.#container = container;
+    this.#category = category;
+  }
+
+  get #loandingTemplate() {
+    return `
+      <article class="card card-data loading
+      card-state">
         <header class="card-data__header"></header>
         <main class="card-data__content">
           <div class="card-data__item">
@@ -24,16 +30,23 @@ export class StateCardView {
           </div>
         </main>
         <footer class="card-data__footer"></footer>
-      </article>`,
-    without: `
+      </article>`;
+  }
+
+  get #emptyTemplate() {
+    return `
       <div class="card-state">
         <img id="${this.#category}-${this.#type}-img" class="card-state-img">
         <div class="card-state__text">
         ${this.#buildNoCardsTexts()}
+        test test test test
         </div>
       </div>
-    `,
-    error: `
+    `;
+  }
+
+  get #errorTemplate() {
+    return `
       <div class="card-state">
         <img id="${this.#category}-${this.#type}-img" class="card-state__img">
         <div class="card-state__text">
@@ -41,11 +54,7 @@ export class StateCardView {
           <p class="info-text">Please check your internet connection and try again later.</p>
         </div>
       </div>
-    `,
-  };
-  constructor(container, category) {
-    this.#container = container;
-    this.#category = category;
+    `;
   }
 
   get type() {
@@ -56,29 +65,38 @@ export class StateCardView {
     this.#type = value;
   }
 
+  get category() {
+    return this.#category;
+  }
+
   defineTexts(...texts) {
     this.#noCardsTexts = texts;
   }
 
-  #buildNoCardsTexts(...texts) {
+  #buildNoCardsTexts() {
     const createTagP = (txt) => `<p class="info-text">${txt}</p>`;
     return this.#noCardsTexts.map((txt) => createTagP(txt)).join("");
   }
 
   #getTemplate() {
-    return this.#templates[this.#type];
+    const mapTemplates = {
+      loading: this.#loandingTemplate,
+      empty: this.#emptyTemplate,
+      error: this.#errorTemplate,
+    };
+    return mapTemplates[this.#type];
   }
 
   #randomImgFile() {
-    const n = this.#type === "without" ? 4 : 2;
+    const n = this.#type === "empty" ? 4 : 2;
     Math.floor(Math.random() * n) + 1;
-    return `${this.#type}-card-${n}.svg`;
+    return `${this.#type}-${n}.svg`;
   }
 
   #pathHandler() {
-    if (this.#type === "error" || this.#type === "without") {
+    if (this.#type === "error" || this.#type === "empty") {
       const imgFile = this.#randomImgFile();
-      PathManager.updateAsset(`#${this.#category}-${this.#type}-img`, imgFile);
+      PathManager.updateAsset(`#${this.category}-${this.type}-img`, imgFile);
     }
   }
 
