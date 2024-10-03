@@ -4,86 +4,83 @@ export class StateCardView {
   #container;
   #category;
   #type;
-  #noCardsTexts = [];
+  #emptyCardsTexts = [];
   constructor(container, category) {
     this.#container = container;
     this.#category = category;
-  }
-
-  get #loandingTemplate() {
-    return `
-      <article class="card card-data loading
-      card-state">
-        <header class="card-data__header"></header>
-        <main class="card-data__content">
-          <div class="card-data__item">
-            <span class="card-data__label"></span>
-            <span class="card-data__value"></span>
-          </div>
-          <div class="card-data__item">
-            <span class="card-data__label"></span>
-            <span class="card-data__value"></span>
-          </div>
-          <div class="card-data__item">
-            <span class="card-data__label"></span>
-            <span class="card-data__value"></span>
-          </div>
-        </main>
-        <footer class="card-data__footer"></footer>
-      </article>`;
-  }
-
-  get #emptyTemplate() {
-    return `
-      <article class="card-state card-state__empty">
-        <img id="${this.#category}-${this.#type}-img" class="card-state-img">
-        <div class="card-state__text">
-        ${this.#buildEmptyCardsTexts()}
-        </div>
-      </article>
-    `;
-  }
-
-  get #errorTemplate() {
-    return `
-      <div class="card-state">
-        <img id="${this.#category}-${this.#type}-img" class="card-state__img">
-        <div class="card-state__text">
-          <p class="info-text">Oops! Something went wrong while trying to load the data. </p>
-          <p class="info-text">Please check your internet connection and try again later.</p>
-        </div>
-      </div>
-    `;
-  }
-
-  get type() {
-    return this.#type;
-  }
-
-  set type(value) {
-    this.#type = value;
   }
 
   get category() {
     return this.#category;
   }
 
+  set type(value) {
+    if (this.#type) this.#remove();
+    this.#type = value;
+    this.#renderState();
+  }
+
   defineTexts(...texts) {
-    this.#noCardsTexts = texts;
+    this.#emptyCardsTexts = texts;
+  }
+
+  #buildTemplate(content, className = "") {
+    return `
+      <article class="card-state ${className}">
+        ${content}
+      </article>
+    `;
+  }
+
+  #getLoadingTemplate() {
+    return this.#buildTemplate(`
+      <header class="card-data__header"></header>
+      <main class="card-data__content">
+        ${this.#buildLoadingItems(3)}
+      </main>
+      <footer class="card-data__footer"></footer>
+    `, "card-data loading");
+  }
+
+  #getEmptyTemplate() {
+    const imgId = `${this.#category}-${this.#type}-img`;
+    return this.#buildTemplate(`
+      <img id="${imgId}" class="card-state-img">
+      <div class="card-state__text">${this.#buildEmptyCardsTexts()}</div>
+    `, "card-state__empty");
+  }
+
+  #getErrorTemplate() {
+    const imgId = `${this.#category}-${this.#type}-img`;
+    return this.#buildTemplate(`
+      <img id="${imgId}" class="card-state__img">
+      <div class="card-state__text">
+        <p class="info-text">Oops! Something went wrong while trying to load the data.</p>
+        <p class="info-text">Please check your internet connection and try again later.</p>
+      </div>
+    `, "error");
+  }
+
+  #buildLoadingItems(count) {
+    return Array(count).fill(`
+      <div class="card-data__item">
+        <span class="card-data__label"></span>
+        <span class="card-data__value"></span>
+      </div>
+    `).join("");
   }
 
   #buildEmptyCardsTexts() {
-    const createTagP = (txt) => `<p class="info-text">${txt}</p>`;
-    return this.#noCardsTexts.map((txt) => createTagP(txt)).join("");
+    return this.#emptyCardsTexts.map(txt => `<p class="info-text">${txt}</p>`).join("");
   }
 
   #getTemplate() {
-    const mapTemplates = {
-      loading: this.#loandingTemplate,
-      empty: this.#emptyTemplate,
-      error: this.#errorTemplate,
+    const templates = {
+      loading: this.#getLoadingTemplate(),
+      empty: this.#getEmptyTemplate(),
+      error: this.#getErrorTemplate(),
     };
-    return mapTemplates[this.#type];
+    return templates[this.#type];
   }
 
   #randomImgFile() {
@@ -93,11 +90,9 @@ export class StateCardView {
   }
 
   #pathHandler() {
-    if (this.#type === "error" || this.#type === "empty") {
+    if (["error", "empty"].includes(this.#type)) {
       const imgFile = this.#randomImgFile();
-      console.log(imgFile);
-
-      PathManager.updateAsset(`#${this.category}-${this.type}-img`, imgFile);
+      PathManager.updateAsset(`#${this.#category}-${this.#type}-img`, imgFile);
     }
   }
 
@@ -105,11 +100,11 @@ export class StateCardView {
     this.#container.insertAdjacentHTML("beforeend", this.#getTemplate());
   }
 
-  remove() {
+  #remove() {
     this.#container.querySelector(".card-state").remove();
   }
 
-  init() {
+  #renderState() {
     this.#render();
     this.#pathHandler();
   }

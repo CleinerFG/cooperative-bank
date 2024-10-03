@@ -59,24 +59,19 @@ export class ComponentsCtrl {
 
   async #createComponents() {
     this.#StateCardView.type = "loading";
-    this.#StateCardView.init();
-    await simulateWait(10);
+    await simulateWait(3);
     try {
       const data = await this.#fetchFromApi();
       if (data.length) {
-        this.#StateCardView.remove();
+        this.#containerElement.innerHTML = "";
         data.forEach((params) => this.#addComponent(params));
         this.#componentsViews.forEach((view) => view.init());
       } else {
-        this.#StateCardView.remove();
         this.#StateCardView.type = "empty";
-        this.#StateCardView.init();
       }
     } catch (error) {
       // Implement: card server error.
       console.log("Server error:", error);
-    } finally {
-      // this.#StateCardView.remove();
     }
   }
 
