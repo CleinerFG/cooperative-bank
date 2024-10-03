@@ -16,7 +16,7 @@
 .card-state__label,
 .card-state__value,
 .card-state__footer {
-  height: 1.5rem;
+  height: 1.8rem;
   border-radius: var(--component-border-radius);
   background: linear-gradient(
     90deg,
@@ -85,7 +85,7 @@
   width: 50%;
 }
 
-@media screen and (max-width: 369px) {
+@media screen and (max-width: 375px) {
   .card-state__empty,
   .card-state__error {
     flex-direction: column-reverse;
@@ -93,8 +93,11 @@
   }
 
   .card-state__text {
-    margin-right: 0;
-    margin-bottom: 1rem;
+    margin: 0;
+  }
+
+  .card-state__text .info-text:last-child {
+    margin: 0;
   }
 
   .card-state__img {

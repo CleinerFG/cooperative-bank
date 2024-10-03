@@ -1,5 +1,3 @@
-// import { LoadingCardView } from "../views/LoadingCardView.js";
-// import { NoComponentsView } from "../views/NoComponentsView.js";
 import { simulateWait } from "../utils/tests.js";
 import { StateCardView } from "../views/StateCardView.js";
 export class ComponentsCtrl {
