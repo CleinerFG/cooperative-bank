@@ -361,14 +361,6 @@
       "installments": 12,
       "rate": 2,
       "status": 3
-    },
-    {
-      "id": "05c8",
-      "creditor": "1000",
-      "description": "TEST",
-      "value": "R$ 400,00",
-      "installments": "12",
-      "rate": "12,00 %"
     }
   ],
   "received-requests": [
@@ -377,9 +369,9 @@
       "date": "23/07/2024",
       "debtor": "Kate Denson",
       "description": "Buy a Cell",
-      "value": 4000,
+      "value": 42460.54,
       "installments": 12,
-      "rate": 2,
+      "rate": 2.3,
       "status": 1
     },
     {

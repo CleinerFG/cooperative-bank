@@ -63,6 +63,8 @@ export class ComponentsCtrl {
         this.#StateCardView.type = "empty";
       }
     } catch (error) {
+      console.log(error);
+      
       this.#StateCardView.type = "error";
     }
   }

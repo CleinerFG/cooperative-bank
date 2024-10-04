@@ -1,4 +1,4 @@
-import { monetaryValue, percentValue } from "../utils/formatters.js";
+import { numberToCurrency } from "../utils/formatters.js";
 
 export class TransactionModel {
   constructor(params) {
@@ -33,6 +33,6 @@ export class TransactionModel {
   }
 
   get value() {
-    return monetaryValue(this._value);
+    return numberToCurrency(this._value);
   }
 }

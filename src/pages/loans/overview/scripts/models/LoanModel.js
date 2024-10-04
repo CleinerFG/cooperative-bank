@@ -1,7 +1,7 @@
 import { TransactionModel } from "../../../../../js/models/TransactionModel.js";
 import {
-  monetaryValue,
-  percentValue,
+  numberToCurrency,
+  numberToPercent,
 } from "../../../../../js/utils/formatters.js";
 
 export class LoanModel extends TransactionModel {
@@ -33,7 +33,7 @@ export class LoanModel extends TransactionModel {
   }
 
   get amountDue() {
-    return monetaryValue(this._amountDue);
+    return numberToCurrency(this._amountDue);
   }
 
   get installments() {
@@ -41,11 +41,11 @@ export class LoanModel extends TransactionModel {
   }
 
   get rate() {
-    return percentValue(this._rate);
+    return numberToPercent(this._rate);
   }
 
   get installmentValue() {
-    return monetaryValue(this._installmentValue);
+    return numberToCurrency(this._installmentValue);
   }
 
   get remainingInstallments() {
@@ -53,6 +53,6 @@ export class LoanModel extends TransactionModel {
   }
 
   get totalLoanCost() {
-    return monetaryValue(this._installmentValue * this._installments);
+    return numberToCurrency(this._installmentValue * this._installments);
   }
 }

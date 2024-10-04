@@ -1,4 +1,4 @@
-import { monetaryValue } from "../../../../js/utils/formatters.js";
+import { numberToCurrency } from "../../../../js/utils/formatters.js";
 
 export class EventModel {
   static descType = {
@@ -29,6 +29,6 @@ export class EventModel {
   }
 
   get value() {
-    return monetaryValue(this.#value);
+    return numberToCurrency(this.#value);
   }
 }
