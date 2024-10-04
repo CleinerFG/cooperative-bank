@@ -1,4 +1,5 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { ApiService } from "../../service/ApiService.js";
 
 export class FormCtrl {
   #view;
@@ -15,21 +16,11 @@ export class FormCtrl {
     new AbstractMethodError("_formData");
   }
 
-  async #fetchToApi(data) {
-    const url = `http://localhost:3000/${this._endpoint}`
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-  }
-
   #submitHandler() {
-    this.#view.formElement.addEventListener("submit", (ev) => {
+    this.#view.formElement.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      this.#fetchToApi(this._formData);
+      const res = await ApiService.sendTo(this._endpoint, this._formData);
+      console.log(`Submit handler ${res}`);
     });
   }
 

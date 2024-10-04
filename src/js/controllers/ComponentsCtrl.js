@@ -1,5 +1,6 @@
 import { simulateWait } from "../utils/tests.js";
 import { StateCardView } from "../views/StateCardView.js";
+import { ApiService } from "../service/ApiService.js";
 export class ComponentsCtrl {
   #containerElement;
   #ComponentViewClass;
@@ -31,12 +32,6 @@ export class ComponentsCtrl {
     return this._category;
   }
 
-  async #fetchFromApi() {
-    const url = `http://localhost:3000/${this._endpoint}`;
-    const response = await fetch(url);
-    return await response.json();
-  }
-
   #initCardState() {
     this.#StateCardView = new StateCardView(
       this.containerElement,
@@ -59,7 +54,7 @@ export class ComponentsCtrl {
     this.#StateCardView.type = "loading";
     await simulateWait(0);
     try {
-      const data = await this.#fetchFromApi();
+      const data = await ApiService.fetchFrom(this._endpoint);
       if (data.length) {
         this.#containerElement.innerHTML = "";
         data.forEach((params) => this.#addComponent(params));

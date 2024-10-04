@@ -10,7 +10,7 @@ export class ApiService {
     return await ApiService.#fetchData(endpoint);
   }
 
-  static async postTo(endpoint, data) {
+  static async sendTo(endpoint, data) {
     return await ApiService.#fetchData(endpoint, {
       method: "POST",
       headers: {
