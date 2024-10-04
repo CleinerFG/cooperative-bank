@@ -15,7 +15,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
   }
 
   get _endpoint() {
-    new AbstractMethodError("http://localhost:3000/opened-requests");
+    return "opened-requests";
   }
 
   get _formData() {

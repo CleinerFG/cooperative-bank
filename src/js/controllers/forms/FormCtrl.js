@@ -16,7 +16,8 @@ export class FormCtrl {
   }
 
   async #fetchToApi(data) {
-    fetch("http://localhost:3000/opened-requests", {
+    const url = `http://localhost:3000/${this._endpoint}`
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
