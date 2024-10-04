@@ -1,4 +1,4 @@
-import { numberToCurrency } from "../utils/formatters.js";
+import { formatDate, numberToCurrency } from "../utils/formatters.js";
 
 export class TransactionModel {
   constructor(params) {
@@ -29,7 +29,7 @@ export class TransactionModel {
   }
 
   get date() {
-    return this._date;
+    return formatDate(this._date);
   }
 
   get value() {
