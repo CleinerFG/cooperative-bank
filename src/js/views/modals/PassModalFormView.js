@@ -4,8 +4,7 @@ export class PassModalFormView extends FormView {
   get _inputsParams() {
     return [
       {
-        id: "confirm-pass",
-        cssClass: "switch-visibility",
+        id: "transaction-password",
         category: "password",
         strictToNumber: true,
         ariaLabel: "Password",
@@ -15,7 +14,7 @@ export class PassModalFormView extends FormView {
 
   get _inputSubmitParams() {
     return {
-      id: "modal-confirm",
+      id: "transaction-confirm",
       cssClass: "modal-btn",
       labelText: "Confirm",
     };
