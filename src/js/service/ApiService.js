@@ -1,17 +1,17 @@
-class ApiService {
-  #BASE_URL = "http://localhost:3000/";
+export class ApiService {
+  static #BASE_URL = "http://localhost:3000/";
 
-  async #fetchData(endpoint, options = {}) {
-    const res = await fetch(`${this.#BASE_URL}${endpoint}`, options);
+  static async #fetchData(endpoint, options = {}) {
+    const res = await fetch(`${ApiService.#BASE_URL}${endpoint}`, options);
     return await res.json();
   }
 
-  async fetchFrom(endpoint) {
-    return await this.#fetchData(endpoint);
+  static async fetchFrom(endpoint) {
+    return await ApiService.#fetchData(endpoint);
   }
 
-  async postTo(endpoint, data) {
-    return await this.#fetchData(endpoint, {
+  static async postTo(endpoint, data) {
+    return await ApiService.#fetchData(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,8 +20,8 @@ class ApiService {
     });
   }
 
-  async updateTo(endpoint, data) {
-    return await this.#fetchData(endpoint, {
+  static async updateTo(endpoint, data) {
+    return await ApiService.#fetchData(endpoint, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -30,11 +30,9 @@ class ApiService {
     });
   }
 
-  async deleteFrom(endpoint) {
-    return await this.#fetchData(endpoint, {
+  static async deleteFrom(endpoint) {
+    return await ApiService.#fetchData(endpoint, {
       method: "DELETE",
     });
   }
 }
-
-export const ApiService = new ApiService();
