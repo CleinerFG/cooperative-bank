@@ -1,7 +1,9 @@
 import { TransactionModel } from "../../../../../js/models/TransactionModel.js";
 import {
+  currencyToNumber,
   numberToCurrency,
- numberToPercent,
+  numberToPercent,
+  percentToNumber,
 } from "../../../../../js/utils/formatters.js";
 
 export class LoanRequestModel extends TransactionModel {
@@ -43,10 +45,21 @@ export class LoanRequestModel extends TransactionModel {
   get installmentValue() {
     const rate = this._rate / 100;
     const value = this._value;
-    const installments = this._installments; 
+    const installments = this._installments;
     const installmentValue =
       value * (rate / (1 - Math.pow(1 + rate, -installments)));
 
     return numberToCurrency(installmentValue);
+  }
+
+  get dataToApi() {
+    return {
+      date: new Date(),
+      creditor: this._creditor,
+      description: this._description,
+      value: currencyToNumber(this._value),
+      installments: this._installments,
+      rate: percentToNumber(this._rate),
+    };
   }
 }

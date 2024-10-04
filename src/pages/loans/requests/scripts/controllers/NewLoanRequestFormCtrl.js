@@ -1,4 +1,5 @@
 import { FormCtrl } from "../../../../../js/controllers/forms/FormCtrl.js";
+import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { NewLoanRequestFormView } from "../views/NewLoanRequestFormView.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
@@ -19,12 +20,14 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
   }
 
   get _formData() {
-    const creditor = document.querySelector("#creditor").value;
-    const description = document.querySelector("#description").value;
-    const value = document.querySelector("#value").value;
-    const installments = document.querySelector("#installments").value;
-    const rate = document.querySelector("#rate").value;
-
-    return { creditor, description, value, installments, rate };
+    const params = {
+      creditor: document.querySelector("#creditor").value,
+      description: document.querySelector("#description").value,
+      value: document.querySelector("#value").value,
+      installments: document.querySelector("#installments").value,
+      rate: document.querySelector("#rate").value,
+    };
+    const model = new LoanRequestModel(params);
+    return model.dataToApi;
   }
 }
