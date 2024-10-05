@@ -1,17 +1,13 @@
 import { InputView } from "./InputView.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
 import { PathManager } from "../../utils/PathManager.js";
+import { ApiService } from "../../service/ApiService.js"
 
 export class LookupInpView extends InputView {
-  #dataList;
   #defaultDataItem;
 
-  set dataList(list) {
-    this.#dataList = list;
-  }
-
-  set defaultDataItem(item) {
-    this.#defaultDataItem = item;
+  set defaultDataItem(value) {
+    this.#defaultDataItem = value
   }
 
   get _inputResultElement() {
@@ -38,24 +34,22 @@ export class LookupInpView extends InputView {
       </div>`;
   }
 
-  #getDataWithId(dataId) {
-    const item = this.#dataList.find((item) => item.id === dataId);
-    if (item) return item;
-    throw new NoSuchItemError(this._id);
-  }
-
-  _performSearch() {
+  async _fetchFromApi() {
     const dataId = this._inputElement.value;
-    return this.#getDataWithId(Number(dataId));
+    try {
+      return await ApiService.fetchFrom(`users/${dataId}`);
+    } catch (error) {
+      throw new NoSuchItemError(this._id)
+    }
   }
 
   _updateResult(item) {
     this._inputResultElement.value = item ? item.name : "";
   }
 
-  _handleSearch() {
+  async _handleSearch() {
     try {
-      const item = this._performSearch();
+      const item = await this._fetchFromApi()
       this._updateResult(item);
       this._failMessageHandler("remove", "");
     } catch (error) {
@@ -64,9 +58,9 @@ export class LookupInpView extends InputView {
     }
   }
 
-  _handleLostFocus(ev) {
+  async _handleLostFocus(ev) {
     if (ev.key === "Enter" || ev.key === "Tab") {
-      this._handleSearch();
+      await this._handleSearch();
     }
   }
 

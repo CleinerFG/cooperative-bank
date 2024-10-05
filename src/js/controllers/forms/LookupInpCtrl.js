@@ -13,14 +13,7 @@ export class LookupInpCtrl extends InputCtrl {
     return LookupInpView;
   }
 
-  async _fetchFromApi() {
-    const response = await fetch("http://localhost:3000/users");
-    const users = await response.json();
-    this._view.dataList = users;
-  }
-
   _init() {
-    this._fetchFromApi();
     this._view.defaultDataItem = this.defaultDataItem;
     this._view.init();
   }
