@@ -20,7 +20,7 @@ export class InputView {
     },
   ];
   #formatterMethods = {
-    monetary: () => {
+    currency: () => {
       this._inputElement.addEventListener("input", (e) => {
         let value = e.target.value;
         value = (value / 100).toLocaleString("pt-BR", {
@@ -30,7 +30,7 @@ export class InputView {
         e.target.value = value;
       });
     },
-    percentage: () => {
+    percent: () => {
       this._inputElement.addEventListener("input", (e) => {
         let value = e.target.value;
         value = (parseFloat(value) / 100).toFixed(2).replace(".", ",");
