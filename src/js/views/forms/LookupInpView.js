@@ -1,6 +1,7 @@
 import { InputView } from "./InputView.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
 import { PathManager } from "../../utils/PathManager.js";
+import { simulateWait } from "../../utils/tests.js";
 
 export class LookupInpView extends InputView {
   #defaultDataItem;
@@ -22,6 +23,10 @@ export class LookupInpView extends InputView {
     return document.getElementById("search-icon");
   }
 
+  #inputResultSkelonHandler(method) {
+    this._inputResultElement.classList[method]("inp-skelon")
+  }
+
   _build() {
     const inputId = this._id;
     const resultId = `${this._id}-result`;
@@ -38,14 +43,22 @@ export class LookupInpView extends InputView {
       </div>`;
   }
 
+  async #executeSearch() {
+    const dataId = this._inputElement.value;
+    this.#inputResultSkelonHandler("add")
+    this._inputResultElement.value = "Searching..."
+    await simulateWait(3)
+    return await this.#fetchHandler(dataId);
+  }
+
   _updateResult(item) {
+    this.#inputResultSkelonHandler("remove")
     this._inputResultElement.value = item ? item.name : "";
   }
 
   async _handleSearch() {
     try {
-      const dataId = this._inputElement.value;
-      const item = await this.#fetchHandler(dataId);
+      const item = await this.#executeSearch();
       this._updateResult(item);
       this._failMessageHandler("remove", "");
     } catch (error) {

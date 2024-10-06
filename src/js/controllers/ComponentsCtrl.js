@@ -52,7 +52,7 @@ export class ComponentsCtrl {
 
   async #createComponents() {
     this.#StateCardView.type = "loading";
-    await simulateWait(0);
+    await simulateWait(3);
     try {
       const data = await ApiService.fetchFrom(this._endpoint);
       if (data.length) {

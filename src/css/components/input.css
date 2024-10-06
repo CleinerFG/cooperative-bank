@@ -28,6 +28,25 @@
   width: 7.5rem;
 }
 
+.inp-skelon {
+  background: linear-gradient(90deg,
+     transparent 0%,
+      var(--skeleton-middle) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: 0% 0;
+  }
+}
+
 input.btn {
   cursor: pointer;
 }
