@@ -1,13 +1,17 @@
 import { InputView } from "./InputView.js";
 import { NoSuchItemError } from "../../errors/InputValidationError.js";
 import { PathManager } from "../../utils/PathManager.js";
-import { ApiService } from "../../service/ApiService.js"
 
 export class LookupInpView extends InputView {
   #defaultDataItem;
+  #fetchHandler;
 
   set defaultDataItem(value) {
-    this.#defaultDataItem = value
+    this.#defaultDataItem = value;
+  }
+
+  set fetchHandler(handler) {
+    this.#fetchHandler = handler;
   }
 
   get _inputResultElement() {
@@ -34,22 +38,14 @@ export class LookupInpView extends InputView {
       </div>`;
   }
 
-  async _fetchFromApi() {
-    const dataId = this._inputElement.value;
-    try {
-      return await ApiService.fetchFrom(`users/${dataId}`);
-    } catch (error) {
-      throw new NoSuchItemError(this._id)
-    }
-  }
-
   _updateResult(item) {
     this._inputResultElement.value = item ? item.name : "";
   }
 
   async _handleSearch() {
     try {
-      const item = await this._fetchFromApi()
+      const dataId = this._inputElement.value;
+      const item = await this.#fetchHandler(dataId);
       this._updateResult(item);
       this._failMessageHandler("remove", "");
     } catch (error) {
