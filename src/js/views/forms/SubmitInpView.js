@@ -6,7 +6,7 @@ export class SubmitInpView extends InputView {
       <input id="${this._id}" class="btn btn-action ${this._cssClass}" type="submit" value="${this._labelText}">`;
   }
 
-  _settersHandler() {
-    super._settersHandler(["stringToNumber", "formatter", "validators"]);
+  _setupHandlers() {
+    super._setupHandlers(false);
   }
 }

@@ -44,16 +44,16 @@ export class InputView {
     return this._inputElement;
   }
 
+  get _inputElement() {
+    return document.getElementById(this._id);
+  }
+
   _build() {
     throw new AbstractMethodError("_build");
   }
 
   #render() {
     this.#container.insertAdjacentHTML("beforeend", this._build());
-  }
-
-  #setGetterDomElement() {
-    this._inputElement = document.getElementById(this._id);
   }
 
   #setStrictToNumber() {
@@ -69,10 +69,33 @@ export class InputView {
     this.#formatterMethods[this.#formatter]?.();
   }
 
+  #validationOnBlur() {
+    this._inputElement.addEventListener(
+      "blur",
+      this.executeValidators.bind(this)
+    );
+  }
+
   _failMessageHandler(method, errorMessage) {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
     this._inputElement.classList[method]("inp-error");
+  }
+
+  _addValidator(validator) {
+    this.#validators.push(validator);
+  }
+
+  _updateValidators() {
+    this.#validationOnBlur();
+  }
+
+  _setupHandlers(active = true) {
+    if (active) {
+      this.#setStrictToNumber();
+      this.#setFormatter();
+      this.#validationOnBlur();
+    }
   }
 
   executeValidators() {
@@ -85,36 +108,8 @@ export class InputView {
     }
   }
 
-  #validationOnBlur() {
-    this._inputElement.addEventListener(
-      "blur",
-      this.executeValidators.bind(this)
-    );
-  }
-
-  _addValidator(validator) {
-    this.#validators.push(validator);
-  }
-
-  _updateValidators() {
-    this.#validationOnBlur();
-  }
-
-  _settersHandler(keysToRemove) {
-    const setterMethods = {
-      getterDomElement: this.#setGetterDomElement.bind(this),
-      stringToNumber: this.#setStrictToNumber.bind(this),
-      formatter: this.#setFormatter.bind(this),
-      validators: this.#validationOnBlur.bind(this),
-    };
-    if (keysToRemove) keysToRemove.forEach((key) => delete setterMethods[key]);
-    for (const key in setterMethods) {
-      setterMethods[key]();
-    }
-  }
-
   init() {
     this.#render();
-    this._settersHandler();
+    this._setupHandlers();
   }
 }
