@@ -40,10 +40,6 @@ export class InputView {
     this._placeholder = params.placeholder ?? "";
   }
 
-  get inputElement() {
-    return this._inputElement;
-  }
-
   get _inputElement() {
     return document.getElementById(this._id);
   }
@@ -80,14 +76,6 @@ export class InputView {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
     this._inputElement.classList[method]("inp-error");
-  }
-
-  _addValidator(validator) {
-    this.#validators.push(validator);
-  }
-
-  _updateValidators() {
-    this.#validationOnBlur();
   }
 
   _setupHandlers(active = true) {
