@@ -1,24 +1,11 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import {
-  EmptyValueError,
-  ZeroValueError,
-} from "../../errors/InputValidationError.js";
+import { zeroValidator, emptyValidator } from "../../utils/validators.js";
 
 export class InputView {
   #container; // DOM element
   #strictToNumber; // Boolean
   #formatter; // String
-  #validators = [
-    (ev) => {
-      const value = ev.target.value;
-      if (value === "") throw new EmptyValueError(this._id);
-    },
-    (ev) => {
-      const value = ev.target.value;
-      const regex = /R\$\s0,00|0,00\s%|^0+$/;
-      if (regex.test(value)) throw new ZeroValueError(this._id);
-    },
-  ];
+  #validators = [emptyValidator, zeroValidator];
   #formatterMethods = {
     currency: () => {
       this._inputElement.addEventListener("input", (e) => {
@@ -90,8 +77,9 @@ export class InputView {
 
   #setValidators() {
     this._inputElement.addEventListener("blur", (ev) => {
+      const value = ev.target.value;
       try {
-        this.#validators.forEach((validator) => validator(ev));
+        this.#validators.forEach((validator) => validator(value));
         this._failMessageHandler("remove", "");
       } catch (error) {
         this._failMessageHandler("add", error.message);

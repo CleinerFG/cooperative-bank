@@ -2,7 +2,7 @@ import { InputView } from "./InputView.js";
 import {
   EmptyValueError,
   ZeroValueError,
-} from "../../errors/InputValidationError.js";
+} from "../../errors/InputErrors.js";
 import { PathManager } from "../../utils/PathManager.js";
 import { simulateWait } from "../../utils/tests.js";
 

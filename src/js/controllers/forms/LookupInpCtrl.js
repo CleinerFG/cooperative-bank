@@ -1,7 +1,7 @@
 import { LookupInpView } from "../../views/forms/LookupInpView.js";
 import { InputCtrl } from "./InputCtrl.js";
 import { ApiService } from "../../service/ApiService.js";
-import { NoSuchItemError } from "../../errors/InputValidationError.js";
+import { NotFoundError } from "../../errors/InputErrors.js";
 
 export class LookupInpCtrl extends InputCtrl {
   get defaultDataItem() {
@@ -19,7 +19,7 @@ export class LookupInpCtrl extends InputCtrl {
     try {
       return await ApiService.fetchFrom(`users/${id}`);
     } catch (error) {
-      throw new NoSuchItemError(this._view._id);
+      throw new NotFoundError(this._view._id);
     }
   }
 
