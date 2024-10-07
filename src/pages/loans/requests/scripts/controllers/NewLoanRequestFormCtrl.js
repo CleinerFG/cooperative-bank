@@ -21,7 +21,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
 
   get _formData() {
     const params = {
-      creditor: document.querySelector("#creditor").value,
+      creditor: creditorInp.value,
       description: document.querySelector("#description").value,
       value: document.querySelector("#value").value,
       installments: document.querySelector("#installments").value,
