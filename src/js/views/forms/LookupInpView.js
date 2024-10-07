@@ -1,5 +1,8 @@
 import { InputView } from "./InputView.js";
-import { EmptyValueError, ZeroValueError } from "../../errors/InputValidationError.js";
+import {
+  EmptyValueError,
+  ZeroValueError,
+} from "../../errors/InputValidationError.js";
 import { PathManager } from "../../utils/PathManager.js";
 import { simulateWait } from "../../utils/tests.js";
 
@@ -23,8 +26,10 @@ export class LookupInpView extends InputView {
     return document.getElementById("search-icon");
   }
 
-  #inputResultSkelonHandler(method) {
-    this._inputResultElement.classList[method]("inp-skelon")
+  #searchStateHandler(method) {
+    this._inputResultElement.classList[method]("inp-skelon");
+    this._searchElement.classList[method]("search-animation");
+    if (method === "add") this._inputResultElement.value = "Searching...";
   }
 
   _build() {
@@ -47,14 +52,13 @@ export class LookupInpView extends InputView {
     const dataId = this._inputElement.value;
     if (dataId === "") throw new EmptyValueError(this._id);
     if (dataId === "0") throw new ZeroValueError(this._id);
-    this.#inputResultSkelonHandler("add")
-    this._inputResultElement.value = "Searching..."
-    await simulateWait(3)
+    this.#searchStateHandler("add");
+    await simulateWait(3);
     return await this.#fetchHandler(dataId);
   }
 
   _updateResult(item) {
-    this.#inputResultSkelonHandler("remove")
+    this.#searchStateHandler("remove");
     this._inputResultElement.value = item ? item.name : "";
   }
 
