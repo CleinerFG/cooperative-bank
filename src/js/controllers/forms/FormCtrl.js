@@ -16,6 +16,10 @@ export class FormCtrl {
     new AbstractMethodError("_formData");
   }
 
+  _validateInputs() {
+
+  }
+
   #submitHandler() {
     this.#view.formElement.addEventListener("submit", async (ev) => {
       ev.preventDefault(); 
@@ -24,7 +28,7 @@ export class FormCtrl {
         const res = await ApiService.sendTo(this._endpoint, dataToApi);
         console.log(`Server return: ${res}`);
       } catch (err) {
-        this.#view.validate();
+        // this.#view.validate();
       }
     });
   }

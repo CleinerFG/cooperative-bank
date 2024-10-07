@@ -5,12 +5,9 @@ import {
   numberToPercent,
   percentToNumber,
 } from "../../../../../js/utils/formatters.js";
-import {
-  emptyValidator,
-  zeroValidator,
-} from "../../../../../js/utils/validators.js";
 
 export class LoanRequestModel extends TransactionModel {
+  #errors = {};
   static descTypes = {
     1: "opened",
     2: "received",
@@ -69,15 +66,15 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   #validateData() {
-    const val = (attr) => {
-      emptyValidator(attr);
-      zeroValidator(attr);
-    };
+    // const val = (attr) => {
+    //   emptyValidator(attr);
+    //   zeroValidator(attr);
+    // };
 
-    val(this._creditor);
-    val(this._description);
-    val(this._value);
-    val(this._installments);
-    val(this._rate);
+    // val(this._creditor);
+    // val(this._description);
+    // val(this._value);
+    // val(this._installments);
+    // val(this._rate);
   }
 }

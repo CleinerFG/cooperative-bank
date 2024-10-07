@@ -22,10 +22,6 @@ export class LookupInpView extends InputView {
     return document.getElementById("search-icon");
   }
 
-  #setDataValid(bool) {
-    this._inputElement.dataset.valid = bool;
-  }
-
   #toggleSearchState(action) {
     this._inputResultElement.classList[action]("inp-skelon");
     this._searchElement.classList[action]("search-animation");
@@ -52,7 +48,7 @@ export class LookupInpView extends InputView {
       <div class="form-group__inp-group">
         <label for="${inputId}" class="label form-group__label">${this._labelText}</label>
         <div class="inp__container">
-          <input id="${inputId}" type="text" data-valid="true" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="inp form-group__inp inp__lookup ${this._cssClass}">
+          <input id="${inputId}" type="text" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="inp form-group__inp inp__lookup ${this._cssClass}" data-valid="true">
           <button type="button" class="btn-unset"><img class="icon" id="search-icon" alt="Search Icon"></button>
           <input id="${resultId}" type="text" class="inp form-group__inp" disabled>
         </div>
@@ -65,15 +61,15 @@ export class LookupInpView extends InputView {
       const item = await this.#fetchSearchResults();
       if (item) {
         this._updateResult(item);
-        this.#setDataValid(true);
+        this._setDataValid(true);
         this._failMessageHandler("remove", "");
       } else {
         this._updateResult(null);
-        this.#setDataValid(false);
+        this._setDataValid(false);
       }
     } catch (error) {
       this._updateResult(null);
-      this.#setDataValid(false);
+      this._setDataValid(false);
       this._failMessageHandler("add", error.message);
     }
   }
@@ -105,7 +101,10 @@ export class LookupInpView extends InputView {
       "keydown",
       this._handleLostFocus.bind(this)
     );
-    this._inputElement.addEventListener("change", this._handleSearch.bind(this));
+    this._inputElement.addEventListener(
+      "change",
+      this._handleSearch.bind(this)
+    );
   }
 
   _defineIconPath() {

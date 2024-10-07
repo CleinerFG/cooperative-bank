@@ -1,4 +1,5 @@
 import { FormCtrl } from "../../../../../js/controllers/forms/FormCtrl.js";
+import { InvalidDataError } from "../../../../../js/errors/InvalidDataError.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { NewLoanRequestFormView } from "../views/NewLoanRequestFormView.js";
 
@@ -20,13 +21,23 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
   }
 
   get _formData() {
-    const params = {
-      creditor: creditorInp.value,
-      description: document.querySelector("#description").value,
-      value: document.querySelector("#value").value,
-      installments: document.querySelector("#installments").value,
-      rate: document.querySelector("#rate").value,
-    };
+    const fields = document.querySelectorAll(
+      "#creditor, #description, #value, #installments, #rate"
+    );
+
+    const isValid = Array.from(fields).every(
+      (field) => field.dataset.valid === "true"
+    );
+
+    if (!isValid) {
+      throw new InvalidDataError();
+    }
+    
+    const params = {};
+    fields.forEach((field) => {
+      params[field.id] = field.value;
+    });
+
     const model = new LoanRequestModel(params);
     return model.dataToApi;
   }

@@ -72,6 +72,10 @@ export class InputView {
     );
   }
 
+  _setDataValid(bool) {
+    this._inputElement.dataset.valid = bool;
+  }
+
   _failMessageHandler(method, errorMessage) {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
@@ -90,8 +94,10 @@ export class InputView {
     const value = this._inputElement.value;
     try {
       this.#validators.forEach((validator) => validator(value));
+      this._setDataValid("true");
       this._failMessageHandler("remove", "");
     } catch (error) {
+      this._setDataValid("false");
       this._failMessageHandler("add", error.message);
     }
   }
