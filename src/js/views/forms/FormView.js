@@ -38,10 +38,6 @@ export class FormView {
     throw new AbstractMethodError("_inputSubmitData");
   }
 
-  get inputControllers() {
-    return this.#inputCtrls;
-  }
-
   get inputSubmitView() {
     return this.#inputSubmitView;
   }
@@ -108,6 +104,10 @@ export class FormView {
         }
       }
     });
+  }
+
+  validate() {
+    this.#inputCtrls.forEach((ctrl) => ctrl.executeValidators());
   }
 
   init() {

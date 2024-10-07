@@ -18,9 +18,14 @@ export class FormCtrl {
 
   #submitHandler() {
     this.#view.formElement.addEventListener("submit", async (ev) => {
-      ev.preventDefault();
-      const res = await ApiService.sendTo(this._endpoint, this._formData);
-      console.log(`Submit handler ${res}`);
+      ev.preventDefault(); 
+      try {
+        const dataToApi = this._formData;
+        const res = await ApiService.sendTo(this._endpoint, dataToApi);
+        console.log(`Server return: ${res}`);
+      } catch (err) {
+        this.#view.validate();
+      }
     });
   }
 

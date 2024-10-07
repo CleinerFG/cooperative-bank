@@ -75,16 +75,21 @@ export class InputView {
     this._inputElement.classList[method]("inp-error");
   }
 
-  #setValidators() {
-    this._inputElement.addEventListener("blur", (ev) => {
-      const value = ev.target.value;
-      try {
-        this.#validators.forEach((validator) => validator(value));
-        this._failMessageHandler("remove", "");
-      } catch (error) {
-        this._failMessageHandler("add", error.message);
-      }
-    });
+  executeValidators() {
+    const value = this._inputElement.value;
+    try {
+      this.#validators.forEach((validator) => validator(value));
+      this._failMessageHandler("remove", "");
+    } catch (error) {
+      this._failMessageHandler("add", error.message);
+    }
+  }
+
+  #validationOnBlur() {
+    this._inputElement.addEventListener(
+      "blur",
+      this.executeValidators.bind(this)
+    );
   }
 
   _addValidator(validator) {
@@ -92,7 +97,7 @@ export class InputView {
   }
 
   _updateValidators() {
-    this.#setValidators();
+    this.#validationOnBlur();
   }
 
   _settersHandler(keysToRemove) {
@@ -100,7 +105,7 @@ export class InputView {
       getterDomElement: this.#setGetterDomElement.bind(this),
       stringToNumber: this.#setStrictToNumber.bind(this),
       formatter: this.#setFormatter.bind(this),
-      validators: this.#setValidators.bind(this),
+      validators: this.#validationOnBlur.bind(this),
     };
     if (keysToRemove) keysToRemove.forEach((key) => delete setterMethods[key]);
     for (const key in setterMethods) {
