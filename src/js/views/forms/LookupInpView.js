@@ -1,5 +1,5 @@
 import { InputView } from "./InputView.js";
-import { NoSuchItemError } from "../../errors/InputValidationError.js";
+import { EmptyValueError, ZeroValueError } from "../../errors/InputValidationError.js";
 import { PathManager } from "../../utils/PathManager.js";
 import { simulateWait } from "../../utils/tests.js";
 
@@ -45,6 +45,8 @@ export class LookupInpView extends InputView {
 
   async #executeSearch() {
     const dataId = this._inputElement.value;
+    if (dataId === "") throw new EmptyValueError(this._id);
+    if (dataId === "0") throw new ZeroValueError(this._id);
     this.#inputResultSkelonHandler("add")
     this._inputResultElement.value = "Searching..."
     await simulateWait(3)
@@ -89,15 +91,6 @@ export class LookupInpView extends InputView {
     );
   }
 
-  _validationHandler() {
-    this._addValidator(() => {
-      if (this._inputResultElement.value === "") {
-        throw new NoSuchItemError(this._id);
-      }
-    });
-    this._updateValidators();
-  }
-
   _defineIconPath() {
     PathManager.updateIcon("#search-icon", "icon-search.svg");
   }
@@ -106,7 +99,6 @@ export class LookupInpView extends InputView {
     super.init();
     this._setDefaultItem();
     this._setListeners();
-    this._validationHandler();
     this._defineIconPath();
   }
 }
