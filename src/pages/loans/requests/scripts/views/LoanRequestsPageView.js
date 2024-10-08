@@ -25,7 +25,7 @@ export class LoanRequestsPageView extends PageView {
     return `
     <section class="section open-requests">
       <h2 class="section__h2">Opened Requests</h2>
-      <div class="cards open-requests__cards">
+      <div class="cards opened-requests__cards">
       </div>
     </section>
     `;
