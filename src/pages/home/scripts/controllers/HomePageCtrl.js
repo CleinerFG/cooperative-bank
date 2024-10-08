@@ -9,7 +9,7 @@ export class HomePageCtrl extends PageCtrl {
     super(HomePageView);
   }
   
-  _setupControllers() {
+  _initControllers() {
     new StatementCtrl();
     new ActionCardsCtrl();
     new EventGroupCtrl();

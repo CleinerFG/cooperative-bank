@@ -8,13 +8,13 @@ export class PageCtrl {
     this.#init();
   }
 
-  _setupControllers() {
-    throw new AbstractMethodError("_setupControllers");
+  _initControllers() {
+    throw new AbstractMethodError("_initControllers");
   }
 
   #init() {
     new this.#PageView();
-    this._setupControllers();
+    this._initControllers();
     new LayoutCtrl();
   }
 }

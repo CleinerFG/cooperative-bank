@@ -9,7 +9,7 @@ export class LoanRequestsPageCtrl extends PageCtrl {
     super(LoanRequestsPageView);
   }
 
-  _setupControllers(){
+  _initControllers(){
     new NewLoanRequestFormCtrl();
     new OpenedRequestsCtrl();
     new ReceivedRequestsCtrl()

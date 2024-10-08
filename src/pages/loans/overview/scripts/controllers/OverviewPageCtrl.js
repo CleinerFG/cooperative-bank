@@ -8,7 +8,7 @@ export class OverviewPageCtrl extends PageCtrl {
     super(OverviewPageView);
   }
 
-  _setupControllers() {
+  _initControllers() {
     new LoanPaybleGroupCtrl();
     new LoanReceivableGroupCtrl();
   }
