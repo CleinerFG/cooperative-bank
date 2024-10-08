@@ -1,4 +1,4 @@
-import { ThemeView } from "../../js/views/layout/ThemeView.js";
+import { Theme } from "../../js/components/layout/Theme.js";
 
 export class PathManager {
   static #assetsPaths = {
@@ -25,7 +25,7 @@ export class PathManager {
 
   static updateIcon(selector, filename) {
     const element = PathManager.getElement(selector);
-    const theme = ThemeView.getStoredTheme();
+    const theme = Theme.getStoredTheme();
     element.setAttribute(
       "src",
       PathManager.#assetsPaths[`icons${theme}`] + filename

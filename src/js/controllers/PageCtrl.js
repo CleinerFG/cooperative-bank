@@ -2,9 +2,9 @@ import { AbstractMethodError } from "../errors/AbstractMethodError.js"
 import { LayoutCtrl } from "./LayoutCtrl.js";
 
 export class PageCtrl {
-  #pageView;
-  constructor(pageView) {
-    this.#pageView = pageView;
+  #PageView;
+  constructor(PageView) {
+    this.#PageView = PageView;
     this.#init();
   }
 
@@ -12,16 +12,9 @@ export class PageCtrl {
     throw new AbstractMethodError("_initControllers");
   }
 
-  #initPageView() {
-    new this.#pageView();
-  }
-
   #init() {
-    this.#initPageView();
+    new this.#PageView();
     this._initControllers();
     new LayoutCtrl();
   }
 }
-
-
-// Update init page view without a method, init on constructor, #init more clean

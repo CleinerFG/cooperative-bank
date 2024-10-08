@@ -1,31 +1,39 @@
 import { LayoutCtrl } from "../../controllers/LayoutCtrl.js";
 
-export class ThemeView {
+export class Theme {
   static THEME_KEY = "coperativeBankTheme";
-
-  #body = document.body;
+  #bodyElement = document.body;
 
   constructor() {
-    this.init();
+    this.#init();
   }
 
+  // Delete old method, before update to getter
   static getStoredTheme() {
-    return localStorage.getItem(ThemeView.THEME_KEY) ?? "dark";
+    return localStorage.getItem(Theme.THEME_KEY) ?? "dark";
+  }
+
+  static get storedTheme() {
+    return localStorage.getItem(Theme.THEME_KEY) ?? "dark";
+  }
+
+  set #storedTheme(value) {
+    localStorage.setItem(Theme.THEME_KEY, value);
   }
 
   get #bodyTheme() {
-    return this.#body.dataset.theme;
+    return this.#bodyElement.dataset.theme;
   }
 
   set #bodyTheme(value) {
-    this.#body.dataset.theme = value;
+    this.#bodyElement.dataset.theme = value;
   }
 
   #updateAssets(theme) {
     const icons = document.querySelectorAll(".icon");
     icons.forEach((icon) => {
       const path = icon.src;
-      const newPath = LayoutCtrl.buildAssetPathStr(path, theme);
+      const newPath = LayoutCtrl.buildIconPath(path, theme);
       icon.src = newPath;
     });
   }
@@ -34,21 +42,21 @@ export class ThemeView {
     const currentTheme = this.#bodyTheme;
     const updatedTheme = currentTheme === "dark" ? "light" : "dark";
     this.#bodyTheme = updatedTheme;
-    localStorage.setItem(ThemeView.THEME_KEY, updatedTheme);
+    this.#storedTheme = updatedTheme
     this.#updateAssets(updatedTheme);
   }
 
   #applyStoredTheme() {
-    this.#bodyTheme = ThemeView.getStoredTheme();
+    this.#bodyTheme = Theme.getStoredTheme();
   }
 
   #btnHandler() {
     document
-      .getElementById("switch-theme-button")
+      .getElementById("switch-theme-btn")
       .addEventListener("click", () => this.#toggleTheme());
   }
 
-  init() {
+  #init() {
     this.#applyStoredTheme();
     this.#btnHandler();
   }

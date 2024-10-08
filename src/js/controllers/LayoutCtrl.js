@@ -1,13 +1,13 @@
-import { HeaderView } from "../views/layout/HeaderView.js";
-import { FooterView } from "../views/layout/FooterView.js";
-import { ThemeView } from "../views/layout/ThemeView.js";
+import { Header } from "../components/layout/Header.js";
+import { Footer } from "../components/layout/Footer.js";
+import { Theme } from "../components/layout/Theme.js";
 
 export class LayoutCtrl {
   constructor() {
     this.#init();
   }
 
-  static buildAssetPathStr(path, theme) {
+  static buildIconPath(path, theme) {
     const basePath = "/src/assets/icons/";
     const iconPattern = /\/([^\/]+)\.svg$/;
 
@@ -18,8 +18,8 @@ export class LayoutCtrl {
   }
 
   #init() {
-    new HeaderView();
-    new FooterView();
-    new ThemeView();
+    new Header();
+    new Footer();
+    new Theme();
   }
 }

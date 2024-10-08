@@ -1,8 +1,8 @@
-import { LayoutView } from "./LayoutView.js";
+import { Layout } from "./Layout.js";
 import { PathManager } from "../../utils/PathManager.js";
 
-export class HeaderView extends LayoutView {
-  get _htmlStr() {
+export class Header extends Layout {
+  get _template() {
     return `  
     <header id="header" class="header">
       <a class="header__brand-name" rel="home">Coperative Bank</a>
@@ -13,7 +13,7 @@ export class HeaderView extends LayoutView {
         <ul class="header__menu-list">
           <li class="header__menu-item"><a class="header__menu-link">My Account</a></li>
           <li class="header__menu-item">
-            <button class="btn-unset  header__theme-button" id="switch-theme-button" aria-label="Switch Theme">
+            <button class="btn-unset  header__theme-button" id="switch-theme-btn" aria-label="Switch Theme">
               <span>Switch Theme</span>
               <img class="icon header__theme-icon" id="theme-icon" alt="Theme Mode Icon">
             </button>
@@ -46,8 +46,8 @@ export class HeaderView extends LayoutView {
     window.addEventListener("click", closeMenuOnClickOutside);
   }
 
-  _render() {
-    this._body.insertAdjacentHTML("afterbegin", this._htmlStr);
+  _render(){
+    super._render("afterbegin")
   }
 
   _pathHandler() {
@@ -56,7 +56,7 @@ export class HeaderView extends LayoutView {
     PathManager.updateHtml(".header__brand-name", "home", "index.html");
   }
 
-  _initListeners() {
+  _setupListeners() {
     this._menuHandler();
   }
 }

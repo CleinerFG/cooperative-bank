@@ -1,8 +1,8 @@
-import { LayoutView } from "./LayoutView.js";
+import { Layout } from "./Layout.js";
 import { PathManager } from "../../utils/PathManager.js";
 
-export class FooterView extends LayoutView {
-  get _htmlStr() {
+export class Footer extends Layout {
+  get _template() {
     return `  
       <footer id="footer" class="footer" aria-label="Footer">
       <a class="footer__icon-link">
@@ -15,8 +15,8 @@ export class FooterView extends LayoutView {
       </footer>`;
   }
 
-  _render() {
-    this._body.insertAdjacentHTML("beforeend", this._htmlStr);
+  _render(){
+    super._render("beforeend")
   }
 
   _pathHandler() {
@@ -25,7 +25,7 @@ export class FooterView extends LayoutView {
     PathManager.updateHtml(".footer__icon-link", "home", "index.html");
   }
 
-  _initListeners() {
+  _setupListeners() {
     return false;
   }
 }
