@@ -1,4 +1,4 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError";
+import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 import { StateCardView } from "../views/StateCardView.js";
 import { ApiService } from "../service/ApiService.js";
 import { simulateWait } from "../utils/tests.js";

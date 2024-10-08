@@ -11,12 +11,12 @@ export class ComponentCtrl {
     this.#init();
   }
 
-  get _ViewClass() {
-    throw new AbstractMethodError("_ViewClass");
-  }
-
   get _ModelClass() {
     throw new AbstractMethodError("_ModelClass");
+  }
+
+  get _ViewClass() {
+    throw new AbstractMethodError("_ViewClass");
   }
 
   get _containerElement() {
