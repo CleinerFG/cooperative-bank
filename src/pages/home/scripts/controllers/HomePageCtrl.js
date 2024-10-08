@@ -2,7 +2,6 @@ import { PageCtrl } from "../../../../js/controllers/PageCtrl.js";
 import { HomePageView } from "../views/HomePageView.js";
 import { StatementCtrl } from "../controllers/StatementCtrl.js";
 import { ActionCardsCtrl } from "../controllers/ActionCardsCtrl.js";
-// import { EventsCtrl } from "./EventsCtrl.js";
 import { EventGroupCtrl } from "./EventGroupCtrl.js";
 
 export class HomePageCtrl extends PageCtrl {
@@ -13,7 +12,6 @@ export class HomePageCtrl extends PageCtrl {
   _setupControllers() {
     new StatementCtrl();
     new ActionCardsCtrl();
-    // new EventsCtrl();
     new EventGroupCtrl();
   }
 }

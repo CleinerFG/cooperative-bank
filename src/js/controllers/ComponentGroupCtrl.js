@@ -45,7 +45,7 @@ export class ComponentGroupCtrl {
 
   async #fetchFromApi() {
     this.#StateCardView.type = "loading";
-    await simulateWait(2);
+    await simulateWait(0);
     this.#apiData = await ApiService.fetchFrom(this._endpoint);
   }
 
@@ -54,7 +54,7 @@ export class ComponentGroupCtrl {
       await this.#fetchFromApi();
       if (this.#apiData.length) {
         this.#containerElement.innerHTML = "";
-        this.#initControllers();
+        this.#initControllers();  
       } else {
         this.#StateCardView.type = "empty";
       }
