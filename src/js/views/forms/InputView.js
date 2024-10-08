@@ -65,10 +65,22 @@ export class InputView {
     this.#formatterMethods[this.#formatter]?.();
   }
 
+  #executeValidators() {
+    const value = this._inputElement.value;
+    try {
+      this.#validators.forEach((validator) => validator(value));
+      this._setDataValid("true");
+      this._failMessageHandler("remove", "");
+    } catch (error) {
+      this._setDataValid("false");
+      this._failMessageHandler("add", error.message);
+    }
+  }
+
   #validationOnBlur() {
     this._inputElement.addEventListener(
       "blur",
-      this.executeValidators.bind(this)
+      this.#executeValidators.bind(this)
     );
   }
 
@@ -87,18 +99,6 @@ export class InputView {
       this.#setStrictToNumber();
       this.#setFormatter();
       this.#validationOnBlur();
-    }
-  }
-
-  executeValidators() {
-    const value = this._inputElement.value;
-    try {
-      this.#validators.forEach((validator) => validator(value));
-      this._setDataValid("true");
-      this._failMessageHandler("remove", "");
-    } catch (error) {
-      this._setDataValid("false");
-      this._failMessageHandler("add", error.message);
     }
   }
 

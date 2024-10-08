@@ -10,10 +10,6 @@ export class InputCtrl {
     return DefaultInpView;
   }
 
-  executeValidators() {
-    this._view.executeValidators();
-  }
-
   _init() {
     this._view.init();
   }

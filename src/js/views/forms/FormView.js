@@ -106,10 +106,6 @@ export class FormView {
     });
   }
 
-  validate() {
-    this.#inputCtrls.forEach((ctrl) => ctrl.executeValidators());
-  }
-
   init() {
     this.#build();
     this.#render();
