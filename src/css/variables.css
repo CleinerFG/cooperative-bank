@@ -2,25 +2,12 @@
 
 :root {
   --container-padding: 0.8rem;
-  --color-primary: hsl(220, 41%, 25%);
-  --color-primary-hover: hsl(220, 41%, 30%);
-  --color-accent: hsl(174, 90%, 40%);
-  --color-accent-hover: hsl(174, 90%, 38%);
-  --color-accent-translucent: hsla(174, 90%, 40%, 0.3);
-  --color-secondary: hsl(169, 96%, 38%);
   --color-off-white: #fbfcf8;
-  --color-detail: #f28157;
-  --color-cta: hsl(5, 43%, 50%);
-  --color-cta-hover: hsl(5, 43%, 46%);
-  --color-text: hsl(220, 41%, 25%);
-  --color-background: hsl(45, 29%, 97%);
   --box-shadow-default: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
   --box-shadow: 0.1rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   --header-height: 3.5rem;
 
-  --component-border-color: #ccc;
   --component-border-radius: 0.5rem;
-  --component-bg-color: #fbfcf8;
   --component-color-success: hsl(120, 100%, 35%);
   --component-color-success-hover: hsl(120, 100%, 32%);
   --component-color-attention: hsl(51, 100%, 35%);
@@ -31,13 +18,30 @@
 
   --card-state-box-shadow: -0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
 
-  --skeleton-start: rgba(0, 0, 0, 0.3);
-  --skeleton-middle: rgba(0, 0, 0, 0.1);
-  --skeleton-end: rgba(0, 0, 0, 0.3);
-
   --text-font-family: "Roboto Condensed", sans-serif;
   --title-font-family: "Roboto Slab", serif;
   --info-font-family: "Open Sans", sans-serif;
+}
+
+[data-theme="light"] {
+  --color-primary: hsl(220, 41%, 25%);
+  --color-primary-hover: hsl(220, 41%, 30%);
+  --color-accent: hsl(174, 90%, 40%);
+  --color-accent-hover: hsl(174, 90%, 38%);
+  --color-accent-translucent: hsla(174, 90%, 40%, 0.3);
+  --color-secondary: hsl(169, 96%, 38%);
+  --color-detail: #f28157;
+  --color-cta: hsl(5, 43%, 50%);
+  --color-cta-hover: hsl(5, 43%, 46%);
+  --color-text: hsl(220, 41%, 25%);
+  --color-background: hsl(45, 29%, 97%);
+
+  --component-border-color: #ccc;
+  --component-bg-color: #fbfcf8;
+
+  --skeleton-start: rgba(0, 0, 0, 0.3);
+  --skeleton-middle: rgba(0, 0, 0, 0.1);
+  --skeleton-end: rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] {
