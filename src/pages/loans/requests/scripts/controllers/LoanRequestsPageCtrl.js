@@ -9,21 +9,9 @@ export class LoanRequestsPageCtrl extends PageCtrl {
     super(LoanRequestsPageView);
   }
 
-  _initFormCtrl() {
+  _setupControllers(){
     new NewLoanRequestFormCtrl();
-  }
-
-  _initOpenedRequestsCtrl() {
     new OpenedRequestsCtrl();
-  }
-
-  _initReceivedRequestsCtrl() {
     new ReceivedRequestsCtrl()
-  }
-
-  _initControllers() {
-    this._initFormCtrl();
-    this._initOpenedRequestsCtrl();
-    this._initReceivedRequestsCtrl();
   }
 }

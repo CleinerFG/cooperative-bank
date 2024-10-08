@@ -1,23 +1,25 @@
 import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 
 export class PageView {
-  #body;
+  #bodyElement = document.body;
   constructor() {
-    this.#body = document.body;
     this.#init();
   }
 
-  #render() {
-    const main = `
-    <main class="main">
-    ${this._pageContent()}
-    </main>
+  get #template() {
+    return `
+      <main class="main">
+      ${this._pageContent()}
+      </main>
     `;
-    this.#body.insertAdjacentHTML("beforeend", main);
   }
 
   _pageContent() {
     throw new AbstractMethodError("_pageContent");
+  }
+
+  #render() {
+    this.#bodyElement.insertAdjacentHTML("beforeend", this.#template);
   }
 
   #init() {

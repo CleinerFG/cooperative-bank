@@ -8,16 +8,8 @@ export class OverviewPageCtrl extends PageCtrl {
     super(OverviewPageView);
   }
 
-  _initLoansReceivablesCtrl() {
-    new LoansReceivablesCtrl();
-  }
-
-  _initLoansPayablesCtrl() {
+  _setupControllers() {
     new LoansPayablesCtrl();
-  }
-
-  _initControllers() {
-    this._initLoansReceivablesCtrl();
-    this._initLoansPayablesCtrl();
+    new LoansReceivablesCtrl();
   }
 }

@@ -1,4 +1,4 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError.js"
+import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 import { LayoutCtrl } from "./LayoutCtrl.js";
 
 export class PageCtrl {
@@ -8,13 +8,13 @@ export class PageCtrl {
     this.#init();
   }
 
-  _initControllers() {
-    throw new AbstractMethodError("_initControllers");
+  _setupControllers() {
+    throw new AbstractMethodError("_setupControllers");
   }
 
   #init() {
     new this.#PageView();
-    this._initControllers();
+    this._setupControllers();
     new LayoutCtrl();
   }
 }
