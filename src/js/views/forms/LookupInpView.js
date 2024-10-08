@@ -61,15 +61,15 @@ export class LookupInpView extends InputView {
       const item = await this.#fetchSearchResults();
       if (item) {
         this._updateResult(item);
-        this._setDataValid(true);
+        this._dataValid = "true";
         this._failMessageHandler("remove", "");
       } else {
         this._updateResult(null);
-        this._setDataValid(false);
+        this._dataValid = "false";
       }
     } catch (error) {
       this._updateResult(null);
-      this._setDataValid(false);
+      this._dataValid = "false";
       this._failMessageHandler("add", error.message);
     }
   }
@@ -77,12 +77,6 @@ export class LookupInpView extends InputView {
   _updateResult(item) {
     this.#toggleSearchState("remove");
     this._inputResultElement.value = item ? item.name : "";
-  }
-
-  async _handleLostFocus(ev) {
-    if (ev.key === "Enter" || ev.key === "Tab") {
-      await this._handleSearch();
-    }
   }
 
   _setDefaultItem() {
@@ -96,10 +90,6 @@ export class LookupInpView extends InputView {
     this._searchElement.addEventListener(
       "click",
       this._handleSearch.bind(this)
-    );
-    this._inputElement.addEventListener(
-      "keydown",
-      this._handleLostFocus.bind(this)
     );
     this._inputElement.addEventListener(
       "change",

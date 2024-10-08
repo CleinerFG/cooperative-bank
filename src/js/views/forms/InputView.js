@@ -44,6 +44,10 @@ export class InputView {
     return document.getElementById(this._id);
   }
 
+  set _dataValid(bool) {
+    this._inputElement.dataset.valid = bool;
+  }
+
   _build() {
     throw new AbstractMethodError("_build");
   }
@@ -69,10 +73,10 @@ export class InputView {
     const value = this._inputElement.value;
     try {
       this.#validators.forEach((validator) => validator(value));
-      this._setDataValid("true");
+      this._dataValid = "true";
       this._failMessageHandler("remove", "");
     } catch (error) {
-      this._setDataValid("false");
+      this._dataValid = "false";
       this._failMessageHandler("add", error.message);
     }
   }
@@ -82,10 +86,6 @@ export class InputView {
       "blur",
       this.#executeValidators.bind(this)
     );
-  }
-
-  _setDataValid(bool) {
-    this._inputElement.dataset.valid = bool;
   }
 
   _failMessageHandler(method, errorMessage) {
