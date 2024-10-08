@@ -2,20 +2,20 @@ import { simulateWait } from "../utils/tests.js";
 import { StateCardView } from "../views/StateCardView.js";
 import { ApiService } from "../service/ApiService.js";
 export class ComponentsCtrl {
-  #containerElement;
-  #ComponentViewClass;
-  #ComponentModelClass;
+  #ContainerElement;
+  #ComponentView;
+  #ComponentModel;
   #componentsViews = [];
   #StateCardView;
   constructor(
-    containerElement,
-    ComponentViewClass,
-    ComponentModelClass,
+    ContainerElement,
+    ComponentView,
+    ComponentModel,
     category
   ) {
-    this.#containerElement = containerElement;
-    this.#ComponentViewClass = ComponentViewClass;
-    this.#ComponentModelClass = ComponentModelClass;
+    this.#ContainerElement = ContainerElement;
+    this.#ComponentView = ComponentView;
+    this.#ComponentModel = ComponentModel;
     this._category = category;
     this.#init();
   }
@@ -24,8 +24,8 @@ export class ComponentsCtrl {
     return "";
   }
 
-  get containerElement() {
-    return this.#containerElement;
+  get ContainerElement() {
+    return this.#ContainerElement;
   }
 
   get category() {
@@ -34,15 +34,15 @@ export class ComponentsCtrl {
 
   #initCardState() {
     this.#StateCardView = new StateCardView(
-      this.containerElement,
+      this.ContainerElement,
       this.category
     );
     this._defineEmptyCardsTexts();
   }
 
   #addComponent(params) {
-    const model = new this.#ComponentModelClass(params);
-    const view = new this.#ComponentViewClass(this.#containerElement, model);
+    const model = new this.#ComponentModel(params);
+    const view = new this.#ComponentView(this.#ContainerElement, model);
     this.#componentsViews.push(view);
   }
 
@@ -52,13 +52,12 @@ export class ComponentsCtrl {
 
   async #createComponents() {
     this.#StateCardView.type = "loading";
-    await simulateWait(3);
+    await simulateWait(2);
     try {
       const data = await ApiService.fetchFrom(this._endpoint);
       if (data.length) {
-        this.#containerElement.innerHTML = "";
+        this.#ContainerElement.innerHTML = "";
         data.forEach((params) => this.#addComponent(params));
-        this.#componentsViews.forEach((view) => view.init());
       } else {
         this.#StateCardView.type = "empty";
       }

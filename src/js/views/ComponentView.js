@@ -1,11 +1,12 @@
 import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 
 export class ComponentView {
-  #container;
+  #containerElement;
   #componentModel;
-  constructor(container, componentModel) {
-    this.#container = container;
+  constructor(containerElement, componentModel) {
+    this.#containerElement = containerElement;
     this.#componentModel = componentModel;
+    this.#init();
   }
 
   get componentModel() {
@@ -102,10 +103,10 @@ export class ComponentView {
 
   #render() {
     const cardStr = this.#createCard();
-    this.#container.insertAdjacentHTML("afterbegin", cardStr);
+    this.#containerElement.insertAdjacentHTML("afterbegin", cardStr);
   }
 
-  init() {
+  #init() {
     this.#render();
     this._modalHandler();
   }
