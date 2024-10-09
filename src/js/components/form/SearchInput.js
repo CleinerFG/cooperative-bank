@@ -1,17 +1,18 @@
 import { Input } from "./Input.js";
 import { PathManager } from "../../utils/PathManager.js";
 import { simulateWait } from "../../utils/tests.js";
+import { NotFoundError } from "../../errors/InputErrors.js";
 
 export class SearchInput extends Input {
   #defaultDataItem;
-  #fetchHandler;
+  #endpoint;
 
   set defaultDataItem(value) {
     this.#defaultDataItem = value;
   }
 
-  set fetchHandler(handler) {
-    this.#fetchHandler = handler;
+  set endpoint(value) {
+    this.#endpoint = value;
   }
 
   get _inputResultElement() {
@@ -39,6 +40,20 @@ export class SearchInput extends Input {
       </div>`;
   }
 
+  async #fetchFromApi() {
+    const dataId = this._inputElement.value;
+    if (!dataId || dataId === "0") return;
+
+    this.#toggleSearchState("add");
+    await simulateWait(3);
+
+    try {
+      return await ApiService.fetchFrom(`${this.#endpoint}/${dataId}`);
+    } catch (e) {
+      throw new NotFoundError(this._id);
+    }
+  }
+
   #toggleSearchState(action) {
     this._inputResultElement.classList[action]("inp-skelon");
     this._searchElement.classList[action]("search-animation");
@@ -47,18 +62,9 @@ export class SearchInput extends Input {
     }
   }
 
-  async #fetchSearchResults() {
-    const dataId = this._inputElement.value;
-    if (!dataId || dataId === "0") return;
-
-    this.#toggleSearchState("add");
-    await simulateWait(3);
-    return await this.#fetchHandler(dataId);
-  }
-
   async _handleSearch() {
     try {
-      const item = await this.#fetchSearchResults();
+      const item = await this.#fetchFromApi();
       if (item) {
         this._updateResult(item);
         this._dataValid = "true";

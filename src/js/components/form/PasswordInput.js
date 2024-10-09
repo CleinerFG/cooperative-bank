@@ -10,28 +10,28 @@ export class PasswordInput extends Input {
         <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
         class="inp form-group__inp inp-${this._cssClass}" data-visibility="off" data-valid="false">
         <button id="${this._id}-visibility" type="button" class="btn-unset">
-          <img id="visibility-icon" class="icon inp__visibility-icon" alt="Closed eye">
+          <img id="${this._id}-visibility-icon" class="icon inp__visibility-icon" alt="Closed eye">
         </button>
       </div>
       <span id="${this._id}-error" class="error-message"></span>
     </div>`;
   }
 
+
   _toggleInpType() {
-    let type = "text";
-    if (this._inputElement.type === "text") type = "password";
-    this._inputElement.type = type;
+    const currentType = this._inputElement.type;
+    this._inputElement.type = currentType === "text" ? "password" : "text";
   }
 
   _switchVisibility() {
-    const icon = document.querySelector(".inp__visibility-icon");
+    const icon = document.querySelector("#${this._id}-visibility-icon");
     const currentState = this._inputElement.dataset.visibility;
 
     const alt = currentState === "on" ? "Closed eye" : "Opened eye";
     icon.setAttribute("alt", alt);
 
     const newState = currentState === "off" ? "on" : "off";
-    this._defineIconPath(newState);
+    this._updateIconPath(newState);
     this._inputElement.dataset.visibility = newState;
   }
 
@@ -43,13 +43,13 @@ export class PasswordInput extends Input {
     });
   }
 
-  _defineIconPath(state) {
+  _updateIconPath(state) {
     PathManager.updateIcon("#visibility-icon", `icon-visibility-${state}.svg`);
   }
 
   init() {
     super.init();
     this._setupListeners();
-    this._defineIconPath("off");
+    this._updateIconPath("off");
   }
 }
