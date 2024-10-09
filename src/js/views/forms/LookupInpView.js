@@ -92,7 +92,7 @@ export class LookupInpView extends InputView {
       this._handleSearch.bind(this)
     );
     this._inputElement.addEventListener(
-      "change",
+      "blur",
       this._handleSearch.bind(this)
     );
   }
