@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "server": "json-server --watch db.json"
+    "server": "json-server --watch db.json --port 5000"
   },
   "keywords": [
     "bank",

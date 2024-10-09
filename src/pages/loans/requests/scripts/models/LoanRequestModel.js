@@ -40,7 +40,7 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   get rate() {
-    return numberToPercent(this._rate);
+    return numberToPercent.format(this._rate / 100);
   }
 
   get installmentValue() {
@@ -50,7 +50,7 @@ export class LoanRequestModel extends TransactionModel {
     const installmentValue =
       value * (rate / (1 - Math.pow(1 + rate, -installments)));
 
-    return numberToCurrency(installmentValue);
+    return numberToCurrency.format(installmentValue);
   }
 
   get dataToApi() {

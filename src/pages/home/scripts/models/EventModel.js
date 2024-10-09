@@ -1,4 +1,7 @@
-import { numberToCurrency, formatDate } from "../../../../js/utils/formatters.js";
+import {
+  numberToCurrency,
+  formatDate,
+} from "../../../../js/utils/formatters.js";
 
 export class EventModel {
   static descType = {
@@ -25,10 +28,10 @@ export class EventModel {
   }
 
   get dueDate() {
-    return formatDate(this.#dueDate);
+    return formatDate.format(new Date(this.#dueDate));
   }
 
   get value() {
-    return numberToCurrency(this.#value);
+    return numberToCurrency.format(this.#value);
   }
 }

@@ -1,5 +1,5 @@
 export class ApiService {
-  static #BASE_URL = "http://localhost:3000/";
+  static #BASE_URL = "http://localhost:5000/";
 
   static async #fetchData(endpoint, options = {}) {
     const res = await fetch(`${ApiService.#BASE_URL}${endpoint}`, options);

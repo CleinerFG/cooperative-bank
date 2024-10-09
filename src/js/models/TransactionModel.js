@@ -29,10 +29,10 @@ export class TransactionModel {
   }
 
   get date() {
-    return formatDate(this._date);
+    return formatDate.format(new Date(this._date));
   }
 
   get value() {
-    return numberToCurrency(this._value);
+    return numberToCurrency.format(this._value);
   }
 }
