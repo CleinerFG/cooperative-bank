@@ -1,42 +1,24 @@
 import { zeroValidator, emptyValidator } from "../../utils/validators.js";
+import {
+  currencyFormatter,
+  percentFormatter,
+  strictNumberFormatter,
+} from "../../utils/inputFormatters.js";
 
 export class Input {
   #containerElement;
   #strictToNumber;
   #formatter;
   #validators = [emptyValidator, zeroValidator];
-  #formatterMethods = {
-    currency: () => {
-      this._inputElement.addEventListener("input", (e) => {
-        let value = e.target.value;
-        value = (value / 100).toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        });
-        e.target.value = value;
-      });
-    },
-    percent: () => {
-      this._inputElement.addEventListener("input", (e) => {
-        let value = e.target.value;
-        value = (parseFloat(value) / 100).toFixed(2).replace(".", ",");
-        e.target.value = `${value} %`;
-        const cursorPosition = e.target.value.length - 2;
-        e.target.setSelectionRange(cursorPosition, cursorPosition);
-      });
-    },
-  };
 
   constructor(params) {
-    this.#containerElement = params.container;
+    this.#containerElement = params.containerElement;
     this._id = params.id;
     this._cssClass = params.cssClass ?? "";
-    this._type = params.type ?? "text";
     this._inputmode = params.inputmode ?? "text";
     this.#strictToNumber = params.strictToNumber;
     this.#formatter = params.formatter;
     this._labelText = params.labelText ?? "";
-    this._placeholder = params.placeholder ?? "";
   }
 
   get _inputElement() {
@@ -51,27 +33,16 @@ export class Input {
     return `
     <div class="form-group__inp-group">
       <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
-      <input id="${this._id}" type="${this._type}" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
+      <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}"
       class="inp form-group__inp ${this._cssClass}" data-valid="false">
       <span id="${this._id}-error" class="error-message"></span>
     </div>`;
   }
 
-  #render() {
-    this.#containerElement.insertAdjacentHTML("beforeend", this._template);
-  }
-
-  #setStrictToNumber() {
-    if (this.#strictToNumber) {
-      this._inputElement.addEventListener("input", (ev) => {
-        let value = ev.target.value.replace(/\D/g, "");
-        ev.target.value = value;
-      });
-    }
-  }
-
-  #setFormatter() {
-    this.#formatterMethods[this.#formatter]?.();
+  _failMessageHandler(method, errorMessage) {
+    const span = document.querySelector(`#${this._id}-error`);
+    span.innerHTML = errorMessage;
+    this._inputElement.classList[method]("inp-error");
   }
 
   #executeValidators() {
@@ -86,29 +57,44 @@ export class Input {
     }
   }
 
-  #validationOnBlur() {
+  #setupStrictToNumber() {
+    if (this.#strictToNumber) {
+      this._inputElement.addEventListener("input", strictNumberFormatter);
+    }
+  }
+
+  #setupFormatter() {
+    const formatters = {
+      percent: percentFormatter,
+      currency: currencyFormatter,
+    };
+
+    if (this.#formatter) {
+      this._inputElement.addEventListener("input", formatters[this.#formatter]);
+    }
+  }
+
+  #setupValidationOnBlur() {
     this._inputElement.addEventListener(
       "blur",
       this.#executeValidators.bind(this)
     );
   }
 
-  _failMessageHandler(method, errorMessage) {
-    const span = document.querySelector(`#${this._id}-error`);
-    span.innerHTML = errorMessage;
-    this._inputElement.classList[method]("inp-error");
-  }
-
   _setupHandlers(active = true) {
     if (active) {
-      this.#setStrictToNumber();
-      this.#setFormatter();
-      this.#validationOnBlur();
+      this.#setupValidationOnBlur();
+      this.#setupStrictToNumber();
+      this.#setupFormatter();
     }
   }
 
+  #render() {
+    this.#containerElement.insertAdjacentHTML("beforeend", this._template);
+  }
+
   init() {
-    this.#render();;
+    this.#render();
     this._setupHandlers();
   }
 }
