@@ -1,6 +1,6 @@
 import { PathManager } from "../utils/PathManager.js";
 
-export class StateCardView {
+export class CardState {
   #container;
   #category;
   #type;

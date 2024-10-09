@@ -1,11 +1,10 @@
 import { AbstractMethodError } from "../errors/AbstractMethodError.js";
-import { StateCardView } from "../views/StateCardView.js";
 import { ApiService } from "../service/ApiService.js";
 import { simulateWait } from "../utils/tests.js";
-
+import { CardState } from "../components/CardState.js";
 export class ComponentGroupCtrl {
   #containerElement;
-  #StateCardView;
+  #cardState;
   #apiData;
   #componentsCtrls;
   constructor(containerElement) {
@@ -30,11 +29,8 @@ export class ComponentGroupCtrl {
   }
 
   #initCardState() {
-    this.#StateCardView = new StateCardView(
-      this.#containerElement,
-      this._category
-    );
-    this.#StateCardView.defineTexts(...this._emptyCardsTexts);
+    this.#cardState = new CardState(this.#containerElement, this._category);
+    this.#cardState.defineTexts(...this._emptyCardsTexts);
   }
 
   #initControllers() {
@@ -44,8 +40,8 @@ export class ComponentGroupCtrl {
   }
 
   async #fetchFromApi() {
-    this.#StateCardView.type = "loading";
-    await simulateWait(0);
+    this.#cardState.type = "loading";
+    await simulateWait(3);
     this.#apiData = await ApiService.fetchFrom(this._endpoint);
   }
 
@@ -54,12 +50,12 @@ export class ComponentGroupCtrl {
       await this.#fetchFromApi();
       if (this.#apiData.length) {
         this.#containerElement.innerHTML = "";
-        this.#initControllers();  
+        this.#initControllers();
       } else {
-        this.#StateCardView.type = "empty";
+        this.#cardState.type = "empty";
       }
     } catch (err) {
-      this.#StateCardView.type = "error";
+      this.#cardState.type = "error";
     }
   }
 
