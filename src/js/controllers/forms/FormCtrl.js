@@ -3,9 +3,17 @@ import { ApiService } from "../../service/ApiService.js";
 
 export class FormCtrl {
   #view;
-  constructor(params) {
-    this.#view = new params.view(params);
+  constructor() {
+    this.#view = new this._viewClass(this._viewParams);
     this.#init();
+  }
+
+  get _viewClass() {
+    new AbstractMethodError("_view");
+  }
+
+  get _viewParams() {
+    new AbstractMethodError("_viewParams");
   }
 
   get _endpoint() {
@@ -23,7 +31,7 @@ export class FormCtrl {
         const dataToApi = this._formData;
         const res = await ApiService.sendTo(this._endpoint, dataToApi);
         console.log(`Server return: ${res}`);
-      } catch (err) {}
+      } catch (e) {}
     });
   }
 

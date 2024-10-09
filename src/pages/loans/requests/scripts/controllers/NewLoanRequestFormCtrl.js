@@ -4,16 +4,16 @@ import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { NewLoanRequestFormView } from "../views/NewLoanRequestFormView.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
-  constructor() {
-    const params = {
-      view: NewLoanRequestFormView,
+  get _viewClass() {
+    return NewLoanRequestFormView;
+  }
+
+  get _viewParams() {
+    return {
       id: "new-request-form",
-      container: document.querySelector(".new-request"),
+      containerElement: document.querySelector(".new-request"),
       cssClass: "new-request-form",
-      action: "/",
-      method: "post",
     };
-    super(params);
   }
 
   get _endpoint() {
@@ -32,7 +32,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
     if (!isValid) {
       throw new InvalidDataError();
     }
-    
+
     const params = {};
     fields.forEach((field) => {
       params[field.id] = field.value;

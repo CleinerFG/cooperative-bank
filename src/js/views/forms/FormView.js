@@ -9,9 +9,9 @@ export class FormView {
   #formElement;
   #formGroupElement;
   #cssClass;
-  #inputCtrls = []; // Array
+  #inputCtrls = [];
   constructor(params) {
-    this.#containerElement = params.container;
+    this.#containerElement = params.containerElement;
     this._id = params.id;
     this.#cssClass = params.cssClass ?? "";
   }
