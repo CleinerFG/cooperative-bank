@@ -5,21 +5,15 @@ import { SubmitInpCtrl } from "../../controllers/forms/SubmitInpCtrl.js";
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class FormView {
-  #container; // DOM element
-  #formElement; // DOM element
-  #formGroupElement; // DOM element
-  #cssClass; // String
-  #action; // String
-  #method; // String
-  #htmlStr; // String
+  #containerElement;
+  #formElement;
+  #formGroupElement;
+  #cssClass;
   #inputCtrls = []; // Array
-  #inputSubmitView; // InputView
   constructor(params) {
-    this.#container = params.container;
+    this.#containerElement = params.container;
     this._id = params.id;
     this.#cssClass = params.cssClass ?? "";
-    this.#action = params.action;
-    this.#method = params.method;
   }
 
   get formElement() {
@@ -38,14 +32,9 @@ export class FormView {
     throw new AbstractMethodError("_inputSubmitData");
   }
 
-  get inputSubmitView() {
-    return this.#inputSubmitView;
-  }
-
-  #build() {
-    this.#htmlStr = `
-    <form id="${this._id}" class="form ${this.#cssClass}" 
-    action="${this.#action}" method="${this.#method}">
+  get #template() {
+    return `
+    <form id="${this._id}" class="form ${this.#cssClass}">
       <div id="form-group-${this._id}" class="form-group">       
       </div>
     </form>
@@ -53,7 +42,7 @@ export class FormView {
   }
 
   #render() {
-    this.#container.insertAdjacentHTML("beforeend", this.#htmlStr);
+    this.#containerElement.insertAdjacentHTML("beforeend", this.#template);
   }
 
   #defineGettersDomElements() {
@@ -81,7 +70,7 @@ export class FormView {
   #createInputSubmit() {
     const params = this._inputSubmitParams;
     params.container = this.formElement;
-    this.#inputSubmitView = new SubmitInpCtrl(params);
+    new SubmitInpCtrl(params);
   }
 
   #changeElementsFocus() {
@@ -107,7 +96,6 @@ export class FormView {
   }
 
   init() {
-    this.#build();
     this.#render();
     this.#defineGettersDomElements();
     this.#createInputs();

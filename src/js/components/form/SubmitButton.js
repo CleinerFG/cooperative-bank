@@ -1,7 +1,7 @@
-import { InputView } from "./InputView.js";
+import { Input } from "./Input.js";
 
-export class SubmitInpView extends InputView {
-  _build() {
+export class SubmitButton extends Input {
+  get _tempate() {
     return `
       <button id="${this._id}" class="btn btn-action ${this._cssClass}" type="submit">${this._labelText}</button>`;
   }
