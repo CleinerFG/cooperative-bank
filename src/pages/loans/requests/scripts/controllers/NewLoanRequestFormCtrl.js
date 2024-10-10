@@ -3,6 +3,10 @@ import { InvalidDataError } from "../../../../../js/errors/InvalidDataError.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
+  get _modelClass() {
+    return LoanRequestModel;
+  }
+
   get _viewParams() {
     return {
       id: "new-request-form",
@@ -23,7 +27,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
           id: 1000,
           name: "Cooperative Bank Creditor",
         },
-        endpoint: "users"
+        endpoint: "users",
       },
       {
         id: "description",
@@ -69,27 +73,5 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
 
   get _endpoint() {
     return "opened-requests";
-  }
-
-  get _formData() {
-    const fields = document.querySelectorAll(
-      "#creditor, #description, #value, #installments, #rate"
-    );
-
-    const isValid = Array.from(fields).every(
-      (field) => field.dataset.valid === "true"
-    );
-
-    if (!isValid) {
-      throw new InvalidDataError();
-    }
-
-    const params = {};
-    fields.forEach((field) => {
-      params[field.id] = field.value;
-    });
-
-    const model = new LoanRequestModel(params);
-    return model.dataToApi;
   }
 }

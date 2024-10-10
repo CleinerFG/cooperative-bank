@@ -54,7 +54,6 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   get dataToApi() {
-    this.#validateData();
     return {
       date: new Date(),
       creditor: this._creditor,
@@ -63,18 +62,5 @@ export class LoanRequestModel extends TransactionModel {
       installments: this._installments,
       rate: percentToNumber(this._rate),
     };
-  }
-
-  #validateData() {
-    // const val = (attr) => {
-    //   emptyValidator(attr);
-    //   zeroValidator(attr);
-    // };
-
-    // val(this._creditor);
-    // val(this._description);
-    // val(this._value);
-    // val(this._installments);
-    // val(this._rate);
   }
 }

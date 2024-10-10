@@ -23,6 +23,10 @@ export class FormView {
     return document.getElementById(this.#id);
   }
 
+  get inputs() {
+    return this.#inputs;
+  }
+
   get #formGroupElement() {
     return document.getElementById(`form-group-${this.#id}`);
   }

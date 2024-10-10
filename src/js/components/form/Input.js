@@ -21,6 +21,14 @@ export class Input {
     this._labelText = params.labelText ?? "";
   }
 
+  get id() {
+    return this._id;
+  }
+
+  get inputElement() {
+    return document.getElementById(this._id);
+  }
+
   get _inputElement() {
     return document.getElementById(this._id);
   }

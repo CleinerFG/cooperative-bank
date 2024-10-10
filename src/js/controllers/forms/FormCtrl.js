@@ -1,4 +1,5 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { InvalidDataError } from "../../errors/InvalidDataError.js";
 import { ApiService } from "../../service/ApiService.js";
 import { FormView } from "../../views/forms/FormView.js";
 
@@ -11,6 +12,10 @@ export class FormCtrl {
       this._submitParams
     );
     this.#init();
+  }
+
+  get _modelClass() {
+    new AbstractMethodError("_modelClass");
   }
 
   get _viewParams() {
@@ -30,17 +35,35 @@ export class FormCtrl {
   }
 
   get _formData() {
-    new AbstractMethodError("_formData");
+    const params = {};
+    this.#view.inputs.forEach((inp) => {
+      params[inp.id] = inp.inputElement.value;
+    });
+
+    const model = new this._modelClass(params);
+    return model.dataToApi;
+  }
+
+  _checkDataValidInputs() {
+    const isValid = this.#view.inputs.every(
+      (inp) => inp.inputElement.dataset.valid === "true"
+    );
+
+    if (!isValid) {
+      throw new InvalidDataError();
+    }
   }
 
   #submitHandler() {
     this.#view.formElement.addEventListener("submit", async (ev) => {
       ev.preventDefault();
       try {
-        const dataToApi = this._formData;
-        const res = await ApiService.sendTo(this._endpoint, dataToApi);
+        this._checkDataValidInputs();
+        const res = await ApiService.sendTo(this._endpoint, this._formData);
         console.log(`Server return: ${res}`);
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
     });
   }
 
