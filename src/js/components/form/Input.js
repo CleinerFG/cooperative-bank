@@ -29,12 +29,8 @@ export class Input {
     return document.getElementById(this._id);
   }
 
-  get _inputElement() {
-    return document.getElementById(this._id);
-  }
-
   set _dataValid(bool) {
-    this._inputElement.dataset.valid = bool;
+    this.inputElement.dataset.valid = bool;
   }
 
   get _template() {
@@ -50,11 +46,11 @@ export class Input {
   _failMessageHandler(method, errorMessage) {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
-    this._inputElement.classList[method]("inp-error");
+    this.inputElement.classList[method]("inp-error");
   }
 
   #executeValidators() {
-    const value = this._inputElement.value;
+    const value = this.inputElement.value;
     try {
       this.#validators.forEach((validator) => validator(value));
       this._dataValid = "true";
@@ -67,7 +63,7 @@ export class Input {
 
   #setupStrictToNumber() {
     if (this.#strictToNumber) {
-      this._inputElement.addEventListener("input", strictNumberFormatter);
+      this.inputElement.addEventListener("input", strictNumberFormatter);
     }
   }
 
@@ -78,12 +74,12 @@ export class Input {
     };
 
     if (this.#formatter) {
-      this._inputElement.addEventListener("input", formatters[this.#formatter]);
+      this.inputElement.addEventListener("input", formatters[this.#formatter]);
     }
   }
 
   #setupValidationOnBlur() {
-    this._inputElement.addEventListener(
+    this.inputElement.addEventListener(
       "blur",
       this.#executeValidators.bind(this)
     );

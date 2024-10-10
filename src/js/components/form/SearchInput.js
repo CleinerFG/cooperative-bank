@@ -12,11 +12,11 @@ export class SearchInput extends Input {
     this._defaultValue = params.defaultValue;
   }
 
-  get _inputResultElement() {
+  get #inputResultElement() {
     return document.getElementById(`${this._id}-result`);
   }
 
-  get _searchElement() {
+  get #searchElement() {
     return document.getElementById("search-icon");
   }
 
@@ -38,11 +38,11 @@ export class SearchInput extends Input {
   }
 
   async #fetchFromApi() {
-    const dataId = this._inputElement.value;
+    const dataId = this.inputElement.value;
     if (!dataId || dataId === "0") return;
 
     this.#toggleSearchState("add");
-    await simulateWait(5);
+    await simulateWait(1);
 
     try {
       return await ApiService.fetchFrom(`${this.#endpoint}/${dataId}`);
@@ -52,10 +52,10 @@ export class SearchInput extends Input {
   }
 
   #toggleSearchState(action) {
-    this._inputResultElement.classList[action]("inp-skelon");
-    this._searchElement.classList[action]("search-animation");
+    this.#inputResultElement.classList[action]("inp-skelon");
+    this.#searchElement.classList[action]("search-animation");
     if (action === "add") {
-      this._inputResultElement.value = "Searching...";
+      this.#inputResultElement.value = "Searching...";
     }
   }
 
@@ -80,22 +80,22 @@ export class SearchInput extends Input {
 
   _updateResult(item) {
     this.#toggleSearchState("remove");
-    this._inputResultElement.value = item ? item.name : "";
+    this.#inputResultElement.value = item ? item.name : "";
   }
 
   _setupDefaultValue() {
     if (this._defaultValue) {
-      this._inputElement.value = this._defaultValue.id;
-      this._inputResultElement.value = this._defaultValue.name;
+      this.inputElement.value = this._defaultValue.id;
+      this.#inputResultElement.value = this._defaultValue.name;
     }
   }
 
   _setupListeners() {
-    this._searchElement.addEventListener(
+    this.#searchElement.addEventListener(
       "click",
       this._handleSearch.bind(this)
     );
-    this._inputElement.addEventListener("blur", this._handleSearch.bind(this));
+    this.inputElement.addEventListener("blur", this._handleSearch.bind(this));
   }
 
   _defineIconPath() {

@@ -19,20 +19,20 @@ export class PasswordInput extends Input {
 
 
   _toggleInpType() {
-    const currentType = this._inputElement.type;
-    this._inputElement.type = currentType === "text" ? "password" : "text";
+    const currentType = this.inputElement.type;
+    this.inputElement.type = currentType === "text" ? "password" : "text";
   }
 
   _switchVisibility() {
     const icon = document.querySelector("#${this._id}-visibility-icon");
-    const currentState = this._inputElement.dataset.visibility;
+    const currentState = this.inputElement.dataset.visibility;
 
     const alt = currentState === "on" ? "Closed eye" : "Opened eye";
     icon.setAttribute("alt", alt);
 
     const newState = currentState === "off" ? "on" : "off";
     this._updateIconPath(newState);
-    this._inputElement.dataset.visibility = newState;
+    this.inputElement.dataset.visibility = newState;
   }
 
   _setupListeners() {

@@ -1,5 +1,4 @@
 import { FormCtrl } from "../../../../../js/controllers/forms/FormCtrl.js";
-import { InvalidDataError } from "../../../../../js/errors/InvalidDataError.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
