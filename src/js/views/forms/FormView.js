@@ -67,22 +67,22 @@ export class FormView {
 
   #changeElementsFocus() {
     this.formElement.addEventListener("keydown", (ev) => {
-      if (ev.key === "Enter") {
+      if (ev.key === "Enter" || ev.key === "Tab") {
         ev.preventDefault();
         const inputs = Array.from(this.formElement.querySelectorAll("input"));
         const index = inputs.indexOf(document.activeElement);
 
-        if (index < inputs.length - 1) {
-          const nextInput = inputs[index + 1];
-          if (nextInput.disabled) {
-            const secondNextInput = inputs[index + 2];
-            secondNextInput.focus();
-          } else {
-            nextInput.focus();
+        const getNextInput = (currentIndex) => {
+          for (let i = currentIndex + 1; i < inputs.length; i++) {
+            if (!inputs[i].disabled) {
+              return inputs[i];
+            }
           }
-        } else {
-          inputs[0].focus();
-        }
+          return inputs[0];
+        };
+
+        const nextInput = getNextInput(index);
+        nextInput.focus();
       }
     });
   }
