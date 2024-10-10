@@ -19,8 +19,6 @@ export class Input {
     this.#strictToNumber = params.strictToNumber;
     this.#formatter = params.formatter;
     this._labelText = params.labelText ?? "";
-    this._defaultValue = params.defaultValue;
-    this.init()
   }
 
   get _inputElement() {

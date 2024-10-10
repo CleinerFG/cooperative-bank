@@ -53,14 +53,16 @@ export class FormView {
     this.#inputs = this.#inputParams.map((params) => {
       const InpClass = setInp(params.category);
       params.containerElement = this.#formGroupElement;
-      return new InpClass(params);
+      const inp = new InpClass(params);
+      inp.init();
+      return inp;
     });
   }
 
   #createInputSubmit() {
     const params = this.#submitParams;
     params.containerElement = this.formElement;
-    new SubmitButton(params);    
+    new SubmitButton(params).init();
   }
 
   #changeElementsFocus() {
@@ -89,6 +91,6 @@ export class FormView {
     this.#render();
     this.#buildInputs();
     this.#createInputSubmit();
-    // this.#changeElementsFocus();
+    this.#changeElementsFocus();
   }
 }

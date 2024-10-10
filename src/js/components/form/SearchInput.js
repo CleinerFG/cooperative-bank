@@ -1,13 +1,15 @@
 import { Input } from "./Input.js";
 import { PathManager } from "../../utils/PathManager.js";
+import { ApiService } from "../../service/ApiService.js";
 import { simulateWait } from "../../utils/tests.js";
 import { NotFoundError } from "../../errors/InputErrors.js";
 
 export class SearchInput extends Input {
   #endpoint;
-
-  set endpoint(value) {
-    this.#endpoint = value;
+  constructor(params) {
+    super(params);
+    this.#endpoint = params.endpoint;
+    this._defaultValue = params.defaultValue;
   }
 
   get _inputResultElement() {
@@ -40,7 +42,7 @@ export class SearchInput extends Input {
     if (!dataId || dataId === "0") return;
 
     this.#toggleSearchState("add");
-    await simulateWait(3);
+    await simulateWait(1);
 
     try {
       return await ApiService.fetchFrom(`${this.#endpoint}/${dataId}`);
@@ -81,8 +83,6 @@ export class SearchInput extends Input {
   }
 
   _setupDefaultValue() {
-    console.log("default:", this._defaultValue);
-
     if (this._defaultValue) {
       this._inputElement.value = this._defaultValue.id;
       this._inputResultElement.value = this._defaultValue.name;

@@ -23,6 +23,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
           id: 1000,
           name: "Cooperative Bank Creditor",
         },
+        endpoint: "users"
       },
       {
         id: "description",
