@@ -4,12 +4,7 @@ import { simulateWait } from "../../utils/tests.js";
 import { NotFoundError } from "../../errors/InputErrors.js";
 
 export class SearchInput extends Input {
-  #defaultDataItem;
   #endpoint;
-
-  set defaultDataItem(value) {
-    this.#defaultDataItem = value;
-  }
 
   set endpoint(value) {
     this.#endpoint = value;
@@ -23,7 +18,7 @@ export class SearchInput extends Input {
     return document.getElementById("search-icon");
   }
 
-  _template() {
+  get _template() {
     const inputId = this._id;
     const resultId = `${this._id}-result`;
     const errorId = `${this._id}-error`;
@@ -32,7 +27,7 @@ export class SearchInput extends Input {
       <div class="form-group__inp-group">
         <label for="${inputId}" class="label form-group__label">${this._labelText}</label>
         <div class="inp__container">
-          <input id="${inputId}" type="text" placeholder="${this._placeholder}" aria-label="${this._labelText}" class="inp form-group__inp inp__lookup ${this._cssClass}" data-valid="true">
+          <input id="${inputId}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp__lookup ${this._cssClass}" data-valid="true">
           <button type="button" class="btn-unset"><img class="icon" id="search-icon" alt="Search Icon"></button>
           <input id="${resultId}" type="text" class="inp form-group__inp" disabled>
         </div>
@@ -85,10 +80,12 @@ export class SearchInput extends Input {
     this._inputResultElement.value = item ? item.name : "";
   }
 
-  _setDefaultItem() {
-    if (this.#defaultDataItem) {
-      this._inputElement.value = this.#defaultDataItem.id;
-      this._inputResultElement.value = this.#defaultDataItem.name;
+  _setupDefaultValue() {
+    console.log("default:", this._defaultValue);
+
+    if (this._defaultValue) {
+      this._inputElement.value = this._defaultValue.id;
+      this._inputResultElement.value = this._defaultValue.name;
     }
   }
 
@@ -106,7 +103,7 @@ export class SearchInput extends Input {
 
   init() {
     super.init();
-    this._setDefaultItem();
+    this._setupDefaultValue();
     this._setupListeners();
     this._defineIconPath();
   }
