@@ -42,7 +42,7 @@ export class SearchInput extends Input {
     if (!dataId || dataId === "0") return;
 
     this.#toggleSearchState("add");
-    await simulateWait(1);
+    await simulateWait(5);
 
     try {
       return await ApiService.fetchFrom(`${this.#endpoint}/${dataId}`);
@@ -61,6 +61,7 @@ export class SearchInput extends Input {
 
   async _handleSearch() {
     try {
+      this._dataValid = "false";
       const item = await this.#fetchFromApi();
       if (item) {
         this._updateResult(item);
