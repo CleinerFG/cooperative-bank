@@ -1,19 +1,28 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 import { ApiService } from "../../service/ApiService.js";
+import { FormView } from "../../views/forms/FormView.js";
 
 export class FormCtrl {
   #view;
   constructor() {
-    this.#view = new this._viewClass(this._viewParams);
+    this.#view = new FormView(
+      this._viewParams,
+      this._inputParams,
+      this._submitParams
+    );
     this.#init();
-  }
-
-  get _viewClass() {
-    new AbstractMethodError("_view");
   }
 
   get _viewParams() {
     new AbstractMethodError("_viewParams");
+  }
+
+  get _inputParams() {
+    new AbstractMethodError("_inputParams");
+  }
+
+  get _submitParams() {
+    new AbstractMethodError("_submitParams");
   }
 
   get _endpoint() {
@@ -36,7 +45,6 @@ export class FormCtrl {
   }
 
   #init() {
-    this.#view.init();
     this.#submitHandler();
   }
 }

@@ -1,41 +1,36 @@
-import { InputCtrl } from "../../controllers/forms/InputCtrl.js";
-import { LookupInpCtrl } from "../../controllers/forms/LookupInpCtrl.js";
-import { PasswordInpCtrl } from "../../controllers/forms/PasswordInpCtrl.js";
-import { SubmitInpCtrl } from "../../controllers/forms/SubmitInpCtrl.js";
-import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import { Input } from "../../components/form/Input.js";
+import { PasswordInput } from "../../components/form/PasswordInput.js";
+import { SearchInput } from "../../components/form/SearchInput.js";
+import { SubmitButton } from "../../components/form/SubmitButton.js";
 
 export class FormView {
   #containerElement;
-  #formElement;
-  #formGroupElement;
+  #id;
   #cssClass;
-  #inputCtrls = [];
-  constructor(params) {
-    this.#containerElement = params.containerElement;
-    this._id = params.id;
-    this.#cssClass = params.cssClass ?? "";
+  #inputParams;
+  #submitParams;
+  #inputs;
+  constructor(viewParams, inputParams, submitParams) {
+    this.#containerElement = viewParams.containerElement;
+    this.#id = viewParams.id;
+    this.#cssClass = viewParams.cssClass ?? "";
+    this.#inputParams = inputParams;
+    this.#submitParams = submitParams;
+    this.#init();
   }
 
   get formElement() {
-    return this.#formElement;
+    return document.getElementById(this.#id);
   }
 
-  get _formGroupElement() {
-    return this.#formGroupElement;
-  }
-
-  get _inputsParams() {
-    throw new AbstractMethodError("_inputsData");
-  }
-
-  get _inputSubmitParams() {
-    throw new AbstractMethodError("_inputSubmitData");
+  get #formGroupElement() {
+    return document.getElementById(`form-group-${this.#id}`);
   }
 
   get #template() {
     return `
-    <form id="${this._id}" class="form ${this.#cssClass}">
-      <div id="form-group-${this._id}" class="form-group">       
+    <form id="${this.#id}" class="form ${this.#cssClass}">
+      <div id="form-group-${this.#id}" class="form-group">       
       </div>
     </form>
     `;
@@ -45,32 +40,27 @@ export class FormView {
     this.#containerElement.insertAdjacentHTML("beforeend", this.#template);
   }
 
-  #defineGettersDomElements() {
-    this.#formElement = document.getElementById(this._id);
-    this.#formGroupElement = document.getElementById(`form-group-${this._id}`);
-  }
-
-  #createInputs() {
-    const setInpCtrl = (category) => {
-      const categoryCtrl = {
-        default: InputCtrl,
-        lookup: LookupInpCtrl,
-        password: PasswordInpCtrl,
+  #buildInputs() {
+    const setInp = (category) => {
+      const categories = {
+        default: Input,
+        search: SearchInput,
+        password: PasswordInput,
       };
-      return categoryCtrl[category];
+      return categories[category];
     };
 
-    this.#inputCtrls = this._inputsParams.map((params) => {
-      const InpCtrlClass = setInpCtrl(params.category);
-      params.container = this._formGroupElement;
-      return new InpCtrlClass(params);
+    this.#inputs = this.#inputParams.map((params) => {
+      const InpClass = setInp(params.category);
+      params.containerElement = this.#formGroupElement;
+      return new InpClass(params);
     });
   }
 
   #createInputSubmit() {
-    const params = this._inputSubmitParams;
-    params.container = this.formElement;
-    new SubmitInpCtrl(params);
+    const params = this.#submitParams;
+    params.containerElement = this.formElement;
+    new SubmitButton(params);    
   }
 
   #changeElementsFocus() {
@@ -95,11 +85,10 @@ export class FormView {
     });
   }
 
-  init() {
+  #init() {
     this.#render();
-    this.#defineGettersDomElements();
-    this.#createInputs();
+    this.#buildInputs();
     this.#createInputSubmit();
-    this.#changeElementsFocus();
+    // this.#changeElementsFocus();
   }
 }
