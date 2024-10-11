@@ -1,21 +1,71 @@
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
   --color-secondary: #04be9c;
+  --color-bg: #111315;
+  --color-font: #fbfcf8;
+  --title-font-family: "Quicksand", sans-serif;
+  --text-font-family: "Roboto Condensed", sans-serif;
 }
 
 * {
   padding: 0;
   margin: 0;
+  font-family: var(--text-font-family);
+  color: var(--color-font);
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
-  background-color: #111315;
+  background-color: var(--color-bg);
+  height: 100%;
+  width: 100%;
 }
 
 .landing__header {
-  background-color:
-    #33333396;
+  background-color: var(--color-bg);
+  height: 4rem;
   width: 100%;
-  height: 3rem;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing__brand,
+.landing__login {
+  padding: 1rem;
+}
+
+
+.landing__icon {
+  width: 2em;
+
+}
+
+.brand__icon {
+  width: 3rem;
+}
+
+.brand__name {
+  font-family: var(--title-font-family);
+  font-weight: 600;
+}
+
+.landing__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.landing__login {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .landing__section {
