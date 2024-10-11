@@ -26,6 +26,7 @@ body {
 }
 
 .landing__header {
+  z-index: 1000;
   background-color: var(--color-bg);
   height: 4rem;
   width: 100%;
@@ -70,4 +71,42 @@ body {
 
 .landing__section {
   height: 100vh;
+  padding: 6rem;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 10rem;
+  align-items: center;
+  position: relative;
+}
+
+.landing__section:first-of-type {
+  margin-top: 4rem;
+  height: calc(100vh - 16rem);
+}
+
+.landing__h1 {
+  font-size: 5rem;
+}
+
+.landing__img-container {
+  overflow: hidden;
+}
+
+.landing__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.landing__content {
+
+}
+
+.landing__down-icon {
+  width: 4rem;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
 }
