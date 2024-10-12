@@ -85,7 +85,7 @@ body {
 }
 
 .landing__h1 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .landing__img-container {
@@ -99,9 +99,7 @@ body {
   border-radius: 1.5rem;
 }
 
-.landing__content {
-
-}
+.landing__content {}
 
 .landing__down-icon {
   width: 4rem;
@@ -109,4 +107,10 @@ body {
   bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.landing__brand {
+  display: inline;
+  padding: 0;
+  color: var(--color-secondary)
 }
