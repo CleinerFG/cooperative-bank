@@ -109,7 +109,7 @@ body {
   transform: translateX(-50%);
 }
 
-.landing__brand {
+.landing__strong {
   display: inline;
   padding: 0;
   color: var(--color-secondary)
