@@ -114,3 +114,9 @@ body {
   padding: 0;
   color: var(--color-secondary)
 }
+
+.landing__section:nth-of-type(2) {
+  grid-template-columns: 1fr;
+  text-align: center;
+  font-size: 2rem;
+}
