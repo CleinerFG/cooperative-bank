@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 :root {
   --color-secondary: #04be9c;
@@ -28,7 +28,6 @@ body {
 .landing__header {
   z-index: 1000;
   background-color: var(--color-bg);
-  height: 4rem;
   width: 100%;
   position: fixed;
   top: 0;
@@ -39,22 +38,25 @@ body {
 
 .landing__brand,
 .landing__login {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
+.landing__login a {
+  font-size: 0.75rem;
+}
 
 .landing__icon {
-  width: 2em;
-
+  width: 1.5rem;
 }
 
 .brand__icon {
-  width: 3rem;
+  width: 2.25rem;
 }
 
 .brand__name {
   font-family: var(--title-font-family);
   font-weight: 600;
+  font-size: 0.75rem;
 }
 
 .landing__brand {
@@ -63,7 +65,7 @@ body {
   gap: 0.6rem;
 }
 
-.landing__login {
+.landing__login a {
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -99,7 +101,8 @@ body {
   border-radius: 1.5rem;
 }
 
-.landing__content {}
+.landing__content {
+}
 
 .landing__down-icon {
   width: 4rem;
@@ -112,7 +115,7 @@ body {
 .landing__strong {
   display: inline;
   padding: 0;
-  color: var(--color-secondary)
+  color: var(--color-secondary);
 }
 
 .landing__section:nth-of-type(2) {
