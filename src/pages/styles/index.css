@@ -45,6 +45,15 @@ body {
   font-size: 0.75rem;
 }
 
+.landing__btn {
+  width: fit-content;
+  background-image: linear-gradient(to right, #04be9c, #03ac8d);
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+  border: none;
+}
+
 .landing__icon {
   width: 1.5rem;
 }
@@ -102,6 +111,11 @@ body {
 }
 
 .landing__content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .landing__down-icon {
