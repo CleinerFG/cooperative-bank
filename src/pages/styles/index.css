@@ -21,7 +21,6 @@ a {
 }
 
 body {
-  /* background-color: var(--color-bg); */
   height: 100%;
   width: 100%;
 }
@@ -30,7 +29,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   z-index: 1000;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-end);
   position: fixed;
   top: 0;
   display: flex;
@@ -120,7 +119,7 @@ body {
 } */
 
 .landing__h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .landing__h2 {
@@ -171,7 +170,7 @@ body {
   max-width: 800px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 967px) {
   .landing__section {
     flex-direction: column;
     justify-content: center;
