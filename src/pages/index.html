@@ -25,7 +25,11 @@
 
   <section class="landing__section">
     <div class="landing__img-container">
-      <img class="landing__img" src="../assets/landing-page/bank.jpeg" alt="Modern Bank">
+      <picture>
+        <source media="(min-width: 1400px)" srcset="../assets/landing-page/bank-600.jpeg">
+        <source media="(min-width: 800px)" srcset="../assets/landing-page/bank-400.jpeg">
+        <img class="landing__img" src="../assets/landing-page/bank.jpeg" alt="Modern Bank">
+      </picture>
     </div>
     <div class="landing__content">
       <h1 class="landing__h1">
