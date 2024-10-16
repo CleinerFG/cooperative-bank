@@ -2,7 +2,8 @@
 
 :root {
   --color-secondary: #04be9c;
-  --color-bg: #111315;
+  --color-bg-start: #141b22;
+  --color-bg-end: #111315;
   --color-font: #fbfcf8;
   --title-font-family: "Quicksand", sans-serif;
   --text-font-family: "Roboto Condensed", sans-serif;
@@ -20,7 +21,7 @@ a {
 }
 
 body {
-  background-color: var(--color-bg);
+  /* background-color: var(--color-bg); */
   height: 100%;
   width: 100%;
 }
@@ -79,6 +80,24 @@ body {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+}
+
+.landing__section:first-of-type {
+  background-image: linear-gradient(
+    to top,
+    var(--color-bg-start),
+    var(--color-bg-end)
+  );
+}
+
+.landing__section {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-bg-start),
+    var(--color-bg-end),
+    var(--color-bg-end),
+    var(--color-bg-start)
+  );
 }
 
 .landing__section {
