@@ -1,0 +1,44 @@
+.landing__btn {
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  width: fit-content;
+  padding: 1rem 3rem;
+  border-radius: 3rem;
+  border: none;
+}
+
+.landing__btn {
+  background: linear-gradient(45deg, #04be9c 0%, #04bebb 50%, #04be9c 100%);
+  background-size: 200% 100%;
+  animation: glossy 1.5s linear infinite;
+}
+
+@keyframes glossy {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+.landing__h1 {
+  font-size: 3rem;
+}
+
+.landing__h2 {
+  font-size: 2rem;
+}
+
+.text__strong {
+  display: inline;
+  padding: 0;
+  color: var(--color-secondary);
+}
+
+@media (max-width: 967px) {
+  .landing__h1 {
+    font-size: 2.5rem;
+  }
+}
