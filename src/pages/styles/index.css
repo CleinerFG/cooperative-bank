@@ -20,6 +20,11 @@ a {
   text-decoration: none;
 }
 
+a,
+button {
+  cursor: pointer;
+}
+
 body {
   height: 100%;
   width: 100%;
@@ -51,10 +56,29 @@ body {
   font-size: 1rem;
   font-weight: 600;
   width: fit-content;
-  background-image: linear-gradient(to right, #04be9c, #03ac8d);
   padding: 1rem 3rem;
   border-radius: 3rem;
   border: none;
+}
+
+.landing__btn {
+  background: linear-gradient(
+    45deg,
+    #04be9c 0%,
+    #04bebb 50%,
+    #04be9c 100%
+  );
+  background-size: 200% 100%;
+  animation: glossy 1.5s linear infinite;
+}
+
+@keyframes glossy {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
 }
 
 .landing__icon {
