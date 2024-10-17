@@ -105,6 +105,29 @@
   max-width: 800px;
 }
 
+.feature-section .landing__img-container {
+  flex: 2;
+}
+
+.feature-section .landing__content {
+  flex: 3;
+  text-align: left;
+}
+
+.feature-section .landing__h2 {
+  color: var(--color-secondary);
+}
+
+.feature-section .landing__content {
+  align-items: flex-start;
+}
+
+.feature-section .text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (max-width: 967px) {
   .landing__section {
     flex-direction: column;
