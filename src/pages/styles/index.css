@@ -16,10 +16,7 @@
 .landing__brand,
 .landing__login {
   padding: 0.75rem;
-}
-
-.landing__login a {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .landing__icon {
@@ -31,9 +28,7 @@
 }
 
 .brand__name {
-  font-family: var(--title-font-family);
-  font-weight: 600;
-  font-size: 0.75rem;
+  font-family: var(--brand-font-family);
 }
 
 .landing__brand {
