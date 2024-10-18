@@ -51,8 +51,7 @@
 .landing__section {
   height: 100vh;
   box-sizing: border-box;
-  padding: 10%;
-  padding-top: 4rem;
+  padding: 5rem 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
