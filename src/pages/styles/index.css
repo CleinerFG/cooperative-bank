@@ -46,7 +46,7 @@
 .section {
   height: 100vh;
   box-sizing: border-box;
-  padding: 5rem 10% 0 10%;
+  padding: 4rem 10% 0 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,6 +84,7 @@
 }
 
 .hero-section {
+  padding-bottom: 4rem;
   background-image: linear-gradient(
     to top,
     var(--color-bg-start),
