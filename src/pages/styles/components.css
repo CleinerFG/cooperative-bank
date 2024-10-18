@@ -1,4 +1,4 @@
-.landing__btn {
+.btn {
   color: #000;
   font-size: 1rem;
   font-weight: 600;
@@ -6,9 +6,7 @@
   padding: 1rem 3rem;
   border-radius: 3rem;
   border: none;
-}
 
-.landing__btn {
   background: linear-gradient(45deg, #04be9c 0%, #04bebb 50%, #04be9c 100%);
   background-size: 200% 100%;
   animation: glossy 1.5s linear infinite;
@@ -23,22 +21,22 @@
   }
 }
 
-.landing__h1 {
+.h1 {
   font-size: 3rem;
 }
 
-.landing__h2 {
+.h2 {
   font-size: 2rem;
 }
 
-.text__strong {
+.text-strong {
   display: inline;
   padding: 0;
   color: var(--color-secondary);
 }
 
 @media (max-width: 967px) {
-  .landing__h1 {
+  .h1 {
     font-size: 2.5rem;
   }
 }
