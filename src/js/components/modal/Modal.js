@@ -1,6 +1,6 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
-export class ModalView {
+export class Modal {
   constructor(){
     this._init()
   }
