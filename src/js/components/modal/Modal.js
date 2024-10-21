@@ -1,8 +1,8 @@
 import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
 
 export class Modal {
-  constructor(){
-    this._init()
+  constructor() {
+    this._init();
   }
 
   get _modalContent() {
@@ -12,6 +12,8 @@ export class Modal {
   set #bodyOverflow(value) {
     document.body.style.overflow = value;
   }
+
+  _initControllers() {}
 
   #build() {
     return `
@@ -45,5 +47,6 @@ export class Modal {
     this.#bodyOverflow = "hidden";
     this.#render();
     this.#defineListeners();
+    this._initControllers();
   }
 }
