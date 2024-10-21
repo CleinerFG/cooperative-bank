@@ -2,12 +2,12 @@ import { Input } from "./Input.js";
 import { PathManager } from "../../utils/PathManager.js";
 
 export class PasswordInput extends Input {
-  _template() {
+  get _template() {
     return `
     <div class="form-group__inp-group">
       <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
       <div class="inp__container container__${this._cssClass}">
-        <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" placeholder="${this._placeholder}" aria-label="${this._labelText}"
+        <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}" autocomplete="off"
         class="inp form-group__inp inp-${this._cssClass}" data-visibility="off" data-valid="false">
         <button id="${this._id}-visibility" type="button" class="btn-unset">
           <img id="${this._id}-visibility-icon" class="icon inp__visibility-icon" alt="Closed eye">
@@ -24,7 +24,7 @@ export class PasswordInput extends Input {
   }
 
   _switchVisibility() {
-    const icon = document.querySelector("#${this._id}-visibility-icon");
+    const icon = document.querySelector(`#${this._id}-visibility-icon`);
     const currentState = this.inputElement.dataset.visibility;
 
     const alt = currentState === "on" ? "Closed eye" : "Opened eye";
@@ -44,7 +44,7 @@ export class PasswordInput extends Input {
   }
 
   _updateIconPath(state) {
-    PathManager.updateIcon("#visibility-icon", `icon-visibility-${state}.svg`);
+    PathManager.updateIcon(`#${this._id}-visibility-icon`, `icon-visibility-${state}.svg`);
   }
 
   init() {

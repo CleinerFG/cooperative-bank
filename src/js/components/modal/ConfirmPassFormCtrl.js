@@ -1,11 +1,6 @@
-import { ConfirmPassFormView } from "./ConfirmPassFormView.js";
 import { FormCtrl } from "../../controllers/forms/FormCtrl.js";
 
-export class PassModalFormCtrl extends FormCtrl {
-  get _viewClass() {
-    return ConfirmPassFormView;
-  }
-
+export class ConfirmPassFormCtrl extends FormCtrl {
   get _viewParams() {
     return {
       id: "confirm-pass-form",
@@ -14,13 +9,28 @@ export class PassModalFormCtrl extends FormCtrl {
     };
   }
 
+  get _inputParams() {
+    return [
+      {
+        id: "transaction-password",
+        category: "password",
+        strictToNumber: true,
+        ariaLabel: "Password",
+      },
+    ];
+  }
+
+  get _submitParams() {
+    return {
+      id: "transaction-confirm",
+      cssClass: "modal-btn",
+      labelText: "Confirm",
+    };
+  }
+
   // Add endpoint in the superclass constructor, when backend is defined
   // Each confirm pass modal has a different endpoint
   get _endpoint() {
-    return "";
-  }
-
-  get _formData() {
     return "";
   }
 }

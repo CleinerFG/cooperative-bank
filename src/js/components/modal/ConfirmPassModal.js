@@ -1,7 +1,7 @@
 import { Modal } from "./Modal.js";
 import { ConfirmPassFormCtrl } from "./ConfirmPassFormCtrl.js";
 
-export class ConfirmPassModalView extends Modal {
+export class ConfirmPassModal extends Modal {
   get _modalContent() {
     return `
       <h2>Confirm Password</h2>
