@@ -14,6 +14,8 @@ export class PassModalFormCtrl extends FormCtrl {
     };
   }
 
+  // Add endpoint in the superclass constructor, when backend is defined
+  // Each confirm pass modal has a different endpoint
   get _endpoint() {
     return "";
   }
