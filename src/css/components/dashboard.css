@@ -1,5 +1,5 @@
 .dashboard-container {
-  background-color: var(--component-bg-color);
+  background-color: var(--dashboard-bg-color-1);
   padding: var(--container-padding);
   border-radius: var(--component-border-radius);
   display: flex;
@@ -11,7 +11,7 @@
 
 .dashboard__filter {
   flex: 1;
-  background-color: #000;
+  background-color: var(--dashboard-bg-color-2);
   padding: 0.5rem;
   border-radius: var(--component-border-radius);
   display: flex;
@@ -37,7 +37,7 @@
 .component-types {
   flex: 1;
   position: relative;
-  background-color: #000;
+  background-color: var(--dashboard-bg-color-3);
   border-radius: 2rem;
   padding: 0.2rem;
   display: flex;
@@ -47,18 +47,16 @@
 .component-type {
   flex: 1;
   text-align: center;
-  background-color: #c5c5c5;
-  color: #000;
   border-radius: 2rem;
   padding: 1rem;
   cursor: pointer;
 }
 
 .component-type:hover:not(.component-type__active) {
-  background-color: var(--color-detail);
+  background-color: hsla(0, 0%, 50%, 0.5);
 }
 
 .component-type__active {
   background-color: var(--color-cta);
-  color: var(--text-color);
+  color: var(--color-off-white);
 }

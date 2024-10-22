@@ -42,6 +42,10 @@
   --skeleton-start: rgba(0, 0, 0, 0.3);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
   --skeleton-end: rgba(0, 0, 0, 0.3);
+
+  --dashboard-bg-color-1: #afe7df;
+  --dashboard-bg-color-2: #e8e8e8;
+  --dashboard-bg-color-3: #f1f2ea;
 }
 
 [data-theme="dark"] {
@@ -63,4 +67,8 @@
   --skeleton-start: rgba(255, 255, 255, 0.3);
   --skeleton-middle: rgba(255, 255, 255, 0.1);
   --skeleton-end: rgba(255, 255, 255, 0.3);
+
+  --dashboard-bg-color-1: #383838;
+  --dashboard-bg-color-2: #262627;
+  --dashboard-bg-color-3: #101010;
 }
