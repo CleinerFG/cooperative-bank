@@ -1,3 +1,5 @@
+import { PathManager } from "../utils/PathManager.js";
+
 export class ComponentGroupView {
   #containerElement;
   #type1;
@@ -31,12 +33,13 @@ export class ComponentGroupView {
               <input id="end-date-filter" class="inp inp-date" type="date">
             </div>
           </div>
-          <button>Filter</button>
+          <button class="btn-unset btn-filter">
+            <img id="filter-icon" class="icon filter-icon" alt="Filter Icon">
+         </button>
         </div>
       </div>
       <h2>${this.#activeType}</h2>
       <div class="cards">
-      
       </div>
     </div>
 `;
@@ -46,7 +49,12 @@ export class ComponentGroupView {
     this.#containerElement.insertAdjacentHTML("beforeend", this._template);
   }
 
+  #assetHandler() {
+    PathManager.updateIcon(`#filter-icon`, "icon-filter.svg");
+  }
+
   #init() {
     this.#render();
+    this.#assetHandler()
   }
 }

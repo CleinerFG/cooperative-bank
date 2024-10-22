@@ -30,6 +30,10 @@
   flex-direction: column;
 }
 
+.filter-icon {
+  width: 2rem;
+}
+
 .component-types {
   flex: 1;
   position: relative;
