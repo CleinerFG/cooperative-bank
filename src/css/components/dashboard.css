@@ -1,0 +1,60 @@
+.dashboard-container {
+  background-color: var(--component-bg-color);
+  padding: var(--container-padding);
+  border-radius: var(--component-border-radius);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dashboard__filter {
+  flex: 1;
+  background-color: #000;
+  padding: 0.5rem;
+  border-radius: var(--component-border-radius);
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.dashboard__filter .inputs__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.dashboard__filter .date-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.component-types {
+  flex: 1;
+  position: relative;
+  background-color: #000;
+  border-radius: 2rem;
+  padding: 0.2rem;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.component-type {
+  flex: 1;
+  text-align: center;
+  background-color: #c5c5c5;
+  color: #000;
+  border-radius: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.component-type:hover:not(.component-type__active) {
+  background-color: var(--color-detail);
+}
+
+.component-type__active {
+  background-color: var(--color-cta);
+  color: var(--text-color);
+}

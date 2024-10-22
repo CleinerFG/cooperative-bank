@@ -27,12 +27,23 @@
 .inp__lookup {
   width: 7.5rem;
 }
+.inp-date {
+  width: 7.5rem;
+  padding: 0.2rem;
+}
+
+.inp-date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5);
+}
 
 .inp-skelon {
-  background: linear-gradient(90deg,
-     transparent 0%,
-      var(--skeleton-middle) 50%,
-      transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-middle) 50%,
+    transparent 100%
+  );
   background-size: 200% 100%;
   animation: loading 2s linear infinite;
 }

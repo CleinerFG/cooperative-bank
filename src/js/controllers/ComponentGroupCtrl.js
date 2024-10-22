@@ -2,6 +2,7 @@ import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 import { ApiService } from "../service/ApiService.js";
 import { simulateWait } from "../utils/tests.js";
 import { CardState } from "../components/CardState.js";
+import { ComponentGroupView } from "../views/ComponentGroupView.js";
 export class ComponentGroupCtrl {
   #containerElement;
   #cardState;
@@ -34,14 +35,15 @@ export class ComponentGroupCtrl {
   }
 
   #initControllers() {
-    this.#componentsCtrls = this.#apiData.map((item) => {
-      return new this._ComponentCtrlClass(this.#containerElement, item);
-    });
+    new ComponentGroupView(this.#containerElement);
+    // this.#componentsCtrls = this.#apiData.map((item) => {
+    //   return new this._ComponentCtrlClass(this.#containerElement, item);
+    // });
   }
 
   async #fetchFromApi() {
     this.#cardState.type = "loading";
-    await simulateWait(3);
+    await simulateWait(0);
     this.#apiData = await ApiService.fetchFrom(this._endpoint);
   }
 
@@ -53,9 +55,13 @@ export class ComponentGroupCtrl {
         this.#initControllers();
       } else {
         this.#cardState.type = "empty";
+        console.log("empty");
       }
     } catch (err) {
       this.#cardState.type = "error";
+      console.log(err);
+
+      console.log("error");
     }
   }
 
