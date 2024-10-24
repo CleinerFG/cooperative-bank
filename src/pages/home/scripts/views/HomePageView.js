@@ -16,7 +16,7 @@ export class HomePageView extends PageView {
     <section class="section ${name}">
       <h2 class="section__h2">${capitalize(name)}</h2>
       <div class="cards-container">
-        <div class="cards ${name}__cards">
+        <div class="cards feature-cards ${name}__cards">
         </div>
       </div>
     </section>
@@ -32,13 +32,13 @@ export class HomePageView extends PageView {
   }
 
   _build() {
-    const actionSections = ["loans", "investments"];
+    const featureSections = ["wallet", "loans", "investments"];
     const statement = this._buidStatement();
-    const actions = actionSections
+    const features = featureSections
       .map((sec) => this._buildFeatureSection(sec))
       .join("");
     const events = this._buildEventsSection();
-    return statement + actions + events;
+    return statement + features + events;
   }
 
   _pageContent() {

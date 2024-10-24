@@ -4,6 +4,11 @@ import { PathManager } from "../../../../js/utils/PathManager.js";
 export class CardLinkGroupsCtrl {
   #sectionsParams = [
     {
+      name: "wallet",
+      containerSelector: ".wallet__cards",
+      items: ["transfer", "extract"],
+    },
+    {
       name: "loans",
       containerSelector: ".loans__cards",
       items: ["requests", "payments", "overview", "timeline"],
