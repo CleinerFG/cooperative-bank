@@ -11,7 +11,7 @@ export class HomePageView extends PageView {
     `;
   }
 
-  _buildActionSection(name) {
+  _buildFeatureSection(name) {
     return `
     <section class="section ${name}">
       <h2 class="section__h2">${capitalize(name)}</h2>
@@ -35,7 +35,7 @@ export class HomePageView extends PageView {
     const actionSections = ["loans", "investments"];
     const statement = this._buidStatement();
     const actions = actionSections
-      .map((sec) => this._buildActionSection(sec))
+      .map((sec) => this._buildFeatureSection(sec))
       .join("");
     const events = this._buildEventsSection();
     return statement + actions + events;

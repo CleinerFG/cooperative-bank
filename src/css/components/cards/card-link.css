@@ -1,4 +1,4 @@
-.card-action {
+.card-link {
   background-color: var(--color-accent);
   border-radius: 1rem;
   width: 6rem;
@@ -9,16 +9,16 @@
   transform: scale(100%) translateY(0);
 }
 
-.card-action__icon {
+.card-link__icon {
   width: 70%;
 }
 
-.card-action__label {
+.card-link__label {
   color: var(--color-text);
 }
 
 /* Hover */
-.card-action:hover {
+.card-link:hover {
   background-color: var(--color-accent-hover);
   transform: translateY(-0.6rem);
 }

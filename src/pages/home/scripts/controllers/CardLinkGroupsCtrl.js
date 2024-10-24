@@ -1,7 +1,7 @@
-import { ActionCardView } from "../views/ActionCardView.js";
+import { CardLink } from "../components/CardLink.js";
 import { PathManager } from "../../../../js/utils/PathManager.js";
 
-export class ActionCardsCtrl {
+export class CardLinkGroupsCtrl {
   #sectionsParams = [
     {
       name: "loans",
@@ -35,7 +35,7 @@ class Item {
   constructor(name, container) {
     this.name = name;
     this.container = container;
-    this.view = new ActionCardView(this.container, this.name);
+    this.view = new CardLink(this.container, this.name);
   }
 
   defineIconPath() {
@@ -43,7 +43,7 @@ class Item {
   }
 
   defineHtmlPath(sectionName) {
-    PathManager.updateHtml(`#card-link-${this.name}`, sectionName, this.name);
+    PathManager.updateHtml(`#card-link-a-${this.name}`, sectionName, this.name);
   }
 }
 
