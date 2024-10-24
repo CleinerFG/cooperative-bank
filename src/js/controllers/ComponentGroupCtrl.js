@@ -7,6 +7,7 @@ export class ComponentGroupCtrl {
   #containerElement;
   #cardState;
   #apiData;
+  #componentGroupView;
   #componentsCtrls;
   constructor(containerElement) {
     this.#containerElement = containerElement;
@@ -29,21 +30,31 @@ export class ComponentGroupCtrl {
     return ["Empty cards...", "There is nothing"];
   }
 
+  get #cardsContainerElement() {
+    return this.#containerElement.querySelector(".cards");
+  }
+
   #initCardState() {
-    this.#cardState = new CardState(this.#containerElement, this._category);
+    this.#cardState = new CardState(
+      this.#cardsContainerElement,
+      this._category
+    );
     this.#cardState.defineTexts(...this._emptyCardsTexts);
   }
 
+  #initComponentGroupView() {
+    this.#componentGroupView = new ComponentGroupView(this.#containerElement);
+  }
+
   #initControllers() {
-    new ComponentGroupView(this.#containerElement);
-    // this.#componentsCtrls = this.#apiData.map((item) => {
-    //   return new this._ComponentCtrlClass(this.#containerElement, item);
-    // });
+    this.#componentsCtrls = this.#apiData.map((item) => {
+      return new this._ComponentCtrlClass(this.#cardsContainerElement, item);
+    });
   }
 
   async #fetchFromApi() {
     this.#cardState.type = "loading";
-    await simulateWait(0);
+    await simulateWait(2);
     this.#apiData = await ApiService.fetchFrom(this._endpoint);
   }
 
@@ -51,7 +62,7 @@ export class ComponentGroupCtrl {
     try {
       await this.#fetchFromApi();
       if (this.#apiData.length) {
-        this.#containerElement.innerHTML = "";
+        this.#cardsContainerElement.innerHTML = "";
         this.#initControllers();
       } else {
         this.#cardState.type = "empty";
@@ -60,12 +71,11 @@ export class ComponentGroupCtrl {
     } catch (err) {
       this.#cardState.type = "error";
       console.log(err);
-
-      console.log("error");
     }
   }
 
   #init() {
+    this.#initComponentGroupView();
     this.#initCardState();
     this.#build();
   }

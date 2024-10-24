@@ -23,12 +23,10 @@ export class HomePageView extends PageView {
     `;
   }
 
-  _buildEventsSection(name) {
+  _buildEventsSection() {
     return `
     <section class="section events">
       <h2 class="section__h2">Events</h2>
-      <div class="cards events__cards">
-      </div>
     </section>
     `;
   }

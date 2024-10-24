@@ -14,7 +14,7 @@ export class ComponentGroupView {
 
   get _template() {
     return `
-    <div class="cards-group">
+    <div class="component-group">
       <div class="dashboard-container">
         <div class="component-types">
           <div class="component-type component-type__active">${
@@ -38,7 +38,7 @@ export class ComponentGroupView {
          </button>
         </div>
       </div>
-      <h2>${this.#activeType}</h2>
+      <h2 class="component-group__h2">${this.#activeType}</h2>
       <div class="cards">
       </div>
     </div>

@@ -3,7 +3,7 @@ import { EventCtrl } from "./EventCtrl.js";
 
 export class EventGroupCtrl extends ComponentGroupCtrl {
   constructor() {
-    const container = document.querySelector(".events__cards");
+    const container = document.querySelector(".section.events");
     super(container);
   }
 
