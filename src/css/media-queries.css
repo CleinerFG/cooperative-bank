@@ -1,19 +1,13 @@
 @media (min-width: 767px) {
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  .header__brand-name {
-    font-size: 1rem;
-  }
-
   /* main container */
   .main {
-    max-width: 1400px;
+    /* max-width: 1200px; */
+  }
+
+  /* Component Group */
+  .component-group {
+    /* flex-direction: row; */
+    align-items: center;
   }
 
   /* footer */
@@ -23,13 +17,5 @@
 
   .footer__content a + p::before {
     content: " - ";
-  }
-
-  .table {
-    font-size: 1.5rem;
-  }
-
-  .no-events__img {
-    height: 400px;
   }
 }
