@@ -38,7 +38,7 @@ export class ComponentGroupView {
          </button>
         </div>
       </div>
-      <h2 class="component-group__h2">${this.#activeType}</h2>
+      <h2 class="component-group__h2">Payments</h2>
       <div class="cards">
       </div>
     </div>

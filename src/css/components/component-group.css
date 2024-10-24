@@ -1,3 +1,11 @@
+.component-group__h2 {
+  margin: 1rem 0 1rem 0;
+  border-radius: var(--component-border-radius);
+  padding: 0.2rem;
+  text-align: center;
+  background-color: hsla(16, 86%, 65%, 0.2)
+}
+
 .dashboard-container {
   background-color: var(--dashboard-bg-color-1);
   padding: var(--container-padding);
@@ -10,18 +18,18 @@
 }
 
 .dashboard__filter {
-  flex: 1;
   background-color: var(--dashboard-bg-color-2);
   padding: 0.5rem;
   border-radius: var(--component-border-radius);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 1rem;
 }
 
 .dashboard__filter .inputs__container {
   display: flex;
   flex-wrap: wrap;
+  
   gap: 0.8rem;
 }
 
@@ -34,8 +42,15 @@
   width: 2rem;
 }
 
+.btn-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .component-types {
   flex: 1;
+  max-width: 20rem;
   position: relative;
   background-color: var(--dashboard-bg-color-3);
   border-radius: 2rem;
