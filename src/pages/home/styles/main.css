@@ -31,14 +31,6 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-.section.events .section__h2 {
-  padding: 0.5rem;
-  border-radius: var(--component-border-radius);
-  background-color: hsla(16, 86%, 65%, 0.2);
-  /* background-color: var(--dashboard-bg-color-1); */
-  /* color: var(--color-background); */
-  border-bottom: none;
-}
 
 @media screen and (max-width: 575px) {
   .feature-cards {
