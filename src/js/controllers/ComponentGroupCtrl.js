@@ -54,7 +54,7 @@ export class ComponentGroupCtrl {
 
   async #fetchFromApi() {
     this.#cardState.type = "loading";
-    await simulateWait(0.5);
+    await simulateWait(2);
     this.#apiData = await ApiService.fetchFrom(this._endpoint);
   }
 
