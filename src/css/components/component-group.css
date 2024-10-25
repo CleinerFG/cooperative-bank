@@ -85,3 +85,18 @@
   background-color: var(--color-cta);
   color: var(--color-off-white);
 }
+
+@media (max-width:460px) {
+  .dashboard-container {
+    max-width: 20rem; 
+  }
+  .dashboard__filter {
+    max-width: 10rem;
+  }
+}
+
+@media (max-width:670px) {
+  .dashboard-container {
+    max-width: 22rem; 
+  }
+} 
