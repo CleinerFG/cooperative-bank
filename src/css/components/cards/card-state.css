@@ -1,6 +1,6 @@
 .card-state {
   width: 100%;
-  max-width: 15rem;
+  max-width: 30rem;
   border-radius: var(--component-border-radius);
   box-shadow: var(--card-state-box-shadow);
   display: flex;
@@ -70,6 +70,7 @@
 
 .card-state__empty,
 .card-state__error {
+  max-width: 50rem;
   background-image: linear-gradient(
     to top,
     var(--color-accent-translucent),
