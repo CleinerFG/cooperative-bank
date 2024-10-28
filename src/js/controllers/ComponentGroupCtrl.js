@@ -22,8 +22,8 @@ export class ComponentGroupCtrl {
     throw new AbstractMethodError("_category");
   }
 
-  get _endpoint() {
-    return "";
+  get _endpointConfig() {
+    throw new AbstractMethodError("_endpointsConfig");
   }
 
   get _emptyCardsTexts() {
@@ -43,7 +43,11 @@ export class ComponentGroupCtrl {
   }
 
   #initComponentGroupView() {
-    this.#componentGroupView = new ComponentGroupView(this.#containerElement);
+    this.#componentGroupView = new ComponentGroupView(
+      this.#containerElement,
+      this._endpointConfig[0].name,
+      this._endpointConfig[1].name
+    );
   }
 
   #initControllers() {

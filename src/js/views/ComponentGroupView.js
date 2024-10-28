@@ -1,14 +1,16 @@
 import { PathManager } from "../utils/PathManager.js";
+import { capitalize } from "../utils/stringUtils.js";
 
 export class ComponentGroupView {
   #containerElement;
   #type1;
   #type2;
-  #activeType = "Type1";
-  constructor(containerElement, type1 = "Type1", type2 = "Type2") {
+  #activeType;
+  constructor(containerElement, type1, type2) {
     this.#containerElement = containerElement;
     this.#type1 = type1;
     this.#type2 = type2;
+    this.#activeType = type1;
     this.#init();
   }
 
@@ -17,10 +19,10 @@ export class ComponentGroupView {
     <div class="component-group">
       <div class="dashboard-container">
         <div class="component-types">
-          <div class="component-type component-type__active">${
+          <div class="component-type component-type__active">${capitalize(
             this.#type1
-          }</div>
-          <div class="component-type">${this.#type2}</div>
+          )}</div>
+          <div class="component-type">${capitalize(this.#type2)}</div>
         </div>
         <div class="dashboard__filter">
           <div class="inputs__container">
@@ -38,7 +40,7 @@ export class ComponentGroupView {
          </button>
         </div>
       </div>
-      <h2 class="component-group__h2">Payments</h2>
+      <h2 class="component-group__h2">${capitalize(this.#activeType)}</h2>
       <div class="cards">
       </div>
     </div>
@@ -55,6 +57,6 @@ export class ComponentGroupView {
 
   #init() {
     this.#render();
-    this.#assetHandler()
+    this.#assetHandler();
   }
 }

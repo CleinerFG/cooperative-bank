@@ -19,6 +19,13 @@ export class EventGroupCtrl extends ComponentGroupCtrl {
     return "events";
   }
 
+  get _endpointConfig() {
+    return [
+      { name: "payment", endpoint: "events/payment" },
+      { name: "investment", endpoint: "events/investment" },
+    ];
+  }
+
   get _emptyCardsTexts() {
     return [
       "There are no events...",
