@@ -14,15 +14,29 @@ export class ComponentGroupView {
     this.#init();
   }
 
+  get btnFilterElement1() {
+    return this.#containerElement.querySelector("#component-type-1");
+  }
+
+  get btnFilterElement2() {
+    return this.#containerElement.querySelector("#component-type-2");
+  }
+
+  get #activeTypeElement() {
+    return this.#containerElement.querySelector("#active-type");
+  }
+
   get _template() {
     return `
     <div class="component-group">
       <div class="dashboard-container">
         <div class="component-types">
-          <div class="component-type component-type__active">${capitalize(
+          <div id="component-type-1" class="component-type component-type__active">${capitalize(
             this.#type1
           )}</div>
-          <div class="component-type">${capitalize(this.#type2)}</div>
+          <div id="component-type-2" class="component-type">${capitalize(
+            this.#type2
+          )}</div>
         </div>
         <div class="dashboard__filter">
           <div class="inputs__container">
@@ -40,7 +54,9 @@ export class ComponentGroupView {
          </button>
         </div>
       </div>
-      <h2 class="component-group__h2">${capitalize(this.#activeType)}</h2>
+      <h2 id="active-type" class="component-group__h2">${capitalize(
+        this.#activeType
+      )}</h2>
       <div class="cards">
       </div>
     </div>
@@ -55,8 +71,31 @@ export class ComponentGroupView {
     PathManager.updateIcon(`#filter-icon`, "icon-filter.svg");
   }
 
+  #setupListeners() {
+    const toggleClass = (ev, otherBtnFilterElement) => {
+      ev.currentTarget.classList.add("component-type__active");
+      otherBtnFilterElement.classList.remove("component-type__active");
+    };
+
+    const upActiveType = (type) => {
+      this.#activeType = type;
+      this.#activeTypeElement.textContent = capitalize(type);
+    };
+
+    this.btnFilterElement1.addEventListener("click", (ev) => {
+      toggleClass(ev, this.btnFilterElement2);
+      upActiveType(this.#type1)
+    });
+
+    this.btnFilterElement2.addEventListener("click", (ev) => {
+      toggleClass(ev, this.btnFilterElement1);
+      upActiveType(this.#type2)
+    });
+  }
+
   #init() {
     this.#render();
     this.#assetHandler();
+    this.#setupListeners();
   }
 }
