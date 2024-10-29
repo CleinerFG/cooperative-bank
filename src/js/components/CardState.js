@@ -11,7 +11,6 @@ export class CardState {
   }
 
   set type(value) {
-    if (this.#type) this.#remove();
     this.#type = value;
     this.#initState();
   }
@@ -28,55 +27,72 @@ export class CardState {
     `;
   }
 
-  #getLoadingTemplate() {
-    return this.#buildTemplate(`
+  get #loadingTemplate() {
+    return this.#buildTemplate(
+      `
       <header class="card-state__header"></header>
       <main class="card-state__content">
         ${this.#buildLoadingItems(3)}
       </main>
       <footer class="card-state__footer"></footer>
-    `, "card-state__loading");
+    `,
+      "card-state__loading"
+    );
   }
 
-  #getEmptyTemplate() {
+  get #emptyTemplate() {
     const imgId = `${this.#category}-${this.#type}-img`;
-    return this.#buildTemplate(`
+    return this.#buildTemplate(
+      `
       <img id="${imgId}" class="card-state-img">
       <div class="card-state__text">
         ${this.#buildEmptyCardsTexts()}
       </div>
-    `, "card-state__empty");
+    `,
+      "card-state__empty"
+    );
   }
 
-  #getErrorTemplate() {
+  get #errorTemplate() {
     const imgId = `${this.#category}-${this.#type}-img`;
-    return this.#buildTemplate(`
+    return this.#buildTemplate(
+      `
       <img id="${imgId}" class="card-state__img">
       <div class="card-state__text">
-        <p class="info-text">Oops! Something went wrong while trying to load the ${this.#category} data.</p>
+        <p class="info-text">Oops! Something went wrong while trying to load the ${
+          this.#category
+        } data.</p>
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
-    `, "card-state__error");
+    `,
+      "card-state__error"
+    );
   }
 
   #buildLoadingItems(count) {
-    return Array(count).fill(`
+    return Array(count)
+      .fill(
+        `
       <div class="card-state__item">
         <span class="card-state__label"></span>
         <span class="card-state__value"></span>
       </div>
-    `).join("");
+    `
+      )
+      .join("");
   }
 
   #buildEmptyCardsTexts() {
-    return this.#emptyCardsTexts.map(txt => `<p class="info-text">${txt}</p>`).join("");
+    return this.#emptyCardsTexts
+      .map((txt) => `<p class="info-text">${txt}</p>`)
+      .join("");
   }
 
   #getTemplate() {
     const templates = {
-      loading: this.#getLoadingTemplate(),
-      empty: this.#getEmptyTemplate(),
-      error: this.#getErrorTemplate(),
+      loading: this.#loadingTemplate,
+      empty: this.#emptyTemplate,
+      error: this.#errorTemplate,
     };
     return templates[this.#type];
   }
@@ -95,11 +111,7 @@ export class CardState {
   }
 
   #render() {
-    this.#container.insertAdjacentHTML("beforeend", this.#getTemplate());
-  }
-
-  #remove() {
-    this.#container.querySelector(".card-state").remove();
+    this.#container.innerHTML = this.#getTemplate();
   }
 
   #initState() {
