@@ -30,7 +30,7 @@ export class EventView extends ComponentView {
   }
 
   get _headerCard() {
-    return this._createHeaderCard(capitalize(this.componentModel.type));
+    return this._createHeaderCard(capitalize(this.componentModel.name ?? "test"));
   }
 
   get _mainCard() {

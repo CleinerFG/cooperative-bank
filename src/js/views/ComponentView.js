@@ -44,24 +44,8 @@ export class ComponentView {
     return { entity, entityValue };
   }
 
-  #renderCardItem(label, value) {
-    return `
-      <div class="card-data__item">
-        <span class="card-data__label">${label}</span>
-        <span class="card-data__value">${value}</span>
-      </div>
-    `;
-  }
-
-  #createCard() {
-    return `
-    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
-        ${this._headerCard}
-        ${this._mainCard}
-        ${this._footerCard}
-      </article>
-  
-    `;
+  selfRemove() {
+    document.getElementById(this._cssId).remove();
   }
 
   _createHeaderCard(str) {
@@ -97,8 +81,24 @@ export class ComponentView {
     // Implement it in the subclass
   }
 
-  selfRemove() {
-    document.getElementById(this._cssId).remove();
+  #renderCardItem(label, value) {
+    return `
+      <div class="card-data__item">
+        <span class="card-data__label">${label}</span>
+        <span class="card-data__value">${value}</span>
+      </div>
+    `;
+  }
+
+  #createCard() {
+    return `
+    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
+        ${this._headerCard}
+        ${this._mainCard}
+        ${this._footerCard}
+      </article>
+  
+    `;
   }
 
   #render() {
