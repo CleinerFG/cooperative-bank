@@ -1,6 +1,7 @@
 import { ApiService } from "../service/ApiService.js";
 import { PathManager } from "../utils/PathManager.js";
 import { capitalize } from "../utils/stringUtils.js";
+import { CardState } from "./CardState.js";
 import { simulateWait } from "../utils/tests.js";
 
 export class ComponentGroup {
@@ -110,6 +111,8 @@ export class ComponentGroup {
     this.#cardState.type = "loading";
     await simulateWait(2);
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
+    console.log(this.#activeType);
+    
   }
 
   async #build() {

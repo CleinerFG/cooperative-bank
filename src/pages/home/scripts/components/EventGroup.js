@@ -1,7 +1,7 @@
-import { ComponentGroupCtrl } from "../../../../js/controllers/ComponentGroupCtrl.js";
-import { EventCtrl } from "./EventCtrl.js";
+import { ComponentGroup } from "../../../../js/components/ComponentGroup.js";
+import { EventCtrl } from "../controllers/EventCtrl.js";
 
-export class EventGroupCtrl extends ComponentGroupCtrl {
+export class EventGroup extends ComponentGroup {
   constructor() {
     const container = document.querySelector(".section.events");
     super(container);
@@ -15,14 +15,10 @@ export class EventGroupCtrl extends ComponentGroupCtrl {
     return "events";
   }
 
-  get _endpoint() {
-    return "events";
-  }
-
   get _endpointConfig() {
     return [
-      { name: "payment", endpoint: "events/payment" },
-      { name: "investment", endpoint: "events/investment" },
+      { name: "payment", endpoint: "events-payment" },
+      { name: "investment", endpoint: "events-investment" },
     ];
   }
 
