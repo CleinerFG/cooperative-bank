@@ -1,6 +1,6 @@
-import { EventPaymentView } from "./EventPaymentView.js";
+import { EventPaymentCard } from "./EventPaymentCard.js";
 
-export class EventInvestmentView extends EventPaymentView {
+export class EventInvestmentCard extends EventPaymentCard {
   get _cssClass() {
     return `event__investment`;
   }
