@@ -111,7 +111,6 @@ export class ComponentGroup {
     this.#cardState.type = "loading";
     await simulateWait(1);
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
-    console.log(this.#activeType);
   }
 
   async #renderComponents() {

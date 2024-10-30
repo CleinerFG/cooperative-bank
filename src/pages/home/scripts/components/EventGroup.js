@@ -1,5 +1,5 @@
 import { ComponentGroup } from "../../../../js/components/ComponentGroup.js";
-import { EventCtrl } from "../controllers/EventCtrl.js";
+import { CardEvent } from "./CardEvent.js";
 
 export class EventGroup extends ComponentGroup {
   constructor() {
@@ -7,8 +7,8 @@ export class EventGroup extends ComponentGroup {
     super(container);
   }
 
-  get _ComponentCtrlClass() {
-    return EventCtrl;
+  get _CardComponentClass() {
+    return CardEvent;
   }
 
   get _category() {
