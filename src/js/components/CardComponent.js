@@ -1,6 +1,6 @@
 import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 
-export class ComponentCard {
+export class CardComponent {
   #containerElement;
   #model;
   constructor(containerElement, modelParams) {

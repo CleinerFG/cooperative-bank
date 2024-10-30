@@ -6,7 +6,7 @@ import { simulateWait } from "../utils/tests.js";
 
 export class ComponentGroup {
   #containerElement;
-  #componentsCtrls;
+  #cardComponents;
   #cardState;
   #apiData;
   #activeType;
@@ -16,8 +16,8 @@ export class ComponentGroup {
     this.#init();
   }
 
-  get _ComponentCtrlClass() {
-    throw new AbstractMethodError("_ComponentCtrl");
+  get _CardComponentClass() {
+    throw new AbstractMethodError("_CardComponentClass");
   }
 
   get _category() {
@@ -101,9 +101,9 @@ export class ComponentGroup {
     this.#cardState.defineTexts(...this._emptyCardsTexts);
   }
 
-  #initControllers() {
-    this.#componentsCtrls = this.#apiData.map((item) => {
-      return new this._ComponentCtrlClass(this.#cardsContainerElement, item);
+  #initCardComponents() {
+    this.#cardComponents = this.#apiData.map((item) => {
+      return new this._CardComponentClass(this.#cardsContainerElement, item);
     });
   }
 
@@ -112,15 +112,14 @@ export class ComponentGroup {
     await simulateWait(1);
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
     console.log(this.#activeType);
-    
   }
 
-  async #build() {
+  async #renderComponents() {
     try {
       await this.#fetchFromApi();
       if (this.#apiData.length) {
         this.#cardsContainerElement.innerHTML = "";
-        this.#initControllers();
+        this.#initCardComponents();
       } else {
         this.#cardState.type = "empty";
         console.log("empty");
@@ -145,13 +144,13 @@ export class ComponentGroup {
     this.#btnFilterElement1.addEventListener("click", (ev) => {
       toggleClass(ev, this.#btnFilterElement2);
       upActiveType(this._endpointConfig[0]);
-      this.#build();
+      this.#renderComponents();
     });
 
     this.#btnFilterElement2.addEventListener("click", (ev) => {
       toggleClass(ev, this.#btnFilterElement1);
       upActiveType(this._endpointConfig[1]);
-      this.#build();
+      this.#renderComponents();
     });
   }
 
@@ -160,6 +159,6 @@ export class ComponentGroup {
     this.#assetHandler();
     this.#setupListeners();
     this.#initCardState();
-    this.#build();
+    this.#renderComponents();
   }
 }

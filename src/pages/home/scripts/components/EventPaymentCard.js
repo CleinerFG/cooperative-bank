@@ -1,7 +1,7 @@
-import { ComponentCard } from "../../../../js/components/ComponentCard.js";
+import { CardComponent } from "../../../../js/components/CardComponent.js";
 import { capitalize } from "../../../../js/utils/stringUtils.js";
 
-export class EventPaymentCard extends ComponentCard {
+export class EventPaymentCard extends CardComponent {
   get _cssId() {
     return `event-${this.componentModel.id}`;
   }
