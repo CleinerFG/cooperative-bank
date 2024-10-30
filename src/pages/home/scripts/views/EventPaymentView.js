@@ -21,10 +21,6 @@ export class EventPaymentView extends ComponentView {
     return capitalize(this.componentModel.description);
   }
 
-  // get _cardMain() {
-  //   return this._createMainCard(...this._labelValue);
-  // }
-
   get _cardFooterTemplate() {
     return `
       <button class="btn btn-attention card-data__btn">
