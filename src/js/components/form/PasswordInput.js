@@ -3,6 +3,7 @@ import { PathManager } from "../../utils/PathManager.js";
 
 /**
  * Represents a password input field with visibility toggle functionality.
+ * @class
  * @extends Input
  */
 export class PasswordInput extends Input {
@@ -10,7 +11,7 @@ export class PasswordInput extends Input {
    * Generates the HTML template for the password input field.
    * @protected
    * @override
-   * @returns {string} The HTML as string for the input field, including visibility toggle button and error message.
+   * @returns {string} The HTML as string for the input field, including a visibility toggle button and an error message.
    */
   get _template() {
     return `
