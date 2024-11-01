@@ -13,7 +13,6 @@ import {
  * @classdesc Creates an input element with customizable formatting,
  * strict number validation, and error messaging.
  */
-
 export class Input {
   /**
    * The container element where the input element will be rendered.
@@ -38,7 +37,7 @@ export class Input {
 
   /**
    * Array of validators to apply to the input.
-   * @type {Function[]}
+   * @type {import("../../utils/validators.js").Validator[]}
    * @private
    */
   #validators = [emptyValidator, zeroValidator];
@@ -52,7 +51,7 @@ export class Input {
    * @param {string} [params.cssClass=""] - Optional CSS class for styling.
    * @param {string} [params.inputmode="text"] - Optional input mode for the input element.
    * @param {boolean} [params.strictToNumber=false] - Whether only numbers are allowed.
-   * @param {string} [params.formatter] - Formatter type for the input (e.g., "currency", "percent").
+   * @param {string} [params.formatter] - Formatter type for the input ("currency" | "percent").
    * @param {string} [params.labelText=""] - Text for the input label.
    */
   constructor(params) {
@@ -107,7 +106,7 @@ export class Input {
 
   /**
    * Displays or removes an error message on the input.
-   * @param {string} method - Method to manipulate error class ("add" or "remove").
+   * @param {string} method - Method to manipulate error class ("add" | "remove").
    * @param {string} errorMessage - The error message to display.
    * @protected
    */
@@ -118,8 +117,8 @@ export class Input {
   }
 
   /**
-   * Executes each validator on the current input value.
-   * @throws {Error} Throws if validation fails with the error message.
+   * Executes each validator on the current input value stored in the input element.
+   * If a validator throws an error, it catches the error and updates the validation state, displaying the error message if validation fails.
    * @private
    */
   #executeValidators() {
@@ -159,7 +158,7 @@ export class Input {
     }
   }
 
-   /**
+  /**
    * Sets up validation on blur event for the input element.
    * @private
    */
@@ -190,7 +189,7 @@ export class Input {
   #render() {
     this.#containerElement.insertAdjacentHTML("beforeend", this._template);
   }
-  
+
   /**
    * Initializes the input element by rendering it and setting up handlers.
    */
