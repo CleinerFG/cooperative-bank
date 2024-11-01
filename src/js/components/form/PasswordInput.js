@@ -1,7 +1,17 @@
 import { Input } from "./Input.js";
 import { PathManager } from "../../utils/PathManager.js";
 
+/**
+ * Represents a password input field with visibility toggle functionality.
+ * @extends Input
+ */
 export class PasswordInput extends Input {
+  /**
+   * Generates the HTML template for the password input field.
+   * @protected
+   * @override
+   * @returns {string} The HTML as string for the input field, including visibility toggle button and error message.
+   */
   get _template() {
     return `
     <div class="form-group__inp-group">
@@ -17,12 +27,31 @@ export class PasswordInput extends Input {
     </div>`;
   }
 
+  /**
+   * Updates the icon path based on the visibility state.
+   * @param {string} state - The state of visibility ("on" | "off").
+   * @protected
+   */
+  _updateIconPath(state) {
+    PathManager.updateIcon(
+      `#${this._id}-visibility-icon`,
+      `icon-visibility-${state}.svg`
+    );
+  }
 
+  /**
+   * Toggles the input type between "text" and "password".
+   * @protected
+   */
   _toggleInpType() {
     const currentType = this.inputElement.type;
     this.inputElement.type = currentType === "text" ? "password" : "text";
   }
 
+  /**
+   * Switches the visibility of the password input and updates the icon.
+   * @protected
+   */
   _switchVisibility() {
     const icon = document.querySelector(`#${this._id}-visibility-icon`);
     const currentState = this.inputElement.dataset.visibility;
@@ -35,6 +64,10 @@ export class PasswordInput extends Input {
     this.inputElement.dataset.visibility = newState;
   }
 
+  /**
+   * Sets up event listeners for the password visibility toggle button.
+   * @protected
+   */
   _setupListeners() {
     const btnSwitch = document.querySelector(`#${this._id}-visibility`);
     btnSwitch.addEventListener("click", () => {
@@ -43,10 +76,9 @@ export class PasswordInput extends Input {
     });
   }
 
-  _updateIconPath(state) {
-    PathManager.updateIcon(`#${this._id}-visibility-icon`, `icon-visibility-${state}.svg`);
-  }
-
+  /**
+   * Initializes the password input, setting up listeners and rendering the input field.
+   */
   init() {
     super.init();
     this._setupListeners();
