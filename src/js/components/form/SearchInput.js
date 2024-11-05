@@ -114,19 +114,19 @@ export class SearchInput extends Input {
    */
   async _handleSearch() {
     try {
-      this._dataValid = "false";
+      this._dataValid = false;
       const item = await this.#fetchFromApi();
       if (item) {
         this._updateResult(item);
-        this._dataValid = "true";
+        this._dataValid = true;
         this._failMessageHandler("remove", "");
       } else {
         this._updateResult(null);
-        this._dataValid = "false";
+        this._dataValid = false;
       }
     } catch (error) {
       this._updateResult(null);
-      this._dataValid = "false";
+      this._dataValid = false;
       this._failMessageHandler("add", error.message);
     }
   }

@@ -134,10 +134,10 @@ export class Input {
     const value = this.inputElement.value;
     try {
       this.#validators.forEach((validator) => validator(value));
-      this._dataValid = "true";
+      this._dataValid = true;
       this._failMessageHandler("remove", "");
     } catch (error) {
-      this._dataValid = "false";
+      this._dataValid = false;
       this._failMessageHandler("add", error.message);
     }
   }
