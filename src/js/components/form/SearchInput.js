@@ -75,6 +75,7 @@ export class SearchInput extends Input {
 
   /**
    * Asynchronously fetches data from the API based on the input value.
+   * @async
    * @private
    * @returns {Promise<Object>} The retrieved data object.
    * @throws {NotFoundError} Throws if the data is not found.
@@ -133,7 +134,8 @@ export class SearchInput extends Input {
   /**
    * Updates the result display with the fetched item or clears it if no item.
    * @protected
-   * @param {object | null} item - The item to display, or null if not found.
+   * @param {Object | null} item - The item to display, or null if not found.
+   * @param {string} item.name - The name of item fetched.
    */
   _updateResult(item) {
     this.#toggleSearchState("remove");
@@ -173,6 +175,7 @@ export class SearchInput extends Input {
 
   /**
    * Initializes the search input, setting default values, event listeners, and icon path.
+   * @public
    * @override
    */
   init() {

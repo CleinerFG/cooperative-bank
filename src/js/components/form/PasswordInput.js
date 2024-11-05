@@ -10,8 +10,8 @@ export class PasswordInput extends Input {
   /**
    * Generates the HTML template for the password input field.
    * @protected
-   * @override
    * @returns {string} The HTML as string for the input field, including a visibility toggle button and an error message.
+   * @override
    */
   get _template() {
     return `
@@ -30,8 +30,8 @@ export class PasswordInput extends Input {
 
   /**
    * Updates the icon path based on the visibility state.
-   * @param {string} state - The state of visibility ("on" | "off").
    * @protected
+   * @param {"on" | "off"} state - The state of visibility.
    */
   _updateIconPath(state) {
     PathManager.updateIcon(
@@ -78,7 +78,9 @@ export class PasswordInput extends Input {
   }
 
   /**
-   * Initializes the password input, setting up listeners and rendering the input field.
+   * Initializes the password input, rendering the input field, setting up listeners and updating the icon.
+   * @public
+   * @override
    */
   init() {
     super.init();

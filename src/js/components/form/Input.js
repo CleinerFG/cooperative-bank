@@ -9,6 +9,12 @@ import {
  * Input class for creating and managing input elements with validation,
  * formatting, and error handling.
  *
+ *  Features:
+ * - Custom validation with multiple validators
+ * - Input formatting (currency, percentage, strict numbers)
+ * - Error message handling and display
+ * - Event handling for blur and input events
+ * 
  * @class
  * @classdesc Creates an input element with customizable formatting,
  * strict number validation, and error messaging.
@@ -16,29 +22,29 @@ import {
 export class Input {
   /**
    * The container element where the input element will be rendered.
-   * @type {HTMLElement}
    * @private
+   * @type {HTMLElement}
    */
   #containerElement;
 
   /**
    * Flag indicating whether only strict numeric values are allowed.
-   * @type {boolean}
    * @private
+   * @type {boolean}
    */
   #strictToNumber;
 
   /**
    * Formatter type for the input ("currency" | "percent").
-   * @type {string}
    * @private
+   * @type {"currency" | "percent"}
    */
   #formatter;
 
   /**
    * Array of validators to apply to the input.
-   * @type {import("../../utils/validators.js").Validator[]}
    * @private
+   * @type {import("../../utils/validators.js").Validator[]}
    */
   #validators = [emptyValidator, zeroValidator];
 
@@ -49,9 +55,9 @@ export class Input {
    * @param {HTMLElement} params.containerElement - The container where the input will be added.
    * @param {string} params.id - The unique identifier for the input element.
    * @param {string} [params.cssClass=""] - Optional CSS class for styling.
-   * @param {string} [params.inputmode="text"] - Optional input mode for the input element.
+   * @param {"text" | "numeric"} [params.inputmode="text"] - Optional input mode for the input element.
    * @param {boolean} [params.strictToNumber=false] - Whether only numbers are allowed.
-   * @param {string} [params.formatter] - Formatter type for the input ("currency" | "percent").
+   * @param {"currency" | "percent"} params.formatter - Formatter type for the input ("currency" | "percent").
    * @param {string} [params.labelText=""] - Text for the input label.
    */
   constructor(params) {
@@ -66,6 +72,7 @@ export class Input {
 
   /**
    * Gets the ID of the input element.
+   * @public
    * @returns {string} The ID of the input.
    */
   get id() {
@@ -74,6 +81,7 @@ export class Input {
 
   /**
    * Gets the input element.
+   * @public
    * @returns {HTMLElement} The input element.
    */
   get inputElement() {
@@ -82,8 +90,8 @@ export class Input {
 
   /**
    * Sets the validation state of the input.
-   * @param {boolean} bool - The validation state (true if valid, false otherwise).
    * @protected
+   * @param {boolean} bool - The validation state (true if valid, false otherwise).
    */
   set _dataValid(bool) {
     this.inputElement.dataset.valid = bool;
@@ -91,8 +99,9 @@ export class Input {
 
   /**
    * Generates the HTML template for the input element.
-   * @returns {string} The HTML template as a string.
+   * This getter can be overridden by subclasses to provide their specific HTML structure.
    * @protected
+   * @returns {string} The HTML template as a string.
    */
   get _template() {
     return `
@@ -106,9 +115,9 @@ export class Input {
 
   /**
    * Displays or removes an error message on the input.
-   * @param {string} method - Method to manipulate error class ("add" | "remove").
-   * @param {string} errorMessage - The error message to display.
    * @protected
+   * @param {"add" | "remove"} method - Method to manipulate error class.
+   * @param {string} errorMessage - The error message to display.
    */
   _failMessageHandler(method, errorMessage) {
     const span = document.querySelector(`#${this._id}-error`);
@@ -161,6 +170,13 @@ export class Input {
   /**
    * Sets up validation on blur event for the input element.
    * @private
+   * @see #executeValidators
+   *
+   * - Uses #executeValidators method for validation
+   *
+   * Event binding:
+   * - Event: 'blur'
+   * - Handler: Bound version of #executeValidators with correct 'this' context
    */
   #setupValidationOnBlur() {
     this.inputElement.addEventListener(
@@ -192,6 +208,7 @@ export class Input {
 
   /**
    * Initializes the input element by rendering it and setting up handlers.
+   * @public
    */
   init() {
     this.#render();
