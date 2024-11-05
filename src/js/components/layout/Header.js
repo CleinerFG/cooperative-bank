@@ -1,7 +1,21 @@
 import { Layout } from "./Layout.js";
 import { PathManager } from "../../utils/PathManager.js";
 
+/**
+ * Represents the header layout component for the application.
+ * Extends the Layout class and provides specific implementations for rendering,
+ * managing paths, and setting up event listeners for the header.
+ * @class
+ * @extends Layout
+ */
 export class Header extends Layout {
+  /**
+   * Returns the HTML template for the header.
+   *
+   * @protected
+   * @override
+   * @returns {string}
+   */
   get _template() {
     return `  
     <header id="header" class="header">
@@ -25,6 +39,13 @@ export class Header extends Layout {
     </header>`;
   }
 
+  /**
+   * Toggles the visibility of the navigation menu and adds event listeners to handle menu interactions.
+   * When the menu button is clicked, it toggles the active state of the menu.
+   * Additionally, clicking outside the menu closes it.
+   *
+   * @protected
+   */
   _menuHandler() {
     const menuBtn = document.querySelector("#menu-button");
     const navMenu = document.querySelector(".header__menu");
@@ -46,16 +67,36 @@ export class Header extends Layout {
     window.addEventListener("click", closeMenuOnClickOutside);
   }
 
-  _render(){
-    super._render("afterbegin")
+  /**
+   * Renders the header at the specified position within the document body.
+   *
+   * @protected
+   * @override
+   */
+  _render() {
+    super._render("afterbegin");
   }
 
+  /**
+   * Updates asset paths for icons and HTML elements in the header.
+   * Uses the PathManager utility to assign the correct paths for menu and theme icons, and for the brand link.
+   *
+   * @protected
+   * @override
+   */
   _pathHandler() {
     PathManager.updateIcon(".header__menu-icon", "icon-menu.svg");
     PathManager.updateIcon("#theme-icon", "icon-theme.svg");
     PathManager.updateHtml(".header__brand-name", "home", "index.html");
   }
 
+  /**
+   * Sets up event listeners specific to the header component.
+   * Initializes the menu interaction by calling `_menuHandler`.
+   *
+   * @protected
+   * @override
+   */
   _setupListeners() {
     this._menuHandler();
   }
