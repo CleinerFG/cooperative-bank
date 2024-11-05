@@ -8,11 +8,6 @@ export class Theme {
     this.#init();
   }
 
-  // Delete old method, before update to getter
-  static getStoredTheme() {
-    return localStorage.getItem(Theme.THEME_KEY) ?? "dark";
-  }
-
   static get storedTheme() {
     return localStorage.getItem(Theme.THEME_KEY) ?? "dark";
   }
@@ -47,7 +42,7 @@ export class Theme {
   }
 
   #applyStoredTheme() {
-    this.#bodyTheme = Theme.getStoredTheme();
+    this.#bodyTheme = Theme.storedTheme;
   }
 
   #btnHandler() {

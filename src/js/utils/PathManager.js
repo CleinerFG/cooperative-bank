@@ -66,7 +66,7 @@ export class PathManager {
    */
   static updateIcon(selector, filename) {
     const element = PathManager.getElement(selector);
-    const theme = Theme.getStoredTheme();
+    const theme = Theme.storedTheme;
     element.setAttribute(
       "src",
       PathManager.#assetsPaths[`icons${theme}`] + filename
