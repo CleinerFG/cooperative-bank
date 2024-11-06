@@ -32,6 +32,10 @@ export class ComponentGroup {
     return ["Empty cards...", "There is nothing"];
   }
 
+  get _activeType() {
+    return this.#activeType;
+  }
+
   get #cardsContainerElement() {
     return this.#containerElement.querySelector(".cards");
   }

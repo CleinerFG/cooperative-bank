@@ -1,7 +1,7 @@
 import { PageView } from "../../../../../js/views/PageView.js";
 
 export class LoanRequestsPageView extends PageView {
-  _createSectionTakeOut() {
+  get _templateSectionStart() {
     return `
     <section class="section">
       <h1 class="section__h1">Take Out a Loan</h1>
@@ -12,7 +12,7 @@ export class LoanRequestsPageView extends PageView {
     `;
   }
 
-  _createSectionNewLoan() {
+  get _templateSectionNewLoan() {
     return `
     <section class="section new-request">
       <h2 class="section__h2">New Loan Request</h2>
@@ -21,33 +21,19 @@ export class LoanRequestsPageView extends PageView {
     `;
   }
 
-  _createSectionOpened() {
+  get _templateSectionLoanRequests() {
     return `
-    <section class="section open-requests">
-      <h2 class="section__h2">Opened Requests</h2>
-      <div class="cards opened-requests__cards">
-      </div>
-    </section>
-    `;
-  }
-
-  _createSectionReceived() {
-    return `
-    <section class="section received-requests">
-      <h2 class="section__h2">Received Requests</h2>
-      <div class="cards received-requests__cards">
-      </div>
+    <section class="section loan-requests">
+      <h2 class="section__h2">Loan Requests</h2>
     </section>
     `;
   }
 
   _pageContent() {
-    const content = `
-    ${this._createSectionTakeOut()}
-    ${this._createSectionNewLoan()}
-    ${this._createSectionOpened()}
-    ${this._createSectionReceived()}
+    return `
+    ${this._templateSectionStart}
+    ${this._templateSectionNewLoan}
+    ${this._templateSectionLoanRequests}
     `;
-    return content;
   }
 }

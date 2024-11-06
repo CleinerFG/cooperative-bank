@@ -14,10 +14,10 @@ export class LoanRequestModel extends TransactionModel {
   };
 
   static descStatus = {
-    1: "Pending",
-    2: "Accepted",
-    3: "Denied",
-    4: "Canceled",
+    1: "pending",
+    2: "accepted",
+    3: "denied",
+    4: "canceled",
   };
 
   constructor(params) {

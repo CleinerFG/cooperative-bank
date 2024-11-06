@@ -343,7 +343,7 @@
       }
     ]
   ,
-  "opened-requests": [
+  "requests-opened": [
     {
       "id": "12",
       "date": "2024-01-31T13:57:54.844Z",
@@ -375,7 +375,7 @@
       "status": 3
     }
   ],
-  "received-requests": [
+  "requests-received": [
     {
       "id": "20",
       "date": "2024-06-11T20:29:44.418Z",

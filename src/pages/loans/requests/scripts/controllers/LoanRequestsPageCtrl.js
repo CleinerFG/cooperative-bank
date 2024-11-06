@@ -1,17 +1,15 @@
 import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
 import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
-import { OpenedRequestGroupCtrl } from "./OpenedRequestGroupCtrl.js";
-import { ReceivedRequestGroupCtrl } from "./ReceivedRequestGroupCtrl.js";
+import { LoanRequestGroup } from "../components/LoanRequestGroup.js";
 
 export class LoanRequestsPageCtrl extends PageCtrl {
   constructor() {
     super(LoanRequestsPageView);
   }
 
-  _initControllers(){
+  _initControllers() {
     new NewLoanRequestFormCtrl();
-    new OpenedRequestGroupCtrl();
-    new ReceivedRequestGroupCtrl();
+    new LoanRequestGroup();
   }
 }
