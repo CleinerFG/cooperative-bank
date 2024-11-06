@@ -284,28 +284,28 @@
   "events-payment": [
       {
         "id": "1450",
-        "name": "Window for house",
+        "description": "Window for house",
         "type": 1,
         "dueDate": "2024-08-03T20:28:48.663Z",
         "value": 2200
       },
       {
         "id": "15565",
-        "name": "Credit",
+        "description": "Credit",
         "type": 1,
         "dueDate": "2024-08-29T08:45:42.155Z",
         "value": 2800
       },
       {
         "id": "515",
-        "name": "Shopping",
+        "description": "Shopping",
         "type": 1,
         "dueDate": "2024-05-01T20:35:16.253Z",
         "value": 3400
       },
       {
         "id": "410",
-        "name": "Car",
+        "description": "Car",
         "type": 1,
         "dueDate": "2024-05-01T20:35:16.253Z",
         "value": 5800
@@ -314,7 +314,7 @@
     "events-investment": [
       {
         "id": "1456",
-        "name": "LCI",
+        "description": "LCI",
         "type": 2,
         "dueDate": "2024-09-27T15:13:25.289Z",
         "value": 300
@@ -322,21 +322,21 @@
 
       {
         "id": "104",
-        "name": "CDB",
+        "description": "CDB",
         "type": 2,
         "dueDate": "2024-05-03T01:31:07.054Z",
         "value": 200
       },
       {
         "id": "4610",
-        "name": "LCA",
+        "description": "LCA",
         "type": 2,
         "dueDate": "2024-06-11T20:29:44.418Z",
         "value": 400
       },
       {
         "id": "4616",
-        "name": "CDB",
+        "description": "CDB",
         "type": 2,
         "dueDate": "2024-01-31T13:57:54.844Z",
         "value": 400

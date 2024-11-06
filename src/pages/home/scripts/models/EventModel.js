@@ -9,13 +9,13 @@ export class EventModel {
     2: "investment",
   };
   #id;
-  #name;
+  #description;
   #type;
   #dueDate;
   #value;
   constructor(params) {
     this.#id = params.id;
-    this.#name = params.name;
+    this.#description = params.description;
     this.#type = params.type;
     this.#dueDate = params.dueDate;
     this.#value = params.value;
@@ -25,16 +25,12 @@ export class EventModel {
     return this.#id;
   }
 
-  get name() {
-    return this.#name;
-  }
-
   get type() {
     return EventModel.descType[this.#type];
   }
 
-  get description(){
-    return "Must be implemented"
+  get description() {
+    return this.#description;
   }
 
   get dueDate() {
