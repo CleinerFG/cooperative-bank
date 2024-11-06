@@ -1,42 +1,29 @@
 import { PageView } from "../../../../../js/views/PageView.js";
 
 export class OverviewPageView extends PageView {
-  _createSectionInitial() {
+  get _templateSectionInitial() {
     return `
-    <section class="section">
+    <section class="section active-loans">
       <h1 class="section__h1">Loans Overview</h1>
-      <p class="info-text">Report of all active loans.</p>
+      <p class="info-text">On this page, you will find all active loans and their total value report.</p>
     </section>
     `;
   }
 
-  _createSectionReceivables() {
+  get _templateSectionTotalReport() {
     return `
-    <section class="section Receivables">
-      <h2 class="section__h2">Receivables</h2>
-      <div class="cards receivables__cards"></div>
+    <section class="section total-report">
+      <h2 class="section__h2">Total Report</h2>
+      <p class="info-text">Total to Pay: "Must be implemented"</p>
       <p class="info-text">Total to Receive: "Must be implemented"</p>
     </section>
     `;
   }
 
-  _createSectionPayables() {
-    return `
-    <section class="section Payables">
-      <h2 class="section__h2">Payables</h2>
-      <div class="cards payables__cards"></div>
-      </div>
-      <p class="info-text">Total to Pay: "Must be implemented"</p>
-    </section>
-    `;
-  }
-
   _pageContent() {
-    const content = `
-    ${this._createSectionInitial()}
-    ${this._createSectionReceivables()}
-    ${this._createSectionPayables()}
+    return `
+    ${this._templateSectionInitial}
+    ${this._templateSectionTotalReport}
     `;
-    return content;
   }
 }

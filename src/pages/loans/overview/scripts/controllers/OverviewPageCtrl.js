@@ -1,7 +1,6 @@
 import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
 import { OverviewPageView } from "../views/OverviewPageView.js";
-import { LoanPaybleGroupCtrl } from "./LoanPayableGroupCtrl.js";
-import { LoanReceivableGroupCtrl } from "./LoanReceivableGroupCtrl.js";
+import { ActiveLoanGroup } from "../components/ActiveLoanGroup.js";
 
 export class OverviewPageCtrl extends PageCtrl {
   constructor() {
@@ -9,7 +8,6 @@ export class OverviewPageCtrl extends PageCtrl {
   }
 
   _initControllers() {
-    new LoanPaybleGroupCtrl();
-    new LoanReceivableGroupCtrl();
+    new ActiveLoanGroup();
   }
 }

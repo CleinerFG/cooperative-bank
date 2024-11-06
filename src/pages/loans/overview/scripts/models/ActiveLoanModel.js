@@ -4,7 +4,7 @@ import {
   numberToPercent,
 } from "../../../../../js/utils/formatters.js";
 
-export class LoanModel extends TransactionModel {
+export class ActiveLoanModel extends TransactionModel {
   static descStatus = {
     1: "active",
     2: "finished",

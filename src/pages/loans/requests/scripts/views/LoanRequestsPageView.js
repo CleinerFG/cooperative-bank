@@ -1,7 +1,7 @@
 import { PageView } from "../../../../../js/views/PageView.js";
 
 export class LoanRequestsPageView extends PageView {
-  get _templateSectionStart() {
+  get _templateSectionInitial() {
     return `
     <section class="section">
       <h1 class="section__h1">Take Out a Loan</h1>
@@ -31,7 +31,7 @@ export class LoanRequestsPageView extends PageView {
 
   _pageContent() {
     return `
-    ${this._templateSectionStart}
+    ${this._templateSectionInitial}
     ${this._templateSectionNewLoan}
     ${this._templateSectionLoanRequests}
     `;
