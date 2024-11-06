@@ -1,5 +1,3 @@
-import { LayoutCtrl } from "../../controllers/LayoutCtrl.js";
-
 /**
  * @typedef {"dark" | "light"} ThemeType
  */
@@ -75,6 +73,24 @@ export class Theme {
   }
 
   /**
+ * Builds the icon path based on the provided theme.
+ *
+ * @private
+ * @param {string} path - The original path of the icon.
+ * @param {ThemeType} theme - The theme to apply.
+ * @returns {string} The new path for the icon based on the theme.
+ */
+  #buildIconPath(path, theme) {
+    const basePath = "/src/assets/icons/";
+    const iconPattern = /([^\/]+)\.svg$/;
+
+    const iconMatch = path.match(iconPattern);
+    const icon = iconMatch[0];
+
+    return basePath + theme + "/" + icon;
+  }
+
+  /**
    * Updates the paths for all icon elements based on the current theme.
    *
    * @private
@@ -84,7 +100,7 @@ export class Theme {
     const icons = document.querySelectorAll(".icon");
     icons.forEach((icon) => {
       const path = icon.src;
-      const newPath = LayoutCtrl.buildIconPath(path, theme);
+      const newPath = this.#buildIconPath(path, theme);
       icon.src = newPath;
     });
   }
