@@ -39,7 +39,7 @@ export class CardLoanRequest extends CardComponent {
 
   get _cardFooterTemplate() {
     return `
-     <button id="btn-loan-request-${this.model.id}" class="btn card-data__btn">
+     <button id="btn-loan-request-${this._model.id}" class="btn card-data__btn">
         Action
       </button>
     `;

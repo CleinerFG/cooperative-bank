@@ -86,9 +86,9 @@ export class CardComponent {
   #buildCard() {
     return `
     <article id="${this._cssId}" class="card card-data ${this._cssClass}">
-        ${this.#buildCardHeader}
-        ${this.#buildCardMain}
-        ${this.#buildCardFooter}
+        ${this.#buildCardHeader()}
+        ${this.#buildCardMain()}
+        ${this.#buildCardFooter()}
       </article>
   
     `;

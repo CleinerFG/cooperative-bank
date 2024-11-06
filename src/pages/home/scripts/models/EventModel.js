@@ -33,6 +33,10 @@ export class EventModel {
     return EventModel.descType[this.#type];
   }
 
+  get description(){
+    return "Must be implemented"
+  }
+
   get dueDate() {
     return formatDate.format(new Date(this.#dueDate));
   }
