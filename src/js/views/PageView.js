@@ -22,6 +22,7 @@ export class PageView {
 
   get _scriptsContent() {
     // Add scripts if exists
+    return ""
   }
 
   _pageContent() {
