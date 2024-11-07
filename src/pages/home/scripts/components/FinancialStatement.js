@@ -1,6 +1,7 @@
 import { ApiService } from "../../../../js/service/ApiService.js";
 import { numberToCurrency } from "../../../../js/utils/formatters.js";
 import { PathManager } from "../../../../js/utils/PathManager.js";
+import { simulateWait } from "../../../../js/utils/tests.js";
 
 export class FinancialStatement {
   #containerElement;
@@ -12,9 +13,8 @@ export class FinancialStatement {
 
   get #template() {
     return `
-      <div class="statement__total"><span id="total-value" class="statement__total-value"
-          data-visibility="off">R$ ******</span></div>
-      <button class="btn-unset statement__visibility-button" data-visibility="off">
+      <div class="statement__total"><span id="statement-amount" class="statement__amount">R$ ******</span></div>
+      <button class="btn-unset statement__visibility-btn" data-visibility="off">
         <img id="visibility-icon" class="icon statement__visibility-icon" alt="Closed eye">
       </button>
 
@@ -22,7 +22,11 @@ export class FinancialStatement {
   }
 
   get #visibilityBtnElement() {
-    return document.querySelector(".statement__visibility-button");
+    return document.querySelector(".statement__visibility-btn");
+  }
+
+  get #spanAmount() {
+    return document.getElementById("statement-amount");
   }
 
   get #IconElement() {
@@ -40,11 +44,13 @@ export class FinancialStatement {
   async #updateStatement() {
     let currencyValue = "R$ ******";
     if (this.#currentVisibility === "off") {
+      this.#spanAmount.classList.add("statement__amount-active");
+      await simulateWait(2);
       const value = await this.#fetchFromApi();
-      console.log(`Value on statement: ${value}`);
+      this.#spanAmount.classList.remove("statement__amount-active");
       currencyValue = numberToCurrency.format(value);
     }
-    document.getElementById("total-value").textContent = currencyValue;
+    this.#spanAmount.textContent = currencyValue;
   }
 
   #switchVisibility() {
