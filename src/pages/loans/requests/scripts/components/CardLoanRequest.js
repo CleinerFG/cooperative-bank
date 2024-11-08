@@ -2,6 +2,14 @@ import { CardComponent } from "../../../../../js/components/CardComponent.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 import { capitalize } from "../../../../../js/utils/stringUtils.js";
 
+/**
+ * Represents a card component specifically for displaying Loan Request.
+ * Implements abstract methods from `CardComponent` to provide templates and configurations
+ * for rendering loan request details.
+ *
+ * @class
+ * @extends CardComponent
+ */
 export class CardLoanRequest extends CardComponent {
   get _ModelClass() {
     return LoanRequestModel;
@@ -45,6 +53,16 @@ export class CardLoanRequest extends CardComponent {
     `;
   }
 
+  /**
+   * Handles modal behavior.
+   * In this case, it does not open a modal.
+   *
+   * @protected
+   * @returns {boolean}
+   * @override
+   *
+   * @note The modal for the cardLoanRequest is still to be built.
+   */
   _modalHandler() {
     return false;
   }

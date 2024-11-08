@@ -1,6 +1,14 @@
 import { CardComponent } from "../../../../../js/components/CardComponent.js";
 import { ActiveLoanModel } from "../models/ActiveLoanModel.js";
 
+/**
+ * Represents a card component specifically for displaying Active Loan.
+ * Implements abstract methods from `CardComponent` to provide templates and configurations
+ * for rendering loan request details.
+ *
+ * @class
+ * @extends CardComponent
+ */
 export class CardActiveLoan extends CardComponent {
   get _ModelClass() {
     return ActiveLoanModel;
@@ -50,6 +58,16 @@ export class CardActiveLoan extends CardComponent {
     `;
   }
 
+  /**
+   * Handles modal behavior.
+   * In this case, it does not open a modal.
+   *
+   * @protected
+   * @returns {boolean}
+   * @override
+   *
+   * @note The modal for the cardActiveLoan is still to be built.
+   */
   _modalHandler() {
     return false;
   }
