@@ -33,4 +33,8 @@ export class CardEvent extends CardComponent {
       </button>
     `;
   }
+
+  _modalHandler() {
+    return false;
+  }
 }

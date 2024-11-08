@@ -44,4 +44,8 @@ export class CardLoanRequest extends CardComponent {
       </button>
     `;
   }
+
+  _modalHandler() {
+    return false;
+  }
 }
