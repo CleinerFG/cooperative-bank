@@ -1,6 +1,12 @@
 import { AbstractMethodError } from "../errors/AbstractMethodError.js";
 
 /**
+ * @typedef {Object} CardItem
+ * @property {string} label - The label of the card item.
+ * @property {string} value - The value of the card item.
+ */
+
+/**
  * Base class for creating card components with customizable header, content, and footer sections.
  * Must be extended by subclasses that implement specific model and template structures.
  *
@@ -42,6 +48,7 @@ export class CardComponent {
   /**
    * Gets the instance of the model for this card component.
    *
+   * 
    * @protected
    * @type {Object}
    */
@@ -89,7 +96,7 @@ export class CardComponent {
    *
    * @abstract
    * @protected
-   * @type {Array<{ label: string, value: string }>}
+   * @type {CardItem}
    * @throws {AbstractMethodError}
    */
   get _cardItemsTemplate() {
@@ -159,15 +166,14 @@ export class CardComponent {
    * Builds a single item in the card's main content area.
    *
    * @private
-   * @param {string} label - The label for the data item.
-   * @param {string} value - The value for the data item.
+   * @param {CardItem} cardItem - Object with label and value.
    * @returns {string} HTML string for a card data item.
    */
-  #buildCardItem(label, value) {
+  #buildCardItem(cardItem) {
     return `
       <div class="card-data__item">
-        <span class="card-data__label">${label}</span>
-        <span class="card-data__value">${value}</span>
+        <span class="card-data__label">${cardItem.label}</span>
+        <span class="card-data__value">${cardItem.value}</span>
       </div>
     `;
   }
@@ -180,7 +186,7 @@ export class CardComponent {
    */
   #buildCardMain() {
     const items = this._cardItemsTemplate
-      .map(({ label, value }) => this.#buildCardItem(label, value))
+      .map((cardItem) => this.#buildCardItem(cardItem))
       .join("");
 
     return `

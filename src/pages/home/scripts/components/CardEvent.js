@@ -50,7 +50,7 @@ export class CardEvent extends CardComponent {
    * Each item includes a label and its corresponding value from the model.
    *
    * @protected
-   * @returns {Array<{label: string, value: string}>}
+   * @returns {Array<import("../../../../js/components/CardComponent.js").CardItem>}
    * @override
    */
   get _cardItemsTemplate() {
