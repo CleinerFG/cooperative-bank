@@ -3,14 +3,14 @@ import { PathManager } from "../utils/PathManager.js";
 /**
  * Manages and renders different card states (loading, empty or error).
  * This class provides templates and logic to display each state in a specified container.
- * 
+ *
  * @class
  */
 export class CardState {
   /**
-  * @private
-  * @type {HTMLElement} - The HTML container where the card state will be rendered.
-  */
+   * @private
+   * @type {HTMLElement} - The HTML container where the card state will be rendered.
+   */
   #containerElement;
 
   /**
@@ -31,7 +31,6 @@ export class CardState {
    */
   #emptyCardsTexts = [];
 
-
   /**
    * Creates an instance of CardState.
    * @param {HTMLElement} container - The HTML container where the card state will be rendered.
@@ -44,7 +43,7 @@ export class CardState {
 
   /**
    * Sets the type of card state and initializes the corresponding state.
-   * 
+   *
    * @public
    * @param {"loading" | "empty" | "error"} value - The type of state to render.
    */
@@ -55,7 +54,7 @@ export class CardState {
 
   /**
    * Defines the texts to display in the "empty" state.
-   * 
+   *
    * @public
    * @param {...string} texts - Array of strings to be displayed as information in empty state.
    */
@@ -65,7 +64,7 @@ export class CardState {
 
   /**
    * Builds an HTML template for the card state.
-   * 
+   *
    * @private
    * @param {string} content - The inner HTML content for the card.
    * @param {string} [className=""] - Optional additional class for styling.
@@ -81,7 +80,7 @@ export class CardState {
 
   /**
    * Template for the "loading" card state.
-   * 
+   *
    * @private
    * @returns {string} The HTML template.
    */
@@ -94,13 +93,13 @@ export class CardState {
       </main>
       <footer class="card-state__footer"></footer>
     `,
-      "card-state__loading"
+      "card-state__loading",
     );
   }
 
   /**
    * Template for the "empty" card state.
-   * 
+   *
    * @private
    * @returns {string} The HTML template.
    */
@@ -113,13 +112,13 @@ export class CardState {
         ${this.#buildEmptyCardsTexts()}
       </div>
     `,
-      "card-state__empty"
+      "card-state__empty",
     );
   }
 
   /**
    * Template for the "error" card state.
-   * 
+   *
    * @private
    * @returns {string} The HTML template.
    */
@@ -129,18 +128,19 @@ export class CardState {
       `
       <img id="${imgId}" class="card-state__img">
       <div class="card-state__text">
-        <p class="info-text">Oops! Something went wrong while trying to load the ${this.#category
-      } data.</p>
+        <p class="info-text">Oops! Something went wrong while trying to load the ${
+          this.#category
+        } data.</p>
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
     `,
-      "card-state__error"
+      "card-state__error",
     );
   }
 
   /**
    * Builds loading items to display in the loading state template.
-   * 
+   *
    * @private
    * @param {number} count - The number of loading items to render.
    * @returns {string} - The HTML for loading items.
@@ -153,14 +153,14 @@ export class CardState {
         <span class="card-state__label"></span>
         <span class="card-state__value"></span>
       </div>
-    `
+    `,
       )
       .join("");
   }
 
   /**
    * Builds the empty state texts defined.
-   * 
+   *
    * @private
    * @returns {string} - The HTML for empty state texts.
    */
@@ -172,7 +172,7 @@ export class CardState {
 
   /**
    * Selects the appropriate HTML template based on the current state type.
-   * 
+   *
    * @private
    * @returns {string} - The HTML template for the current state.
    */
@@ -187,7 +187,7 @@ export class CardState {
 
   /**
    * Selects a random image file based on the card state type.
-   * 
+   *
    * @private
    * @returns {string} - The file name of the random image.
    */
@@ -199,7 +199,7 @@ export class CardState {
 
   /**
    * Updates the image path in the template for "error" and "empty" states.
-   * 
+   *
    * @private
    */
   #pathHandler() {
@@ -211,7 +211,7 @@ export class CardState {
 
   /**
    * Renders the selected state template in the container.
-   * 
+   *
    * @private
    */
   #render() {
@@ -220,8 +220,8 @@ export class CardState {
 
   /**
    * Initializes the current state by rendering the template and updating the path.
-   * 
-   * 
+   *
+   *
    * @private
    */
   #initState() {
