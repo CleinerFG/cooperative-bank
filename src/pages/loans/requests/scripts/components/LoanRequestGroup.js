@@ -15,7 +15,7 @@ export class LoanRequestGroup extends ComponentGroup {
     return "requests";
   }
 
-  get _endpointConfig() {
+  get _typeMappingConfig() {
     return [
       { name: "received", endpoint: "requests-received" },
       { name: "opened", endpoint: "requests-opened" },

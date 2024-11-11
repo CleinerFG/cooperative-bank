@@ -6,7 +6,7 @@ import { simulateWait } from '../utils/tests.js';
 import { CardComponent } from './CardComponent.js';
 
 /**
- * @typedef {Object} EndpointConfig
+ * @typedef {Object} TypeConfig
  * @property {string} name - The name of the type.
  * @property {string} endpoint - The endpoint associated with the type.
  */
@@ -55,7 +55,7 @@ export class ComponentGroup {
    * Currently active (selected) component type.
    *
    * @private
-   * @type {EndpointConfig}
+   * @type {TypeConfig}
    */
   #activeType;
 
@@ -66,7 +66,7 @@ export class ComponentGroup {
    */
   constructor(containerElement) {
     this.#containerElement = containerElement;
-    this.#activeType = this._endpointConfig[0];
+    this.#activeType = this._typeMappingConfig[0];
     this.#init();
   }
 
@@ -93,14 +93,14 @@ export class ComponentGroup {
   }
 
   /**
-   * Returns the endpoint configuration.
+   * Returns the type mapping configuration.
    *
    * @abstract
-   * @returns {EndpointConfig[]}
+   * @returns {TypeConfig[]}
    * @throws {AbstractMethodError}
    */
-  get _endpointConfig() {
-    throw new AbstractMethodError('_endpointsConfig');
+  get _typeMappingConfig() {
+    throw new AbstractMethodError('_typeMappingConfig');
   }
 
   /**
@@ -116,7 +116,7 @@ export class ComponentGroup {
   /**
    * Returns the currently active type configuration.
    *
-   * @returns {EndpointConfig}
+   * @returns {TypeConfig}
    */
   get _activeType() {
     return this.#activeType;
@@ -174,10 +174,10 @@ export class ComponentGroup {
       <div class="dashboard-container">
         <div class="component-types">
           <div id="component-type-1" class="component-type component-type__active">${capitalize(
-            this._endpointConfig[0].name
+            this._typeMappingConfig[0].name
           )}</div>
           <div id="component-type-2" class="component-type">${capitalize(
-            this._endpointConfig[1].name
+            this._typeMappingConfig[1].name
           )}</div>
         </div>
         <div class="dashboard__filter">
@@ -299,13 +299,13 @@ export class ComponentGroup {
 
     this.#btnFilterElement1.addEventListener('click', (ev) => {
       toggleClass(ev, this.#btnFilterElement2);
-      upActiveType(this._endpointConfig[0]);
+      upActiveType(this._typeMappingConfig[0]);
       this.#renderComponents();
     });
 
     this.#btnFilterElement2.addEventListener('click', (ev) => {
       toggleClass(ev, this.#btnFilterElement1);
-      upActiveType(this._endpointConfig[1]);
+      upActiveType(this._typeMappingConfig[1]);
       this.#renderComponents();
     });
   }

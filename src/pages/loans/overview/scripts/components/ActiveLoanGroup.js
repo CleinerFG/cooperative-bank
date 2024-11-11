@@ -15,7 +15,7 @@ export class ActiveLoanGroup extends ComponentGroup {
     return "loans";
   }
 
-  get _endpointConfig() {
+  get _typeMappingConfig() {
     return [
       { name: "payables", endpoint: "loans-payables" },
       { name: "receivables", endpoint: "loans-receivables" },
