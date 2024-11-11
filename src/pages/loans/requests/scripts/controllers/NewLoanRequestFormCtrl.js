@@ -1,4 +1,4 @@
-import { FormCtrl } from "../../../../../js/controllers/forms/FormCtrl.js";
+import { FormCtrl } from "../../../../../js/controllers/FormCtrl.js";
 import { LoanRequestModel } from "../models/LoanRequestModel.js";
 
 export class NewLoanRequestFormCtrl extends FormCtrl {

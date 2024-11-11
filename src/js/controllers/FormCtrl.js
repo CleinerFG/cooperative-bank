@@ -1,7 +1,7 @@
-import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
-import { InvalidDataError } from "../../errors/InvalidDataError.js";
-import { ApiService } from "../../service/ApiService.js";
-import { FormView } from "../../views/forms/FormView.js";
+import { AbstractMethodError } from "../errors/AbstractMethodError.js";
+import { InvalidDataError } from "../errors/InvalidDataError.js";
+import { ApiService } from "../service/ApiService.js";
+import { FormView } from "../views/FormView.js";
 
 export class FormCtrl {
   #view;

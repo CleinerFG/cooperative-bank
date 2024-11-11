@@ -1,7 +1,7 @@
-import { Input } from "../../components/form/Input.js";
-import { PasswordInput } from "../../components/form/PasswordInput.js";
-import { SearchInput } from "../../components/form/SearchInput.js";
-import { SubmitButton } from "../../components/form/SubmitButton.js";
+import { Input } from "../components/form/Input.js";
+import { PasswordInput } from "../components/form/PasswordInput.js";
+import { SearchInput } from "../components/form/SearchInput.js";
+import { SubmitButton } from "../components/form/SubmitButton.js";
 
 export class FormView {
   #containerElement;
