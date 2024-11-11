@@ -41,18 +41,6 @@ export class HomePageView extends PageView {
     return statement + features + events;
   }
 
-  get _headContent() {
-    return `
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    `;
-  }
-
-  get _scriptsContent() {
-    return `
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    `;
-  }
-
   _pageContent() {
     const content = `
       ${this._build()}
