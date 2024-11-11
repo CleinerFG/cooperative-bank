@@ -3,6 +3,7 @@ import { PathManager } from '../utils/PathManager.js';
 import { capitalize } from '../utils/stringUtils.js';
 import { CardState } from './CardState.js';
 import { simulateWait } from '../utils/tests.js';
+import { CardComponent } from './CardComponent.js';
 
 /**
  * @typedef {Object} EndpointConfig
@@ -13,13 +14,56 @@ import { simulateWait } from '../utils/tests.js';
 /**
  * ComponentGroup manages the functionality of a group of CardComponent
  * with filters, state management and rendering options.
+ *
+ * @class
  */
 export class ComponentGroup {
+  /**
+   * The main container element where the component group will be rendered.
+   *
+   * @private
+   * @type {HTMLElement}
+   */
   #containerElement;
+
+  /**
+   * List of CardComponent instances, representing the components displayed within the group.
+   *
+   * @private
+   * @type {CardComponent[]}
+   */
   #cardComponents;
+
+  /**
+   * Instance of CardState used to manage and display the state of the component group.
+   *
+   * @private
+   * @type {CardState}
+   */
   #cardState;
+
+  /**
+   * Data retrieved from the API to populate the CardComponents. Holds the items fetched
+   * from the active endpoint.
+   *
+   * @private
+   * @type {Object[]}
+   */
   #apiData;
+
+  /**
+   * Currently active (selected) component type.
+   *
+   * @private
+   * @type {EndpointConfig}
+   */
   #activeType;
+
+  /**
+   * Creates an instance of ComponentGroup.
+   *
+   * @param {HTMLElement} containerElement - The container element for rendering components.
+   */
   constructor(containerElement) {
     this.#containerElement = containerElement;
     this.#activeType = this._endpointConfig[0];
@@ -30,6 +74,7 @@ export class ComponentGroup {
    * Returns the CardComponent class.
    *
    * @abstract
+   * @returns {string}
    * @throws {AbstractMethodError}
    */
   get _CardComponentClass() {
@@ -62,7 +107,7 @@ export class ComponentGroup {
    * Returns the default texts to display when no cards are available.
    *
    * @abstract
-   * @returns {<string>[]} An array of default texts.
+   * @returns {string[]} An array of default texts.
    */
   get _emptyCardsTexts() {
     return ['Empty cards...', 'There is nothing'];
@@ -71,28 +116,58 @@ export class ComponentGroup {
   /**
    * Returns the currently active type configuration.
    *
-   * @returns {Object}
+   * @returns {EndpointConfig}
    */
   get _activeType() {
     return this.#activeType;
   }
 
+  /**
+   * Returns the container element for card components.
+   *
+   * @private
+   * @returns {HTMLElement}
+   */
   get #cardsContainerElement() {
     return this.#containerElement.querySelector('.cards');
   }
 
+  /**
+   * Returns the first type filter button element.
+   *
+   * @private
+   * @returns {HTMLElement}
+   */
   get #btnFilterElement1() {
     return this.#containerElement.querySelector('#component-type-1');
   }
 
+  /**
+   * Returns the second type filter button element.
+   *
+   * @private
+   * @returns {HTMLElement}
+   */
   get #btnFilterElement2() {
     return this.#containerElement.querySelector('#component-type-2');
   }
 
+  /**
+   * Returns the active type display element.
+   *
+   * @private
+   * @returns {HTMLElement}
+   */
   get #activeTypeElement() {
     return this.#containerElement.querySelector('#active-type');
   }
 
+  /**
+   * Returns the HTML template for the component group layout.
+   *
+   * @private
+   * @returns {string}
+   */
   get _template() {
     return `
     <div class="component-group">
@@ -130,14 +205,29 @@ export class ComponentGroup {
 `;
   }
 
+  /**
+   * Renders the component group in the container element.
+   *
+   * @private
+   */
   #render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this._template);
   }
 
+  /**
+   * Handles the asset loading process for icons.
+   *
+   * @private
+   */
   #assetHandler() {
     PathManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
   }
 
+  /**
+   * Initializes the card state component.
+   *
+   * @private
+   */
   #initCardState() {
     this.#cardState = new CardState(
       this.#cardsContainerElement,
@@ -146,18 +236,35 @@ export class ComponentGroup {
     this.#cardState.defineTexts(...this._emptyCardsTexts);
   }
 
+  /**
+   * Initializes CardComponent instances based on API data.
+   *
+   * @private
+   */
   #initCardComponents() {
     this.#cardComponents = this.#apiData.map((item) => {
       return new this._CardComponentClass(this.#cardsContainerElement, item);
     });
   }
 
+  /**
+   * Fetches data from the API and sets loading state.
+   *
+   * @async
+   * @private
+   */
   async #fetchFromApi() {
     this.#cardState.type = 'loading';
     await simulateWait(1);
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
   }
 
+  /**
+   * Renders components based on API data, handling empty and error states.
+   *
+   * @async
+   * @private
+   */
   async #renderComponents() {
     try {
       await this.#fetchFromApi();
@@ -174,6 +281,11 @@ export class ComponentGroup {
     }
   }
 
+  /**
+   * Sets up event listeners for filter buttons to toggle active type.
+   *
+   * @private
+   */
   #setupListeners() {
     const toggleClass = (ev, otherBtnFilterElement) => {
       ev.currentTarget.classList.add('component-type__active');
@@ -198,6 +310,11 @@ export class ComponentGroup {
     });
   }
 
+  /**
+   * Initializes the component group, setting up rendering, assets, listeners, card state and rendering card components.
+   *
+   * @private
+   */
   #init() {
     this.#render();
     this.#assetHandler();
