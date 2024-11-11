@@ -63,6 +63,7 @@ export class ComponentGroup {
    * Returns the main container element where the component group will be rendered.
    *
    * @abstract
+   * @protected
    * @type {HTMLElement}
    * @throws {AbstractMethodError}
    */
@@ -74,6 +75,7 @@ export class ComponentGroup {
    * Returns the CardComponent class.
    *
    * @abstract
+   * @protected
    * @type {string}
    * @throws {AbstractMethodError}
    */
@@ -85,6 +87,7 @@ export class ComponentGroup {
    * Returns the category of the component group.
    *
    * @abstract
+   * @protected
    * @type {string}
    * @throws {AbstractMethodError}
    */
@@ -96,6 +99,7 @@ export class ComponentGroup {
    * Returns the type mapping configuration.
    *
    * @abstract
+   * @protected
    * @type {TypeConfig[]}
    * @throws {AbstractMethodError}
    */
@@ -107,6 +111,7 @@ export class ComponentGroup {
    * Returns the default texts to display when no cards are available.
    *
    * @abstract
+   * @protected
    * @type {string[]} An array of default texts.
    */
   get _emptyCardsTexts() {
@@ -116,6 +121,7 @@ export class ComponentGroup {
   /**
    * Returns the currently active type configuration.
    *
+   * @protected
    * @type {TypeConfig}
    */
   get _activeType() {
@@ -282,7 +288,13 @@ export class ComponentGroup {
   }
 
   /**
-   * Sets up event listeners for filter buttons to toggle active type.
+   * Sets up event listeners for the filter buttons, toggling the active type
+   * and re-rendering components based on the selected type.
+   *
+   *   - When a filter button is clicked, it:
+   *   - Adds the `component-type__active` class to the clicked button and removes it from the other.
+   *   - Updates the active type based on the selected filter.
+   *   - Re-renders the components according to the new active type.
    *
    * @private
    */
