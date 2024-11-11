@@ -1,9 +1,19 @@
-import { ApiService } from "../service/ApiService.js";
-import { PathManager } from "../utils/PathManager.js";
-import { capitalize } from "../utils/stringUtils.js";
-import { CardState } from "./CardState.js";
-import { simulateWait } from "../utils/tests.js";
+import { ApiService } from '../service/ApiService.js';
+import { PathManager } from '../utils/PathManager.js';
+import { capitalize } from '../utils/stringUtils.js';
+import { CardState } from './CardState.js';
+import { simulateWait } from '../utils/tests.js';
 
+/**
+ * @typedef {Object} EndpointConfig
+ * @property {string} name - The name of the type.
+ * @property {string} endpoint - The endpoint associated with the type.
+ */
+
+/**
+ * ComponentGroup manages the functionality of a group of CardComponent
+ * with filters, state management and rendering options.
+ */
 export class ComponentGroup {
   #containerElement;
   #cardComponents;
@@ -16,40 +26,71 @@ export class ComponentGroup {
     this.#init();
   }
 
+  /**
+   * Returns the CardComponent class.
+   *
+   * @abstract
+   * @throws {AbstractMethodError}
+   */
   get _CardComponentClass() {
-    throw new AbstractMethodError("_CardComponentClass");
+    throw new AbstractMethodError('_CardComponentClass');
   }
 
+  /**
+   * Returns the category of the component group.
+   *
+   * @abstract
+   * @returns {string}
+   * @throws {AbstractMethodError}
+   */
   get _category() {
-    throw new AbstractMethodError("_category");
+    throw new AbstractMethodError('_category');
   }
 
+  /**
+   * Returns the endpoint configuration.
+   *
+   * @abstract
+   * @returns {EndpointConfig[]}
+   * @throws {AbstractMethodError}
+   */
   get _endpointConfig() {
-    throw new AbstractMethodError("_endpointsConfig");
+    throw new AbstractMethodError('_endpointsConfig');
   }
 
+  /**
+   * Returns the default texts to display when no cards are available.
+   *
+   * @abstract
+   * @returns {<string>[]} An array of default texts.
+   */
   get _emptyCardsTexts() {
-    return ["Empty cards...", "There is nothing"];
+    return ['Empty cards...', 'There is nothing'];
   }
 
+  /**
+   * Returns the currently active type configuration.
+   *
+   * @returns {Object}
+   */
   get _activeType() {
     return this.#activeType;
   }
 
   get #cardsContainerElement() {
-    return this.#containerElement.querySelector(".cards");
+    return this.#containerElement.querySelector('.cards');
   }
 
   get #btnFilterElement1() {
-    return this.#containerElement.querySelector("#component-type-1");
+    return this.#containerElement.querySelector('#component-type-1');
   }
 
   get #btnFilterElement2() {
-    return this.#containerElement.querySelector("#component-type-2");
+    return this.#containerElement.querySelector('#component-type-2');
   }
 
   get #activeTypeElement() {
-    return this.#containerElement.querySelector("#active-type");
+    return this.#containerElement.querySelector('#active-type');
   }
 
   get _template() {
@@ -90,11 +131,11 @@ export class ComponentGroup {
   }
 
   #render() {
-    this.#containerElement.insertAdjacentHTML("beforeend", this._template);
+    this.#containerElement.insertAdjacentHTML('beforeend', this._template);
   }
 
   #assetHandler() {
-    PathManager.updateIcon(`#filter-icon`, "icon-filter.svg");
+    PathManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
   }
 
   #initCardState() {
@@ -112,7 +153,7 @@ export class ComponentGroup {
   }
 
   async #fetchFromApi() {
-    this.#cardState.type = "loading";
+    this.#cardState.type = 'loading';
     await simulateWait(1);
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
   }
@@ -121,22 +162,22 @@ export class ComponentGroup {
     try {
       await this.#fetchFromApi();
       if (this.#apiData.length) {
-        this.#cardsContainerElement.innerHTML = "";
+        this.#cardsContainerElement.innerHTML = '';
         this.#initCardComponents();
       } else {
-        this.#cardState.type = "empty";
-        console.log("empty");
+        this.#cardState.type = 'empty';
+        console.log('empty');
       }
     } catch (err) {
-      this.#cardState.type = "error";
+      this.#cardState.type = 'error';
       console.log(err);
     }
   }
 
   #setupListeners() {
     const toggleClass = (ev, otherBtnFilterElement) => {
-      ev.currentTarget.classList.add("component-type__active");
-      otherBtnFilterElement.classList.remove("component-type__active");
+      ev.currentTarget.classList.add('component-type__active');
+      otherBtnFilterElement.classList.remove('component-type__active');
     };
 
     const upActiveType = (currentType) => {
@@ -144,13 +185,13 @@ export class ComponentGroup {
       this.#activeTypeElement.textContent = capitalize(currentType.name);
     };
 
-    this.#btnFilterElement1.addEventListener("click", (ev) => {
+    this.#btnFilterElement1.addEventListener('click', (ev) => {
       toggleClass(ev, this.#btnFilterElement2);
       upActiveType(this._endpointConfig[0]);
       this.#renderComponents();
     });
 
-    this.#btnFilterElement2.addEventListener("click", (ev) => {
+    this.#btnFilterElement2.addEventListener('click', (ev) => {
       toggleClass(ev, this.#btnFilterElement1);
       upActiveType(this._endpointConfig[1]);
       this.#renderComponents();
