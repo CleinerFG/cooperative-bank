@@ -1,9 +1,16 @@
-import { ComponentGroup } from "../../../../../js/components/ComponentGroup.js";
-import { CardActiveLoan } from "./CardActiveLoan.js";
+import { ComponentGroup } from '../../../../../js/components/ComponentGroup.js';
+import { CardActiveLoan } from './CardActiveLoan.js';
 
+/**
+ * Manages a group of active loans data components.
+ * This class configures specific card types, categories, and default messages.
+ *
+ * @class
+ * @extends ComponentGroup
+ */
 export class ActiveLoanGroup extends ComponentGroup {
   constructor() {
-    const container = document.querySelector(".section.active-loans");
+    const container = document.querySelector('.section.active-loans');
     super(container);
   }
 
@@ -12,13 +19,13 @@ export class ActiveLoanGroup extends ComponentGroup {
   }
 
   get _category() {
-    return "loans";
+    return 'loans';
   }
 
   get _typeMappingConfig() {
     return [
-      { name: "payables", endpoint: "loans-payables" },
-      { name: "receivables", endpoint: "loans-receivables" },
+      { name: 'payables', endpoint: 'loans-payables' },
+      { name: 'receivables', endpoint: 'loans-receivables' },
     ];
   }
 
