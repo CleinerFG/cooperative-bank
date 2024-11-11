@@ -1,8 +1,30 @@
-import { PageView } from "../../../../js/views/PageView.js";
-import { capitalize } from "../../../../js/utils/stringUtils.js";
+import { PageView } from '../../../../js/views/PageView.js';
+import { capitalize } from '../../../../js/utils/stringUtils.js';
 
+/**
+ * Represents the view for the homepage, including sections for financial statement, features, and events.
+ *
+ * @class
+ * @extends PageView
+ */
 export class HomePageView extends PageView {
-  _buidStatement() {
+  /**
+   * Returns an array of feature section names to be rendered.
+   *
+   * @protected
+   * @type {string[]}
+   */
+  get _features() {
+    return ['wallet', 'loans', 'investments'];
+  }
+
+  /**
+   * Returns the HTML template for the Financial Statement section.
+   *
+   * @protected
+   * @type {string}
+   */
+  get _templateStatement() {
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>
@@ -11,6 +33,27 @@ export class HomePageView extends PageView {
     `;
   }
 
+  /**
+   * Returns the HTML template for the Events section.
+   *
+   * @protected
+   * @type {string}
+   */
+  get _templateEventsSection() {
+    return `
+    <section class="section events">
+      <h2 class="section__h2">Events</h2>
+    </section>
+    `;
+  }
+
+  /**
+   * Builds an HTML section template for a given feature.
+   *
+   * @protected
+   * @param {string} name The name of the feature section.
+   * @returns {string} The HTML string.
+   */
   _buildFeatureSection(name) {
     return `
     <section class="section ${name}">
@@ -23,28 +66,12 @@ export class HomePageView extends PageView {
     `;
   }
 
-  _buildEventsSection() {
-    return `
-    <section class="section events">
-      <h2 class="section__h2">Events</h2>
-    </section>
-    `;
-  }
-
-  _build() {
-    const featureSections = ["wallet", "loans", "investments"];
-    const statement = this._buidStatement();
-    const features = featureSections
-      .map((sec) => this._buildFeatureSection(sec))
-      .join("");
-    const events = this._buildEventsSection();
-    return statement + features + events;
-  }
-
   _pageContent() {
-    const content = `
-      ${this._build()}
-    `;
-    return content;
+    const templateFeatures = this._features
+      .map((sec) => this._buildFeatureSection(sec))
+      .join('');
+    return (
+      this._templateStatement + templateFeatures + this._templateEventsSection
+    );
   }
 }
