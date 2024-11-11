@@ -9,9 +9,8 @@ import { CardEvent } from './CardEvent.js';
  * @extends ComponentGroup
  */
 export class EventGroup extends ComponentGroup {
-  constructor() {
-    const container = document.querySelector('.section.events');
-    super(container);
+  get _containerElement() {
+    return document.querySelector('.section.events');
   }
 
   get _CardComponentClass() {

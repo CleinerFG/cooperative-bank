@@ -19,14 +19,6 @@ import { CardComponent } from './CardComponent.js';
  */
 export class ComponentGroup {
   /**
-   * The main container element where the component group will be rendered.
-   *
-   * @private
-   * @type {HTMLElement}
-   */
-  #containerElement;
-
-  /**
    * List of CardComponent instances, representing the components displayed within the group.
    *
    * @private
@@ -61,20 +53,28 @@ export class ComponentGroup {
 
   /**
    * Creates an instance of ComponentGroup.
-   *
-   * @param {HTMLElement} containerElement - The container element for rendering components.
    */
-  constructor(containerElement) {
-    this.#containerElement = containerElement;
+  constructor() {
     this.#activeType = this._typeMappingConfig[0];
     this.#init();
+  }
+
+  /**
+   * Returns the main container element where the component group will be rendered.
+   *
+   * @abstract
+   * @type {HTMLElement}
+   * @throws {AbstractMethodError}
+   */
+  get _containerElement() {
+    throw new AbstractMethodError('_containerElement');
   }
 
   /**
    * Returns the CardComponent class.
    *
    * @abstract
-   * @returns {string}
+   * @type {string}
    * @throws {AbstractMethodError}
    */
   get _CardComponentClass() {
@@ -85,7 +85,7 @@ export class ComponentGroup {
    * Returns the category of the component group.
    *
    * @abstract
-   * @returns {string}
+   * @type {string}
    * @throws {AbstractMethodError}
    */
   get _category() {
@@ -96,7 +96,7 @@ export class ComponentGroup {
    * Returns the type mapping configuration.
    *
    * @abstract
-   * @returns {TypeConfig[]}
+   * @type {TypeConfig[]}
    * @throws {AbstractMethodError}
    */
   get _typeMappingConfig() {
@@ -107,7 +107,7 @@ export class ComponentGroup {
    * Returns the default texts to display when no cards are available.
    *
    * @abstract
-   * @returns {string[]} An array of default texts.
+   * @type {string[]} An array of default texts.
    */
   get _emptyCardsTexts() {
     return ['Empty cards...', 'There is nothing'];
@@ -116,7 +116,7 @@ export class ComponentGroup {
   /**
    * Returns the currently active type configuration.
    *
-   * @returns {TypeConfig}
+   * @type {TypeConfig}
    */
   get _activeType() {
     return this.#activeType;
@@ -126,47 +126,47 @@ export class ComponentGroup {
    * Returns the container element for card components.
    *
    * @private
-   * @returns {HTMLElement}
+   * @type {HTMLElement}
    */
   get #cardsContainerElement() {
-    return this.#containerElement.querySelector('.cards');
+    return this._containerElement.querySelector('.cards');
   }
 
   /**
    * Returns the first type filter button element.
    *
    * @private
-   * @returns {HTMLElement}
+   * @type {HTMLElement}
    */
   get #btnFilterElement1() {
-    return this.#containerElement.querySelector('#component-type-1');
+    return this._containerElement.querySelector('#component-type-1');
   }
 
   /**
    * Returns the second type filter button element.
    *
    * @private
-   * @returns {HTMLElement}
+   * @type {HTMLElement}
    */
   get #btnFilterElement2() {
-    return this.#containerElement.querySelector('#component-type-2');
+    return this._containerElement.querySelector('#component-type-2');
   }
 
   /**
    * Returns the active type display element.
    *
    * @private
-   * @returns {HTMLElement}
+   * @type {HTMLElement}
    */
   get #activeTypeElement() {
-    return this.#containerElement.querySelector('#active-type');
+    return this._containerElement.querySelector('#active-type');
   }
 
   /**
    * Returns the HTML template for the component group layout.
    *
    * @private
-   * @returns {string}
+   * @type {string}
    */
   get _template() {
     return `
@@ -211,7 +211,7 @@ export class ComponentGroup {
    * @private
    */
   #render() {
-    this.#containerElement.insertAdjacentHTML('beforeend', this._template);
+    this._containerElement.insertAdjacentHTML('beforeend', this._template);
   }
 
   /**

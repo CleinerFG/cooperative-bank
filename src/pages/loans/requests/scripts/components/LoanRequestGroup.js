@@ -9,9 +9,8 @@ import { CardLoanRequest } from './CardLoanRequest.js';
  * @extends ComponentGroup
  */
 export class LoanRequestGroup extends ComponentGroup {
-  constructor() {
-    const container = document.querySelector('.section.loan-requests');
-    super(container);
+  get _containerElement() {
+    return document.querySelector('.section.loan-requests');
   }
 
   get _CardComponentClass() {

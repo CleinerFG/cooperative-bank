@@ -9,9 +9,8 @@ import { CardActiveLoan } from './CardActiveLoan.js';
  * @extends ComponentGroup
  */
 export class ActiveLoanGroup extends ComponentGroup {
-  constructor() {
-    const container = document.querySelector('.section.active-loans');
-    super(container);
+  get _containerElement() {
+    return document.querySelector('.section.active-loans');
   }
 
   get _CardComponentClass() {
