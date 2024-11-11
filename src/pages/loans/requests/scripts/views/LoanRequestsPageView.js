@@ -1,6 +1,13 @@
-import { PageView } from "../../../../../js/views/PageView.js";
+import { PageView } from '../../../../../js/views/PageView.js';
 
 export class LoanRequestsPageView extends PageView {
+  /**
+   * Returns the HTML string for the initial section that introduces the loan process.
+   * Includes information about the steps required for a loan request.
+   *
+   * @protected
+   * @type {string}
+   */
   get _templateSectionInitial() {
     return `
     <section class="section">
@@ -12,6 +19,13 @@ export class LoanRequestsPageView extends PageView {
     `;
   }
 
+  /**
+   * Returns the HTML string for the section related to initiating a new loan request.
+   * Contains instructions for completing the loan application form.
+   *
+   * @protected
+   * @type {string}
+   */
   get _templateSectionNewLoan() {
     return `
     <section class="section new-request">
@@ -21,6 +35,12 @@ export class LoanRequestsPageView extends PageView {
     `;
   }
 
+  /**
+   * Returns the HTML string for displaying the section of existing loan requests.
+   *
+   * @protected
+   * @type {string}
+   */
   get _templateSectionLoanRequests() {
     return `
     <section class="section loan-requests">
