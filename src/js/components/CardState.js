@@ -1,4 +1,4 @@
-import { PathManager } from "../utils/PathManager.js";
+import { PathManager } from '../utils/PathManager.js';
 
 /**
  * Manages and renders different card states (loading, empty or error).
@@ -70,7 +70,7 @@ export class CardState {
    * @param {string} [className=""] - Optional additional class for styling.
    * @returns {string} - The complete HTML template for the card.
    */
-  #buildTemplate(content, className = "") {
+  #buildTemplate(content, className = '') {
     return `
       <article class="card-state ${className}">
         ${content}
@@ -93,8 +93,8 @@ export class CardState {
       </main>
       <footer class="card-state__footer"></footer>
     `,
-      "card-state__loading",
-    );
+      'card-state__loading'
+    ).repeat(3);
   }
 
   /**
@@ -112,7 +112,7 @@ export class CardState {
         ${this.#buildEmptyCardsTexts()}
       </div>
     `,
-      "card-state__empty",
+      'card-state__empty'
     );
   }
 
@@ -134,7 +134,7 @@ export class CardState {
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
     `,
-      "card-state__error",
+      'card-state__error'
     );
   }
 
@@ -153,9 +153,9 @@ export class CardState {
         <span class="card-state__label"></span>
         <span class="card-state__value"></span>
       </div>
-    `,
+    `
       )
-      .join("");
+      .join('');
   }
 
   /**
@@ -167,7 +167,7 @@ export class CardState {
   #buildEmptyCardsTexts() {
     return this.#emptyCardsTexts
       .map((txt) => `<p class="info-text">${txt}</p>`)
-      .join("");
+      .join('');
   }
 
   /**
@@ -192,7 +192,7 @@ export class CardState {
    * @returns {string} - The file name of the random image.
    */
   #randomImgFile() {
-    const imgCount = this.#type === "empty" ? 4 : 2;
+    const imgCount = this.#type === 'empty' ? 4 : 2;
     const n = Math.floor(Math.random() * imgCount) + 1;
     return `${this.#type}-${n}.svg`;
   }
@@ -203,7 +203,7 @@ export class CardState {
    * @private
    */
   #pathHandler() {
-    if (["error", "empty"].includes(this.#type)) {
+    if (['error', 'empty'].includes(this.#type)) {
       const imgFile = this.#randomImgFile();
       PathManager.updateAsset(`#${this.#category}-${this.#type}-img`, imgFile);
     }
