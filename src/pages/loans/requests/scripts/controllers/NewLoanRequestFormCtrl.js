@@ -1,76 +1,76 @@
-import { FormCtrl } from "../../../../../js/controllers/FormCtrl.js";
-import { LoanRequestModel } from "../models/LoanRequestModel.js";
+import { FormCtrl } from '../../../../../js/controllers/FormCtrl.js';
+import { LoanRequestModel } from '../models/LoanRequestModel.js';
 
 export class NewLoanRequestFormCtrl extends FormCtrl {
   get _modelClass() {
     return LoanRequestModel;
   }
 
-  get _viewParams() {
+  get _viewConfig() {
     return {
-      id: "new-request-form",
-      containerElement: document.querySelector(".new-request"),
-      cssClass: "new-request-form",
+      id: 'new-request-form',
+      containerElement: document.querySelector('.new-request'),
+      cssClass: 'new-request-form',
     };
   }
 
-  get _inputParams() {
+  get _inputsConfig() {
     return [
       {
-        id: "creditor",
-        category: "search",
+        id: 'creditor',
+        category: 'search',
         strictToNumber: true,
-        labelText: "Search for a Creditor",
-        ariaLabel: "Search Creditor",
+        labelText: 'Search for a Creditor',
+        ariaLabel: 'Search Creditor',
         defaultValue: {
           id: 1000,
-          name: "Cooperative Bank Creditor",
+          name: 'Cooperative Bank Creditor',
         },
-        endpoint: "users",
+        endpoint: 'users',
       },
       {
-        id: "description",
-        category: "default",
-        labelText: "Description",
-        ariaLabel: "Loan Description",
+        id: 'description',
+        category: 'default',
+        labelText: 'Description',
+        ariaLabel: 'Loan Description',
       },
       {
-        id: "value",
-        inputmode: "numeric",
-        category: "default",
+        id: 'value',
+        inputmode: 'numeric',
+        category: 'default',
         strictToNumber: true,
-        formatter: "currency",
-        labelText: "Value",
-        ariaLabel: "Loan Value",
+        formatter: 'currency',
+        labelText: 'Value',
+        ariaLabel: 'Loan Value',
       },
       {
-        id: "installments",
-        inputmode: "numeric",
-        category: "default",
+        id: 'installments',
+        inputmode: 'numeric',
+        category: 'default',
         strictToNumber: true,
-        labelText: "Installments",
-        ariaLabel: "Quantity of Installments",
+        labelText: 'Installments',
+        ariaLabel: 'Quantity of Installments',
       },
       {
-        id: "rate",
-        inputmode: "numeric",
-        category: "default",
+        id: 'rate',
+        inputmode: 'numeric',
+        category: 'default',
         strictToNumber: true,
-        formatter: "percent",
-        labelText: "Interest Rate",
-        ariaLabel: "Interest Rate",
+        formatter: 'percent',
+        labelText: 'Interest Rate',
+        ariaLabel: 'Interest Rate',
       },
     ];
   }
 
-  get _submitParams() {
+  get _submitConfig() {
     return {
-      id: "submit",
-      labelText: "Request",
+      id: 'submit',
+      labelText: 'Request',
     };
   }
 
   get _endpoint() {
-    return "opened-requests";
+    return 'opened-requests';
   }
 }

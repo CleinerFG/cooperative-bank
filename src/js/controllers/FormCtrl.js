@@ -1,15 +1,15 @@
+import { FormView } from '../views/FormView.js';
+import { ApiService } from '../service/ApiService.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
 import { InvalidDataError } from '../errors/InvalidDataError.js';
-import { ApiService } from '../service/ApiService.js';
-import { FormView } from '../views/FormView.js';
 
 export class FormCtrl {
   #view;
   constructor() {
     this.#view = new FormView(
-      this._viewParams,
-      this._inputParams,
-      this._submitParams
+      this._viewConfig,
+      this._inputsConfig,
+      this._submitConfig
     );
     this.#init();
   }
@@ -18,16 +18,16 @@ export class FormCtrl {
     new AbstractGetterError('_modelClass');
   }
 
-  get _viewParams() {
-    new AbstractGetterError('_viewParams');
+  get _viewConfig() {
+    new AbstractGetterError('_viewConfig');
   }
 
-  get _inputParams() {
-    new AbstractGetterError('_inputParams');
+  get _inputsConfig() {
+    new AbstractGetterError('_inputsConfig');
   }
 
-  get _submitParams() {
-    new AbstractGetterError('_submitParams');
+  get _submitConfig() {
+    new AbstractGetterError('_submitConfig');
   }
 
   get _endpoint() {

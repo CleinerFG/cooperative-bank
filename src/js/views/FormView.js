@@ -1,21 +1,21 @@
-import { Input } from "../components/form/Input.js";
-import { PasswordInput } from "../components/form/PasswordInput.js";
-import { SearchInput } from "../components/form/SearchInput.js";
-import { SubmitButton } from "../components/form/SubmitButton.js";
+import { Input } from '../components/form/Input.js';
+import { PasswordInput } from '../components/form/PasswordInput.js';
+import { SearchInput } from '../components/form/SearchInput.js';
+import { SubmitButton } from '../components/form/SubmitButton.js';
 
 export class FormView {
   #containerElement;
   #id;
   #cssClass;
-  #inputParams;
-  #submitParams;
+  #inputsConfig;
+  #submitConfig;
   #inputs;
-  constructor(viewParams, inputParams, submitParams) {
-    this.#containerElement = viewParams.containerElement;
-    this.#id = viewParams.id;
-    this.#cssClass = viewParams.cssClass ?? "";
-    this.#inputParams = inputParams;
-    this.#submitParams = submitParams;
+  constructor(config, inputsConfig, submitConfig) {
+    this.#containerElement = config.containerElement;
+    this.#id = config.id;
+    this.#cssClass = config.cssClass ?? '';
+    this.#inputsConfig = inputsConfig;
+    this.#submitConfig = submitConfig;
     this.#init();
   }
 
@@ -41,7 +41,7 @@ export class FormView {
   }
 
   #render() {
-    this.#containerElement.insertAdjacentHTML("beforeend", this.#template);
+    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
   }
 
   #buildInputs() {
@@ -54,7 +54,7 @@ export class FormView {
       return categories[category];
     };
 
-    this.#inputs = this.#inputParams.map((params) => {
+    this.#inputs = this.#inputsConfig.map((params) => {
       const InpClass = setInp(params.category);
       params.containerElement = this.#formGroupElement;
       const inp = new InpClass(params);
@@ -64,16 +64,16 @@ export class FormView {
   }
 
   #createInputSubmit() {
-    const params = this.#submitParams;
+    const params = this.#submitConfig;
     params.containerElement = this.formElement;
     new SubmitButton(params).init();
   }
 
   #changeElementsFocus() {
-    this.formElement.addEventListener("keydown", (ev) => {
-      if (ev.key === "Enter" || ev.key === "Tab") {
+    this.formElement.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === 'Tab') {
         ev.preventDefault();
-        const inputs = Array.from(this.formElement.querySelectorAll("input"));
+        const inputs = Array.from(this.formElement.querySelectorAll('input'));
         const index = inputs.indexOf(document.activeElement);
 
         const getNextInput = (currentIndex) => {
