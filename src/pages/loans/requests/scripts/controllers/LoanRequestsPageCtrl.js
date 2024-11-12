@@ -1,7 +1,7 @@
-import { PageCtrl } from "../../../../../js/controllers/PageCtrl.js";
-import { LoanRequestsPageView } from "../views/LoanRequestsPageView.js";
-import { NewLoanRequestFormCtrl } from "./NewLoanRequestFormCtrl.js";
-import { LoanRequestGroup } from "../components/LoanRequestGroup.js";
+import { PageCtrl } from '../../../../../js/controllers/PageCtrl.js';
+import { LoanRequestsPageView } from '../views/LoanRequestsPageView.js';
+import { NewLoanRequestFormCtrl } from './NewLoanRequestFormCtrl.js';
+import { LoanRequestGroup } from '../components/LoanRequestGroup.js';
 
 /**
  * Page controller for Loans Requests.
@@ -10,8 +10,8 @@ import { LoanRequestGroup } from "../components/LoanRequestGroup.js";
  * @extends PageCtrl
  */
 export class LoanRequestsPageCtrl extends PageCtrl {
-  constructor() {
-    super(LoanRequestsPageView);
+  get _ViewClass() {
+    return LoanRequestsPageView;
   }
 
   _initControllers() {

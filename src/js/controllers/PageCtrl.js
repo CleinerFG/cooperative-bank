@@ -9,21 +9,19 @@ import { LayoutCtrl } from './LayoutCtrl.js';
  * @class
  */
 export class PageCtrl {
-  /**  Holds a reference to the view class associated with the page.
-   *
-   * @private
-   * @type {PageView}
-   */
-  #PageView;
+  constructor() {
+    this.#init();
+  }
 
   /**
-   * Constructs the instance and initializes the page components.
+   * Returns the PageView class
    *
-   * @param {Class} PageView - The view class to be used for rendering the page.
+   * @abstract
+   * @type {PageView}
+   * @throws {AbstractMethodError}
    */
-  constructor(PageView) {
-    this.#PageView = PageView;
-    this.#init();
+  get _ViewClass() {
+    throw AbstractMethodError('_ViewClass');
   }
 
   /**
@@ -44,7 +42,7 @@ export class PageCtrl {
    * @private
    */
   #init() {
-    new this.#PageView();
+    new this._ViewClass();
     this._initControllers();
     new LayoutCtrl();
   }
