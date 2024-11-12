@@ -1,9 +1,10 @@
+import { CardComponent } from './CardComponent.js';
+import { CardState } from './CardState.js';
 import { ApiService } from '../service/ApiService.js';
 import { PathManager } from '../utils/PathManager.js';
 import { capitalize } from '../utils/stringUtils.js';
-import { CardState } from './CardState.js';
 import { simulateWait } from '../utils/tests.js';
-import { CardComponent } from './CardComponent.js';
+import { AbstractGetterError } from '../errors/AbstractErrors.js';
 
 /**
  * @typedef {Object} TypeConfig
@@ -65,10 +66,10 @@ export class ComponentGroup {
    * @abstract
    * @protected
    * @type {HTMLElement}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _containerElement() {
-    throw new AbstractMethodError('_containerElement');
+    throw new AbstractGetterError('_containerElement');
   }
 
   /**
@@ -77,10 +78,10 @@ export class ComponentGroup {
    * @abstract
    * @protected
    * @type {string}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _CardComponentClass() {
-    throw new AbstractMethodError('_CardComponentClass');
+    throw new AbstractGetterError('_CardComponentClass');
   }
 
   /**
@@ -89,10 +90,10 @@ export class ComponentGroup {
    * @abstract
    * @protected
    * @type {string}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _category() {
-    throw new AbstractMethodError('_category');
+    throw new AbstractGetterError('_category');
   }
 
   /**
@@ -101,10 +102,10 @@ export class ComponentGroup {
    * @abstract
    * @protected
    * @type {TypeConfig[]}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _typeMappingConfig() {
-    throw new AbstractMethodError('_typeMappingConfig');
+    throw new AbstractGetterError('_typeMappingConfig');
   }
 
   /**

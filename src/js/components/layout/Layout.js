@@ -1,4 +1,7 @@
-import { AbstractMethodError } from "../../errors/AbstractMethodError.js";
+import {
+  AbstractGetterError,
+  AbstractMethodError,
+} from '../../errors/AbstractErrors.js';
 
 /**
  * Abstract base class for defining the layout.
@@ -22,11 +25,11 @@ export class Layout {
    *
    * @protected
    * @abstract
-   * @throws {AbstractMethodError} When not implemented in a subclass.
+   * @throws {AbstractGetterError}
    * @type {string}
    */
   get _template() {
-    throw new AbstractMethodError("_template");
+    throw new AbstractGetterError('_template');
   }
 
   /**
@@ -45,10 +48,10 @@ export class Layout {
    *
    * @protected
    * @abstract
-   * @throws {AbstractMethodError} When not implemented in a subclass.
+   * @throws {AbstractMethodError}
    */
   _pathHandler() {
-    throw new AbstractMethodError("_pathHandler");
+    throw new AbstractMethodError('_pathHandler');
   }
 
   /**
@@ -57,10 +60,10 @@ export class Layout {
    *
    * @protected
    * @abstract
-   * @throws {AbstractMethodError} When not implemented in a subclass.
+   * @throws {AbstractMethodError}
    */
   _setupListeners() {
-    throw new AbstractMethodError("_setupListeners");
+    throw new AbstractMethodError('_setupListeners');
   }
 
   /**

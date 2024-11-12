@@ -1,6 +1,9 @@
 import { PageView } from '../views/PageView.js';
-import { AbstractMethodError } from '../errors/AbstractMethodError.js';
 import { LayoutCtrl } from './LayoutCtrl.js';
+import {
+  AbstractGetterError,
+  AbstractMethodError,
+} from '../errors/AbstractErrors.js';
 
 /**
  * Controller for initializing and managing page components and layout.
@@ -18,10 +21,10 @@ export class PageCtrl {
    *
    * @abstract
    * @type {PageView}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _ViewClass() {
-    throw AbstractMethodError('_ViewClass');
+    throw AbstractGetterError('_ViewClass');
   }
 
   /**

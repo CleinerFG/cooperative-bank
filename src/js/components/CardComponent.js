@@ -1,4 +1,4 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError.js";
+import { AbstractGetterError, AbstractMethodError } from "../errors/AbstractErrors.js";
 
 /**
  * @typedef {Object} CardItem
@@ -61,10 +61,10 @@ export class CardComponent {
    *
    * @abstract
    * @protected
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _ModelClass() {
-    throw new AbstractMethodError("_ModelClass");
+    throw new AbstractGetterError("_ModelClass");
   }
 
   /**
@@ -73,10 +73,10 @@ export class CardComponent {
    * @abstract
    * @protected
    * @type {string}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _cssId() {
-    throw new AbstractMethodError("_cssId");
+    throw new AbstractGetterError("_cssId");
   }
 
   /**
@@ -85,10 +85,10 @@ export class CardComponent {
    * @abstract
    * @protected
    * @type {string}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _cssClass() {
-    throw new AbstractMethodError("_cssClass");
+    throw new AbstractGetterError("_cssClass");
   }
 
   /**
@@ -97,10 +97,10 @@ export class CardComponent {
    * @abstract
    * @protected
    * @type {CardItem}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _cardItemsTemplate() {
-    throw new AbstractMethodError("_cardItemsTemplate");
+    throw new AbstractGetterError("_cardItemsTemplate");
   }
 
   /**
@@ -109,10 +109,10 @@ export class CardComponent {
    * @abstract
    * @protected
    * @type {string}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _cardHeaderTemplate() {
-    throw new AbstractMethodError("_cardHeaderTemplate");
+    throw new AbstractGetterError("_cardHeaderTemplate");
   }
 
   /**
@@ -121,10 +121,10 @@ export class CardComponent {
    * @abstract
    * @protected
    * @type {string}
-   * @throws {AbstractMethodError}
+   * @throws {AbstractGetterError}
    */
   get _cardFooterTemplate() {
-    throw new AbstractMethodError("_cardFooterTemplate");
+    throw new AbstractGetterError("_cardFooterTemplate");
   }
 
   /**

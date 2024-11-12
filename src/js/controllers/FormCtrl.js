@@ -1,7 +1,7 @@
-import { AbstractMethodError } from "../errors/AbstractMethodError.js";
-import { InvalidDataError } from "../errors/InvalidDataError.js";
-import { ApiService } from "../service/ApiService.js";
-import { FormView } from "../views/FormView.js";
+import { AbstractGetterError } from '../errors/AbstractErrors.js';
+import { InvalidDataError } from '../errors/InvalidDataError.js';
+import { ApiService } from '../service/ApiService.js';
+import { FormView } from '../views/FormView.js';
 
 export class FormCtrl {
   #view;
@@ -15,23 +15,23 @@ export class FormCtrl {
   }
 
   get _modelClass() {
-    new AbstractMethodError("_modelClass");
+    new AbstractGetterError('_modelClass');
   }
 
   get _viewParams() {
-    new AbstractMethodError("_viewParams");
+    new AbstractGetterError('_viewParams');
   }
 
   get _inputParams() {
-    new AbstractMethodError("_inputParams");
+    new AbstractGetterError('_inputParams');
   }
 
   get _submitParams() {
-    new AbstractMethodError("_submitParams");
+    new AbstractGetterError('_submitParams');
   }
 
   get _endpoint() {
-    new AbstractMethodError("_endpoint");
+    new AbstractGetterError('_endpoint');
   }
 
   get _formData() {
@@ -46,7 +46,7 @@ export class FormCtrl {
 
   _checkDataValidInputs() {
     const isValid = this.#view.inputs.every(
-      (inp) => inp.inputElement.dataset.valid === "true"
+      (inp) => inp.inputElement.dataset.valid === 'true'
     );
 
     if (!isValid) {
@@ -55,7 +55,7 @@ export class FormCtrl {
   }
 
   #submitHandler() {
-    this.#view.formElement.addEventListener("submit", async (ev) => {
+    this.#view.formElement.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       try {
         this._checkDataValidInputs();
