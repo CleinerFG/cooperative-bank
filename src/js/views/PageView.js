@@ -1,4 +1,4 @@
-import { AbstractMethodError } from '../errors/AbstractMethodError.js';
+import { AbstractMethodError } from '../errors/AbstractErrors.js';
 
 /**
  * Represents a view for a page that is responsible for rendering page content dynamically.

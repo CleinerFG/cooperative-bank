@@ -1,5 +1,5 @@
 import { PageView } from '../views/PageView.js';
-import { LayoutCtrl } from './LayoutCtrl.js';
+import { initLayout } from '../components/layout/initLayout.js';
 import {
   AbstractGetterError,
   AbstractMethodError,
@@ -47,6 +47,6 @@ export class PageCtrl {
   #init() {
     new this._ViewClass();
     this._initControllers();
-    new LayoutCtrl();
+    initLayout();
   }
 }
