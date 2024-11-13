@@ -1,24 +1,28 @@
 import { Input } from './Input.js';
 
 /**
+ * @typedef {object} SubmitButtonConfig - Configuration object for creating a submit button.
+ * @property {HTMLElement} containerElement - The container where the button will be added.
+ * @property {string} id - The unique identifier for the button element.
+ * @property {string} textContent - Button text.
+ * @property {string} cssClass - CSS class for styling.
+ */
+
+/**
  * Represents a submit button element within a form.
  *
  * @class
  * @extends Input
- * 
+ *
  */
 export class SubmitButton extends Input {
   /**
    * Creates an instance of Submit Button.
    *
-   * @param {object} params - Object with the submit button config.
-   * @param {HTMLElement} params.containerElement - The container where the button will be added.
-   * @param {string} params.id - The unique identifier for the button element.
-   * @param {string} params.textContent - Button text.
-   * @param {string} [params.cssClass=""] - Optional CSS class for styling.
+   * @param {SubmitButtonConfig} config - Object with the submit button config.
    */
-  constructor(params) {
-    super(params);
+  constructor(config) {
+    super(config);
   }
   /**
    * Provides the HTML template for rendering the submit button.

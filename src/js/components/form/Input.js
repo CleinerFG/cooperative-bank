@@ -6,6 +6,17 @@ import {
 } from '../../utils/inputFormatters.js';
 
 /**
+ * @typedef {object} InputDefaultConfig - Configuration object for creating an input element.
+ * @property {HTMLElement} containerElement - The container where the input will be added.
+ * @property {string} id - The unique identifier for the input element.
+ * @property {string} labelText -  Text for the input label.
+ * @property {string} cssClass - CSS class for custom styling.
+ * @property {"text" | "numeric"} inputmode - Input mode for the input element.
+ * @property {boolean} strictToNumber - Whether only numbers are allowed.
+ * @property {"currency" | "percent"} formatter - Formatter type for the input.
+ */
+
+/**
  * Input class for creating and managing input elements with validation,
  * formatting, and error handling.
  *
@@ -51,23 +62,16 @@ export class Input {
   /**
    * Creates an instance of Input.
    *
-   * @param {object} params - Object with the input config.
-   * @param {HTMLElement} params.containerElement - The container where the input will be added.
-   * @param {string} params.id - The unique identifier for the input element.
-   * @param {string} [params.labelText=""] - Optional text for the input label.
-   * @param {string} [params.cssClass=""] - Optional CSS class for styling.
-   * @param {"text" | "numeric"} [params.inputmode="text"] - Optional input mode for the input element.
-   * @param {boolean} params.strictToNumber - Whether only numbers are allowed.
-   * @param {"currency" | "percent"} [params.formatter=null] - Optional formatter type for the input.
+   * @param {InputDefaultConfig} config - Object with the input config.
    */
-  constructor(params) {
-    this.#containerElement = params.containerElement;
-    this._id = params.id;
-    this._cssClass = params.cssClass ?? '';
-    this._inputmode = params.inputmode ?? 'text';
-    this.#strictToNumber = params.strictToNumber;
-    this.#formatter = params.formatter;
-    this._labelText = params.labelText ?? '';
+  constructor(config) {
+    this.#containerElement = config.containerElement;
+    this._id = config.id;
+    this._cssClass = config.cssClass ?? '';
+    this._inputmode = config.inputmode ?? 'text';
+    this.#strictToNumber = config.strictToNumber;
+    this.#formatter = config.formatter;
+    this._labelText = config.labelText ?? '';
   }
 
   /**

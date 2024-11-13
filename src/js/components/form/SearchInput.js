@@ -5,6 +5,19 @@ import { simulateWait } from '../../utils/tests.js';
 import { NotFoundError } from '../../errors/InputErrors.js';
 
 /**
+ * @typedef {object} InputSearchConfig - Configuration object for creating a search input element.
+ * @property {HTMLElement} containerElement - The container where the input will be added.
+ * @property {string} id - The unique identifier for the input element.
+ * @property {string} labelText - Text for the input label.
+ * @property {string} cssClass - CSS class for styling.
+ * @property {"text" | "numeric"} inputmode - Input mode for the input element.
+ * @property {boolean} strictToNumber - Whether only numbers are allowed.
+ * @property {"currency" | "percent"} formatter - Formatter type for the input.
+ * @property {string} endpoint - The API endpoint to fetch data from.
+ * @property {{id: number, name: string}} defaultValue - Default value to pre-fill the input and result fields.
+ */
+
+/**
  * Represents a search input field that supports asynchronous
  * data retrieval by ID, displaying the result in a disabled field.
  *
@@ -22,21 +35,12 @@ export class SearchInput extends Input {
   /**
    * Creates an instance of SearchInput.
    *
-   * @param {object} params - Object with the submit button config.
-   * @param {HTMLElement} params.containerElement - The container where the input will be added.
-   * @param {string} params.id - The unique identifier for the input element.
-   * @param {string} params.labelText - Text for the input label.
-   * @param {string} [params.cssClass=""] - Optional CSS class for styling.
-   * @param {"text" | "numeric"} [params.inputmode="text"] - Optional input mode for the input element.
-   * @param {boolean} params.strictToNumber - Whether only numbers are allowed.
-   * @param {"currency" | "percent"} [params.formatter=null] - Optional formatter type for the input.
-   * @param {string} params.endpoint - The API endpoint to fetch data from.
-   * @param {{id: number, name: string}} params.defaultValue - Default value to pre-fill the input and result fields.
+   * @param {InputSearchConfig} config - Object with the submit button config.
    */
-  constructor(params) {
-    super(params);
-    this.#endpoint = params.endpoint;
-    this._defaultValue = params.defaultValue;
+  constructor(config) {
+    super(config);
+    this.#endpoint = config.endpoint;
+    this._defaultValue = config.defaultValue;
   }
 
   /**
