@@ -57,6 +57,7 @@ export class FormCtrl {
    *
    * @abstract
    * @protected
+   * @type {Array<import('../components/form/Input.js').InputDefaultConfig | import('../components/form/SearchInput.js').InputSearchConfig>}
    * @throws {AbstractGetterError}
    */
   get _inputsConfig() {
@@ -68,11 +69,7 @@ export class FormCtrl {
    *
    * @abstract
    * @protected
-   * @type {{
-   *   id: string,        // CSS ID of the element
-   *   labelText: string, // Text displayed on the button
-   *   cssClass?: string  // Custom CSS class
-   * }}
+   * @type {import('../components/form/SubmitButton.js').SubmitButtonConfig}}
    * @throws {AbstractGetterError} When called directly.
    */
   get _submitConfig() {
