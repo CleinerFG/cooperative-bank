@@ -1,12 +1,13 @@
-import { Input } from "./Input.js";
-import { PathManager } from "../../utils/PathManager.js";
-import { ApiService } from "../../service/ApiService.js";
-import { simulateWait } from "../../utils/tests.js";
-import { NotFoundError } from "../../errors/InputErrors.js";
+import { Input } from './Input.js';
+import { PathManager } from '../../utils/PathManager.js';
+import { ApiService } from '../../service/ApiService.js';
+import { simulateWait } from '../../utils/tests.js';
+import { NotFoundError } from '../../errors/InputErrors.js';
 
 /**
  * Represents a search input field that supports asynchronous
  * data retrieval by ID, displaying the result in a disabled field.
+ *
  * @class
  * @extends Input
  */
@@ -20,11 +21,17 @@ export class SearchInput extends Input {
 
   /**
    * Creates an instance of SearchInput.
-   * @param {Object} params - The parameters for configuring the Input instance.
+   *
+   * @param {object} params - Object with the submit button config.
+   * @param {HTMLElement} params.containerElement - The container where the input will be added.
+   * @param {string} params.id - The unique identifier for the input element.
+   * @param {string} params.labelText - Text for the input label.
+   * @param {string} [params.cssClass=""] - Optional CSS class for styling.
+   * @param {"text" | "numeric"} [params.inputmode="text"] - Optional input mode for the input element.
+   * @param {boolean} params.strictToNumber - Whether only numbers are allowed.
+   * @param {"currency" | "percent"} [params.formatter=null] - Optional formatter type for the input.
    * @param {string} params.endpoint - The API endpoint to fetch data from.
-   * @param {Object} params.defaultValue - Default value to pre-fill the input and result fields.
-   * @override
-   * @note Additional parameters are inherited from the `Input` class.
+   * @param {{id: number, name: string}} params.defaultValue - Default value to pre-fill the input and result fields.
    */
   constructor(params) {
     super(params);
@@ -47,7 +54,7 @@ export class SearchInput extends Input {
    * @type {HTMLElement}
    */
   get #searchElement() {
-    return document.getElementById("search-icon");
+    return document.getElementById('search-icon');
   }
 
   /**
@@ -82,9 +89,9 @@ export class SearchInput extends Input {
    */
   async #fetchFromApi() {
     const dataId = this.inputElement.value;
-    if (!dataId || dataId === "0") return;
+    if (!dataId || dataId === '0') return;
 
-    this.#toggleSearchState("add");
+    this.#toggleSearchState('add');
     await simulateWait(1);
 
     try {
@@ -100,10 +107,10 @@ export class SearchInput extends Input {
    * @param {"add" | "remove"} action - Specifies the action to add or remove loading styles.
    */
   #toggleSearchState(action) {
-    this.#inputResultElement.classList[action]("inp-skelon");
-    this.#searchElement.classList[action]("search-animation");
-    if (action === "add") {
-      this.#inputResultElement.value = "Searching...";
+    this.#inputResultElement.classList[action]('inp-skelon');
+    this.#searchElement.classList[action]('search-animation');
+    if (action === 'add') {
+      this.#inputResultElement.value = 'Searching...';
     }
   }
 
@@ -119,7 +126,7 @@ export class SearchInput extends Input {
       if (item) {
         this._updateResult(item);
         this._dataValid = true;
-        this._failMessageHandler("remove", "");
+        this._failMessageHandler('remove', '');
       } else {
         this._updateResult(null);
         this._dataValid = false;
@@ -127,7 +134,7 @@ export class SearchInput extends Input {
     } catch (error) {
       this._updateResult(null);
       this._dataValid = false;
-      this._failMessageHandler("add", error.message);
+      this._failMessageHandler('add', error.message);
     }
   }
 
@@ -138,8 +145,8 @@ export class SearchInput extends Input {
    * @param {string} item.name - The name of item fetched.
    */
   _updateResult(item) {
-    this.#toggleSearchState("remove");
-    this.#inputResultElement.value = item ? item.name : "";
+    this.#toggleSearchState('remove');
+    this.#inputResultElement.value = item ? item.name : '';
   }
 
   /**
@@ -159,10 +166,10 @@ export class SearchInput extends Input {
    */
   _setupListeners() {
     this.#searchElement.addEventListener(
-      "click",
+      'click',
       this._handleSearch.bind(this)
     );
-    this.inputElement.addEventListener("blur", this._handleSearch.bind(this));
+    this.inputElement.addEventListener('blur', this._handleSearch.bind(this));
   }
 
   /**
@@ -170,7 +177,7 @@ export class SearchInput extends Input {
    * @protected
    */
   _defineIconPath() {
-    PathManager.updateIcon("#search-icon", "icon-search.svg");
+    PathManager.updateIcon('#search-icon', 'icon-search.svg');
   }
 
   /**

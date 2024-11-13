@@ -1,9 +1,9 @@
-import { zeroValidator, emptyValidator } from "../../utils/validators.js";
+import { zeroValidator, emptyValidator } from '../../utils/validators.js';
 import {
   currencyFormatter,
   percentFormatter,
   strictNumberFormatter,
-} from "../../utils/inputFormatters.js";
+} from '../../utils/inputFormatters.js';
 
 /**
  * Input class for creating and managing input elements with validation,
@@ -14,7 +14,7 @@ import {
  * - Input formatting (currency, percentage, strict numbers)
  * - Error message handling and display
  * - Event handling for blur and input events
- * 
+ *
  * @class
  * @classdesc Creates an input element with customizable formatting,
  * strict number validation, and error messaging.
@@ -51,23 +51,23 @@ export class Input {
   /**
    * Creates an instance of Input.
    *
-   * @param {Object} params - The parameters for configuring the Input instance.
+   * @param {object} params - Object with the input config.
    * @param {HTMLElement} params.containerElement - The container where the input will be added.
    * @param {string} params.id - The unique identifier for the input element.
+   * @param {string} [params.labelText=""] - Optional text for the input label.
    * @param {string} [params.cssClass=""] - Optional CSS class for styling.
    * @param {"text" | "numeric"} [params.inputmode="text"] - Optional input mode for the input element.
-   * @param {boolean} [params.strictToNumber=false] - Whether only numbers are allowed.
-   * @param {"currency" | "percent"} params.formatter - Formatter type for the input ("currency" | "percent").
-   * @param {string} [params.labelText=""] - Text for the input label.
+   * @param {boolean} params.strictToNumber - Whether only numbers are allowed.
+   * @param {"currency" | "percent"} [params.formatter=null] - Optional formatter type for the input.
    */
   constructor(params) {
     this.#containerElement = params.containerElement;
     this._id = params.id;
-    this._cssClass = params.cssClass ?? "";
-    this._inputmode = params.inputmode ?? "text";
+    this._cssClass = params.cssClass ?? '';
+    this._inputmode = params.inputmode ?? 'text';
     this.#strictToNumber = params.strictToNumber;
     this.#formatter = params.formatter;
-    this._labelText = params.labelText ?? "";
+    this._labelText = params.labelText ?? '';
   }
 
   /**
@@ -122,7 +122,7 @@ export class Input {
   _failMessageHandler(method, errorMessage) {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
-    this.inputElement.classList[method]("inp-error");
+    this.inputElement.classList[method]('inp-error');
   }
 
   /**
@@ -135,10 +135,10 @@ export class Input {
     try {
       this.#validators.forEach((validator) => validator(value));
       this._dataValid = true;
-      this._failMessageHandler("remove", "");
+      this._failMessageHandler('remove', '');
     } catch (error) {
       this._dataValid = false;
-      this._failMessageHandler("add", error.message);
+      this._failMessageHandler('add', error.message);
     }
   }
 
@@ -148,7 +148,7 @@ export class Input {
    */
   #setupStrictToNumber() {
     if (this.#strictToNumber) {
-      this.inputElement.addEventListener("input", strictNumberFormatter);
+      this.inputElement.addEventListener('input', strictNumberFormatter);
     }
   }
 
@@ -163,7 +163,7 @@ export class Input {
     };
 
     if (this.#formatter) {
-      this.inputElement.addEventListener("input", formatters[this.#formatter]);
+      this.inputElement.addEventListener('input', formatters[this.#formatter]);
     }
   }
 
@@ -180,7 +180,7 @@ export class Input {
    */
   #setupValidationOnBlur() {
     this.inputElement.addEventListener(
-      "blur",
+      'blur',
       this.#executeValidators.bind(this)
     );
   }
@@ -203,7 +203,7 @@ export class Input {
    * @private
    */
   #render() {
-    this.#containerElement.insertAdjacentHTML("beforeend", this._template);
+    this.#containerElement.insertAdjacentHTML('beforeend', this._template);
   }
 
   /**

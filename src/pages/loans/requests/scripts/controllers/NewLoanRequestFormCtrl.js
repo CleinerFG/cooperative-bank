@@ -17,11 +17,10 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
   get _inputsConfig() {
     return [
       {
-        id: 'creditor',
         category: 'search',
+        id: 'creditor',
         strictToNumber: true,
         labelText: 'Search for a Creditor',
-        ariaLabel: 'Search Creditor',
         defaultValue: {
           id: 1000,
           name: 'Cooperative Bank Creditor',
@@ -32,33 +31,29 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
         id: 'description',
         category: 'default',
         labelText: 'Description',
-        ariaLabel: 'Loan Description',
       },
       {
+        category: 'default',
         id: 'value',
         inputmode: 'numeric',
-        category: 'default',
         strictToNumber: true,
         formatter: 'currency',
         labelText: 'Value',
-        ariaLabel: 'Loan Value',
       },
       {
+        category: 'default',
         id: 'installments',
         inputmode: 'numeric',
-        category: 'default',
         strictToNumber: true,
         labelText: 'Installments',
-        ariaLabel: 'Quantity of Installments',
       },
       {
+        category: 'default',
         id: 'rate',
         inputmode: 'numeric',
-        category: 'default',
         strictToNumber: true,
         formatter: 'percent',
         labelText: 'Interest Rate',
-        ariaLabel: 'Interest Rate',
       },
     ];
   }
