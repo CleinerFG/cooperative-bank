@@ -61,6 +61,7 @@
 }
 
 .img-container {
+  max-width: 400px;
   display: flex;
   align-items: center;
   border-radius: 1.5rem;
@@ -77,6 +78,7 @@
 .content-container {
   text-align: center;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
@@ -157,14 +159,26 @@
   width: 2rem;
 }
 
-@media (min-width: 967px) {
-  .section {
-    flex-direction: row;
-    justify-content: space-between;
+@media (min-width: 768px) {
+  .brand-container,
+  .login-container {
+    font-size: 1rem;
+  }
+
+  .icon {
+    width: 2rem;
+  }
+
+  .brand-icon {
+    width: 3rem;
   }
 
   .img-container {
-    /* height: 15rem; */
+    max-width: none;
+  }
+
+  .section {
+    flex-direction: row;
   }
 
   .feature-section:nth-of-type(even) {
