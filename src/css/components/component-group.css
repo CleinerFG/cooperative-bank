@@ -85,6 +85,7 @@
 }
 
 @media screen and (min-width: 425px) {
+<<<<<<< HEAD
   .dashboard__filter {
     flex: 1;
   }
@@ -95,3 +96,32 @@
     flex: 2;
   }
 } */
+=======
+  .dashboard-container {
+    max-width: 380px;
+  }
+
+  .component-types {
+    max-width: 380px;
+  }
+}
+
+@media screen and (min-width: 475px) {
+  .dashboard__filter {
+    flex-basis: 330px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard-container {
+    max-width: 570px;
+  }
+
+  .dashboard__filter {
+    flex: 3;
+  }
+  .component-types {
+    flex: 1;
+  }
+}
+>>>>>>> deb736404ac392990bba212f85f6831746133316
