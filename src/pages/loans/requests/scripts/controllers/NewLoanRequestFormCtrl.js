@@ -1,6 +1,13 @@
 import { FormCtrl } from '../../../../../js/controllers/FormCtrl.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
 
+/**
+ * Form for Loan Request.
+ * Implements the necessary configurations for the loan request form.
+ *
+ * @class
+ * @extends FormCtrl
+ */
 export class NewLoanRequestFormCtrl extends FormCtrl {
   get _modelClass() {
     return LoanRequestModel;
