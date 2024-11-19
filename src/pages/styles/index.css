@@ -45,7 +45,6 @@
 
 .section {
   padding: 4rem 10% 4rem 10%;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -178,6 +177,7 @@
   }
 
   .section {
+    height: 100vh;
     flex-direction: row;
   }
 
@@ -192,5 +192,15 @@
 
   .footer {
     flex-direction: row;
+  }
+
+  html,
+  body {
+    scroll-snap-type: y mandatory;
+  }
+
+  .section,
+  .footer {
+    scroll-snap-align: start;
   }
 }
