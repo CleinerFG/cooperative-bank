@@ -9,6 +9,7 @@ import { AbstractGetterError } from '../errors/AbstractErrors.js';
 /**
  * @typedef {Object} TypeConfig
  * @property {string} name - The name of the type.
+ * @property {CardComponent} CardClass - Card Class for the type.
  * @property {string} endpoint - The endpoint associated with the type.
  */
 
@@ -73,18 +74,6 @@ export class ComponentGroup {
   }
 
   /**
-   * Returns the CardComponent class.
-   *
-   * @abstract
-   * @protected
-   * @type {string}
-   * @throws {AbstractGetterError}
-   */
-  get _CardComponentClass() {
-    throw new AbstractGetterError('_CardComponentClass');
-  }
-
-  /**
    * Returns the category of the component group.
    *
    * @abstract
@@ -127,6 +116,16 @@ export class ComponentGroup {
    */
   get _activeType() {
     return this.#activeType;
+  }
+
+  /**
+   * Returns the CardComponentClass according to the active type.
+   *
+   * @private
+   * @type {CardComponent}
+   */
+  get #CardComponentClass() {
+    return this._activeType.CardClass;
   }
 
   /**
@@ -250,7 +249,7 @@ export class ComponentGroup {
    */
   #initCardComponents() {
     this.#cardComponents = this.#apiData.map((item) => {
-      return new this._CardComponentClass(this.#cardsContainerElement, item);
+      return new this.#CardComponentClass(this.#cardsContainerElement, item);
     });
   }
 

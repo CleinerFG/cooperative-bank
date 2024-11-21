@@ -13,18 +13,21 @@ export class EventGroup extends ComponentGroup {
     return document.querySelector('.section.events');
   }
 
-  get _CardComponentClass() {
-    return CardEvent;
-  }
-
   get _category() {
     return 'events';
   }
 
   get _typeMappingConfig() {
     return [
-      { name: 'payment', endpoint: 'events-payment' },
-      { name: 'investment', endpoint: 'events-investment' },
+      { name: 'payment',
+        CardClass: CardEvent,
+        endpoint: 'events-payment' 
+      },
+      {
+        name: 'investment',
+        CardClass: CardEvent,
+        endpoint: 'events-investment',
+      },
     ];
   }
 

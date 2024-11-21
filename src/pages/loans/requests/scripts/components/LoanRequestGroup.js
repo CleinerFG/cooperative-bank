@@ -1,5 +1,6 @@
 import { ComponentGroup } from '../../../../../js/components/ComponentGroup.js';
-import { CardLoanRequest } from './CardLoanRequest.js';
+import { CardLoanRequestReceived } from './CardLoanRequestReceived.js';
+import { CardLoanRequestOpened } from './CardLoanRequestOpened.js';
 
 /**
  * Manages a group of loan requests data components.
@@ -13,18 +14,22 @@ export class LoanRequestGroup extends ComponentGroup {
     return document.querySelector('.section.loan-requests');
   }
 
-  get _CardComponentClass() {
-    return CardLoanRequest;
-  }
-
   get _category() {
     return 'requests';
   }
 
   get _typeMappingConfig() {
     return [
-      { name: 'received', endpoint: 'requests-received' },
-      { name: 'opened', endpoint: 'requests-opened' },
+      {
+        name: 'received',
+        CardClass: CardLoanRequestReceived,
+        endpoint: 'requests-received',
+      },
+      {
+        name: 'opened',
+        CardClass: CardLoanRequestOpened,
+        endpoint: 'requests-opened',
+      },
     ];
   }
 
