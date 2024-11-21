@@ -1,7 +1,7 @@
-.request__success .card-data__header {
+.card-data__header .p__success {
   color: var(--component-color-success);
 }
 
-.request__fail .card-data__header {
+.card-data__header .p__fail {
   color: var(--component-color-fail);
 }
