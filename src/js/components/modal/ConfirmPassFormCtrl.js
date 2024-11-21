@@ -1,7 +1,7 @@
 import { FormCtrl } from '../../controllers/FormCtrl.js';
 
 export class ConfirmPassFormCtrl extends FormCtrl {
-  get _viewParams() {
+  get _viewConfig() {
     return {
       id: 'confirm-pass-form',
       containerElement: document.querySelector('.modal__content'),
@@ -15,7 +15,6 @@ export class ConfirmPassFormCtrl extends FormCtrl {
         id: 'transaction-password',
         category: 'password',
         strictToNumber: true,
-        ariaLabel: 'Password',
       },
     ];
   }

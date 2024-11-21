@@ -1,7 +1,7 @@
 import {
   AbstractGetterError,
   AbstractMethodError,
-} from '../../errors/AbstractErrors';
+} from '../../errors/AbstractErrors.js';
 
 /**
  *  A modal component with a customizable content section.

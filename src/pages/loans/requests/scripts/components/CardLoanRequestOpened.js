@@ -1,5 +1,6 @@
 import { CardComponent } from '../../../../../js/components/CardComponent.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
+import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPassModal.js';
 import { capitalize } from '../../../../../js/utils/stringUtils.js';
 
 /**
@@ -67,23 +68,18 @@ export class CardLoanRequestOpened extends CardComponent {
   get _buttonsByStatus() {
     const action = this._model.status === 'pending' ? 'cancel' : 'confirm';
     return `
-      <button id="btn-loan-request-${action}-${this._model.id}" class="btn card-data__btn">
+      <button id="btn-${action}-${this._model.id}" class="btn card-data__btn">
          ${capitalize(action)}
       </button>
      `;
   }
 
-  /**
-   * Handles modal behavior.
-   * In this case, it does not open a modal.
-   *
-   * @protected
-   * @returns {boolean}
-   * @override
-   *
-   * @note The modal for the cardLoanRequest is still to be built.
-   */
   _modalHandler() {
-    return false;
+    const action = this._model.status === 'pending' ? 'cancel' : 'confirm';
+    document
+      .querySelector(`#btn-${action}-${this._model.id}`)
+      .addEventListener('click', () => {
+        new ConfirmPassModal();
+      });
   }
 }

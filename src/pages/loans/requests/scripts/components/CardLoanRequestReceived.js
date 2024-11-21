@@ -1,6 +1,7 @@
 import { CardComponent } from '../../../../../js/components/CardComponent.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
 import { capitalize } from '../../../../../js/utils/stringUtils.js';
+import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPassModal.js';
 
 /**
  * Represents a card component specifically for displaying Loan Request Received.
@@ -44,26 +45,26 @@ export class CardLoanRequestReceived extends CardComponent {
 
   get _cardFooterTemplate() {
     return `
-     <button id="btn-loan-request-approve-${this._model.id}" class="btn card-data__btn btn-success">
+     <button id="btn-approve-${this._model.id}" class="btn card-data__btn btn-success">
         Approve 
      </button>
-     <button id="btn-loan-request-repprove-${this._model.id}" class="btn card-data__btn btn-fail">
+     <button id="btn-repprove-${this._model.id}" class="btn card-data__btn btn-fail">
         Repprove
      </button>
     `;
   }
 
-  /**
-   * Handles modal behavior.
-   * In this case, it does not open a modal.
-   *
-   * @protected
-   * @returns {boolean}
-   * @override
-   *
-   * @note The modal for the cardLoanRequest is still to be built.
-   */
   _modalHandler() {
-    return false;
+    document
+      .querySelector(`#btn-approve-${this._model.id}`)
+      .addEventListener('click', () => {
+        new ConfirmPassModal();
+      });
+    document
+      .querySelector(`#btn-repprove-${this._model.id}`)
+      .addEventListener('click', () => {
+        new ConfirmPassModal();
+      });
+
   }
 }
