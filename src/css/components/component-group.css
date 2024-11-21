@@ -85,18 +85,10 @@
 }
 
 @media screen and (min-width: 425px) {
-<<<<<<< HEAD
   .dashboard__filter {
     flex: 1;
   }
-}
 
-/* @media screen and (min-width: 475px) {
-  .component-types {
-    flex: 2;
-  }
-} */
-=======
   .dashboard-container {
     max-width: 380px;
   }
@@ -124,4 +116,3 @@
     flex: 1;
   }
 }
->>>>>>> deb736404ac392990bba212f85f6831746133316
