@@ -1,6 +1,12 @@
-import { Modal } from "./Modal.js";
-import { ConfirmPassFormCtrl } from "./ConfirmPassFormCtrl.js";
+import { Modal } from './Modal.js';
+import { ConfirmPassFormCtrl } from './ConfirmPassFormCtrl.js';
 
+/**
+ * Specifically designed for confirming actions via a numeric transaction password.
+ *
+ * @class
+ * @extends Modal
+ */
 export class ConfirmPassModal extends Modal {
   get _modalContent() {
     return `
