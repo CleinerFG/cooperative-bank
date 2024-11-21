@@ -5,15 +5,15 @@ import {
 } from '../../../../../js/utils/formatters.js';
 
 /**
- * Represents an active loan.
- * Includes details specific to active loans, such as amount due, installments, and remaining payments.
+ * Represents a loan.
+ * Includes details specific to loans, such as amount due, installments, and remaining payments.
  *
  * @class
  * @extends TransactionModel
  */
-export class ActiveLoanModel extends TransactionModel {
+export class LoanModel extends TransactionModel {
   /**
-   * Description mappings for active loan statuses.
+   * Description mappings for loan statuses.
    *
    * @type {Object<number, string>}
    * @static
@@ -24,7 +24,7 @@ export class ActiveLoanModel extends TransactionModel {
   };
 
   /**
-   * Description mappings for active loan types.
+   * Description mappings for loan types.
    *
    * @type {Object<number, string>}
    * @static
@@ -35,7 +35,7 @@ export class ActiveLoanModel extends TransactionModel {
   };
 
   /**
-   * Creates a new instance of ActiveLoanModel.
+   * Creates a new instance of LoanModel.
    *
    * @param {Object} params
    * @param {number} params.amountDue
@@ -55,25 +55,25 @@ export class ActiveLoanModel extends TransactionModel {
 
   /**
    * Returns the type description.
-   * 
+   *
    * @type {'payable' | 'receivable'}
    */
   get type() {
-    return ActiveLoanModel.descTypes[this._type];
+    return LoanModel.descTypes[this._type];
   }
 
   /**
    * Returns the status description.
-   * 
+   *
    * @type {'active' | 'finished'}
    */
   get status() {
-    return ActiveLoanModel.descStatus[this._status];
+    return LoanModel.descStatus[this._status];
   }
 
   /**
    * Returns the formatted amount due.
-   * 
+   *
    * @type {string}
    */
   get amountDue() {
@@ -82,7 +82,7 @@ export class ActiveLoanModel extends TransactionModel {
 
   /**
    * Returns the total number of installments.
-   * 
+   *
    * @type {number}
    */
   get installments() {
@@ -99,7 +99,7 @@ export class ActiveLoanModel extends TransactionModel {
 
   /**
    * Returns the formatted value of each installment.
-   * 
+   *
    * @type {string}
    */
   get installmentValue() {
@@ -108,7 +108,7 @@ export class ActiveLoanModel extends TransactionModel {
 
   /**
    * Returns the number of remaining installments.
-   * 
+   *
    * @type {number}
    */
   get remainingInstallments() {
@@ -117,7 +117,7 @@ export class ActiveLoanModel extends TransactionModel {
 
   /**
    * Calculates and returns the total cost of the loan formatted as currency.
-   * 
+   *
    * @type {string}
    */
   get totalLoanCost() {

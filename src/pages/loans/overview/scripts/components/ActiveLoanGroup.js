@@ -23,8 +23,16 @@ export class ActiveLoanGroup extends ComponentGroup {
 
   get _typeMappingConfig() {
     return [
-      { name: 'payables', endpoint: 'loans-payables' },
-      { name: 'receivables', endpoint: 'loans-receivables' },
+      {
+        name: 'payables',
+        CardClass: CardActiveLoan,
+        endpoint: 'loans-payables',
+      },
+      {
+        name: 'receivables',
+        CardClass: CardActiveLoan,
+        endpoint: 'loans-receivables',
+      },
     ];
   }
 

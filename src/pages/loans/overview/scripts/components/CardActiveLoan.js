@@ -1,5 +1,5 @@
 import { CardComponent } from "../../../../../js/components/CardComponent.js";
-import { ActiveLoanModel } from "../models/ActiveLoanModel.js";
+import { LoanModel } from "../models/LoanModel.js";
 
 /**
  * Represents a card component specifically for displaying Active Loan.
@@ -11,7 +11,7 @@ import { ActiveLoanModel } from "../models/ActiveLoanModel.js";
  */
 export class CardActiveLoan extends CardComponent {
   get _ModelClass() {
-    return ActiveLoanModel;
+    return LoanModel;
   }
 
   get _cssId() {
@@ -53,7 +53,7 @@ export class CardActiveLoan extends CardComponent {
   get _cardFooterTemplate() {
     return `
      <button id="btn-active-loan-${this._model.id}" class="btn card-data__btn">
-        Action
+        Installments
       </button>
     `;
   }
