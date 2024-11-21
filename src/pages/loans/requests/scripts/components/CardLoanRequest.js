@@ -53,12 +53,28 @@ export class CardLoanRequest extends CardComponent {
   }
 
   get _cardFooterTemplate() {
-    const openedBtns = `
-     <button id="btn-loan-request-confirm-${this._model.id}" class="btn card-data__btn">
-        OK
-     </button>
-    `;
-    const receivedBtns = `
+    return this._buttonsByType;
+  }
+
+  /**
+   * Returns the HTML for the button based on the  type and status.
+   *
+   * @protected
+   * @type {string}
+   */
+  get _buttonsByType() {
+    if (this._model.type === 'opened') {
+      let action = 'confirm';
+      if (this._model.status === 'pending') {
+        action = 'cancel';
+      }
+      return `
+      <button id="btn-loan-request-${action}-${this._model.id}" class="btn card-data__btn">
+         ${capitalize(action)}
+      </button>
+     `;
+    } else {
+      return `
      <button id="btn-loan-request-approve-${this._model.id}" class="btn card-data__btn btn-success">
         Approve 
      </button>
@@ -66,8 +82,7 @@ export class CardLoanRequest extends CardComponent {
         Repprove
      </button>
     `;
-    const btns = this._model.type === 'opened' ? openedBtns : receivedBtns;
-    return btns;
+    }
   }
 
   /**
