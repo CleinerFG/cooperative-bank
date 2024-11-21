@@ -4,7 +4,7 @@ import { Input } from './Input.js';
  * @typedef {object} SubmitButtonConfig - Configuration object for creating a submit button.
  * @property {HTMLElement} containerElement - The container where the button will be added.
  * @property {string} id - The unique identifier for the button element.
- * @property {string} textContent - Button text.
+ * @property {string} labelText - Button text.
  * @property {string} cssClass - CSS class for styling.
  */
 
