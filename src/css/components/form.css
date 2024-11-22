@@ -1,4 +1,5 @@
 .form {
+  max-width: 500px;
   padding: var(--container-padding);
   border: solid 0.1rem var(--component-border-color);
   border-radius: var(--component-border-radius);
