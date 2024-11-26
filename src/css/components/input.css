@@ -4,14 +4,14 @@
   padding: 0.8rem 0.5rem;
   box-sizing: border-box;
   background-color: var(--component-bg-color);
-  border: 0.12rem solid var(--component-border-color);
+  border: var(--component-border);
   border-radius: var(--component-border-radius);
   transition: all 0.2s;
   color: var(--color-font);
 }
 
 .inp:focus {
-  border-color: var(--color-accent);
+  border-color: var(--inp-focus-color);
   box-shadow: var(--component-box-shadow);
   outline: none;
 }

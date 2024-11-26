@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
 
 :root {
   --container-padding: 0.8rem;
@@ -18,12 +18,12 @@
 
   --card-state-box-shadow: -0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
 
-  --text-font-family: "Roboto Condensed", sans-serif;
-  --title-font-family: "Roboto Slab", serif;
-  --info-font-family: "Open Sans", sans-serif;
+  --text-font-family: 'Roboto Condensed', sans-serif;
+  --title-font-family: 'Roboto Slab', serif;
+  --info-font-family: 'Open Sans', sans-serif;
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   --color-primary: hsl(220, 41%, 25%);
   --color-primary-hover: hsl(220, 41%, 30%);
   --color-accent: hsl(174, 90%, 40%);
@@ -36,23 +36,26 @@
   --color-text: hsl(220, 41%, 25%);
   --color-background: hsl(45, 29%, 97%);
 
-  --component-border-color: #ccc;
+  --component-border: solid 0.125rem #ccc;
+  --component-line-color: #ccc;
   --component-bg-color: #fbfcf8;
+
+  --inp-focus-color: hsl(174, 90%, 40%);
 
   --skeleton-start: rgba(0, 0, 0, 0.3);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
   --skeleton-end: rgba(0, 0, 0, 0.3);
 
-  --dashboard-bg-color-1: #afe7df;
+  --dashboard-bg-color-1: hsl(171, 54%, 80%);
   --dashboard-bg-color-2: #e8e8e8;
   --dashboard-bg-color-3: #f1f2ea;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-primary: hsl(45, 29%, 97%);
   --color-primary-hover: hsl(45, 26%, 80%);
-  --color-accent: hsl(0, 0%, 35%);
-  --color-accent-hover: hsl(0, 0%, 30%);
+  --color-accent: hsl(174, 90%, 15%);
+  --color-accent-hover: hsl(174, 90%, 18%);
   --color-accent-translucent: hsla(174, 90%, 35%, 0.3);
   --color-secondary: hsl(170, 100%, 15%);
   --color-detail: hsl(16, 86%, 80%);
@@ -61,14 +64,17 @@
   --color-text: #faf9f6;
   --color-background: #000;
 
-  --component-border-color: #454545;
+  --component-border: solid 0.125rem #454545;
+  --component-line-color: #454545;
   --component-bg-color: #212122;
+
+  --inp-focus-color: hsl(174, 90%, 30%);
 
   --skeleton-start: rgba(255, 255, 255, 0.3);
   --skeleton-middle: rgba(255, 255, 255, 0.1);
   --skeleton-end: rgba(255, 255, 255, 0.3);
 
-  --dashboard-bg-color-1: #383838;
+  --dashboard-bg-color-1: hsl(171, 54%, 15%);
   --dashboard-bg-color-2: #262627;
   --dashboard-bg-color-3: #101010;
 }

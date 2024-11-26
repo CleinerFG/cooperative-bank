@@ -1,7 +1,5 @@
 .card-data {
   background-color: var(--component-bg-color);
-  border: 0.1rem solid var(--component-border-color);
-  border-radius: var(--component-border-radius);
   padding: var(--container-padding);
 
   flex: 1;
@@ -42,7 +40,7 @@
 }
 
 .card-data__item + .card-data__item {
-  border-top: solid 0.1rem var(--component-border-color);
+  border-top: solid 0.1rem var(--component-line-color);
 }
 
 .card-data__value {

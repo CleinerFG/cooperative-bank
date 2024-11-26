@@ -1,6 +1,7 @@
 .card-state {
   width: 100%;
   min-width: 150px;
+  border: var(--component-border);
   border-radius: var(--component-border-radius);
   box-shadow: var(--card-state-box-shadow);
   display: flex;
@@ -64,7 +65,6 @@
 .card-state__loading {
   flex-direction: column;
   background-color: var(--component-bg-color);
-  border: 0.1rem solid var(--component-border-color);
   padding: var(--container-padding);
   flex: 1 0 100px;
 }
