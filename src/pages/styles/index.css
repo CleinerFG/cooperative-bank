@@ -6,7 +6,7 @@
   width: 100%;
   z-index: 1000;
   background-color: var(--color-bg-end);
-  padding: 0.75rem;
+  padding: 1rem;
   position: fixed;
 
   display: flex;
