@@ -93,7 +93,7 @@
 
 .hero-section {
   height: 100vh;
-  padding-top: 8rem;
+  padding-top: 6rem;
   background-image: linear-gradient(
     to top,
     var(--color-bg-start),

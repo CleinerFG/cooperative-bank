@@ -10,6 +10,15 @@
   position: inherit;
 }
 
+.brand-container:hover span {
+  text-decoration: underline;
+}
+
+.content-container {
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
 .info-container {
   max-width: 400px;
 }
@@ -29,6 +38,7 @@
 }
 
 .form .btn {
+  border-radius: var(--component-border-radius);
   width: 100%;
 }
 

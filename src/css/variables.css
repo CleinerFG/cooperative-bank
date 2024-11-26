@@ -36,8 +36,8 @@
   --color-text: hsl(220, 41%, 25%);
   --color-background: hsl(45, 29%, 97%);
 
-  --component-border: solid 0.125rem #ccc;
-  --component-line-color: #ccc;
+  --component-border: solid 0.125rem hsl(0, 0%, 80%);
+  --component-line-color: hsl(0, 0%, 80%);
   --component-bg-color: #fbfcf8;
 
   --inp-focus-color: hsl(174, 90%, 40%);
@@ -64,8 +64,8 @@
   --color-text: #faf9f6;
   --color-background: #000;
 
-  --component-border: solid 0.125rem #454545;
-  --component-line-color: #454545;
+  --component-border: solid 0.125rem hsl(0, 0%, 20%);
+  --component-line-color: hsl(0, 0%, 20%);
   --component-bg-color: #212122;
 
   --inp-focus-color: hsl(174, 90%, 30%);
