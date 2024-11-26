@@ -32,7 +32,7 @@
 .text-strong {
   display: inline;
   padding: 0;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 @media (min-width: 768px) {
@@ -45,10 +45,6 @@
   }
 
   .text {
-    font-size: 1.2rem;
-  }
-
-  .btn {
     font-size: 1.2rem;
   }
 }
