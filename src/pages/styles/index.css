@@ -1,44 +1,12 @@
-@import url('./base.css');
 @import url('./components.css');
-
-.container {
-  width: 100%;
-  min-height: 100vh;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-}
+@import url('./common.css');
 
 .header {
-  height: 4rem;
-  width: 100%;
-  z-index: 1000;
-  background-color: #000;
-  padding: 1rem;
   position: fixed;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.brand-container,
 .login-container {
   font-size: 0.8rem;
-}
-
-.brand-icon {
-  width: 2.25rem;
-}
-
-.brand-name {
-  font-family: var(--brand-font-family);
-}
-
-.brand-container {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
 }
 
 .login-container a {
@@ -83,16 +51,11 @@
 }
 
 .content-container {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   gap: 1.5rem;
 }
 
 .hero-section {
-  height: 100vh;
+  height: 100svh;
   padding-top: 6rem;
   background-image: linear-gradient(
     to top,
@@ -137,15 +100,6 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.footer {
-  padding: 2rem;
-  background-color: var(--color-bg-end);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
 }
 
 .footer .h2 {

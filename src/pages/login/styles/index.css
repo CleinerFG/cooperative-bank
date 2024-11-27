@@ -1,13 +1,14 @@
-@import url('../../../css/index.css');
-@import url('../../styles/index.css');
+@import url('../../../css/variables.css');
+@import url('../../../css/components/form.css');
+@import url('../../../css/components/input.css');
+@import url('../../styles/components.css');
+@import url('../../styles/common.css');
 
 .container {
+  min-height: 100svh;
+  height: auto;
   justify-content: space-between;
   gap: 2rem;
-}
-
-.header {
-  position: inherit;
 }
 
 .brand-container:hover span {
@@ -16,6 +17,7 @@
 
 .content-container {
   padding: 0 1rem;
+  margin-bottom: 2rem;
   gap: 2rem;
 }
 
@@ -24,7 +26,7 @@
 }
 
 .login-h1 {
-  color: hsl(174, 90%, 40%);
+  color: var(--color-primary-light);
 }
 
 .form {
@@ -43,6 +45,7 @@
 }
 
 .footer {
+  align-items: center;
   background-color: hsl(0, 0%, 8%);
 }
 

@@ -1,11 +1,11 @@
+@import url('../../css/components/button.css');
+
 .btn {
   color: #000;
   font-size: 1rem;
   font-weight: 600;
-  width: fit-content;
   padding: 1rem 3rem;
   border-radius: 1rem;
-  border: none;
 
   background: linear-gradient(90deg, #04c8c5, #04c8a4, #04c8c5);
   background-size: 200% 100%;
