@@ -8,7 +8,6 @@
   min-height: 100svh;
   height: auto;
   justify-content: space-between;
-  gap: 2rem;
 }
 
 .brand-container:hover span {
@@ -45,6 +44,7 @@
 }
 
 .footer {
+  padding: 1.5rem;
   align-items: center;
   background-color: hsl(0, 0%, 8%);
 }
