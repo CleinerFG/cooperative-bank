@@ -1,8 +1,9 @@
-@import url('../../../css/variables.css');
-@import url('../../../css/components/form.css');
-@import url('../../../css/components/input.css');
+@import url('../../styles/variables.css');
+@import url('../../styles/base.css');
 @import url('../../styles/components.css');
 @import url('../../styles/common.css');
+@import url('../../../css/components/form.css');
+@import url('../../../css/components/input.css');
 
 .container {
   min-height: 100svh;
@@ -39,7 +40,6 @@
 }
 
 .form .btn {
-  border-radius: var(--component-border-radius);
   width: 100%;
 }
 

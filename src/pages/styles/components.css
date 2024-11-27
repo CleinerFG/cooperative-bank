@@ -1,13 +1,13 @@
-@import url('../../css/components/button.css');
-
 .btn {
+  border: none;
+  cursor: pointer;
   color: #000;
   font-size: 1rem;
   font-weight: 600;
   padding: 1rem 3rem;
-  border-radius: 1rem;
+  border-radius: var(--component-border-radius);
 
-  background: linear-gradient(90deg, #04c8c5, #04c8a4, #04c8c5);
+  background: linear-gradient(90deg, hsl(179, 96%, 38%), var(--color-primary), hsl(179, 96%, 38%));
   background-size: 200% 100%;
   animation: glossy 1.5s linear infinite;
 }
@@ -19,14 +19,6 @@
   100% {
     background-position: 0% 0;
   }
-}
-
-.h1 {
-  font-size: 2rem;
-}
-
-.h2 {
-  font-size: 1.5rem;
 }
 
 .text-strong {
