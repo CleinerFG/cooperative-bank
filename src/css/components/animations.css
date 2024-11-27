@@ -20,15 +20,15 @@
   }
 }
 
-.card-state.loading .skelon {
-  height: 1.8rem;
-  border-radius: var(--component-border-radius);
+.skelon {
   background: linear-gradient(
     90deg,
     var(--skeleton-start) 0%,
     var(--skeleton-middle) 50%,
     var(--skeleton-end) 100%
   );
+  animation: loading 2s linear infinite;
+  color: transparent;
 }
 
 .inp-skelon {
