@@ -18,6 +18,6 @@ export class HomePageCtrl extends PageCtrl {
   _initControllers() {
     new FinancialStatement();
     new CardLinkGroupsCtrl();
-    new EventGroup();
+    new EventGroup(false);
   }
 }

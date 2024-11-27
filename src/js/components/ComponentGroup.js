@@ -54,10 +54,21 @@ export class ComponentGroup {
   #activeType;
 
   /**
-   * Creates an instance of ComponentGroup.
+   * Flag to active data filter component.
+   *
+   * @private
+   * @type {boolean}
    */
-  constructor() {
+  #useDataFilter;
+
+  /**
+   * Creates an instance of ComponentGroup.
+   *
+   * @param {boolean} useDataFilter - Determines if the data filter should be active. Defaults is `true`.
+   */
+  constructor(useDataFilter = true) {
     this.#activeType = this._typeMappingConfig[0];
+    this.#useDataFilter = useDataFilter;
     this.#init();
   }
 
@@ -168,6 +179,28 @@ export class ComponentGroup {
     return this._containerElement.querySelector('#active-type');
   }
 
+  get _dataFilterTemplate() {
+    if (this.#useDataFilter)
+      return `
+    <div class="dashboard__filter">
+      <div class="inputs__container">
+        <div class="date-container">
+          <label for="start-date-filter">Start date</label>
+          <input id="start-date-filter" class="inp inp-date" type="date">
+        </div>
+        <div class="date-container">
+          <label for="end-date-filter">End date</label>
+          <input id="end-date-filter" class="inp inp-date" type="date">
+        </div>
+      </div>
+      <button class="btn-unset btn-filter">
+        <img id="filter-icon" class="icon filter-icon" alt="Filter Icon">
+      </button>
+    </div>
+    `;
+    return '';
+  }
+
   /**
    * Returns the HTML template for the component group layout.
    *
@@ -186,21 +219,7 @@ export class ComponentGroup {
             this._typeMappingConfig[1].name
           )}</div>
         </div>
-        <div class="dashboard__filter">
-          <div class="inputs__container">
-            <div class="date-container">
-              <label for="start-date-filter">Start date</label>
-              <input id="start-date-filter" class="inp inp-date" type="date">
-            </div>
-            <div class="date-container">
-              <label for="end-date-filter">End date</label>
-              <input id="end-date-filter" class="inp inp-date" type="date">
-            </div>
-          </div>
-          <button class="btn-unset btn-filter">
-            <img id="filter-icon" class="icon filter-icon" alt="Filter Icon">
-         </button>
-        </div>
+        ${this._dataFilterTemplate}
       </div>
       <h2 id="active-type" class="component-group__h2">${capitalize(
         this.#activeType.name
@@ -226,7 +245,9 @@ export class ComponentGroup {
    * @private
    */
   #assetHandler() {
-    PathManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
+    if (this.#useDataFilter) {
+      PathManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
+    }
   }
 
   /**

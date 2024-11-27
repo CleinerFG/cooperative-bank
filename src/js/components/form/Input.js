@@ -46,7 +46,7 @@ export class Input {
   #strictToNumber;
 
   /**
-   * Formatter type for the input ("currency" | "percent").
+   * Formatter type for the input.
    * @private
    * @type {"currency" | "percent"}
    */
