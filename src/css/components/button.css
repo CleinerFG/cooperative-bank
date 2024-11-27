@@ -2,7 +2,7 @@
   padding: 0.8em 1em;
   border: none;
   border-radius: var(--component-border-radius);
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-background);
   cursor: pointer;
 }
@@ -17,23 +17,23 @@
 }
 
 .btn-success {
-  background-color: var(--component-color-success);
+  background-color: var(--color-success);
   color: var(--color-off-white);
 }
 
 .btn-attention {
-  background-color: var(--component-color-attention);
+  background-color: var(--color-attention);
 }
 
 .btn-fail {
-  background-color: var(--component-color-fail);
+  background-color: var(--color-fail);
   color: var(--color-off-white);
 }
 
 /* Hover */
 .btn:hover {
   box-shadow: var(--component-box-shadow);
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-secondary-hover);
 }
 
 .btn-action:hover {
@@ -41,15 +41,15 @@
 }
 
 .btn-success:hover {
-  background-color: var(--component-color-success-hover);
+  background-color: var(--color-success-hover);
 }
 
 .btn-fail:hover {
-  background-color: var(--component-color-fail-hover);
+  background-color: var(--color-fail-hover);
 }
 
 .btn-attention:hover {
-  background-color: var(--component-color-attention-hover);
+  background-color: var(--color-attention-hover);
 }
 
 .btn:focus {

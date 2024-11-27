@@ -75,7 +75,7 @@
   max-width: 50rem;
   background-image: linear-gradient(
     to top,
-    var(--color-accent-translucent),
+    var(--color-primary-translucent),
     #ffffff00 90%
   );
   align-items: center;

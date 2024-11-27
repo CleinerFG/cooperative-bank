@@ -6,13 +6,13 @@
 }
 
 body {
-  color: var(--color-text);
+  color: var(--text-color);
 }
 
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--color-text);
+  color: var(--text-color);
 }
 
 li {

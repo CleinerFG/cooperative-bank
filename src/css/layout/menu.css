@@ -1,7 +1,7 @@
 .header__menu-button {
   z-index: 1;
   margin-right: 0.6rem;
-  padding: 0.2rem;
+  padding: 0.3rem;
   border-radius: 30%;
   transition: all 0.4s ease-in-out;
 }
@@ -14,14 +14,13 @@
 
 .header__menu-button--active {
   background-color: var(--component-bg-color);
-  box-shadow: var(--box-shadow);
   transition: all 0.5s ease;
 }
 
 .header__menu {
   background-color: var(--component-bg-color);
-  border-radius: 0.7rem;
-  box-shadow: var(--box-shadow);
+  border: var(--component-border);
+  border-radius: var(--component-border-radius);
   display: none;
   position: absolute;
   top: calc(var(--header-height) - 0.3rem);
@@ -44,11 +43,11 @@
 
 .header__menu-item:first-child {
   font-weight: 460;
-  border-bottom: solid 0.1rem var(--component-line-color);
+  border-bottom: var(--component-border);
 }
 
 .header__menu-item:last-child {
-  border-top: solid 0.1rem var(--component-line-color);
+  border-top: var(--component-border);
 }
 
 .header__menu-item:nth-child(2) {
@@ -72,7 +71,6 @@
 /* Hover*/
 .header__menu-button:hover {
   border-radius: 50%;
-  box-shadow: var(--box-shadow);
   background-color: var(--component-bg-color);
 }
 

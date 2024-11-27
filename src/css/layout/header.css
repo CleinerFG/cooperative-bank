@@ -3,8 +3,8 @@
 .header {
   height: var(--header-height);
   width: 100%;
-  background-color: var(--color-secondary);
-  box-shadow: var(--box-shadow);
+  background-color: var(--color-primary);
+  box-shadow: var(--component-box-shadow);
   z-index: 1;
 
   position: fixed;

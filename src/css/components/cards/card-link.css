@@ -1,5 +1,5 @@
 .card-link {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary-light);
   border: none;
   border-radius: 1rem;
   width: 110px;
@@ -22,6 +22,6 @@
 
 /* Hover */
 .card-link:hover {
-  background-color: var(--color-accent-hover);
+  background-color: var(--color-primary-light-hover);
   transform: translateY(-0.6rem);
 }

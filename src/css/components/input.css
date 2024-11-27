@@ -1,3 +1,9 @@
+.inp__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .inp {
   width: 100%;
   font-size: 1rem;
@@ -7,7 +13,7 @@
   border: var(--form-component-border);
   border-radius: var(--component-border-radius);
   transition: all 0.2s;
-  color: var(--color-font);
+  color: var(--font-color);
 }
 
 .inp:focus {
@@ -17,18 +23,19 @@
 }
 
 .inp-error {
-  border-color: var(--component-color-fail);
+  border-color: var(--color-fail);
 }
 
 .error-message {
-  color: var(--component-color-fail);
+  color: var(--color-fail);
 }
 
 .inp__lookup {
   width: 7.5rem;
 }
+
 .inp-date {
-  color: #808080;
+  color: hsl(0, 0%, 50%);
   width: 7.5rem;
   padding: 0.2rem;
 }

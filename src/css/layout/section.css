@@ -10,11 +10,11 @@
   background-image: linear-gradient(
     to right,
     #fff0 -15%,
-    var(--color-accent-translucent)
+    var(--color-primary-translucent)
   );
 }
 
 .section__h2 {
-  border-bottom: var(--color-accent-translucent) solid 0.1rem;
+  border-bottom: var(--color-primary-translucent) solid 0.1rem;
   padding-bottom: 0.5rem;
 }
