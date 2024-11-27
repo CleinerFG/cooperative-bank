@@ -22,27 +22,6 @@
   font-weight: 550;
 }
 
-.statement__amount-active {
-  color: transparent;
-  background: linear-gradient(
-    90deg,
-    var(--skeleton-start) 0%,
-    var(--skeleton-middle) 50%,
-    var(--skeleton-end) 100%
-  );
-  background-size: 200% 100%;
-  animation: loading 2s linear infinite;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: 0% 0;
-  }
-}
-
 .feature-cards { 
   padding: var(--container-padding);
   display: grid;

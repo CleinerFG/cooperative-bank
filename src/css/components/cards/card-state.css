@@ -43,6 +43,11 @@
   flex: 1 0 100px;
 }
 
+.card-state.loading .skelon {
+  height: 1.8rem;
+  border-radius: var(--component-border-radius);
+}
+
 .card-state.empty,
 .card-state.error {
   border: none;

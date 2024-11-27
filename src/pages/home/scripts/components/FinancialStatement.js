@@ -1,7 +1,7 @@
-import { ApiService } from "../../../../js/service/ApiService.js";
-import { numberToCurrency } from "../../../../js/utils/formatters.js";
-import { PathManager } from "../../../../js/utils/PathManager.js";
-import { simulateWait } from "../../../../js/utils/tests.js";
+import { ApiService } from '../../../../js/service/ApiService.js';
+import { numberToCurrency } from '../../../../js/utils/formatters.js';
+import { PathManager } from '../../../../js/utils/PathManager.js';
+import { simulateWait } from '../../../../js/utils/tests.js';
 
 /**
  * Manages the display and visibility of the financial statement on the page.
@@ -24,13 +24,13 @@ export class FinancialStatement {
    * @private
    * @type {string}
    */
-  #endpoint = "financial-statement";
+  #endpoint = 'financial-statement';
 
   /**
    * Initializes a new instance of FinancialStatement, selecting the container element.
    */
   constructor() {
-    this.#containerElement = document.querySelector(".statement__container");
+    this.#containerElement = document.querySelector('.statement__container');
     this.#init();
   }
 
@@ -57,7 +57,7 @@ export class FinancialStatement {
    * @type {HTMLElement}
    */
   get #visibilityBtnElement() {
-    return document.querySelector(".statement__visibility-btn");
+    return document.querySelector('.statement__visibility-btn');
   }
 
   /**
@@ -67,7 +67,7 @@ export class FinancialStatement {
    * @type {HTMLElement}
    */
   get #spanAmount() {
-    return document.getElementById("statement-amount");
+    return document.getElementById('statement-amount');
   }
 
   /**
@@ -77,11 +77,11 @@ export class FinancialStatement {
    * @type {HTMLElement}
    */
   get #IconElement() {
-    return document.querySelector(".statement__visibility-icon");
+    return document.querySelector('.statement__visibility-icon');
   }
 
   /**
-   * Gets the current visibility state ('on' or 'off') from the data attribute.
+   * Gets the current visibility state from the data attribute.
    * @private
    * @type {"on" | "off"}
    */
@@ -109,12 +109,12 @@ export class FinancialStatement {
    * @returns {Promise<void>}
    */
   async #updateStatement() {
-    let currencyValue = "R$ ******";
-    if (this.#currentVisibility === "off") {
-      this.#spanAmount.classList.add("statement__amount-active");
+    let currencyValue = 'R$ ******';
+    if (this.#currentVisibility === 'off') {
+      this.#spanAmount.classList.add('skelon');
       await simulateWait(2);
       const value = await this.#fetchFromApi();
-      this.#spanAmount.classList.remove("statement__amount-active");
+      this.#spanAmount.classList.remove('skelon');
       currencyValue = numberToCurrency.format(value);
     }
     this.#spanAmount.textContent = currencyValue;
@@ -127,10 +127,10 @@ export class FinancialStatement {
    */
   #switchVisibility() {
     const updatedAlt =
-      this.#currentVisibility === "on" ? "Closed eye" : "Opened eye";
-    this.#IconElement.setAttribute("alt", updatedAlt);
+      this.#currentVisibility === 'on' ? 'Closed eye' : 'Opened eye';
+    this.#IconElement.setAttribute('alt', updatedAlt);
 
-    const updatedVisibility = this.#currentVisibility === "off" ? "on" : "off";
+    const updatedVisibility = this.#currentVisibility === 'off' ? 'on' : 'off';
     this.#iconPathHandler(updatedVisibility);
     this.#visibilityBtnElement.dataset.visibility = updatedVisibility;
   }
@@ -141,7 +141,7 @@ export class FinancialStatement {
    * @private
    */
   #btnHandler() {
-    this.#visibilityBtnElement.addEventListener("click", () => {
+    this.#visibilityBtnElement.addEventListener('click', () => {
       this.#updateStatement();
       this.#switchVisibility();
     });
@@ -153,7 +153,7 @@ export class FinancialStatement {
    * @private
    */
   #render() {
-    this.#containerElement.insertAdjacentHTML("beforeend", this.#template);
+    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
   }
 
   /**
@@ -164,7 +164,7 @@ export class FinancialStatement {
    */
   #iconPathHandler(visibility) {
     PathManager.updateIcon(
-      "#visibility-icon",
+      '#visibility-icon',
       `icon-visibility-${visibility}.svg`
     );
   }
@@ -172,12 +172,12 @@ export class FinancialStatement {
   /**
    * Initializes the financial statement, rendering the template,
    * setting up the icon, and adding event listeners.
-   * 
+   *
    * @private
    */
   #init() {
     this.#render();
-    this.#iconPathHandler("off");
+    this.#iconPathHandler('off');
     this.#btnHandler();
   }
 }
