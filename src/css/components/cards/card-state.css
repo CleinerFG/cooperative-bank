@@ -3,7 +3,6 @@
   min-width: 150px;
   border: var(--component-border);
   border-radius: var(--component-border-radius);
-  box-shadow: var(--card-state-box-shadow);
   display: flex;
   gap: 0.5rem;
 }
@@ -71,6 +70,8 @@
 
 .card-state__empty,
 .card-state__error {
+  border: none;
+  box-shadow: var(--card-state-box-shadow);
   max-width: 50rem;
   background-image: linear-gradient(
     to top,

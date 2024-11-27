@@ -16,7 +16,7 @@
   --component-color-fail-hover: hsl(0, 100%, 32%);
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 
-  --card-state-box-shadow: -0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  --card-state-box-shadow: -0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
 
   --text-font-family: 'Roboto Condensed', sans-serif;
   --title-font-family: 'Roboto Slab', serif;
@@ -36,10 +36,11 @@
   --color-text: hsl(220, 41%, 25%);
   --color-background: hsl(45, 29%, 97%);
 
-  --component-border: solid 0.125rem hsl(0, 0%, 80%);
+  --component-border: solid 0.1rem hsl(0, 0%, 80%);
   --component-line-color: hsl(0, 0%, 80%);
   --component-bg-color: #fbfcf8;
 
+  --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
   --inp-focus-color: hsl(174, 90%, 40%);
 
   --skeleton-start: rgba(0, 0, 0, 0.3);
@@ -64,10 +65,11 @@
   --color-text: #faf9f6;
   --color-background: #000;
 
-  --component-border: solid 0.125rem hsl(0, 0%, 20%);
+  --component-border: solid 0.1rem hsl(0, 0%, 20%);
   --component-line-color: hsl(0, 0%, 20%);
   --component-bg-color: #212122;
 
+  --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
   --inp-focus-color: hsl(174, 90%, 30%);
 
   --skeleton-start: rgba(255, 255, 255, 0.3);

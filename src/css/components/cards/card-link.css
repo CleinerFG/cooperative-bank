@@ -1,5 +1,6 @@
 .card-link {
   background-color: var(--color-accent);
+  border: none;
   border-radius: 1rem;
   width: 110px;
   height: 130px;
