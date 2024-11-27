@@ -13,31 +13,6 @@
   gap: 0.3rem;
 }
 
-.card-state__header,
-.card-state__label,
-.card-state__value,
-.card-state__footer {
-  height: 1.8rem;
-  border-radius: var(--component-border-radius);
-  background: linear-gradient(
-    90deg,
-    var(--skeleton-start) 0%,
-    var(--skeleton-middle) 50%,
-    var(--skeleton-end) 100%
-  );
-  background-size: 200% 100%;
-  animation: loading 2s linear infinite;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: 0% 0;
-  }
-}
-
 .card-state__item {
   display: flex;
   gap: 0.5rem;
@@ -61,18 +36,18 @@
   text-align: center;
 }
 
-.card-state__loading {
+.card-state.loading {
   flex-direction: column;
   background-color: var(--component-bg-color);
   padding: var(--container-padding);
   flex: 1 0 100px;
 }
 
-.card-state__empty,
-.card-state__error {
+.card-state.empty,
+.card-state.error {
   border: none;
   box-shadow: var(--card-state-box-shadow);
-  max-width: 50rem;
+  max-width: 600px;
   background-image: linear-gradient(
     to top,
     var(--color-primary-translucent),
@@ -83,15 +58,15 @@
   gap: 0;
 }
 
-.card-state__empty > *,
-.card-state__error > * {
+.card-state.empty > *,
+.card-state.error > * {
   flex: 1;
   width: 50%;
 }
 
-@media screen and (max-width: 375px) {
-  .card-state__empty,
-  .card-state__error {
+@media (max-width: 375px) {
+  .card-state.empty,
+  .card-state.error {
     flex-direction: column-reverse;
     margin-top: 0.5rem;
   }

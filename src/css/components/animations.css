@@ -1,0 +1,57 @@
+.search-animation {
+  animation: search 1.5s infinite linear;
+}
+
+@keyframes search {
+  0% {
+    transform: rotate(0deg) translateX(0.3rem) rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) translateX(0.3rem) rotate(-90deg);
+  }
+  50% {
+    transform: rotate(180deg) translateX(0.3rem) rotate(-180deg);
+  }
+  75% {
+    transform: rotate(270deg) translateX(0.3rem) rotate(-270deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(0.3rem) rotate(-360deg);
+  }
+}
+
+.card-state.loading .skelon {
+  height: 1.8rem;
+  border-radius: var(--component-border-radius);
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-start) 0%,
+    var(--skeleton-middle) 50%,
+    var(--skeleton-end) 100%
+  );
+}
+
+.inp-skelon {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-middle) 50%,
+    transparent 100%
+  );
+}
+
+.card-state.loading .skelon,
+.inp-skelon {
+  background-size: 200% 100%;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: 0% 0;
+  }
+}

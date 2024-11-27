@@ -1,3 +1,18 @@
+.card {
+  max-width: 300px;
+  border: var(--component-border);
+  border-radius: var(--component-border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover */
+.card:hover {
+  box-shadow: 0.2rem 0.2rem 0.3rem #00000033;
+}
+
 .cards-container {
   display: flex;
   justify-content: center;

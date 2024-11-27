@@ -67,12 +67,11 @@ export class CardState {
    *
    * @private
    * @param {string} content - The inner HTML content for the card.
-   * @param {string} [className=""] - Optional additional class for styling.
    * @returns {string} - The complete HTML template for the card.
    */
-  #buildTemplate(content, className = '') {
+  #buildTemplate(content) {
     return `
-      <article class="card-state ${className}">
+      <article class="card-state ${this.#type}">
         ${content}
       </article>
     `;
@@ -82,18 +81,17 @@ export class CardState {
    * Template for the "loading" card state.
    *
    * @private
-   * @returns {string} The HTML template.
+   * @returns {string}
    */
   get #loadingTemplate() {
     return this.#buildTemplate(
       `
-      <header class="card-state__header"></header>
+      <header class="card-state__header skelon"></header>
       <main class="card-state__content">
         ${this.#buildLoadingItems(3)}
       </main>
-      <footer class="card-state__footer"></footer>
-    `,
-      'card-state__loading'
+      <footer class="card-state__footer skelon"></footer>
+    `
     ).repeat(3);
   }
 
@@ -101,7 +99,7 @@ export class CardState {
    * Template for the "empty" card state.
    *
    * @private
-   * @returns {string} The HTML template.
+   * @returns {string}
    */
   get #emptyTemplate() {
     const imgId = `${this.#category}-${this.#type}-img`;
@@ -111,8 +109,7 @@ export class CardState {
       <div class="card-state__text">
         ${this.#buildEmptyCardsTexts()}
       </div>
-    `,
-      'card-state__empty'
+    `
     );
   }
 
@@ -120,7 +117,7 @@ export class CardState {
    * Template for the "error" card state.
    *
    * @private
-   * @returns {string} The HTML template.
+   * @returns {string}
    */
   get #errorTemplate() {
     const imgId = `${this.#category}-${this.#type}-img`;
@@ -133,8 +130,7 @@ export class CardState {
         } data.</p>
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
-    `,
-      'card-state__error'
+    `
     );
   }
 
@@ -150,8 +146,8 @@ export class CardState {
       .fill(
         `
       <div class="card-state__item">
-        <span class="card-state__label"></span>
-        <span class="card-state__value"></span>
+        <span class="card-state__label skelon"></span>
+        <span class="card-state__value skelon"></span>
       </div>
     `
       )

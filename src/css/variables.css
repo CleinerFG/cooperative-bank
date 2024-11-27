@@ -45,9 +45,9 @@
   --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
   --inp-focus-color: hsl(169, 96%, 38%);
 
-  --skeleton-start: rgba(0, 0, 0, 0.3);
+  --skeleton-start: rgba(0, 0, 0, 0.2);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
-  --skeleton-end: rgba(0, 0, 0, 0.3);
+  --skeleton-end: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme='dark'] {
@@ -69,7 +69,7 @@
   --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
   --inp-focus-color: hsl(169, 96%, 25%);
 
-  --skeleton-start: rgba(255, 255, 255, 0.3);
+  --skeleton-start: rgba(255, 255, 255, 0.2);
   --skeleton-middle: rgba(255, 255, 255, 0.1);
-  --skeleton-end: rgba(255, 255, 255, 0.3);
+  --skeleton-end: rgba(255, 255, 255, 0.2);
 }

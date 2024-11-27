@@ -45,7 +45,7 @@
 }
 
 .component-type:hover:not(.component-type__active) {
-  background-color: hsla(0, 0%, 50%, 0.5);
+  background-color: hsla(0, 0%, 50%, 0.2);
 }
 
 .component-type__active {

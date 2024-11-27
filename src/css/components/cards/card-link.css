@@ -16,7 +16,7 @@
 }
 
 .card-link__label {
-  color: var(--color-text);
+  color: var(--text-color);
   text-align: center;
 }
 
