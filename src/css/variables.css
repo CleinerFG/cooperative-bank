@@ -40,7 +40,7 @@
   --component-border: solid 0.1rem hsl(0, 0%, 80%);
   --component-line-color: hsl(0, 0%, 80%);
   --component-bg-color: hsl(75, 40%, 98%);
-  --component-bg-color-dark: hsl(75, 40%, 90%);
+  --component-bg-color-dark: hsl(0, 0%, 96%);
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
   --inp-focus-color: hsl(169, 96%, 38%);
