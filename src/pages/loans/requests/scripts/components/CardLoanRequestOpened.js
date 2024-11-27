@@ -67,8 +67,9 @@ export class CardLoanRequestOpened extends CardComponent {
    */
   get _buttonsByStatus() {
     const action = this._model.status === 'pending' ? 'cancel' : 'confirm';
+    const cssClass = this._model.status === 'pending' ? 'btn-fail' : '';
     return `
-      <button id="btn-${action}-${this._model.id}" class="btn card-data__btn">
+      <button id="btn-${action}-${this._model.id}" class="btn card-data__btn ${cssClass}">
          ${capitalize(action)}
       </button>
      `;
