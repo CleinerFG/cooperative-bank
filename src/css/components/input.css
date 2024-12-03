@@ -36,8 +36,6 @@
 
 .inp-date {
   color: hsl(0, 0%, 50%);
-  width: 7.5rem;
-  padding: 0.2rem;
 }
 
 .inp-date::-webkit-calendar-picker-indicator {

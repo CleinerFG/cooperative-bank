@@ -74,6 +74,11 @@
   flex-direction: column;
 }
 
+.dashboard__filter .inp-date{
+  width: 7.5rem;
+  padding: 0.2rem;
+}
+
 .filter-icon {
   width: 2rem;
 }

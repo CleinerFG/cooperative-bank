@@ -12,6 +12,10 @@
   animation: glossy 1.5s linear infinite;
 }
 
+.btn a {
+  color: #000;
+}
+
 @keyframes glossy {
   0% {
     background-position: 200% 0;
