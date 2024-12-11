@@ -18,8 +18,8 @@ app.use((req, res, next) => {
 });
 
 // Helper function to serve files
-const serveFile = (directory) => (req, res) => {
-  const filePath = path.join(directory, "index.html");
+const serveFile = (directory, filename) => (req, res) => {
+  const filePath = path.join(directory, filename);
   console.log(`Sending file: ${filePath}`);
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -30,9 +30,9 @@ const serveFile = (directory) => (req, res) => {
 };
 
 // Route handlers
-app.get('/', serveFile(PUBLIC_PAGES_DIR));
-app.get('/login', serveFile(PUBLIC_PAGES_DIR));
-app.get('/register', serveFile(PUBLIC_PAGES_DIR));
+app.get('/', serveFile(PUBLIC_PAGES_DIR, "index.html"));
+app.get('/login', serveFile(PUBLIC_PAGES_DIR, "login.html"));
+app.get('/register', serveFile(PUBLIC_PAGES_DIR, "register.html"));
 app.get('/app', serveFile(APP_PAGES_DIR));
 
 // Start server
