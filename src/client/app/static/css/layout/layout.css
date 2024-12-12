@@ -1,11 +1,11 @@
 body {
-  min-height: 100vh;
+  min-height: 100svh;
   height: auto;
   display: flex;
   flex-direction: column;
 }
 
-.main {
+main {
   margin-top: var(--header-height);
   background-color: var(--color-background);
   padding: var(--container-padding);

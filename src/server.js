@@ -7,13 +7,18 @@ const app = express();
 const GLOBAL_STATIC_DIR = path.resolve(__dirname, 'client/global');
 const PUBLIC_STATIC_DIR = path.resolve(__dirname, 'client/public/static');
 const PUBLIC_PAGES_DIR = path.resolve(__dirname, 'client/public/pages');
-const APP_PAGES_DIR = path.resolve(__dirname, 'client/app/pages');
+const APP_STATIC_DIR = path.resolve(__dirname, 'client/app/static');
+const APP_DIR = path.resolve(__dirname, 'client/app/');
+
+// Middleware for global static files
+app.use('/global', express.static(GLOBAL_STATIC_DIR));
 
 // Middleware for public static files
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 
-// Middleware for global static files
-app.use('/global', express.static(GLOBAL_STATIC_DIR));
+// Middleware for app static files
+app.use('/app/static', express.static(APP_STATIC_DIR));
+
 
 // Middleware to log requests
 app.use((req, res, next) => {
@@ -37,7 +42,7 @@ const serveFile = (directory, filename) => (req, res) => {
 app.get('/', serveFile(PUBLIC_PAGES_DIR, "index.html"));
 app.get('/login', serveFile(PUBLIC_PAGES_DIR, "login.html"));
 app.get('/register', serveFile(PUBLIC_PAGES_DIR, "register.html"));
-app.get('/app', serveFile(APP_PAGES_DIR));
+app.get('/app', serveFile(APP_DIR, "index.html"));
 
 // Start server
 const PORT = process.env.PORT || 8080;
