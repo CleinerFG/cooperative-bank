@@ -4,12 +4,16 @@ const path = require('path');
 const app = express();
 
 // Constants
-const STATIC_DIR = path.resolve(__dirname, 'client/public/static');
+const GLOBAL_STATIC_DIR = path.resolve(__dirname, 'client/global');
+const PUBLIC_STATIC_DIR = path.resolve(__dirname, 'client/public/static');
 const PUBLIC_PAGES_DIR = path.resolve(__dirname, 'client/public/pages');
 const APP_PAGES_DIR = path.resolve(__dirname, 'client/app/pages');
 
-// Middleware for static files
-app.use('/public/static', express.static(STATIC_DIR));
+// Middleware for public static files
+app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
+
+// Middleware for global static files
+app.use('/global', express.static(GLOBAL_STATIC_DIR));
 
 // Middleware to log requests
 app.use((req, res, next) => {
