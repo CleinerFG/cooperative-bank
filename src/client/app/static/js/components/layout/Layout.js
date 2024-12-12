@@ -1,78 +1,55 @@
-import {
-  AbstractGetterError,
-  AbstractMethodError,
-} from '../../errors/AbstractErrors.js';
+import { AssetManager } from '../../core/AssetManager.js';
+import { Theme } from './Theme.js';
 
 /**
- * Abstract base class for defining the layout.
- * Ensures that essential methods for rendering, path handling, and event setup
- * are implemented in subclasses.
- *
- * @class
- * @abstract
+ * Initializes the layout components (Header, Footer and Theme).
+ * Instantiate this class in the main SPA script.
  */
 export class Layout {
-  /**
-   * Initializes a new instance of the Layout class and triggers the initial setup.
-   */
   constructor() {
     this.#init();
   }
 
   /**
-   * Template getter for the HTML structure of the layout.
-   * This method must be overridden by subclasses.
+   * Toggles the visibility of the navigation menu and adds event listeners to handle menu interactions.
+   * When the menu button is clicked, it toggles the active state of the menu.
+   * Additionally, clicking outside the menu closes it.
    *
-   * @protected
-   * @abstract
-   * @throws {AbstractGetterError}
-   * @type {string}
    */
-  get _template() {
-    throw new AbstractGetterError('_template');
+  #menuHandler() {
+    const menuBtn = document.querySelector('#menu-button');
+    const navMenu = document.querySelector('.header__menu');
+
+    const toggleMenu = () => {
+      menuBtn.classList.toggle('header__menu-button--active');
+      navMenu.classList.toggle('header__menu--block');
+    };
+
+    const closeMenuOnClickOutside = (ev) => {
+      if (!menuBtn.contains(ev.target) && !navMenu.contains(ev.target)) {
+        menuBtn.classList.remove('header__menu-button--active');
+        navMenu.classList.remove('header__menu--block');
+      }
+    };
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    window.addEventListener('click', closeMenuOnClickOutside);
   }
 
   /**
-   * Renders the layout template at the specified position in the document body.
+   * Updates asset paths for icons in the header and footer.
    *
-   * @protected
-   * @param {InsertPosition} position - The position to insert the layout HTML (`beforebegin`, `afterbegin`, `beforeend`, or `afterend`).
    */
-  _render(position) {
-    document.body.insertAdjacentHTML(position, this._template);
+  #assetHandler() {
+    AssetManager.updateIcon('.header__menu-icon', 'icon-menu.svg');
+    AssetManager.updateIcon('#theme-icon', 'icon-theme.svg');
+    AssetManager.updateIcon('.footer__icon', 'icon-globe.svg');
   }
 
-  /**
-   * Handles asset paths for the layout.
-   * This method must be implemented in subclasses to define path-specific behavior.
-   *
-   * @protected
-   * @abstract
-   * @throws {AbstractMethodError}
-   */
-  _pathHandler() {
-    throw new AbstractMethodError('_pathHandler');
-  }
-
-  /**
-   * Sets up event listeners for the layout.
-   * This method must be implemented in subclasses to add event listeners.
-   *
-   * @protected
-   * @abstract
-   * @throws {AbstractMethodError}
-   */
-  _setupListeners() {
-    throw new AbstractMethodError('_setupListeners');
-  }
-
-  /**
-   * Initialization method that calls the essential layout setup functions.
-   * @private
-   */
   #init() {
-    this._render();
-    this._pathHandler();
-    this._setupListeners();
+    new Theme();
+    this.#menuHandler();
+    this.#assetHandler();
   }
 }

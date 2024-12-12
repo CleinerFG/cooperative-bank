@@ -29,7 +29,7 @@ export class AssetManager {
    */
   static updateAsset(selector, filename) {
     const element = document.querySelector(selector);
-    element.setAttribute("src", PathManager.#assetsPaths["images"] + filename);
+    element.setAttribute("src", AssetManager.#assetsPaths["images"] + filename);
   }
 
   /**
@@ -46,7 +46,7 @@ export class AssetManager {
     const theme = Theme.storedTheme;
     element.setAttribute(
       "src",
-      PathManager.#assetsPaths[`icons_${theme}`] + filename
+      AssetManager.#assetsPaths[`icons_${theme}`] + filename
     );
   }
 }

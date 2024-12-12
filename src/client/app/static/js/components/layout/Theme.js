@@ -81,7 +81,7 @@ export class Theme {
  * @returns {string} The new path for the icon based on the theme.
  */
   #buildIconPath(path, theme) {
-    const basePath = "/src/assets/icons/";
+    const basePath = "/app/static/assets/icons/";
     const iconPattern = /([^\/]+)\.svg$/;
 
     const iconMatch = path.match(iconPattern);
