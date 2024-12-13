@@ -1,4 +1,4 @@
-import { ComponentGroup } from '../../../../js/components/ComponentGroup.js';
+import { ComponentGroup } from '../../../components/ComponentGroup.js';
 import { CardEvent } from './CardEvent.js';
 
 /**

@@ -1,4 +1,4 @@
-import { PathManager } from '../utils/PathManager.js';
+import { AssetManager } from "../core/AssetManager.js";
 
 /**
  * Manages and renders different card states (loading, empty or error).
@@ -201,7 +201,7 @@ export class CardState {
   #pathHandler() {
     if (['error', 'empty'].includes(this.#type)) {
       const imgFile = this.#randomImgFile();
-      PathManager.updateAsset(`#${this.#category}-${this.#type}-img`, imgFile);
+      AssetManager.updateAsset(`#${this.#category}-${this.#type}-img`, imgFile);
     }
   }
 

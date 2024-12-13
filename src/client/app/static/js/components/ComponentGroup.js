@@ -1,7 +1,7 @@
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './CardState.js';
 import { ApiService } from '../service/ApiService.js';
-import { PathManager } from '../utils/PathManager.js';
+import { AssetManager } from '../core/AssetManager.js';
 import { capitalize } from '../utils/stringUtils.js';
 import { simulateWait } from '../utils/tests.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
@@ -246,7 +246,7 @@ export class ComponentGroup {
    */
   #assetHandler() {
     if (this.#useDataFilter) {
-      PathManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
+      AssetManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
     }
   }
 

@@ -1,12 +1,9 @@
-import {
-  numberToCurrency,
-  formatDate,
-} from "../../../../js/utils/formatters.js";
+import { numberToCurrency, formatDate } from '../../../utils/formatters.js';
 
 export class EventModel {
   static descType = {
-    1: "payment",
-    2: "investment",
+    1: 'payment',
+    2: 'investment',
   };
   #id;
   #description;

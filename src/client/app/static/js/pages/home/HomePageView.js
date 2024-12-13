@@ -2,6 +2,7 @@ import { PageView } from '../../views/PageView.js';
 import { capitalize } from '../../utils/stringUtils.js';
 import { FinancialStatement } from './components/FinancialStatement.js';
 import { CardLinkGroups } from './components/CardLinkGroups.js';
+import { EventGroup } from './components/EventGroup.js';
 
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.
@@ -87,5 +88,6 @@ export class HomePageView extends PageView {
   async _initComponents() {
     new FinancialStatement();
     new CardLinkGroups();
+    new EventGroup();
   }
 }
