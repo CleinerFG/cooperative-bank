@@ -1,0 +1,16 @@
+.card-data__header .p-success {
+  color: var(--component-color-success);
+}
+
+.card-data__header .p-fail {
+  color: var(--component-color-fail);
+}
+
+.section.new-request .form {
+  align-self: center;
+}
+
+#search-creditor-icon {
+  width: 1.9rem;
+}
+

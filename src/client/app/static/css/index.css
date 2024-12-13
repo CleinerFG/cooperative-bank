@@ -19,3 +19,4 @@
 
 /* CSS pages - Test before use webpack*/
 @import url('./pages/home.css');
+@import url('./pages/loan-requests.css');
