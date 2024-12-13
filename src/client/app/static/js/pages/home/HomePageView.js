@@ -18,7 +18,7 @@ export class HomePageView extends PageView {
    * @type {string[]}
    */
   get _configFeatures() {
-    return ['wallet', 'loans', 'investments'];
+    return ['wallet', 'loan', 'investments'];
   }
 
   /**

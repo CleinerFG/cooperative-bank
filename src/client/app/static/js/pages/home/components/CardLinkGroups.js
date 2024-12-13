@@ -15,154 +15,53 @@ export class CardLinkGroups {
    * @type {Array<Object>}
    */
 
-  #sectionsParams = [
+  #featuresConfig = [
     {
       name: 'wallet',
-      containerSelector: '.wallet__cards',
-      items: ['transfer', 'extract'],
+      containerElement: document.querySelector('.wallet__cards'),
+      cardsName: ['transfer', 'extract'],
     },
     {
-      name: 'loans',
-      containerSelector: '.loans__cards',
-      items: ['requests', 'payments', 'overview', 'timeline'],
+      name: 'loan',
+      containerElement: document.querySelector('.loan__cards'),
+      cardsName: ['requests', 'payments', 'overview', 'timeline'],
     },
     {
       name: 'investments',
-      containerSelector: '.investments__cards',
-      items: ['all', 'reports'],
+      containerElement: document.querySelector('.investments__cards'),
+      cardsName: ['all', 'reports'],
     },
   ];
 
   /**
-   * Stores the sections created based on the parameters.
-   *
-   * @private
-   * @type {Array<Section>}
-   */
-  #sections = [];
-
-  /**
-   * Initializes the controller by creating and initializing sections.
+   * Initializes the controller by creating and initializing features.
    */
   constructor() {
     this.#init();
   }
 
-  /**
-   * Creates section models from the parameters.
-   *
-   * @private
-   */
-  #create() {
-    this.#sections = this.#sectionsParams.map((params) => new Section(params));
+  #createFeatures() {
+    this.#featuresConfig.forEach((feature) => {
+      setSectionForCardsLink(feature.containerElement, feature.cardsName);
+    });
   }
 
   /**
-   * Initializes the controller by creating and initializing all sections.
+   * Initializes the controller by creating and initializing all features.
    *
    * @private
    */
   #init() {
-    this.#create();
-    this.#sections.forEach((model) => model.init());
+    this.#createFeatures();
   }
 }
 
-/**
- * Represents an individual card link item.
- *
- * @class
- */
-class Item {
-  /**
-   * @param {string} name - The name of the item.
-   * @param {HTMLElement} container - The container where the item will be rendered.
-   */
-  constructor(name, container) {
-    this.name = name;
-    this.container = container;
-    this.view = new CardLink(this.container, this.name);
-  }
-
-  /**
-   * Defines the icon path for the card using the AssetManager utility.
-   *
-   * @public
-   */
-  defineIconPath() {
-    AssetManager.updateIcon(`#card-icon-${this.name}`, `icon-${this.name}.svg`);
-  }
-
-  /**
-   * Defines the HTML path for the card using the AssetManager utility.
-   *
-   * @param {string} sectionName
-   */
-  // defineHtmlPath(sectionName) {
-  //   AssetManager.updateHtml(`#card-link-a-${this.name}`, sectionName, this.name);
-  // }
+function setCardLink(name, container) {
+  const card = new CardLink(container, name);
+  card.render();
+  AssetManager.updateIcon(`#card-icon-${name}`, `icon-${name}.svg`);
 }
 
-/**
- * Represents a section containing multiple card link items.
- *
- * @class
- */
-class Section {
-  /**
-   * @param {Object} params
-   * @param {string} params.name
-   * @param {string} params.containerSelector
-   * @param {Array<Item>} params.items
-   */
-  constructor(params) {
-    this.name = params.name;
-    this.containerSelector = params.containerSelector;
-    this.items = params.items.map(
-      (item) => new Item(item, this.containerElement)
-    );
-  }
-
-  /**
-   * Returns the container element for the section.
-   *
-   * @public
-   * @type {HTMLElement}
-   */
-  get containerElement() {
-    return document.querySelector(this.containerSelector);
-  }
-
-  /**
-   * Renders all items in the section.
-   *
-   * @public
-   */
-  renderItems() {
-    this.items.forEach((item) => {
-      item.view.render();
-    });
-  }
-
-  /**
-   * Handles the configuration of paths icon for all items in the section.
-   *
-   * @public
-   */
-  assetHandler() {
-    this.items.forEach((item) => {
-      item.defineIconPath();
-      // item.defineHtmlPath(this.name);
-    });
-  }
-
-  /**
-   * Initializes the section by rendering items and setting paths.
-   *
-   * @public
-   */
-  init() {
-    this.renderItems();
-    this.assetHandler();
-  }
+function setSectionForCardsLink(container, cardsName) {
+  cardsName.map((cardName) => setCardLink(cardName, container));
 }

@@ -53,7 +53,7 @@ export class CardLink {
     const capName = capitalize(this.#name);
     const str = `
     <div class="card-link__container">
-      <a id="card-link-a-${this.#name}" class="card-link__a" rel="next">
+      <a id="card-link-a-${this.#name}" class="card-link__a" rel="next" a="">
         <div class="card card-link">
           <img id="card-icon-${this.#name}"
             class="icon card-link__icon"
