@@ -2,6 +2,7 @@ import {
   AbstractGetterError,
   AbstractMethodError,
 } from '../errors/AbstractErrors.js';
+import { capitalize } from '../utils/stringUtils.js';
 
 /**
  * Represents a view for a page that is responsible for rendering page content dynamically.
@@ -32,18 +33,39 @@ export class PageView {
    * @throws {AbstractGetterError}
    */
   get _template() {
-    throw new AbstractGetterError('template');
+    throw new AbstractGetterError('_template');
+  }
+
+  /**
+   * Returns the title for the page.
+   *
+   * @protected
+   * @type {string}
+   * @throws {AbstractGetterError}
+   */
+  get _pageTitle() {
+    throw new AbstractGetterError('_pageTitle');
   }
 
   /**
    * Initialize specific page components.
    *
+   * @async
    * @abstract
    * @protected
    * @throws {AbstractMethodError}
    */
-  _initComponents() {
+  async _initComponents() {
     throw new AbstractMethodError('_initComponents');
+  }
+
+  /**
+   * Sets the page title
+   *
+   * @private
+   */
+  #setTitle() {
+    document.title = capitalize(this._pageTitle);
   }
 
   /**
@@ -61,6 +83,7 @@ export class PageView {
    * @private
    */
   #init() {
+    this.#setTitle();
     this.#render();
     this._initComponents();
   }

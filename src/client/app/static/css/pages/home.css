@@ -1,0 +1,41 @@
+.section {
+  margin-bottom: 0;
+}
+
+.section:last-child {
+  margin: 3rem 0 1.5rem 0;
+}
+
+.statement {
+  height: 10rem;
+}
+
+.statement__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.statement__amount {
+  font-size: 1.2rem;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 550;
+}
+
+.feature-cards { 
+  padding: var(--container-padding);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 425px) {
+  .feature-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .feature-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

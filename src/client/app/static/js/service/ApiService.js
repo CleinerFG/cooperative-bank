@@ -13,7 +13,7 @@ export class ApiService {
    * @type {string}
    * @constant
    */
-  static #BASE_URL = 'http://localhost:5000/';
+  static #BASE_URL = 'http://localhost:8080/';
 
   /**
    * Helper function to perform the fetch operation for various HTTP methods.

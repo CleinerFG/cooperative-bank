@@ -1,18 +1,21 @@
 /* CSS Aggregator */
-@import url("./variables.css");
-@import url("./layout/layout.css");
-@import url("./base/default.css");
-@import url("./base/typography.css");
-@import url("./components/input.css");
-@import url("./components/form.css");
-@import url("./components/button.css");
-@import url("./components/component-group.css");
-@import url("./components/cards/card-state.css");
-@import url("./components/cards/cards.css");
-@import url("./components/cards/card-link.css");
-@import url("./components/cards/card-data.css");
-@import url("./components/modal.css");
-@import url("./components/animations.css");
-@import url("./layout/header.css");
-@import url("./layout/footer.css");
-@import url("./layout/section.css");
+@import url('./variables.css');
+@import url('./layout/layout.css');
+@import url('./base/default.css');
+@import url('./base/typography.css');
+@import url('./components/input.css');
+@import url('./components/form.css');
+@import url('./components/button.css');
+@import url('./components/component-group.css');
+@import url('./components/cards/card-state.css');
+@import url('./components/cards/cards.css');
+@import url('./components/cards/card-link.css');
+@import url('./components/cards/card-data.css');
+@import url('./components/modal.css');
+@import url('./components/animations.css');
+@import url('./layout/header.css');
+@import url('./layout/footer.css');
+@import url('./layout/section.css');
+
+/* CSS pages - Test before use webpack*/
+@import url('./pages/home.css');
