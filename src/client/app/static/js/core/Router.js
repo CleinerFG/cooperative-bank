@@ -1,8 +1,13 @@
+import { HomePageView } from "../pages/home/HomePageView.js";
+
 export class Router {
   #routes = [
-    { path: '/app', controller: () => console.log('View Home!') },
-    // { path: '/app/loans', view: Loans },
-    // { path: '/app/investments', view: Investments },
+    { path: '/app', view: HomePageView },
+    // { path: '/app/loans', controller: () => console.log('View Loans!') },
+    // {
+    //   path: '/app/investments',
+    //   controller: () => console.log('View Investments!'),
+    // },
   ];
   constructor() {
     this.#init();
@@ -30,8 +35,7 @@ export class Router {
       };
     }
 
-    // const view = new match.route.view();
-    match.route.controller();
+    const view = new match.route.view();
     // document.querySelector('#app').innerHTML = await view.getHtml();
   }
 

@@ -1,4 +1,7 @@
-import { AbstractMethodError } from '../errors/AbstractErrors.js';
+import {
+  AbstractGetterError,
+  AbstractMethodError,
+} from '../errors/AbstractErrors.js';
 
 /**
  * Represents a view for a page that is responsible for rendering page content dynamically.
@@ -7,14 +10,15 @@ import { AbstractMethodError } from '../errors/AbstractErrors.js';
  */
 export class PageView {
   /**
-   * HTML body element
+   * HTML App element
    *
+   * @static
    * @private
    */
-  #bodyElement = document.body;
+  static #appElement = document.getElementById('app');
 
   /**
-   * Initializes the page view by rendering the content.
+   * Initializes the view.
    */
   constructor() {
     this.#init();
@@ -23,35 +27,32 @@ export class PageView {
   /**
    * Returns the HTML template for the page.
    *
-   * @private
+   * @protected
    * @type {string}
+   * @throws {AbstractGetterError}
    */
-  get #template() {
-    return `
-      <main class="main">
-      ${this._pageContent()}
-      </main>
-    `;
+  get _template() {
+    throw new AbstractGetterError('template');
   }
 
   /**
-   * Returns the content of the page, typically HTML.
+   * Initialize specific page components.
    *
    * @abstract
    * @protected
    * @throws {AbstractMethodError}
    */
-  _pageContent() {
-    throw new AbstractMethodError('_pageContent');
+  _initComponents() {
+    throw new AbstractMethodError('_initComponents');
   }
 
   /**
-   * Renders the page by inserting the template into the body element.
+   * Renders the page by inserting the template into the app element.
    *
    * @private
    */
   #render() {
-    this.#bodyElement.insertAdjacentHTML('beforeend', this.#template);
+    PageView.#appElement.innerHTML = this._template;
   }
 
   /**
@@ -61,5 +62,6 @@ export class PageView {
    */
   #init() {
     this.#render();
+    this._initComponents();
   }
 }
