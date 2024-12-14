@@ -19,7 +19,6 @@ app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 // Middleware for app static files
 app.use('/app/static', express.static(APP_STATIC_DIR));
 
-
 // Middleware to log requests
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
@@ -39,10 +38,10 @@ const serveFile = (directory, filename) => (req, res) => {
 };
 
 // Route handlers
-app.get('/', serveFile(PUBLIC_PAGES_DIR, "index.html"));
-app.get('/login', serveFile(PUBLIC_PAGES_DIR, "login.html"));
-app.get('/register', serveFile(PUBLIC_PAGES_DIR, "register.html"));
-app.get('/app', serveFile(APP_DIR, "index.html"));
+app.get('/', serveFile(PUBLIC_PAGES_DIR, 'index.html'));
+app.get('/login', serveFile(PUBLIC_PAGES_DIR, 'login.html'));
+app.get('/register', serveFile(PUBLIC_PAGES_DIR, 'register.html'));
+app.get('/app/*', serveFile(APP_DIR, 'index.html'));
 
 // Start server
 const PORT = process.env.PORT || 8080;
