@@ -1,23 +1,20 @@
 import { HomePageView } from '../pages/home/HomePageView.js';
 import { LoanRequestsPageView } from '../pages/loans/requests/LoanRequestsPageView.js';
 
-export class Router {
-  #routes = [
+class Router {
+  static #routes = [
     { path: '/app', view: HomePageView },
-    { path: '/app/loans/requests', view: LoanRequestsPageView },
-    { path: '/app/loans/overview', view: LoanRequestsPageView },
+    { path: '/app/loan/requests', view: LoanRequestsPageView },
+    // { path: '/app/loans/overview', view: LoanRequestsPageView },
   ];
-  constructor() {
-    this.#init();
-  }
 
-  #navigateTo(url) {
+  navigateTo(url) {
     history.pushState(null, null, url);
     this.handleRouting();
   }
 
   async handleRouting() {
-    const potentialMatches = this.#routes.map((route) => {
+    const potentialMatches = Router.#routes.map((route) => {
       return {
         route: route,
         isMatch: location.pathname === route.path,
@@ -29,26 +26,20 @@ export class Router {
     );
     if (!match) {
       match = {
-        route: this.#routes[0],
+        route: Router.#routes[0],
       };
     }
 
     new match.route.view();
   }
 
-  #init() {
+  init() {
     window.addEventListener('popstate', () => this.handleRouting());
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Handle links routes
-      // document.body.addEventListener('click', (e) => {
-      //   if (e.target.matches('[data-link]')) {
-      //     e.preventDefault();
-      //     this.#navigateTo(e.target.href);
-      //   }
-      // });
-
       this.handleRouting();
     });
   }
 }
+
+export const router = new Router();

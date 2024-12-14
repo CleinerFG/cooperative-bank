@@ -1,4 +1,6 @@
-import { capitalize } from "../../../utils/stringUtils.js";
+import { router } from '../../../core/Router.js';
+import { capitalize } from '../../../utils/stringUtils.js';
+import { AssetManager } from '../../../core/AssetManager.js';
 
 /**
  * Represents a clickable card component that redirects to a page in the application.
@@ -14,6 +16,8 @@ export class CardLink {
    */
   #containerElement;
 
+  #featureName;
+
   /**
    * The name of the card link, used for labeling and IDs.
    *
@@ -28,9 +32,11 @@ export class CardLink {
    * @param {HTMLElement} containerElement - The container element where the card link will be rendered.
    * @param {string} name - The name of the card link.
    */
-  constructor(containerElement, name) {
+  constructor(containerElement, featureName, name) {
     this.#containerElement = containerElement;
+    this.#featureName = featureName;
     this.#name = name;
+    this.#init();
   }
 
   /**
@@ -44,16 +50,24 @@ export class CardLink {
   }
 
   /**
-   * Generates the HTML template for the card link.
-   *
-   * @returns {string} The HTML string for the card link.
-   * @private
+   * @type {string}
+   */
+  get #endpoint() {
+    return `/app/${this.#featureName}/${this.#name}`;
+  }
+
+  get #cssID() {
+    return `card-link-a-${this.#name}`;
+  }
+
+  /**
+   * @type {string}
    */
   get #template() {
     const capName = capitalize(this.#name);
     const str = `
     <div class="card-link__container">
-      <a id="card-link-a-${this.#name}" class="card-link__a" rel="next" a="">
+      <a id="${this.#cssID}" class="card-link__a" rel="next" a="${this.#endpoint}" data-link>
         <div class="card card-link">
           <img id="card-icon-${this.#name}"
             class="icon card-link__icon"
@@ -66,7 +80,29 @@ export class CardLink {
     return str;
   }
 
-  render() {
+  #render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
+  }
+
+  #handleRoute() {
+    document.getElementById(this.#cssID).addEventListener('click', (e) => {
+      console.log('click');
+
+      e.preventDefault();
+      router.navigateTo(this.#endpoint);
+    });
+  }
+
+  #handleIcon() {
+    AssetManager.updateIcon(
+      `#card-icon-${this.#name}`,
+      `icon-${this.#name}.svg`
+    );
+  }
+
+  #init() {
+    this.#render();
+    this.#handleIcon();
+    this.#handleRoute();
   }
 }

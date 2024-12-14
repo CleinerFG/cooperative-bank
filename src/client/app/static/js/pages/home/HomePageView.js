@@ -88,6 +88,7 @@ export class HomePageView extends PageView {
   async _initComponents() {
     new FinancialStatement();
     new CardLinkGroups();
-    new EventGroup(false);
+    // new EventGroup(false);
+    console.log('runnig');
   }
 }

@@ -42,26 +42,21 @@ export class CardLinkGroups {
 
   #createFeatures() {
     this.#featuresConfig.forEach((feature) => {
-      setSectionForCardsLink(feature.containerElement, feature.cardsName);
+      setSectionForCardsLink(
+        feature.containerElement,
+        feature.name,
+        feature.cardsName
+      );
     });
   }
 
-  /**
-   * Initializes the controller by creating and initializing all features.
-   *
-   * @private
-   */
   #init() {
     this.#createFeatures();
   }
 }
 
-function setCardLink(name, container) {
-  const card = new CardLink(container, name);
-  card.render();
-  AssetManager.updateIcon(`#card-icon-${name}`, `icon-${name}.svg`);
-}
-
-function setSectionForCardsLink(container, cardsName) {
-  cardsName.map((cardName) => setCardLink(cardName, container));
+function setSectionForCardsLink(containerElement, featureName, cardsName) {
+  cardsName.map(
+    (cardName) => new CardLink(containerElement, featureName, cardName)
+  );
 }
