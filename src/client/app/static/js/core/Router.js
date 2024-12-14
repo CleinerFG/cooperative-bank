@@ -1,11 +1,12 @@
 import { HomePageView } from '../pages/home/HomePageView.js';
 import { LoanRequestsPageView } from '../pages/loans/requests/LoanRequestsPageView.js';
+import { OverviewPageView } from '../pages/loans/overview/OverviewPageView.js';
 
 class Router {
   static #routes = [
-    { path: '/app', view: HomePageView },
+    { path: '/app/', view: HomePageView },
     { path: '/app/loan/requests', view: LoanRequestsPageView },
-    // { path: '/app/loans/overview', view: LoanRequestsPageView },
+    { path: '/app/loan/overview', view: OverviewPageView },
   ];
 
   navigateTo(url) {

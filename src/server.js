@@ -41,7 +41,7 @@ const serveFile = (directory, filename) => (req, res) => {
 app.get('/', serveFile(PUBLIC_PAGES_DIR, 'index.html'));
 app.get('/login', serveFile(PUBLIC_PAGES_DIR, 'login.html'));
 app.get('/register', serveFile(PUBLIC_PAGES_DIR, 'register.html'));
-app.get('/app/*', serveFile(APP_DIR, 'index.html'));
+app.get(['/app/*', '/app'], serveFile(APP_DIR, 'index.html'));
 
 // Start server
 const PORT = process.env.PORT || 8080;

@@ -36,6 +36,10 @@ export class OverviewPageView extends PageView {
     `;
   }
 
+  get _pageTitle() {
+    return 'overview';
+  }
+
   get _template() {
     return `
     ${this._templateSectionInitial}
