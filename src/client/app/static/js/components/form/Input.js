@@ -101,6 +101,10 @@ export class Input {
     this.inputElement.dataset.valid = bool;
   }
 
+  get _errorSpanTemplate() {
+    return `<span id="${this._id}-error" class="error-message"></span>`;
+  }
+
   /**
    * Generates the HTML template for the input element.
    * This getter can be overridden by subclasses to provide their specific HTML structure.
@@ -113,7 +117,7 @@ export class Input {
       <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
       <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}"
       class="inp form-group__inp ${this._cssClass}" data-valid="false">
-      <span id="${this._id}-error" class="error-message"></span>
+      ${this._errorSpanTemplate}
     </div>`;
   }
 
