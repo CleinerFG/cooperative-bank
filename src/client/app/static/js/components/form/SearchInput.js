@@ -27,115 +27,113 @@ export class SearchInput extends Input {
    */
   #endpoint;
 
-  #INPUT_QUERY_ID = `${this._id}`;
-  #INPUT_RESULT_ID = `${this._id}-result`;
+  #INP_QUERY_ID = `${this._id}`;
+  #INP_RESULT_ID = `${this._id}-result`;
   #BTN_SEARCH_ID = `${this._id}-search-btn`;
   #ICON_SEARCH_ID = `${this._id}-search-icon`;
 
+  /**
+   * @param {InputSearchConfig} config
+   */
   constructor(config) {
     super(config);
     this.#endpoint = config.endpoint;
     this._defaultValue = config.defaultValue;
   }
 
-  get #inputQueryElement() {
-    return document.getElementById(this.#INPUT_QUERY_ID);
+  get #inpQueryElement() {
+    return document.getElementById(this.#INP_QUERY_ID);
   }
 
-  get #inputResultElement() {
-    return document.getElementById(this.#INPUT_RESULT_ID);
+  get #inpResultElement() {
+    return document.getElementById(this.#INP_RESULT_ID);
   }
 
   get #btnSearchElement() {
     return document.getElementById(this.#BTN_SEARCH_ID);
   }
 
-  get #searchIconElement() {
+  get #iconSearchElement() {
     return document.getElementById(this.#ICON_SEARCH_ID);
   }
 
+  get #inpSearchState() {
+    return this.#inpQueryElement.dataset.search;
+  }
+
+  /**
+   * @param {"on" | "off"} value
+   */
+  set #inpSearchState(value) {
+    this.#inpQueryElement.dataset.search = value;
+    this.#handleSearchAnimation();
+  }
+
   get #queryIsValid() {
-    const query = this.#inputQueryElement.value;
+    const query = this.#inpQueryElement.value;
     return query !== '' && query !== '0';
   }
 
   get _template() {
     return `
       <div class="form-group__inp-group">
-        <label for="${this.#INPUT_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
+        <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
         <div class="inp__container">
-          <input id="${this.#INPUT_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp__search ${this._cssClass}" data-valid="true">
+          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp__search ${this._cssClass}" data-valid="true" data-search="off">
           <button id="${this.#BTN_SEARCH_ID}" type="button" class="btn-unset"><img class="icon" id="${this.#ICON_SEARCH_ID}" alt="Search Icon"></button>
-          <input id="${this.#INPUT_RESULT_ID}" type="text" class="inp form-group__inp" disabled>
+          <input id="${this.#INP_RESULT_ID}" type="text" class="inp form-group__inp" disabled>
         </div>
         ${this._errorSpanTemplate}
       </div>`;
   }
 
-  /**
-   * @param {"add" | "remove"} action
-   */
-  #toggleSearchState(action) {
-    this.#inputResultElement.classList[action]('inp-skelon');
-    this.#searchIconElement.classList[action]('search-animation');
-    if (action === 'add') {
-      this.#inputResultElement.value = 'Searching...';
-    }
-  }
-
   async #fetchFromApi() {
-    if (!this.#queryIsValid) return;
-
-    this.#toggleSearchState('add');
+    this.#inpSearchState = 'on';
     await simulateWait(1);
 
     try {
       return await ApiService.fetchFrom(`${this.#endpoint}/${query}`);
     } catch (e) {
       throw new NotFoundError(this._id);
+    } finally {
+      this.#inpSearchState = 'off';
     }
   }
 
-  #handleSearchSuccess(item) {
-    if (item) {
-      this._updateResult(item);
-      this._dataValid = true;
-      this._failMessageHandler('remove', '');
-    } else {
-      this._updateResult(null);
-      this._dataValid = false;
+  #handleSearchAnimation() {
+    this.#inpResultElement.classList.toggle('inp-skelon');
+    this.#iconSearchElement.classList.toggle('search-animation');
+    if (this.#inpSearchState === 'on') {
+      this.#inpResultElement.value = 'Searching...';
     }
+  }
+
+  #handleSearchSuccess(value) {
+    this._dataValid = true;
+    this.#inpResultElement.value = value;
+    this._handleFailMessage('remove');
   }
 
   #handleSearchError(error) {
-    this._updateResult(null);
     this._dataValid = false;
-    this._failMessageHandler('add', error.message);
+    this.#inpResultElement.value = '';
+    this._handleFailMessage('add', error.message);
   }
 
   async _handleSearch() {
+    if (!this.#queryIsValid) return;
     try {
-      this._dataValid = false;
       const item = await this.#fetchFromApi();
-      this.#handleSearchSuccess(item);
+      this.#handleSearchSuccess(item.name);
     } catch (error) {
       this.#handleSearchError(error);
     }
   }
 
-  /**
-   * @param {Object | null} item
-   * @param {string} item.name
-   */
-  _updateResult(item) {
-    this.#toggleSearchState('remove');
-    this.#inputResultElement.value = item ? item.name : '';
-  }
-
   _setDefaultValue() {
     if (this._defaultValue) {
-      this.#inputQueryElement.value = this._defaultValue.id;
-      this.#inputResultElement.value = this._defaultValue.name;
+      this.#inpQueryElement.value = this._defaultValue.id;
+      this.#inpResultElement.value = this._defaultValue.name;
     }
   }
 
@@ -144,7 +142,7 @@ export class SearchInput extends Input {
       'click',
       this._handleSearch.bind(this)
     );
-    this.#inputQueryElement.addEventListener(
+    this.#inpQueryElement.addEventListener(
       'blur',
       this._handleSearch.bind(this)
     );

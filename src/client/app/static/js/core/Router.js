@@ -1,6 +1,6 @@
 import { HomePageView } from '../pages/home/HomePageView.js';
-import { LoanRequestsPageView } from '../pages/loans/requests/LoanRequestsPageView.js';
-import { OverviewPageView } from '../pages/loans/overview/OverviewPageView.js';
+import { LoanRequestsPageView } from '../pages/loan/requests/LoanRequestsPageView.js';
+import { OverviewPageView } from '../pages/loan/overview/OverviewPageView.js';
 
 class Router {
   static #routes = [

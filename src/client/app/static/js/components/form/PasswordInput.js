@@ -1,18 +1,32 @@
-import { Input } from "./Input.js";
-import { PathManager } from "../../utils/PathManager.js";
+import { Input } from './Input.js';
+import { AssetManager } from '../../core/AssetManager.js';
 
 /**
  * Represents a password input field with visibility toggle functionality.
- * @class
- * @extends Input
  */
 export class PasswordInput extends Input {
+  #BTN_VISIBILITY_ID = `${this._id}-visibility-btn`;
+  #ICON_VISIBILITY_ID = `${this._id}-visibility-icon`;
+
+  get #btnVisibilityElement() {
+    return document.getElementById(this.#BTN_VISIBILITY_ID);
+  }
+
+  get #iconVisibilityElement() {
+    return document.getElementById(this.#ICON_VISIBILITY_ID);
+  }
+
+  get #inpVisibilityState() {
+    return this.inputElement.dataset.visibility;
+  }
+
   /**
-   * Generates the HTML template for the password input field.
-   * @protected
-   * @returns {string} The HTML as string for the input field, including a visibility toggle button and an error message.
-   * @override
+   * @param {"on" | "off"} value
    */
+  set #inpVisibilityState(value) {
+    this.inputElement.dataset.visibility = value;
+  }
+
   get _template() {
     return `
     <div class="form-group__inp-group">
@@ -20,71 +34,48 @@ export class PasswordInput extends Input {
       <div class="inp__container container__${this._cssClass}">
         <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}" autocomplete="off"
         class="inp form-group__inp inp-${this._cssClass}" data-visibility="off" data-valid="false">
-        <button id="${this._id}-visibility" type="button" class="btn-unset">
-          <img id="${this._id}-visibility-icon" class="icon inp__visibility-icon" alt="Closed eye">
+        <button id="${this.#BTN_VISIBILITY_ID}" type="button" class="btn-unset">
+          <img id="${this.#ICON_VISIBILITY_ID}" class="icon inp__visibility-icon" alt="Closed eye">
         </button>
       </div>
-      <span id="${this._id}-error" class="error-message"></span>
+      ${this._errorSpanTemplate}
     </div>`;
   }
 
   /**
-   * Updates the icon path based on the visibility state.
-   * @protected
-   * @param {"on" | "off"} state - The state of visibility.
+   * @param {"on" | "off"} visibilityState
    */
-  _updateIconPath(state) {
-    PathManager.updateIcon(
-      `#${this._id}-visibility-icon`,
-      `icon-visibility-${state}.svg`
+  _handleAssets(visibilityState) {
+    AssetManager.updateIcon(
+      `#${this.#ICON_VISIBILITY_ID}`,
+      `icon-visibility-${visibilityState}.svg`
     );
   }
 
-  /**
-   * Toggles the input type between "text" and "password".
-   * @protected
-   */
   _toggleInpType() {
     const currentType = this.inputElement.type;
-    this.inputElement.type = currentType === "text" ? "password" : "text";
+    this.inputElement.type = currentType === 'text' ? 'password' : 'text';
   }
 
-  /**
-   * Switches the visibility of the password input and updates the icon.
-   * @protected
-   */
-  _switchVisibility() {
-    const icon = document.querySelector(`#${this._id}-visibility-icon`);
-    const currentState = this.inputElement.dataset.visibility;
+  _toggleVisibility() {
+    const alt = this.#inpVisibilityState === 'on' ? 'Closed eye' : 'Opened eye';
+    this.#iconVisibilityElement.setAttribute('alt', alt);
 
-    const alt = currentState === "on" ? "Closed eye" : "Opened eye";
-    icon.setAttribute("alt", alt);
-
-    const newState = currentState === "off" ? "on" : "off";
-    this._updateIconPath(newState);
-    this.inputElement.dataset.visibility = newState;
+    const newState = this.#inpVisibilityState === 'on' ? 'off' : 'on';
+    this._handleAssets(newState);
+    this.#inpVisibilityState = newState;
   }
 
-  /**
-   * Sets up event listeners for the password visibility toggle button.
-   * @protected
-   */
-  _setupListeners() {
-    const btnSwitch = document.querySelector(`#${this._id}-visibility`);
-    btnSwitch.addEventListener("click", () => {
-      this._switchVisibility();
+  _setListeners() {
+    this.#btnVisibilityElement.addEventListener('click', () => {
+      this._toggleVisibility();
       this._toggleInpType();
     });
   }
 
-  /**
-   * Initializes the password input, rendering the input field, setting up listeners and updating the icon.
-   * @public
-   * @override
-   */
   init() {
     super.init();
-    this._setupListeners();
-    this._updateIconPath("off");
+    this._setListeners();
+    this._handleAssets('off');
   }
 }

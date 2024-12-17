@@ -25,7 +25,7 @@ export class NewLoanRequestFormCtrl extends FormCtrl {
     return [
       {
         category: 'search',
-        id: 'creditor',
+        id: 'search-creditor',
         strictToNumber: true,
         labelText: 'Search for a Creditor',
         defaultValue: {

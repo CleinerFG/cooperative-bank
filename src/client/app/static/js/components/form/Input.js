@@ -6,63 +6,43 @@ import {
 } from '../../utils/inputFormatters.js';
 
 /**
- * @typedef {object} InputDefaultConfig - Configuration object for creating an input element.
- * @property {HTMLElement} containerElement - The container where the input will be added.
- * @property {string} id - The unique identifier for the input element.
- * @property {string} labelText -  Text for the input label.
- * @property {string} cssClass - CSS class for custom styling.
- * @property {"text" | "numeric"} inputmode - Input mode for the input element.
- * @property {boolean} strictToNumber - Whether only numbers are allowed.
- * @property {"currency" | "percent"} formatter - Formatter type for the input.
+ * @typedef {object} InputDefaultConfig
+ * @property {HTMLElement} containerElement
+ * @property {string} id
+ * @property {string} labelText
+ * @property {string} cssClass
+ * @property {"text" | "numeric"} inputmode
+ * @property {boolean} strictToNumber
+ * @property {"currency" | "percent"} formatter
  */
 
 /**
  * Input class for creating and managing input elements with validation,
  * formatting, and error handling.
- *
- *  Features:
- * - Custom validation with multiple validators
- * - Input formatting (currency, percentage, strict numbers)
- * - Error message handling and display
- * - Event handling for blur and input events
- *
- * @class
- * @classdesc Creates an input element with customizable formatting,
- * strict number validation, and error messaging.
  */
 export class Input {
   /**
-   * The container element where the input element will be rendered.
-   * @private
    * @type {HTMLElement}
    */
   #containerElement;
 
   /**
-   * Flag indicating whether only strict numeric values are allowed.
-   * @private
    * @type {boolean}
    */
   #strictToNumber;
 
   /**
-   * Formatter type for the input.
-   * @private
    * @type {"currency" | "percent"}
    */
   #formatter;
 
   /**
-   * Array of validators to apply to the input.
-   * @private
    * @type {import("../../utils/validators.js").Validator[]}
    */
   #validators = [emptyValidator, zeroValidator];
 
   /**
-   * Creates an instance of Input.
-   *
-   * @param {InputDefaultConfig} config - Object with the input config.
+   * @param {InputDefaultConfig} config
    */
   constructor(config) {
     this.#containerElement = config.containerElement;
@@ -75,27 +55,18 @@ export class Input {
   }
 
   /**
-   * Gets the ID of the input element.
-   * @public
-   * @returns {string} The ID of the input.
+   * @returns {string}
    */
   get id() {
     return this._id;
   }
 
-  /**
-   * Gets the input element.
-   * @public
-   * @returns {HTMLElement} The input element.
-   */
   get inputElement() {
     return document.getElementById(this._id);
   }
 
   /**
-   * Sets the validation state of the input.
-   * @protected
-   * @param {boolean} bool - The validation state (true if valid, false otherwise).
+   * @param {boolean} bool
    */
   set _dataValid(bool) {
     this.inputElement.dataset.valid = bool;
@@ -106,10 +77,7 @@ export class Input {
   }
 
   /**
-   * Generates the HTML template for the input element.
    * This getter can be overridden by subclasses to provide their specific HTML structure.
-   * @protected
-   * @returns {string} The HTML template as a string.
    */
   get _template() {
     return `
@@ -122,49 +90,34 @@ export class Input {
   }
 
   /**
-   * Displays or removes an error message on the input.
-   * @protected
-   * @param {"add" | "remove"} method - Method to manipulate error class.
-   * @param {string} errorMessage - The error message to display.
+   * @param {"add" | "remove"} method
+   * @param {string} errorMessage
    */
-  _failMessageHandler(method, errorMessage) {
+  _handleFailMessage(method, errorMessage = '') {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
     this.inputElement.classList[method]('inp-error');
   }
 
-  /**
-   * Executes each validator on the current input value stored in the input element.
-   * If a validator throws an error, it catches the error and updates the validation state, displaying the error message if validation fails.
-   * @private
-   */
-  #executeValidators() {
+  #handleValidators() {
     const value = this.inputElement.value;
     try {
       this.#validators.forEach((validator) => validator(value));
       this._dataValid = true;
-      this._failMessageHandler('remove', '');
+      this._handleFailMessage('remove', '');
     } catch (error) {
       this._dataValid = false;
-      this._failMessageHandler('add', error.message);
+      this._handleFailMessage('add', error.message);
     }
   }
 
-  /**
-   * Adds an event listener for strict number formatting on input if {@link #strictToNumber} is true.
-   * @private
-   */
-  #setupStrictToNumber() {
+  #setStrictToNumber() {
     if (this.#strictToNumber) {
       this.inputElement.addEventListener('input', strictNumberFormatter);
     }
   }
 
-  /**
-   * Sets up a formatter event listener if a formatter is specified.
-   * @private
-   */
-  #setupFormatter() {
+  #setFormatter() {
     const formatters = {
       percent: percentFormatter,
       currency: currencyFormatter,
@@ -175,51 +128,30 @@ export class Input {
     }
   }
 
-  /**
-   * Sets up validation on blur event for the input element.
-   * @private
-   * @see #executeValidators
-   *
-   * - Uses #executeValidators method for validation
-   *
-   * Event binding:
-   * - Event: 'blur'
-   * - Handler: Bound version of #executeValidators with correct 'this' context
-   */
-  #setupValidationOnBlur() {
+  #setValidationOnBlur() {
     this.inputElement.addEventListener(
       'blur',
-      this.#executeValidators.bind(this)
+      this.#handleValidators.bind(this)
     );
   }
 
   /**
-   * Initializes event handlers for validation and formatting.
-   * @param {boolean} [active=true] - Activates the event listeners if true.
-   * @protected
+   * @param {boolean} [active=true]
    */
-  _setupHandlers(active = true) {
+  _setDefaultHandlers(active = true) {
     if (active) {
-      this.#setupValidationOnBlur();
-      this.#setupStrictToNumber();
-      this.#setupFormatter();
+      this.#setValidationOnBlur();
+      this.#setStrictToNumber();
+      this.#setFormatter();
     }
   }
 
-  /**
-   * Renders the input element template into the container.
-   * @private
-   */
   #render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this._template);
   }
 
-  /**
-   * Initializes the input element by rendering it and setting up handlers.
-   * @public
-   */
   init() {
     this.#render();
-    this._setupHandlers();
+    this._setDefaultHandlers();
   }
 }
