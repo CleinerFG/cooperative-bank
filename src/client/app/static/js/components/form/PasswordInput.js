@@ -46,7 +46,8 @@ export class PasswordInput extends Input {
    * @param {"on" | "off"} visibilityState
    */
   _handleAssets(visibilityState) {
-    AssetManager.updateIcon(
+    AssetManager.updateAsset(
+      'icon',
       `#${this.#ICON_VISIBILITY_ID}`,
       `icon-visibility-${visibilityState}.svg`
     );

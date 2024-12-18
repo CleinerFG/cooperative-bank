@@ -149,7 +149,11 @@ export class SearchInput extends Input {
   }
 
   _handleAssets() {
-    AssetManager.updateIcon(`#${this.#ICON_SEARCH_ID}`, 'icon-search.svg');
+    AssetManager.updateAsset(
+      'icon',
+      `#${this.#ICON_SEARCH_ID}`,
+      'icon-search.svg'
+    );
   }
 
   init() {

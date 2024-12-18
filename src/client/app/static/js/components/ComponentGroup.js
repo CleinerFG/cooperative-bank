@@ -246,7 +246,7 @@ export class ComponentGroup {
    */
   #assetHandler() {
     if (this.#useDataFilter) {
-      AssetManager.updateIcon(`#filter-icon`, 'icon-filter.svg');
+      AssetManager.updateAsset('icon', `#filter-icon`, 'icon-filter.svg');
     }
   }
 

@@ -39,9 +39,9 @@ export class Layout {
   }
 
   #handleAssets() {
-    AssetManager.updateIcon('.header .menu-icon', 'icon-menu.svg');
-    AssetManager.updateIcon('#icon-theme', 'icon-theme.svg');
-    AssetManager.updateIcon('.footer .icon', 'icon-globe.svg');
+    AssetManager.updateAsset('icon', '.header .menu-icon', 'icon-menu.svg');
+    AssetManager.updateAsset('icon', '#icon-theme', 'icon-theme.svg');
+    AssetManager.updateAsset('icon', '.footer .icon', 'icon-globe.svg');
   }
 
   #init() {

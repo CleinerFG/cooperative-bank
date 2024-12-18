@@ -114,7 +114,7 @@ export class FinancialStatement {
       this.#spanAmount.classList.add('skelon');
       await simulateWait(2);
       // const value = await this.#fetchFromApi();
-      const value = 105465
+      const value = 105465;
       this.#spanAmount.classList.remove('skelon');
       currencyValue = numberToCurrency.format(value);
     }
@@ -164,7 +164,8 @@ export class FinancialStatement {
    * @param {"on" | "off"} visibility
    */
   #iconPathHandler(visibility) {
-    AssetManager.updateIcon(
+    AssetManager.updateAsset(
+      'icon',
       '#visibility-icon',
       `icon-visibility-${visibility}.svg`
     );

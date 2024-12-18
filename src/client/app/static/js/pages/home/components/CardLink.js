@@ -92,7 +92,8 @@ export class CardLink {
   }
 
   #handleIcon() {
-    AssetManager.updateIcon(
+    AssetManager.updateAsset(
+      'icon',
       `#card-icon-${this.#name}`,
       `icon-${this.#name}.svg`
     );
