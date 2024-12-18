@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.header__brand-name {
+.header .brand-name {
   font-size: 1rem;
   margin-left: 0.8rem;
 }

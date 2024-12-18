@@ -10,23 +10,23 @@
   <script type="module" src="/app/static/js/index.js" defer></script>
 </head>
 
-<body data-theme="light">
+<body>
   <header id="header" class="header">
-    <a class="header__brand-name" rel="home" href="/app">Coperative Bank</a>
-    <button id="menu-button" class="btn-unset header__menu-button" aria-label="Menu">
-      <img class="icon header__menu-icon" alt="Menu Icon">
+    <a class="brand-name" rel="home" href="/app">Coperative Bank</a>
+    <button class="btn-unset btn-menu" aria-label="Menu">
+      <img class="icon menu-icon" alt="Menu Icon">
     </button>
-    <nav class="header__menu" aria-label="Main navigation">
-      <ul class="header__menu-list">
-        <li class="header__menu-item"><a class="header__menu-link">My Account</a></li>
-        <li class="header__menu-item">
-          <button class="btn-unset  header__theme-button" id="switch-theme-btn" aria-label="Switch Theme">
+    <nav class="nav-menu" aria-label="Main navigation">
+      <ul class="menu-list">
+        <li class="menu-item"><a class="menu-link">My Account</a></li>
+        <li class="menu-item">
+          <button class="btn-unset btn-theme" id="btn-switch-theme" aria-label="Switch Theme">
             <span>Switch Theme</span>
-            <img class="icon header__theme-icon" id="theme-icon" alt="Theme Mode Icon">
+            <img class="icon icon-theme" id="icon-theme" alt="Theme Mode Icon">
           </button>
         </li>
-        <li class="header__menu-item"><a class="header__menu-link">Settings</a></li>
-        <li class="header__menu-item">Logout</li>
+        <li class="menu-item"><a class="menu-link">Settings</a></li>
+        <li class="menu-item">Logout</li>
       </ul>
     </nav>
   </header>
@@ -34,11 +34,11 @@
 
   </main>
   <footer id="footer" class="footer" aria-label="Footer">
-    <a class="footer__icon-link" rel="home" href="/app">
-      <img class="icon footer__icon" alt="Footer Icon">
+    <a class="icon-link" rel="home" href="/app">
+      <img class="icon" alt="Footer Icon">
     </a>
-    <div class="footer__content">
-      <a class="footer__brand-name">Coperative Bank</a>
+    <div class="content">
+      <a class="brand-name">Coperative Bank</a>
       <p>By Cleiner Furlani</p>
     </div>
   </footer>

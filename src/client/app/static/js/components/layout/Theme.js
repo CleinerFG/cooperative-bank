@@ -1,152 +1,92 @@
 /**
- * @typedef {"dark" | "light"} ThemeType
- */
-
-/**
- * Manages the application theme, including storing and applying
+ * Manages the app theme, including storing and applying
  * themes, updating assets based on the current theme, and handling
  * user interactions for theme switching.
- *
- * @class
  */
 export class Theme {
-  /**
-   * The key used to store the theme preference in localStorage.
-   * @public
-   * @static
-   * @constant {string}
-   */
-  static THEME_KEY = "coperativeBankTheme";
+  static LOCAL_STORAGE_KEY = 'coperativeBankTheme';
+  static DEFAULT_THEME = 'light';
 
-  /**
-   * The body element of the document.
-   * @private
-   * @type {HTMLElement}
-   */
-  #bodyElement = document.body;
-
-  /**
-   * Initializes the Theme instance by applying the stored theme and setting up
-   * the button handler for theme switching.
-   */
   constructor() {
     this.#init();
   }
 
   /**
-   * Retrieves the currently stored theme from localStorage.
-   *
-   * @public
-   * @static
-   * @returns {ThemeType} The currently stored theme. If no theme is
-   * found, return "dark".
+   * @type {'dark'|'ligth'}
    */
   static get storedTheme() {
-    return localStorage.getItem(Theme.THEME_KEY) ?? "dark";
+    return localStorage.getItem(Theme.LOCAL_STORAGE_KEY) ?? Theme.DEFAULT_THEME;
   }
 
   /**
-   * Sets the stored theme in localStorage.
-   * @private
-   * @param {ThemeType} value - The theme value to store.
+   * @param {'dark'|'ligth'} value
    */
   set #storedTheme(value) {
-    localStorage.setItem(Theme.THEME_KEY, value);
+    localStorage.setItem(Theme.LOCAL_STORAGE_KEY, value);
   }
 
   /**
-   * Retrieves the current theme applied to the body element.
-   * @private
-   * @returns {ThemeType} The current theme applied to the body.
+   * @type {'dark'|'ligth'}
    */
-  get #bodyTheme() {
-    return this.#bodyElement.dataset.theme;
+  get #currentTheme() {
+    return document.body.dataset.theme;
   }
 
   /**
-   * Sets the theme applied to the body element.
-   * @private
-   * @param {ThemeType} value - The theme value to apply to the body.
+   * @param {'dark'|'ligth'} value
    */
-  set #bodyTheme(value) {
-    this.#bodyElement.dataset.theme = value;
+  set #currentTheme(value) {
+    document.body.dataset.theme = value;
   }
 
   /**
- * Builds the icon path based on the provided theme.
- *
- * @private
- * @param {string} path - The original path of the icon.
- * @param {ThemeType} theme - The theme to apply.
- * @returns {string} The new path for the icon based on the theme.
- */
-  #buildIconPath(path, theme) {
-    const basePath = "/app/static/assets/icons/";
+   * @type {'dark'|'ligth'}
+   */
+  get #updatedTheme() {
+    return this.#currentTheme === 'dark' ? 'light' : 'dark';
+  }
+
+  /**
+   * @param {string} originalPath
+   * @param {'dark'|'ligth'} theme
+   */
+  #buildIconPath(originalPath, theme) {
+    const basePath = '/app/static/assets/icons/';
     const iconPattern = /([^\/]+)\.svg$/;
 
-    const iconMatch = path.match(iconPattern);
+    const iconMatch = originalPath.match(iconPattern);
     const icon = iconMatch[0];
 
-    return basePath + theme + "/" + icon;
+    return basePath + theme + '/' + icon;
   }
 
-  /**
-   * Updates the paths for all icon elements based on the current theme.
-   *
-   * @private
-   * @param {ThemeType} theme - The current theme to update assets for.
-   */
-  #updateIcons(theme) {
-    const icons = document.querySelectorAll(".icon");
+  #updateIcons() {
+    const icons = document.querySelectorAll('.icon');
     icons.forEach((icon) => {
       const path = icon.src;
-      const newPath = this.#buildIconPath(path, theme);
+      const newPath = this.#buildIconPath(path, this.#updatedTheme);
       icon.src = newPath;
     });
   }
 
-  /**
-   * Toggles the theme between "dark" and "light", updates the body theme,
-   * stores the new theme in localStorage, and updates the assets accordingly.
-   *
-   * @private
-   */
   #toggleTheme() {
-    const currentTheme = this.#bodyTheme;
-    const updatedTheme = currentTheme === "dark" ? "light" : "dark";
-    this.#bodyTheme = updatedTheme;
-    this.#storedTheme = updatedTheme;
-    this.#updateIcons(updatedTheme);
+    this.#updateIcons();
+    this.#storedTheme = this.#updatedTheme;
+    this.#currentTheme = this.#updatedTheme;
   }
 
-  /**
-   * Applies the stored theme from localStorage to the body element on initialization.
-   *
-   * @private
-   */
   #applyStoredTheme() {
-    this.#bodyTheme = Theme.storedTheme;
+    this.#currentTheme = Theme.storedTheme;
   }
 
-  /**
-   * Sets up the button event listener to toggle the theme when clicked.
-   *
-   * @private
-   */
-  #btnHandler() {
+  #setListeners() {
     document
-      .getElementById("switch-theme-btn")
-      .addEventListener("click", () => this.#toggleTheme());
+      .getElementById('btn-switch-theme')
+      .addEventListener('click', this.#toggleTheme.bind(this));
   }
 
-  /**
-   * Initializes the Theme by applying the stored theme and setting up
-   * the button handler.
-   *
-   * @private
-   */
   #init() {
     this.#applyStoredTheme();
-    this.#btnHandler();
+    this.#setListeners();
   }
 }

@@ -10,46 +10,43 @@ export class Layout {
     this.#init();
   }
 
-  /**
-   * Toggles the visibility of the navigation menu and adds event listeners to handle menu interactions.
-   * When the menu button is clicked, it toggles the active state of the menu.
-   * Additionally, clicking outside the menu closes it.
-   *
-   */
-  #menuHandler() {
-    const menuBtn = document.querySelector('#menu-button');
-    const navMenu = document.querySelector('.header__menu');
-
-    const toggleMenu = () => {
-      menuBtn.classList.toggle('header__menu-button--active');
-      navMenu.classList.toggle('header__menu--block');
-    };
-
-    const closeMenuOnClickOutside = (ev) => {
-      if (!menuBtn.contains(ev.target) && !navMenu.contains(ev.target)) {
-        menuBtn.classList.remove('header__menu-button--active');
-        navMenu.classList.remove('header__menu--block');
-      }
-    };
-
-    menuBtn.addEventListener('click', toggleMenu);
-
-    window.addEventListener('click', closeMenuOnClickOutside);
+  get #btnMenuElement() {
+    return document.querySelector('.header .btn-menu');
   }
 
-  /**
-   * Updates asset paths for icons in the header and footer.
-   *
-   */
-  #assetHandler() {
-    AssetManager.updateIcon('.header__menu-icon', 'icon-menu.svg');
-    AssetManager.updateIcon('#theme-icon', 'icon-theme.svg');
-    AssetManager.updateIcon('.footer__icon', 'icon-globe.svg');
+  get #navMenuElement() {
+    return document.querySelector('.header .nav-menu');
+  }
+
+  #toggleMenu() {
+    this.#btnMenuElement.classList.toggle('btn-active');
+    this.#navMenuElement.classList.toggle('display-block');
+  }
+
+  #closeMenuOnClickOutside(e) {
+    if (
+      !this.#btnMenuElement.contains(e.target) &&
+      !this.#navMenuElement.contains(e.target)
+    ) {
+      this.#btnMenuElement.classList.remove('btn-active');
+      this.#navMenuElement.classList.remove('display-block');
+    }
+  }
+
+  #setListeners() {
+    this.#btnMenuElement.addEventListener('click', this.#toggleMenu.bind(this));
+    window.addEventListener('click', this.#closeMenuOnClickOutside.bind(this));
+  }
+
+  #handleAssets() {
+    AssetManager.updateIcon('.header .menu-icon', 'icon-menu.svg');
+    AssetManager.updateIcon('#icon-theme', 'icon-theme.svg');
+    AssetManager.updateIcon('.footer .icon', 'icon-globe.svg');
   }
 
   #init() {
     new Theme();
-    this.#menuHandler();
-    this.#assetHandler();
+    this.#setListeners();
+    this.#handleAssets();
   }
 }

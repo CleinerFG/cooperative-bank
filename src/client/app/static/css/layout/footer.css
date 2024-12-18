@@ -8,11 +8,11 @@
   gap: 2rem;
 }
 
-.footer__icon {
+.footer .icon {
   width: 4rem;
 }
 
-.footer__content {
+.footer .content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,11 +20,11 @@
 }
 
 @media (min-width: 768px) {
-  .footer__content {
+  .footer .content {
     flex-direction: row;
   }
 
-  .footer__content a + p::before {
+  .footer .content a + p::before {
     content: ' - ';
   }
 }

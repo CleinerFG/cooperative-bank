@@ -1,4 +1,4 @@
-.header__menu-button {
+.header .btn-menu {
   z-index: 1;
   margin-right: 0.6rem;
   padding: 0.3rem;
@@ -6,18 +6,22 @@
   transition: all 0.4s ease-in-out;
 }
 
-.header__menu-button,
-.header__menu-icon {
+.header .btn-menu:hover {
+  border-radius: 50%;
+  background-color: var(--component-bg-color);
+}
+
+.header .btn-menu,
+.header .menu-icon {
   width: 2rem;
   height: 2rem;
 }
 
-.header__menu-button--active {
+.header .btn-menu.btn-active {
   background-color: var(--component-bg-color);
-  transition: all 0.5s ease;
 }
 
-.header__menu {
+.header .nav-menu {
   background-color: var(--component-bg-color);
   border: var(--component-border);
   border-radius: var(--component-border-radius);
@@ -27,62 +31,52 @@
   right: calc(var(--container-padding) - 0.3rem);
 }
 
-.header__menu--block {
+.header .nav-menu.display-block {
   display: block;
 }
 
-.header__menu-list {
+.header .menu-list {
   display: flex;
   flex-direction: column;
 }
 
-.header__menu-item {
+.header .menu-list .menu-item {
   height: fit-content;
   padding: 0.5rem;
 }
 
-.header__menu-item:first-child {
+.header .menu-list .menu-item:first-child {
   font-weight: 460;
   border-bottom: var(--component-border);
 }
 
-.header__menu-item:last-child {
+.header .menu-list .menu-item:last-child {
   border-top: var(--component-border);
 }
 
-.header__menu-item:nth-child(2) {
+.header .menu-list .menu-item:nth-child(2) {
   padding-bottom: 0;
 }
 
-.header__theme-icon {
+.header .theme-icon {
   width: 1.2rem;
 }
 
-.header__menu-item:last-child {
+.header .menu-list .menu-item:last-child {
+  cursor: pointer;
   color: var(--color-detail);
 }
 
-.header__theme-button {
+.header .menu-list .menu-item:last-child:hover {
+  text-decoration: underline;
+}
+
+.header .btn-theme {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Hover*/
-.header__menu-button:hover {
-  border-radius: 50%;
-  background-color: var(--component-bg-color);
-}
-
-.header__menu-item:last-child:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.header__theme-button:hover span {
+.header .btn-theme:hover span {
   color: var(--color-cta);
-}
-
-.header__theme-button:hover .header__theme-icon {
-  filter: drop-shadow(0 0 0.5rem #fff);
 }
