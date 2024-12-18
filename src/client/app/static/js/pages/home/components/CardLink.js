@@ -1,4 +1,4 @@
-import { router } from '../../../core/Router.js';
+import { Router } from '../../../core/Router.js';
 import { capitalize } from '../../../utils/stringUtils.js';
 import { AssetManager } from '../../../core/AssetManager.js';
 
@@ -86,10 +86,8 @@ export class CardLink {
 
   #handleRoute() {
     document.getElementById(this.#cssID).addEventListener('click', (e) => {
-      console.log('click');
-
       e.preventDefault();
-      router.navigateTo(this.#endpoint);
+      Router.navigateTo(this.#endpoint);
     });
   }
 

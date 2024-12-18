@@ -1,5 +1,5 @@
 import { Layout } from './components/layout/Layout.js';
-import { router } from './core/Router.js';
+import { Router } from './core/Router.js';
 
 new Layout();
-router.init();
+new Router();

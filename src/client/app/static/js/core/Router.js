@@ -2,45 +2,42 @@ import { HomePageView } from '../pages/home/HomePageView.js';
 import { LoanRequestsPageView } from '../pages/loan/requests/LoanRequestsPageView.js';
 import { OverviewPageView } from '../pages/loan/overview/OverviewPageView.js';
 
-class Router {
+export class Router {
   static #routes = [
     { path: '/app/', view: HomePageView },
     { path: '/app/loan/requests', view: LoanRequestsPageView },
     { path: '/app/loan/overview', view: OverviewPageView },
   ];
 
-  navigateTo(url) {
-    history.pushState(null, null, url);
-    this.handleRouting();
+  constructor() {
+    this.#init();
   }
 
-  async handleRouting() {
-    const potentialMatches = Router.#routes.map((route) => {
-      return {
-        route: route,
-        isMatch: location.pathname === route.path,
-      };
-    });
+  /**
+   * @param {string} url
+   */
+  static navigateTo(url) {
+    history.pushState(null, null, url);
+    Router.handleRouting();
+  }
 
-    let match = potentialMatches.find(
-      (potentialMatch) => potentialMatch.isMatch
+  static async handleRouting() {
+    let match = Router.#routes.find(
+      (route) => route.path === location.pathname
     );
+
     if (!match) {
-      match = {
-        route: Router.#routes[0],
-      };
+      match = Router.#routes[0];
     }
 
-    new match.route.view();
+    new match.view();
   }
 
-  init() {
-    window.addEventListener('popstate', () => this.handleRouting());
+  #init() {
+    window.addEventListener('popstate', () => Router.handleRouting());
 
     document.addEventListener('DOMContentLoaded', () => {
-      this.handleRouting();
+      Router.handleRouting();
     });
   }
 }
-
-export const router = new Router();
