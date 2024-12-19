@@ -1,14 +1,6 @@
 /**
- * Simulates a waiting period by returning a promise that resolves after a specified number of seconds.
- *
- * This function is used for simulating delays, such as waiting for API responses during testing.
- *
- * @param {number} [seconds=1] - The number of seconds to wait before resolving the promise. Default is 1 second.
- * @returns {Promise} A promise that resolves after the specified wait time.
- *
- * @example
- * // Simulates a 3-second wait
- * await simulateWait(3);
+ * @param {number} [seconds=1]
+ * @returns {Promise}
  */
 export function simulateWait(seconds = 1) {
   return new Promise((resolve) => {
@@ -20,7 +12,7 @@ export function simulateWait(seconds = 1) {
  * Generates an array of random dates.
  * The generated dates are returned as ISO strings.
  *
- * @param {number} size - The number of random dates to generate.
+ * @param {number} size
  * @returns {string[]} An array of random date strings in ISO format (e.g. '2024-04-15T08:23:45.000Z').
  */
 function generateRandomDates(size) {

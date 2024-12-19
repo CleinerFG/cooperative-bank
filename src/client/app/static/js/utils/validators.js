@@ -3,12 +3,10 @@ import { EmptyValueError, ZeroValueError } from "../errors/InputErrors.js";
 /**
  * A function that validates an input value.
  * @callback Validator
- * @param {string} value - The value to validate.
- * @throws {Error} If the validation fails.
+ * @param {string} value
  */
 
 /**
- * Validates that the input is not empty.
  * @type {Validator}
  */
 export function emptyValidator(value) {
@@ -16,7 +14,6 @@ export function emptyValidator(value) {
 };
 
 /**
- * Validates that the input is not zero.
  * @type {Validator}
  */
 export function zeroValidator(value) {

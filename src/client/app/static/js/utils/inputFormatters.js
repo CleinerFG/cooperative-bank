@@ -3,11 +3,10 @@ import { numberToCurrency, numberToPercent } from "./formatters.js";
 /**
  * A function that validates an input value.
  * @callback InputFormatter
- * @param {Event} ev - The input event triggered by the user.
+ * @param {Event} ev
  */
 
 /**
- * Formats the input value as currency.
  * @type {InputFormatter}
  */
 export function currencyFormatter(ev) {
@@ -17,8 +16,6 @@ export function currencyFormatter(ev) {
 }
 
 /**
- * Formats the input value as a percentage.
- * Additionally, it adjusts the cursor position to the end of the formatted value.
  * @type {InputFormatter}
  */
 export function percentFormatter(ev) {
@@ -31,8 +28,6 @@ export function percentFormatter(ev) {
 }
 
 /**
- * Restricts the input to only numeric values.
- * Non-numeric characters are removed from the input.
  * @type {InputFormatter}
  */
 export function strictNumberFormatter(ev) {
