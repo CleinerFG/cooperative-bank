@@ -5,18 +5,13 @@ import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPass
 
 /**
  * Represents a card component specifically for displaying Loan Request Received.
- * Implements abstract methods from `CardComponent` to provide templates and configurations
- * for rendering Loan Request Received details.
- *
- * @class
- * @extends CardComponent
  */
 export class CardLoanRequestReceived extends CardComponent {
   get _ModelClass() {
     return LoanRequestModel;
   }
 
-  get _cssId() {
+  get _id() {
     return `loan-request-${this._model.id}`;
   }
 
@@ -24,7 +19,7 @@ export class CardLoanRequestReceived extends CardComponent {
     return `loan-request`;
   }
 
-  get _cardItemsTemplate() {
+  get _itemsArray() {
     return [
       { label: 'Debtor', value: this._model.debtor },
       { label: 'Date', value: this._model.date },
@@ -39,11 +34,11 @@ export class CardLoanRequestReceived extends CardComponent {
     ];
   }
 
-  get _cardHeaderTemplate() {
+  get _headerTemplate() {
     return capitalize(this._model.status);
   }
 
-  get _cardFooterTemplate() {
+  get _footerTemplate() {
     return `
      <button id="btn-approve-${this._model.id}" class="btn card-data__btn btn-success">
         Approve 
@@ -54,7 +49,7 @@ export class CardLoanRequestReceived extends CardComponent {
     `;
   }
 
-  _modalHandler() {
+  _handleModal() {
     document
       .querySelector(`#btn-approve-${this._model.id}`)
       .addEventListener('click', () => {

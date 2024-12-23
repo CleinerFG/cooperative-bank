@@ -1,21 +1,16 @@
-import { CardComponent } from "../../../../js/components/CardComponent.js";
-import { EventModel } from "../models/EventModel.js";
-import { capitalize } from "../../../../js/utils/stringUtils.js";
+import { CardComponent } from '../../../../js/components/CardComponent.js';
+import { EventModel } from '../models/EventModel.js';
+import { capitalize } from '../../../../js/utils/stringUtils.js';
 
 /**
  * Represents a card component specifically for displaying event data.
- * Implements abstract methods from `CardComponent` to provide templates and configurations
- * for rendering event-specific details.
- *
- * @class
- * @extends CardComponent
  */
 export class CardEvent extends CardComponent {
   get _ModelClass() {
     return EventModel;
   }
 
-  get _cssId() {
+  get _id() {
     return `event-${this._model.id}`;
   }
 
@@ -23,18 +18,18 @@ export class CardEvent extends CardComponent {
     return `event`;
   }
 
-  get _cardItemsTemplate() {
+  get _itemsArray() {
     return [
-      { label: "Due Date", value: this._model.dueDate },
-      { label: "Value", value: this._model.value },
+      { label: 'Due Date', value: this._model.dueDate },
+      { label: 'Value', value: this._model.value },
     ];
   }
 
-  get _cardHeaderTemplate() {
+  get _headerTemplate() {
     return capitalize(this._model.description);
   }
 
-  get _cardFooterTemplate() {
+  get _footerTemplate() {
     return `
       <button class="btn btn-attention card-data__btn">
       See
@@ -45,14 +40,9 @@ export class CardEvent extends CardComponent {
   /**
    * Handles modal behavior.
    * In this case, it does not open a modal.
-   *
-   * @protected
-   * @returns {boolean}
-   * @override
-   *
    * @note The modal for the cardEvent is still to be built.
    */
-  _modalHandler() {
+  _handleModal() {
     return false;
   }
 }

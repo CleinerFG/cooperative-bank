@@ -16,7 +16,7 @@ export class CardLoanRequestOpened extends CardComponent {
     return LoanRequestModel;
   }
 
-  get _cssId() {
+  get _id() {
     return `loan-request-${this._model.id}`;
   }
 
@@ -24,7 +24,7 @@ export class CardLoanRequestOpened extends CardComponent {
     return `loan-request`;
   }
 
-  get _cardItemsTemplate() {
+  get _itemsArray() {
     return [
       { label: 'Creditor', value: this._model.creditor },
       { label: 'Date', value: this._model.date },
@@ -39,7 +39,7 @@ export class CardLoanRequestOpened extends CardComponent {
     ];
   }
 
-  get _cardHeaderTemplate() {
+  get _headerTemplate() {
     let cssClass = 'p-pending';
     switch (this._model.status) {
       case 'accepted':
@@ -55,16 +55,10 @@ export class CardLoanRequestOpened extends CardComponent {
     return str;
   }
 
-  get _cardFooterTemplate() {
+  get _footerTemplate() {
     return this._buttonsByStatus;
   }
 
-  /**
-   * Returns the HTML for the button based on the status.
-   *
-   * @protected
-   * @type {string}
-   */
   get _buttonsByStatus() {
     const action = this._model.status === 'pending' ? 'cancel' : 'confirm';
     const cssClass = this._model.status === 'pending' ? 'btn-fail' : '';
@@ -75,7 +69,7 @@ export class CardLoanRequestOpened extends CardComponent {
      `;
   }
 
-  _modalHandler() {
+  _handleModal() {
     const action = this._model.status === 'pending' ? 'cancel' : 'confirm';
     document
       .querySelector(`#btn-${action}-${this._model.id}`)

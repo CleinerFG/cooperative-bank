@@ -14,7 +14,7 @@ export class CardActiveLoan extends CardComponent {
     return LoanModel;
   }
 
-  get _cssId() {
+  get _id() {
     return `active-loan-${this._model.id}`;
   }
 
@@ -22,7 +22,7 @@ export class CardActiveLoan extends CardComponent {
     return `active-loan`;
   }
 
-  get _cardItemsTemplate() {
+  get _itemsArray() {
     return [
       {
         label: this._model.creditor ? 'Creditor' : 'Debtor',
@@ -46,11 +46,11 @@ export class CardActiveLoan extends CardComponent {
     ];
   }
 
-  get _cardHeaderTemplate() {
+  get _headerTemplate() {
     return `ID: ${this._model.id}`;
   }
 
-  get _cardFooterTemplate() {
+  get _footerTemplate() {
     return `
      <button id="btn-active-loan-${this._model.id}" class="btn card-data__btn">
         Installments
@@ -61,11 +61,6 @@ export class CardActiveLoan extends CardComponent {
   /**
    * Handles modal behavior.
    * In this case, it does not open a modal.
-   *
-   * @protected
-   * @returns {boolean}
-   * @override
-   *
    * @note The modal for the cardActiveLoan is still to be built.
    */
   _modalHandler() {
