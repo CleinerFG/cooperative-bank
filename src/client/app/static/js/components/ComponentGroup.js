@@ -260,7 +260,7 @@ export class ComponentGroup {
       this.#cardsContainerElement,
       this._category
     );
-    this.#cardState.defineTexts(...this._emptyCardsTexts);
+    this.#cardState.emptyStateTexts = this._emptyCardsTexts;
   }
 
   /**
@@ -281,7 +281,7 @@ export class ComponentGroup {
    * @private
    */
   async #fetchFromApi() {
-    this.#cardState.type = 'loading';
+    this.#cardState.state = 'loading';
     await simulateWait(1);
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
   }
@@ -299,11 +299,11 @@ export class ComponentGroup {
         this.#cardsContainerElement.innerHTML = '';
         this.#initCardComponents();
       } else {
-        this.#cardState.type = 'empty';
+        this.#cardState.state = 'empty';
         console.log('empty');
       }
     } catch (err) {
-      this.#cardState.type = 'error';
+      this.#cardState.state = 'error';
       console.log(err);
     }
   }
