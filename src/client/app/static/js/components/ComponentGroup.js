@@ -166,7 +166,11 @@ export class ComponentGroup {
 
   #handleAssets() {
     if (this.#useDataFilter) {
-      AssetManager.updateAsset('icon', `#filter-icon`, 'icon-filter.svg');
+      AssetManager.updateAsset(
+        'icon',
+        `#${this._ICON_FILTER_ID}`,
+        'icon-filter.svg'
+      );
     }
   }
 
