@@ -26,7 +26,11 @@ export class CardLinkGroups {
     this.#init();
   }
 
-  #handleCardLinksOnFeatures({ containerElement, featureName, cardsName }) {
+  #handleCardLinksOnFeatures({
+    containerElement,
+    name: featureName,
+    cardsName,
+  }) {
     const setCard = (cardName) =>
       new CardLink(containerElement, featureName, cardName);
     cardsName.forEach(setCard);
