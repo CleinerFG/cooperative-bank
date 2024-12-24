@@ -1,21 +1,10 @@
 import { CardLink } from './CardLink.js';
-import { AssetManager } from '../../../core/AssetManager.js';
 
 /**
  * Controller for managing groups of card links organized into sections.
- *
- * @class
  */
 export class CardLinkGroups {
-  /**
-   * Parameters for configuring sections.
-   * Each section contains a name, a container selector, and items.
-   *
-   * @private
-   * @type {Array<Object>}
-   */
-
-  #featuresConfig = [
+  #features = [
     {
       name: 'wallet',
       containerElement: document.querySelector('.wallet__cards'),
@@ -33,30 +22,17 @@ export class CardLinkGroups {
     },
   ];
 
-  /**
-   * Initializes the controller by creating and initializing features.
-   */
   constructor() {
     this.#init();
   }
 
-  #createFeatures() {
-    this.#featuresConfig.forEach((feature) => {
-      setSectionForCardsLink(
-        feature.containerElement,
-        feature.name,
-        feature.cardsName
-      );
-    });
+  #handleCardLinksOnFeatures({ containerElement, featureName, cardsName }) {
+    const setCard = (cardName) =>
+      new CardLink(containerElement, featureName, cardName);
+    cardsName.forEach(setCard);
   }
 
   #init() {
-    this.#createFeatures();
+    this.#features.forEach(this.#handleCardLinksOnFeatures);
   }
-}
-
-function setSectionForCardsLink(containerElement, featureName, cardsName) {
-  cardsName.map(
-    (cardName) => new CardLink(containerElement, featureName, cardName)
-  );
 }

@@ -6,28 +6,13 @@ import { EventGroup } from './components/EventGroup.js';
 
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.
- *
- * @class
- * @extends PageView
  */
 export class HomePageView extends PageView {
-  /**
-   * Returns an array of feature section names to be rendered.
-   *
-   * @protected
-   * @type {string[]}
-   */
-  get _configFeatures() {
+  get _features() {
     return ['wallet', 'loan', 'investments'];
   }
 
-  /**
-   * Returns the HTML template for the Financial Statement section.
-   *
-   * @protected
-   * @type {string}
-   */
-  get _templateStatement() {
+  get _statementTemplate() {
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>
@@ -36,13 +21,7 @@ export class HomePageView extends PageView {
     `;
   }
 
-  /**
-   * Returns the HTML template for the Events section.
-   *
-   * @protected
-   * @type {string}
-   */
-  get _templateEvents() {
+  get _eventsTemplate() {
     return `
     <section class="section events">
       <h2 class="section__h2">Events</h2>
@@ -50,10 +29,8 @@ export class HomePageView extends PageView {
     `;
   }
 
-  get _templateFeatures() {
-    return this._configFeatures
-      .map((sec) => this._buildTemplateFeature(sec))
-      .join('');
+  get _featuresTemplate() {
+    return this._features.map(this._buildFeatureTemplate).join('');
   }
 
   get _pageTitle() {
@@ -62,18 +39,14 @@ export class HomePageView extends PageView {
 
   get _template() {
     return (
-      this._templateStatement + this._templateFeatures + this._templateEvents
+      this._statementTemplate + this._featuresTemplate + this._eventsTemplate
     );
   }
 
   /**
-   * Builds an HTML section template for a given feature.
-   *
-   * @protected
-   * @param {string} name The name of the feature section.
-   * @returns {string} The HTML string.
+   * @param {string} name
    */
-  _buildTemplateFeature(name) {
+  _buildFeatureTemplate(name) {
     return `
       <section class="section ${name}">
         <h2 class="section__h2">${capitalize(name)}</h2>

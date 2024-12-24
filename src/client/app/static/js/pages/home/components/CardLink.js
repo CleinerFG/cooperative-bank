@@ -4,14 +4,9 @@ import { AssetManager } from '../../../core/AssetManager.js';
 
 /**
  * Represents a clickable card component that redirects to a page in the application.
- *
- * @class
  */
 export class CardLink {
   /**
-   * The container where the card link will be rendered.
-   *
-   * @private
    * @type {HTMLElement}
    */
   #containerElement;
@@ -19,18 +14,14 @@ export class CardLink {
   #featureName;
 
   /**
-   * The name of the card link, used for labeling and IDs.
-   *
-   * @private
    * @type {string}
    */
   #name;
 
   /**
-   * Creates a new CardLink instance.
-   *
-   * @param {HTMLElement} containerElement - The container element where the card link will be rendered.
-   * @param {string} name - The name of the card link.
+   * @param {HTMLElement} containerElement
+   * @param {string} featureName
+   * @param {string} name
    */
   constructor(containerElement, featureName, name) {
     this.#containerElement = containerElement;
@@ -40,36 +31,31 @@ export class CardLink {
   }
 
   /**
-   * Gets the name of the card link.
-   *
-   * @public
-   * @type {string} The name of the card link.
+   * @type {string}
    */
   get name() {
     return this.#name;
   }
 
-  /**
-   * @type {string}
-   */
   get #endpoint() {
     return `/app/${this.#featureName}/${this.#name}`;
   }
 
-  get #cssID() {
+  get #anchorId() {
     return `card-link-a-${this.#name}`;
   }
 
-  /**
-   * @type {string}
-   */
+  get #iconId() {
+    return `card-icon-${this.#featureName}-${this.#name}`;
+  }
+
   get #template() {
     const capName = capitalize(this.#name);
-    const str = `
+    return `
     <div class="card-link__container">
-      <a id="${this.#cssID}" class="card-link__a" rel="next" a="${this.#endpoint}" data-link>
+      <a id="${this.#anchorId}" class="card-link__a" rel="next" a="${this.#endpoint}" data-link>
         <div class="card card-link">
-          <img id="card-icon-${this.#name}"
+          <img id="${this.#iconId}"
             class="icon card-link__icon"
             alt="${capName} Icon">
           <span class="label card-link__label">${capName}</span>
@@ -77,7 +63,6 @@ export class CardLink {
       </a>
     </div>
     `;
-    return str;
   }
 
   #render() {
@@ -85,23 +70,23 @@ export class CardLink {
   }
 
   #handleRoute() {
-    document.getElementById(this.#cssID).addEventListener('click', (e) => {
+    document.getElementById(this.#anchorId).addEventListener('click', (e) => {
       e.preventDefault();
       Router.navigateTo(this.#endpoint);
     });
   }
 
-  #handleIcon() {
+  #handleAssets() {
     AssetManager.updateAsset(
       'icon',
-      `#card-icon-${this.#name}`,
+      `#${this.#iconId}`,
       `icon-${this.#name}.svg`
     );
   }
 
   #init() {
     this.#render();
-    this.#handleIcon();
+    this.#handleAssets();
     this.#handleRoute();
   }
 }
