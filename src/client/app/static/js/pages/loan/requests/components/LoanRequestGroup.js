@@ -4,10 +4,6 @@ import { CardLoanRequestOpened } from './CardLoanRequestOpened.js';
 
 /**
  * Manages a group of loan requests data components.
- * This class configures specific card types, categories, and default messages.
- *
- * @class
- * @extends ComponentGroup
  */
 export class LoanRequestGroup extends ComponentGroup {
   get _containerElement() {
@@ -35,7 +31,7 @@ export class LoanRequestGroup extends ComponentGroup {
 
   get _emptyCardsTexts() {
     return [
-      `There are no ${this._activeType} requests...`,
+      `There are no ${this._activeType.name} requests...`,
       "When there is news, we'll let you know ; )",
     ];
   }

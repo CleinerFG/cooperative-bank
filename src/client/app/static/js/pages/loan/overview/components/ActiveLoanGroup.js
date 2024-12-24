@@ -3,10 +3,6 @@ import { CardActiveLoan } from './CardActiveLoan.js';
 
 /**
  * Manages a group of active loans data components.
- * This class configures specific card types, categories, and default messages.
- *
- * @class
- * @extends ComponentGroup
  */
 export class ActiveLoanGroup extends ComponentGroup {
   get _containerElement() {

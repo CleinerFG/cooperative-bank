@@ -3,10 +3,6 @@ import { CardEvent } from './CardEvent.js';
 
 /**
  * Manages a group of events data components.
- * This class configures specific card types, categories, and default messages.
- *
- * @class
- * @extends ComponentGroup
  */
 export class EventGroup extends ComponentGroup {
   get _containerElement() {
