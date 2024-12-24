@@ -22,12 +22,12 @@ export class ActiveLoanGroup extends ComponentGroup {
       {
         name: 'payables',
         CardClass: CardActiveLoan,
-        endpoint: 'loans-payables',
+        endpoint: 'loan/overview/payable',
       },
       {
         name: 'receivables',
         CardClass: CardActiveLoan,
-        endpoint: 'loans-receivables',
+        endpoint: 'loan/overview/receivable',
       },
     ];
   }

@@ -4,11 +4,12 @@ const path = require('path');
 const app = express();
 
 // Constants
-const GLOBAL_STATIC_DIR = path.resolve(__dirname, 'client/global');
-const PUBLIC_STATIC_DIR = path.resolve(__dirname, 'client/public/static');
-const PUBLIC_PAGES_DIR = path.resolve(__dirname, 'client/public/pages');
-const APP_STATIC_DIR = path.resolve(__dirname, 'client/app/static');
-const APP_DIR = path.resolve(__dirname, 'client/app/');
+const GLOBAL_STATIC_DIR = path.resolve(__dirname, '../client/global');
+const PUBLIC_STATIC_DIR = path.resolve(__dirname, '../client/public/static');
+const PUBLIC_PAGES_DIR = path.resolve(__dirname, '../client/public/pages');
+const APP_STATIC_DIR = path.resolve(__dirname, '../client/app/static');
+const APP_DIR = path.resolve(__dirname, '../client/app/');
+const DB_DIR = path.resolve(__dirname, 'db');
 
 // Middleware for global static files
 app.use('/global', express.static(GLOBAL_STATIC_DIR));
@@ -37,7 +38,35 @@ const serveFile = (directory, filename) => (req, res) => {
   });
 };
 
-// Route handlers
+// JSON files route handlers
+app.get('/app/data/events/payment', serveFile(DB_DIR, 'events-payment.json'));
+app.get(
+  '/app/data/events/investment',
+  serveFile(DB_DIR, 'events-investment.json')
+);
+app.get(
+  '/app/data/financial-statement',
+  serveFile(DB_DIR, 'financial-statement.json')
+);
+app.get(
+  '/app/data/loan/overview/payable',
+  serveFile(DB_DIR, 'loan-overview-payable.json')
+);
+app.get(
+  '/app/data/loan/overview/receivable',
+  serveFile(DB_DIR, 'loan-overview-receivable.json')
+);
+app.get(
+  '/app/data/loan/request/opened',
+  serveFile(DB_DIR, 'loan-request-opened.json')
+);
+app.get(
+  '/app/data/loan/request/received',
+  serveFile(DB_DIR, 'loan-request-received.json')
+);
+app.get('/app/data/users', serveFile(DB_DIR, 'users.json'));
+
+// Page route handlers
 app.get('/', serveFile(PUBLIC_PAGES_DIR, 'index.html'));
 app.get('/login', serveFile(PUBLIC_PAGES_DIR, 'login.html'));
 app.get('/register', serveFile(PUBLIC_PAGES_DIR, 'register.html'));

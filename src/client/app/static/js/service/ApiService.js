@@ -3,7 +3,7 @@
  * It abstracts common HTTP methods (GET, POST, PUT, DELETE) for interacting with a backend service.
  */
 export class ApiService {
-  static #BASE_URL = 'http://localhost:8080/app/';
+  static #BASE_URL = 'http://localhost:8080/app/data/';
 
   /**
    * @param {string} endpoint

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "12",
+    "type": 1,
+    "date": "2024-01-31T13:57:54.844Z",
+    "creditor": "Kate Denson",
+    "description": "Buy a Cell",
+    "value": 4000,
+    "installments": 12,
+    "rate": 2,
+    "status": 1
+  },
+  {
+    "id": "14",
+    "type": 1,
+    "date": "2024-04-24T08:30:35.616Z",
+    "creditor": "Vitorio Toscano",
+    "description": "Buy a Car",
+    "value": 1000,
+    "installments": 48,
+    "rate": 2,
+    "status": 2
+  },
+  {
+    "id": "15",
+    "type": 1,
+    "date": "2024-11-15T13:29:10.161Z",
+    "creditor": "Meg Thomas",
+    "description": "Buy a TV",
+    "value": 5000,
+    "installments": 12,
+    "rate": 2,
+    "status": 3
+  }
+]

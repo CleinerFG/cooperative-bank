@@ -1,0 +1,44 @@
+[
+  {
+    "id": "24645",
+    "type": 2,
+    "status": 1,
+    "description": "Payment for services rendered",
+    "debtor": "Meg Thomas",
+    "date": "2024-01-14T16:52:10.661Z",
+    "amountDue": 1500,
+    "value": 5000,
+    "installments": 10,
+    "rate": 2,
+    "installmentValue": 500,
+    "remainingInstallments": 6
+  },
+  {
+    "id": "456453",
+    "type": 2,
+    "status": 1,
+    "description": "Loan for medical expenses",
+    "debtor": "Claudette Morel",
+    "date": "2024-01-14T16:52:10.661Z",
+    "amountDue": 3000,
+    "value": 3000,
+    "installments": 6,
+    "rate": 2,
+    "installmentValue": 520,
+    "remainingInstallments": 6
+  },
+  {
+    "id": "44654",
+    "type": 2,
+    "status": 1,
+    "description": "Loan for travel expenses",
+    "debtor": "Jake Park",
+    "date": "2024-05-03T01:31:07.054Z",
+    "amountDue": 1000,
+    "value": 2000,
+    "installments": 8,
+    "rate": 1,
+    "installmentValue": 200,
+    "remainingInstallments": 4
+  }
+]

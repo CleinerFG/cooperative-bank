@@ -1,0 +1,24 @@
+[
+  {
+    "id": "20",
+    "type": 2,
+    "date": "2024-06-11T20:29:44.418Z",
+    "debtor": "Kate Denson",
+    "description": "Buy a Cell",
+    "value": 42460.54,
+    "installments": 12,
+    "rate": 2.3,
+    "status": 1
+  },
+  {
+    "id": "18",
+    "type": 2,
+    "date": "2024-05-01T20:35:16.253Z",
+    "debtor": "Vitorio Toscano",
+    "description": "Buy a Cell",
+    "value": 1000,
+    "installments": 12,
+    "rate": 2,
+    "status": 1
+  }
+]

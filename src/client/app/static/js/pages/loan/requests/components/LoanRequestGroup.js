@@ -19,12 +19,12 @@ export class LoanRequestGroup extends ComponentGroup {
       {
         name: 'received',
         CardClass: CardLoanRequestReceived,
-        endpoint: 'requests-received',
+        endpoint: 'loan/request/received',
       },
       {
         name: 'opened',
         CardClass: CardLoanRequestOpened,
-        endpoint: 'requests-opened',
+        endpoint: 'loan/request/opened',
       },
     ];
   }

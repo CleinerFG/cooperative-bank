@@ -15,14 +15,15 @@ export class EventGroup extends ComponentGroup {
 
   get _typeMappingConfig() {
     return [
-      { name: 'payment',
+      {
+        name: 'payment',
         CardClass: CardEvent,
-        endpoint: 'events-payment' 
+        endpoint: 'events/payment',
       },
       {
         name: 'investment',
         CardClass: CardEvent,
-        endpoint: 'events-investment',
+        endpoint: 'events/investment',
       },
     ];
   }

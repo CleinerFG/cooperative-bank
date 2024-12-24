@@ -113,8 +113,7 @@ export class FinancialStatement {
     if (this.#currentVisibility === 'off') {
       this.#spanAmount.classList.add('skelon');
       await simulateWait(2);
-      // const value = await this.#fetchFromApi();
-      const value = 105465;
+      const value = await this.#fetchFromApi();
       this.#spanAmount.classList.remove('skelon');
       currencyValue = numberToCurrency.format(value);
     }
