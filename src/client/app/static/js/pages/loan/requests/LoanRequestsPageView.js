@@ -3,14 +3,7 @@ import { LoanRequestGroup } from './components/LoanRequestGroup.js';
 import { NewLoanRequestFormCtrl } from './controllers/NewLoanRequestFormCtrl.js';
 
 export class LoanRequestsPageView extends PageView {
-  /**
-   * Returns the HTML string for the initial section that introduces the loan process.
-   * Includes information about the steps required for a loan request.
-   *
-   * @protected
-   * @type {string}
-   */
-  get _templateSectionInitial() {
+  get _introductionTemplate() {
     return `
     <section class="section">
       <h1 class="section__h1">Take Out a Loan</h1>
@@ -21,14 +14,7 @@ export class LoanRequestsPageView extends PageView {
     `;
   }
 
-  /**
-   * Returns the HTML string for the section related to initiating a new loan request.
-   * Contains instructions for completing the loan application form.
-   *
-   * @protected
-   * @type {string}
-   */
-  get _templateSectionNewLoan() {
+  get _newRequestTemplate() {
     return `
     <section class="section new-request">
       <h2 class="section__h2">New Loan Request</h2>
@@ -37,13 +23,7 @@ export class LoanRequestsPageView extends PageView {
     `;
   }
 
-  /**
-   * Returns the HTML string for displaying the section of existing loan requests.
-   *
-   * @protected
-   * @type {string}
-   */
-  get _templateSectionLoanRequests() {
+  get _requestsTemplate() {
     return `
     <section class="section loan-requests">
       <h2 class="section__h2">Loan Requests</h2>
@@ -53,14 +33,14 @@ export class LoanRequestsPageView extends PageView {
 
   get _template() {
     return `
-    ${this._templateSectionInitial}
-    ${this._templateSectionNewLoan}
-    ${this._templateSectionLoanRequests}
+    ${this._introductionTemplate}
+    ${this._newRequestTemplate}
+    ${this._requestsTemplate}
     `;
   }
 
-  get _pageTitle(){
-    return 'Loan Requests'
+  get _pageTitle() {
+    return 'Loan Requests';
   }
 
   _initComponents() {

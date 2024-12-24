@@ -2,14 +2,7 @@ import { PageView } from '../../../views/PageView.js';
 import { ActiveLoanGroup } from './components/ActiveLoanGroup.js';
 
 export class OverviewPageView extends PageView {
-  /**
-   * Returns the HTML string for the section displaying an overview of active loans.
-   * Provides an introductory message describing active loans.
-   *
-   * @protected
-   * @type {string}
-   */
-  get _templateSectionInitial() {
+  get _introductionTemplate() {
     return `
     <section class="section active-loans">
       <h1 class="section__h1">Loans Overview</h1>
@@ -19,14 +12,9 @@ export class OverviewPageView extends PageView {
   }
 
   /**
-   * Returns the HTML string for the section displaying the total loan report.
-   * Contains placeholders for total amounts to pay and to receive.
-   *
-   * @protected
-   * @type {string}
    * @note Total values - Must be implemented
    */
-  get _templateSectionTotalReport() {
+  get _totalReportTemplate() {
     return `
     <section class="section total-report">
       <h2 class="section__h2">Total Report</h2>
@@ -42,8 +30,8 @@ export class OverviewPageView extends PageView {
 
   get _template() {
     return `
-    ${this._templateSectionInitial}
-    ${this._templateSectionTotalReport}
+    ${this._introductionTemplate}
+    ${this._totalReportTemplate}
     `;
   }
 
