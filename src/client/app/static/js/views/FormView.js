@@ -108,7 +108,7 @@ export class FormView {
       const InpClass = this.#getInputClassByCategory(params.category);
       params.containerElement = this.#formGroupElement;
       const inp = new InpClass(params);
-      // inp.init();
+      inp.init();
       return inp;
     });
   }

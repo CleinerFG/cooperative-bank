@@ -89,11 +89,13 @@ export class SearchInput extends Input {
 
   async #fetchFromApi() {
     this.#inpSearchState = 'on';
+    const query = this.#inpQueryElement.value;
     await simulateWait(1);
-
     try {
       return await ApiService.fetchFrom(`${this.#endpoint}/${query}`);
     } catch (e) {
+      console.log(e);
+
       throw new NotFoundError(this._id);
     } finally {
       this.#inpSearchState = 'off';
