@@ -63,7 +63,7 @@ export class CardActiveLoan extends CardComponent {
    * In this case, it does not open a modal.
    * @note The modal for the cardActiveLoan is still to be built.
    */
-  _modalHandler() {
-    return false;
+  _handleModal() {
+    // pass
   }
 }

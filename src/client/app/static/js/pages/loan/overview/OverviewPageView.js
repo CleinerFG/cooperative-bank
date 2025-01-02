@@ -1,7 +1,6 @@
 import { PageView } from '../../../views/PageView.js';
-import { ActiveLoanGroup } from './components/ActiveLoanGroup.js';
 
-export class OverviewPageView extends PageView {
+export default class OverviewPageView extends PageView {
   get _introductionTemplate() {
     return `
     <section class="section active-loans">
@@ -35,7 +34,8 @@ export class OverviewPageView extends PageView {
     `;
   }
 
-  _initComponents() {
-    new ActiveLoanGroup();
+  async _initComponents() {
+    const ActiveLoanGroup = await import('./components/ActiveLoanGroup.js');
+    new ActiveLoanGroup.default();
   }
 }

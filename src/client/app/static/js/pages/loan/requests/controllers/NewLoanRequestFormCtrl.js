@@ -8,7 +8,7 @@ import { LoanRequestModel } from '../models/LoanRequestModel.js';
  * @class
  * @extends FormCtrl
  */
-export class NewLoanRequestFormCtrl extends FormCtrl {
+export default class NewLoanRequestFormCtrl extends FormCtrl {
   get _modelClass() {
     return LoanRequestModel;
   }

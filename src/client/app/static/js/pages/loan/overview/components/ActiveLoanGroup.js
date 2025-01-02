@@ -4,7 +4,7 @@ import { CardActiveLoan } from './CardActiveLoan.js';
 /**
  * Manages a group of active loans data components.
  */
-export class ActiveLoanGroup extends ComponentGroup {
+export default class ActiveLoanGroup extends ComponentGroup {
   get _containerElement() {
     return document.querySelector('.section.active-loans');
   }

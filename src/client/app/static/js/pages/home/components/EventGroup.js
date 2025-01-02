@@ -4,7 +4,7 @@ import { CardEvent } from './CardEvent.js';
 /**
  * Manages a group of events data components.
  */
-export class EventGroup extends ComponentGroup {
+export default class EventGroup extends ComponentGroup {
   get _containerElement() {
     return document.querySelector('.section.events');
   }

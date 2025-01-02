@@ -3,7 +3,7 @@ import { CardLink } from './CardLink.js';
 /**
  * Controller for managing groups of card links organized into sections.
  */
-export class CardLinkGroups {
+export default class CardLinkGroups {
   #features = [
     {
       name: 'wallet',

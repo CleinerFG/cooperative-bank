@@ -5,7 +5,7 @@ import { CardLoanRequestOpened } from './CardLoanRequestOpened.js';
 /**
  * Manages a group of loan requests data components.
  */
-export class LoanRequestGroup extends ComponentGroup {
+export default class LoanRequestGroup extends ComponentGroup {
   get _containerElement() {
     return document.querySelector('.section.loan-requests');
   }

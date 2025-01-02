@@ -7,7 +7,7 @@ import { simulateWait } from '../../../../js/utils/tests.js';
  * Manages the display and visibility of the financial statement on the page.
  * Handles fetching financial data, formatting it, and toggling the visibility.
  */
-export class FinancialStatement {
+export default class FinancialStatement {
   /**
    * @type {HTMLElement}
    */

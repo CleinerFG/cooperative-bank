@@ -1,13 +1,10 @@
 import { PageView } from '../../views/PageView.js';
 import { capitalize } from '../../utils/stringUtils.js';
-import { FinancialStatement } from './components/FinancialStatement.js';
-import { CardLinkGroups } from './components/CardLinkGroups.js';
-import { EventGroup } from './components/EventGroup.js';
 
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.
  */
-export class HomePageView extends PageView {
+export default class HomePageView extends PageView {
   get _features() {
     return ['wallet', 'loan', 'investments'];
   }
@@ -59,8 +56,14 @@ export class HomePageView extends PageView {
   }
 
   async _initComponents() {
-    new FinancialStatement();
-    new CardLinkGroups();
-    new EventGroup(false);
+    const [FinancialStatement, CardLinkGroups, EventGroup] = await Promise.all([
+      import('./components/FinancialStatement.js'),
+      import('./components/CardLinkGroups.js'),
+      import('./components/EventGroup.js'),
+    ]);
+
+    new FinancialStatement.default();
+    new CardLinkGroups.default();
+    new EventGroup.default(false);
   }
 }

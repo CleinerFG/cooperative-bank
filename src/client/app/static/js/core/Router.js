@@ -1,12 +1,18 @@
-import { HomePageView } from '../pages/home/HomePageView.js';
-import { LoanRequestsPageView } from '../pages/loan/requests/LoanRequestsPageView.js';
-import { OverviewPageView } from '../pages/loan/overview/OverviewPageView.js';
-
 export class Router {
   static #routes = [
-    { path: '/app/', view: HomePageView },
-    { path: '/app/loan/requests', view: LoanRequestsPageView },
-    { path: '/app/loan/overview', view: OverviewPageView },
+    {
+      path: '/app/',
+      viewModule: () => import('../pages/home/HomePageView.js'),
+    },
+    {
+      path: '/app/loan/requests',
+      viewModule: () =>
+        import('../pages/loan/requests/LoanRequestsPageView.js'),
+    },
+    {
+      path: '/app/loan/overview',
+      viewModule: () => import('../pages/loan/overview/OverviewPageView.js'),
+    },
   ];
 
   constructor() {
@@ -30,7 +36,9 @@ export class Router {
       match = Router.#routes[0];
     }
 
-    new match.view();
+    const module = await match.viewModule();
+    const ViewClass = module.default;
+    new ViewClass();
   }
 
   #init() {

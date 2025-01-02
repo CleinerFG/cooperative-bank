@@ -32,7 +32,6 @@ export class PageView {
     throw new AbstractMethodError('_initComponents');
   }
 
-
   #setPageTitle() {
     document.title = capitalize(this._pageTitle);
   }
@@ -41,9 +40,9 @@ export class PageView {
     PageView.#appElement.innerHTML = this._template;
   }
 
-  #init() {
+  async #init() {
     this.#setPageTitle();
     this.#render();
-    this._initComponents();
+    await this._initComponents();
   }
 }
