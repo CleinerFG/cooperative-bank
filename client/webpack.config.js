@@ -1,14 +1,55 @@
-const webpackEntry = require("./config/webpack.config.entry");
-const webpackOutput = require("./config/webpack.config.output");
-const webpackLoaders = require("./config/webpack.config.loaders");
-const webpackOptimization = require("./config/webpack.config.optimization");
-const webpackPlugins = require("./config/webpack.config.plugins");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: webpackEntry,
-  mode: "production", // development or production
-  output: webpackOutput,
-  module: webpackLoaders,
-  optimization: webpackOptimization,
-  plugins: webpackPlugins,
+  mode: 'production',
+  entry: path.resolve(__dirname, 'src/app/static/js/index.js'),
+
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app/static/js/[name].[contenthash].js',
+    chunkFilename: 'app/static/js/[name].[contenthash].js',
+    publicPath: '/',
+    clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+    minimize: true,
+    usedExports: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src/app/index.html'),
+      filename: 'app/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/app/static/css'),
+          to: path.resolve(__dirname, 'dist/app/static/css'),
+        },
+        {
+          from: path.resolve(__dirname, 'src/app/static/assets'),
+          to: path.resolve(__dirname, 'dist/app/static/assets'),
+        },
+      ],
+    }),
+  ],
+  resolve: {
+    extensions: ['.js'],
+  },
 };
