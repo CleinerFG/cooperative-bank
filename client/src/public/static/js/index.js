@@ -1,1 +1,3 @@
-// Webpack implement!
+import { publicRouter } from './core/publicRouter.js';
+
+publicRouter.init();

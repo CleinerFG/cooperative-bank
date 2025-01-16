@@ -1,4 +1,4 @@
-import { Router } from '../../../global/js/Router.js';
+import { Router } from '../../../global/js/core/Router.js';
 
 const routes = [
   {
