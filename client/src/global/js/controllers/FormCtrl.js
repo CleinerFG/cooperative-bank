@@ -1,6 +1,6 @@
 import { FormView } from '../views/FormView.js';
 import { ApiService } from '../service/ApiService.js';
-import { AbstractGetterError } from '../errors/AbstractErrors.js';
+import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
 import { InvalidDataError } from '../errors/InvalidDataError.js';
 
 /**

@@ -1,7 +1,7 @@
 import {
   AbstractGetterError,
   AbstractMethodError,
-} from '../errors/AbstractErrors.js';
+} from '../../../global/js/errors/AbstractErrors.js';
 import { capitalize } from '../utils/stringUtils.js';
 
 /**
