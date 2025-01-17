@@ -1,4 +1,4 @@
-import { FormCtrl } from '../../../../controllers/FormCtrl.js';
+import { FormCtrl } from '../../../../../../global/js/controllers/FormCtrl.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
 
 /**

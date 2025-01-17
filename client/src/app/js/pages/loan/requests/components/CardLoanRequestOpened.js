@@ -1,7 +1,7 @@
 import { CardComponent } from '../../../../components/CardComponent.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
 import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPassModal.js';
-import { capitalize } from '../../../../../js/utils/stringUtils.js';
+import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 
 /**
  * Represents a card component specifically for displaying Loan Request Opened.

@@ -1,4 +1,4 @@
-import { PageView } from '../../../views/PageView.js';
+import { PageView } from '../../../../../global/js/views/PageView.js';
 
 export default class LoanRequestsPageView extends PageView {
   get _introductionTemplate() {

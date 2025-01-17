@@ -1,6 +1,6 @@
 import { CardComponent } from '../../../../../js/components/CardComponent.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
-import { capitalize } from '../../../../../js/utils/stringUtils.js';
+import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPassModal.js';
 
 /**

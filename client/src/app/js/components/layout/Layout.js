@@ -1,4 +1,4 @@
-import { AssetManager } from '../../core/AssetManager.js';
+import { AssetManager } from '../../../../global/js/core/AssetManager.js';
 import { Theme } from './Theme.js';
 
 /**

@@ -1,4 +1,4 @@
-import { numberToCurrency, formatDate } from '../../../utils/formatters.js';
+import { numberToCurrency, formatDate } from '../../../../../global/js/utils/formatters.js';
 
 export class EventModel {
   static descType = {

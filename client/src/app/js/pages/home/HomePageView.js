@@ -1,5 +1,5 @@
-import { PageView } from '../../views/PageView.js';
-import { capitalize } from '../../utils/stringUtils.js';
+import { PageView } from '../../../../global/js/views/PageView.js';
+import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.

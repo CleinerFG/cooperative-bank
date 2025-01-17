@@ -1,4 +1,4 @@
-import { FormCtrl } from '../../controllers/FormCtrl.js';
+import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
 
 export class ConfirmPassFormCtrl extends FormCtrl {
   get _viewConfig() {

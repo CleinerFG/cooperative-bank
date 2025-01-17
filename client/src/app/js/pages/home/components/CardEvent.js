@@ -1,6 +1,6 @@
 import { CardComponent } from '../../../../js/components/CardComponent.js';
 import { EventModel } from '../models/EventModel.js';
-import { capitalize } from '../../../../js/utils/stringUtils.js';
+import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 
 /**
  * Represents a card component specifically for displaying event data.

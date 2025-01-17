@@ -1,6 +1,6 @@
 import { appRouter } from '../../../core/appRouter.js';
-import { capitalize } from '../../../utils/stringUtils.js';
-import { AssetManager } from '../../../core/AssetManager.js';
+import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
+import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
 
 /**
  * Represents a clickable card component that redirects to a page in the application.

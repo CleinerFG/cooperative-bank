@@ -1,9 +1,9 @@
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './CardState.js';
-import { ApiService } from '../service/ApiService.js';
-import { AssetManager } from '../core/AssetManager.js';
-import { capitalize } from '../utils/stringUtils.js';
-import { simulateWait } from '../utils/tests.js';
+import { ApiService } from '../../../global/js/service/ApiService.js';
+import { AssetManager } from '../../../global/js/core/AssetManager.js';
+import { capitalize } from '../../../global/js/utils/stringUtils.js';
+import { simulateWait } from '../../../global/js/utils/tests.js';
 import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
 
 /**

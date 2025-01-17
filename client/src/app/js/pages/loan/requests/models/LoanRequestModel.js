@@ -4,7 +4,7 @@ import {
   numberToCurrency,
   numberToPercent,
   percentToNumber,
-} from '../../../../../js/utils/formatters.js';
+} from '../../../../../../global/js/utils/formatters.js';
 
 /**
  * Represents a loan request model

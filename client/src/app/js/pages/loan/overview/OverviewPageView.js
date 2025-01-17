@@ -1,4 +1,4 @@
-import { PageView } from '../../../views/PageView.js';
+import { PageView } from '../../../../../global/js/views/PageView.js';
 
 export default class OverviewPageView extends PageView {
   get _introductionTemplate() {

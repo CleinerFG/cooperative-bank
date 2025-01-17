@@ -2,7 +2,7 @@ import { TransactionModel } from '../../../../../js/models/TransactionModel.js';
 import {
   numberToCurrency,
   numberToPercent,
-} from '../../../../../js/utils/formatters.js';
+} from '../../../../../../global/js/utils/formatters.js';
 
 /**
  * Represents a loan.

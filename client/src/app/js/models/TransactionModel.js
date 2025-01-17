@@ -1,4 +1,4 @@
-import { formatDate, numberToCurrency } from "../utils/formatters.js";
+import { formatDate, numberToCurrency } from "../../../global/js/utils/formatters.js";
 
 /**
  * Represents a transaction.

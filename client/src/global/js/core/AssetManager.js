@@ -1,5 +1,3 @@
-import { Theme } from '../../js/components/layout/Theme.js';
-
 /**
  * Utility class for managing and updating asset paths in DOM elements.
  */

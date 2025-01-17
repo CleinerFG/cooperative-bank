@@ -1,7 +1,7 @@
-import { ApiService } from '../../../service/ApiService.js';
-import { numberToCurrency } from '../../../utils/formatters.js';
-import { AssetManager } from '../../../core/AssetManager.js';
-import { simulateWait } from '../../../../js/utils/tests.js';
+import { ApiService } from '../../../../../global/js/service/ApiService.js';
+import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
+import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
+import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
 /**
  * Manages the display and visibility of the financial statement on the page.
