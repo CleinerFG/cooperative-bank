@@ -1,4 +1,4 @@
-# Financial Manager
+# Cooperative Bank
 
 ## README File Languages
 
@@ -7,91 +7,44 @@
 
 ## Description
 
-This is a web development project simulating a cooperative bank between peoples, built with `HTML`, `CSS`, and `JavaScript`. It uses `webpack` to compile and optimize project files.
+This is a Single Page Application (SPA) web project simulating a cooperative bank between people, built using `HTML`, `CSS`, and `JavaScript`. The project utilizes `webpack` to compile and optimize files. It is divided into two main parts: `app` and `public`.
 
-## Technologies Used
+The server is implemented with `Express.js`, but currently serves as a basic setup for front-end testing features.
 
-- **`HTML`**: Structuring the pages.
-- **`CSS`**: Styling the pages.
-- **`JavaScript`**: Functionality and interactivity.
-- **`Webpack`**: Bundler for packaging and optimizing files.
+The project follows the MVC architecture, organizing functions and classes modularly to adhere to OOP principles. It emphasizes clean code practices, using JSDoc to enhance understanding and maintainability.
+
+## SPA: app and public
+
+- **`app`**: The logged-in area of the application, providing bank-related front-end features such as loans, account overview, balance tracking, and other functionalities.
+
+- **`public`**: The unlogged area, including the landing page, login, and registration features.
 
 ## Project Structure
 
-- **`src/`**: Contains all source files.
-
-  - **`pages/`**: HTML files for the pages.
-  - **`css/`**: CSS files.
-  - **`js/`**: JavaScript files.
-  - **`assets/icons/`**: SVG icons.
-
-- **`dist/`**: Folder generated after running the build with `npm run build`, containing optimized and production-ready files.
+- **`client/`**: Contains front-end files.
+- **`server/`**: Contains back-end files.
+- **`testing/`**: A dedicated space for testing new features.
 
 ## Initialization
 
-### Installing Dependencies
-
-To install the project's dependencies, run:
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Project Build
+### Start Project
 
-To generate the optimized files ready for distribution, run:
+- `Front-end`: Build the project using `webpack`.
 
 ```bash
 npm run build
 ```
 
-## Webpack Configuration
+- `Back-end`: Start the local server with `Express.js`.
 
-### File: webpack.config.js
+  - Note: The server is currently a basic implementation for testing front-end functionalities. A more robust version is planned for future updates.
 
-The `webpack.config.js` file is configured to:
-
-- **Entry**: Define the entry points for JavaScript files.
-- **Output**: Configure where the compiled files will be saved and with which names.
-- **Loaders**: Configure loaders to process CSS, JS, and SVG files.
-  - `css-loader` for CSS files.
-  - `babel-loader` for JavaScript files.
-  - `html-loader` to process images and other resources within HTML files.
-  - `asset/resource` to generate assets in **`dist/`**
-- **Plugins**: Uses plugins for optimization and HTML management.
-  - `HtmlWebpackPlugin` to generate HTML files with updated links to CSS and JS.
-  - `MiniCssExtractPlugin` to extract CSS into files separate from JavaScript.
-  - `CssMinimizerPlugin` o minimize CSS files.
-
-### Configuration of Files: HTML and JS
-
-In HTML, imports of JS and CSS used in the development process are included.
-
-Example:
-
-```html
-<link rel="stylesheet" href="../css/home.css" />
-<script type="module" src="../js/home.js"></script>
+```bash
+npm run server
 ```
-
-- These imports should be removed before the project build. If they are not removed, they will remain in the final `.html` file.
-
-## Development Settings
-
-### JavaScript Files
-
-- Remove the `.css` imports from `JavaScript` files to allow the project to run in development.
-
-Example:
-
-```Javascript
-import "../css/home.css";
-```
-
-- Remove the icon import in [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js)
-
-```Javascript
-import "../../../assets/icons/icon-visibility-on.svg";
-```
-
-All assets are added in [dist/assets/icons](dist/assets/icons/) through `asset/resource`. This import is necessary because `html-loader` removes assets not directly used in the HTML. The icon [icon-visibility-on.svg](src/assets/icons/icon-visibility-on.svg) is added by `Javascript` in [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js) and isn't added directly in the HTML.

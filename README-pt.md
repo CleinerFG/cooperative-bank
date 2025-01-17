@@ -1,97 +1,50 @@
-# Gerenciador Financeiro
+# Cooperative Bank
 
-## Idiomas do arquivo README
+## Idiomas do README
 
 - [Inglês](README.md)
 - [Português-BR](README-pt.md)
 
 ## Descrição
 
-Este é um projeto de desenvolvimento web que simula um banco cooperativo entre pessoas, construído com `HTML`, `CSS` e `JavaScript`. Utiliza o `webpack` para compilar e otimizar arquivos do projeto.
+Este é um projeto web de Aplicação de Página Única (SPA) que simula um banco cooperativo entre pessoas, desenvolvido utilizando `HTML`, `CSS` e `JavaScript`. O projeto utiliza `webpack` para compilar e otimizar os arquivos. Ele é dividido em duas partes principais: `app` e `public`.
 
-## Tecnologias Utilizadas
+O servidor é implementado com `Express.js`, mas atualmente funciona como uma configuração básica para testes de funcionalidades do front-end.
 
-- **`HTML`**: Estruturação das páginas.
-- **`CSS`**: Estilização das páginas.
-- **`JavaScript`**: Funcionalidade e interatividade.
-- **`Webpack`**: Bundler para empacotar e otimizar arquivos.
+O projeto segue a arquitetura MVC, organizando funções e classes de forma modular para aderir aos princípios da POO. Ele enfatiza práticas de código limpo, utilizando JSDoc para melhorar o entendimento e a manutenção do código.
+
+## SPA: app e public
+
+- **`app`**: A área logada da aplicação, que fornece funcionalidades relacionadas ao banco, como empréstimos, visão geral da conta, acompanhamento de saldo e outras funcionalidades.
+
+- **`public`**: A área não logada, incluindo a página inicial, login e funcionalidades de registro.
 
 ## Estrutura do Projeto
 
-- **`src/`**: Contém todos os arquivos fonte.
-
-  - **`pages/`**: Arquivos HTML das páginas.
-  - **`css/`**: Arquivos CSS.
-  - **`js/`**: Arquivos JavaScript.
-  - **`assets/icons/`**: Ícones SVG.
-
-- **`dist/`**: Pasta gerada após a execução do build com `npm run build`, contendo os arquivos otimizados e prontos para produção.
+- **`client/`**: Contém os arquivos do front-end.
+- **`server/`**: Contém os arquivos do back-end.
+- **`testing/`**: Um espaço dedicado para testar novas funcionalidades.
 
 ## Inicialização
 
-### Instalação das Dependências
-
-Para instalar as dependências do projeto, execute:
+### Instalar Dependências
 
 ```bash
 npm install
 ```
 
-### Build do Projeto
+### Iniciar o Projeto
 
-Para gerar os arquivos otimizados e prontos para distribuição, execute:
+- `Front-end`: Construa o projeto utilizando `webpack`.
 
 ```bash
 npm run build
 ```
 
-## Configuração do Webpack
+- `Back-end`: Inicie o servidor local com `Express.js`.
 
-### Arquivo: webpack.config.js
+  - Nota: O servidor atualmente é uma implementação básica para testar as funcionalidades do front-end. Uma versão mais robusta está planejada para futuras atualizações.
 
-O arquivo `webpack.config.js` é configurado para:
-
-- **Entry**: Define os pontos de entrada para os arquivos JavaScript.
-- **Output**: Configura onde os arquivos compilados serão salvos e com quais nomes.
-- **Loaders**: Configura loaders para processar arquivos CSS, JS e SVG.
-  - `css-loader` para arquivos CSS.
-  - `babel-loader` para arquivos JavaScript.
-  - `html-loader` para processar imagens e outros recursos dentro dos arquivos HTML.
-  - `asset/resource` para gerar os assets em **`dist/`**
-- **Plugins**: Utiliza plugins para otimização e gerenciamento de HTML.
-  - `HtmlWebpackPlugin` para gerar arquivos HTML com links atualizados para CSS e JS.
-  - `MiniCssExtractPlugin` para extrair CSS em arquivos separado do JavaScript.
-  - `CssMinimizerPlugin` para minimizar arquivos CSS.
-
-### Configuração dos arquivos: HTML e JS
-
-No HTML é inserido imports de JS e CSS utilizados no processo de desenvolvimento.
-
-Exemplo:
-
-```html
-<link rel="stylesheet" href="../css/home.css" />
-<script type="module" src="../js/home.js"></script>
+```bash
+npm run server
 ```
-
-- Esses imports devem ser removidos antes da build do projeto, caso não sejam removidos, eles continuarão no `.html` final.
-
-## Configurações para desenvolvimento
-
-### Arquivos JS
-
-- Remover os imports `.css` dos arquivos `Javascript`, para ser possível executar o projeto em desenvolvimento.
-
-Exemplo
-
-```Javascript
-import "../css/home.css";
-```
-
-- Remover o import do ícone em [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js)
-
-```Javascript
-import "../../../assets/icons/icon-visibility-on.svg";
-```
-
-Todos os assets, são adicionados em [dist/assets/icons](dist/assets/icons/) através do `asset/resource`. Esse import é necessário pois o `html-loader` remove assets não utilizados diretamente no HTML. O ícone [icon-visibility-on.svg](src/assets/icons/icon-visibility-on.svg) é adicionado por `Javascript` em [visibilitySwitch.js](src/js/modules/home/visibilitySwitch.js) e não adicionado diretamente no HTML .
