@@ -1,3 +1,5 @@
+import { getStoredTheme } from '../utils/themeUtils.js';
+
 /**
  * Utility class for managing and updating asset paths in DOM elements.
  */
@@ -5,7 +7,7 @@ export class AssetManager {
   static BASE_PATH = '/app/static/assets/';
 
   static get #iconsPath() {
-    return AssetManager.BASE_PATH + 'icons/' + Theme.storedTheme + '/';
+    return AssetManager.BASE_PATH + 'icons/' + getStoredTheme() + '/';
   }
 
   static get #imagesPath() {
