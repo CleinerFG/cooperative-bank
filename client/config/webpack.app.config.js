@@ -7,10 +7,10 @@ module.exports = {
   entry: path.resolve(__dirname, '../src/app/js/index.js'),
 
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'app/static/js/[name].[contenthash].js',
-    chunkFilename: 'app/static/js/[name].[contenthash].js',
-    publicPath: '/',
+    path: path.resolve(__dirname, '../dist/app'),
+    filename: 'static/js/[name].[contenthash].js',
+    chunkFilename: 'static/js/[name].[contenthash].js',
+    publicPath: '/app/',
     clean: true,
   },
   optimization: {
@@ -34,7 +34,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/app/index.html'),
-      filename: 'app/index.html',
+      filename: 'index.html',
     }),
     new CopyWebpackPlugin({
       patterns: [

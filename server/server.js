@@ -7,11 +7,11 @@ const app = express();
 const GLOBAL_STATIC_DIR = path.resolve(__dirname, '../client/src/global');
 const PUBLIC_STATIC_DIR = path.resolve(
   __dirname,
-  '../client/src/public/static'
+  '../client/dist/public/static'
 );
-const PUBLIC_PAGES_DIR = path.resolve(__dirname, '../client/src/public/pages');
+const PUBLIC_PAGES_DIR = path.resolve(__dirname, '../client/dist/public');
 const APP_STATIC_DIR = path.resolve(__dirname, '../client/dist/app/static');
-const APP_DIR = path.resolve(__dirname, '../client/dist/app/');
+const APP_DIR = path.resolve(__dirname, '../client/dist/app');
 const DB_DIR = path.resolve(__dirname, 'db');
 
 // Middleware for global static files
