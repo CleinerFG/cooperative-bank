@@ -1,8 +1,6 @@
-import { PageView } from '../../../../global/js/views/PageView.js';
+import { PublicPageView } from '../../views/PublicPageView.js';
 
-export default class LandingPageView extends PageView {
-  static _ASSETS_PATH = '/public/static/assets';
-
+export default class LandingPageView extends PublicPageView {
   get _featuresMap() {
     return [
       {
@@ -92,7 +90,7 @@ export default class LandingPageView extends PageView {
     return `
     <section class="section feature-section">
         <div class="img-container">
-          <img class="img" src="${LandingPageView._ASSETS_PATH}/images/${feature.imgFile}" loading="lazy" alt="${feature.imgAlt}"/>
+          <img class="img" src="${PublicPageView._ASSETS_PATH}/images/${feature.imgFile}" loading="lazy" alt="${feature.imgAlt}"/>
         </div>
         <div class="content-container">
           <h2 class="h2">${feature.title}</h2>
@@ -110,7 +108,7 @@ export default class LandingPageView extends PageView {
       .map((sm) => {
         return `
         <a href="${sm.href}">
-          <img class="social-media__icon" src="${LandingPageView._ASSETS_PATH}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
+          <img class="social-media__icon" src="${PublicPageView._ASSETS_PATH}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
         </a>
       `;
       })
@@ -166,7 +164,7 @@ export default class LandingPageView extends PageView {
     return `
     <section class="section hero-section">
       <div class="img-container">
-        <img class="img" src="${LandingPageView._ASSETS_PATH}/images/bank.jpeg" alt="Modern Bank" />
+        <img class="img" src="${PublicPageView._ASSETS_PATH}/images/bank.jpeg" alt="Modern Bank" />
       </div>
       <div class="content-container">
         <h1 class="h1">Cooperation that connects people</h1>

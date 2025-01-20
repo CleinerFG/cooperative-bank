@@ -11,7 +11,7 @@ export class PageView {
   static #appElement = document.getElementById('app');
 
   constructor() {
-    this.#init();
+    this._init();
   }
 
   /**
@@ -40,7 +40,7 @@ export class PageView {
     PageView.#appElement.innerHTML = this._template;
   }
 
-  async #init() {
+  async _init() {
     this.#setPageTitle();
     this.#render();
     await this._initComponents();
