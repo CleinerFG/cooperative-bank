@@ -4,14 +4,34 @@ import { getStoredTheme } from '../utils/themeUtils.js';
  * Utility class for managing and updating asset paths in DOM elements.
  */
 export class AssetManager {
-  static BASE_PATH = '/app/static/assets/';
+  static BASE_PATH = {
+    app: '/app/static/assets/',
+    public: '/public/static/assets/',
+  };
 
-  static get #iconsPath() {
-    return AssetManager.BASE_PATH + 'icons/' + getStoredTheme() + '/';
+  /**
+   * @type {'app' | 'public'}
+   */
+  static get #spaLocation() {
+    return window.location.pathname.includes('/app') ? 'app' : 'public';
   }
 
+  /**
+   * @type {string}
+   */
+  static get #iconsPath() {
+    const pathMap = {
+      app: AssetManager.BASE_PATH.app + 'icons/' + getStoredTheme() + '/',
+      public: AssetManager.BASE_PATH.public + 'icons/',
+    };
+    return pathMap[AssetManager.#spaLocation];
+  }
+
+  /**
+   * @type {string}
+   */
   static get #imagesPath() {
-    return AssetManager.BASE_PATH + 'images/';
+    return AssetManager.BASE_PATH[this.#spaLocation] + 'images/';
   }
 
   /**
