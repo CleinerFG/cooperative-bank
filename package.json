@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config client/webpack.config.js",
+    "build-dev": "webpack --config client/webpack.config.js --mode development --watch",
     "server": "node server/server.js"
   },
   "keywords": [
