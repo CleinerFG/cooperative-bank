@@ -1,4 +1,5 @@
 import { AssetManager } from '../../../../global/js/core/AssetManager.js';
+import { appRouter } from '../../core/appRouter.js';
 import { Theme } from './Theme.js';
 
 /**
@@ -44,9 +45,22 @@ export class Layout {
     AssetManager.updateAsset('icon', '.footer .icon', 'icon-globe.svg');
   }
 
+  #handleRoutes() {
+    const anchors = document.querySelectorAll('.app-link');
+    anchors.forEach((element) => {
+      element.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        appRouter.navigateTo(element.getAttribute('href'));
+      });
+    });
+  }
+
   #init() {
-    new Theme();
-    this.#setListeners();
-    this.#handleAssets();
+    document.addEventListener('DOMContentLoaded', () => {
+      new Theme();
+      this.#setListeners();
+      this.#handleAssets();
+      this.#handleRoutes();
+    });
   }
 }
