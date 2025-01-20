@@ -3,7 +3,7 @@ import { Router } from '../../../global/js/core/Router.js';
 const routes = [
   {
     path: '/',
-    viewModule: () => import('../pages/home/HomePageView.js'),
+    viewModule: () => import('../pages/landing/LandingPageView.js'),
   },
   // {
   //   path: '/login',
