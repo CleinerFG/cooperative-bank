@@ -70,11 +70,11 @@ app.get(
 app.get('/app/data/users', serveFile(DB_DIR, 'users.json'));
 
 // Page route handlers
-app.get(['/app/*', '/app'], serveFile(APP_DIR, 'index.html'));
+app.get(['/app*'], serveFile(APP_DIR, 'index.html'));
 app.get('/*', serveFile(PUBLIC_PAGES_DIR, 'index.html'));
 
 // Start server
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

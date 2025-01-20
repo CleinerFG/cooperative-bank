@@ -147,13 +147,13 @@ export default class LandingPageView extends PublicPageView {
     return `
     <header class="header">
         <div class="brand-container">
-          <img class="brand-icon" src="/public/static/assets/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
+          <img class="brand-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
           <span class="brand-name">COOPERATIVE BANK</span>
         </div>
         <div class="login-container">
           <a href="/login">
             Login
-            <img class="login-icon" src="/public/static/assets/icons/icon-login.svg" alt="Login"/>
+            <img class="login-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-login.svg" alt="Login"/>
           </a>
         </div>
       </header>
