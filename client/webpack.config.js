@@ -1,4 +1,6 @@
-const appConfig = require('./config/webpack.app.config');
-const publicConfig = require('./config/webpack.public.config');
+const generateWebpackConfig = require('./config/generateWebpackConfig');
+
+const appConfig = generateWebpackConfig('app');
+const publicConfig = generateWebpackConfig('public');
 
 module.exports = [appConfig, publicConfig];
