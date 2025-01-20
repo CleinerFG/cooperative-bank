@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 /**
  * @param {'app'|'public'} spaType
@@ -9,7 +10,6 @@ module.exports = (spaType) => {
   return {
     mode: 'production',
     entry: path.resolve(__dirname, `../src/${spaType}/js/index.js`),
-
     output: {
       path: path.resolve(__dirname, `../dist/${spaType}`),
       filename: 'static/js/[name].[contenthash].js',
@@ -22,6 +22,14 @@ module.exports = (spaType) => {
         chunks: 'all',
       },
       minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            mangle: true,
+            compress: true,
+          },
+        }),
+      ],
       usedExports: true,
     },
     module: {
