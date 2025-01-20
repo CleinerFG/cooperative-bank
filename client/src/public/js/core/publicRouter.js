@@ -3,12 +3,12 @@ import { Router } from '../../../global/js/core/Router.js';
 const routes = [
   {
     path: '/',
-    viewModule: () => import('../pages/landing/LandingPageView.js'),
+    viewModule: () => import('../pages/login/LoginPageView.js'),
   },
-  // {
-  //   path: '/login',
-  //   viewModule: () => import('../pages/LoginPageView.js'),
-  // },
+  {
+    path: '/login',
+    viewModule: () => import('../pages/login/LoginPageView.js'),
+  },
   // {
   //   path: '/register',
   //   viewModule: () => import('../pages/RegisterPageView.js'),
