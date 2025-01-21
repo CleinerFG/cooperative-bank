@@ -9,10 +9,10 @@ const routes = [
     path: '/login',
     viewModule: () => import('../pages/login/LoginPageView.js'),
   },
-  // {
-  //   path: '/register',
-  //   viewModule: () => import('../pages/RegisterPageView.js'),
-  // },
+  {
+    path: '/register',
+    viewModule: () => import('../pages/register/RegisterPageView.js'),
+  },
 ];
 
 export const publicRouter = new Router(routes);

@@ -12,11 +12,15 @@ export default class LoginPageView extends PublicPageView {
     `;
   }
 
+  get _infoText() {
+    return 'Access your Cooperative Bank Account';
+  }
+
   get _mainContainer() {
     return `
     <main class="content-container">
       <div class="info-container">
-        <h1 class="h1">Access your Cooperative Bank Account</h1>
+        <h1 class="h1">${this._infoText}</h1>
       </div>
       <div class="form-container">  
       </div>
@@ -42,7 +46,7 @@ export default class LoginPageView extends PublicPageView {
 
   async _initComponents() {
     const LoginFormCtrl = await import('./controllers/LoginFormCtrl.js');
-    
+
     new LoginFormCtrl.default();
   }
 }
