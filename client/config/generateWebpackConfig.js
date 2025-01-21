@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 /**
  * @param {'app'|'public'} spaType
@@ -29,11 +31,16 @@ module.exports = (spaType) => {
             compress: true,
           },
         }),
+        new CssMinimizerPlugin(),
       ],
       usedExports: true,
     },
     module: {
       rules: [
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
         {
           test: /\.js$/,
           exclude: /node_modules/,
@@ -59,6 +66,10 @@ module.exports = (spaType) => {
             to: path.resolve(__dirname, `../dist/${spaType}/static/assets`),
           },
         ],
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].[contenthash].css',
+        chunkFilename: 'static/css/[name].[contenthash].css',
       }),
     ],
     resolve: {
