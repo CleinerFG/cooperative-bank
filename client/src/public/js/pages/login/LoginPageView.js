@@ -1,8 +1,6 @@
 import { PublicPageView } from '../../views/PublicPageView.js';
 
 export default class LoginPageView extends PublicPageView {
-  static _ASSETS_PATH = '/public/static/assets';
-
   get _headerTemplate() {
     return `
     <header class="header">
@@ -11,6 +9,18 @@ export default class LoginPageView extends PublicPageView {
         <span class="brand-name">COOPERATIVE BANK</span>
       </a>
     </header>
+    `;
+  }
+
+  get _mainContainer() {
+    return `
+    <main class="content-container">
+      <div class="info-container">
+        <h1 class="h1">Access your Cooperative Bank Account</h1>
+      </div>
+      <div class="form-container">  
+      </div>
+    </main>
     `;
   }
 
@@ -27,8 +37,12 @@ export default class LoginPageView extends PublicPageView {
   }
 
   get _template() {
-    return this._headerTemplate + this._footerTemplate;
+    return this._headerTemplate + this._mainContainer + this._footerTemplate;
   }
 
-  _initComponents() {}
+  async _initComponents() {
+    const LoginFormCtrl = await import('./controllers/LoginFormCtrl.js');
+    
+    new LoginFormCtrl.default();
+  }
 }
