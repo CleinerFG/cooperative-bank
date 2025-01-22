@@ -1,3 +1,5 @@
+import('../../../css/pages/login-register.css');
+
 import { PublicPageView } from '../../views/PublicPageView.js';
 
 export default class LoginPageView extends PublicPageView {

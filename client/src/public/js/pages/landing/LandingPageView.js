@@ -1,3 +1,5 @@
+import('../../../css/pages/landing.css');
+
 import { PublicPageView } from '../../views/PublicPageView.js';
 
 export default class LandingPageView extends PublicPageView {
@@ -150,7 +152,7 @@ export default class LandingPageView extends PublicPageView {
           <img class="brand-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
           <span class="brand-name">COOPERATIVE BANK</span>
         </div>
-        <div class="login-container">
+        <div class="login-link-container">
           <a href="/login">
             Login
             <img class="login-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-login.svg" alt="Login"/>

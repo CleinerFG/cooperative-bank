@@ -73,7 +73,7 @@ module.exports = (spaType) => {
       }),
     ],
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.css'],
     },
   };
 };

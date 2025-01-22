@@ -1,17 +1,12 @@
-@import url('./variables.css');
-@import url('./base.css');
-@import url('./components.css');
-@import url('./common.css');
-
 .header {
   position: fixed;
 }
 
-.login-container {
+.login-link-container {
   font-size: 0.8rem;
 }
 
-.login-container a {
+.login-link-container a {
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -59,7 +54,7 @@
 
 .hero-section {
   height: 100svh;
-  padding-top: 6rem;
+  padding-top: 7rem;
   background-image: linear-gradient(
     to top,
     var(--color-bg-start),
