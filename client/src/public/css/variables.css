@@ -1,3 +1,4 @@
+@import url('../../global/css/variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
@@ -7,10 +8,8 @@
   --color-bg-start: hsl(250, 100%, 5%);
   --color-bg-end: hsl(250, 100%, 2%);
 
-  --component-border-radius: 0.5rem;
-
   --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
-  --inp-focus-color: hsl(169, 96%, 38%);
+  --inp-focus-color: hsl(169, 96%, 25%);
 
   --text-color: #fbfcf8;
   --text-font-family: 'Roboto', sans-serif;

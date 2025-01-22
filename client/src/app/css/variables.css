@@ -1,24 +1,7 @@
+@import url('../../global/css/variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
 
 :root {
-  --color-primary-translucent: hsla(169, 96%, 38%, 0.3);
-  --color-off-white: #fbfcf8;
-  --color-detail: #f28157;
-  --color-cta: hsl(5, 43%, 50%);
-  --color-cta-hover: hsl(5, 43%, 46%);
-  --color-success: hsl(120, 100%, 35%);
-  --color-success-hover: hsl(120, 100%, 32%);
-  --color-attention: hsl(51, 100%, 35%);
-  --color-attention-hover: hsl(51, 100%, 32%);
-  --color-fail: hsl(0, 100%, 35%);
-  --color-fail-hover: hsl(0, 100%, 32%);
-
-  --container-padding: 0.8rem;
-  --header-height: 3.5rem;
-
-  --component-border-radius: 0.5rem;
-  --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
-
   --card-state-box-shadow: -0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
 
   --text-font-family: 'Roboto Condensed', sans-serif;

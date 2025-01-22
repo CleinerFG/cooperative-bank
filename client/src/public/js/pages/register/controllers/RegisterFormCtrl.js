@@ -48,7 +48,7 @@ export default class RegisterFormCtrl extends FormCtrl {
   get _submitConfig() {
     return {
       id: 'submit',
-      labelText: 'register',
+      labelText: 'Register',
     };
   }
 
