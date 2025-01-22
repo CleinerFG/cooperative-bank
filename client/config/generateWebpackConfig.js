@@ -58,10 +58,6 @@ module.exports = (spaType) => {
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: path.resolve(__dirname, `../src/${spaType}/css`),
-            to: path.resolve(__dirname, `../dist/${spaType}/static/css`),
-          },
-          {
             from: path.resolve(__dirname, `../src/${spaType}/assets`),
             to: path.resolve(__dirname, `../dist/${spaType}/static/assets`),
           },
