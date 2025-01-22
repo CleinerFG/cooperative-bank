@@ -1,3 +1,6 @@
+import('../../css/components/component-group.css')
+import('../../css/components/cards/cards.css')
+
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './CardState.js';
 import { ApiService } from '../../../global/js/service/ApiService.js';

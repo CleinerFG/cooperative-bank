@@ -20,7 +20,6 @@
   text-align: center;
 }
 
-/* Hover */
 .card-link:hover {
   background-color: var(--color-primary-light-hover);
   transform: translateY(-0.6rem);

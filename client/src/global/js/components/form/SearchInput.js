@@ -78,8 +78,8 @@ export class SearchInput extends Input {
     return `
       <div class="form-group__inp-group">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
-        <div class="inp__container">
-          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp__search ${this._cssClass}" data-valid="true" data-search="off">
+        <div class="inp-container">
+          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp-search ${this._cssClass}" data-valid="true" data-search="off">
           <button id="${this.#BTN_SEARCH_ID}" type="button" class="btn-unset"><img class="icon" id="${this.#ICON_SEARCH_ID}" alt="Search Icon"></button>
           <input id="${this.#INP_RESULT_ID}" type="text" class="inp form-group__inp" disabled>
         </div>

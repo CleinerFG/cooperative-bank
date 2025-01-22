@@ -1,3 +1,5 @@
+import('../../../css/components/modal.css');
+
 import {
   AbstractGetterError,
   AbstractMethodError,

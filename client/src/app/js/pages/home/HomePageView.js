@@ -1,3 +1,5 @@
+import('../../../css/pages/home.css')
+
 import { PageView } from '../../../../global/js/views/PageView.js';
 import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 

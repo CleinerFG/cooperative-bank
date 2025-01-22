@@ -1,3 +1,5 @@
+@import url('../../../global/css/components/animations.css');
+
 .section {
   margin-bottom: 0;
 }
@@ -18,24 +20,24 @@
 
 .statement__amount {
   font-size: 1.2rem;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: 550;
 }
 
-.feature-cards { 
+.cards.feature-cards {
   padding: var(--container-padding);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
 @media screen and (min-width: 425px) {
-  .feature-cards {
+  .cards.feature-cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (min-width: 560px) {
-  .feature-cards {
+  .cards.feature-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }

@@ -1,4 +1,6 @@
-.inp__container {
+@import url('../../../global/css/components/animations.css');
+
+.inp-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -30,10 +32,6 @@
   color: var(--color-fail);
 }
 
-.inp__search {
-  width: 7.5rem;
-}
-
 .inp-date {
   color: hsl(0, 0%, 50%);
 }
@@ -41,6 +39,10 @@
 .inp-date::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.5);
+}
+
+.inp-search {
+  max-width: 6rem;
 }
 
 input.btn {

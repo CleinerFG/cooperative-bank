@@ -1,3 +1,5 @@
+import('../../css/components/cards/card-state.css')
+
 import { AssetManager } from '../../../global/js/core/AssetManager.js';
 
 /**

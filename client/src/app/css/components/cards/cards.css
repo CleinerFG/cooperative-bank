@@ -1,7 +1,5 @@
 .card {
   max-width: 300px;
-  border: var(--component-border);
-  border-radius: var(--component-border-radius);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

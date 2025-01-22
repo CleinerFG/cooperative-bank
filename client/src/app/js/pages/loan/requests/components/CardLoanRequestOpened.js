@@ -40,18 +40,18 @@ export class CardLoanRequestOpened extends CardComponent {
   }
 
   get _headerTemplate() {
-    let cssClass = 'p-pending';
+    let cssClass = 'span-pending';
     switch (this._model.status) {
       case 'accepted':
-        cssClass = 'p-success';
+        cssClass = 'span-success';
         break;
       case 'denied':
-        cssClass = 'p-fail';
+        cssClass = 'span-fail';
         break;
       default:
         break;
     }
-    const str = `<p class="${cssClass}">${capitalize(this._model.status)}</p>`;
+    const str = `<span class="${cssClass}">${capitalize(this._model.status)}</span>`;
     return str;
   }
 

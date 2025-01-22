@@ -1,4 +1,8 @@
+@import url('../button.css');
+
 .card-data {
+  border: var(--component-border);
+  border-radius: var(--component-border-radius);
   background-color: var(--component-bg-color);
   padding: var(--container-padding);
 

@@ -1,22 +1,54 @@
-/* CSS Aggregator */
 @import url('./variables.css');
-@import url('./layout/layout.css');
-@import url('./base/default.css');
-@import url('./base/typography.css');
-@import url('./components/input.css');
-@import url('./components/form.css');
-@import url('./components/button.css');
-@import url('./components/component-group.css');
-@import url('./components/cards/card-state.css');
-@import url('./components/cards/cards.css');
-@import url('./components/cards/card-link.css');
-@import url('./components/cards/card-data.css');
-@import url('./components/modal.css');
-@import url('./components/animations.css');
-@import url('./layout/header.css');
-@import url('./layout/footer.css');
-@import url('./layout/section.css');
 
-/* CSS pages - Test before use webpack*/
-@import url('./pages/home.css');
-@import url('./pages/loan-requests.css');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--text-font-family);
+}
+
+body {
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+li {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--title-font-family);
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+.info-text {
+  font-family: var(--info-font-family);
+  text-align: justify;
+}
+
+.btn-unset {
+  all: unset;
+}
+
+/* Hover on Elements */
+a:hover {
+  color: var(--color-cta);
+}
+
+button:hover {
+  cursor: pointer;
+}

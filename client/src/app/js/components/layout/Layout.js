@@ -1,3 +1,6 @@
+import('../../../css/layout/layout.css')
+
+
 import { AssetManager } from '../../../../global/js/core/AssetManager.js';
 import { appRouter } from '../../core/appRouter.js';
 import { Theme } from './Theme.js';

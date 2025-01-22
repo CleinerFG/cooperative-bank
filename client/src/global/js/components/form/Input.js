@@ -1,3 +1,5 @@
+import('../../../css/components/input.css');
+
 import { zeroValidator, emptyValidator } from '../../utils/validators.js';
 import {
   currencyFormatter,

@@ -31,7 +31,7 @@ export class PasswordInput extends Input {
     return `
     <div class="form-group__inp-group">
       <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
-      <div class="inp__container container__${this._cssClass}">
+      <div class="inp-container container__${this._cssClass}">
         <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}" autocomplete="off"
         class="inp form-group__inp inp-${this._cssClass}" data-visibility="off" data-valid="false">
         <button id="${this.#BTN_VISIBILITY_ID}" type="button" class="btn-unset">

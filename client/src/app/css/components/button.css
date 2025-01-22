@@ -7,10 +7,6 @@
   cursor: pointer;
 }
 
-.btn-unset {
-  all: unset;
-}
-
 .btn-action {
   color: var(--color-off-white);
   background-color: var(--color-cta);
@@ -30,7 +26,6 @@
   color: var(--color-off-white);
 }
 
-/* Hover */
 .btn:hover {
   box-shadow: var(--component-box-shadow);
   background-color: var(--color-secondary-hover);

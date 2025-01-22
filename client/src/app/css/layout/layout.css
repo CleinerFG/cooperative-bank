@@ -1,3 +1,7 @@
+@import url('./header.css');
+@import url('./footer.css');
+@import url('./section.css');
+
 body {
   min-height: 100svh;
   height: auto;

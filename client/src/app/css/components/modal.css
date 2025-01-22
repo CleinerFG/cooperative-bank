@@ -1,3 +1,5 @@
+@import url('./button.css');
+
 .modal {
   display: flex;
   justify-content: center;
@@ -43,7 +45,7 @@
   border: none;
 }
 
-.modal__form .inp__container {
+.modal__form .inp-container {
   flex-wrap: nowrap;
 }
 

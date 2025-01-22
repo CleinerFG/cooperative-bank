@@ -1,3 +1,5 @@
+import('../../../../css/components/cards/card-link.css');
+
 import { appRouter } from '../../../core/appRouter.js';
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 import { AssetManager } from '../../../../../global/js/core/AssetManager.js';

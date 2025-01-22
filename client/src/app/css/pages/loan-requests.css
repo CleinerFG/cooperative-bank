@@ -1,9 +1,9 @@
-.card-data__header .p-success {
-  color: var(--component-color-success);
+.card-data__header .span-success {
+  color: var(--color-success);
 }
 
-.card-data__header .p-fail {
-  color: var(--component-color-fail);
+.card-data__header .span-fail {
+  color: var(--color-fail);
 }
 
 .section.new-request .form {
@@ -13,4 +13,3 @@
 #search-creditor-icon {
   width: 1.9rem;
 }
-
