@@ -22,7 +22,7 @@ export default class LoginPageView extends PublicPageView {
     return `
     <main class="content-container">
       <div class="info-container">
-        <h1 class="h1">${this._infoText}</h1>
+        <h1>${this._infoText}</h1>
       </div>
       <div class="form-container">  
       </div>

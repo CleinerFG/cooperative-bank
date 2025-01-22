@@ -94,7 +94,7 @@
   text-align: left;
 }
 
-.feature-section .h2 {
+.feature-section h2 {
   color: var(--color-primary);
 }
 
@@ -104,7 +104,7 @@
   gap: 1rem;
 }
 
-.footer .h2 {
+.footer h2 {
   color: var(--color-primary);
 }
 

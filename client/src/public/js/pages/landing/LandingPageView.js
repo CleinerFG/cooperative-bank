@@ -95,7 +95,7 @@ export default class LandingPageView extends PublicPageView {
           <img class="img" src="${PublicPageView._ASSETS_PATH}/images/${feature.imgFile}" loading="lazy" alt="${feature.imgAlt}"/>
         </div>
         <div class="content-container">
-          <h2 class="h2">${feature.title}</h2>
+          <h2>${feature.title}</h2>
           <div class="text-container">${texts}</div>
         </div>
       </section>
@@ -120,7 +120,7 @@ export default class LandingPageView extends PublicPageView {
   _buildContactTemplate() {
     return `
       <div class="footer-container footer__contact">
-        <h2 class="h2">Contact us</h2>
+        <h2>Contact us</h2>
         <address class="address">
           <p>(650) 999-9999</p>
           <p>California St, Downtown Palo Alto, Palo Alto, CA 94301, United States</p>
@@ -136,7 +136,7 @@ export default class LandingPageView extends PublicPageView {
   _buildDeveloperTemplate() {
     return `
       <div class="footer-container footer__developer">
-        <h2 class="h2">Development</h2>
+        <h2>Development</h2>
         <p>By Cleiner Furlani</p>
         <div class="social-media">
           ${this._buildSocialMediaTemplate('developer')}
@@ -169,7 +169,7 @@ export default class LandingPageView extends PublicPageView {
         <img class="img" src="${PublicPageView._ASSETS_PATH}/images/bank.jpeg" alt="Modern Bank" />
       </div>
       <div class="content-container">
-        <h1 class="h1">Cooperation that connects people</h1>
+        <h1>Cooperation that connects people</h1>
         <button class="btn"><a href="/register">Sign Up</a></button>
       </div>
     </section>
@@ -180,7 +180,7 @@ export default class LandingPageView extends PublicPageView {
     return `
     <section class="section mission-section">
       <div class="content-container">
-        <h2 class="h2">
+        <h2>
           The <strong class="text-strong">Cooperative Bank</strong> seeks to
           transform the way people connect financially
         </h2>

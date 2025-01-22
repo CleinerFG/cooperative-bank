@@ -45,10 +45,6 @@
   border: none;
 }
 
-.modal__form .inp-container {
-  flex-wrap: nowrap;
-}
-
 .modal__form .modal-btn {
   width: 100%;
 }

@@ -24,6 +24,7 @@ export default class LoginFormCtrl extends FormCtrl {
       {
         category: 'password',
         id: 'password',
+        cssClass:'password',
         labelText: 'Password',
       },
     ];

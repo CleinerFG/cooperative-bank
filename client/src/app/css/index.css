@@ -1,38 +1,8 @@
 @import url('./variables.css');
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: var(--text-font-family);
-}
-
-body {
-  color: var(--text-color);
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-  color: var(--text-color);
-}
+@import url('../../global/css/base.css');
 
 li {
   list-style-type: none;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--title-font-family);
-}
-
-h1 {
-  font-size: 1.8rem;
-}
-
-h2 {
-  font-size: 1.6rem;
 }
 
 .info-text {
@@ -40,15 +10,6 @@ h2 {
   text-align: justify;
 }
 
-.btn-unset {
-  all: unset;
-}
-
-/* Hover on Elements */
 a:hover {
   color: var(--color-cta);
-}
-
-button:hover {
-  cursor: pointer;
 }
