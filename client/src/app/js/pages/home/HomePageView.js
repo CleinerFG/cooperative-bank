@@ -1,4 +1,4 @@
-import('../../../css/pages/home.css')
+import('../../../css/pages/home.css');
 
 import { PageView } from '../../../../global/js/views/PageView.js';
 import { capitalize } from '../../../../global/js/utils/stringUtils.js';
@@ -15,7 +15,15 @@ export default class HomePageView extends PageView {
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>
-      <div class="amount-container"></div>
+      <div class="statement amount">
+        <span>Account Amount</span>
+        <div class="amount-container">
+         <div class="statement__total"><span id="span-amount" class="span-amount">R$ * * * * * *</span></div>
+          <button id="amount-visibility-btn" class="btn-unset visibility-btn" data-visibility="off">
+          <img id="visibility-icon" class="icon visibility-icon" alt="Closed eye">
+        </button>
+        </div>
+      </div>
     </section>
     `;
   }
@@ -58,13 +66,13 @@ export default class HomePageView extends PageView {
   }
 
   async _initComponents() {
-    const [FinancialStatement, CardLinkGroups, EventGroup] = await Promise.all([
-      import('./components/FinancialStatement.js'),
+    const [AccountAmount, CardLinkGroups, EventGroup] = await Promise.all([
+      import('./components/AccountAmount.js'),
       import('./components/CardLinkGroups.js'),
       import('./components/EventGroup.js'),
     ]);
 
-    new FinancialStatement.default();
+    new AccountAmount.default();
     new CardLinkGroups.default();
     new EventGroup.default(false);
   }

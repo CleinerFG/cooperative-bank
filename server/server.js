@@ -47,10 +47,7 @@ app.get(
   '/app/data/events/investment',
   serveFile(DB_DIR, 'events-investment.json')
 );
-app.get(
-  '/app/data/financial-statement',
-  serveFile(DB_DIR, 'financial-statement.json')
-);
+app.get('/app/data/account/amount', serveFile(DB_DIR, 'account-amount.json'));
 app.get(
   '/app/data/loan/overview/payable',
   serveFile(DB_DIR, 'loan-overview-payable.json')

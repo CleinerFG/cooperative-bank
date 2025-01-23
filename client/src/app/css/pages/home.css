@@ -12,20 +12,29 @@
   height: 10rem;
 }
 
+.statement .amount {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.amount span {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 .amount-container {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
 }
 
-.amount-container .visibility-btn {
-  cursor: pointer;
+.amount-container .span-amount {
+  font-size: 1.2rem;
 }
 
-.span-amount {
-  font-size: 1.2rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 550;
+.amount-container .visibility-btn {
+  cursor: pointer;
 }
 
 .cards.feature-cards {

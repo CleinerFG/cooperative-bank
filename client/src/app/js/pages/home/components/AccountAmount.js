@@ -4,30 +4,18 @@ import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
 /**
- * Manages the display and visibility of the financial statement on the page.
- * Handles fetching financial data, formatting it, and toggling the visibility.
+ * Manages the display of the account amount on the page.
+ * Handles fetching amount, formatting it, and toggling the visibility.
  */
-export default class FinancialStatement {
+export default class AccountAmount {
   /**
    * @type {HTMLElement}
    */
-  #containerElement;
-  #endpoint = 'financial-statement';
+  #endpoint = 'account/amount';
   #amountValue;
 
   constructor() {
-    this.#containerElement = document.querySelector('.amount-container');
     this.#init();
-  }
-
-  get #template() {
-    return `
-      <div class="statement__total"><span id="span-amount" class="span-amount">R$ ******</span></div>
-      <button id="amount-visibility-btn" class="btn-unset visibility-btn" data-visibility="off">
-        <img id="visibility-icon" class="icon visibility-icon" alt="Closed eye">
-      </button>
-
-    `;
   }
 
   get #btnVisibilityElement() {
@@ -71,7 +59,7 @@ export default class FinancialStatement {
     this.#spanAmountElement.textContent =
       this.#currentVisibility === 'on'
         ? numberToCurrency.format(this.#amountValue)
-        : 'R$ ******';
+        : 'R$ * * * * * *';
   }
 
   #toggleVisibility() {
@@ -86,10 +74,6 @@ export default class FinancialStatement {
     });
   }
 
-  #render() {
-    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
-  }
-
   /**
    * @param {"on" | "off"} visibility
    */
@@ -102,7 +86,6 @@ export default class FinancialStatement {
   }
 
   async #init() {
-    this.#render();
     this.#handleAssets('off');
     await this.#fetchAmount();
     this.#setListeners();
