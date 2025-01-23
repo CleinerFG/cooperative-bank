@@ -16,13 +16,13 @@ export default class FinancialStatement {
   #amountValue;
 
   constructor() {
-    this.#containerElement = document.querySelector('.statement-container');
+    this.#containerElement = document.querySelector('.amount-container');
     this.#init();
   }
 
   get #template() {
     return `
-      <div class="statement__total"><span id="statement-amount" class="statement-amount">R$ ******</span></div>
+      <div class="statement__total"><span id="span-amount" class="span-amount">R$ ******</span></div>
       <button id="amount-visibility-btn" class="btn-unset visibility-btn" data-visibility="off">
         <img id="visibility-icon" class="icon visibility-icon" alt="Closed eye">
       </button>
@@ -35,7 +35,7 @@ export default class FinancialStatement {
   }
 
   get #spanAmountElement() {
-    return document.getElementById('statement-amount');
+    return document.getElementById('span-amount');
   }
 
   get #iconElement() {

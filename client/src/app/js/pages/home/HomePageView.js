@@ -15,7 +15,7 @@ export default class HomePageView extends PageView {
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>
-      <div class="statement-container"></div>
+      <div class="amount-container"></div>
     </section>
     `;
   }

@@ -16,7 +16,7 @@
 
 .modal__body {
   margin: 1rem;
-  background-color: var(--color-background);
+  background-color: var(--color-bg);
   border-radius: var(--component-border-radius);
   max-width: 400px;
   position: relative;

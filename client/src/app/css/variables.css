@@ -18,7 +18,7 @@
   --color-secondary-hover: hsl(220, 41%, 30%);
 
   --text-color: hsl(220, 41%, 25%);
-  --color-background: hsl(45, 29%, 97%);
+  --color-bg: hsl(45, 29%, 97%);
 
   --component-border: solid 0.1rem hsl(0, 0%, 80%);
   --component-line-color: hsl(0, 0%, 80%);
@@ -42,7 +42,7 @@
   --color-secondary-hover: hsl(220, 41%, 30%);
 
   --text-color: #faf9f6;
-  --color-background: #000;
+  --color-bg: #000;
 
   --component-border: solid 0.1rem hsl(0, 0%, 20%);
   --component-line-color: hsl(0, 0%, 20%);

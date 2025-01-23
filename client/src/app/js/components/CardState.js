@@ -1,4 +1,4 @@
-import('../../css/components/cards/card-state.css')
+import('../../css/components/cards/card-state.css');
 
 import { AssetManager } from '../../../global/js/core/AssetManager.js';
 
@@ -93,7 +93,7 @@ export class CardState {
       </main>
       <footer class="card-state__footer skelon"></footer>
     `
-    ).repeat(3);
+    ).repeat(4);
   }
 
   get #emptyStateTextsTemplate() {

@@ -3,15 +3,24 @@
 @import url('./section.css');
 
 body {
+  background-color: var(--color-bg);
   min-height: 100svh;
-  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 768px;
   display: flex;
   flex-direction: column;
+  border: var(--component-border);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 #app {
   margin-top: var(--header-height);
-  background-color: var(--color-background);
+  background-color: var(--color-bg);
   padding: var(--container-padding);
   flex: 1;
 }
