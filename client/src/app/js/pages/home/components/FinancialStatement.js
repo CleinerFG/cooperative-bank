@@ -12,8 +12,8 @@ export default class FinancialStatement {
    * @type {HTMLElement}
    */
   #containerElement;
-
   #endpoint = 'financial-statement';
+  #amountValue;
 
   constructor() {
     this.#containerElement = document.querySelector('.statement-container');
@@ -39,7 +39,7 @@ export default class FinancialStatement {
   }
 
   get #iconElement() {
-    return document.querySelector('.statement__visibility-icon');
+    return document.querySelector('.statement .visibility-icon');
   }
 
   /**
@@ -49,35 +49,39 @@ export default class FinancialStatement {
     return this.#btnVisibilityElement.dataset.visibility;
   }
 
-  async #fetchFromApi() {
-    return await ApiService.fetchFrom(this.#endpoint);
+  async #fetchAmount() {
+    this.#spanAmountElement.classList.add('skelon');
+    await simulateWait(2);
+    this.#amountValue = await ApiService.fetchFrom(this.#endpoint);
+    this.#spanAmountElement.classList.remove('skelon');
   }
 
-  async #updateAmount() {
-    let currencyValue = 'R$ ******';
-    if (this.#currentVisibility === 'off') {
-      this.#spanAmountElement.classList.add('skelon');
-      await simulateWait(2);
-      const value = await this.#fetchFromApi();
-      this.#spanAmountElement.classList.remove('skelon');
-      currencyValue = numberToCurrency.format(value);
-    }
-    this.#spanAmountElement.textContent = currencyValue;
+  #updateAmountVisibility() {
+    this.#btnVisibilityElement.dataset.visibility =
+      this.#currentVisibility === 'on' ? 'off' : 'on';
+  }
+
+  #updateIconVisibility() {
+    this.#handleAssets(this.#currentVisibility);
+    const alt = this.#currentVisibility === 'on' ? 'Opened eye' : 'Closed eye';
+    this.#iconElement.setAttribute('alt', alt);
+  }
+
+  #showAmount() {
+    this.#spanAmountElement.textContent =
+      this.#currentVisibility === 'on'
+        ? numberToCurrency.format(this.#amountValue)
+        : 'R$ ******';
   }
 
   #toggleVisibility() {
-    const updatedAlt =
-      this.#currentVisibility === 'on' ? 'Closed eye' : 'Opened eye';
-    this.#iconElement.setAttribute('alt', updatedAlt);
-
-    const updatedVisibility = this.#currentVisibility === 'off' ? 'on' : 'off';
-    this.#handleAssets(updatedVisibility);
-    this.#btnVisibilityElement.dataset.visibility = updatedVisibility;
+    this.#updateAmountVisibility();
+    this.#updateIconVisibility();
+    this.#showAmount();
   }
 
   #setListeners() {
     this.#btnVisibilityElement.addEventListener('click', () => {
-      this.#updateAmount();
       this.#toggleVisibility();
     });
   }
@@ -97,9 +101,10 @@ export default class FinancialStatement {
     );
   }
 
-  #init() {
+  async #init() {
     this.#render();
     this.#handleAssets('off');
+    await this.#fetchAmount();
     this.#setListeners();
   }
 }
