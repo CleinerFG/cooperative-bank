@@ -4,7 +4,6 @@
   border-radius: var(--component-border-radius);
   background-color: var(--color-secondary);
   color: var(--color-background);
-  cursor: pointer;
 }
 
 .btn-action {

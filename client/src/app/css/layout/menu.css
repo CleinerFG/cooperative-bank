@@ -4,6 +4,7 @@
   padding: 0.3rem;
   border-radius: 30%;
   transition: all 0.4s ease-in-out;
+  cursor: pointer;
 }
 
 .header .btn-menu:hover {
@@ -43,6 +44,7 @@
 .header .menu-list .menu-item {
   height: fit-content;
   padding: 0.5rem;
+  cursor: pointer;
 }
 
 .header .menu-list .menu-item:first-child {
@@ -63,7 +65,6 @@
 }
 
 .header .menu-list .menu-item:last-child {
-  cursor: pointer;
   color: var(--color-detail);
 }
 

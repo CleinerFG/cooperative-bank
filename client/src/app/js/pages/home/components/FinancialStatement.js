@@ -16,22 +16,22 @@ export default class FinancialStatement {
   #endpoint = 'financial-statement';
 
   constructor() {
-    this.#containerElement = document.querySelector('.statement__container');
+    this.#containerElement = document.querySelector('.statement-container');
     this.#init();
   }
 
   get #template() {
     return `
-      <div class="statement__total"><span id="statement-amount" class="statement__amount">R$ ******</span></div>
-      <button class="btn-unset statement__visibility-btn" data-visibility="off">
-        <img id="visibility-icon" class="icon statement__visibility-icon" alt="Closed eye">
+      <div class="statement__total"><span id="statement-amount" class="statement-amount">R$ ******</span></div>
+      <button id="amount-visibility-btn" class="btn-unset visibility-btn" data-visibility="off">
+        <img id="visibility-icon" class="icon visibility-icon" alt="Closed eye">
       </button>
 
     `;
   }
 
   get #btnVisibilityElement() {
-    return document.querySelector('.statement__visibility-btn');
+    return document.querySelector('#amount-visibility-btn');
   }
 
   get #spanAmountElement() {
