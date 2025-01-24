@@ -20,11 +20,11 @@ export class CardLink {
     this.#groupName = groupName;
   }
 
-  get #endpoint() {
+  get endpoint() {
     return `/app/${this.#groupName}/${this.#name}`;
   }
 
-  get #anchorId() {
+  get anchorId() {
     return `card-link-a-${this.#name}`;
   }
 
@@ -41,7 +41,7 @@ export class CardLink {
     const capName = capitalize(this.#name);
     return `
     <div class="card-link__container">
-      <a id="${this.#anchorId}" class="card-link__a" rel="next" a="${this.#endpoint}" data-link>
+      <a id="${this.anchorId}" class="card-link__a" rel="next" a="${this.endpoint}" data-link>
         <div class="card card-link">
           <img id="${this.#iconId}"
             class="icon card-link__icon"

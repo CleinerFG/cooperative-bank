@@ -1,40 +1,60 @@
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 import { CardLink } from './CardLink.js';
 
-export class FeatureGroups {
-  #groups;
+class FeatureGroups {
+  #groups = [
+    {
+      groupName: 'wallet',
+      features: ['transfer', 'extract'],
+      featureCards: [],
+    },
+    {
+      groupName: 'loan',
+      features: ['requests', 'payments', 'overview', 'timeline'],
+      featureCards: [],
+    },
+    {
+      groupName: 'investments',
+      features: ['all', 'reports'],
+      featureCards: [],
+    },
+  ];
+
+  constructor() {
+    this.#populateFeatureCards();
+  }
+
+  get groups() {
+    return this.#groups;
+  }
+
+  #populateFeatureCards() {
+    this.#groups = this.#groups.map((group) => {
+      const featureCards = group.features.map(
+        (feature) => new CardLink(feature, group.groupName)
+      );
+      return { ...group, featureCards };
+    });
+  }
 
   /**
-   * @param {import('../HomePageView.js').FeatureGroup[]} groups
+   * @param {CardLink[]} featureCards
    */
-  constructor(groups) {
-    this.#groups = groups;
+  #buildFeatureCardsTemplate(featureCards) {
+    return featureCards.map((card) => card.template).join('');
   }
 
   /**
    * @param {string} groupName
-   * @param {string[]} features
+   * @param {CardLink[]} featureCards
    */
-  _buildFeatureCardsTemplate(groupName, features) {
-    return features
-      .map((feature) => {
-        const card = new CardLink(feature, groupName);
-        return card.template;
-      })
-      .join('');
-  }
-
-  /**
-   * @param {string} groupName
-   * @param {string[]} features
-   */
-  _buildGroupTemplate({ groupName, features }) {
+  #buildGroupTemplate({ groupName, featureCards }) {
     return `
     <section class="section ${groupName}">
         <h2 class="section__h2">${capitalize(groupName)}</h2>
         <div class="cards-container">
           <div class="cards feature-cards ${groupName}__cards">
-            ${this._buildFeatureCardsTemplate(groupName, features)}
+            ${this.#buildFeatureCardsTemplate(featureCards)}
           </div>
         </div>
       </section>
@@ -43,7 +63,9 @@ export class FeatureGroups {
 
   get template() {
     return this.#groups
-      .map((group) => this._buildGroupTemplate(group))
+      .map((group) => this.#buildGroupTemplate(group))
       .join('');
   }
 }
+
+export const featureGroups = new FeatureGroups();

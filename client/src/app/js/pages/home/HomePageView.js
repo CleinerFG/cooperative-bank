@@ -1,33 +1,13 @@
 import('../../../css/pages/home.css');
 
 import { AppPageView } from '../../views/AppPageView.js';
-import { FeatureGroups } from './components/FeatureGroups.js';
+import { featureGroups } from './components/FeatureGroups.js';
 import { appRouter } from '../../core/appRouter.js';
-
-/**
- * @typedef {Object} FeatureGroup
- * @property {string} groupName
- * @property {string[]} features
- */
 
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.
  */
 export default class HomePageView extends AppPageView {
-  get _featureGroups() {
-    return [
-      {
-        groupName: 'wallet',
-        features: ['transfer', 'extract'],
-      },
-      {
-        groupName: 'loan',
-        features: ['requests', 'payments', 'overview', 'timeline'],
-      },
-      { groupName: 'investments', features: ['all', 'reports'] },
-    ];
-  }
-
   get _statementTemplate() {
     return `
     <section class="section statement">
@@ -54,7 +34,7 @@ export default class HomePageView extends AppPageView {
   }
 
   get _featureGroupsTemplate() {
-    return new FeatureGroups(this._featureGroups).template;
+    return featureGroups.template;
   }
 
   get _pageTitle() {
@@ -70,11 +50,17 @@ export default class HomePageView extends AppPageView {
   }
 
   _handleFeatureCardsRoute() {
-      // document.getElementById().addEventListener('click', (e) => {
-      //   e.preventDefault();
-      //   appRouter.navigateTo();
-      // });
-    }
+    featureGroups.groups.forEach(({ featureCards }) => {
+      featureCards.forEach((card) => {
+        document
+          .getElementById(card.anchorId)
+          .addEventListener('click', (e) => {
+            e.preventDefault();
+            appRouter.navigateTo(card.endpoint);
+          });
+      });
+    });
+  }
 
   async _initComponents() {
     const [AccountAmount, EventGroup] = await Promise.all([
@@ -84,5 +70,6 @@ export default class HomePageView extends AppPageView {
 
     new AccountAmount.default();
     new EventGroup.default(false);
+    this._handleFeatureCardsRoute();
   }
 }
