@@ -1,14 +1,31 @@
 import('../../../css/pages/home.css');
 
-import { PageView } from '../../../../global/js/views/PageView.js';
-import { capitalize } from '../../../../global/js/utils/stringUtils.js';
+import { AppPageView } from '../../views/AppPageView.js';
+import { FeatureGroups } from './components/FeatureGroups.js';
+import { appRouter } from '../../core/appRouter.js';
+
+/**
+ * @typedef {Object} FeatureGroup
+ * @property {string} groupName
+ * @property {string[]} features
+ */
 
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.
  */
-export default class HomePageView extends PageView {
-  get _features() {
-    return ['wallet', 'loan', 'investments'];
+export default class HomePageView extends AppPageView {
+  get _featureGroups() {
+    return [
+      {
+        groupName: 'wallet',
+        features: ['transfer', 'extract'],
+      },
+      {
+        groupName: 'loan',
+        features: ['requests', 'payments', 'overview', 'timeline'],
+      },
+      { groupName: 'investments', features: ['all', 'reports'] },
+    ];
   }
 
   get _statementTemplate() {
@@ -36,8 +53,8 @@ export default class HomePageView extends PageView {
     `;
   }
 
-  get _featuresTemplate() {
-    return this._features.map(this._buildFeatureTemplate).join('');
+  get _featureGroupsTemplate() {
+    return new FeatureGroups(this._featureGroups).template;
   }
 
   get _pageTitle() {
@@ -46,34 +63,26 @@ export default class HomePageView extends PageView {
 
   get _template() {
     return (
-      this._statementTemplate + this._featuresTemplate + this._eventsTemplate
+      this._statementTemplate +
+      this._featureGroupsTemplate +
+      this._eventsTemplate
     );
   }
 
-  /**
-   * @param {string} name
-   */
-  _buildFeatureTemplate(name) {
-    return `
-      <section class="section ${name}">
-        <h2 class="section__h2">${capitalize(name)}</h2>
-        <div class="cards-container">
-          <div class="cards feature-cards ${name}__cards">
-          </div>
-        </div>
-      </section>
-      `;
-  }
+  _handleFeatureCardsRoute() {
+      // document.getElementById().addEventListener('click', (e) => {
+      //   e.preventDefault();
+      //   appRouter.navigateTo();
+      // });
+    }
 
   async _initComponents() {
-    const [AccountAmount, CardLinkGroups, EventGroup] = await Promise.all([
+    const [AccountAmount, EventGroup] = await Promise.all([
       import('./components/AccountAmount.js'),
-      import('./components/CardLinkGroups.js'),
       import('./components/EventGroup.js'),
     ]);
 
     new AccountAmount.default();
-    new CardLinkGroups.default();
     new EventGroup.default(false);
   }
 }

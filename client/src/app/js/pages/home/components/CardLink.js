@@ -1,46 +1,27 @@
 import('../../../../css/components/cards/card-link.css');
 
-import { appRouter } from '../../../core/appRouter.js';
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
-import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
+import { getStoredTheme } from '../../../../../global/js/utils/themeUtils.js';
+import { AppPageView } from '../../../views/AppPageView.js';
 
 /**
  * Represents a clickable card component that redirects to a page in the application.
  */
 export class CardLink {
-  /**
-   * @type {HTMLElement}
-   */
-  #containerElement;
-
-  #featureName;
-
-  /**
-   * @type {string}
-   */
+  #groupName;
   #name;
 
   /**
-   * @param {HTMLElement} containerElement
-   * @param {string} featureName
    * @param {string} name
+   * @param {string} groupName
    */
-  constructor(containerElement, featureName, name) {
-    this.#containerElement = containerElement;
-    this.#featureName = featureName;
+  constructor(name, groupName) {
     this.#name = name;
-    this.#init();
-  }
-
-  /**
-   * @type {string}
-   */
-  get name() {
-    return this.#name;
+    this.#groupName = groupName;
   }
 
   get #endpoint() {
-    return `/app/${this.#featureName}/${this.#name}`;
+    return `/app/${this.#groupName}/${this.#name}`;
   }
 
   get #anchorId() {
@@ -48,10 +29,15 @@ export class CardLink {
   }
 
   get #iconId() {
-    return `card-icon-${this.#featureName}-${this.#name}`;
+    return `card-icon-${this.#groupName}-${this.#name}`;
   }
 
-  get #template() {
+  get #imgSrc() {
+    const theme = getStoredTheme();
+    return `${AppPageView.ASSETS_ROUTE}/icons/${theme}/icon-${this.#name}.svg`;
+  }
+
+  get template() {
     const capName = capitalize(this.#name);
     return `
     <div class="card-link__container">
@@ -59,36 +45,12 @@ export class CardLink {
         <div class="card card-link">
           <img id="${this.#iconId}"
             class="icon card-link__icon"
+            src="${this.#imgSrc}"
             alt="${capName} Icon">
           <span class="label card-link__label">${capName}</span>
         </div>
       </a>
     </div>
     `;
-  }
-
-  #render() {
-    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
-  }
-
-  #handleRoute() {
-    document.getElementById(this.#anchorId).addEventListener('click', (e) => {
-      e.preventDefault();
-      appRouter.navigateTo(this.#endpoint);
-    });
-  }
-
-  #handleAssets() {
-    AssetManager.updateAsset(
-      'icon',
-      `#${this.#iconId}`,
-      `icon-${this.#name}.svg`
-    );
-  }
-
-  #init() {
-    this.#render();
-    this.#handleAssets();
-    this.#handleRoute();
   }
 }

@@ -7,7 +7,7 @@ export default class LoginPageView extends PublicPageView {
     return `
     <header class="header">
       <a class="brand-container" href="/">
-        <img class="icon brand-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-globe.svg" alt="Globe">
+        <img class="icon brand-icon" src="${PublicPageView.ASSETS_ROUTE}/icons/icon-globe.svg" alt="Globe">
         <span class="brand-name">COOPERATIVE BANK</span>
       </a>
     </header>

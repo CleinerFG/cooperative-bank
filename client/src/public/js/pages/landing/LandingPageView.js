@@ -92,7 +92,7 @@ export default class LandingPageView extends PublicPageView {
     return `
     <section class="section feature-section">
         <div class="img-container">
-          <img class="img" src="${PublicPageView._ASSETS_PATH}/images/${feature.imgFile}" loading="lazy" alt="${feature.imgAlt}"/>
+          <img class="img" src="${PublicPageView.ASSETS_ROUTE}/images/${feature.imgFile}" loading="lazy" alt="${feature.imgAlt}"/>
         </div>
         <div class="content-container">
           <h2>${feature.title}</h2>
@@ -110,7 +110,7 @@ export default class LandingPageView extends PublicPageView {
       .map((sm) => {
         return `
         <a href="${sm.href}">
-          <img class="social-media__icon" src="${PublicPageView._ASSETS_PATH}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
+          <img class="social-media__icon" src="${PublicPageView.ASSETS_ROUTE}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
         </a>
       `;
       })
@@ -149,13 +149,13 @@ export default class LandingPageView extends PublicPageView {
     return `
     <header class="header">
         <div class="brand-container">
-          <img class="brand-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
+          <img class="brand-icon" src="${PublicPageView.ASSETS_ROUTE}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
           <span class="brand-name">COOPERATIVE BANK</span>
         </div>
         <div class="login-link-container">
           <a href="/login">
             Login
-            <img class="login-icon" src="${PublicPageView._ASSETS_PATH}/icons/icon-login.svg" alt="Login"/>
+            <img class="login-icon" src="${PublicPageView.ASSETS_ROUTE}/icons/icon-login.svg" alt="Login"/>
           </a>
         </div>
       </header>
@@ -166,7 +166,7 @@ export default class LandingPageView extends PublicPageView {
     return `
     <section class="section hero-section">
       <div class="img-container">
-        <img class="img" src="${PublicPageView._ASSETS_PATH}/images/bank.jpeg" alt="Modern Bank" />
+        <img class="img" src="${PublicPageView.ASSETS_ROUTE}/images/bank.jpeg" alt="Modern Bank" />
       </div>
       <div class="content-container">
         <h1>Cooperation that connects people</h1>

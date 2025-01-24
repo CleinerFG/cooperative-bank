@@ -1,10 +1,10 @@
-import('../../css/index.css')
+import('../../css/index.css');
 
 import { PageView } from '../../../global/js/views/PageView.js';
 import { publicRouter } from '../core/publicRouter.js';
 
 export class PublicPageView extends PageView {
-  static _ASSETS_PATH = '/public/static/assets';
+  static ASSETS_ROUTE = '/public/static/assets';
 
   _handleRoutes() {
     const anchors = document.querySelectorAll('.public-link');
