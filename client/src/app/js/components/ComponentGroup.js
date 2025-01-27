@@ -1,13 +1,14 @@
-import('../../css/components/component-group.css')
-import('../../css/components/cards/cards.css')
+import('../../css/components/component-group.css');
+import('../../css/components/cards/cards.css');
 
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './CardState.js';
 import { ApiService } from '../../../global/js/service/ApiService.js';
-import { AssetManager } from '../../../global/js/core/AssetManager.js';
 import { capitalize } from '../../../global/js/utils/stringUtils.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
 import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
+import { AppPageView } from '../views/AppPageView.js';
+import { getStoredTheme } from '../../../global/js/utils/themeUtils.js';
 
 /**
  * @typedef {Object} TypeConfig
@@ -119,7 +120,8 @@ export class ComponentGroup {
   }
 
   get _dateFilterTemplate() {
-    if (this.#useDataFilter)
+    if (this.#useDataFilter) {
+      const imgSrc = `${AppPageView.ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-filter.svg`;
       return `
     <div class="dashboard__filter">
       <div class="inputs__container">
@@ -133,10 +135,11 @@ export class ComponentGroup {
         </div>
       </div>
       <button class="btn-unset btn-filter">
-        <img id="${this._ICON_FILTER_ID}" class="icon filter-icon" alt="Filter Icon">
+        <img id="${this._ICON_FILTER_ID}" class="icon filter-icon" src="${imgSrc}" alt="Filter Icon">
       </button>
     </div>
     `;
+    }
     return '';
   }
 
@@ -165,16 +168,6 @@ export class ComponentGroup {
 
   #render() {
     this._containerElement.insertAdjacentHTML('beforeend', this._template);
-  }
-
-  #handleAssets() {
-    if (this.#useDataFilter) {
-      AssetManager.updateAsset(
-        'icon',
-        `#${this._ICON_FILTER_ID}`,
-        'icon-filter.svg'
-      );
-    }
   }
 
   #initCardState() {
@@ -239,7 +232,6 @@ export class ComponentGroup {
 
   #init() {
     this.#render();
-    this.#handleAssets();
     this.#setListeners();
     this.#initCardState();
     this.#renderComponents();
