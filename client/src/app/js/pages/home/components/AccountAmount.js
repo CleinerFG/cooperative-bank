@@ -19,7 +19,7 @@ export default class AccountAmount {
   }
 
   get #btnVisibilityElement() {
-    return document.querySelector('#amount-visibility-btn');
+    return document.getElementById('amount-visibility-btn');
   }
 
   get #spanAmountElement() {
@@ -27,7 +27,7 @@ export default class AccountAmount {
   }
 
   get #iconElement() {
-    return document.querySelector('.statement .visibility-icon');
+    return document.getElementById('amount-visibility-icon');
   }
 
   /**
@@ -69,9 +69,10 @@ export default class AccountAmount {
   }
 
   #setListeners() {
-    this.#btnVisibilityElement.addEventListener('click', () => {
-      this.#toggleVisibility();
-    });
+    this.#btnVisibilityElement.addEventListener(
+      'click',
+      this.#toggleVisibility.bind(this)
+    );
   }
 
   /**
@@ -80,13 +81,12 @@ export default class AccountAmount {
   #handleAssets(visibility) {
     AssetManager.updateAsset(
       'icon',
-      '#visibility-icon',
+      '#amount-visibility-icon',
       `icon-visibility-${visibility}.svg`
     );
   }
 
   async #init() {
-    this.#handleAssets('off');
     await this.#fetchAmount();
     this.#setListeners();
   }
