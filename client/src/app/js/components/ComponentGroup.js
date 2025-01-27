@@ -3,11 +3,11 @@ import('../../css/components/cards/cards.css');
 
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './CardState.js';
+import { ASSETS_ROUTE } from '../constants/routes.js';
 import { ApiService } from '../../../global/js/service/ApiService.js';
 import { capitalize } from '../../../global/js/utils/stringUtils.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
 import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
-import { AppPageView } from '../views/AppPageView.js';
 import { getStoredTheme } from '../../../global/js/utils/themeUtils.js';
 
 /**
@@ -121,7 +121,7 @@ export class ComponentGroup {
 
   get _dateFilterTemplate() {
     if (this.#useDataFilter) {
-      const imgSrc = `${AppPageView.ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-filter.svg`;
+      const imgSrc = `${ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-filter.svg`;
       return `
     <div class="dashboard__filter">
       <div class="inputs__container">

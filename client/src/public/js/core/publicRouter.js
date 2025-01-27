@@ -1,16 +1,17 @@
 import { Router } from '../../../global/js/core/Router.js';
+import { PAGE_ROUTES } from '../constants/routes.js';
 
 const routes = [
   {
-    path: '/',
+    path: PAGE_ROUTES.landing,
     viewModule: () => import('../pages/landing/LandingPageView.js'),
   },
   {
-    path: '/login',
+    path: PAGE_ROUTES.login,
     viewModule: () => import('../pages/login/LoginPageView.js'),
   },
   {
-    path: '/register',
+    path: PAGE_ROUTES.register,
     viewModule: () => import('../pages/register/RegisterPageView.js'),
   },
 ];

@@ -1,13 +1,14 @@
 import('../../../css/pages/login-register.css');
 
 import { PublicPageView } from '../../views/PublicPageView.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
 
 export default class LoginPageView extends PublicPageView {
   get _headerTemplate() {
     return `
     <header class="header">
       <a class="brand-container" href="/">
-        <img class="icon brand-icon" src="${PublicPageView.ASSETS_ROUTE}/icons/icon-globe.svg" alt="Globe">
+        <img class="icon brand-icon" src="${ASSETS_ROUTE}/icons/icon-globe.svg" alt="Globe">
         <span class="brand-name">COOPERATIVE BANK</span>
       </a>
     </header>

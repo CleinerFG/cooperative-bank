@@ -1,6 +1,7 @@
 import('../../../css/pages/home.css');
 
-import { AppPageView } from '../../views/AppPageView.js';
+import { PageView } from '../../../../global/js/views/PageView.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { featureGroups } from './components/FeatureGroups.js';
 import { appRouter } from '../../core/appRouter.js';
 import { getStoredTheme } from '../../../../global/js/utils/themeUtils.js';
@@ -8,9 +9,9 @@ import { getStoredTheme } from '../../../../global/js/utils/themeUtils.js';
 /**
  * Represents the view for the homepage, including sections for financial statement, features, and events.
  */
-export default class HomePageView extends AppPageView {
+export default class HomePageView extends PageView {
   get _statementTemplate() {
-    const imgSrc = `${AppPageView.ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-visibility-off.svg`;
+    const imgSrc = `${ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-visibility-off.svg`;
     return `
     <section class="section statement">
       <h1 class="section__h1 statement__title">Financial Statement</h1>

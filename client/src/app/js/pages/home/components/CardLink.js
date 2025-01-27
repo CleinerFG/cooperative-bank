@@ -2,7 +2,7 @@ import('../../../../css/components/cards/card-link.css');
 
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 import { getStoredTheme } from '../../../../../global/js/utils/themeUtils.js';
-import { AppPageView } from '../../../views/AppPageView.js';
+import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
 /**
  * Represents a clickable card component that redirects to a page in the application.
@@ -34,7 +34,7 @@ export class CardLink {
 
   get #imgSrc() {
     const theme = getStoredTheme();
-    return `${AppPageView.ASSETS_ROUTE}/icons/${theme}/icon-${this.#name}.svg`;
+    return `${ASSETS_ROUTE}/icons/${theme}/icon-${this.#name}.svg`;
   }
 
   get template() {
