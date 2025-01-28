@@ -1,37 +1,29 @@
+import { ASSETS_ROUTE as APP_ASSETS_ROUTE } from '../../../app/js/constants/routes.js';
+import { ASSETS_ROUTE as PUBLIC_ASSETS_ROUTE } from '../../../public/js/constants/routes.js';
 import { getStoredTheme } from '../utils/themeUtils.js';
 
 /**
  * Utility class for managing and updating asset paths in DOM elements.
  */
 export class AssetManager {
-  static BASE_PATH = {
-    app: '/app/static/assets/',
-    public: '/public/static/assets/',
-  };
-
-  /**
-   * @type {'app' | 'public'}
-   */
   static get #spaLocation() {
     return window.location.pathname.includes('/app') ? 'app' : 'public';
   }
 
-  /**
-   * @type {string}
-   */
   static get #iconsPath() {
     const pathMap = {
-      app: AssetManager.BASE_PATH.app + 'icons/' + getStoredTheme() + '/',
-      public: AssetManager.BASE_PATH.public + 'icons/',
+      app: APP_ASSETS_ROUTE + '/icons/' + getStoredTheme() + '/',
+      public: PUBLIC_ASSETS_ROUTE + '/icons/',
     };
     return pathMap[AssetManager.#spaLocation];
   }
 
-  /**
-   * @type {string}
-   */
   static get #imagesPath() {
-    return AssetManager.BASE_PATH[this.#spaLocation] + 'images/';
+    const pathMap = {
+      app: APP_ASSETS_ROUTE,
+      public: PUBLIC_ASSETS_ROUTE,
+    };
+    return pathMap[this.#spaLocation] + '/images/';
   }
 
   /**
