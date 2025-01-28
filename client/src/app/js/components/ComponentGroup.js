@@ -1,5 +1,4 @@
 import('../../css/components/component-group.css');
-import('../../css/components/cards/cards.css');
 
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './cards/CardState.js';

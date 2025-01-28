@@ -1,5 +1,3 @@
-import('../../../../css/components/cards/card-link.css');
-
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 import { getStoredTheme } from '../../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../../constants/routes.js';

@@ -1,5 +1,3 @@
-import('../../css/index.css');
-
 import { PageView } from '../../../global/js/views/PageView.js';
 import { publicRouter } from '../core/publicRouter.js';
 

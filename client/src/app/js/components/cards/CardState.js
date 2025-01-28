@@ -1,5 +1,3 @@
-import('../../../css/components/cards/card-state.css');
-
 import { CardLoading } from './CardLoading.js';
 import { CardError } from './CardError.js';
 import { CardEmpty } from './CardEmpty.js';

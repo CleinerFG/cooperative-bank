@@ -1,4 +1,4 @@
-import('../../../../css/pages/loan-requests.css')
+import('../../../../css/pages/loan-requests.css');
 
 import { PageView } from '../../../../../global/js/views/PageView.js';
 
@@ -53,4 +53,3 @@ export default class LoanRequestsPageView extends PageView {
     new LoanRequestGroup.default();
   }
 }
-

@@ -11,7 +11,10 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = (spaType) => {
   return {
     mode: 'production',
-    entry: path.resolve(__dirname, `../src/${spaType}/js/index.js`),
+    entry: {
+      main: path.resolve(__dirname, `../src/${spaType}/js/index.js`),
+      styles: path.resolve(__dirname, `../src/${spaType}/css/index.css`),
+    },
     output: {
       path: path.resolve(__dirname, `../dist/${spaType}`),
       filename: 'static/js/[name].[contenthash].js',
@@ -64,8 +67,11 @@ module.exports = (spaType) => {
         ],
       }),
       new MiniCssExtractPlugin({
-        filename: 'static/css/[name].[contenthash].css',
-        chunkFilename: 'static/css/[name].[contenthash].css',
+        filename: (pathData) =>
+          pathData.chunk.name === 'styles'
+            ? 'static/css/index.css'
+            : 'static/css/[name].[contenthash].css',
+        chunkFilename: 'static/css/[id].[contenthash].css',
       }),
     ],
     resolve: {
