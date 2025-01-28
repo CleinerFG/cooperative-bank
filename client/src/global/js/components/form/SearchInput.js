@@ -15,7 +15,6 @@ import { getStoredTheme } from '../../utils/themeUtils.js';
  * @property {boolean} strictToNumber
  * @property {"currency" | "percent"} formatter
  * @property {string} endpoint
- * @property {{id: number, name: string}} defaultValue
  */
 
 /**
@@ -30,7 +29,6 @@ export class SearchInput extends Input {
 
   #INP_QUERY_ID = `${this._id}`;
   #INP_RESULT_ID = `${this._id}-result`;
-  #BTN_SEARCH_ID = `${this._id}-search-btn`;
   #ICON_SEARCH_ID = `${this._id}-search-icon`;
 
   /**
@@ -39,7 +37,6 @@ export class SearchInput extends Input {
   constructor(config) {
     super(config);
     this.#endpoint = config.endpoint;
-    this._defaultValue = config.defaultValue;
   }
 
   get #inpQueryElement() {
@@ -50,22 +47,18 @@ export class SearchInput extends Input {
     return document.getElementById(this.#INP_RESULT_ID);
   }
 
-  get #btnSearchElement() {
-    return document.getElementById(this.#BTN_SEARCH_ID);
-  }
-
   get #iconSearchElement() {
     return document.getElementById(this.#ICON_SEARCH_ID);
   }
 
-  get #inpSearchState() {
+  get #inpState() {
     return this.#inpQueryElement.dataset.search;
   }
 
   /**
    * @param {"on" | "off"} value
    */
-  set #inpSearchState(value) {
+  set #inpState(value) {
     this.#inpQueryElement.dataset.search = value;
     this.#handleSearchAnimation();
   }
@@ -81,8 +74,8 @@ export class SearchInput extends Input {
       <div class="form-group__inp-group">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
         <div class="inp-container">
-          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp-search ${this._cssClass}" data-valid="true" data-search="off">
-          <button id="${this.#BTN_SEARCH_ID}" type="button" class="btn-unset"><img class="icon" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
+          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp-search ${this._cssClass}" data-valid="false" data-search="off">
+          <button disabled class="btn-unset"><img class="icon" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
           <input id="${this.#INP_RESULT_ID}" type="text" class="inp form-group__inp" disabled>
         </div>
         ${this._errorSpanTemplate}
@@ -90,7 +83,7 @@ export class SearchInput extends Input {
   }
 
   async #fetchFromApi() {
-    this.#inpSearchState = 'on';
+    this.#inpState = 'on';
     const query = this.#inpQueryElement.value;
     await simulateWait(1);
     try {
@@ -100,14 +93,14 @@ export class SearchInput extends Input {
 
       throw new NotFoundError(this._id);
     } finally {
-      this.#inpSearchState = 'off';
+      this.#inpState = 'off';
     }
   }
 
   #handleSearchAnimation() {
     this.#inpResultElement.classList.toggle('inp-skelon');
     this.#iconSearchElement.classList.toggle('search-animation');
-    if (this.#inpSearchState === 'on') {
+    if (this.#inpState === 'on') {
       this.#inpResultElement.value = 'Searching...';
     }
   }
@@ -134,18 +127,7 @@ export class SearchInput extends Input {
     }
   }
 
-  _setDefaultValue() {
-    if (this._defaultValue) {
-      this.#inpQueryElement.value = this._defaultValue.id;
-      this.#inpResultElement.value = this._defaultValue.name;
-    }
-  }
-
   _setListeners() {
-    this.#btnSearchElement.addEventListener(
-      'click',
-      this._handleSearch.bind(this)
-    );
     this.#inpQueryElement.addEventListener(
       'blur',
       this._handleSearch.bind(this)
@@ -154,7 +136,6 @@ export class SearchInput extends Input {
 
   init() {
     super.init();
-    this._setDefaultValue();
     this._setListeners();
   }
 }

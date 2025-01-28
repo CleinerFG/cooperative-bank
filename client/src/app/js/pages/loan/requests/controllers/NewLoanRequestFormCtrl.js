@@ -28,10 +28,6 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         id: 'search-creditor',
         strictToNumber: true,
         labelText: 'Search for a Creditor',
-        defaultValue: {
-          id: 1000,
-          name: 'Cooperative Bank Creditor',
-        },
         endpoint: 'users',
       },
       {
