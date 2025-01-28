@@ -2,7 +2,7 @@ import('../../css/components/component-group.css');
 import('../../css/components/cards/cards.css');
 
 import { CardComponent } from './CardComponent.js';
-import { CardState } from './CardState.js';
+import { CardState } from './cards/CardState.js';
 import { ASSETS_ROUTE } from '../constants/routes.js';
 import { ApiService } from '../../../global/js/service/ApiService.js';
 import { capitalize } from '../../../global/js/utils/stringUtils.js';
