@@ -25,6 +25,15 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
 - **`server/`**: Contém os arquivos do back-end.
 - **`testing/`**: Um espaço dedicado para testar novas funcionalidades.
 
+### Front-end
+
+- **`global/`**: Classes, funções e estilizações CSS compartilhadas entre `App` e `Public`.
+- **`app/` - `public/`**: Classes, componentes, implementações e estilização CSS específicas para cada um.
+
+### Back-end
+
+- **`db/`**: Arquivos de dados para as APIs de teste, do front-end.
+
 ## Inicialização
 
 ### Instalar Dependências
