@@ -1,3 +1,6 @@
+require('dotenv').config();
+const SERVER_IP = process.env.SERVER_IP;
+
 const express = require('express');
 const path = require('path');
 
@@ -72,6 +75,6 @@ app.get('/*', serveFile(PUBLIC_PAGES_DIR, 'index.html'));
 
 // Start server
 const PORT = 8080;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, SERVER_IP, () => {
+  console.log(`Server running at http://${SERVER_IP}:${PORT}`);
 });

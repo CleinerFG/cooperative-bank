@@ -44,16 +44,32 @@ npm install
 
 ### Iniciar o Projeto
 
+- `IP do Servidor`: Defina a localização do servidor.
+
+  - Crie um arquivo `.env` na raiz do projeto com variável:
+
+    ```
+    SERVER_IP=localhost
+    ```
+
+  - Defina o endereço de IP na constante global **`client/src/global/js/constants.js`**:
+
+    ```js
+    const SERVER_IP = 'localhost';
+    ```
+
+  **Nota:** Para configurar o servidor na rede local, substitua `locahost` pelo endereço de ip local.
+
 - `Front-end`: Construa o projeto utilizando `webpack`.
 
-```bash
-npm run build
-```
+  ```bash
+  npm run build
+  ```
 
 - `Back-end`: Inicie o servidor local com `Express.js`.
 
   - Nota: O servidor atualmente é uma implementação básica para testar as funcionalidades do front-end. Uma versão mais robusta está planejada para futuras atualizações.
 
-```bash
-npm run server
-```
+  ```bash
+  npm run server
+  ```

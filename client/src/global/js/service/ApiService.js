@@ -1,9 +1,11 @@
+import { SERVER_IP } from '../constants.js';
+
 /**
  * Provides methods for interacting with a remote API.
  * It abstracts common HTTP methods (GET, POST, PUT, DELETE) for interacting with a backend service.
  */
 export class ApiService {
-  static #BASE_URL = 'http://localhost:8080/app/data/';
+  static #BASE_URL = `http://${SERVER_IP}:8080/app/data/`;
 
   /**
    * @param {string} endpoint
