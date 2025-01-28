@@ -1,6 +1,3 @@
-import { Input } from '../components/form/Input.js';
-import { PasswordInput } from '../components/form/PasswordInput.js';
-import { SearchInput } from '../components/form/SearchInput.js';
 import { SubmitButton } from '../components/form/SubmitButton.js';
 
 /**
@@ -93,24 +90,27 @@ export class FormView {
   /**
    * @param {'default' | 'search' | 'password'} category
    */
-  #getInputClassByCategory(category) {
+  async #getInputClassByCategory(category) {
     const catInpMap = {
-      default: Input,
-      search: SearchInput,
-      password: PasswordInput,
+      default: () => import('../components/form/Input.js'),
+      search: () => import('../components/form/SearchInput.js'),
+      password: () => import('../components/form/PasswordInput.js'),
     };
 
-    return catInpMap[category];
+    const module = await catInpMap[category]();
+    return module.default;
   }
 
-  #buildInputs() {
-    this.#inputs = this.#inputsConfig.map((params) => {
-      const InpClass = this.#getInputClassByCategory(params.category);
+  async #buildInputs() {
+    this.#inputs = [];
+
+    for (const params of this.#inputsConfig) {
+      const InpClass = await this.#getInputClassByCategory(params.category);
       params.containerElement = this.#formGroupElement;
       const inp = new InpClass(params);
       inp.init();
-      return inp;
-    });
+      this.#inputs.push(inp);
+    }
   }
 
   #buildSubmitBtn() {
@@ -144,9 +144,9 @@ export class FormView {
     });
   }
 
-  #init() {
+  async #init() {
     this.#render();
-    this.#buildInputs();
+    await this.#buildInputs();
     this.#buildSubmitBtn();
     this.#changeElementsFocus();
   }

@@ -1,10 +1,10 @@
-import { Input } from './Input.js';
+import Input from './Input.js';
 import { AssetManager } from '../../core/AssetManager.js';
 
 /**
  * Represents a password input field with visibility toggle functionality.
  */
-export class PasswordInput extends Input {
+export default class PasswordInput extends Input {
   #BTN_VISIBILITY_ID = `${this._id}-visibility-btn`;
   #ICON_VISIBILITY_ID = `${this._id}-visibility-icon`;
 

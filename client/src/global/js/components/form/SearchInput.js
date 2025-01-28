@@ -1,4 +1,4 @@
-import { Input } from './Input.js';
+import Input from './Input.js';
 import { ApiService } from '../../service/ApiService.js';
 import { simulateWait } from '../../utils/tests.js';
 import { NotFoundError } from '../../errors/InputErrors.js';
@@ -21,7 +21,7 @@ import { getStoredTheme } from '../../utils/themeUtils.js';
  * Represents a search input field that supports asynchronous
  * data retrieval by ID, displaying the result in a disabled field.
  */
-export class SearchInput extends Input {
+export default class SearchInput extends Input {
   /**
    * @type {string}
    */

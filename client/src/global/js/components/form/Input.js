@@ -22,7 +22,7 @@ import {
  * Input class for creating and managing input elements with validation,
  * formatting, and error handling.
  */
-export class Input {
+export default class Input {
   /**
    * @type {HTMLElement}
    */
