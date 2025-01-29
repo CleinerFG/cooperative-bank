@@ -39,26 +39,10 @@ export class Theme {
     return this.#currentTheme === 'dark' ? 'light' : 'dark';
   }
 
-  /**
-   * @param {string} originalPath
-   * @param {'dark'|'ligth'} theme
-   */
-  #buildIconPath(originalPath, theme) {
-    const basePath = '/app/static/assets/icons/';
-    const iconPattern = /([^\/]+)\.svg$/;
-
-    const iconMatch = originalPath.match(iconPattern);
-    const icon = iconMatch[0];
-
-    return basePath + theme + '/' + icon;
-  }
-
   #updateIcons() {
     const icons = document.querySelectorAll('.icon');
     icons.forEach((icon) => {
-      const path = icon.src;
-      const newPath = this.#buildIconPath(path, this.#updatedTheme);
-      icon.src = newPath;
+      icon.classList.toggle('icon-invert');
     });
   }
 
@@ -69,6 +53,9 @@ export class Theme {
   }
 
   #applyStoredTheme() {
+    if (getStoredTheme() === 'dark') {
+      this.#updateIcons();
+    }
     this.#currentTheme = getStoredTheme();
   }
 

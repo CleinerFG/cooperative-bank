@@ -7,7 +7,7 @@ import { ApiService } from '../../../global/js/service/ApiService.js';
 import { capitalize } from '../../../global/js/utils/stringUtils.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
 import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
-import { getStoredTheme } from '../../../global/js/utils/themeUtils.js';
+import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 
 /**
  * @typedef {Object} TypeConfig
@@ -120,7 +120,7 @@ export class ComponentGroup {
 
   get _dateFilterTemplate() {
     if (this.#useDataFilter) {
-      const imgSrc = `${ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-filter.svg`;
+      const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
       return `
     <div class="dashboard__filter">
       <div class="inputs__container">
@@ -134,7 +134,7 @@ export class ComponentGroup {
         </div>
       </div>
       <button class="btn-unset btn-filter">
-        <img id="${this._ICON_FILTER_ID}" class="icon filter-icon" src="${imgSrc}" alt="Filter Icon">
+        <img id="${this._ICON_FILTER_ID}" class="icon filter-icon ${handleIconDark()}" src="${imgSrc}" alt="Filter Icon">
       </button>
     </div>
     `;

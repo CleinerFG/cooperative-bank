@@ -1,59 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Coperative Bank</title>
-  </head>
-  <body>
-    <div class="app-container">
-      <header id="header" class="header">
-        <a class="brand-name app-link" rel="home" href="/app"
-          >Coperative Bank</a
-        >
-        <button class="btn-unset btn-menu" aria-label="Menu">
-          <img class="icon menu-icon" alt="Menu Icon" />
-        </button>
-        <nav class="nav-menu" aria-label="Main navigation">
-          <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link">My Account</a></li>
-            <li class="menu-item">
-              <button
-                class="btn-unset btn-theme"
-                id="btn-switch-theme"
-                aria-label="Switch Theme"
-              >
-                <span>Switch Theme</span>
-                <img
-                  class="icon icon-theme"
-                  id="icon-theme"
-                  alt="Theme Mode Icon"
-                />
-              </button>
-            </li>
-            <li class="menu-item"><a class="menu-link">Settings</a></li>
-            <li class="menu-item">Logout</li>
-          </ul>
-        </nav>
-      </header>
-      <main id="app"></main>
-      <footer id="footer" class="footer" aria-label="Footer">
-        <a class="icon-link app-link" rel="home" href="/app">
-          <img class="icon" alt="Footer Icon" />
-        </a>
-        <div class="content">
-          <a class="brand-name app-link" rel="home" href="/app"
-            >Coperative Bank</a
-          >
-          <p>By Cleiner Furlani</p>
-        </div>
-      </footer>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <title>Coperative Bank</title>
+</head>
+
+<body>
+  <div class="app-container">
+    <header id="header" class="header">
+      <a class="brand-name app-link" rel="home" href="/app">Coperative Bank</a>
+      <button class="btn-unset btn-menu" aria-label="Menu">
+        <img class="icon menu-icon" src="/app/static/assets/icons/icon-menu.svg" alt="Menu Icon" />
+      </button>
+      <nav class="nav-menu" aria-label="Main navigation">
+        <ul class="menu-list">
+          <li class="menu-item"><a class="menu-link">My Account</a></li>
+          <li class="menu-item">
+            <button class="btn-unset btn-theme" id="btn-switch-theme" aria-label="Switch Theme">
+              <span>Switch Theme</span>
+              <img class="icon icon-theme" id="icon-theme" src="/app/static/assets/icons/icon-theme.svg"
+                alt="Theme Mode Icon" />
+            </button>
+          </li>
+          <li class="menu-item"><a class="menu-link">Settings</a></li>
+          <li class="menu-item">Logout</li>
+        </ul>
+      </nav>
+    </header>
+    <main id="app"></main>
+    <footer id="footer" class="footer" aria-label="Footer">
+      <a class="icon-link app-link" rel="home" href="/app">
+        <img class="icon" src="/app/static/assets/icons/icon-globe.svg" alt="Footer Icon" />
+      </a>
+      <div class="content">
+        <a class="brand-name app-link" rel="home" href="/app">Coperative Bank</a>
+        <p>By Cleiner Furlani</p>
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>

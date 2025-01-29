@@ -1,5 +1,6 @@
 import Input from './Input.js';
 import { AssetManager } from '../../core/AssetManager.js';
+import { handleIconDark } from '../../utils/themeUtils.js';
 
 /**
  * Represents a password input field with visibility toggle functionality.
@@ -35,7 +36,10 @@ export default class PasswordInput extends Input {
         <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}" autocomplete="off"
         class="inp form-group__inp inp-${this._cssClass}" data-visibility="off" data-valid="false">
         <button id="${this.#BTN_VISIBILITY_ID}" type="button" class="btn-unset">
-          <img id="${this.#ICON_VISIBILITY_ID}" class="icon inp__visibility-icon" alt="Closed eye">
+          <img id="${this.#ICON_VISIBILITY_ID}"
+          class="icon inp__visibility-icon ${handleIconDark()}"
+          src="${AssetManager.iconsPath}/icon-visibility-off.svg"
+          alt="Closed eye">
         </button>
       </div>
       ${this._errorSpanTemplate}
@@ -45,9 +49,8 @@ export default class PasswordInput extends Input {
   /**
    * @param {"on" | "off"} visibilityState
    */
-  _handleAssets(visibilityState) {
+  _handleAsset(visibilityState) {
     AssetManager.updateAsset(
-      'icon',
       `#${this.#ICON_VISIBILITY_ID}`,
       `icon-visibility-${visibilityState}.svg`
     );
@@ -63,7 +66,7 @@ export default class PasswordInput extends Input {
     this.#iconVisibilityElement.setAttribute('alt', alt);
 
     const newState = this.#inpVisibilityState === 'on' ? 'off' : 'on';
-    this._handleAssets(newState);
+    this._handleAsset(newState);
     this.#inpVisibilityState = newState;
   }
 
@@ -77,6 +80,5 @@ export default class PasswordInput extends Input {
   init() {
     super.init();
     this._setListeners();
-    this._handleAssets('off');
   }
 }

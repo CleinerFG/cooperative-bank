@@ -2,8 +2,8 @@ import Input from './Input.js';
 import { ApiService } from '../../service/ApiService.js';
 import { simulateWait } from '../../utils/tests.js';
 import { NotFoundError } from '../../errors/InputErrors.js';
-import { ASSETS_ROUTE } from '../../../../app/js/constants/routes.js';
-import { getStoredTheme } from '../../utils/themeUtils.js';
+import { AssetManager } from '../../core/AssetManager.js';
+import { handleIconDark } from '../../utils/themeUtils.js';
 
 /**
  * @typedef {object} InputSearchConfig
@@ -69,13 +69,13 @@ export default class SearchInput extends Input {
   }
 
   get _template() {
-    const imgSrc = `${ASSETS_ROUTE}/icons/${getStoredTheme()}/icon-search.svg`;
+    const imgSrc = `${AssetManager.iconsPath}/icon-search.svg`;
     return `
       <div class="form-group__inp-group">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
         <div class="inp-container">
           <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp-search ${this._cssClass}" data-valid="false" data-search="off">
-          <button disabled class="btn-unset"><img class="icon" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
+          <button disabled class="btn-unset"><img class="icon ${handleIconDark()}" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
           <input id="${this.#INP_RESULT_ID}" type="text" class="inp form-group__inp" disabled>
         </div>
         ${this._errorSpanTemplate}

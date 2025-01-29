@@ -59,7 +59,7 @@ export class Layout {
     document.addEventListener('DOMContentLoaded', () => {
       new Theme();
       this.#setListeners();
-      this.#handleAssets();
+      // this.#handleAssets();
       this.#handleRoutes();
     });
   }

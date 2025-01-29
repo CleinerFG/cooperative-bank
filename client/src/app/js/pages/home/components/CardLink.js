@@ -1,5 +1,5 @@
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
-import { getStoredTheme } from '../../../../../global/js/utils/themeUtils.js';
+import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
 /**
@@ -31,8 +31,7 @@ export class CardLink {
   }
 
   get #imgSrc() {
-    const theme = getStoredTheme();
-    return `${ASSETS_ROUTE}/icons/${theme}/icon-${this.#name}.svg`;
+    return `${ASSETS_ROUTE}/icons/icon-${this.#name}.svg`;
   }
 
   get template() {
@@ -42,7 +41,7 @@ export class CardLink {
       <a id="${this.anchorId}" class="card-link__a" rel="next" a="${this.endpoint}" data-link>
         <div class="card card-link">
           <img id="${this.#iconId}"
-            class="icon card-link__icon"
+            class="icon card-link__icon ${handleIconDark()}"
             src="${this.#imgSrc}"
             alt="${capName} Icon">
           <span class="label card-link__label">${capName}</span>

@@ -33,3 +33,7 @@ button {
 .btn-unset {
   all: unset;
 }
+
+.icon-invert {
+  filter: invert(100%) brightness(120%) contrast(170%);
+}
