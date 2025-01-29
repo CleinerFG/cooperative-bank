@@ -45,29 +45,26 @@ const serveFile = (directory, filename) => (req, res) => {
 };
 
 // JSON files route handlers
-app.get('/app/data/events/payment', serveFile(DB_DIR, 'events-payment.json'));
+app.get('/api/events/payment', serveFile(DB_DIR, 'events-payment.json'));
+app.get('/api/events/investment', serveFile(DB_DIR, 'events-investment.json'));
+app.get('/api/account/amount', serveFile(DB_DIR, 'account-amount.json'));
 app.get(
-  '/app/data/events/investment',
-  serveFile(DB_DIR, 'events-investment.json')
-);
-app.get('/app/data/account/amount', serveFile(DB_DIR, 'account-amount.json'));
-app.get(
-  '/app/data/loan/overview/payable',
+  '/api/loan/overview/payable',
   serveFile(DB_DIR, 'loan-overview-payable.json')
 );
 app.get(
-  '/app/data/loan/overview/receivable',
+  '/api/loan/overview/receivable',
   serveFile(DB_DIR, 'loan-overview-receivable.json')
 );
 app.get(
-  '/app/data/loan/request/opened',
+  '/api/loan/request/opened',
   serveFile(DB_DIR, 'loan-request-opened.json')
 );
 app.get(
-  '/app/data/loan/request/received',
+  '/api/loan/request/received',
   serveFile(DB_DIR, 'loan-request-received.json')
 );
-app.get('/app/data/users', serveFile(DB_DIR, 'users.json'));
+app.get('/api/users', serveFile(DB_DIR, 'users.json'));
 
 // Page route handlers
 app.get(['/app*'], serveFile(APP_DIR, 'index.html'));

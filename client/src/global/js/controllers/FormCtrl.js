@@ -24,9 +24,6 @@ export class FormCtrl {
     this.#init();
   }
 
-  /**
-   * Returns the model class associated with the form.
-   */
   get _modelClass() {
     new AbstractGetterError('_modelClass');
   }
@@ -63,7 +60,6 @@ export class FormCtrl {
    * Collects and returns the form data.
    * Uses the model class to format data for the API.
    *
-   * @protected
    * @returns {object}
    */
   get _formData() {

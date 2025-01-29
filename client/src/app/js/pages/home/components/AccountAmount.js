@@ -80,7 +80,6 @@ export default class AccountAmount {
    */
   #handleAssets(visibility) {
     AssetManager.updateAsset(
-      'icon',
       '#amount-visibility-icon',
       `icon-visibility-${visibility}.svg`
     );

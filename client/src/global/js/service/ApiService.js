@@ -1,18 +1,17 @@
 import { SERVER_IP } from '../constants.js';
+import { API_BASE_URL } from '../constants.js';
 
 /**
  * Provides methods for interacting with a remote API.
  * It abstracts common HTTP methods (GET, POST, PUT, DELETE) for interacting with a backend service.
  */
 export class ApiService {
-  static #BASE_URL = `http://${SERVER_IP}:8080/app/data/`;
-
   /**
    * @param {string} endpoint
    * @param {object} [options={}]
    */
   static async #fetchData(endpoint, options = {}) {
-    const res = await fetch(`${ApiService.#BASE_URL}${endpoint}`, options);
+    const res = await fetch(`${API_BASE_URL}/${endpoint}`, options);
     return await res.json();
   }
 

@@ -1,4 +1,7 @@
-import { getStoredTheme } from '../../../../global/js/utils/themeUtils.js';
+import {
+  LOCAL_STORAGE_THEME_KEY,
+  DEFAULT_THEME,
+} from '../../constants/theme.js';
 
 /**
  * Manages the app theme, including storing and applying
@@ -6,16 +9,22 @@ import { getStoredTheme } from '../../../../global/js/utils/themeUtils.js';
  * user interactions for theme switching.
  */
 export class Theme {
-  static LOCAL_STORAGE_KEY = 'coperativeBankAppTheme';
   constructor() {
     this.#init();
+  }
+
+  /**
+   * @type {'dark'|'ligth'}
+   */
+  get #storedTheme() {
+    return localStorage.getItem(LOCAL_STORAGE_THEME_KEY) ?? DEFAULT_THEME;
   }
 
   /**
    * @param {'dark'|'ligth'} value
    */
   set #storedTheme(value) {
-    localStorage.setItem(Theme.LOCAL_STORAGE_KEY, value);
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, value);
   }
 
   /**
@@ -53,10 +62,10 @@ export class Theme {
   }
 
   #applyStoredTheme() {
-    if (getStoredTheme() === 'dark') {
+    if (this.#storedTheme === 'dark') {
       this.#updateIcons();
     }
-    this.#currentTheme = getStoredTheme();
+    this.#currentTheme = this.#storedTheme;
   }
 
   #setListeners() {
