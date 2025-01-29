@@ -31,7 +31,7 @@ export default class LoanRequestGroup extends ComponentGroup {
 
   get _emptyCardsTexts() {
     return [
-      `There are no ${this._activeType.name} requests...`,
+      `There are no requests...`,
       "When there is news, we'll let you know ; )",
     ];
   }

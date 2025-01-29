@@ -3,11 +3,6 @@ import { LoanModel } from '../models/LoanModel.js';
 
 /**
  * Represents a card component specifically for displaying Active Loan.
- * Implements abstract methods from `CardComponent` to provide templates and configurations
- * for rendering loan request details.
- *
- * @class
- * @extends CardComponent
  */
 export class CardActiveLoan extends CardComponent {
   get _ModelClass() {

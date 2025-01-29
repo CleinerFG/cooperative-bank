@@ -44,12 +44,13 @@ export default class LoanRequestsPageView extends PageView {
   }
 
   async _initComponents() {
-    const [NewLoanRequestFormCtrl, LoanRequestGroup] = await Promise.all([
-      import('./controllers/NewLoanRequestFormCtrl.js'),
-      import('./components/LoanRequestGroup.js'),
-    ]);
+    const [NewLoanRequestFormCtrlModule, LoanRequestGroupModule] =
+      await Promise.all([
+        import('./controllers/NewLoanRequestFormCtrl.js'),
+        import('./components/LoanRequestGroup.js'),
+      ]);
 
-    new NewLoanRequestFormCtrl.default();
-    new LoanRequestGroup.default();
+    new NewLoanRequestFormCtrlModule.default();
+    new LoanRequestGroupModule.default();
   }
 }

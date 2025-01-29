@@ -60,6 +60,5 @@ export class CardLoanRequestReceived extends CardComponent {
       .addEventListener('click', () => {
         new ConfirmPassModal();
       });
-
   }
 }

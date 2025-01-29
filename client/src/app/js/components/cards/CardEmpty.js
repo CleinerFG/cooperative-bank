@@ -1,9 +1,16 @@
 import { ASSETS_ROUTE } from '../../constants/routes';
 
+/**
+ * Card for when the server returns no data for the entity."
+ */
 export class CardEmpty {
   #category;
   #texts;
 
+  /**
+   * @param {string} category
+   * @param {string[]} texts
+   */
   constructor(category, texts) {
     this.#category = category;
     this.#texts = texts;

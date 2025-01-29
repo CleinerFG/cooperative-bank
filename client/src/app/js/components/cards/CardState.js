@@ -27,9 +27,16 @@ export class CardState {
     empty: null,
     error: null,
   };
-  constructor(container, category) {
+
+  /**
+   * @param {HTMLElement} container
+   * @param {string} category
+   * @param {string[]} emptyStateTexts
+   */
+  constructor(container, category, emptyStateTexts) {
     this.#containerElement = container;
     this.#category = category;
+    this.#emptyStateTexts = emptyStateTexts;
     this.#init();
   }
 
@@ -39,14 +46,6 @@ export class CardState {
   set state(value) {
     this.#state = value;
     this.#render();
-  }
-
-  /**
-
-   * @param {string[]} texts
-   */
-  set emptyStateTexts(texts) {
-    this.#emptyStateTexts = texts;
   }
 
   #setCards() {

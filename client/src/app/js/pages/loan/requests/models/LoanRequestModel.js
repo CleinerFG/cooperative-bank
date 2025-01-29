@@ -9,27 +9,13 @@ import {
 /**
  * Represents a loan request model
  * Includes additional properties for loan-specific details such as installments, interest rate, and installment value.
- *
- * @class
- * @extends TransactionModel
  */
 export class LoanRequestModel extends TransactionModel {
-  /**
-   * Description mappings for loan request types.
-   *
-   * @type {Object<number, string>}
-   * @static
-   */
   static descTypes = {
     1: 'opened',
     2: 'received',
   };
 
-  /**
-   * Description mappings for loan request statuses.
-   * @type {Object<number, string>}
-   * @static
-   */
   static descStatus = {
     1: 'pending',
     2: 'accepted',
@@ -38,10 +24,6 @@ export class LoanRequestModel extends TransactionModel {
   };
 
   /**
-   * Creates a new instance of LoanRequestModel.
-   *
-   * @override
-   *
    * @param {Object} params
    * @param {number} params.installments
    * @param {number} params.rate
@@ -55,9 +37,6 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   /**
-   * Returns the type description.
-   *
-   * @public
    * @type {'opened' | 'received'}
    */
   get type() {
@@ -65,9 +44,6 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   /**
-   * Returns the status description.
-   *
-   * @public
    * @type {'pending' | 'accepted' | 'denied' 'canceled'}
    */
   get status() {
@@ -75,9 +51,6 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   /**
-   * Returns the number of installments for the loan.
-   *
-   * @public
    * @type {number}
    */
   get installments() {
@@ -85,9 +58,6 @@ export class LoanRequestModel extends TransactionModel {
   }
 
   /**
-   * Gets the formatted interest rate.
-   *
-   * @public
    * @type {string}
    */
   get rate() {
@@ -99,7 +69,7 @@ export class LoanRequestModel extends TransactionModel {
    * Uses the formula for annuity payments:
    * `value * (rate / (1 - (1 + rate) ^ -installments))`.
    *
-   * @type {string} The installment value formatted as currency.
+   * @type {string}
    */
   get installmentValue() {
     const rate = this._rate / 100;
@@ -114,7 +84,7 @@ export class LoanRequestModel extends TransactionModel {
   /**
    * Gets the loan request data formatted for API submission.
    *
-   * @returns {Object} The formatted data object.
+   * @returns {Object}
    * @property {Date} date
    * @property {string} creditor
    * @property {string} description

@@ -9,6 +9,11 @@ import {
  * user interactions for theme switching.
  */
 export class Theme {
+  /**
+   * @type {'dark'|'ligth'}
+   */
+  #currentTheme;
+
   constructor() {
     this.#init();
   }
@@ -28,16 +33,10 @@ export class Theme {
   }
 
   /**
-   * @type {'dark'|'ligth'}
-   */
-  get #currentTheme() {
-    return document.body.dataset.theme;
-  }
-
-  /**
    * @param {'dark'|'ligth'} value
    */
-  set #currentTheme(value) {
+  set #bodyTheme(value) {
+    this.#currentTheme = value;
     document.body.dataset.theme = value;
   }
 
@@ -58,14 +57,14 @@ export class Theme {
   #toggleTheme() {
     this.#updateIcons();
     this.#storedTheme = this.#updatedTheme;
-    this.#currentTheme = this.#updatedTheme;
+    this.#bodyTheme = this.#updatedTheme;
   }
 
   #applyStoredTheme() {
     if (this.#storedTheme === 'dark') {
       this.#updateIcons();
     }
-    this.#currentTheme = this.#storedTheme;
+    this.#bodyTheme = this.#storedTheme;
   }
 
   #setListeners() {

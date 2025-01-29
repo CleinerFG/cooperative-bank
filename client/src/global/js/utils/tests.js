@@ -1,8 +1,10 @@
+import { SIMULATE_WAIT_SERVER } from '../constants.JS';
+
 /**
- * @param {number} [seconds=1]
+ * @param {number} [seconds=2]
  * @returns {Promise}
  */
-export function simulateWait(seconds = 1) {
+export function simulateWait(seconds = SIMULATE_WAIT_SERVER) {
   return new Promise((resolve) => {
     setTimeout(resolve, 1000 * seconds);
   });

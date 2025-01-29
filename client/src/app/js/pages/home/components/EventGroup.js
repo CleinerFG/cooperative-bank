@@ -30,7 +30,7 @@ export default class EventGroup extends ComponentGroup {
 
   get _emptyCardsTexts() {
     return [
-      'There are no events...',
+      `There are no events...`,
       "When there is news, we'll let you know ; )",
     ];
   }

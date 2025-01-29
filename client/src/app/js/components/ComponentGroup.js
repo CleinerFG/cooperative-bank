@@ -1,13 +1,13 @@
 import('../../css/components/component-group.css');
 
+import { ASSETS_ROUTE } from '../constants/routes.js';
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './cards/CardState.js';
-import { ASSETS_ROUTE } from '../constants/routes.js';
 import { ApiService } from '../../../global/js/service/ApiService.js';
 import { capitalize } from '../../../global/js/utils/stringUtils.js';
+import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
 import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
-import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 
 /**
  * @typedef {Object} TypeConfig
@@ -172,9 +172,9 @@ export class ComponentGroup {
   #initCardState() {
     this.#cardState = new CardState(
       this.#cardsContainerElement,
-      this._category
+      this._category,
+      this._emptyCardsTexts
     );
-    this.#cardState.emptyStateTexts = this._emptyCardsTexts;
   }
 
   #initCardComponents() {
@@ -185,7 +185,7 @@ export class ComponentGroup {
 
   async #fetchFromApi() {
     this.#cardState.state = 'loading';
-    await simulateWait(1);
+    await simulateWait();
     this.#apiData = await ApiService.fetchFrom(this.#activeType.endpoint);
   }
 

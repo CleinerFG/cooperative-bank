@@ -8,9 +8,6 @@ import { simulateWait } from '../../../../../global/js/utils/tests.js';
  * Handles fetching amount, formatting it, and toggling the visibility.
  */
 export default class AccountAmount {
-  /**
-   * @type {HTMLElement}
-   */
   #endpoint = 'account/amount';
   #amountValue;
 
@@ -39,7 +36,7 @@ export default class AccountAmount {
 
   async #fetchAmount() {
     this.#spanAmountElement.classList.add('skelon');
-    await simulateWait(2);
+    await simulateWait();
     this.#amountValue = await ApiService.fetchFrom(this.#endpoint);
     this.#spanAmountElement.classList.remove('skelon');
   }

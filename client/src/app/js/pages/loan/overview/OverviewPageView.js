@@ -35,7 +35,9 @@ export default class OverviewPageView extends PageView {
   }
 
   async _initComponents() {
-    const ActiveLoanGroup = await import('./components/ActiveLoanGroup.js');
-    new ActiveLoanGroup.default();
+    const ActiveLoanGroupModule = await import(
+      './components/ActiveLoanGroup.js'
+    );
+    new ActiveLoanGroupModule.default();
   }
 }

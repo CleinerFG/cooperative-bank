@@ -1,6 +1,6 @@
+import { ASSETS_ROUTE } from '../../../constants/routes.js';
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
-import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
 /**
  * Represents a clickable card component that redirects to a page in the application.

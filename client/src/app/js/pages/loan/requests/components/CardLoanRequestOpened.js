@@ -5,11 +5,6 @@ import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 
 /**
  * Represents a card component specifically for displaying Loan Request Opened.
- * Implements abstract methods from `CardComponent` to provide templates and configurations
- * for rendering Loan Request Opened details.
- *
- * @class
- * @extends CardComponent
  */
 export class CardLoanRequestOpened extends CardComponent {
   get _ModelClass() {

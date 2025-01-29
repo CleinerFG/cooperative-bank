@@ -66,13 +66,13 @@ export default class HomePageView extends PageView {
   }
 
   async _initComponents() {
-    const [AccountAmount, EventGroup] = await Promise.all([
+    const [AccountAmountModule, EventGroupModule] = await Promise.all([
       import('./components/AccountAmount.js'),
       import('./components/EventGroup.js'),
     ]);
 
-    new AccountAmount.default();
-    new EventGroup.default(false);
+    new AccountAmountModule.default();
+    new EventGroupModule.default(false);
     this._handleFeatureCardsRoute();
   }
 }

@@ -1,4 +1,3 @@
-import { AssetManager } from '../../../../global/js/core/AssetManager.js';
 import { appRouter } from '../../core/appRouter.js';
 import { Theme } from './Theme.js';
 
@@ -39,12 +38,6 @@ export class Layout {
     window.addEventListener('click', this.#closeMenuOnClickOutside.bind(this));
   }
 
-  #handleAssets() {
-    AssetManager.updateAsset('icon', '.header .menu-icon', 'icon-menu.svg');
-    AssetManager.updateAsset('icon', '#icon-theme', 'icon-theme.svg');
-    AssetManager.updateAsset('icon', '.footer .icon', 'icon-globe.svg');
-  }
-
   #handleRoutes() {
     const anchors = document.querySelectorAll('.app-link');
     anchors.forEach((element) => {
@@ -59,7 +52,6 @@ export class Layout {
     document.addEventListener('DOMContentLoaded', () => {
       new Theme();
       this.#setListeners();
-      // this.#handleAssets();
       this.#handleRoutes();
     });
   }

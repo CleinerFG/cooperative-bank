@@ -1,3 +1,6 @@
+/**
+ * Card skelon for when the app is fetching data
+ */
 export class CardLoading {
   #nRows;
 

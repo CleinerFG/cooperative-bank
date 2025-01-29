@@ -85,7 +85,7 @@ export default class SearchInput extends Input {
   async #fetchFromApi() {
     this.#inpState = 'on';
     const query = this.#inpQueryElement.value;
-    await simulateWait(1);
+    await simulateWait();
     try {
       return await ApiService.fetchFrom(`${this.#endpoint}/${query}`);
     } catch (e) {

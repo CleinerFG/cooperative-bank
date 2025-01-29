@@ -16,9 +16,6 @@ import {
  * Must be extended by subclasses that implement specific model and template structures.
  */
 export class CardComponent {
-  /**
-   * @type {HTMLElement}
-   */
   #containerElement;
 
   /**

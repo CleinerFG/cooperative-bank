@@ -1,8 +1,14 @@
 import { ASSETS_ROUTE } from '../../constants/routes';
 
+/**
+ * Card for when the server returns a error for the request
+ */
 export class CardError {
   #category;
 
+  /**
+   * @param {string} category
+   */
   constructor(category) {
     this.#category = category;
   }

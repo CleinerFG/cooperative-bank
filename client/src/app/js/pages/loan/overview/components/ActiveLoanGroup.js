@@ -34,7 +34,7 @@ export default class ActiveLoanGroup extends ComponentGroup {
 
   get _emptyCardsTexts() {
     return [
-      `There are no ${this._activeType} loans...`,
+      `There are no Active loans...`,
       "When there is news, we'll let you know ; )",
     ];
   }
