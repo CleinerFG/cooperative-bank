@@ -3,6 +3,14 @@ import { PAGE_ROUTES } from '../constants/routes.js';
 
 const routes = [
   {
+    path: PAGE_ROUTES.common.myAccount,
+    viewModule: () => import('../pages/common/myAccount/MyAccountPageView.js'),
+  },
+  {
+    path: PAGE_ROUTES.common.settings,
+    viewModule: () => import('../pages/common/settings/SettingsPageView.js'),
+  },
+  {
     path: PAGE_ROUTES.home,
     viewModule: () => import('../pages/home/HomePageView.js'),
   },

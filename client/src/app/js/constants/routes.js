@@ -1,5 +1,9 @@
 const BASE_URL = '/app';
 export const PAGE_ROUTES = {
+  common: {
+    myAccount: `${BASE_URL}/myaccount`,
+    settings: `${BASE_URL}/settings`,
+  },
   home: `${BASE_URL}`,
   wallet: {
     transfer: `${BASE_URL}/wallet/transfer`,
