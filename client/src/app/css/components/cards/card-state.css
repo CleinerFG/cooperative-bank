@@ -1,6 +1,7 @@
 .card-state {
   width: 100%;
   min-width: 150px;
+  max-width: 300px;
   border: var(--component-border);
   border-radius: var(--component-border-radius);
   display: flex;
