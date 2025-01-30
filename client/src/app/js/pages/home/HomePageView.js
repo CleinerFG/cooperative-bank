@@ -1,5 +1,3 @@
-import('../../../css/pages/home.css');
-
 import { PageView } from '../../../../global/js/views/PageView.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { featureGroups } from './components/FeatureGroups.js';

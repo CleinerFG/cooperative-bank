@@ -1,5 +1,3 @@
-import('../../../../css/pages/my-account.css');
-
 import { PageView } from '../../../../../global/js/views/PageView.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 

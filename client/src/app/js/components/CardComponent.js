@@ -1,5 +1,3 @@
-import('../../css/components/cards/card-data.css')
-
 import {
   AbstractGetterError,
   AbstractMethodError,

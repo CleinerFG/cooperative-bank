@@ -1,5 +1,3 @@
-import('../../../css/pages/landing.css');
-
 import { PublicPageView } from '../../views/PublicPageView.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 

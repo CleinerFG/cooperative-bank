@@ -1,4 +1,8 @@
-@import url('../../global/css/base.css');
+@import url('../../global/css/index.css');
 @import url('../css/variables.css');
 @import url('../css/components.css');
 @import url('../css/common.css');
+
+/* Pages */
+@import url('./pages/landing.css');
+@import url('./pages/login-register.css');

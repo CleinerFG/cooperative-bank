@@ -1,5 +1,3 @@
-import('../../css/components/component-group.css');
-
 import { ASSETS_ROUTE } from '../constants/routes.js';
 import { CardComponent } from './CardComponent.js';
 import { CardState } from './cards/CardState.js';
