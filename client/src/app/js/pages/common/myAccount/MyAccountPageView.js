@@ -8,7 +8,10 @@ export default class MyAccountPageView extends PageView {
     return `
      <div class="cover-photo">
       <div class="profile-header">
-        <img id="profile-photo" class="profile-photo skelon" alt="Profile photo">
+        <div class="photo-container">
+          <div id="photo-loader" class="loader"></div>
+          <img id="profile-photo" class="profile-photo" alt="Profile photo">
+        </div>
         <h1 class="profile-name">Meg Thomas</h1>
       </div>
       </div>
@@ -41,13 +44,10 @@ export default class MyAccountPageView extends PageView {
     const imgSrc = '/app/profile-image/user_123.webp';
     await simulateWait();
 
-    const element = document.getElementById('profile-photo');
-
-    element.setAttribute('src', imgSrc);
-
-    element.onload = () => {
-      console.log('test on load');
-      element.classList.remove('skelon');
+    const imgElement = document.getElementById('profile-photo');
+    imgElement.setAttribute('src', imgSrc);
+    imgElement.onload = () => {
+      document.getElementById('photo-loader').remove();
     };
   }
 

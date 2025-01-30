@@ -18,13 +18,25 @@
   gap: 0.5rem;
 }
 
-.profile-photo {
+.photo-container {
   width: 150px;
   height: 150px;
-  background-color: hsl(0, 0%, 50%);
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;
-  border: 0.4rem solid var(--component-line-color);
+  border: 0.2rem solid var(--component-line-color);
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  color: transparent;
 }
 
 .profile-name {
@@ -53,7 +65,7 @@
 }
 
 @media screen and (min-width: 375px) {
-  .profile-photo {
+  .profile-container {
     width: 200px;
     height: 200px;
   }
