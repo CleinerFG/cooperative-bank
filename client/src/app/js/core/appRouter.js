@@ -8,7 +8,7 @@ const routes = [
   },
   {
     path: PAGE_ROUTES.common.myAccount,
-    viewModule: () => import('../pages/common/myAccount/MyAccountPageView.js'),
+    viewModule: () => import('../pages/common/my-account/MyAccountPageView.js'),
   },
   {
     path: PAGE_ROUTES.common.settings,
