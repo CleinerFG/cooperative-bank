@@ -1,5 +1,6 @@
 @import url('./variables.css');
 @import url('../../global/css/base.css');
+@import url('../../global/css/components/animations.css');
 @import url('./layout/layout.css');
 @import url('./components/cards/cards.css');
 @import url('./components/cards/card-link.css');
