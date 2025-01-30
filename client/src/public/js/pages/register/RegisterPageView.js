@@ -7,7 +7,7 @@ export default class RegisterPageView extends LoginPageView {
 
   get _footerTemplate() {
     return `
-    <footer class="footer">
+    <footer class="login-register footer">
       <a href="/login">I am a customer</a>
     </footer>
     `;

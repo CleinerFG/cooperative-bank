@@ -146,7 +146,7 @@ export default class LandingPageView extends PublicPageView {
 
   get _headerTemplate() {
     return `
-    <header class="header">
+    <header class="landing header">
         <div class="brand-container">
           <img class="brand-icon" src="${ASSETS_ROUTE}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
           <span class="brand-name">COOPERATIVE BANK</span>

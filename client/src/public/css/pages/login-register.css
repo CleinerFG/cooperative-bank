@@ -2,7 +2,7 @@
   text-decoration: underline;
 }
 
-.content-container {
+.login-register .content-container {
   padding: 0 1rem;
   margin-bottom: 2rem;
   gap: 2rem;
@@ -12,7 +12,7 @@
   max-width: 400px;
 }
 
-h1 {
+.login-h1 {
   color: var(--color-primary-light);
 }
 
@@ -30,22 +30,22 @@ h1 {
   width: 100%;
 }
 
-.footer {
+.login-register.footer {
   padding: 1.5rem;
-  align-items: center;
   background-color: hsl(0, 0%, 8%);
 }
 
-.footer a {
+.login-register.footer a {
   color: hsl(174, 90%, 40%);
+  text-align: center;
 }
 
-.footer a:hover {
+.login-register.footer a:hover {
   color: hsl(174, 90%, 35%);
 }
 
 @media (min-width: 768px) {
-  .content-container {
+  .login-register.content-container {
     flex-direction: row;
   }
 }

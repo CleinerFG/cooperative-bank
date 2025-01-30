@@ -19,9 +19,9 @@ export default class LoginPageView extends PublicPageView {
 
   get _mainContainer() {
     return `
-    <main class="content-container">
+    <main class="login-register content-container">
       <div class="info-container">
-        <h1>${this._infoText}</h1>
+        <h1 class="login-h1">${this._infoText}</h1>
       </div>
       <div class="form-container">  
       </div>
@@ -31,7 +31,7 @@ export default class LoginPageView extends PublicPageView {
 
   get _footerTemplate() {
     return `
-    <footer class="footer">
+    <footer class="login-register footer">
       <a href="/register">I am not a customer</a>
     </footer>
     `;
