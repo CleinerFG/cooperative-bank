@@ -17,7 +17,7 @@ body {
 }
 
 main#app {
-  border: var(--component-border);
+  /* border: var(--component-border); */
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
   margin-top: var(--header-height);
   background-color: var(--color-bg);
