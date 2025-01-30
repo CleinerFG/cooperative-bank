@@ -1,13 +1,14 @@
 import('../../../../css/pages/my-account.css');
 
 import { PageView } from '../../../../../global/js/views/PageView.js';
+import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
 export default class MyAccountPageView extends PageView {
   get _template() {
     return `
      <div class="cover-photo">
       <div class="profile-header">
-        <img src="/app/profile-image/user_123.webp" alt="Profile photo" class="profile-photo">
+        <img id="profile-photo" class="profile-photo skelon" alt="Profile photo">
         <h1 class="profile-name">Meg Thomas</h1>
       </div>
       </div>
@@ -32,5 +33,25 @@ export default class MyAccountPageView extends PageView {
     return 'My Account';
   }
 
-  _initComponents() {}
+  /**
+   * @note
+   * This method is not necessary it is only for displaying the skeleton while loading the image
+   */
+  async _simulateImgWait() {
+    const imgSrc = '/app/profile-image/user_123.webp';
+    await simulateWait();
+
+    const element = document.getElementById('profile-photo');
+
+    element.setAttribute('src', imgSrc);
+
+    element.onload = () => {
+      console.log('test on load');
+      element.classList.remove('skelon');
+    };
+  }
+
+  _initComponents() {
+    this._simulateImgWait();
+  }
 }
