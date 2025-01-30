@@ -7,7 +7,7 @@ export default class MyAccountPageView extends PageView {
     return `
      <div class="cover-photo">
       <div class="profile-header">
-        <img src="/app/static/assets/images/profile.webp" alt="Profile photo" class="profile-photo">
+        <img src="/app/profile-image/user_123.webp" alt="Profile photo" class="profile-photo">
         <h1 class="profile-name">Meg Thomas</h1>
       </div>
       </div>

@@ -7,7 +7,10 @@ const path = require('path');
 const app = express();
 
 // Constants
-const GLOBAL_STATIC_DIR = path.resolve(__dirname, '../client/src/global');
+const PROFILE_STATIC_DIR = path.resolve(
+  __dirname,
+  'data/uploads/profile-images'
+);
 const PUBLIC_STATIC_DIR = path.resolve(
   __dirname,
   '../client/dist/public/static'
@@ -15,16 +18,17 @@ const PUBLIC_STATIC_DIR = path.resolve(
 const PUBLIC_PAGES_DIR = path.resolve(__dirname, '../client/dist/public');
 const APP_STATIC_DIR = path.resolve(__dirname, '../client/dist/app/static');
 const APP_DIR = path.resolve(__dirname, '../client/dist/app');
-const DB_DIR = path.resolve(__dirname, 'db');
-
-// Middleware for global static files
-app.use('/global', express.static(GLOBAL_STATIC_DIR));
+const DB_DIR = path.resolve(__dirname, 'data/db');
 
 // Middleware for public static files
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 
 // Middleware for app static files
 app.use('/app/static', express.static(APP_STATIC_DIR));
+
+// Middleware for public static files
+// Test: serve profile image!
+app.use('/app/profile-image', express.static(PROFILE_STATIC_DIR));
 
 // Middleware to log requests
 app.use((req, res, next) => {
