@@ -1,7 +1,7 @@
-import { PublicPageView } from '../../views/PublicPageView.js';
+import { PublicPage } from '../../core/PublicPage.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 
-export default class LoginPageView extends PublicPageView {
+export default class LoginPage extends PublicPage {
   get _headerTemplate() {
     return `
     <header class="header">
@@ -45,7 +45,7 @@ export default class LoginPageView extends PublicPageView {
     return this._headerTemplate + this._mainContainer + this._footerTemplate;
   }
 
-  async _initComponents() {
+  async _setup() {
     const LoginFormCtrlModule = await import('./controllers/LoginFormCtrl.js');
     new LoginFormCtrlModule.default();
   }

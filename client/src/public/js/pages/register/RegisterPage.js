@@ -1,6 +1,6 @@
-import LoginPageView from '../login/LoginPageView.js';
+import LoginPage from '../login/LoginPage.js';
 
-export default class RegisterPageView extends LoginPageView {
+export default class RegisterPage extends LoginPage {
   get _infoText() {
     return 'Join the Cooperative Bank';
   }
@@ -17,9 +17,8 @@ export default class RegisterPageView extends LoginPageView {
     return 'Cooperative Bank - Register';
   }
 
-  async _initComponents() {
+  async _setup() {
     const RegisterFormCtrl = await import('./controllers/RegisterFormCtrl.js');
-
     new RegisterFormCtrl.default();
   }
 }

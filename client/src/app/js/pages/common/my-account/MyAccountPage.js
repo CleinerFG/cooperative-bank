@@ -1,8 +1,8 @@
-import { PageView } from '../../../../../global/js/views/PageView.js';
+import { Page } from '../../../../../global/js/core/Page.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { AccountService } from './AccountService.js';
 
-export default class MyAccountPageView extends PageView {
+export default class MyAccountPage extends Page {
   _apiData;
 
   get _template() {
@@ -78,7 +78,7 @@ export default class MyAccountPageView extends PageView {
     }
   }
 
-  _initComponents() {
+  _setup() {
     this._loadProfileImage();
     this._fetchData();
   }

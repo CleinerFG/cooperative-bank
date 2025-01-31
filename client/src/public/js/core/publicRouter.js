@@ -4,15 +4,15 @@ import { PAGE_ROUTES } from '../constants/routes.js';
 const routes = [
   {
     path: PAGE_ROUTES.landing,
-    viewModule: () => import('../pages/landing/LandingPageView.js'),
+    pageModule: () => import('../pages/landing/LandingPage.js'),
   },
   {
     path: PAGE_ROUTES.login,
-    viewModule: () => import('../pages/login/LoginPageView.js'),
+    pageModule: () => import('../pages/login/LoginPage.js'),
   },
   {
     path: PAGE_ROUTES.register,
-    viewModule: () => import('../pages/register/RegisterPageView.js'),
+    pageModule: () => import('../pages/register/RegisterPage.js'),
   },
 ];
 

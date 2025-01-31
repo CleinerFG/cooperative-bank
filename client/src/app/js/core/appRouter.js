@@ -4,23 +4,23 @@ import { PAGE_ROUTES } from '../constants/routes.js';
 const routes = [
   {
     path: PAGE_ROUTES.home,
-    viewModule: () => import('../pages/home/HomePageView.js'),
+    pageModule: () => import('../pages/home/HomePage.js'),
   },
   {
     path: PAGE_ROUTES.common.myAccount,
-    viewModule: () => import('../pages/common/my-account/MyAccountPageView.js'),
+    pageModule: () => import('../pages/common/my-account/MyAccountPage.js'),
   },
   {
     path: PAGE_ROUTES.common.settings,
-    viewModule: () => import('../pages/common/settings/SettingsPageView.js'),
+    pageModule: () => import('../pages/common/settings/SettingsPage.js'),
   },
   {
     path: PAGE_ROUTES.loan.requests,
-    viewModule: () => import('../pages/loan/requests/LoanRequestsPageView.js'),
+    pageModule: () => import('../pages/loan/requests/LoanRequestsPage.js'),
   },
   {
     path: PAGE_ROUTES.loan.overview,
-    viewModule: () => import('../pages/loan/overview/OverviewPageView.js'),
+    pageModule: () => import('../pages/loan/overview/OverviewPage.js'),
   },
 ];
 

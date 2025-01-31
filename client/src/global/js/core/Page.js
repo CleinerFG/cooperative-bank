@@ -1,4 +1,4 @@
-import { Router } from '../core/Router.js';
+import { Router } from './Router.js';
 import {
   AbstractGetterError,
   AbstractMethodError,
@@ -6,9 +6,9 @@ import {
 import { capitalize } from '../utils/stringUtils.js';
 
 /**
- * Represents a view for a page that is responsible for rendering page content dynamically.
+ * Represents a view/controller for a page.
  */
-export class PageView {
+export class Page {
   static #appElement = document.getElementById('app');
 
   constructor() {
@@ -29,9 +29,9 @@ export class PageView {
     throw new AbstractGetterError('_pageTitle');
   }
 
-  async _initComponents() {
-    throw new AbstractMethodError('_initComponents');
-  }
+  async _initComponents() {}
+
+  async _setup() {}
 
   /**
    * @param {Router} spaRouter
@@ -52,12 +52,13 @@ export class PageView {
   }
 
   #render() {
-    PageView.#appElement.innerHTML = this._template;
+    Page.#appElement.innerHTML = this._template;
   }
 
   async _init() {
     this.#setPageTitle();
     this.#render();
     await this._initComponents();
+    await this._setup();
   }
 }

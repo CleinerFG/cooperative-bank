@@ -1,6 +1,6 @@
-import { PageView } from '../../../../../global/js/views/PageView.js';
+import { Page } from '../../../../../global/js/core/Page.js';
 
-export default class LoanRequestsPageView extends PageView {
+export default class LoanRequestsPage extends Page {
   get _introductionTemplate() {
     return `
     <section class="section">
@@ -42,13 +42,16 @@ export default class LoanRequestsPageView extends PageView {
   }
 
   async _initComponents() {
-    const [NewLoanRequestFormCtrlModule, LoanRequestManagerModule] =
-      await Promise.all([
-        import('./controllers/NewLoanRequestFormCtrl.js'),
-        import('./components/LoanRequestManager.js'),
-      ]);
-
-    new NewLoanRequestFormCtrlModule.default();
+    const LoanRequestManagerModule = await import(
+      './components/LoanRequestManager.js'
+    );
     new LoanRequestManagerModule.default();
+  }
+
+  async _setup() {
+    const NewLoanRequestFormCtrlModule = await import(
+      './controllers/NewLoanRequestFormCtrl.js'
+    );
+    new NewLoanRequestFormCtrlModule.default();
   }
 }

@@ -1,6 +1,6 @@
-import { PageView } from '../../../../../global/js/views/PageView.js';
+import { Page } from '../../../../../global/js/core/Page.js';
 
-export default class OverviewPageView extends PageView {
+export default class OverviewPage extends Page {
   get _introductionTemplate() {
     return `
     <section class="section active-loans">

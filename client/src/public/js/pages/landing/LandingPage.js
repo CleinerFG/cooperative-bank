@@ -1,7 +1,7 @@
-import { PublicPageView } from '../../views/PublicPageView.js';
+import { PublicPage } from '../../core/PublicPage.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 
-export default class LandingPageView extends PublicPageView {
+export default class LandingPage extends PublicPage {
   get _featuresMap() {
     return [
       {
@@ -218,12 +218,5 @@ export default class LandingPageView extends PublicPageView {
       this._featuresTemplate +
       this._footerTemplate
     );
-  }
-
-  _initComponents() {}
-
-  _init() {
-    super._init();
-    this._handleRoutes('[data-link]');
   }
 }

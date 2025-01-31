@@ -1,7 +1,7 @@
 /**
  * @typedef {Object} Route
  * @property {string} path
- * @property {() => Promise<any>} viewModule
+ * @property {() => Promise<any>} pageModule
  */
 export class Router {
   #routes;
@@ -27,7 +27,7 @@ export class Router {
       match = this.#routes[0];
     }
 
-    const module = await match.viewModule();
+    const module = await match.pageModule();
     const ViewClass = module.default;
     new ViewClass();
   }

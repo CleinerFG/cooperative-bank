@@ -1,13 +1,10 @@
-import { PageView } from '../../../../global/js/views/PageView.js';
+import { Page } from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { featureGroups } from './components/FeatureGroups.js';
 import { appRouter } from '../../core/appRouter.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 
-/**
- * Represents the view for the homepage, including sections for financial statement, features, and events.
- */
-export default class HomePageView extends PageView {
+export default class HomePage extends Page {
   get _statementTemplate() {
     const imgSrc = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
     return `
@@ -60,8 +57,7 @@ export default class HomePageView extends PageView {
     new EventManagerModule.default();
   }
 
-  _init() {
-    super._init();
+  _setup() {
     this._handleRoutes(appRouter, '.feature-cards [data-link]');
   }
 }

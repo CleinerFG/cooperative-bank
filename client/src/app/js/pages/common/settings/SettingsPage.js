@@ -1,6 +1,6 @@
-import { PageView } from '../../../../../global/js/views/PageView.js';
+import { Page } from '../../../../../global/js/core/Page.js';
 
-export default class SettingsPageView extends PageView {
+export default class SettingsPage extends Page {
   get _template() {
     return `
     <h1 class="section__h1">In development</h1>
@@ -11,6 +11,4 @@ export default class SettingsPageView extends PageView {
   get _pageTitle() {
     return 'Settings';
   }
-
-  _initComponents() {}
 }
