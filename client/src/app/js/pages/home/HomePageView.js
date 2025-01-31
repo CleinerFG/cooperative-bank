@@ -51,14 +51,12 @@ export default class HomePageView extends PageView {
   }
 
   _handleFeatureCardsRoute() {
-    featureGroups.groups.forEach(({ featureCards }) => {
-      featureCards.forEach((card) => {
-        document
-          .getElementById(card.anchorId)
-          .addEventListener('click', (e) => {
-            e.preventDefault();
-            appRouter.navigateTo(card.endpoint);
-          });
+    const cardsLink = document.querySelectorAll('.feature-cards [data-link]');
+    cardsLink.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('CLick');
+        appRouter.navigateTo(card.getAttribute('href'));
       });
     });
   }

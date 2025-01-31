@@ -152,7 +152,7 @@ export default class LandingPageView extends PublicPageView {
           <span class="brand-name">COOPERATIVE BANK</span>
         </div>
         <div class="login-link-container">
-          <a href="/login">
+          <a href="/login" data-link>
             Login
             <img class="login-icon" src="${ASSETS_ROUTE}/icons/icon-login.svg" alt="Login"/>
           </a>
@@ -169,7 +169,7 @@ export default class LandingPageView extends PublicPageView {
       </div>
       <div class="content-container">
         <h1>Cooperation that connects people</h1>
-        <button class="btn"><a href="/register">Sign Up</a></button>
+        <button class="btn"><a href="/register" data-link>Sign Up</a></button>
       </div>
     </section>
     `;

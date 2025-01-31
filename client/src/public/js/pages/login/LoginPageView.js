@@ -5,7 +5,7 @@ export default class LoginPageView extends PublicPageView {
   get _headerTemplate() {
     return `
     <header class="header">
-      <a class="brand-container" href="/">
+      <a class="brand-container" href="/" data-link>
         <img class="icon brand-icon" src="${ASSETS_ROUTE}/icons/icon-globe.svg" alt="Globe">
         <span class="brand-name">COOPERATIVE BANK</span>
       </a>
@@ -32,7 +32,7 @@ export default class LoginPageView extends PublicPageView {
   get _footerTemplate() {
     return `
     <footer class="login-register footer">
-      <a href="/register">I am not a customer</a>
+      <a href="/register" data-link>I am not a customer</a>
     </footer>
     `;
   }

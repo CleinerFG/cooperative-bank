@@ -3,10 +3,10 @@ import { publicRouter } from '../core/publicRouter.js';
 
 export class PublicPageView extends PageView {
   _handleRoutes() {
-    const anchors = document.querySelectorAll('.public-link');
+    const anchors = document.querySelectorAll('[data-link]');
     anchors.forEach((element) => {
-      element.addEventListener('click', (ev) => {
-        ev.preventDefault();
+      element.addEventListener('click', (e) => {
+        e.preventDefault();
         publicRouter.navigateTo(element.getAttribute('href'));
       });
     });

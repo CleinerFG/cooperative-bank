@@ -39,7 +39,7 @@ export class Layout {
   }
 
   #handleRoutes() {
-    const anchors = document.querySelectorAll('.app-link');
+    const anchors = document.querySelectorAll('[data-link]');
     anchors.forEach((element) => {
       element.addEventListener('click', (ev) => {
         ev.preventDefault();
