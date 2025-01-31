@@ -57,7 +57,7 @@ export default class HomePageView extends PageView {
     ]);
 
     new AccountAmountModule.default();
-    new EventManagerModule.default(false);
+    new EventManagerModule.default();
   }
 
   _init() {

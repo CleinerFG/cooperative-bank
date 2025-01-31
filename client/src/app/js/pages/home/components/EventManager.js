@@ -34,4 +34,8 @@ export default class EventManager extends CardManager {
       "When there is news, we'll let you know ; )",
     ];
   }
+
+  get _useDateFilter() {
+    return false;
+  }
 }

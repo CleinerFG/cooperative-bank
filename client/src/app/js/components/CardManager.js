@@ -34,27 +34,18 @@ export class CardManager {
    */
   #apiData;
 
-  /**
-   * @type {EntityCategoryConfig}
-   */
   #activeCategory;
 
-  /**
-   * @type {boolean}
-   */
-  #useDataFilter;
-
   _ICON_FILTER_ID = `icon-filter-${this._entity}`;
-  _FILTER_TYPE_1_ID = `${this._entityCategoriesMap[0].name}-${this._entity}-filter-1`;
-  _FILTER_TYPE_2_ID = `${this._entityCategoriesMap[1].name}-${this._entity}-filter-2`;
+  _FILTER_CATEGORY_1_ID = `${this._entityCategoriesMap[0].name}-${this._entity}-filter-1`;
+  _FILTER_CATEGORY_2_ID = `${this._entityCategoriesMap[1].name}-${this._entity}-filter-2`;
   _ACTIVE_ENTITY_CATEGORY_ID = `active-category-${this._entity}`;
 
   /**
-   * @param {boolean} useDataFilter
+   * @param {boolean} useDateFilter
    */
-  constructor(useDataFilter = true) {
+  constructor() {
     this.#activeCategory = this._entityCategoriesMap[0];
-    this.#useDataFilter = useDataFilter;
     this.#init();
   }
 
@@ -87,17 +78,17 @@ export class CardManager {
   }
 
   /**
-   * @type {EntityCategoryConfig}
+   * @type {boolean}
    */
-  get _activeType() {
-    return this.#activeCategory;
+  get _useDateFilter() {
+    return true;
   }
 
   /**
    * @type {Card}
    */
   get #CardClass() {
-    return this._activeType.CardClass;
+    return this.#activeCategory.CardClass;
   }
 
   get #cardsContainerElement() {
@@ -105,11 +96,15 @@ export class CardManager {
   }
 
   get #btnFilter1Element() {
-    return this._containerElement.querySelector(`#${this._FILTER_TYPE_1_ID}`);
+    return this._containerElement.querySelector(
+      `#${this._FILTER_CATEGORY_1_ID}`
+    );
   }
 
   get #btnFilter2Element() {
-    return this._containerElement.querySelector(`#${this._FILTER_TYPE_2_ID}`);
+    return this._containerElement.querySelector(
+      `#${this._FILTER_CATEGORY_2_ID}`
+    );
   }
 
   get #activeCategoryElement() {
@@ -118,8 +113,8 @@ export class CardManager {
     );
   }
 
-  get _dateFilterTemplate() {
-    if (this.#useDataFilter) {
+  get #dateFilterTemplate() {
+    if (this._useDateFilter) {
       const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
       return `
     <div class="dashboard__filter">
@@ -142,19 +137,19 @@ export class CardManager {
     return '';
   }
 
-  get _template() {
+  get #template() {
     return `
     <div class="component-group">
       <div class="dashboard-container">
         <div class="component-types">
-          <div id="${this._FILTER_TYPE_1_ID}" class="component-type component-type__active">${capitalize(
+          <div id="${this._FILTER_CATEGORY_1_ID}" class="component-type component-type__active">${capitalize(
             this._entityCategoriesMap[0].name
           )}</div>
-          <div id="${this._FILTER_TYPE_2_ID}" class="component-type">${capitalize(
+          <div id="${this._FILTER_CATEGORY_2_ID}" class="component-type">${capitalize(
             this._entityCategoriesMap[1].name
           )}</div>
         </div>
-        ${this._dateFilterTemplate}
+        ${this.#dateFilterTemplate}
       </div>
       <h2 id="${this._ACTIVE_ENTITY_CATEGORY_ID}" class="component-group__h2">${capitalize(
         this.#activeCategory.name
@@ -166,7 +161,7 @@ export class CardManager {
   }
 
   #render() {
-    this._containerElement.insertAdjacentHTML('beforeend', this._template);
+    this._containerElement.insertAdjacentHTML('beforeend', this.#template);
   }
 
   #initCardState() {
@@ -189,7 +184,7 @@ export class CardManager {
     this.#apiData = await ApiService.fetchFrom(this.#activeCategory.endpoint);
   }
 
-  async #renderComponents() {
+  async #renderCards() {
     try {
       await this.#fetchFromApi();
       if (this.#apiData.length) {
@@ -205,34 +200,37 @@ export class CardManager {
     }
   }
 
-  #updateActiveCategory(category) {
-    this.#activeCategory = category;
-    this.#activeCategoryElement.textContent = capitalize(category.name);
-  }
-
   #setListeners() {
-    const toggleClass = (ev, otherBtnFilterElement) => {
-      ev.currentTarget.classList.add('component-type__active');
-      otherBtnFilterElement.classList.remove('component-type__active');
+    const updateActiveCategory = (category) => {
+      this.#activeCategory = category;
+      this.#activeCategoryElement.textContent = capitalize(category.name);
     };
 
-    this.#btnFilter1Element.addEventListener('click', (ev) => {
-      toggleClass(ev, this.#btnFilter2Element);
-      this.#updateActiveCategory(this._entityCategoriesMap[0]);
-      this.#renderComponents();
-    });
+    const toggle = () => {
+      const buttonsMap = {
+        0: this.#btnFilter1Element,
+        1: this.#btnFilter2Element,
+      };
+      const index = this._entityCategoriesMap.findIndex(
+        (category) => category.name === this.#activeCategory.name
+      );
+      const nextIndex = (index + 1) % 2;
+      const activeBtn = buttonsMap[index];
+      const nextActiveBtn = buttonsMap[nextIndex];
 
-    this.#btnFilter2Element.addEventListener('click', (ev) => {
-      toggleClass(ev, this.#btnFilter1Element);
-      this.#updateActiveCategory(this._entityCategoriesMap[1]);
-      this.#renderComponents();
-    });
+      activeBtn.classList.remove('component-type__active');
+      nextActiveBtn.classList.add('component-type__active');
+      updateActiveCategory(this._entityCategoriesMap[nextIndex]);
+      this.#renderCards();
+    };
+    this.#btnFilter1Element.addEventListener('click', toggle);
+    this.#btnFilter2Element.addEventListener('click', toggle);
   }
 
   #init() {
     this.#render();
     this.#setListeners();
     this.#initCardState();
-    this.#renderComponents();
+    this.#renderCards();
   }
 }
