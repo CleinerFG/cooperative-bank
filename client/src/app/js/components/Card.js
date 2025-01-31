@@ -11,9 +11,8 @@ import {
 
 /**
  * Base class for creating card components with customizable header, content, and footer sections.
- * Must be extended by subclasses that implement specific model and template structures.
  */
-export class CardComponent {
+export class Card {
   #containerElement;
 
   /**
@@ -81,7 +80,7 @@ export class CardComponent {
     throw new AbstractMethodError('_handleModal');
   }
 
-  #buildHeader() {
+  #buildHeaderTemplate() {
     return `
         <header class="card-data__header">
         ${this._headerTemplate}
@@ -92,7 +91,7 @@ export class CardComponent {
   /**
    * @param {CardItem} cardItem
    */
-  #buildItem(cardItem) {
+  #buildItemTemplate(cardItem) {
     return `
       <div class="card-data__item">
         <span class="card-data__label">${cardItem.label}</span>
@@ -101,9 +100,9 @@ export class CardComponent {
     `;
   }
 
-  #buildMainContent() {
+  #buildMainContentTemplate() {
     const items = this._itemsArray
-      .map((cardItem) => this.#buildItem(cardItem))
+      .map((cardItem) => this.#buildItemTemplate(cardItem))
       .join('');
 
     return `
@@ -113,7 +112,7 @@ export class CardComponent {
     `;
   }
 
-  #buildFooter() {
+  #buildFooterTemplate() {
     return `
     <footer class="card-data__footer">
       ${this._footerTemplate}
@@ -121,19 +120,22 @@ export class CardComponent {
     `;
   }
 
-  #buildCard() {
+  #buildCardTemplate() {
     return `
     <article id="${this._id}" class="card card-data ${this._cssClass}">
-        ${this.#buildHeader()}
-        ${this.#buildMainContent()}
-        ${this.#buildFooter()}
+        ${this.#buildHeaderTemplate()}
+        ${this.#buildMainContentTemplate()}
+        ${this.#buildFooterTemplate()}
       </article>
   
     `;
   }
 
   #render() {
-    this.#containerElement.insertAdjacentHTML('afterbegin', this.#buildCard());
+    this.#containerElement.insertAdjacentHTML(
+      'afterbegin',
+      this.#buildCardTemplate()
+    );
   }
 
   selfRemove() {

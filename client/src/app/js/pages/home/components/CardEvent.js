@@ -1,11 +1,11 @@
-import { CardComponent } from '../../../../js/components/CardComponent.js';
+import { Card } from '../../../../js/components/Card.js';
 import { EventModel } from '../models/EventModel.js';
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 
 /**
  * Represents a card component specifically for displaying event data.
  */
-export class CardEvent extends CardComponent {
+export class CardEvent extends Card {
   get _ModelClass() {
     return EventModel;
   }

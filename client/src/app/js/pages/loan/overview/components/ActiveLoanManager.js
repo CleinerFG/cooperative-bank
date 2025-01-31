@@ -1,23 +1,23 @@
-import { ComponentGroup } from '../../../../components/ComponentGroup.js';
+import { CardManager } from '../../../../components/CardManager.js';
 import { CardActiveLoan } from './CardActiveLoan.js';
 
 /**
  * Manages a group of active loans data components.
  */
-export default class ActiveLoanGroup extends ComponentGroup {
+export default class ActiveLoanManager extends CardManager {
   get _containerElement() {
     return document.querySelector('.section.active-loans');
   }
 
-  get _CardComponentClass() {
+  get _CardClass() {
     return CardActiveLoan;
   }
 
-  get _category() {
-    return 'loans';
+  get _entity() {
+    return 'active-loans';
   }
 
-  get _typeMappingConfig() {
+  get _entityCategoriesMap() {
     return [
       {
         name: 'payables',
@@ -34,7 +34,7 @@ export default class ActiveLoanGroup extends ComponentGroup {
 
   get _emptyCardsTexts() {
     return [
-      `There are no Active loans...`,
+      `There are no active loans...`,
       "When there is news, we'll let you know ; )",
     ];
   }

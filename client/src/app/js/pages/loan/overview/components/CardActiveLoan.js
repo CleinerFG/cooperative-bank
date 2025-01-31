@@ -1,10 +1,10 @@
-import { CardComponent } from '../../../../components/CardComponent.js';
+import { Card } from '../../../../components/Card.js';
 import { LoanModel } from '../models/LoanModel.js';
 
 /**
  * Represents a card component specifically for displaying Active Loan.
  */
-export class CardActiveLoan extends CardComponent {
+export class CardActiveLoan extends Card {
   get _ModelClass() {
     return LoanModel;
   }

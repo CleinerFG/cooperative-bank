@@ -1,4 +1,4 @@
-import { CardComponent } from '../../../../../js/components/CardComponent.js';
+import { Card } from '../../../../../js/components/Card.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPassModal.js';
@@ -6,7 +6,7 @@ import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPass
 /**
  * Represents a card component specifically for displaying Loan Request Received.
  */
-export class CardLoanRequestReceived extends CardComponent {
+export class CardLoanRequestReceived extends Card {
   get _ModelClass() {
     return LoanRequestModel;
   }

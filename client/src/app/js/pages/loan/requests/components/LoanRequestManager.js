@@ -1,20 +1,20 @@
-import { ComponentGroup } from '../../../../../js/components/ComponentGroup.js';
+import { CardManager } from '../../../../../js/components/CardManager.js';
 import { CardLoanRequestReceived } from './CardLoanRequestReceived.js';
 import { CardLoanRequestOpened } from './CardLoanRequestOpened.js';
 
 /**
  * Manages a group of loan requests data components.
  */
-export default class LoanRequestGroup extends ComponentGroup {
+export default class LoanRequestManager extends CardManager {
   get _containerElement() {
     return document.querySelector('.section.loan-requests');
   }
 
-  get _category() {
-    return 'requests';
+  get _entity() {
+    return 'loan-requests';
   }
 
-  get _typeMappingConfig() {
+  get _entityCategoriesMap() {
     return [
       {
         name: 'received',
