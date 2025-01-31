@@ -50,17 +50,6 @@ export default class HomePageView extends PageView {
     );
   }
 
-  _handleFeatureCardsRoute() {
-    const cardsLink = document.querySelectorAll('.feature-cards [data-link]');
-    cardsLink.forEach((card) => {
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('CLick');
-        appRouter.navigateTo(card.getAttribute('href'));
-      });
-    });
-  }
-
   async _initComponents() {
     const [AccountAmountModule, EventGroupModule] = await Promise.all([
       import('./components/AccountAmount.js'),
@@ -69,6 +58,10 @@ export default class HomePageView extends PageView {
 
     new AccountAmountModule.default();
     new EventGroupModule.default(false);
-    this._handleFeatureCardsRoute();
+  }
+
+  _init() {
+    super._init();
+    this._handleRoutes(appRouter, '.feature-cards [data-link]');
   }
 }

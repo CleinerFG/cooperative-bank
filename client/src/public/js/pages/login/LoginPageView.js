@@ -46,8 +46,7 @@ export default class LoginPageView extends PublicPageView {
   }
 
   async _initComponents() {
-    const LoginFormCtrl = await import('./controllers/LoginFormCtrl.js');
-
-    new LoginFormCtrl.default();
+    const LoginFormCtrlModule = await import('./controllers/LoginFormCtrl.js');
+    new LoginFormCtrlModule.default();
   }
 }

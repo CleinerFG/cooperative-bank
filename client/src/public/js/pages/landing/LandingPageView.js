@@ -221,4 +221,9 @@ export default class LandingPageView extends PublicPageView {
   }
 
   _initComponents() {}
+
+  _init() {
+    super._init();
+    this._handleRoutes('[data-link]');
+  }
 }

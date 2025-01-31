@@ -1,3 +1,4 @@
+import { Router } from '../core/Router.js';
 import {
   AbstractGetterError,
   AbstractMethodError,
@@ -30,6 +31,20 @@ export class PageView {
 
   async _initComponents() {
     throw new AbstractMethodError('_initComponents');
+  }
+
+  /**
+   * @param {Router} spaRouter
+   * @param {string} query
+   */
+  _handleRoutes(spaRouter, query) {
+    const elements = document.querySelectorAll(query);
+    elements.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault();
+        spaRouter.navigateTo(element.getAttribute('href'));
+      });
+    });
   }
 
   #setPageTitle() {
