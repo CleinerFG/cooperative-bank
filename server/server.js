@@ -40,6 +40,9 @@ app.use((req, res, next) => {
 const serveFile = (directory, filename) => (req, res) => {
   const filePath = path.join(directory, filename);
   console.log(`Sending file: ${filePath}`);
+  console.log(`Filename: ${filename}`);
+  console.log('----//----');
+
   res.sendFile(filePath, (err) => {
     if (err) {
       console.error(`Error sending file: ${filePath}`, err);
@@ -71,8 +74,13 @@ app.get(
 app.get('/api/users', serveFile(DB_DIR, 'users.json'));
 
 // Page route handlers
-app.get(['/app*'], serveFile(APP_DIR, 'index.html'));
-app.get('/*', serveFile(PUBLIC_PAGES_DIR, 'index.html'));
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/app')) {
+    serveFile(APP_DIR, 'index.html')(req, res);
+    return;
+  }
+  serveFile(PUBLIC_PAGES_DIR, 'index.html')(req, res);
+});
 
 // Start server
 const PORT = 8080;
