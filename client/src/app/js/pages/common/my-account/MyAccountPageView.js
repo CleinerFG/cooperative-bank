@@ -1,7 +1,10 @@
 import { PageView } from '../../../../../global/js/views/PageView.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
+import { AccountService } from './AccountService.js';
 
 export default class MyAccountPageView extends PageView {
+  _apiData;
+
   get _template() {
     return `
      <div class="cover-photo">
@@ -10,21 +13,21 @@ export default class MyAccountPageView extends PageView {
           <div id="photo-loader" class="loader"></div>
           <img id="profile-photo" class="profile-photo" alt="Profile photo">
         </div>
-        <h1 class="profile-name">Meg Thomas</h1>
+        <h1 id="name" class="profile-name skelon"></h1>
       </div>
       </div>
       <div class="profile-info">
         <div class="info-item">
           <span class="info-label">Date of birth</span>
-          <span class="info-value">15/06/2002</span>
+          <span id="birth" class="info-value skelon"></span>
         </div>
         <div class="info-item">
           <span class="info-label">E-mail</span>
-          <span class="info-value">meg.thomas@gmail.com</span>
+          <span id="email" class="info-value skelon"></span>
         </div>
         <div class="info-item">
           <span class="info-label">Registration date</span>
-          <span class="info-value">20/01/2025</span>
+          <span id="registration" class="info-value skelon"></span>
         </div>
       </div>
     `;
@@ -38,7 +41,7 @@ export default class MyAccountPageView extends PageView {
    * @note
    * This method is not necessary it is only for displaying the skeleton while loading the image
    */
-  async _simulateImgWait() {
+  async _loadProfileImage() {
     const imgSrc = '/app/profile-image/user_123.webp';
     await simulateWait();
 
@@ -49,7 +52,34 @@ export default class MyAccountPageView extends PageView {
     };
   }
 
+  _displayData() {
+    document.getElementById('name').textContent = this._apiData.name;
+    document.getElementById('birth').textContent = this._apiData.birth;
+    document.getElementById('email').textContent = this._apiData.email;
+    document.getElementById('registration').textContent =
+      this._apiData.registration;
+  }
+
+  _removeSkelons() {
+    document
+      .querySelectorAll('.skelon')
+      .forEach((el) => el.classList.remove('skelon'));
+  }
+
+  async _fetchData() {
+    const service = new AccountService();
+    try {
+      await simulateWait();
+      this._apiData = await service.fetch();
+      this._displayData();
+      this._removeSkelons();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   _initComponents() {
-    this._simulateImgWait();
+    this._loadProfileImage();
+    this._fetchData();
   }
 }

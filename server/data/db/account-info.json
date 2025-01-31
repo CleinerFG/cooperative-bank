@@ -1,8 +1,6 @@
-[
-  {
-    "name": "Meg Thomas",
-    "birth": "2000-05-01",
-    "email": "meg.thomas@gmail.com",
-    "registration": "2025-10-01"
-  }
-]
+{
+  "name": "Meg Thomas",
+  "birth": "2000-05-01",
+  "email": "meg.thomas@gmail.com",
+  "registration": "2025-10-01"
+}
