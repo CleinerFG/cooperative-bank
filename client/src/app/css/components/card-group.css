@@ -1,14 +1,14 @@
-.component-group {
+.card-group {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.component-group .cards {
+.card-group .cards {
   width: 100%;
 }
 
-.component-group__h2 {
+.card-group__h2 {
   width: 100%;
   margin: 1rem 0.5rem 1rem 0.5rem;
   padding-bottom: 0.5rem;
@@ -27,7 +27,7 @@
   gap: 1rem;
 }
 
-.component-types {
+.entity-categories {
   flex: 1;
   background-color: var(--component-bg-color-dark);
   border-radius: 2rem;
@@ -36,7 +36,7 @@
   gap: 0.3rem;
 }
 
-.component-type {
+.entity-category {
   flex: 1;
   text-align: center;
   border-radius: 2rem;
@@ -44,16 +44,16 @@
   cursor: pointer;
 }
 
-.component-type:hover:not(.component-type__active) {
+.entity-category:hover:not(.entity-category__active) {
   background-color: hsla(0, 0%, 50%, 0.2);
 }
 
-.component-type__active {
+.entity-category__active {
   background-color: var(--color-cta);
   color: var(--color-off-white);
 }
 
-.dashboard__filter {
+.dashboard-filter {
   background-color: var(--component-bg-color-dark);
   padding: var(--container-padding);
   border-radius: var(--component-border-radius);
@@ -63,18 +63,18 @@
   gap: 1rem;
 }
 
-.dashboard__filter .inputs__container {
+.dashboard-filter .inputs-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
 }
 
-.dashboard__filter .date-container {
+.dashboard-filter .date-container {
   display: flex;
   flex-direction: column;
 }
 
-.dashboard__filter .inp-date{
+.dashboard-filter .inp-date {
   width: 7.5rem;
   padding: 0.2rem;
 }
@@ -90,7 +90,7 @@
 }
 
 @media screen and (min-width: 425px) {
-  .dashboard__filter {
+  .dashboard-filter {
     flex: 1;
   }
 
@@ -98,13 +98,13 @@
     max-width: 380px;
   }
 
-  .component-types {
+  .entity-categories {
     max-width: 380px;
   }
 }
 
 @media screen and (min-width: 475px) {
-  .dashboard__filter {
+  .dashboard-filter {
     flex-basis: 330px;
   }
 }
@@ -114,10 +114,10 @@
     max-width: 570px;
   }
 
-  .dashboard__filter {
+  .dashboard-filter {
     flex: 3;
   }
-  .component-types {
+  .entity-categories {
     flex: 1;
   }
 }

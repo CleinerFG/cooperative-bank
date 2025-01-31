@@ -4,7 +4,7 @@
 @import url('./layout/layout.css');
 
 /* Components */
-@import url('./components/component-group.css');
+@import url('./components/card-group.css');
 @import url('./components/modal.css');
 
 /* Cards */

@@ -39,7 +39,7 @@ export class CardManager {
   _ICON_FILTER_ID = `icon-filter-${this._entity}`;
   _FILTER_CATEGORY_1_ID = `${this._entityCategoriesMap[0].name}-${this._entity}-filter-1`;
   _FILTER_CATEGORY_2_ID = `${this._entityCategoriesMap[1].name}-${this._entity}-filter-2`;
-  _ACTIVE_ENTITY_CATEGORY_ID = `active-category-${this._entity}`;
+  _ACTIVE_CATEGORY_ID = `active-category-${this._entity}`;
 
   /**
    * @param {boolean} useDateFilter
@@ -101,17 +101,15 @@ export class CardManager {
   }
 
   get #activeCategoryElement() {
-    return this._containerElement.querySelector(
-      `#${this._ACTIVE_ENTITY_CATEGORY_ID}`
-    );
+    return this._containerElement.querySelector(`#${this._ACTIVE_CATEGORY_ID}`);
   }
 
   get #dateFilterTemplate() {
     if (this._useDateFilter) {
       const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
       return `
-    <div class="dashboard__filter">
-      <div class="inputs__container">
+    <div class="dashboard-filter">
+      <div class="inputs-container">
         <div class="date-container">
           <label for="start-date-filter-${this._entity}">Start date</label>
           <input id="start-date-filter-${this._entity}" class="inp inp-date" type="date">
@@ -131,22 +129,20 @@ export class CardManager {
   }
 
   get #template() {
+    const activeCatName = capitalize(this.#activeCategory.name);
+    const catName1 = capitalize(this._entityCategoriesMap[0].name);
+    const catName2 = capitalize(this._entityCategoriesMap[1].name);
+
     return `
-    <div class="component-group">
+    <div class="card-group">
       <div class="dashboard-container">
-        <div class="component-types">
-          <div id="${this._FILTER_CATEGORY_1_ID}" class="component-type component-type__active">${capitalize(
-            this._entityCategoriesMap[0].name
-          )}</div>
-          <div id="${this._FILTER_CATEGORY_2_ID}" class="component-type">${capitalize(
-            this._entityCategoriesMap[1].name
-          )}</div>
+        <div class="entity-categories">
+          <div id="${this._FILTER_CATEGORY_1_ID}" class="entity-category entity-category__active">${catName1}</div>
+          <div id="${this._FILTER_CATEGORY_2_ID}" class="entity-category">${catName2}</div>
         </div>
         ${this.#dateFilterTemplate}
       </div>
-      <h2 id="${this._ACTIVE_ENTITY_CATEGORY_ID}" class="component-group__h2">${capitalize(
-        this.#activeCategory.name
-      )}</h2>
+      <h2 id="${this._ACTIVE_CATEGORY_ID}" class="card-group__h2">${activeCatName}</h2>
       <div class="cards">
       </div>
     </div>
@@ -158,10 +154,7 @@ export class CardManager {
   }
 
   #initCardState() {
-    this.#cardState = new CardState(
-      this.#cardsContainerElement,
-      this._entity,
-    );
+    this.#cardState = new CardState(this.#cardsContainerElement, this._entity);
   }
 
   #initCards() {
@@ -210,8 +203,8 @@ export class CardManager {
       const activeBtn = buttonsMap[index];
       const nextActiveBtn = buttonsMap[nextIndex];
 
-      activeBtn.classList.remove('component-type__active');
-      nextActiveBtn.classList.add('component-type__active');
+      activeBtn.classList.remove('entity-category__active');
+      nextActiveBtn.classList.add('entity-category__active');
       updateActiveCategory(this._entityCategoriesMap[nextIndex]);
       this.#renderCards();
     };
