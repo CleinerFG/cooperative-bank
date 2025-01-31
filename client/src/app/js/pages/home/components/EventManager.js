@@ -28,13 +28,6 @@ export default class EventManager extends CardManager {
     ];
   }
 
-  get _emptyCardsTexts() {
-    return [
-      `There are no events...`,
-      "When there is news, we'll let you know ; )",
-    ];
-  }
-
   get _useDateFilter() {
     return false;
   }

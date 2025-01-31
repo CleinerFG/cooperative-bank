@@ -4,25 +4,29 @@ import { ASSETS_ROUTE } from '../../constants/routes';
  * Card for when the server returns no data for the entity."
  */
 export class CardEmpty {
-  #category;
-  #texts;
+  #entity;
 
   /**
-   * @param {string} category
-   * @param {string[]} texts
+   * @param {string} entity
    */
-  constructor(category, texts) {
-    this.#category = category;
-    this.#texts = texts;
+  constructor(entity) {
+    this.#entity = entity;
   }
 
   get #imgId() {
-    return `${this.#category}-empty-img`;
+    return `${this.#entity}-empty-img`;
   }
 
   get #randomImgFile() {
     const n = Math.floor(Math.random() * 4) + 1;
     return `empty-${n}.svg`;
+  }
+
+  get #texts() {
+    return [
+      `There are no ${this.#entity.replace('-', ' ')}...`,
+      "When there is news, we'll let you know ; )",
+    ];
   }
 
   get #textsTemplate() {

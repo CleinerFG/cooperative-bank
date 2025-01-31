@@ -31,11 +31,4 @@ export default class ActiveLoanManager extends CardManager {
       },
     ];
   }
-
-  get _emptyCardsTexts() {
-    return [
-      `There are no active loans...`,
-      "When there is news, we'll let you know ; )",
-    ];
-  }
 }

@@ -4,17 +4,17 @@ import { ASSETS_ROUTE } from '../../constants/routes';
  * Card for when the server returns a error for the request
  */
 export class CardError {
-  #category;
+  #entity;
 
   /**
-   * @param {string} category
+   * @param {string} entity
    */
-  constructor(category) {
-    this.#category = category;
+  constructor(entity) {
+    this.#entity = entity;
   }
 
   get #imgId() {
-    return `${this.#category}-error-img`;
+    return `${this.#entity}-error-img`;
   }
 
   get #randomImgFile() {
@@ -27,7 +27,7 @@ export class CardError {
       <img id="${this.#imgId}" class="card-state__img" 
         src="${ASSETS_ROUTE}/images/${this.#randomImgFile}">
       <div class="card-state__text">
-        <p class="info-text">Oops! Something went wrong while trying to load the ${this.#category} data.</p>
+        <p class="info-text">Oops! Something went wrong while trying to load the ${this.#entity.replace('-', ' ')} data.</p>
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
     `;

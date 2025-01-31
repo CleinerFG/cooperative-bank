@@ -8,20 +8,11 @@ import { CardEmpty } from './CardEmpty.js';
  */
 export class CardState {
   #containerElement;
-  #category;
+  #entity;
   /**
    * @type {"loading" | "empty" | "error"}
    */
   #state;
-  /**
-   * @type {string[]}
-   */
-  #emptyStateTexts = [];
-  /**
-   * @param {HTMLElement} container
-   * @param {string} category
-   */
-
   #cards = {
     loading: null,
     empty: null,
@@ -30,13 +21,12 @@ export class CardState {
 
   /**
    * @param {HTMLElement} container
-   * @param {string} category
+   * @param {string} entity
    * @param {string[]} emptyStateTexts
    */
-  constructor(container, category, emptyStateTexts) {
-    this.#containerElement = container;
-    this.#category = category;
-    this.#emptyStateTexts = emptyStateTexts;
+  constructor(containerElement, entity) {
+    this.#containerElement = containerElement;
+    this.#entity = entity;
     this.#init();
   }
 
@@ -50,8 +40,8 @@ export class CardState {
 
   #setCards() {
     this.#cards.loading = new CardLoading(4);
-    this.#cards.empty = new CardEmpty(this.#category, this.#emptyStateTexts);
-    this.#cards.error = new CardError(this.#category);
+    this.#cards.empty = new CardEmpty(this.#entity);
+    this.#cards.error = new CardError(this.#entity);
   }
 
   get #templateByState() {

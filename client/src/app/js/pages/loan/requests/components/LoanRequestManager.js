@@ -28,11 +28,4 @@ export default class LoanRequestManager extends CardManager {
       },
     ];
   }
-
-  get _emptyCardsTexts() {
-    return [
-      `There are no requests...`,
-      "When there is news, we'll let you know ; )",
-    ];
-  }
 }

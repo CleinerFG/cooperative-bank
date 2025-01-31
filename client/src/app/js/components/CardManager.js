@@ -71,13 +71,6 @@ export class CardManager {
   }
 
   /**
-   * @type {string[]}
-   */
-  get _emptyCardsTexts() {
-    return ['Empty cards...', 'There is nothing'];
-  }
-
-  /**
    * @type {boolean}
    */
   get _useDateFilter() {
@@ -168,7 +161,6 @@ export class CardManager {
     this.#cardState = new CardState(
       this.#cardsContainerElement,
       this._entity,
-      this._emptyCardsTexts
     );
   }
 
