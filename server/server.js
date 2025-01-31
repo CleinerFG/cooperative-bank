@@ -1,4 +1,5 @@
 require('dotenv').config();
+const formatTime = require('./utils/formatters');
 const SERVER_IP = process.env.SERVER_IP;
 
 const express = require('express');
@@ -32,7 +33,7 @@ app.use('/app/profile-image', express.static(PROFILE_STATIC_DIR));
 
 // Middleware to log requests
 app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  console.log(`[${formatTime(new Date())}] ${req.method} ${req.url}`);
   next();
 });
 
