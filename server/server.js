@@ -73,6 +73,7 @@ app.get(
   serveFile(DB_DIR, 'loan-request-received.json')
 );
 app.get('/api/users', serveFile(DB_DIR, 'users.json'));
+app.get('/api/account/info', serveFile(DB_DIR, 'account-info.json'));
 
 // Page route handlers
 app.get('*', (req, res) => {

@@ -1,4 +1,3 @@
-import { SERVER_IP } from '../constants.js';
 import { API_BASE_URL } from '../constants.js';
 
 /**
