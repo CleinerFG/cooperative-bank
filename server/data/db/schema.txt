@@ -36,6 +36,7 @@ transfers
 - user_receiver_id
 - date
 - value
+- status_id
 
 investments
 - id
@@ -62,6 +63,11 @@ transaction_categories
 - id
 - description
 (loan, transfer, investment and payment)
+
+transaction_statuses
+- id
+- description
+(completed, canceled and refund)
 
 loan_statuses
 - id
