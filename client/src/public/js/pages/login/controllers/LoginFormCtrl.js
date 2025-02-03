@@ -20,11 +20,13 @@ export default class LoginFormCtrl extends FormCtrl {
         id: 'email',
         category: 'default',
         labelText: 'E-mail',
+        inputmode: 'email',
+        type: 'email',
       },
       {
         category: 'password',
         id: 'password',
-        cssClass:'password',
+        cssClass: 'password',
         labelText: 'Password',
       },
     ];

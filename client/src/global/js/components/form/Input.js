@@ -11,7 +11,8 @@ import {
  * @property {string} id
  * @property {string} labelText
  * @property {string} cssClass
- * @property {"text" | "numeric"} inputmode
+ * @property {"text" | "numeric" | "email" | "date"} inputmode
+ * @property {"text" | "numeric" | "email" | "date"} type
  * @property {boolean} strictToNumber
  * @property {"currency" | "percent"} formatter
  */
@@ -49,6 +50,7 @@ export default class Input {
     this._id = config.id;
     this._cssClass = config.cssClass ?? '';
     this._inputmode = config.inputmode ?? 'text';
+    this._type = config.type ?? 'text';
     this.#strictToNumber = config.strictToNumber;
     this.#formatter = config.formatter;
     this._labelText = config.labelText ?? '';
@@ -84,7 +86,7 @@ export default class Input {
     <div class="inp-group ">
       <label for="${this._id}" class="label">${this._labelText}</label>
       <div class="inp__wrapper">
-        <input id="${this._id}" type="text" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"
+        <input id="${this._id}" type="${this._type}" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"
         class="inp ${this._cssClass}" data-valid="false">
       </div>
       ${this._errorSpanTemplate}

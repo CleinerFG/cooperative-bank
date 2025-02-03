@@ -30,11 +30,14 @@ export default class RegisterFormCtrl extends FormCtrl {
         id: 'birth',
         category: 'default',
         labelText: 'Birth',
+        inputmode: 'date',
+        type: 'date',
       },
       {
         id: 'email',
         category: 'default',
         labelText: 'E-mail',
+        inputmode: 'email',
       },
       {
         id: 'password',
