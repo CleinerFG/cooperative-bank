@@ -9,14 +9,14 @@ export default class HomePage extends Page {
     const imgSrc = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
     return `
     <section class="section statement">
-      <h1 class="section__h1 statement__title">Financial Statement</h1>
-      <div class="statement amount">
+      <h1 class="section-h1">Financial Statement</h1>
+      <div class="statement-amount">
         <span>Account Amount</span>
         <div class="amount-container">
-         <div class="statement__total"><span id="span-amount" class="span-amount">R$ * * * * * *</span></div>
-          <button id="amount-visibility-btn" class="btn-unset visibility-btn" data-visibility="off">
-          <img id="amount-visibility-icon" class="icon visibility-icon ${handleIconDark()}" src="${imgSrc}" alt="Closed eye">
-        </button>
+          <span id="span-amount" class="span-amount">R$ * * * * * *</span>
+          <button id="amount-visibility-btn" class="btn-unset btn-icon" data-visibility="off">
+            <img id="amount-visibility-icon" class="icon ${handleIconDark()}" src="${imgSrc}" alt="Closed eye">
+          </button>
         </div>
       </div>
     </section>
@@ -26,7 +26,7 @@ export default class HomePage extends Page {
   get _eventsTemplate() {
     return `
     <section class="section events">
-      <h2 class="section__h2">Events</h2>
+      <h2 class="section-h2">Events</h2>
     </section>
     `;
   }

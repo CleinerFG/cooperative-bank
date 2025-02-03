@@ -14,7 +14,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal__body {
+.modal-body {
   margin: 1rem;
   background-color: var(--color-bg);
   border-radius: var(--component-border-radius);
@@ -22,14 +22,14 @@
   position: relative;
 }
 
-.modal__content {
+.modal-content {
   padding: var(--container-padding);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.modal__close-btn {
+.modal .close-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +45,6 @@
   border: none;
 }
 
-.modal__form .modal-btn {
+.modal-form .modal-btn {
   width: 100%;
 }

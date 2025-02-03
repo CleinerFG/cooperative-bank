@@ -5,7 +5,7 @@
   margin-bottom: 1.5rem;
 }
 
-.section__h1 {
+.section-h1 {
   padding: 0.5rem 0;
   background-image: linear-gradient(
     to right,
@@ -14,7 +14,7 @@
   );
 }
 
-.section__h2 {
+.section-h2 {
   border-bottom: var(--color-primary-translucent) solid 0.1rem;
   padding-bottom: 0.5rem;
 }

@@ -51,7 +51,7 @@ class FeatureGroups {
   #buildGroupTemplate({ groupName, featureCards }) {
     return `
     <section class="section ${groupName}">
-        <h2 class="section__h2">${capitalize(groupName)}</h2>
+        <h2 class="section-h2">${capitalize(groupName)}</h2>
         <div class="cards-container">
           <div class="cards feature-cards ${groupName}__cards">
             ${this.#buildFeatureCardsTemplate(featureCards)}

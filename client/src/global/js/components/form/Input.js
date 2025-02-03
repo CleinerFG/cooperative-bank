@@ -81,7 +81,7 @@ export default class Input {
    */
   get _template() {
     return `
-    <div class="form-group__inp-group">
+    <div class="inp-group ">
       <label for="${this._id}" class="label">${this._labelText}</label>
       <div class="inp__wrapper">
         <input id="${this._id}" type="text" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"

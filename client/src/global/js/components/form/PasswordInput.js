@@ -30,14 +30,14 @@ export default class PasswordInput extends Input {
 
   get _template() {
     return `
-    <div class="form-group__inp-group">
+    <div class="inp-group ">
       <label for="${this._id}" class="label">${this._labelText}</label>
       <div class="inp__wrapper inp__wrapper-pass">
         <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}" autocomplete="off"
         class="inp inp-${this._cssClass}" data-visibility="off" data-valid="false">
         <button id="${this.#BTN_VISIBILITY_ID}" type="button" class="btn-unset btn-icon">
           <img id="${this.#ICON_VISIBILITY_ID}"
-          class="icon inp__visibility-icon ${handleIconDark()}"
+          class="icon ${handleIconDark()}"
           src="${AssetManager.iconsPath}/icon-visibility-off.svg"
           alt="Closed eye">
         </button>

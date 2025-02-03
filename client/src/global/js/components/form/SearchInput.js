@@ -71,10 +71,11 @@ export default class SearchInput extends Input {
   get _template() {
     const imgSrc = `${AssetManager.iconsPath}/icon-search.svg`;
     return `
-      <div class="form-group__inp-group">
+      <div class="inp-group ">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
         <div class="inp__wrapper inp__wrapper-search">
-          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp ${this._cssClass}" data-valid="false" data-search="off">
+          <input id="${this.#INP_QUERY_ID}" class="inp ${this._cssClass}" type="text" autocomplete="off" 
+            aria-label="${this._labelText}" data-valid="false" data-search="off">
           <button disabled type="button" class="btn-unset btn-icon"><img class="icon ${handleIconDark()}" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
         </div>
         <div class="inp__wrapper">

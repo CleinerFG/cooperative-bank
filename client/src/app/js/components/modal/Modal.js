@@ -58,11 +58,11 @@ export class Modal {
   #build() {
     return `
     <div id="modal" class="modal">
-    <article class="modal__body">
-      <button class="modal__close-btn" aria-label="Close window">
+    <article class="modal-body">
+      <button class="close-btn" aria-label="Close window">
         &times;
       </button>
-      <section class="modal__content">
+      <section class="modal-content">
         ${this._modalContent}
       </section>
     </article>
@@ -86,7 +86,7 @@ export class Modal {
    */
   #defineListeners() {
     const modalElement = document.getElementById('modal');
-    const closeModalBtn = document.querySelector('.modal__close-btn');
+    const closeModalBtn = document.querySelector('.modal .close-btn');
     closeModalBtn.addEventListener('click', () => {
       modalElement.remove();
       this.#bodyOverflow = '';

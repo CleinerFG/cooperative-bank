@@ -4,8 +4,8 @@ export class ConfirmPassFormCtrl extends FormCtrl {
   get _viewConfig() {
     return {
       id: 'confirm-pass-form',
-      containerElement: document.querySelector('.modal__content'),
-      cssClass: 'modal__form',
+      containerElement: document.querySelector('.modal-content'),
+      cssClass: 'modal-form',
     };
   }
 

@@ -17,7 +17,7 @@
   gap: 0.5rem;
 }
 
-.form-group__inp-group {
+.form-group .inp-group {
   width: 100%;
   display: flex;
   justify-content: space-around;
