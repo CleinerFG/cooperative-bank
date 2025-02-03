@@ -1,6 +1,7 @@
 import {
   EmptyValueError,
   InvalidCpfError,
+  InvalidPassword,
   ZeroValueError,
 } from '../errors/InputErrors.js';
 
@@ -51,4 +52,43 @@ export function cpfValidator(value) {
   if (remainder !== parseInt(value[10])) throw new InvalidCpfError();
 
   return true;
+}
+
+/**
+ * @type {Validator}
+ * @param {string} value
+ */
+export function passwordValidator(value) {
+  const minLength = /^.{8,}$/;
+  const hasLowercase = /[a-z]/;
+  const hasUppercase = /[A-Z]/;
+  const hasNumber = /\d/;
+  const hasSpecialChar = /[\W_]/;
+  const hasBlank = /\s/;
+
+  if (!minLength.test(value))
+    throw new InvalidPassword(
+      'The password must be at least 8 characters long'
+    );
+
+  if (!hasLowercase.test(value))
+    throw new InvalidPassword(
+      'The password must contain at least one lowercase letter'
+    );
+
+  if (!hasUppercase.test(value))
+    throw new InvalidPassword(
+      'The password must contain at least one uppercase letter'
+    );
+
+  if (!hasNumber.test(value))
+    throw new InvalidPassword('The password must contain at least one number');
+
+  if (!hasSpecialChar.test(value))
+    throw new InvalidPassword(
+      'The password must contain at least one special character'
+    );
+
+  if (hasBlank.test(value))
+    throw new InvalidPassword('The password cannot have blank space');
 }

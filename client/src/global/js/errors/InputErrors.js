@@ -27,3 +27,9 @@ export class InvalidCpfError extends Error {
     super('Invalid CPF');
   }
 }
+
+export class InvalidPassword extends Error {
+  constructor(message) {
+    super(message);
+  }
+}
