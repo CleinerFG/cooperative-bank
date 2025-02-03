@@ -1,12 +1,12 @@
 export class EmptyValueError extends Error {
   constructor() {
-    super("This field cannot be empty");
+    super('This field cannot be empty');
   }
 }
 
 export class ZeroValueError extends Error {
   constructor() {
-    super("This field cannot be zero");
+    super('This field cannot be zero');
   }
 }
 
@@ -18,6 +18,12 @@ export class OutsideValueError extends Error {
 
 export class NotFoundError extends Error {
   constructor() {
-    super("No results found");
+    super('No results found');
+  }
+}
+
+export class InvalidCpfError extends Error {
+  constructor() {
+    super('Invalid CPF');
   }
 }
