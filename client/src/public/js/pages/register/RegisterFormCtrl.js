@@ -1,6 +1,6 @@
-import { FormCtrl } from '../../../../../global/js/controllers/FormCtrl.js';
-import { RegisterModel } from '../models/RegisterModel.js';
-import { cpfValidator } from '../../../../../global/js/utils/validators.js';
+import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
+import { RegisterModel } from './RegisterModel.js';
+import { cpfValidator } from '../../../../global/js/utils/validators.js';
 
 export default class RegisterFormCtrl extends FormCtrl {
   get _modelClass() {

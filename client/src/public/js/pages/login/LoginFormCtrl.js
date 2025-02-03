@@ -1,5 +1,5 @@
-import { FormCtrl } from '../../../../../global/js/controllers/FormCtrl.js';
-import { LoginModel } from '../models/LoginModel.js';
+import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
+import { LoginModel } from './LoginModel.js';
 
 export default class LoginFormCtrl extends FormCtrl {
   get _modelClass() {

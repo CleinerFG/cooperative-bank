@@ -18,7 +18,7 @@ export default class RegisterPage extends LoginPage {
   }
 
   async _setup() {
-    const RegisterFormCtrl = await import('./controllers/RegisterFormCtrl.js');
+    const RegisterFormCtrl = await import('./RegisterFormCtrl.js');
     new RegisterFormCtrl.default();
   }
 }
