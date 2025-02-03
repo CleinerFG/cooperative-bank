@@ -2,6 +2,7 @@ import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
 import { RegisterModel } from './RegisterModel.js';
 import {
   cpfValidator,
+  emailValidator,
   passwordValidator,
 } from '../../../../global/js/utils/validators.js';
 
@@ -45,6 +46,7 @@ export default class RegisterFormCtrl extends FormCtrl {
         labelText: 'E-mail',
         inputmode: 'email',
         type: 'email',
+        customValidator: emailValidator,
       },
       {
         id: 'password',

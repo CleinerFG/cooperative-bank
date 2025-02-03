@@ -1,4 +1,5 @@
 import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
+import { emailValidator } from '../../../../global/js/utils/validators.js';
 import { LoginModel } from './LoginModel.js';
 
 export default class LoginFormCtrl extends FormCtrl {
@@ -22,6 +23,7 @@ export default class LoginFormCtrl extends FormCtrl {
         labelText: 'E-mail',
         inputmode: 'email',
         type: 'email',
+        customValidator: emailValidator,
       },
       {
         category: 'password',

@@ -28,8 +28,14 @@ export class InvalidCpfError extends Error {
   }
 }
 
-export class InvalidPassword extends Error {
+export class InvalidPasswordError extends Error {
   constructor(message) {
     super(message);
+  }
+}
+
+export class InvalidEmailError extends Error {
+  constructor() {
+    super('Invalid e-mail');
   }
 }

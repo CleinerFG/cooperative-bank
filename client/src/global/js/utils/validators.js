@@ -1,7 +1,8 @@
 import {
   EmptyValueError,
   InvalidCpfError,
-  InvalidPassword,
+  InvalidEmailError,
+  InvalidPasswordError,
   ZeroValueError,
 } from '../errors/InputErrors.js';
 
@@ -67,28 +68,45 @@ export function passwordValidator(value) {
   const hasBlank = /\s/;
 
   if (!minLength.test(value))
-    throw new InvalidPassword(
+    throw new InvalidPasswordError(
       'The password must be at least 8 characters long'
     );
 
   if (!hasLowercase.test(value))
-    throw new InvalidPassword(
+    throw new InvalidPasswordError(
       'The password must contain at least one lowercase letter'
     );
 
   if (!hasUppercase.test(value))
-    throw new InvalidPassword(
+    throw new InvalidPasswordError(
       'The password must contain at least one uppercase letter'
     );
 
   if (!hasNumber.test(value))
-    throw new InvalidPassword('The password must contain at least one number');
+    throw new InvalidPasswordError(
+      'The password must contain at least one number'
+    );
 
   if (!hasSpecialChar.test(value))
-    throw new InvalidPassword(
+    throw new InvalidPasswordError(
       'The password must contain at least one special character'
     );
 
   if (hasBlank.test(value))
-    throw new InvalidPassword('The password cannot have blank space');
+    throw new InvalidPasswordError('The password cannot have blank space');
+}
+
+/**
+ * @type {Validator}
+ * @param {string} value
+ */
+export function emailValidator(value) {
+  const localPart = /^[\w._%+-]+/;
+  const domainName = /[\w.-]+/;
+  const topLevelDomain = /\.[\w]{2,}$/;
+
+  const regex = new RegExp(
+    `^${localPart.source}@${domainName.source}${topLevelDomain.source}$`
+  );
+  if (!regex.test(value)) throw new InvalidEmailError();
 }
