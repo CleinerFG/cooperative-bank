@@ -1,29 +1,39 @@
-.inp-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.inp-container__pass {
-  flex-wrap: nowrap;
-}
-
-.inp {
+.inp__wrapper {
   width: 100%;
-  font-size: 1rem;
-  padding: 0.8rem 0.5rem;
-  box-sizing: border-box;
   background-color: var(--component-bg-color);
   border: var(--form-component-border);
   border-radius: var(--component-border-radius);
   transition: all 0.2s;
+}
+
+.inp__wrapper-pass,
+.inp__wrapper-search {
+  display: flex;
+  align-items: center;
+}
+
+.inp__wrapper-search {
+  max-width: 8rem;
+}
+
+.inp {
+  width: 100%;
+  padding: 0.8rem 0.5rem;
+  font-size: 1rem;
   color: var(--font-color);
+  border-radius: var(--component-border-radius);
+  background-color: transparent !important;
+  border: none;
 }
 
 .inp:focus {
+  outline: none;
+}
+
+.inp__wrapper:focus-within {
   border-color: var(--inp-focus-color);
   box-shadow: var(--component-box-shadow);
-  outline: none;
+  background-color: transparent;
 }
 
 .inp-error {
@@ -41,8 +51,4 @@
 .inp-date::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.5);
-}
-
-.inp-search {
-  max-width: 6rem;
 }

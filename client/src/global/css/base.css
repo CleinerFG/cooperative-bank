@@ -34,6 +34,12 @@ button {
   all: unset;
 }
 
+.btn-icon {
+  cursor: pointer;
+  display: inline-flex;
+  padding: 0.5rem;
+}
+
 .icon-invert {
   filter: invert(100%) brightness(120%) contrast(170%);
 }

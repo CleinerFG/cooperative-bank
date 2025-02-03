@@ -82,9 +82,11 @@ export default class Input {
   get _template() {
     return `
     <div class="form-group__inp-group">
-      <label for="${this._id}" class="label form-group__label">${this._labelText}</label>
-      <input id="${this._id}" type="text" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}"
-      class="inp form-group__inp ${this._cssClass}" data-valid="false">
+      <label for="${this._id}" class="label">${this._labelText}</label>
+      <div class="inp__wrapper">
+        <input id="${this._id}" type="text" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"
+        class="inp ${this._cssClass}" data-valid="false">
+      </div>
       ${this._errorSpanTemplate}
     </div>`;
   }
@@ -96,7 +98,7 @@ export default class Input {
   _handleFailMessage(method, errorMessage = '') {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
-    this.inputElement.classList[method]('inp-error');
+    this.inputElement.parentElement.classList[method]('inp-error');
   }
 
   #handleValidators() {

@@ -73,9 +73,11 @@ export default class SearchInput extends Input {
     return `
       <div class="form-group__inp-group">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
-        <div class="inp-container">
-          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp form-group__inp inp-search ${this._cssClass}" data-valid="false" data-search="off">
-          <button disabled class="btn-unset"><img class="icon ${handleIconDark()}" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
+        <div class="inp__wrapper inp__wrapper-search">
+          <input id="${this.#INP_QUERY_ID}" type="text" aria-label="${this._labelText}" class="inp ${this._cssClass}" data-valid="false" data-search="off">
+          <button disabled type="button" class="btn-unset btn-icon"><img class="icon ${handleIconDark()}" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
+        </div>
+        <div class="inp__wrapper">
           <input id="${this.#INP_RESULT_ID}" type="text" class="inp form-group__inp" disabled>
         </div>
         ${this._errorSpanTemplate}
