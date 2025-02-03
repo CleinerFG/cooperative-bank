@@ -1,5 +1,6 @@
 import { FormCtrl } from '../../../../../global/js/controllers/FormCtrl.js';
 import { RegisterModel } from '../models/RegisterModel.js';
+import { cpfValidator } from '../../../../../global/js/utils/validators.js';
 
 export default class RegisterFormCtrl extends FormCtrl {
   get _modelClass() {
@@ -21,6 +22,7 @@ export default class RegisterFormCtrl extends FormCtrl {
         category: 'default',
         labelText: 'CPF',
         formatter: 'cpf',
+        customValidator: cpfValidator,
       },
       {
         id: 'name',

@@ -12,14 +12,15 @@ import {
  * @property {string} id
  * @property {string} labelText
  * @property {string} cssClass
+ * @property {boolean} strictToNumber
  * @property {"text" | "numeric" | "email" | "date"} inputmode
  * @property {"text" | "numeric" | "email" | "date"} type
- * @property {boolean} strictToNumber
  * @property {"currency" | "percent" | "cpf"} formatter
+ * @property {import('../../utils/validators.js').Validator} customValidator
  */
 
 /**
- * Input class for creating and managing input elements with validation,
+ * Creating and managing input elements with validation,
  * formatting, and error handling.
  */
 export default class Input {
@@ -31,6 +32,7 @@ export default class Input {
    * @type {import("../../utils/validators.js").Validator[]}
    */
   #validators = [emptyValidator, zeroValidator];
+  #customValidator;
 
   /**
    * @param {InputDefaultConfig} config
@@ -38,12 +40,13 @@ export default class Input {
   constructor(config) {
     this.#containerElement = config.containerElement;
     this._id = config.id;
-    this._cssClass = config.cssClass ?? '';
-    this._inputmode = config.inputmode ?? 'text';
-    this._type = config.type ?? 'text';
-    this.#strictToNumber = config.strictToNumber;
-    this.#formatter = config.formatter;
     this._labelText = config.labelText ?? '';
+    this._cssClass = config.cssClass ?? '';
+    this.#strictToNumber = config.strictToNumber;
+    this._type = config.type ?? 'text';
+    this._inputmode = config.inputmode ?? 'text';
+    this.#formatter = config.formatter;
+    this.#customValidator = config.customValidator;
   }
 
   /**
@@ -95,6 +98,8 @@ export default class Input {
 
   #handleValidators() {
     const value = this.inputElement.value;
+    if (this.#customValidator) this.#validators.push(this.#customValidator);
+
     try {
       this.#validators.forEach((validator) => validator(value));
       this._dataValid = true;

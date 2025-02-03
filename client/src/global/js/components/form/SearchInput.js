@@ -11,8 +11,8 @@ import { handleIconDark } from '../../utils/themeUtils.js';
  * @property {string} id
  * @property {string} labelText
  * @property {string} cssClass
- * @property {"text" | "numeric"} inputmode
  * @property {boolean} strictToNumber
+ * @property {"text" | "numeric"} inputmode
  * @property {"currency" | "percent"} formatter
  * @property {string} endpoint
  */
@@ -74,7 +74,7 @@ export default class SearchInput extends Input {
       <div class="inp-group ">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
         <div class="inp__wrapper inp__wrapper-search">
-          <input id="${this.#INP_QUERY_ID}" class="inp ${this._cssClass}" type="text" autocomplete="off" 
+          <input id="${this.#INP_QUERY_ID}" class="inp ${this._cssClass}" type="text" inputmode="${this._inputmode}" autocomplete="off" 
             aria-label="${this._labelText}" data-valid="false" data-search="off">
           <button disabled type="button" class="btn-unset btn-icon"><img class="icon ${handleIconDark()}" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
         </div>

@@ -23,6 +23,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
       {
         category: 'search',
         id: 'search-creditor',
+        inputmode: 'numeric',
         strictToNumber: true,
         labelText: 'Search for a Creditor',
         endpoint: 'users',
