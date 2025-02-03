@@ -1,5 +1,6 @@
 import { zeroValidator, emptyValidator } from '../../utils/validators.js';
 import {
+  cpfFormatter,
   currencyFormatter,
   percentFormatter,
   strictNumberFormatter,
@@ -14,7 +15,7 @@ import {
  * @property {"text" | "numeric" | "email" | "date"} inputmode
  * @property {"text" | "numeric" | "email" | "date"} type
  * @property {boolean} strictToNumber
- * @property {"currency" | "percent"} formatter
+ * @property {"currency" | "percent" | "cpf"} formatter
  */
 
 /**
@@ -22,19 +23,8 @@ import {
  * formatting, and error handling.
  */
 export default class Input {
-  /**
-   * @type {HTMLElement}
-   */
   #containerElement;
-
-  /**
-   * @type {boolean}
-   */
   #strictToNumber;
-
-  /**
-   * @type {"currency" | "percent"}
-   */
   #formatter;
 
   /**
@@ -125,6 +115,7 @@ export default class Input {
     const formatters = {
       percent: percentFormatter,
       currency: currencyFormatter,
+      cpf: cpfFormatter,
     };
 
     if (this.#formatter) {

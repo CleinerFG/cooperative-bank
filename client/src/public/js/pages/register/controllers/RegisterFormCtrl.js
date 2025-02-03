@@ -20,6 +20,7 @@ export default class RegisterFormCtrl extends FormCtrl {
         id: 'cpf',
         category: 'default',
         labelText: 'CPF',
+        formatter: 'cpf',
       },
       {
         id: 'name',
@@ -38,6 +39,7 @@ export default class RegisterFormCtrl extends FormCtrl {
         category: 'default',
         labelText: 'E-mail',
         inputmode: 'email',
+        type: 'email',
       },
       {
         id: 'password',
