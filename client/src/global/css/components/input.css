@@ -44,6 +44,10 @@
   color: var(--color-fail);
 }
 
+.inp-date {
+  border: var(--component-border);
+}
+
 input[type='date'] {
   color: hsl(0, 0%, 50%);
 }

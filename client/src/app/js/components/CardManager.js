@@ -110,11 +110,11 @@ export class CardManager {
       return `
     <div class="dashboard-filter">
       <div class="inputs-container">
-        <div class="date-container">
+        <div class="inp-group">
           <label for="start-date-filter-${this._entity}">Start date</label>
           <input id="start-date-filter-${this._entity}" class="inp inp-date" type="date">
         </div>
-        <div class="date-container">
+        <div class="inp-group">
           <label for="end-date-filter-${this._entity}">End date</label>
           <input id="end-date-filter-${this._entity}" class="inp inp-date" type="date">
         </div>
