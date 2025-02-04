@@ -1,7 +1,7 @@
 import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
 
 export class ConfirmPassFormCtrl extends FormCtrl {
-  get _viewConfig() {
+  get _viewParams() {
     return {
       id: 'confirm-pass-form',
       containerElement: document.querySelector('.modal-content'),
@@ -9,7 +9,7 @@ export class ConfirmPassFormCtrl extends FormCtrl {
     };
   }
 
-  get _inputsConfig() {
+  get _inputsParams() {
     return [
       {
         id: 'transaction-password',
@@ -19,7 +19,7 @@ export class ConfirmPassFormCtrl extends FormCtrl {
     ];
   }
 
-  get _submitConfig() {
+  get _submitButtonParams() {
     return {
       id: 'transaction-confirm',
       cssClass: 'modal-btn',

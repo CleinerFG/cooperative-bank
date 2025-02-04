@@ -42,7 +42,7 @@ export class Layout {
     const anchors = document.querySelectorAll('[data-link]');
     anchors.forEach((element) => {
       element.addEventListener('click', (ev) => {
-        ev.preventDefault();
+        e.preventDefault();
         appRouter.navigateTo(element.getAttribute('href'));
       });
     });

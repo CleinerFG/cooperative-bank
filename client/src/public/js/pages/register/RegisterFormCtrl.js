@@ -11,7 +11,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     return RegisterModel;
   }
 
-  get _viewConfig() {
+  get _viewParams() {
     return {
       id: 'register-form',
       containerElement: document.querySelector('.form-container'),
@@ -19,7 +19,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     };
   }
 
-  get _inputsConfig() {
+  get _inputsParams() {
     return [
       {
         id: 'cpf',
@@ -59,7 +59,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     ];
   }
 
-  get _submitConfig() {
+  get _submitButtonParams() {
     return {
       id: 'submit',
       labelText: 'Register',

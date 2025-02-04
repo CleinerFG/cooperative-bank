@@ -1,7 +1,7 @@
 import { SubmitButton } from '../components/form/SubmitButton.js';
 
 /**
- * @typedef {object} FormViewConfig
+ * @typedef {object} FormViewParams
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string | undefined} cssClass
@@ -11,54 +11,28 @@ import { SubmitButton } from '../components/form/SubmitButton.js';
  * Representing a form view with dynamic input rendering and functionality.
  */
 export class FormView {
-  /**
-   * @type {HTMLElement}
-   */
   #containerElement;
-
-  /**
-   * @type {string}
-   */
   #id;
-
-  /**
-   * @type {string}
-   */
   #cssClass;
-
-  /**
-   * @type {Array<import('../components/form/Input.js').InputDefaultConfig | import('../components/form/SearchInput.js').InputSearchConfig>}
-   */
-  #inputsConfig;
-
-  /**
-   * @type {import('../components/form/SubmitButton.js').SubmitButtonConfig}
-   */
-  #submitConfig;
-
-  /**
-   * @type {Array<Input | SearchInput | PasswordInput>}
-   */
+  #inputsParams;
+  #submitButtonParams;
   #inputs;
 
   /**
    *
-   * @param {FormViewConfig} config
-   * @param {Array<import('../components/form/Input.js').InputDefaultConfig | import('../components/form/SearchInput.js').InputSearchConfig>} inputsConfig
-   * @param {import('../components/form/SubmitButton.js').SubmitButtonConfig} submitConfig
+   * @param {FormViewParams} params
+   * @param {Array<import('../components/form/Input.js').InputParams | import('../components/form/SearchInput.js').SearchInputParams>} inputsParams
+   * @param {import('../components/form/SubmitButton.js').SubmitButtonParams} submitButtonParams
    */
-  constructor(config, inputsConfig, submitConfig) {
-    this.#containerElement = config.containerElement;
-    this.#id = config.id;
-    this.#cssClass = config.cssClass ?? '';
-    this.#inputsConfig = inputsConfig;
-    this.#submitConfig = submitConfig;
+  constructor(params, inputsParams, submitButtonParams) {
+    this.#containerElement = params.containerElement;
+    this.#id = params.id;
+    this.#cssClass = params.cssClass ?? '';
+    this.#inputsParams = inputsParams;
+    this.#submitButtonParams = submitButtonParams;
     this.#init();
   }
 
-  /**
-   * @type {HTMLFormElement}
-   */
   get formElement() {
     return document.getElementById(this.#id);
   }
@@ -104,7 +78,7 @@ export class FormView {
   async #buildInputs() {
     this.#inputs = [];
 
-    for (const params of this.#inputsConfig) {
+    for (const params of this.#inputsParams) {
       const InpClass = await this.#getInputClassByCategory(params.category);
       params.containerElement = this.#formGroupElement;
       const inp = new InpClass(params);
@@ -114,7 +88,7 @@ export class FormView {
   }
 
   #buildSubmitBtn() {
-    const params = this.#submitConfig;
+    const params = this.#submitButtonParams;
     params.containerElement = this.formElement;
     new SubmitButton(params).init();
   }
@@ -122,10 +96,10 @@ export class FormView {
   /**
    * Change focus between form inputs when pressing "Enter" or "Tab".
    */
-  #changeElementsFocus() {
-    this.formElement.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter' || ev.key === 'Tab') {
-        ev.preventDefault();
+  #handleChangeFocus() {
+    this.formElement.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === 'Tab') {
+        e.preventDefault();
         const inputs = Array.from(this.formElement.querySelectorAll('input'));
         const index = inputs.indexOf(document.activeElement);
 
@@ -148,6 +122,6 @@ export class FormView {
     this.#render();
     await this.#buildInputs();
     this.#buildSubmitBtn();
-    this.#changeElementsFocus();
+    this.#handleChangeFocus();
   }
 }

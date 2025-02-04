@@ -8,16 +8,13 @@ import { InvalidDataError } from '../errors/InvalidDataError.js';
  * Manages validation, configuration, and API submission for the form.
  */
 export class FormCtrl {
-  /**
-   * @type {FormView}
-   */
   #view;
 
   constructor() {
     this.#view = new FormView(
-      this._viewConfig,
-      this._inputsConfig,
-      this._submitConfig
+      this._viewParams,
+      this._inputsParams,
+      this._submitButtonParams
     );
     this.#init();
   }
@@ -27,24 +24,24 @@ export class FormCtrl {
   }
 
   /**
-   * @type {import('../views/FormView.js').FormViewConfig}
+   * @type {import('../views/FormView.js').FormViewParams}
    */
-  get _viewConfig() {
-    new AbstractGetterError('_viewConfig');
+  get _viewParams() {
+    new AbstractGetterError('_viewParams');
   }
 
   /**
-   * @type {Array<import('../components/form/Input.js').InputDefaultConfig | import('../components/form/SearchInput.js').InputSearchConfig>}
+   * @type {Array<import('../components/form/Input.js').InputParams | import('../components/form/SearchInput.js').SearchInputParams>}
    */
-  get _inputsConfig() {
-    new AbstractGetterError('_inputsConfig');
+  get _inputsParams() {
+    new AbstractGetterError('_inputsParams');
   }
 
   /**
-   * @type {import('../components/form/SubmitButton.js').SubmitButtonConfig}}
+   * @type {import('../components/form/SubmitButton.js').SubmitButtonParams}}
    */
-  get _submitConfig() {
-    new AbstractGetterError('_submitConfig');
+  get _submitButtonParams() {
+    new AbstractGetterError('_submitButtonParams');
   }
 
   /**
@@ -82,7 +79,7 @@ export class FormCtrl {
 
   #handleSubmit() {
     this.#view.formElement.addEventListener('submit', async (ev) => {
-      ev.preventDefault();
+      e.preventDefault();
       try {
         this._handleInputsDataIsValid();
         const res = await ApiService.sendTo(this._endpoint, this._formData);

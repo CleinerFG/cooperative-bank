@@ -1,7 +1,7 @@
 import Input from './Input.js';
 
 /**
- * @typedef {object} SubmitButtonConfig
+ * @typedef {object} SubmitButtonParams
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
@@ -13,10 +13,10 @@ import Input from './Input.js';
  */
 export class SubmitButton extends Input {
   /**
-   * @param {SubmitButtonConfig} config
+   * @param {SubmitButtonParams} params
    */
-  constructor(config) {
-    super(config);
+  constructor(params) {
+    super(params);
   }
 
   get _template() {

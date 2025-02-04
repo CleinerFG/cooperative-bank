@@ -10,7 +10,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
     return LoanRequestModel;
   }
 
-  get _viewConfig() {
+  get _viewParams() {
     return {
       id: 'new-request-form',
       containerElement: document.querySelector('.new-request'),
@@ -18,7 +18,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
     };
   }
 
-  get _inputsConfig() {
+  get _inputsParams() {
     return [
       {
         category: 'search',
@@ -59,7 +59,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
     ];
   }
 
-  get _submitConfig() {
+  get _submitButtonParams() {
     return {
       id: 'submit',
       labelText: 'Request',

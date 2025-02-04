@@ -6,7 +6,7 @@ import { AssetManager } from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
 /**
- * @typedef {object} InputSearchConfig
+ * @typedef {object} SearchInputParams
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
@@ -32,11 +32,11 @@ export default class SearchInput extends Input {
   #ICON_SEARCH_ID = `${this._id}-search-icon`;
 
   /**
-   * @param {InputSearchConfig} config
+   * @param {SearchInputParams} params
    */
-  constructor(config) {
-    super(config);
-    this.#endpoint = config.endpoint;
+  constructor(params) {
+    super(params);
+    this.#endpoint = params.endpoint;
   }
 
   get #inpQueryElement() {

@@ -7,7 +7,7 @@ import {
 } from '../../utils/inputFormatters.js';
 
 /**
- * @typedef {object} InputDefaultConfig
+ * @typedef {object} InputParams
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
@@ -35,18 +35,18 @@ export default class Input {
   #customValidator;
 
   /**
-   * @param {InputDefaultConfig} config
+   * @param {InputParams} params
    */
-  constructor(config) {
-    this.#containerElement = config.containerElement;
-    this._id = config.id;
-    this._labelText = config.labelText ?? '';
-    this._cssClass = config.cssClass ?? '';
-    this.#strictToNumber = config.strictToNumber;
-    this._type = config.type ?? 'text';
-    this._inputmode = config.inputmode ?? 'text';
-    this.#formatter = config.formatter;
-    this.#customValidator = config.customValidator;
+  constructor(params) {
+    this.#containerElement = params.containerElement;
+    this._id = params.id;
+    this._labelText = params.labelText ?? '';
+    this._cssClass = params.cssClass ?? '';
+    this.#strictToNumber = params.strictToNumber;
+    this._type = params.type ?? 'text';
+    this._inputmode = params.inputmode ?? 'text';
+    this.#formatter = params.formatter;
+    this.#customValidator = params.customValidator;
   }
 
   /**
