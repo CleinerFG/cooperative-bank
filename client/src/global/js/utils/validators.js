@@ -60,40 +60,52 @@ export function cpfValidator(value) {
  * @param {string} value
  */
 export function passwordValidator(value) {
-  const minLength = /^.{8,}$/;
-  const hasLowercase = /[a-z]/;
-  const hasUppercase = /[A-Z]/;
-  const hasNumber = /\d/;
-  const hasSpecialChar = /[\W_]/;
-  const hasBlank = /\s/;
+  const rules = [
+    {
+      regex: /^.{8,}$/,
+      message: 'The password must be at least 8 characters long',
+    },
+    {
+      regex: /[a-z]/,
+      message: 'The password must contain at least one lowercase letter',
+    },
+    {
+      regex: /[A-Z]/,
+      message: 'The password must contain at least one uppercase letter',
+    },
+    { regex: /\d/, message: 'The password must contain at least one number' },
+    {
+      regex: /[\W]/,
+      message: 'The password must contain at least one special character',
+    },
+    {
+      regex: /\s/,
+      message: 'The password cannot have blank space',
+      negate: true,
+    },
+    {
+      regex:
+        /(012|123|234|345|456|567|678|789|890|abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz)/i,
+      message: (match) =>
+        `The password cannot have sequential pattern: ${match[0]}`,
+      negate: true,
+    },
+    {
+      regex: /(.)\1{2,}/,
+      message: (match) =>
+        `The password cannot have consecutive repetitions: ${match[0]}`,
+      negate: true,
+    },
+  ];
 
-  if (!minLength.test(value))
-    throw new InvalidPasswordError(
-      'The password must be at least 8 characters long'
-    );
-
-  if (!hasLowercase.test(value))
-    throw new InvalidPasswordError(
-      'The password must contain at least one lowercase letter'
-    );
-
-  if (!hasUppercase.test(value))
-    throw new InvalidPasswordError(
-      'The password must contain at least one uppercase letter'
-    );
-
-  if (!hasNumber.test(value))
-    throw new InvalidPasswordError(
-      'The password must contain at least one number'
-    );
-
-  if (!hasSpecialChar.test(value))
-    throw new InvalidPasswordError(
-      'The password must contain at least one special character'
-    );
-
-  if (hasBlank.test(value))
-    throw new InvalidPasswordError('The password cannot have blank space');
+  for (const { regex, message, negate } of rules) {
+    const match = value.match(regex);
+    if ((negate && match) || (!negate && !match)) {
+      throw new InvalidPasswordError(
+        typeof message === 'function' ? message(match) : message
+      );
+    }
+  }
 }
 
 /**
