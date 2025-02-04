@@ -1,11 +1,28 @@
-/**
- * @constant {Intl.NumberFormat}
- */
-export const numberToCurrency = new Intl.NumberFormat('pt-BR', {
+const intlNumberToCurrency = new Intl.NumberFormat('pt-BR', {
   style: 'currency',
   currency: 'BRL',
   minimumFractionDigits: 2,
 });
+
+const intlNumberToPercent = new Intl.NumberFormat('pt-BR', {
+  style: 'percent',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const intlFormatDate = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+});
+
+/**
+ * @param {number} value
+ * @returns {string}
+ */
+export function numberToCurrency(value) {
+  return intlNumberToCurrency.format(value);
+}
 
 /**
  * @param {string} value
@@ -21,13 +38,12 @@ export function currencyToNumber(value) {
 }
 
 /**
- * @constant {Intl.NumberFormat}
+ * @param {number} value
+ * @returns {string}
  */
-export const numberToPercent = new Intl.NumberFormat('pt-BR', {
-  style: 'percent',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
+export function numberToPercent(value) {
+  return intlNumberToPercent.format(value / 100);
+}
 
 /**
  * @param {string} value
@@ -43,13 +59,12 @@ export function percentToNumber(value) {
 }
 
 /**
- * @constant {Intl.DateTimeFormat}
+ * @param {string} value
+ * @returns {string}
  */
-export const formatDate = new Intl.DateTimeFormat('pt-BR', {
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-});
+export function formatDate(value) {
+  return intlFormatDate.format(new Date(value));
+}
 
 /**
  * @param {string} value
@@ -66,4 +81,3 @@ export function formatCpf(value) {
 export function cpfToString(value) {
   return value.replace(/[.-]/g, '');
 }
-

@@ -55,7 +55,7 @@ export default class AccountAmount {
   #showAmount() {
     this.#spanAmountElement.textContent =
       this.#currentVisibility === 'on'
-        ? numberToCurrency.format(this.#amountValue)
+        ? numberToCurrency(this.#amountValue)
         : 'R$ * * * * * *';
   }
 

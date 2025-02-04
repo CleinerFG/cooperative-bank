@@ -77,7 +77,7 @@ export class LoanModel extends TransactionModel {
    * @type {string}
    */
   get amountDue() {
-    return numberToCurrency.format(this._amountDue);
+    return numberToCurrency(this._amountDue);
   }
 
   /**
@@ -94,7 +94,7 @@ export class LoanModel extends TransactionModel {
    * @type {string}
    */
   get rate() {
-    return numberToPercent.format(this._rate / 100);
+    return numberToPercent(this._rate);
   }
 
   /**
@@ -103,7 +103,7 @@ export class LoanModel extends TransactionModel {
    * @type {string}
    */
   get installmentValue() {
-    return numberToCurrency.format(this._installmentValue);
+    return numberToCurrency(this._installmentValue);
   }
 
   /**
@@ -121,6 +121,6 @@ export class LoanModel extends TransactionModel {
    * @type {string}
    */
   get totalLoanCost() {
-    return numberToCurrency.format(this._installmentValue * this._installments);
+    return numberToCurrency(this._installmentValue * this._installments);
   }
 }

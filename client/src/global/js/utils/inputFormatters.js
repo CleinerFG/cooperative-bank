@@ -11,7 +11,7 @@ import { numberToCurrency, numberToPercent } from './formatters.js';
  */
 export function currencyFormatter(ev) {
   let value = ev.target.value;
-  value = numberToCurrency.format(value / 100);
+  value = numberToCurrency(value / 100);
   ev.target.value = value;
 }
 
@@ -20,7 +20,7 @@ export function currencyFormatter(ev) {
  */
 export function percentFormatter(ev) {
   let value = ev.target.value;
-  value = numberToPercent.format(value / 10000);
+  value = numberToPercent(value / 100);
   ev.target.value = value;
 
   const cursorPosition = ev.target.value.length - 1;

@@ -61,7 +61,7 @@ export class LoanRequestModel extends TransactionModel {
    * @type {string}
    */
   get rate() {
-    return numberToPercent.format(this._rate / 100);
+    return numberToPercent(this._rate);
   }
 
   /**
@@ -78,7 +78,7 @@ export class LoanRequestModel extends TransactionModel {
     const installmentValue =
       value * (rate / (1 - Math.pow(1 + rate, -installments)));
 
-    return numberToCurrency.format(installmentValue);
+    return numberToCurrency(installmentValue);
   }
 
   /**

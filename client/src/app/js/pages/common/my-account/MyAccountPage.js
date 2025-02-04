@@ -62,13 +62,13 @@ export default class MyAccountPage extends Page {
 
   _displayData() {
     document.getElementById('name').textContent = this._apiData.name;
-    document.getElementById('birth').textContent = formatDate.format(
-      new Date(this._apiData.birth)
+    document.getElementById('birth').textContent = formatDate(
+      this._apiData.birth
     );
     document.getElementById('cpf').textContent = formatCpf(this._apiData.cpf);
     document.getElementById('email').textContent = this._apiData.email;
-    document.getElementById('registration').textContent = formatDate.format(
-      new Date(this._apiData.registration)
+    document.getElementById('registration').textContent = formatDate(
+      this._apiData.registration
     );
   }
 

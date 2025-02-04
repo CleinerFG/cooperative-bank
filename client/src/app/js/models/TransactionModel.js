@@ -1,4 +1,7 @@
-import { formatDate, numberToCurrency } from "../../../global/js/utils/formatters.js";
+import {
+  formatDate,
+  numberToCurrency,
+} from '../../../global/js/utils/formatters.js';
 
 /**
  * Represents a transaction.
@@ -7,7 +10,7 @@ import { formatDate, numberToCurrency } from "../../../global/js/utils/formatter
 export class TransactionModel {
   /**
    * @param {Object} params
-   * @param {string} params.id 
+   * @param {string} params.id
    * @param {number} params.type
    * @param {string} params.status
    * @param {string} params.description
@@ -59,7 +62,7 @@ export class TransactionModel {
    * @type {string} Formatted date "MM/DD/YYYY".
    */
   get date() {
-    return formatDate.format(new Date(this._date));
+    return formatDate(this._date);
   }
 
   /**
@@ -67,6 +70,6 @@ export class TransactionModel {
    * @type {string} Formatted as currency "R$1.234,56".
    */
   get value() {
-    return numberToCurrency.format(this._value);
+    return numberToCurrency(this._value);
   }
 }
