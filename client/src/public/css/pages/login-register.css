@@ -32,6 +32,7 @@
 .login-register.footer {
   padding: 1.5rem;
   background-color: hsl(0, 0%, 8%);
+  scroll-snap-align: none;
 }
 
 .login-register.footer a {

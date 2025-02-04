@@ -44,11 +44,11 @@
   color: var(--color-fail);
 }
 
-.inp-date {
+input[type='date'] {
   color: hsl(0, 0%, 50%);
 }
 
-.inp-date::-webkit-calendar-picker-indicator {
+input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.5);
 }
