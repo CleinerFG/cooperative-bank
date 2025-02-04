@@ -1,4 +1,8 @@
 import { Page } from '../../../../../global/js/core/Page.js';
+import {
+  formatCpf,
+  formatDate,
+} from '../../../../../global/js/utils/formatters.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { AccountService } from './AccountService.js';
 
@@ -20,6 +24,10 @@ export default class MyAccountPage extends Page {
         <div class="info-item">
           <span class="info-label">Date of birth</span>
           <span id="birth" class="info-value skelon"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">CPF</span>
+          <span id="cpf" class="info-value skelon"></span>
         </div>
         <div class="info-item">
           <span class="info-label">E-mail</span>
@@ -54,10 +62,14 @@ export default class MyAccountPage extends Page {
 
   _displayData() {
     document.getElementById('name').textContent = this._apiData.name;
-    document.getElementById('birth').textContent = this._apiData.birth;
+    document.getElementById('birth').textContent = formatDate.format(
+      new Date(this._apiData.birth)
+    );
+    document.getElementById('cpf').textContent = formatCpf(this._apiData.cpf);
     document.getElementById('email').textContent = this._apiData.email;
-    document.getElementById('registration').textContent =
-      this._apiData.registration;
+    document.getElementById('registration').textContent = formatDate.format(
+      new Date(this._apiData.registration)
+    );
   }
 
   _removeSkelons() {

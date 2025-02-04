@@ -5,6 +5,9 @@ export class AccountService {
     return '/account/info';
   }
 
+  /**
+   * @returns {Promise<{ name: string, birth: string, cpf: string, email: string, registration: string }>}
+   */
   async fetch() {
     const res = await fetch(`${API_BASE_URL}${this.#endpoint}`);
     return await res.json();
