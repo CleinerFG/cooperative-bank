@@ -2,10 +2,9 @@
   text-decoration: underline;
 }
 
-.login-register .content-container {
-  padding: 0 1rem;
+.login-register.content-container {
+  margin-top: 6rem;
   margin-bottom: 2rem;
-  gap: 2rem;
 }
 
 .info-container {
@@ -47,5 +46,7 @@
 @media (min-width: 768px) {
   .login-register.content-container {
     flex-direction: row;
+    flex: 1;
+    /* margin-top: 0; */
   }
 }
