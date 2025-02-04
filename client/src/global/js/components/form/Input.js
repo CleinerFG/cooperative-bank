@@ -60,10 +60,21 @@ export default class Input {
     return document.getElementById(this._id);
   }
 
+  get value() {
+    return this.inputElement.value;
+  }
+
+  /**
+   * @type {'true'|'false'}
+   */
+  get dataValid() {
+    return this.inputElement.dataset.valid;
+  }
+
   /**
    * @param {boolean} bool
    */
-  set _dataValid(bool) {
+  set dataValid(bool) {
     this.inputElement.dataset.valid = bool;
   }
 
@@ -102,10 +113,10 @@ export default class Input {
 
     try {
       this.#validators.forEach((validator) => validator(value));
-      this._dataValid = true;
+      this.dataValid = true;
       this._handleFailMessage('remove', '');
     } catch (error) {
-      this._dataValid = false;
+      this.dataValid = false;
       this._handleFailMessage('add', error.message);
     }
   }

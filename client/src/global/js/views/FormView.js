@@ -16,7 +16,8 @@ export class FormView {
   #cssClass;
   #inputsParams;
   #submitButtonParams;
-  #inputs;
+  #inputs = [];
+  #submitButton;
 
   /**
    *
@@ -42,6 +43,13 @@ export class FormView {
    */
   get inputs() {
     return this.#inputs;
+  }
+
+  /**
+   * @type {SubmitButton}
+   */
+  get submitButton() {
+    return this.#submitButton;
   }
 
   get #formGroupElement() {
@@ -76,8 +84,6 @@ export class FormView {
   }
 
   async #buildInputs() {
-    this.#inputs = [];
-
     for (const params of this.#inputsParams) {
       const InpClass = await this.#getInputClassByCategory(params.category);
       params.containerElement = this.#formGroupElement;
@@ -90,7 +96,9 @@ export class FormView {
   #buildSubmitBtn() {
     const params = this.#submitButtonParams;
     params.containerElement = this.formElement;
-    new SubmitButton(params).init();
+    const btn = new SubmitButton(params);
+    btn.init();
+    this.#submitButton = btn;
   }
 
   /**

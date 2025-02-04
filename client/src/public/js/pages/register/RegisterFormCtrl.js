@@ -51,7 +51,6 @@ export default class RegisterFormCtrl extends FormCtrl {
       },
       {
         id: 'password',
-        cssClass: 'password',
         category: 'password',
         labelText: 'Password',
         customValidator: passwordValidator,

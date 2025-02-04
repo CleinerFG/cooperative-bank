@@ -57,10 +57,10 @@ export class FormCtrl {
    *
    * @returns {object}
    */
-  get _formData() {
+  get #formData() {
     const params = {};
     this.#view.inputs.forEach((inp) => {
-      params[inp.id] = inp.inputElement.value;
+      params[inp.id] = inp.value;
     });
 
     const model = new this._modelClass(params);
@@ -68,24 +68,19 @@ export class FormCtrl {
   }
 
   _handleInputsDataIsValid() {
-    const isValid = this.#view.inputs.every(
-      (inp) => inp.inputElement.dataset.valid === 'true'
-    );
-
-    if (!isValid) {
-      throw new InvalidDataError();
-    }
+    const isValid = this.#view.inputs.every((inp) => inp.dataValid === 'true');
+    if (!isValid) throw new InvalidDataError();
   }
 
   #handleSubmit() {
-    this.#view.formElement.addEventListener('submit', async (ev) => {
+    this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
       try {
         this._handleInputsDataIsValid();
-        const res = await ApiService.sendTo(this._endpoint, this._formData);
-        console.log(`Server return: ${res}`);
+        const res = await ApiService.sendTo(this._endpoint, this.#formData);
+        console.log(`Server return: ${res}`); 
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     });
   }
