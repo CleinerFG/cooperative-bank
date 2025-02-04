@@ -108,7 +108,7 @@ export default class LandingPage extends PublicPage {
     return this._socialMediaMap[type]
       .map((sm) => {
         return `
-        <a href="${sm.href}">
+        <a href="${sm.href}" target="_blank">
           <img class="social-media__icon" src="${ASSETS_ROUTE}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
         </a>
       `;
@@ -169,7 +169,7 @@ export default class LandingPage extends PublicPage {
       </div>
       <div class="content-container">
         <h1>Cooperation that connects people</h1>
-        <button class="btn"><a href="/register" data-link>Sign Up</a></button>
+        <a class="btn" href="/register" data-link>Sign Up</a>
       </div>
     </section>
     `;
