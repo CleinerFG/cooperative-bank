@@ -24,7 +24,6 @@ export class CardLoanRequestReceived extends Card {
       { label: 'Debtor', value: this._model.debtor },
       { label: 'Date', value: this._model.date },
       { label: 'Value', value: this._model.value },
-      { label: 'Description', value: this._model.description },
       { label: 'Installments', value: this._model.installments },
       {
         label: 'Installment Value',

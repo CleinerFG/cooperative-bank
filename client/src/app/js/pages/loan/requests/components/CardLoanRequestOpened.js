@@ -24,7 +24,6 @@ export class CardLoanRequestOpened extends Card {
       { label: 'Creditor', value: this._model.creditor },
       { label: 'Date', value: this._model.date },
       { label: 'Value', value: this._model.value },
-      { label: 'Description', value: this._model.description },
       { label: 'Installments', value: this._model.installments },
       {
         label: 'Installment Value',

@@ -29,11 +29,6 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         endpoint: 'users',
       },
       {
-        id: 'description',
-        category: 'default',
-        labelText: 'Description',
-      },
-      {
         category: 'default',
         id: 'value',
         inputmode: 'numeric',

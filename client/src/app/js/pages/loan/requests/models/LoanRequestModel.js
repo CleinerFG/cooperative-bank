@@ -87,7 +87,6 @@ export class LoanRequestModel extends TransactionModel {
    * @returns {Object}
    * @property {Date} date
    * @property {string} creditor
-   * @property {string} description
    * @property {number} value
    * @property {number} installments
    * @property {number} rate
@@ -96,7 +95,6 @@ export class LoanRequestModel extends TransactionModel {
     return {
       date: new Date(),
       creditor: this._creditor,
-      description: this._description,
       value: currencyToNumber(this._value),
       installments: this._installments,
       rate: percentToNumber(this._rate),

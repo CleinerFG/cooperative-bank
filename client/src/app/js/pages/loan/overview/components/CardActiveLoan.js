@@ -25,7 +25,6 @@ export class CardActiveLoan extends Card {
       },
       { label: 'Date', value: this._model.date },
       { label: 'Value', value: this._model.value },
-      { label: 'Description', value: this._model.description },
       { label: 'Installments', value: this._model.installments },
       {
         label: 'Remaining Installments',
