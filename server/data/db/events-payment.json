@@ -1,29 +1,25 @@
 [
   {
     "id": "1450",
-    "description": "Window for house",
-    "type": 1,
+    "description": "Installment",
     "dueDate": "2024-08-03T20:28:48.663Z",
     "value": 2200
   },
   {
     "id": "15565",
-    "description": "Credit",
-    "type": 1,
+    "description": "Installment",
     "dueDate": "2024-08-29T08:45:42.155Z",
     "value": 2800
   },
   {
     "id": "515",
-    "description": "Shopping",
-    "type": 1,
+    "description": "Installment",
     "dueDate": "2024-05-01T20:35:16.253Z",
     "value": 3400
   },
   {
     "id": "410",
-    "description": "Car",
-    "type": 1,
+    "description": "Installment",
     "dueDate": "2024-05-01T20:35:16.253Z",
     "value": 5800
   }
