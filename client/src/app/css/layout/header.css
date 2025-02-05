@@ -5,7 +5,6 @@
   width: 100%;
   max-width: 768px;
   background-color: var(--color-primary);
-  box-shadow: var(--component-box-shadow);
   z-index: 1;
 
   position: fixed;
@@ -18,4 +17,9 @@
 .header .brand-name {
   font-size: 1rem;
   margin-left: 0.8rem;
+}
+
+.header .home-icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }

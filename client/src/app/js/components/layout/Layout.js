@@ -41,7 +41,7 @@ export class Layout {
   #handleRoutes() {
     const anchors = document.querySelectorAll('[data-link]');
     anchors.forEach((element) => {
-      element.addEventListener('click', (ev) => {
+      element.addEventListener('click', (e) => {
         e.preventDefault();
         appRouter.navigateTo(element.getAttribute('href'));
       });
