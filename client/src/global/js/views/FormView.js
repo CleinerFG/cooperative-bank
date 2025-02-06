@@ -109,16 +109,19 @@ export class FormView {
     this.formElement.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === 'Tab') {
         e.preventDefault();
-        const inputs = Array.from(this.formElement.querySelectorAll('input'));
-        const index = inputs.indexOf(document.activeElement);
+        const formElements = Array.from(
+          this.formElement.querySelectorAll('input, select')
+        );
+        const index = formElements.indexOf(document.activeElement);
+        console.log(formElements);
 
         const getNextInput = (currentIndex) => {
-          for (let i = currentIndex + 1; i < inputs.length; i++) {
-            if (!inputs[i].disabled) {
-              return inputs[i];
+          for (let i = currentIndex + 1; i < formElements.length; i++) {
+            if (!formElements[i].disabled) {
+              return formElements[i];
             }
           }
-          return inputs[0];
+          return formElements[0];
         };
 
         const nextInput = getNextInput(index);
