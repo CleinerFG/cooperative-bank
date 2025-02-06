@@ -4,9 +4,9 @@ import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import {
   numberToCurrency,
   numberToPercent,
+  formatDate,
 } from '../../../../../../global/js/utils/formatters.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
-import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 
 /**
  * @typedef {object} LoanRequestOpenedData
@@ -80,7 +80,8 @@ export class CardLoanRequestOpened extends CardActiveLoan {
           <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
           <span>${modality.desc}</span>
         </div>
-        <span class="${cssClass}">${capitalize(this._apiData.status)}</span>
+        <span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>
+        <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>
         `;
   }
 

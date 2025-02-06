@@ -1,4 +1,5 @@
 import {
+  formatDate,
   numberToCurrency,
   numberToPercent,
 } from '../../../../../../global/js/utils/formatters.js';
@@ -98,6 +99,7 @@ export class CardActiveLoan extends Card {
       <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
       <span>${modality.desc}</span>
       </div>
+      <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>
     `;
   }
 
