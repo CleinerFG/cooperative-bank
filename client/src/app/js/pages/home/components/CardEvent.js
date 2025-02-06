@@ -1,17 +1,31 @@
 import { Card } from '../../../../js/components/Card.js';
-import { EventModel } from '../models/EventModel.js';
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
+import {
+  formatDate,
+  numberToCurrency,
+} from '../../../../../global/js/utils/formatters.js';
+
+/**
+ * @typedef {object} EventData
+ * @property {string} id
+ * @property {string} description
+ * @property {string} dueDate
+ * @property {number} value
+ */
 
 /**
  * Represents a card component specifically for displaying event data.
  */
 export class CardEvent extends Card {
-  get _ModelClass() {
-    return EventModel;
+  /**
+   * @type {EventData}
+   */
+  get _apiData() {
+    return super._apiData;
   }
 
-  get _id() {
-    return `event-${this._model.id}`;
+  get _cssId() {
+    return `event-${this._index}`;
   }
 
   get _cssClass() {
@@ -20,13 +34,13 @@ export class CardEvent extends Card {
 
   get _itemsArray() {
     return [
-      { label: 'Due Date', value: this._model.dueDate },
-      { label: 'Value', value: this._model.value },
+      { label: 'Due Date', value: formatDate(this._apiData.dueDate) },
+      { label: 'Value', value: numberToCurrency(this._apiData.value) },
     ];
   }
 
   get _headerTemplate() {
-    return capitalize(this._model.description);
+    return capitalize(this._apiData.description);
   }
 
   get _footerTemplate() {

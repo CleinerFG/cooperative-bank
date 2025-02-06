@@ -93,8 +93,6 @@ export class CardActiveLoan extends Card {
 
   get _headerTemplate() {
     const modality = this._modalityMap[this._apiData.modality];
-    console.log(modality);
-
     return `
       <div class="loan-modality">
       <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
