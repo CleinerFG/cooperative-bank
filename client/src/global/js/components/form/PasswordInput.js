@@ -18,14 +18,14 @@ export default class PasswordInput extends Input {
   }
 
   get #inpVisibilityState() {
-    return this.inputElement.dataset.visibility;
+    return this._inputElement.dataset.visibility;
   }
 
   /**
    * @param {"on" | "off"} value
    */
   set #inpVisibilityState(value) {
-    this.inputElement.dataset.visibility = value;
+    this._inputElement.dataset.visibility = value;
   }
 
   get _template() {
@@ -57,8 +57,8 @@ export default class PasswordInput extends Input {
   }
 
   _toggleInpType() {
-    const currentType = this.inputElement.type;
-    this.inputElement.type = currentType === 'text' ? 'password' : 'text';
+    const currentType = this._inputElement.type;
+    this._inputElement.type = currentType === 'text' ? 'password' : 'text';
   }
 
   _toggleVisibility() {

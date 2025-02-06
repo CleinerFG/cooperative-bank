@@ -58,26 +58,26 @@ export default class Input {
     return this._id;
   }
 
-  get inputElement() {
+  get _inputElement() {
     return document.getElementById(this._id);
   }
 
   get value() {
-    return this.inputElement.value;
+    return this._inputElement.value;
   }
 
   /**
-   * @type {'true'|'false'}
+   * @type {boolean}
    */
   get dataValid() {
-    return this.inputElement.dataset.valid === 'true';
+    return this._inputElement.dataset.valid === 'true';
   }
 
   /**
    * @param {boolean} bool
    */
   set dataValid(bool) {
-    this.inputElement.dataset.valid = bool;
+    this._inputElement.dataset.valid = bool;
   }
 
   get _errorSpanTemplate() {
@@ -106,25 +106,25 @@ export default class Input {
   _handleFailMessage(method, errorMessage = '') {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
-    this.inputElement.parentElement.classList[method]('inp-error');
+    this._inputElement.parentElement.classList[method]('inp-error');
   }
 
   #handleValidators() {
-    const value = this.inputElement.value;
+    const value = this._inputElement.value;
     if (this.#customValidator) this.#validators.push(this.#customValidator);
     try {
       this.#validators.forEach((validator) => validator(value));
-      this.dataValid = true;
+      this._dataValid = true;
       this._handleFailMessage('remove', '');
     } catch (error) {
-      this.dataValid = false;
+      this._dataValid = false;
       this._handleFailMessage('add', error.message);
     }
   }
 
   #setStrictToNumber() {
     if (this.#strictToNumber) {
-      this.inputElement.addEventListener('input', strictNumberFormatter);
+      this._inputElement.addEventListener('input', strictNumberFormatter);
     }
   }
 
@@ -136,12 +136,12 @@ export default class Input {
     };
 
     if (this.#formatter) {
-      this.inputElement.addEventListener('input', formatters[this.#formatter]);
+      this._inputElement.addEventListener('input', formatters[this.#formatter]);
     }
   }
 
   #setValidationOnBlur() {
-    this.inputElement.addEventListener(
+    this._inputElement.addEventListener(
       'blur',
       this.#handleValidators.bind(this)
     );

@@ -69,7 +69,7 @@ export class FormCtrl {
 
   _handleInputsDataIsValid() {
     const isValid = this.#view.formElements.every(
-      (formEl) => formEl.dataValid === true
+      (formEl) => formEl._dataValid === true
     );
     if (!isValid) throw new InvalidDataError();
   }

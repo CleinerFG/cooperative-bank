@@ -37,7 +37,7 @@ export default class Select {
   }
 
   /**
-   * @type {'true'|'false'}
+   * @type {boolean}
    */
   get dataValid() {
     return this.#element.dataset.valid === 'true';
@@ -75,9 +75,9 @@ export default class Select {
   #handleListeners() {
     this.#element.addEventListener('change', () => {
       if (this.#element.value) {
-        this.dataValid = 'true';
+        this._dataValid = true;
       } else {
-        this.dataValid = 'false';
+        this._dataValid = false;
       }
     });
     this.#element.addEventListener('blur', () => {
