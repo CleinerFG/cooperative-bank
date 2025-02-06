@@ -61,7 +61,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         options: [
           { value: 'personal', text: 'Personal credit' },
           { value: 'auto', text: 'Auto credit' },
-          { value: 'real_estate', text: 'Real estate credit' },
+          { value: 'mortgage', text: 'Mortgage credit' },
         ],
       },
       {

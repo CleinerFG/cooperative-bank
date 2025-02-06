@@ -13,39 +13,33 @@ import {
  * Base class for creating card components with customizable header, content, and footer sections.
  */
 export class Card {
+  #apiData;
   #containerElement;
 
   /**
-   * @type {Object}
-   */
-  #model;
-
-  /**
    * @param {HTMLElement} containerElement
-   * @param {Object} modelParams
+   * @param {object} apiData
+   * @param {number} index
    */
-  constructor(containerElement, modelParams) {
+  constructor(index, apiData, containerElement) {
+    this._index = index;
+    this.#apiData = apiData;
     this.#containerElement = containerElement;
-    this.#model = new this._ModelClass(modelParams);
     this.#init();
   }
 
   /**
    * @type {Object}
    */
-  get _model() {
-    return this.#model;
-  }
-
-  get _ModelClass() {
-    throw new AbstractGetterError('_ModelClass');
+  get _apiData() {
+    return this.#apiData;
   }
 
   /**
    * @type {string}
    */
-  get _id() {
-    throw new AbstractGetterError('_id');
+  get _cssId() {
+    throw new AbstractGetterError('_cssId');
   }
 
   /**
@@ -122,7 +116,7 @@ export class Card {
 
   #buildCardTemplate() {
     return `
-    <article id="${this._id}" class="card card-data ${this._cssClass}">
+    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
         ${this.#buildHeaderTemplate()}
         ${this.#buildMainContentTemplate()}
         ${this.#buildFooterTemplate()}
@@ -139,7 +133,7 @@ export class Card {
   }
 
   selfRemove() {
-    document.getElementById(this._id).remove();
+    document.getElementById(this._cssId).remove();
   }
 
   #init() {

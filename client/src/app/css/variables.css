@@ -6,6 +6,9 @@
   --text-font-family: 'Roboto Condensed', sans-serif;
   --title-font-family: 'Roboto Slab', serif;
   --info-font-family: 'Open Sans', sans-serif;
+
+  --color-secondary: hsl(220, 41%, 20%);
+  --color-secondary-hover: hsl(220, 41%, 25%);
 }
 
 [data-theme='light'] {
@@ -13,10 +16,8 @@
   --color-primary-light: hsl(169, 96%, 42%);
   --color-primary-light-hover: hsl(169, 96%, 40%);
 
-  --color-secondary: hsl(220, 41%, 25%);
-  --color-secondary-hover: hsl(220, 41%, 30%);
-
-  --text-color: hsl(220, 41%, 25%);
+  --title-color: hsl(220, 41%, 25%);
+  --text-color: #212121;
   --color-bg: hsl(45, 29%, 97%);
 
   --component-border: solid 0.1rem hsl(0, 0%, 80%);
@@ -37,12 +38,10 @@
   --color-primary-light: hsl(169, 96%, 18%);
   --color-primary-light-hover: hsl(169, 96%, 20%);
 
-  --color-secondary: hsl(220, 41%, 25%);
-  --color-secondary-hover: hsl(220, 41%, 30%);
-
-  --text-color: #faf9f6;
+  --text-color: #dcdcdc;
+  --title-color: #faf9f6;
   --color-bg: #000;
-
+ 
   --component-border: solid 0.1rem hsl(0, 0%, 20%);
   --component-line-color: hsl(0, 0%, 20%);
   --component-bg-color: hsl(0, 0%, 11%);

@@ -18,6 +18,12 @@
 @import url('./pages/loan-requests.css');
 @import url('./pages/my-account.css');
 
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+}
+
 li {
   list-style-type: none;
 }

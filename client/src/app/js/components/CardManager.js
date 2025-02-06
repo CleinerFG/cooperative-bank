@@ -158,8 +158,8 @@ export class CardManager {
   }
 
   #initCards() {
-    this.#cards = this.#apiData.map((item) => {
-      return new this.#CardClass(this.#cardsContainerElement, item);
+    this.#cards = this.#apiData.map((data, index) => {
+      return new this.#CardClass(index, data, this.#cardsContainerElement);
     });
   }
 

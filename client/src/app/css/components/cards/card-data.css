@@ -11,7 +11,7 @@
 
 .card-data__header {
   padding: 0 0.2rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   padding-bottom: 0.5rem;
   border-bottom: 0.1rem solid var(--color-detail);
@@ -59,4 +59,14 @@
 
 .card-data__btn {
   width: 100%;
+}
+
+.card-data__header .loan-modality {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-data__header .icon {
+  height: 2rem;
 }

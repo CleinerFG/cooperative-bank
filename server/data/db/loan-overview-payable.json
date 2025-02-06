@@ -1,28 +1,41 @@
 [
   {
     "id": "15466",
-    "type": 1,
-    "status": 1,
+    "modality": "personal",
     "creditor": "The Trapper",
     "date": "2024-05-01T20:35:16.253Z",
-    "amountDue": 4200,
-    "value": 5000,
+    "creditValue": 4200,
+    "totalAmount": 5000,
+    "outstandingBalance": 3000,
     "installments": 10,
-    "rate": 1.5,
-    "installmentValue": 515,
-    "remainingInstallments": 8
+    "installmentValue": 425.5,
+    "paidInstallments": 2,
+    "rate": 4
   },
   {
-    "id": "46455",
-    "type": 1,
-    "status": 1,
-    "creditor": "The Wraith",
-    "date": "2024-08-02T02:17:12.652Z",
-    "amountDue": 1000,
-    "value": 1000,
-    "installments": 2,
-    "rate": 1,
-    "installmentValue": 505,
-    "remainingInstallments": 2
+    "id": "54566",
+    "modality": "auto",
+    "creditor": "Nurse",
+    "date": "2024-04-07T20:35:16.253Z",
+    "creditValue": 2000,
+    "totalAmount": 3000,
+    "outstandingBalance": 2000,
+    "installments": 8,
+    "installmentValue": 325.5,
+    "paidInstallments": 3,
+    "rate": 3.7
+  },
+  {
+    "id": "46444",
+    "modality": "mortgage",
+    "creditor": "The Trapper",
+    "date": "2024-08-07T20:35:16.253Z",
+    "creditValue": 8000,
+    "totalAmount": 10000,
+    "outstandingBalance": 9000,
+    "installments": 24,
+    "installmentValue": 800.5,
+    "paidInstallments": 5,
+    "rate": 5.25
   }
 ]
