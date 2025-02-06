@@ -70,13 +70,14 @@ export class FormView {
   }
 
   /**
-   * @param {'default' | 'search' | 'password'} category
+   * @param {'default'|'search'|'password'|'select'} category
    */
   async #getInputClassByCategory(category) {
     const catInpMap = {
       default: () => import('../components/form/Input.js'),
       search: () => import('../components/form/SearchInput.js'),
       password: () => import('../components/form/PasswordInput.js'),
+      select: () => import('../components/form/Select.js'),
     };
 
     const module = await catInpMap[category]();

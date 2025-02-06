@@ -42,11 +42,17 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         labelText: 'Value',
       },
       {
-        category: 'default',
+        category: 'select',
         id: 'installments',
-        inputmode: 'numeric',
-        strictToNumber: true,
-        labelText: 'Installments',
+        labelText: 'Deadline (in months)',
+        options: [
+          { value: '3', text: '03 months' },
+          { value: '6', text: '06 months' },
+          { value: '9', text: '09 months' },
+          { value: '12', text: '12 months' },
+          { value: '24', text: '24 months' },
+          { value: '48', text: '48 months' },
+        ],
       },
       {
         category: 'default',
