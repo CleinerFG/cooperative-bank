@@ -14,22 +14,22 @@ export class FormView {
   #containerElement;
   #id;
   #cssClass;
-  #inputsParams;
+  #formElementsParams;
   #submitButtonParams;
-  #inputs = [];
+  #formElements = [];
   #submitButton;
 
   /**
    *
    * @param {FormViewParams} params
-   * @param {Array<import('../components/form/Input.js').InputParams | import('../components/form/SearchInput.js').SearchInputParams>} inputsParams
+   * @param {Array<import('../components/form/Input.js').InputParams|import('../components/form/SearchInput.js').SearchInputParams|import('../components/form/Select.js').SelectParams} formElementsParams
    * @param {import('../components/form/SubmitButton.js').SubmitButtonParams} submitButtonParams
    */
-  constructor(params, inputsParams, submitButtonParams) {
+  constructor(params, formElementsParams, submitButtonParams) {
     this.#containerElement = params.containerElement;
     this.#id = params.id;
     this.#cssClass = params.cssClass ?? '';
-    this.#inputsParams = inputsParams;
+    this.#formElementsParams = formElementsParams;
     this.#submitButtonParams = submitButtonParams;
     this.#init();
   }
@@ -41,8 +41,8 @@ export class FormView {
   /**
    * @type {Array<Input | SearchInput | PasswordInput>}
    */
-  get inputs() {
-    return this.#inputs;
+  get formElements() {
+    return this.#formElements;
   }
 
   /**
@@ -72,25 +72,27 @@ export class FormView {
   /**
    * @param {'default'|'search'|'password'|'select'} category
    */
-  async #getInputClassByCategory(category) {
-    const catInpMap = {
+  async #getFormElementClassByCategory(category) {
+    const formElemCatMap = {
       default: () => import('../components/form/Input.js'),
       search: () => import('../components/form/SearchInput.js'),
       password: () => import('../components/form/PasswordInput.js'),
       select: () => import('../components/form/Select.js'),
     };
 
-    const module = await catInpMap[category]();
+    const module = await formElemCatMap[category]();
     return module.default;
   }
 
-  async #buildInputs() {
-    for (const params of this.#inputsParams) {
-      const InpClass = await this.#getInputClassByCategory(params.category);
+  async #buildFormElements() {
+    for (const params of this.#formElementsParams) {
+      const InpClass = await this.#getFormElementClassByCategory(
+        params.category
+      );
       params.containerElement = this.#formGroupElement;
       const inp = new InpClass(params);
       inp.init();
-      this.#inputs.push(inp);
+      this.#formElements.push(inp);
     }
   }
 
@@ -132,7 +134,7 @@ export class FormView {
 
   async #init() {
     this.#render();
-    await this.#buildInputs();
+    await this.#buildFormElements();
     this.#buildSubmitBtn();
     this.#handleChangeFocus();
   }

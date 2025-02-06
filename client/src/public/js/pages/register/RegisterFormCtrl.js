@@ -19,7 +19,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     };
   }
 
-  get _inputsParams() {
+  get _formElementsParams() {
     return [
       {
         id: 'cpf',

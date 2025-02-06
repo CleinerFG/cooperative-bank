@@ -19,7 +19,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
     };
   }
 
-  get _inputsParams() {
+  get _formElementsParams() {
     return [
       {
         category: 'search',

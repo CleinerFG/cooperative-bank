@@ -9,7 +9,7 @@ export class ConfirmPassFormCtrl extends FormCtrl {
     };
   }
 
-  get _inputsParams() {
+  get _formElementsParams() {
     return [
       {
         id: 'transaction-password',

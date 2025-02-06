@@ -13,7 +13,7 @@ export class FormCtrl {
   constructor() {
     this.#view = new FormView(
       this._viewParams,
-      this._inputsParams,
+      this._formElementsParams,
       this._submitButtonParams
     );
     this.#init();
@@ -33,8 +33,8 @@ export class FormCtrl {
   /**
    * @type {Array<import('../components/form/Input.js').InputParams | import('../components/form/SearchInput.js').SearchInputParams>}
    */
-  get _inputsParams() {
-    new AbstractGetterError('_inputsParams');
+  get _formElementsParams() {
+    new AbstractGetterError('_formElementsParams');
   }
 
   /**
@@ -59,8 +59,8 @@ export class FormCtrl {
    */
   get #formData() {
     const params = {};
-    this.#view.inputs.forEach((inp) => {
-      params[inp.id] = inp.value;
+    this.#view.formElements.forEach((formEl) => {
+      params[formEl.id] = formEl.value;
     });
 
     const model = new this._modelClass(params);
@@ -68,17 +68,21 @@ export class FormCtrl {
   }
 
   _handleInputsDataIsValid() {
-    const isValid = this.#view.inputs.every((inp) => inp.dataValid === 'true');
+    const isValid = this.#view.formElements.every(
+      (formEl) => formEl.dataValid === true
+    );
     if (!isValid) throw new InvalidDataError();
   }
 
   #handleSubmit() {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
+      console.log(this.#formData);
+
       try {
         this._handleInputsDataIsValid();
         const res = await ApiService.sendTo(this._endpoint, this.#formData);
-        console.log(`Server return: ${res}`); 
+        console.log(`Server return: ${res}`);
       } catch (e) {
         console.error(e);
       }

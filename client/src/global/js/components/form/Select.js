@@ -23,6 +23,20 @@ export default class Select {
   }
 
   /**
+   * @type {string}
+   */
+  get id() {
+    return this.#id;
+  }
+
+  /**
+   * @type {string}
+   */
+  get value() {
+    return this.#element.value;
+  }
+
+  /**
    * @type {'true'|'false'}
    */
   get dataValid() {
@@ -62,7 +76,8 @@ export default class Select {
     this.#element.addEventListener('change', () => {
       if (this.#element.value) {
         this.dataValid = 'true';
-        return;
+      } else {
+        this.dataValid = 'false';
       }
     });
     this.#element.addEventListener('blur', () => {
