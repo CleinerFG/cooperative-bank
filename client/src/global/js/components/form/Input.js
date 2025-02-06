@@ -11,12 +11,13 @@ import {
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
+ * @property {string} placeholder
  * @property {string} cssClass
  * @property {boolean} strictToNumber
  * @property {"text" | "numeric" | "email" | "date"} inputmode
  * @property {"text" | "numeric" | "email" | "date"} type
  * @property {"currency" | "percent" | "cpf"} formatter
- * @property {import('../../utils/validators.js').Validator} customValidator
+ * @property {import('../../utils/validators.js').Validator|undefined} customValidator
  */
 
 /**
@@ -41,6 +42,7 @@ export default class Input {
     this.#containerElement = params.containerElement;
     this._id = params.id;
     this._labelText = params.labelText ?? '';
+    this._placeholder = params.placeholder ?? '';
     this._cssClass = params.cssClass ?? '';
     this.#strictToNumber = params.strictToNumber;
     this._type = params.type ?? 'text';
@@ -68,7 +70,7 @@ export default class Input {
    * @type {'true'|'false'}
    */
   get dataValid() {
-    return this.inputElement.dataset.valid;
+    return this.inputElement.dataset.valid === 'true';
   }
 
   /**
@@ -90,7 +92,7 @@ export default class Input {
     <div class="inp-group ">
       <label for="${this._id}" class="label">${this._labelText}</label>
       <div class="inp__wrapper">
-        <input id="${this._id}" type="${this._type}" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"
+        <input id="${this._id}" placeholder="${this._placeholder}" type="${this._type}" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"
         class="inp ${this._cssClass}" data-valid="false">
       </div>
       ${this._errorSpanTemplate}
@@ -110,7 +112,6 @@ export default class Input {
   #handleValidators() {
     const value = this.inputElement.value;
     if (this.#customValidator) this.#validators.push(this.#customValidator);
-
     try {
       this.#validators.forEach((validator) => validator(value));
       this.dataValid = true;

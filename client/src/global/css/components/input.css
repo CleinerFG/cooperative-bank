@@ -13,12 +13,12 @@
 }
 
 .inp__wrapper-search {
-  max-width: 8rem;
+  max-width: 9.6rem;
 }
 
 .inp {
   width: 100%;
-  padding: 0.8rem 0.5rem;
+  padding: 0.6rem 0.3rem;
   font-size: 1rem;
   color: var(--font-color);
   border-radius: var(--component-border-radius);

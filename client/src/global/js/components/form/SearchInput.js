@@ -12,6 +12,7 @@ import { handleIconDark } from '../../utils/themeUtils.js';
  * @property {string} labelText
  * @property {string} cssClass
  * @property {boolean} strictToNumber
+ * @property {import('../../utils/validators.js').Validator|undefined} customValidator
  * @property {"text" | "numeric"} inputmode
  * @property {"currency" | "percent"} formatter
  * @property {string} endpoint
@@ -63,18 +64,13 @@ export default class SearchInput extends Input {
     this.#handleSearchAnimation();
   }
 
-  get #queryIsValid() {
-    const query = this.#inpQueryElement.value;
-    return query !== '' && query !== '0';
-  }
-
   get _template() {
     const imgSrc = `${AssetManager.iconsPath}/icon-search.svg`;
     return `
       <div class="inp-group ">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
         <div class="inp__wrapper inp__wrapper-search">
-          <input id="${this.#INP_QUERY_ID}" class="inp ${this._cssClass}" type="text" inputmode="${this._inputmode}" autocomplete="off" 
+          <input id="${this.#INP_QUERY_ID}" placeholder="${this._placeholder}" class="inp ${this._cssClass}" type="text" inputmode="${this._inputmode}" autocomplete="off" 
             aria-label="${this._labelText}" data-valid="false" data-search="off">
           <button disabled type="button" class="btn-unset btn-icon"><img class="icon ${handleIconDark()}" id="${this.#ICON_SEARCH_ID}" src="${imgSrc}" alt="Search Icon"></button>
         </div>
@@ -121,7 +117,8 @@ export default class SearchInput extends Input {
   }
 
   async _handleSearch() {
-    if (!this.#queryIsValid) return;
+    console.log(this.dataValid);
+    if (!this.dataValid) return;
     try {
       const item = await this.#fetchFromApi();
       this.#handleSearchSuccess(item.name);

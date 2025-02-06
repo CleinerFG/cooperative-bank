@@ -1,4 +1,5 @@
 import { FormCtrl } from '../../../../../../global/js/controllers/FormCtrl.js';
+import { cpfValidator } from '../../../../../../global/js/utils/validators.js';
 import { LoanRequestModel } from '../models/LoanRequestModel.js';
 
 /**
@@ -24,14 +25,18 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         category: 'search',
         id: 'search-creditor',
         inputmode: 'numeric',
+        placeholder: '000.000.000-00',
         strictToNumber: true,
         labelText: 'Search for a Creditor',
+        formatter: 'cpf',
+        customValidator: cpfValidator,
         endpoint: 'users',
       },
       {
         category: 'default',
         id: 'value',
         inputmode: 'numeric',
+        placeholder: 'R$ 0,00',
         strictToNumber: true,
         formatter: 'currency',
         labelText: 'Value',
@@ -48,6 +53,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         id: 'rate',
         inputmode: 'numeric',
         strictToNumber: true,
+        placeholder: '0,00%',
         formatter: 'percent',
         labelText: 'Interest Rate',
       },
