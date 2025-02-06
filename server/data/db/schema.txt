@@ -72,7 +72,7 @@ transaction_statuses
 loan_statuses
 - id
 - description
-(pending, active, completed and canceled)
+(pending, active, completed, canceled and rejected)
 
 transfer_statuses
 - id
