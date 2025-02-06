@@ -55,6 +55,16 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         ],
       },
       {
+        category: 'select',
+        id: 'modality',
+        labelText: 'Credit modality',
+        options: [
+          { value: 'personal', text: 'Personal credit' },
+          { value: 'auto', text: 'Auto credit' },
+          { value: 'real_estate', text: 'Real estate credit' },
+        ],
+      },
+      {
         category: 'default',
         id: 'rate',
         inputmode: 'numeric',
