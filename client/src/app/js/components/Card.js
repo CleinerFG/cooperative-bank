@@ -35,6 +35,10 @@ export class Card {
     return this.#apiData;
   }
 
+  get _containerElement() {
+    return this.#containerElement;
+  }
+
   /**
    * @type {string}
    */

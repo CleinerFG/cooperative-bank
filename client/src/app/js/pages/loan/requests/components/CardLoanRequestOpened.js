@@ -35,11 +35,11 @@ export class CardLoanRequestOpened extends CardActiveLoan {
   }
 
   get _cssId() {
-    return `loan-request-${this._index}`;
+    return `request-opened-${this._index}`;
   }
 
   get _cssClass() {
-    return `loan-request`;
+    return `request-opened`;
   }
 
   get _itemsArray() {
@@ -93,22 +93,24 @@ export class CardLoanRequestOpened extends CardActiveLoan {
     return this._buttonsByStatus;
   }
 
+  get _modalAction() {
+    return this._apiData.status === 'pending' ? 'cancel' : 'confirm';
+  }
+
   get _buttonsByStatus() {
-    const action = this._apiData.status === 'ending' ? 'Cancel' : 'Confirm';
     const cssClass = this._apiData.status === 'pending' ? 'btn-fail' : '';
     return `
-      <button id="btn-${action}-${this._index}" class="btn card-data__btn ${cssClass}">
-         ${action}
+      <button id="btn-${this._cssId}-${this._modalAction}" class="btn card-data__btn ${cssClass}">
+         ${capitalize(this._modalAction)}
       </button>
      `;
   }
 
   _handleModal() {
-    // const action = this._apiData.status === 'pending' ? 'cancel' : 'confirm';
-    // document
-    //   .querySelector(`#btn-${action}-${this._index}`)
-    //   .addEventListener('click', () => {
-    //     new ConfirmPassModal();
-    //   });
+    this._containerElement
+      .querySelector(`#btn-${this._cssId}-${this._modalAction}`)
+      .addEventListener('click', () => {
+        new ConfirmPassModal();
+      });
   }
 }
