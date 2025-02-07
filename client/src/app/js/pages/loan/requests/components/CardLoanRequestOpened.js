@@ -33,10 +33,6 @@ export class CardLoanRequestOpened extends CardActiveLoan {
     return super._apiData;
   }
 
-  get _cssId() {
-    return `request-opened-${this._index}`;
-  }
-
   get _cssClass() {
     return `request-opened`;
   }

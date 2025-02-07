@@ -43,7 +43,7 @@ export class Card {
    * @type {string}
    */
   get _cssId() {
-    throw new AbstractGetterError('_cssId');
+    return `${this._cssClass}-${this._index}`;
   }
 
   /**

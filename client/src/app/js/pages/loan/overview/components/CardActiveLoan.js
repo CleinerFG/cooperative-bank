@@ -51,10 +51,6 @@ export class CardActiveLoan extends Card {
     return super._apiData;
   }
 
-  get _cssId() {
-    return `active-loan-${this._index}`;
-  }
-
   get _cssClass() {
     return `active-loan`;
   }
@@ -105,7 +101,7 @@ export class CardActiveLoan extends Card {
 
   get _footerTemplate() {
     return `
-     <button id="btn-active-loan-${this._apiData._index}" class="btn card-data__btn">
+     <button id="btn-${this._cssId}" class="btn card-data__btn">
         Installments
       </button>
     `;

@@ -31,10 +31,6 @@ export class CardLoanRequestReceived extends CardActiveLoan {
     return super._apiData;
   }
 
-  get _cssId() {
-    return `request-received-${this._index}`;
-  }
-
   get _cssClass() {
     return `request-received`;
   }
