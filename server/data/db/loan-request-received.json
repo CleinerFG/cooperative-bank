@@ -1,22 +1,35 @@
 [
   {
-    "id": "20",
-    "type": 2,
-    "date": "2024-06-11T20:29:44.418Z",
-    "debtor": "Kate Denson",
-    "value": 42460.54,
-    "installments": 12,
-    "rate": 2.3,
-    "status": 1
+    "id": "95466",
+    "modality": "personal",
+    "debtor": "Vitorio Toscano",
+    "date": "2024-05-01T20:35:16.253Z",
+    "creditValue": 4200,
+    "totalAmount": 5000,
+    "installments": 10,
+    "installmentValue": 425.5,
+    "rate": 4
   },
   {
-    "id": "18",
-    "type": 2,
-    "date": "2024-05-01T20:35:16.253Z",
-    "debtor": "Vitorio Toscano",
-    "value": 1000,
-    "installments": 12,
-    "rate": 2,
-    "status": 1
+    "id": "65456",
+    "modality": "auto",
+    "debtor": "Kate Denson",
+    "date": "2024-06-11T20:29:44.418Z",
+    "creditValue": 2500,
+    "totalAmount": 3200,
+    "installments": 10,
+    "installmentValue": 320,
+    "rate": 3.75
+  },
+  {
+    "id": "25456",
+    "modality": "mortgage",
+    "debtor": "Jane Romero",
+    "date": "2024-08-10T20:35:16.253Z",
+    "creditValue": 6000,
+    "totalAmount": 7000,
+    "installments": 10,
+    "installmentValue": 700,
+    "rate": 2.75
   }
 ]

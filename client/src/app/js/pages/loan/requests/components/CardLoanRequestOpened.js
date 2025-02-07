@@ -13,7 +13,6 @@ import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js'
  * @property {string} id
  * @property {'personal'|'auto'|'mortgage'} modality
  * @property {string} creditor
- * @property {string} debtor
  * @property {string} date
  * @property {number} creditValue
  * @property {number} totalAmount
