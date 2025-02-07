@@ -13,6 +13,10 @@
   color: var(--color-fail);
 }
 
+.card-data__header .span-success {
+  color: var(--color-success);
+}
+
 .card-data__header .span-date {
   padding-left: 0.2rem;
   font-size: 0.8rem;

@@ -20,7 +20,7 @@ import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js'
  * @property {number} installments
  * @property {number} installmentValue
  * @property {number} rate
- * @property {'rejected'|'pending'} status
+ * @property {'pending'|'rejected'|'approved'} status
  */
 
 /**
@@ -73,8 +73,12 @@ export class CardLoanRequestOpened extends CardActiveLoan {
 
   get _headerTemplate() {
     const modality = this._modalityMap[this._apiData.modality];
-    const cssClass =
-      this._apiData.status === 'pending' ? 'span-pending' : 'span-fail';
+    const statusCssMap = {
+      pending: 'span-pending',
+      rejected: 'span-fail',
+      approved: 'span-success',
+    };
+    const cssClass = statusCssMap[this._apiData.status];
     return `
         <div class="loan-modality">
           <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
