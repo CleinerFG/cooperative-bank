@@ -1,0 +1,18 @@
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+}
+
+li {
+  list-style-type: none;
+}
+
+.info-text {
+  font-family: var(--info-font-family);
+  text-align: justify;
+}
+
+a:hover {
+  color: var(--color-cta);
+}

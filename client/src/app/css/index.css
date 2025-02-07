@@ -2,6 +2,7 @@
 @import url('../../global/css/index.css');
 @import url('./variables.css');
 @import url('./layout/layout.css');
+@import url('./base.css');
 
 /* Components */
 @import url('./components/card-group.css');
@@ -15,24 +16,4 @@
 
 /* Pages */
 @import url('./pages/home.css');
-@import url('./pages/loan-requests.css');
 @import url('./pages/my-account.css');
-
-h1,
-h2,
-h3 {
-  color: var(--title-color);
-}
-
-li {
-  list-style-type: none;
-}
-
-.info-text {
-  font-family: var(--info-font-family);
-  text-align: justify;
-}
-
-a:hover {
-  color: var(--color-cta);
-}

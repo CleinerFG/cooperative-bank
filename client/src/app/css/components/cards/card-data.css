@@ -62,7 +62,7 @@
   width: 100%;
 }
 
-.card-data__header .loan-modality {
+.card-data__header .card-title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -70,4 +70,29 @@
 
 .card-data__header .icon {
   height: 2rem;
+}
+
+.card-data__header > .span-status {
+  color: var(--color-bg);
+  border-top-right-radius: var(--component-border-radius);
+  border-bottom-left-radius: var(--component-border-radius);
+  background-color: var(--text-color);
+  padding: 0.2rem 0.6rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card-data__header .span-fail {
+  color: var(--color-fail);
+}
+
+.card-data__header .span-success {
+  color: var(--color-success);
+}
+
+.card-data__header .span-date {
+  padding-left: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
 }

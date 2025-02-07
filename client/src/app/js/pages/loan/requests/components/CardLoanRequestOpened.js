@@ -79,7 +79,7 @@ export class CardLoanRequestOpened extends CardActiveLoan {
     };
     const cssClass = statusCssMap[this._apiData.status];
     return `
-        <div class="loan-modality">
+        <div class="card-title">
           <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
           <span>${modality.desc}</span>
         </div>
