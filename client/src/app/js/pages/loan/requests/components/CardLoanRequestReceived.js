@@ -86,6 +86,12 @@ export class CardLoanRequestReceived extends CardActiveLoan {
     `;
   }
 
+  get _asideTemplate() {
+    return '';
+  }
+
+  _initComponents() {}
+
   _handleModal() {
     document
       .querySelector(`#btn-${this._cssId}-approve`)

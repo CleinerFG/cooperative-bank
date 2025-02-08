@@ -101,6 +101,12 @@ export class CardLoanRequestOpened extends CardActiveLoan {
      `;
   }
 
+  get _asideTemplate() {
+    return '';
+  }
+
+  _initComponents() {}
+
   _handleModal() {
     this._containerElement
       .querySelector(`#btn-${this._cssId}-${this._modalAction}`)

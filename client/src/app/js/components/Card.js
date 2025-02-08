@@ -89,9 +89,7 @@ export class Card {
     throw new AbstractMethodError('_handleModal');
   }
 
-  _initComponents() {
-    return '';
-  }
+  _initComponents() {}
 
   #buildHeaderTemplate() {
     return `
