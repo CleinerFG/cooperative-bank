@@ -81,10 +81,6 @@ export class CardActiveLoan extends Card {
         label: 'Interest rate',
         value: `${numberToPercent(this._apiData.rate)} p.m.`,
       },
-      {
-        label: 'Payment progress',
-        value: `${this._apiData.paidInstallments} of ${this._apiData.installments} installments`,
-      },
     ];
   }
 
@@ -104,6 +100,21 @@ export class CardActiveLoan extends Card {
      <button id="btn-${this._cssId}" class="btn card-data__btn">
         Installments
       </button>
+    `;
+  }
+
+  get _asideTemplate() {
+    const item = {
+      label: 'Payment progress',
+      value: `${this._apiData.paidInstallments} of ${this._apiData.installments} installments`,
+    };
+    return `
+      <div class="payment-progress">
+        <div class="progress-bar" data-max="" data-current="">
+          <div class="progress-fill"></div>
+        </div>
+        ${this._buildItemTemplate(item)}
+      </div>
     `;
   }
 

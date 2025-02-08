@@ -96,7 +96,7 @@ export class Card {
   /**
    * @param {CardItem} cardItem
    */
-  #buildItemTemplate(cardItem) {
+  _buildItemTemplate(cardItem) {
     return `
       <div class="card-data__item">
         <span class="card-data__label">${cardItem.label}</span>
@@ -107,7 +107,7 @@ export class Card {
 
   #buildMainContentTemplate() {
     const items = this._itemsArray
-      .map((cardItem) => this.#buildItemTemplate(cardItem))
+      .map((cardItem) => this._buildItemTemplate(cardItem))
       .join('');
 
     return `
