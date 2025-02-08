@@ -6,6 +6,7 @@ import {
 import { Card } from '../../../../components/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
+import { ProgressBar } from './progressBar.js';
 
 /**
  * @typedef {object} ActiveLoanData
@@ -110,12 +111,18 @@ export class CardActiveLoan extends Card {
     };
     return `
       <div class="payment-progress">
-        <div class="progress-bar" data-max="" data-current="">
-          <div class="progress-fill"></div>
-        </div>
         ${this._buildItemTemplate(item)}
       </div>
     `;
+  }
+
+  _initComponents() {
+    const container = this._element.querySelector('.payment-progress');
+    new ProgressBar(
+      container,
+      this._apiData.installments,
+      this._apiData.paidInstallments
+    );
   }
 
   /**

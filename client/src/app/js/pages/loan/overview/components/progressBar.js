@@ -16,11 +16,11 @@ export class ProgressBar {
   }
 
   get #barElement() {
-    this.#containerElement.querySelector('.progress-bar');
+    return this.#containerElement.querySelector('.progress-bar');
   }
 
   get #fillElement() {
-    this.#barElement.querySelector('.progress-fill');
+    return this.#barElement.querySelector('.progress-fill');
   }
 
   get #template() {

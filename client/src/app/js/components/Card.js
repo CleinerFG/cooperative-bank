@@ -81,8 +81,16 @@ export class Card {
     return '';
   }
 
+  get _element() {
+    return document.getElementById(this._cssId);
+  }
+
   _handleModal() {
     throw new AbstractMethodError('_handleModal');
+  }
+
+  _initComponents() {
+    return '';
   }
 
   #buildHeaderTemplate() {
@@ -155,11 +163,12 @@ export class Card {
   }
 
   selfRemove() {
-    document.getElementById(this._cssId).remove();
+    this._element.remove();
   }
 
   #init() {
     this.#render();
+    this._initComponents();
     this._handleModal();
   }
 }

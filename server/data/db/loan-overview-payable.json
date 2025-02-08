@@ -6,10 +6,10 @@
     "date": "2024-05-01T20:35:16.253Z",
     "creditValue": 4200,
     "totalAmount": 5000,
-    "outstandingBalance": 3000,
+    "outstandingBalance": 500,
     "installments": 10,
-    "installmentValue": 425.5,
-    "paidInstallments": 2,
+    "installmentValue": 500,
+    "paidInstallments": 9,
     "rate": 4
   },
   {
