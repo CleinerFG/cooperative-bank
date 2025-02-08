@@ -76,7 +76,7 @@ export default class Input {
   /**
    * @param {boolean} bool
    */
-  set dataValid(bool) {
+  set _dataValid(bool) {
     this._inputElement.dataset.valid = bool;
   }
 
