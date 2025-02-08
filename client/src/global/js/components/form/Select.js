@@ -46,7 +46,7 @@ export default class Select {
   /**
    * @param {boolean} bool
    */
-  set dataValid(bool) {
+  set _dataValid(bool) {
     this.#element.dataset.valid = bool;
   }
 

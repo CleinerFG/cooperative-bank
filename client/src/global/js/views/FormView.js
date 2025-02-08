@@ -115,7 +115,6 @@ export class FormView {
           this.formElement.querySelectorAll('input, select')
         );
         const index = formElements.indexOf(document.activeElement);
-        console.log(formElements);
 
         const getNextInput = (currentIndex) => {
           for (let i = currentIndex + 1; i < formElements.length; i++) {
