@@ -1,8 +1,47 @@
-const progressBar = document.querySelector('.progress-bar');
-const progressFill = progressBar.querySelector('.progress-fill');
+export class ProgressBar {
+  #containerElement;
+  #max;
+  #current;
 
-const max = progressBar.getAttribute('data-max');
-const current = progressBar.getAttribute('data-current');
+  /**
+   * @param {HTMLElement} containerElement
+   * @param {number} max
+   * @param {number} current
+   */
+  constructor(containerElement, max, current) {
+    this.#containerElement = containerElement;
+    this.#max = max;
+    this.#current = current;
+    this.#init();
+  }
 
-const percentage = (current / max) * 100;
-progressFill.style.width = percentage + '%';
+  get #barElement() {
+    this.#containerElement.querySelector('.progress-bar');
+  }
+
+  get #fillElement() {
+    this.#barElement.querySelector('.progress-fill');
+  }
+
+  get #template() {
+    return `
+    <div class="progress-bar" data-max="${this.#max}" data-current="${this.#current}">
+      <div class="progress-fill"></div>
+    </div>
+    `;
+  }
+
+  #render() {
+    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
+  }
+
+  #updateFill() {
+    const percentage = (this.#current / this.#max) * 100;
+    this.#fillElement.style.width = percentage + '%';
+  }
+
+  #init() {
+    this.#render();
+    this.#updateFill();
+  }
+}
