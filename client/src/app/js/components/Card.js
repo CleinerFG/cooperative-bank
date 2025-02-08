@@ -74,6 +74,13 @@ export class Card {
     throw new AbstractGetterError('_footerTemplate');
   }
 
+  /**
+   * @type {string}
+   */
+  get _asideTemplate() {
+    return '';
+  }
+
   _handleModal() {
     throw new AbstractMethodError('_handleModal');
   }
@@ -118,11 +125,22 @@ export class Card {
     `;
   }
 
+  #buildAsideTemplate() {
+    if (this._asideTemplate)
+      return `
+    <aside class="card-data__aside">
+      ${this._asideTemplate}
+    </aside>
+    `;
+    return '';
+  }
+
   #buildCardTemplate() {
     return `
     <article id="${this._cssId}" class="card card-data ${this._cssClass}">
         ${this.#buildHeaderTemplate()}
         ${this.#buildMainContentTemplate()}
+        ${this.#buildAsideTemplate()}
         ${this.#buildFooterTemplate()}
       </article>
   
