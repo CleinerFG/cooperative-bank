@@ -68,21 +68,25 @@ export class FormCtrl {
   }
 
   _handleInputsDataIsValid() {
-    const isValid = this.#view.formElements.every(
-      (formEl) => formEl._dataValid === true
-    );
-    if (!isValid) throw new InvalidDataError();
+    let isValid = true;
+    this.#view.formElements.forEach((formEl) => {
+      if (!formEl.dataValid) {
+        isValid = false;
+        formEl.handleFailMessage('add', 'Invalid data');
+      }
+    });
+    return isValid;
   }
 
   #handleSubmit() {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
-      console.log(this.#formData);
-
+      const isValid = this._handleInputsDataIsValid();
       try {
-        this._handleInputsDataIsValid();
-        const res = await ApiService.sendTo(this._endpoint, this.#formData);
-        console.log(`Server return: ${res}`);
+        if (isValid) {
+          const res = await ApiService.sendTo(this._endpoint, this.#formData);
+          console.log(`Server return: ${res}`);
+        }
       } catch (e) {
         console.error(e);
       }

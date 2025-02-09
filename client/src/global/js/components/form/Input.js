@@ -103,7 +103,7 @@ export default class Input {
    * @param {"add" | "remove"} method
    * @param {string} errorMessage
    */
-  _handleFailMessage(method, errorMessage = '') {
+  handleFailMessage(method, errorMessage = '') {
     const span = document.querySelector(`#${this._id}-error`);
     span.innerHTML = errorMessage;
     this._inputElement.parentElement.classList[method]('inp-error');
@@ -115,10 +115,10 @@ export default class Input {
     try {
       this.#validators.forEach((validator) => validator(value));
       this._dataValid = true;
-      this._handleFailMessage('remove', '');
+      this.handleFailMessage('remove', '');
     } catch (error) {
       this._dataValid = false;
-      this._handleFailMessage('add', error.message);
+      this.handleFailMessage('add', error.message);
     }
   }
 

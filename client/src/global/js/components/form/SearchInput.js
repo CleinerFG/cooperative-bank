@@ -107,13 +107,13 @@ export default class SearchInput extends Input {
   #handleSearchSuccess(value) {
     this._dataValid = true;
     this.#inpResultElement.value = value;
-    this._handleFailMessage('remove');
+    this.handleFailMessage('remove');
   }
 
   #handleSearchError(error) {
     this._dataValid = false;
     this.#inpResultElement.value = '';
-    this._handleFailMessage('add', error.message);
+    this.handleFailMessage('add', error.message);
   }
 
   async _handleSearch() {

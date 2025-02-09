@@ -72,6 +72,14 @@ export default class Select {
       `;
   }
 
+  /**
+   * @param {"add" | "remove"} method
+   * @param {string} errorMessage
+   */
+  handleFailMessage(method) {
+    this.#element.classList[method]('select-error');
+  }
+
   #handleListeners() {
     this.#element.addEventListener('change', () => {
       if (this.#element.value) {
@@ -82,10 +90,10 @@ export default class Select {
     });
     this.#element.addEventListener('blur', () => {
       if (!this.dataValid) {
-        this.#element.classList.add('select-error');
-      } else {
-        this.#element.classList.remove('select-error');
+        this.handleFailMessage('add');
+        return;
       }
+      this.handleFailMessage('remove');
     });
   }
 
