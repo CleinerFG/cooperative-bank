@@ -67,7 +67,6 @@ export class CardLoanRequestOpened extends CardActiveLoan {
   }
 
   get _headerTemplate() {
-    const modality = this._modalityMap[this._apiData.modality];
     const statusCssMap = {
       pending: 'span-pending',
       rejected: 'span-fail',
@@ -76,8 +75,9 @@ export class CardLoanRequestOpened extends CardActiveLoan {
     const cssClass = statusCssMap[this._apiData.status];
     return `
         <div class="card-title">
-          <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
-          <span>${modality.desc}</span>
+          <img src="${this._modalityImgSrc[this._apiData.modality]}" alt="Modality"
+           class="icon ${handleIconDark()}">
+          <span>${capitalize(this._apiData.modality)}</span>
         </div>
         <span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>
         <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>

@@ -7,6 +7,7 @@ import { Card } from '../../../../components/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
 import { ProgressBar } from './progressBar.js';
+import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 
 /**
  * @typedef {object} ActiveLoanData
@@ -28,20 +29,11 @@ import { ProgressBar } from './progressBar.js';
  * Represents a card component specifically for displaying Active Loan.
  */
 export class CardActiveLoan extends Card {
-  get _modalityMap() {
+  get _modalityImgSrc() {
     return {
-      personal: {
-        desc: 'Personal Credit',
-        imgSrc: ASSETS_ROUTE + '/icons/icon-credit-card.svg',
-      },
-      auto: {
-        desc: 'Auto Credit',
-        imgSrc: ASSETS_ROUTE + '/icons/icon-car.svg',
-      },
-      mortgage: {
-        desc: 'Mortgage Credit',
-        imgSrc: ASSETS_ROUTE + '/icons/icon-house.svg',
-      },
+      personal: ASSETS_ROUTE + '/icons/icon-credit-card.svg',
+      auto: ASSETS_ROUTE + '/icons/icon-car.svg',
+      mortgage: ASSETS_ROUTE + '/icons/icon-house.svg',
     };
   }
 
@@ -86,11 +78,10 @@ export class CardActiveLoan extends Card {
   }
 
   get _headerTemplate() {
-    const modality = this._modalityMap[this._apiData.modality];
     return `
       <div class="card-title">
-      <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
-      <span>${modality.desc}</span>
+      <img src="${this._modalityImgSrc[this._apiData.modality]}" alt="Modality" class="icon ${handleIconDark()}">
+      <span>${capitalize(this._apiData.modality)}</span>
       </div>
       <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>
     `;

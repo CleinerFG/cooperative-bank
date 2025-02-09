@@ -5,6 +5,7 @@ import {
   numberToPercent,
   formatDate,
 } from '../../../../../../global/js/utils/formatters.js';
+import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
 
 /**
@@ -65,11 +66,11 @@ export class CardLoanRequestReceived extends CardActiveLoan {
   }
 
   get _headerTemplate() {
-    const modality = this._modalityMap[this._apiData.modality];
     return `
           <div class="card-title">
-            <img src="${modality.imgSrc}" alt="Modality" class="icon ${handleIconDark()}">
-            <span>${modality.desc}</span>
+            <img src="${this._modalityImgSrc[this._apiData.modality]}" alt="Modality"
+             class="icon ${handleIconDark()}">
+            <span>${capitalize(this._apiData.modality)}</span>
           </div>
           <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>
           `;
