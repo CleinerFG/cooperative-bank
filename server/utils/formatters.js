@@ -1,4 +1,4 @@
-module.exports = function formatTime(date) {
+function formatTime(date) {
   const dateFormatter = new Intl.DateTimeFormat('pt-BR', {
     day: '2-digit',
     month: '2-digit',
@@ -16,4 +16,6 @@ module.exports = function formatTime(date) {
   const formattedTime = timeFormatter.format(date);
 
   return `${formattedDate} - ${formattedTime}`;
-};
+}
+
+module.exports = { formatTime };

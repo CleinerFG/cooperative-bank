@@ -1,5 +1,8 @@
 require('dotenv').config();
-const formatTime = require('./utils/formatters');
+const users = require('./data/db/users.js');
+const { cpfValidator } = require('./utils/validators');
+
+const { formatTime } = require('./utils/formatters');
 const SERVER_IP = process.env.SERVER_IP;
 
 const express = require('express');
@@ -72,7 +75,21 @@ app.get(
   '/api/loan/request/received',
   serveFile(DB_DIR, 'loan-request-received.json')
 );
-app.get('/api/users', serveFile(DB_DIR, 'users.json'));
+app.get('/api/users', (req, res) => {
+  const { cpf } = req.query;
+
+  try {
+    cpfValidator(cpf);
+    const parseCpf = cpf.replace(/[.-]/g, '');
+    const user = users.find((u) => u.cpf === parseCpf);
+    if (!user) {
+      return res.status(404).json({ message: 'Not found user' });
+    }
+    return res.status(200).json(user);
+  } catch (e) {
+    return res.status(400).json({ message: e.message });
+  }
+});
 app.get('/api/account/info', serveFile(DB_DIR, 'account-info.json'));
 
 // Page route handlers
