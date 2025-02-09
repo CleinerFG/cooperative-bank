@@ -3,9 +3,9 @@
 }
 
 .login-register.content-container {
+  margin: auto;
   margin-top: 6rem;
   margin-bottom: 2rem;
-  margin: auto;
 }
 
 .info-container {
