@@ -17,6 +17,10 @@ export default class ActiveLoanManager extends CardManager {
     return 'active-loans';
   }
 
+  get _cardSkelonRows() {
+    return 7;
+  }
+
   get _entityCategoriesMap() {
     return [
       {

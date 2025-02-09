@@ -71,6 +71,13 @@ export class CardManager {
   }
 
   /**
+   * @type {number}
+   */
+  get _cardSkelonRows() {
+    // throw new AbstractGetterError('_cardSkelonRows');
+  }
+
+  /**
    * @type {boolean}
    */
   get _useDateFilter() {
@@ -154,7 +161,7 @@ export class CardManager {
   }
 
   #initCardState() {
-    this.#cardState = new CardState(this.#cardsContainerElement, this._entity);
+    this.#cardState = new CardState(this.#cardsContainerElement, this._entity, this._cardSkelonRows);
   }
 
   #initCards() {

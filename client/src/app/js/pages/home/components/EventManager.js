@@ -13,6 +13,10 @@ export default class EventManager extends CardManager {
     return 'events';
   }
 
+  get _cardSkelonRows() {
+    return 2;
+  }
+
   get _entityCategoriesMap() {
     return [
       {

@@ -14,6 +14,10 @@ export default class LoanRequestManager extends CardManager {
     return 'loan-requests';
   }
 
+  get _cardSkelonRows() {
+    return 6;
+  }
+
   get _entityCategoriesMap() {
     return [
       {

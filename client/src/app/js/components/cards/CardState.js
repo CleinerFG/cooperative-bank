@@ -9,6 +9,7 @@ import { CardEmpty } from './CardEmpty.js';
 export class CardState {
   #containerElement;
   #entity;
+  #cardSkelonRows;
   /**
    * @type {"loading" | "empty" | "error"}
    */
@@ -22,11 +23,12 @@ export class CardState {
   /**
    * @param {HTMLElement} container
    * @param {string} entity
-   * @param {string[]} emptyStateTexts
+   * @param {number} cardSkelonRows
    */
-  constructor(containerElement, entity) {
+  constructor(containerElement, entity, cardSkelonRows) {
     this.#containerElement = containerElement;
     this.#entity = entity;
+    this.#cardSkelonRows = cardSkelonRows;
     this.#init();
   }
 
@@ -39,7 +41,7 @@ export class CardState {
   }
 
   #setCards() {
-    this.#cards.loading = new CardLoading(4);
+    this.#cards.loading = new CardLoading(this.#cardSkelonRows);
     this.#cards.empty = new CardEmpty(this.#entity);
     this.#cards.error = new CardError(this.#entity);
   }
