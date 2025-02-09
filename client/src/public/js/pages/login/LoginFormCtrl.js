@@ -1,12 +1,7 @@
 import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
 import { emailValidator } from '../../../../global/js/utils/validators.js';
-import { LoginModel } from './LoginModel.js';
 
 export default class LoginFormCtrl extends FormCtrl {
-  get _modelClass() {
-    return LoginModel;
-  }
-
   get _viewParams() {
     return {
       id: 'login-form',
