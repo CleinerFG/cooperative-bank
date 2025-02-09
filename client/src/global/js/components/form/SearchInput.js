@@ -117,10 +117,7 @@ export default class SearchInput extends Input {
   }
 
   async _handleSearch() {
-    console.log(this.dataValid);
-
     if (!this.dataValid) return;
-
     try {
       const item = await this.#fetchFromApi();
       this.#handleSearchSuccess(item.name);

@@ -5,6 +5,11 @@ import {
   percentFormatter,
   strictNumberFormatter,
 } from '../../utils/inputFormatters.js';
+import {
+  cpfToString,
+  currencyToNumber,
+  percentToNumber,
+} from '../../utils/formatters.js';
 
 /**
  * @typedef {object} InputParams
@@ -62,8 +67,25 @@ export default class Input {
     return document.getElementById(this._id);
   }
 
+  /**
+   * @type {string}
+   */
   get value() {
     return this._inputElement.value;
+  }
+
+  get parseValue() {
+    switch (this.#formatter) {
+      case 'cpf':
+        return cpfToString(this.value);
+      case 'currency':
+        return currencyToNumber(this.value);
+      case 'percent':
+        return percentToNumber(this.value);
+      default:
+        if (this.#strictToNumber) return Number(this.value);
+        return this.value;
+    }
   }
 
   /**

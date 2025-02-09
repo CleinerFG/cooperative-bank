@@ -58,13 +58,11 @@ export class FormCtrl {
    * @returns {object}
    */
   get #formData() {
-    const params = {};
+    const data = {};
     this.#view.formElements.forEach((formEl) => {
-      params[formEl.id] = formEl.value;
+      data[formEl.id] = formEl?.parseValue ?? formEl?.value;
     });
-
-    const model = new this._modelClass(params);
-    return model.dataToApi;
+    return data;
   }
 
   _handleInputsDataIsValid() {
@@ -82,6 +80,8 @@ export class FormCtrl {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isValid = this._handleInputsDataIsValid();
+      console.log(this.#formData);
+
       try {
         if (isValid) {
           const res = await ApiService.sendTo(this._endpoint, this.#formData);
