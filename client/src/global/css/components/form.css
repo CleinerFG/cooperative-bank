@@ -24,3 +24,7 @@
   flex-direction: column;
   gap: 0.2rem;
 }
+
+.form-title {
+  align-self: start;
+}

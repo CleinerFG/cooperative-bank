@@ -5,6 +5,7 @@ import { SubmitButton } from '../components/form/SubmitButton.js';
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string | undefined} cssClass
+ * @property {string} title
  */
 
 /**
@@ -14,6 +15,7 @@ export class FormView {
   #containerElement;
   #id;
   #cssClass;
+  #title;
   #formElementsParams;
   #submitButtonParams;
   #formElements = [];
@@ -29,6 +31,7 @@ export class FormView {
     this.#containerElement = params.containerElement;
     this.#id = params.id;
     this.#cssClass = params.cssClass ?? '';
+    this.#title = params.title;
     this.#formElementsParams = formElementsParams;
     this.#submitButtonParams = submitButtonParams;
     this.#init();
@@ -56,9 +59,18 @@ export class FormView {
     return document.getElementById(`form-group-${this.#id}`);
   }
 
+  get #titleTemplate() {
+    if (this.#title) {
+      return `
+      <h3 class="form-title">${this.#title}</h3>`;
+    }
+    return '';
+  }
+
   get #template() {
     return `
     <form id="${this.#id}" class="form ${this.#cssClass}">
+      ${this.#titleTemplate}
       <div id="form-group-${this.#id}" class="form-group">       
       </div>
     </form>
