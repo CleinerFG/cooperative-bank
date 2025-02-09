@@ -26,7 +26,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
         labelText: 'Search for a Creditor',
         formatter: 'cpf',
         customValidator: cpfValidator,
-        endpoint: 'users',
+        endpoint: '/users',
       },
       {
         category: 'default',

@@ -1,7 +1,6 @@
 import Input from './Input.js';
-import { ApiService } from '../../service/ApiService.js';
+import { SearchInputService } from '../services/SearchInputService.js';
 import { simulateWait } from '../../utils/tests.js';
-import { NotFoundError } from '../../errors/InputErrors.js';
 import { AssetManager } from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
@@ -14,13 +13,13 @@ import { handleIconDark } from '../../utils/themeUtils.js';
  * @property {boolean} strictToNumber
  * @property {import('../../utils/validators.js').Validator|undefined} customValidator
  * @property {"text" | "numeric"} inputmode
- * @property {"currency" | "percent"} formatter
+ * @property {"currency" | "percent" | "cpf"} formatter
  * @property {string} endpoint
  */
 
 /**
  * Represents a search input field that supports asynchronous
- * data retrieval by ID, displaying the result in a disabled field.
+ * data retrieval by identifier, displaying the result in a disabled field.
  */
 export default class SearchInput extends Input {
   /**
@@ -81,19 +80,11 @@ export default class SearchInput extends Input {
       </div>`;
   }
 
-  async #fetchFromApi() {
-    this.#inpState = 'on';
+  async #fetchData() {
     const query = this.#inpQueryElement.value;
     await simulateWait();
-    try {
-      return await ApiService.fetchFrom(`${this.#endpoint}/${query}`);
-    } catch (e) {
-      console.log(e);
-
-      throw new NotFoundError(this._id);
-    } finally {
-      this.#inpState = 'off';
-    }
+    const service = new SearchInputService(this.#endpoint, query);
+    return await service.fetch();
   }
 
   #handleSearchAnimation() {
@@ -110,19 +101,22 @@ export default class SearchInput extends Input {
     this.handleFailMessage('remove');
   }
 
-  #handleSearchError(error) {
+  #handleSearchError(message) {
     this._dataValid = false;
     this.#inpResultElement.value = '';
-    this.handleFailMessage('add', error.message);
+    this.handleFailMessage('add', message);
   }
 
   async _handleSearch() {
     if (!this.dataValid) return;
     try {
-      const item = await this.#fetchFromApi();
-      this.#handleSearchSuccess(item.name);
-    } catch (error) {
-      this.#handleSearchError(error);
+      this.#inpState = 'on';
+      const data = await this.#fetchData();
+      this.#handleSearchSuccess(data.name);
+    } catch (e) {
+      this.#handleSearchError(e.message);
+    } finally {
+      this.#inpState = 'off';
     }
   }
 

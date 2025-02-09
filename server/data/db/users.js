@@ -71,6 +71,7 @@ module.exports = [
     cpf: '41226517005',
     name: 'Jill Valentine',
   },
+  // Invalid CPFs >>
   {
     cpf: '42310742003',
     name: 'Jonah Vasquez',

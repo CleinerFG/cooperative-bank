@@ -17,8 +17,8 @@ export class OutsideValueError extends Error {
 }
 
 export class NotFoundError extends Error {
-  constructor() {
-    super('No results found');
+  constructor(message = 'No results found') {
+    super(message);
   }
 }
 
