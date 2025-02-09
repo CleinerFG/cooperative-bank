@@ -2,65 +2,41 @@ import {
   AbstractGetterError,
   AbstractMethodError,
 } from '../../../../global/js/errors/AbstractErrors.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
 
 /**
  *  A modal component with a customizable content section.
  * The modal is appended to the document body and includes built-in functionality to handle close events.
- *
- * @class
  */
 export class Modal {
-  /**
-   * Initializes the modal.
-   */
   constructor() {
     this._init();
   }
 
   /**
-   * Returns the content as a HTML string.
-   *
-   * @abstract
-   * @protected
    * @type {string}
-   * @throws {AbstractGetterError}
    */
   get _modalContent() {
     throw new AbstractGetterError('_modalContent');
   }
 
   /**
-   * Sets the `overflow` style of the `document.body`.
-   *
-   * @private
    * @param {"hidden" | ""} value
    */
   set #bodyOverflow(value) {
     document.body.style.overflow = value;
   }
 
-  /**
-   * A placeholder for initializing custom controllers.
-   *
-   * @abstract
-   * @protected
-   */
   _initControllers() {
     throw new AbstractMethodError('_initControllers');
   }
 
-  /**
-   * Builds the HTML structure as a string.
-   *
-   * @private
-   * @type {string}
-   */
   #build() {
     return `
     <div id="modal" class="modal">
     <article class="modal-body">
       <button class="close-btn" aria-label="Close window">
-        &times;
+        <img src="${ASSETS_ROUTE}/icons/icon-close.svg" alt="Close window"/>
       </button>
       <section class="modal-content">
         ${this._modalContent}
