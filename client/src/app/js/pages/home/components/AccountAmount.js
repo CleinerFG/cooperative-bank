@@ -1,4 +1,4 @@
-import { ApiService } from '../../../../../global/js/service/ApiService.js';
+import AccountService from '../../../services/AccountService.js';
 import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
 import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
@@ -8,7 +8,6 @@ import { simulateWait } from '../../../../../global/js/utils/tests.js';
  * Handles fetching amount, formatting it, and toggling the visibility.
  */
 export default class AccountAmount {
-  #endpoint = 'account/amount';
   #amountValue;
 
   constructor() {
@@ -34,11 +33,15 @@ export default class AccountAmount {
     return this.#btnVisibilityElement.dataset.visibility;
   }
 
-  async #fetchAmount() {
+  async #fetchData() {
     this.#spanAmountElement.classList.add('skelon');
-    await simulateWait();
-    this.#amountValue = await ApiService.fetchFrom(this.#endpoint);
-    this.#spanAmountElement.classList.remove('skelon');
+    try {
+      await simulateWait();
+      this.#amountValue = await AccountService.getAmount();
+      this.#spanAmountElement.classList.remove('skelon');
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   #updateAmountVisibility() {
@@ -82,8 +85,8 @@ export default class AccountAmount {
     );
   }
 
-  async #init() {
-    await this.#fetchAmount();
+  #init() {
+    this.#fetchData();
     this.#setListeners();
   }
 }

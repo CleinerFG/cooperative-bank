@@ -90,7 +90,7 @@ app.get('/api/users', (req, res) => {
     return res.status(400).json({ message: e.message });
   }
 });
-app.get('/api/account/info', serveFile(DB_DIR, 'account-info.json'));
+app.get('/api/account/user', serveFile(DB_DIR, 'account-info.json'));
 
 // Page route handlers
 app.get('*', (req, res) => {

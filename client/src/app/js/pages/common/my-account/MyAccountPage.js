@@ -4,7 +4,7 @@ import {
   formatDate,
 } from '../../../../../global/js/utils/formatters.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
-import { AccountService } from './AccountService.js';
+import AccountService from '../../../services/AccountService.js';
 
 export default class MyAccountPage extends Page {
   _apiData;
@@ -79,10 +79,9 @@ export default class MyAccountPage extends Page {
   }
 
   async _fetchData() {
-    const service = new AccountService();
     try {
       await simulateWait();
-      this._apiData = await service.fetch();
+      this._apiData = await AccountService.getUserInfo();
       this._displayData();
       this._removeSkelons();
     } catch (e) {
