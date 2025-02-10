@@ -60,7 +60,14 @@ export default class MyAccountPage extends Page {
     };
   }
 
+  #removeSkelons() {
+    document
+      .querySelectorAll('.skelon')
+      .forEach((el) => el.classList.remove('skelon'));
+  }
+
   _displayData() {
+    if (!this._apiData) return;
     document.getElementById('name').textContent = this._apiData.name;
     document.getElementById('birth').textContent = formatDate(
       this._apiData.birth
@@ -70,27 +77,21 @@ export default class MyAccountPage extends Page {
     document.getElementById('registration').textContent = formatDate(
       this._apiData.registration
     );
-  }
-
-  _removeSkelons() {
-    document
-      .querySelectorAll('.skelon')
-      .forEach((el) => el.classList.remove('skelon'));
+    this.#removeSkelons();
   }
 
   async _fetchData() {
     try {
       await simulateWait();
       this._apiData = await AccountService.getUserInfo();
-      this._displayData();
-      this._removeSkelons();
     } catch (e) {
       console.error(e);
     }
   }
 
-  _setup() {
+  async _setup() {
     this._loadProfileImage();
-    this._fetchData();
+    await this._fetchData();
+    this._displayData();
   }
 }

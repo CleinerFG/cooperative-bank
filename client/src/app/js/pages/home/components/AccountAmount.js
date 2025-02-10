@@ -34,7 +34,6 @@ export default class AccountAmount {
   }
 
   async #fetchData() {
-    this.#spanAmountElement.classList.add('skelon');
     try {
       await simulateWait();
       this.#amountValue = await AccountService.getAmount();
@@ -85,8 +84,8 @@ export default class AccountAmount {
     );
   }
 
-  #init() {
-    this.#fetchData();
+  async #init() {
+    await this.#fetchData();
     this.#setListeners();
   }
 }

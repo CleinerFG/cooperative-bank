@@ -13,7 +13,7 @@ export default class HomePage extends Page {
       <div class="statement-amount">
         <span>Account Amount</span>
         <div class="amount-container">
-          <span id="span-amount" class="span-amount">R$ * * * * * *</span>
+          <span id="span-amount" class="span-amount skelon">R$ * * * * * *</span>
           <button id="amount-visibility-btn" class="btn-unset btn-icon" data-visibility="off">
             <img id="amount-visibility-icon" class="icon ${handleIconDark()}" src="${imgSrc}" alt="Closed eye">
           </button>
