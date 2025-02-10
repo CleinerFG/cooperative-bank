@@ -26,15 +26,17 @@ import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
  */
 export class CardManager {
   _cards = {};
-
   /**
    * @type {CardState}
    */
   #cardStateInstance;
-
   #data = {};
-
+  #useDataFilter;
   _ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
+
+  constructor(useDataFilter = false) {
+    this.#useDataFilter = useDataFilter;
+  }
 
   /**
    * @type {HTMLElement}
@@ -51,33 +53,33 @@ export class CardManager {
   }
 
   /**
-   * @type {(category: string) => Promise<any>[]}
-   */
-  async _fetchByCategory() {
-    throw new AbstractMethodError('_fetchByCategory');
-  }
-
-  /**
    * @type {number}
    */
   get _cardSkelonRows() {
     throw new AbstractGetterError('_cardSkelonRows');
   }
 
-  _setCustomComponents() {
+  get _customTitleTemplate() {
     return '';
+  }
+
+  get _customComponentsTemplate() {
+    return '';
+  }
+
+  /**
+   * @type {(category: string) => Promise<any>[]}
+   */
+  async _fetchByCategory() {
+    throw new AbstractMethodError('_fetchByCategory');
   }
 
   get #cardsContainerElement() {
     return this._containerElement.querySelector('.cards');
   }
 
-  get _useDateFilter() {
-    return true;
-  }
-
   get #dateFilterTemplate() {
-    if (this._useDateFilter) {
+    if (this.#useDataFilter) {
       const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
       return `
       <div class="dashboard-filter">
@@ -104,9 +106,10 @@ export class CardManager {
     return `
     <div class="card-group">
       <div class="dashboard-container">
+        ${this._customComponentsTemplate}
         ${this.#dateFilterTemplate}
-        ${this._setCustomComponents()}
       </div>
+      ${this._customTitleTemplate}
       <div class="cards">
       </div>
     </div>
@@ -136,7 +139,6 @@ export class CardManager {
         this.#data[name] = await this._fetchByCategory(name);
       });
       await Promise.all(promises);
-      console.log(this.#data);
     } catch (e) {
       this.#cardState.state = 'error';
       console.error(e);

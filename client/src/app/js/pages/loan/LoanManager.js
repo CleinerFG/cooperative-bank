@@ -6,7 +6,7 @@ export class LoanManager extends CardManager {
   #FILTER_CATEGORY_2_ID;
   #ACTIVE_CATEGORY_ID;
   constructor() {
-    super();
+    super(true);
     this.#FILTER_CATEGORY_1_ID = `${this._entityMap.categories[0].name}-${this._entityMap.entity}-filter-1`;
     this.#FILTER_CATEGORY_2_ID = `${this._entityMap.categories[1].name}-${this._entityMap.entity}-filter-2`;
     this.#ACTIVE_CATEGORY_ID = `active-category-${this._entityMap.entity}`;
@@ -30,22 +30,20 @@ export class LoanManager extends CardManager {
   get #activeCategoryElement() {
     return this._containerElement.querySelector(`#${this.#ACTIVE_CATEGORY_ID}`);
   }
-  _setCustomComponents() {
-    console.log('on method:', this._activeCategory);
-    console.log('on method:', this._entityMap);
 
+  get _customTitleTemplate() {
     const activeCatName = capitalize(this._activeCategory.name);
+    return `<h2 id="${this.#ACTIVE_CATEGORY_ID}" class="card-group__h2">${activeCatName}</h2>`;
+  }
+  get _customComponentsTemplate() {
     const catName1 = capitalize(this._entityMap.categories[0].name);
     const catName2 = capitalize(this._entityMap.categories[1].name);
-    console.log(catName1, catName2);
     return `
-      <div class="container">
-        <div class="entity-categories">
-          <div id="${this.#FILTER_CATEGORY_1_ID}" class="entity-category entity-category__active">${catName1}</div>
-          <div id="${this.#FILTER_CATEGORY_2_ID}" class="entity-category">${catName2}</div>
-        </div>
-        <h2 id="${this.#ACTIVE_CATEGORY_ID}" class="card-group__h2">${activeCatName}</h2>
-      </div>`;
+      <div class="entity-categories">
+        <div id="${this.#FILTER_CATEGORY_1_ID}" class="entity-category entity-category__active">${catName1}</div>
+        <div id="${this.#FILTER_CATEGORY_2_ID}" class="entity-category">${catName2}</div>
+      </div>
+      `;
   }
   #setListeners() {
     const updateActiveCategory = (category) => {
@@ -73,8 +71,6 @@ export class LoanManager extends CardManager {
   }
   async _init() {
     await super._init();
-    console.log('on init:', this._activeCategory);
-    // render test
     this.#setListeners();
     this.renderCards(this._activeCategory.name);
   }
