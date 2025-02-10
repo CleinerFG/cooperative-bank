@@ -1,6 +1,6 @@
 import { FormView } from '../views/FormView.js';
-import { ApiService } from '../../service/ApiService.js';
 import { AbstractGetterError } from '../../errors/AbstractErrors.js';
+import { FormService } from '../services/FormService.js';
 
 /**
  * Controller for handling form interactions and data submissions.
@@ -8,13 +8,14 @@ import { AbstractGetterError } from '../../errors/AbstractErrors.js';
  */
 export class FormCtrl {
   #view;
-
+  #service;
   constructor() {
     this.#view = new FormView(
       this._viewParams,
       this._formElementsParams,
       this._submitButtonParams
     );
+    this.#service = new FormService(this._endpoint);
     this.#init();
   }
 
@@ -80,12 +81,8 @@ export class FormCtrl {
       e.preventDefault();
       const isValid = this._handleInputsDataIsValid();
       console.log(this.#formData);
-
       try {
-        if (isValid) {
-          const res = await ApiService.sendTo(this._endpoint, this.#formData);
-          console.log(`Server return: ${res}`);
-        }
+        if (isValid) this.#service.fetch(this.#formData);
       } catch (e) {
         console.error(e);
       }

@@ -37,6 +37,6 @@ export default class LoginFormCtrl extends FormCtrl {
   }
 
   get _endpoint() {
-    return 'auth/login';
+    return '/auth/login';
   }
 }

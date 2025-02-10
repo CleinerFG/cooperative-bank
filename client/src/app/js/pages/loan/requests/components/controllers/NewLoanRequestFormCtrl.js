@@ -80,6 +80,6 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
   }
 
   get _endpoint() {
-    return 'opened-requests';
+    return '/loan/requests';
   }
 }

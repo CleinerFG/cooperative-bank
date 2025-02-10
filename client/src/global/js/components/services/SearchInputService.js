@@ -1,8 +1,6 @@
 import { API_BASE_URL } from '../../constants.js';
 import { NotFoundError } from '../../errors/InputErrors.js';
 
-API_BASE_URL;
-
 export class SearchInputService {
   #endpoint;
   #query;

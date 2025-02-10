@@ -61,6 +61,6 @@ export default class RegisterFormCtrl extends FormCtrl {
   }
 
   get _endpoint() {
-    return 'auth/register';
+    return '/auth/register';
   }
 }
