@@ -1,38 +1,35 @@
-import { CardManager } from '../../../../components/CardManager.js';
+import LoanService from '../../../../services/LoanService.js';
+import { LoanManager } from '../../LoanManager.js';
 import { CardActiveLoan } from './CardActiveLoan.js';
 
 /**
  * Manages a group of active loans data components.
  */
-export default class ActiveLoanManager extends CardManager {
-  get _containerElement() {
-    return document.querySelector('.section.active-loans');
+export default class ActiveLoanManager extends LoanManager {
+  get _entityMap() {
+    return {
+      entity: 'active-loans',
+      categories: [
+        {
+          name: 'payable',
+          CardClass: CardActiveLoan,
+        },
+        {
+          name: 'receivable',
+          CardClass: CardActiveLoan,
+        },
+      ],
+    };
   }
 
-  get _CardClass() {
-    return CardActiveLoan;
-  }
-
-  get _entity() {
-    return 'active-loans';
+  async _fetchByCategory(category) {
+    if (category === 'payable') {
+      return LoanService.getActiveLoans('payable');
+    }
+    return LoanService.getActiveLoans('receivable');
   }
 
   get _cardSkelonRows() {
     return 7;
-  }
-
-  get _entityCategoriesMap() {
-    return [
-      {
-        name: 'payables',
-        CardClass: CardActiveLoan,
-        endpoint: '/loan/overview/payable',
-      },
-      {
-        name: 'receivables',
-        CardClass: CardActiveLoan,
-        endpoint: '/loan/overview/receivable',
-      },
-    ];
   }
 }

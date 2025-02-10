@@ -1,35 +1,33 @@
-import { CardManager } from '../../../../../js/components/CardManager.js';
+import { LoanManager } from '../../LoanManager.js';
+import LoanService from '../../../../services/LoanService.js';
 import { CardLoanRequestReceived } from './CardLoanRequestReceived.js';
 import { CardLoanRequestOpened } from './CardLoanRequestOpened.js';
 
-/**
- * Manages a group of loan requests data components.
- */
-export default class LoanRequestManager extends CardManager {
-  get _containerElement() {
-    return document.querySelector('.section.loan-requests');
+export default class LoanRequestsManager extends LoanManager {
+  get _entityMap() {
+    return {
+      entity: 'loan-requests',
+      categories: [
+        {
+          name: 'opened',
+          CardClass: CardLoanRequestOpened,
+        },
+        {
+          name: 'received',
+          CardClass: CardLoanRequestReceived,
+        },
+      ],
+    };
   }
 
-  get _entity() {
-    return 'loan-requests';
+  async _fetchByCategory(category) {
+    if (category === 'opened') {
+      return LoanService.getLoanRequests('opened');
+    }
+    return LoanService.getLoanRequests('received');
   }
 
   get _cardSkelonRows() {
     return 6;
-  }
-
-  get _entityCategoriesMap() {
-    return [
-      {
-        name: 'received',
-        CardClass: CardLoanRequestReceived,
-        endpoint: '/loan/requests/received',
-      },
-      {
-        name: 'opened',
-        CardClass: CardLoanRequestOpened,
-        endpoint: '/loan/requests/opened',
-      },
-    ];
   }
 }

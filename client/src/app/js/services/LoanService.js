@@ -13,7 +13,7 @@ class LoanService {
    * @param {'received'|'opened'} category
    */
   async getLoanRequests(category) {
-    const res = await fetch(`${API_BASE_URL}/loan/overview/${category}`);
+    const res = await fetch(`${API_BASE_URL}/loan/requests/${category}`);
     return await res.json();
   }
 }
