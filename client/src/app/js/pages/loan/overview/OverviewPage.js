@@ -3,7 +3,7 @@ import { Page } from '../../../../../global/js/core/Page.js';
 export default class OverviewPage extends Page {
   get _introductionTemplate() {
     return `
-    <section class="section active-loans">
+    <section class="section loans">
       <h1 class="section-h1">Loans Overview</h1>
       <p class="info-text">On this page, you will find all active loans and their total value report.</p>
     </section>

@@ -22,20 +22,14 @@ import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
  * with filters, state management and rendering options.
  */
 export class CardManager {
-  /**
-   * @type {Card[]}
-   */
-  _cards;
+  _cards = {};
 
   /**
    * @type {CardState}
    */
   #cardStateInstance;
 
-  /**
-   * @type {Object[]}
-   */
-  #data;
+  #data = {};
 
   _ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
 
@@ -57,8 +51,11 @@ export class CardManager {
     throw new AbstractGetterError('_entityCategoriesMap');
   }
 
-  get _service() {
-    throw new AbstractGetterError('_service');
+  /**
+   * @type {Function}
+   */
+  get _fetchByCategory() {
+    throw new AbstractGetterError('_fetchByCategory');
   }
 
   /**
@@ -121,7 +118,7 @@ export class CardManager {
     if (!this.#cardStateInstance) {
       this.#cardStateInstance = new CardState(
         this.#cardsContainerElement,
-        this._entity,
+        this._entityMap.entity,
         this._cardSkelonRows
       );
     }
@@ -136,9 +133,11 @@ export class CardManager {
     this.#cardState.state = 'loading';
     try {
       await simulateWait();
-      this._entityMap.categories.forEach(async ({ name }) => {
-        this.#data[name] = await this._service.fetch(name);
+      const promises = this._entityMap.categories.map(async ({ name }) => {
+        this.#data[name] = await this._fetchByCategory(name);
       });
+      await Promise.all(promises);
+      console.log(this.#data);
     } catch (e) {
       this.#cardState.state = 'error';
       console.error(e);
@@ -154,8 +153,9 @@ export class CardManager {
   }
 
   renderCards(category) {
-    if (this.#data[category].length) {
+    if (this._cards[category].length) {
       this.#cardsContainerElement.innerHTML = '';
+      this._cards[category].forEach((card) => card.init());
     } else {
       this.#cardState.state = 'empty';
     }

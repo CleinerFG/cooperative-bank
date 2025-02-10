@@ -25,7 +25,6 @@ export class Card {
     this._index = index;
     this.#apiData = apiData;
     this.#containerElement = containerElement;
-    this.#init();
   }
 
   /**
@@ -164,7 +163,7 @@ export class Card {
     this._element.remove();
   }
 
-  #init() {
+  init() {
     this.#render();
     this._initComponents();
     this._handleModal();
