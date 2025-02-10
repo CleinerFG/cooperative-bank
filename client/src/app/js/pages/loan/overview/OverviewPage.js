@@ -36,7 +36,7 @@ export default class OverviewPage extends Page {
 
   async _initComponents() {
     const ActiveLoanManagerModule = await import(
-      './components/ActiveLoanManager.js'
+      './components/ActiveLoanManagerTest.js'
     );
     new ActiveLoanManagerModule.default();
   }

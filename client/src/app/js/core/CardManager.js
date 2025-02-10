@@ -2,6 +2,8 @@ import { Card } from '../components/Card.js';
 import { CardState } from '../components/cards/CardState.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
 import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
+import { ASSETS_ROUTE } from '../constants/routes.js';
+import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 
 /**
  * @typedef {Object} EntityMap
@@ -11,7 +13,7 @@ import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js
 
 /**
  * @typedef {Object} CategoryConfig
- * @property {string} category
+ * @property {string} name
  * @property {Card} CardClass
  */
 
@@ -35,8 +37,10 @@ export class CardManager {
    */
   #data;
 
+  _ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
+
   constructor() {
-    this.#init();
+    this._init();
   }
 
   /**
@@ -64,13 +68,49 @@ export class CardManager {
     throw new AbstractGetterError('_cardSkelonRows');
   }
 
+  get _customComponents() {
+    return '';
+  }
+
   get #cardsContainerElement() {
     return this._containerElement.querySelector('.cards');
+  }
+
+  get _useDateFilter() {
+    return true;
+  }
+
+  get #dateFilterTemplate() {
+    if (this._useDateFilter) {
+      const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
+      return `
+      <div class="dashboard-filter">
+        <div class="inputs-container">
+          <div class="inp-group">
+            <label for="start-date-filter-${this._entityMap.entity}">Start date</label>
+            <input id="start-date-filter-${this._entityMap.entity}" class="inp inp-date" type="date">
+          </div>
+          <div class="inp-group">
+            <label for="end-date-filter-${this._entityMap.entity}">End date</label>
+            <input id="end-date-filter-${this._entityMap.entity}" class="inp inp-date" type="date">
+          </div>
+        </div>
+        <button class="btn-unset btn-filter">
+          <img id="${this._ICON_FILTER_ID}" class="icon filter-icon ${handleIconDark()}" src="${imgSrc}" alt="Filter Icon">
+        </button>
+      </div>
+      `;
+    }
+    return '';
   }
 
   get #template() {
     return `
     <div class="card-group">
+      <div class="dashboard-container">
+        ${this.#dateFilterTemplate}
+        ${this._customComponents}
+      </div>
       <div class="cards">
       </div>
     </div>
@@ -96,8 +136,8 @@ export class CardManager {
     this.#cardState.state = 'loading';
     try {
       await simulateWait();
-      this._entityMap.categories.forEach(async ({ category }) => {
-        this.#data[category] = await this._service.fetch(category);
+      this._entityMap.categories.forEach(async ({ name }) => {
+        this.#data[name] = await this._service.fetch(name);
       });
     } catch (e) {
       this.#cardState.state = 'error';
@@ -106,8 +146,8 @@ export class CardManager {
   }
 
   #initCards() {
-    this._entityMap.categories.forEach(({ category, CardClass }) => {
-      this._cards[category] = this.#data[category].map((data, index) => {
+    this._entityMap.categories.forEach(({ name, CardClass }) => {
+      this._cards[name] = this.#data[name].map((data, index) => {
         return new CardClass(index, data, this.#cardsContainerElement);
       });
     });
@@ -121,9 +161,9 @@ export class CardManager {
     }
   }
 
-  async #init() {
+  async _init() {
     this.#render();
-    await this.#fetchData()
-    this.#initCards()
+    await this.#fetchData();
+    this.#initCards();
   }
 }
