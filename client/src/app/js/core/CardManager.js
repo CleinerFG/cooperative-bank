@@ -1,7 +1,10 @@
 import { Card } from '../components/Card.js';
 import { CardState } from '../components/cards/CardState.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
-import { AbstractGetterError } from '../../../global/js/errors/AbstractErrors.js';
+import {
+  AbstractGetterError,
+  AbstractMethodError,
+} from '../../../global/js/errors/AbstractErrors.js';
 import { ASSETS_ROUTE } from '../constants/routes.js';
 import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 
@@ -52,10 +55,10 @@ export class CardManager {
   }
 
   /**
-   * @type {Function}
+   * @type {(category: string) => Promise<any>[]}
    */
-  get _fetchByCategory() {
-    throw new AbstractGetterError('_fetchByCategory');
+  async _fetchByCategory() {
+    throw new AbstractMethodError('_fetchByCategory');
   }
 
   /**
@@ -65,7 +68,7 @@ export class CardManager {
     throw new AbstractGetterError('_cardSkelonRows');
   }
 
-  get _customComponents() {
+  _setCustomComponents() {
     return '';
   }
 
@@ -106,7 +109,7 @@ export class CardManager {
     <div class="card-group">
       <div class="dashboard-container">
         ${this.#dateFilterTemplate}
-        ${this._customComponents}
+        ${this._setCustomComponents()}
       </div>
       <div class="cards">
       </div>

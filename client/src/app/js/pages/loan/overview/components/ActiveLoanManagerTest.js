@@ -22,13 +22,11 @@ export default class ActiveLoanManager extends LoanManager {
     };
   }
 
-  get _fetchByCategory() {
-    return (category) => {
-      if (category === 'payable') {
-        return LoanService.getActiveLoans('payable');
-      }
-      return LoanService.getActiveLoans('receivable');
-    };
+  async _fetchByCategory(category) {
+    if (category === 'payable') {
+      return LoanService.getActiveLoans('payable');
+    }
+    return LoanService.getActiveLoans('receivable');
   }
 
   get _cardSkelonRows() {
