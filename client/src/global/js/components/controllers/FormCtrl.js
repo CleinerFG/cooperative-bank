@@ -1,7 +1,6 @@
 import { FormView } from '../views/FormView.js';
-import { ApiService } from '../service/ApiService.js';
-import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import { InvalidDataError } from '../errors/InvalidDataError.js';
+import { ApiService } from '../../service/ApiService.js';
+import { AbstractGetterError } from '../../errors/AbstractErrors.js';
 
 /**
  * Controller for handling form interactions and data submissions.
@@ -31,14 +30,14 @@ export class FormCtrl {
   }
 
   /**
-   * @type {Array<import('../components/form/Input.js').InputParams | import('../components/form/SearchInput.js').SearchInputParams>}
+   * @type {Array<import('../form-elements/Input.js').InputParams | import('../form-elements/SearchInput.js').SearchInputParams>}
    */
   get _formElementsParams() {
     new AbstractGetterError('_formElementsParams');
   }
 
   /**
-   * @type {import('../components/form/SubmitButton.js').SubmitButtonParams}}
+   * @type {import('../form-elements/SubmitButton.js').SubmitButtonParams}}
    */
   get _submitButtonParams() {
     new AbstractGetterError('_submitButtonParams');

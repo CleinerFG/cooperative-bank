@@ -1,4 +1,4 @@
-import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
+import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
 import {
   cpfValidator,
   emailValidator,

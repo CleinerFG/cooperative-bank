@@ -1,5 +1,5 @@
-import { FormCtrl } from '../../../../../../global/js/controllers/FormCtrl.js';
-import { cpfValidator } from '../../../../../../global/js/utils/validators.js';
+import { FormCtrl } from '../../../../../../../global/js/components/controllers/FormCtrl.js';
+import { cpfValidator } from '../../../../../../../global/js/utils/validators.js';
 
 /**
  * Form for Loan Request.

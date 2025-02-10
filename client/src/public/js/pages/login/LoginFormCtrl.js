@@ -1,4 +1,4 @@
-import { FormCtrl } from '../../../../global/js/controllers/FormCtrl.js';
+import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
 import { emailValidator } from '../../../../global/js/utils/validators.js';
 
 export default class LoginFormCtrl extends FormCtrl {

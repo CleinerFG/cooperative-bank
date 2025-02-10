@@ -1,4 +1,4 @@
-import { SubmitButton } from '../components/form/SubmitButton.js';
+import { SubmitButton } from '../form-elements/SubmitButton.js';
 
 /**
  * @typedef {object} FormViewParams
@@ -24,8 +24,8 @@ export class FormView {
   /**
    *
    * @param {FormViewParams} params
-   * @param {Array<import('../components/form/Input.js').InputParams|import('../components/form/SearchInput.js').SearchInputParams|import('../components/form/Select.js').SelectParams} formElementsParams
-   * @param {import('../components/form/SubmitButton.js').SubmitButtonParams} submitButtonParams
+   * @param {Array<import('../form-elements/Input.js').InputParams|import('../form-elements/SearchInput.js').SearchInputParams|import('../form-elements/Select.js').SelectParams} formElementsParams
+   * @param {import('../form-elements/SubmitButton.js').SubmitButtonParams} submitButtonParams
    */
   constructor(params, formElementsParams, submitButtonParams) {
     this.#containerElement = params.containerElement;
@@ -86,10 +86,10 @@ export class FormView {
    */
   async #getFormElementClassByCategory(category) {
     const formElemCatMap = {
-      default: () => import('../components/form/Input.js'),
-      search: () => import('../components/form/SearchInput.js'),
-      password: () => import('../components/form/PasswordInput.js'),
-      select: () => import('../components/form/Select.js'),
+      default: () => import('../form-elements/Input.js'),
+      search: () => import('../form-elements/SearchInput.js'),
+      password: () => import('../form-elements/PasswordInput.js'),
+      select: () => import('../form-elements/Select.js'),
     };
 
     const module = await formElemCatMap[category]();
