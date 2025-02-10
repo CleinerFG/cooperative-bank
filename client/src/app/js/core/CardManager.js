@@ -36,10 +36,6 @@ export class CardManager {
 
   _ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
 
-  constructor() {
-    this._init();
-  }
-
   /**
    * @type {HTMLElement}
    */

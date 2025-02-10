@@ -32,9 +32,4 @@ export default class ActiveLoanManager extends LoanManager {
   get _cardSkelonRows() {
     return 7;
   }
-
-  async _init() {
-    await super._init();
-    this.renderCards('payable');
-  }
 }
