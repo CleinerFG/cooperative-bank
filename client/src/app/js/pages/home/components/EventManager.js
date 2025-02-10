@@ -1,5 +1,10 @@
 import { CardManager } from '../../../core/CardManager.js';
+import EventService from '../../../services/EventService.js';
 import { CardEvent } from './CardEvent.js';
+
+/**
+ * @note Events are notifications, soon implementation
+ */
 export default class EventManager extends CardManager {
   constructor() {
     super();
@@ -7,7 +12,6 @@ export default class EventManager extends CardManager {
   }
 
   get _containerElement() {
-    console.log('afkjoashfg');
     return document.querySelector('.section.events');
   }
 
@@ -28,13 +32,19 @@ export default class EventManager extends CardManager {
   }
 
   async _fetchByCategory(category) {
-    // if (category === 'payment') {
-    //   return EventService.getLoanRequests('payment');
-    // }
-    // return EventService.getLoanRequests('investment');
+    if (category === 'payment') {
+      return EventService.getPayments();
+    }
+    return EventService.getInvestments();
   }
 
   get _cardSkelonRows() {
     return 2;
+  }
+
+  async _init() {
+    await super._init();
+    // Test render
+    this.renderCards('payment');
   }
 }
