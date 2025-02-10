@@ -1,38 +1,40 @@
-import { CardManager } from '../../../components/CardManager.js';
+import { CardManager } from '../../../core/CardManager.js';
 import { CardEvent } from './CardEvent.js';
-
-/**
- * Manages a group of events data components.
- */
 export default class EventManager extends CardManager {
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _containerElement() {
+    console.log('afkjoashfg');
     return document.querySelector('.section.events');
   }
 
-  get _entity() {
-    return 'events';
+  get _entityMap() {
+    return {
+      entity: 'events',
+      categories: [
+        {
+          name: 'payment',
+          CardClass: CardEvent,
+        },
+        {
+          name: 'investment',
+          CardClass: CardEvent,
+        },
+      ],
+    };
+  }
+
+  async _fetchByCategory(category) {
+    // if (category === 'payment') {
+    //   return EventService.getLoanRequests('payment');
+    // }
+    // return EventService.getLoanRequests('investment');
   }
 
   get _cardSkelonRows() {
     return 2;
-  }
-
-  get _entityCategoriesMap() {
-    return [
-      {
-        name: 'payment',
-        CardClass: CardEvent,
-        endpoint: '/events/payment',
-      },
-      {
-        name: 'investment',
-        CardClass: CardEvent,
-        endpoint: '/events/investment',
-      },
-    ];
-  }
-
-  get _useDateFilter() {
-    return false;
   }
 }
