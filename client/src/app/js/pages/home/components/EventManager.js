@@ -22,12 +22,12 @@ export default class EventManager extends CardManager {
       {
         name: 'payment',
         CardClass: CardEvent,
-        endpoint: 'events/payment',
+        endpoint: '/events/payment',
       },
       {
         name: 'investment',
         CardClass: CardEvent,
-        endpoint: 'events/investment',
+        endpoint: '/events/investment',
       },
     ];
   }

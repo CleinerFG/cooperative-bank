@@ -1,7 +1,7 @@
 import { ASSETS_ROUTE } from '../constants/routes.js';
 import { Card } from './Card.js';
 import { CardState } from './cards/CardState.js';
-import { ApiService } from '../../../global/js/service/ApiService.js';
+import ApiService from '../../../global/js/services/ApiService.js';
 import { capitalize } from '../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
@@ -161,7 +161,11 @@ export class CardManager {
   }
 
   #initCardState() {
-    this.#cardState = new CardState(this.#cardsContainerElement, this._entity, this._cardSkelonRows);
+    this.#cardState = new CardState(
+      this.#cardsContainerElement,
+      this._entity,
+      this._cardSkelonRows
+    );
   }
 
   #initCards() {
@@ -173,7 +177,7 @@ export class CardManager {
   async #fetchFromApi() {
     this.#cardState.state = 'loading';
     await simulateWait();
-    this.#apiData = await ApiService.fetchFrom(this.#activeCategory.endpoint);
+    this.#apiData = await ApiService.fetch(this.#activeCategory.endpoint);
   }
 
   async #renderCards() {

@@ -68,11 +68,11 @@ app.get(
   serveFile(DB_DIR, 'loan-overview-receivable.json')
 );
 app.get(
-  '/api/loan/request/opened',
+  '/api/loan/requests/opened',
   serveFile(DB_DIR, 'loan-request-opened.json')
 );
 app.get(
-  '/api/loan/request/received',
+  '/api/loan/requests/received',
   serveFile(DB_DIR, 'loan-request-received.json')
 );
 app.get('/api/users', (req, res) => {

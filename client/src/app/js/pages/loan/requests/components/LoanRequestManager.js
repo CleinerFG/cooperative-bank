@@ -23,12 +23,12 @@ export default class LoanRequestManager extends CardManager {
       {
         name: 'received',
         CardClass: CardLoanRequestReceived,
-        endpoint: 'loan/request/received',
+        endpoint: '/loan/requests/received',
       },
       {
         name: 'opened',
         CardClass: CardLoanRequestOpened,
-        endpoint: 'loan/request/opened',
+        endpoint: '/loan/requests/opened',
       },
     ];
   }

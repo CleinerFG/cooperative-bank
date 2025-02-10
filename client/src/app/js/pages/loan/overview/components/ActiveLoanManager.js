@@ -26,12 +26,12 @@ export default class ActiveLoanManager extends CardManager {
       {
         name: 'payables',
         CardClass: CardActiveLoan,
-        endpoint: 'loan/overview/payable',
+        endpoint: '/loan/overview/payable',
       },
       {
         name: 'receivables',
         CardClass: CardActiveLoan,
-        endpoint: 'loan/overview/receivable',
+        endpoint: '/loan/overview/receivable',
       },
     ];
   }
