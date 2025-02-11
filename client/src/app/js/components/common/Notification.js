@@ -1,4 +1,8 @@
 import '../../types/notificationTypes.js';
+import {
+  formatDate,
+  numberToCurrency,
+} from '../../../../global/js/utils/formatters.js';
 
 export class Notification {
   #index;
@@ -6,23 +10,23 @@ export class Notification {
   static #categoryMap = {
     transfer: ({ sender, value }) => ({
       title: 'Received Transfer',
-      desc: `You received a transfer of ${value} from ${sender}`,
+      desc: `You received a transfer of ${numberToCurrency(value)} from ${sender}`,
     }),
     loanStatus: ({ value, status }) => ({
       title: `Loan ${status}`,
-      desc: `Your loan of ${value} has been ${status}`,
+      desc: `Your loan of ${numberToCurrency(value)} has been ${status}`,
     }),
     loanRequest: ({ value }) => ({
       title: 'Loan Request Received',
-      desc: `You received a loan request of ${value}`,
+      desc: `You received a loan request of ${numberToCurrency(value)}`,
     }),
     payment: ({ sender, value }) => ({
       title: 'Received Payment',
-      desc: `${sender} sent ${value}`,
+      desc: `${sender} sent ${numberToCurrency(value)}`,
     }),
     installment: ({ value, date }) => ({
       title: 'Installment Due Soon',
-      desc: `You have an installment due on ${date} in the amount of ${value}`,
+      desc: `You have an installment due on ${formatDate(date)} in the amount of ${numberToCurrency(value)}`,
     }),
   };
 

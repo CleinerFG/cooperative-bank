@@ -29,6 +29,7 @@
 }
 
 .notifications-cards .notification {
+  background-color: var(--component-bg-color-dark);
   padding: var(--container-padding);
   display: flex;
   flex-direction: column;
