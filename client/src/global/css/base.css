@@ -43,3 +43,7 @@ button {
 .icon-invert {
   filter: invert(100%) brightness(120%) contrast(170%);
 }
+
+.blur {
+  filter: blur(10px);
+}

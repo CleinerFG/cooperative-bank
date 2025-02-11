@@ -27,6 +27,10 @@ export class NotificationManager {
     return document.querySelector('.app-container .notifications-container');
   }
 
+  get #appElement() {
+    return document.getElementById('app');
+  }
+
   get #cardsContainerElement() {
     return this.#containerElement.querySelector('.notifications-cards');
   }
@@ -69,8 +73,8 @@ export class NotificationManager {
   }
 
   /**
-   * 
-   * @param {Event} e 
+   *
+   * @param {Event} e
    */
   #closeOnClickOutside(e) {
     if (
@@ -80,6 +84,7 @@ export class NotificationManager {
       this.#btnElement.dataset.active = 'false';
       this.#bodyOverflow = '';
       this.#containerElement.classList.remove('display-flex');
+      this.#appElement.classList.remove('blur');
     }
   }
 
@@ -95,6 +100,7 @@ export class NotificationManager {
       this.#bodyOverflow = '';
     }
     this.#containerElement.classList.toggle('display-flex');
+    this.#appElement.classList.toggle('blur');
   }
 
   #setListeners() {
