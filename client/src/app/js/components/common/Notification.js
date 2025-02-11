@@ -36,7 +36,9 @@ export class Notification {
   }
 
   get #containerElement() {
-    return document.querySelector('.app-container .notifications-container');
+    return document.querySelector(
+      '.app-container .notifications-container .notifications-cards'
+    );
   }
 
   get #dataByCategory() {

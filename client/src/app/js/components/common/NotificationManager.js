@@ -27,6 +27,24 @@ export class NotificationManager {
     return document.querySelector('.app-container .notifications-container');
   }
 
+  get #cardsContainerElement() {
+    return this.#containerElement.querySelector('.notifications-cards');
+  }
+
+  /**
+   * @param {"hidden" | ""} value
+   */
+  set #bodyOverflow(value) {
+    document.body.style.overflow = value;
+  }
+
+  get #template() {
+    return `
+    <h2>Notifications</h2>
+    <div class="notifications-cards"></div>
+    `;
+  }
+
   async #fetchData() {
     try {
       this.#data = await this.#service.fetch();
@@ -41,21 +59,27 @@ export class NotificationManager {
     });
   }
 
+  #render() {
+    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
+  }
+
   #renderNotifications() {
-    this.#containerElement.innerHTML = '';
+    this.#cardsContainerElement.innerHTML = '';
     this.#notifications.forEach((notif) => notif.render());
   }
 
   #handleClick() {
-    const isDisplayed = this.#btnElement.dataset.display === 'true';
-    console.log(isDisplayed);
-    if (!isDisplayed) {
-      this.#btnElement.dataset.display = 'true';
-      this.#containerElement.style.display = 'fixed';
+    const isActive = this.#btnElement.dataset.active === 'true';
+
+    if (!isActive) {
+      this.#btnElement.dataset.active = 'true';
+      this.#bodyOverflow = 'hidden';
       this.#renderNotifications();
-      return;
+    } else {
+      this.#btnElement.dataset.active = 'false';
+      this.#bodyOverflow = '';
     }
-    this.#containerElement.style.display = 'none';
+    this.#containerElement.classList.toggle('display-flex');
   }
 
   #setListeners() {
@@ -65,6 +89,7 @@ export class NotificationManager {
   async #init() {
     await this.#fetchData();
     this.#createNotifications();
+    this.#render();
     this.#setListeners();
   }
 }

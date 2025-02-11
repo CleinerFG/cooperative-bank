@@ -1,5 +1,6 @@
 import { appRouter } from '../../core/appRouter.js';
 import { Theme } from './Theme.js';
+import { NotificationManager } from './NotificationManager.js';
 
 /**
  * Initializes the layout components (Header, Footer and Theme).
@@ -53,6 +54,7 @@ export class Layout {
       new Theme();
       this.#setListeners();
       this.#handleRoutes();
+      new NotificationManager();
     });
   }
 }

@@ -1,0 +1,48 @@
+.notifications-container {
+  background-color: var(--component-bg-color);
+  padding: var(--container-padding);
+  border-bottom: hsla(0, 0%, 50%, 0.5) solid 0.5rem;
+  max-height: 93.5vh;
+  width: 100%;
+  max-width: 768px;
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  z-index: 1;
+}
+
+.notifications-container h2 {
+  font-size: 1.4rem;
+}
+
+.notifications-container.display-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notifications-cards {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.notifications-cards .notification {
+  padding: var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: var(--component-border);
+  border-radius: var(--component-border-radius);
+  border-left: var(--color-primary) 0.4rem solid;
+}
+
+.notification .notification-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification .notification-time {
+  font-weight: 500;
+}

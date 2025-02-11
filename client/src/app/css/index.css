@@ -5,6 +5,7 @@
 @import url('./base.css');
 
 /* Components */
+@import url('./components//notifications.css');
 @import url('./components/card-group.css');
 @import url('./components/modal.css');
 @import url('./components/progress-bar.css');
