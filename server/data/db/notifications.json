@@ -3,14 +3,14 @@
     "id": "shs468hgf",
     "category": "transfer",
     "value": 500,
-    "sender": "John Doe",
+    "sender": "Claudette Morel",
     "date": "2025-02-11T10:00:00Z"
   },
   {
     "id": "sdfgf54gd",
     "category": "transfer",
     "value": 2000,
-    "sender": "Jane Smith",
+    "sender": "Ada Wong",
     "date": "2025-02-12T14:30:00Z"
   },
   {
@@ -43,14 +43,14 @@
     "id": "5fds4sd6g4dfg",
     "category": "payment",
     "value": 1500,
-    "sender": "Alice Cooper",
+    "sender": "Leon Kennedy",
     "date": "2025-02-11T11:30:00Z"
   },
   {
     "id": "4safd46sdf46",
     "category": "payment",
     "value": 3000,
-    "sender": "Bob Marley",
+    "sender": "Rebecca Champlers",
     "date": "2025-02-12T13:00:00Z"
   },
   {

@@ -91,6 +91,7 @@ app.get('/api/users', (req, res) => {
   }
 });
 app.get('/api/account/user', serveFile(DB_DIR, 'account-info.json'));
+app.get('/api/notifications', serveFile(DB_DIR, 'notifications.json'));
 
 // Page route handlers
 app.get('*', (req, res) => {
