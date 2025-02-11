@@ -73,6 +73,18 @@ export class NotificationManager {
   }
 
   /**
+   * @param {boolean} activate
+   */
+  #toggleActiveState(activate) {
+    this.#btnElement.dataset.active = activate ? 'true' : 'false';
+    this.#bodyOverflow = activate ? 'hidden' : '';
+    this.#containerElement.classList.toggle('display-flex', activate);
+    this.#appElement.classList.toggle('blur', activate);
+
+    if (activate) this.#renderNotifications();
+  }
+
+  /**
    *
    * @param {Event} e
    */
@@ -81,26 +93,12 @@ export class NotificationManager {
       !this.#btnElement.contains(e.target) &&
       !this.#containerElement.contains(e.target)
     ) {
-      this.#btnElement.dataset.active = 'false';
-      this.#bodyOverflow = '';
-      this.#containerElement.classList.remove('display-flex');
-      this.#appElement.classList.remove('blur');
+      this.#toggleActiveState(false);
     }
   }
 
   #handleClick() {
-    const isActive = this.#btnElement.dataset.active === 'true';
-
-    if (!isActive) {
-      this.#btnElement.dataset.active = 'true';
-      this.#bodyOverflow = 'hidden';
-      this.#renderNotifications();
-    } else {
-      this.#btnElement.dataset.active = 'false';
-      this.#bodyOverflow = '';
-    }
-    this.#containerElement.classList.toggle('display-flex');
-    this.#appElement.classList.toggle('blur');
+    this.#toggleActiveState(this.#btnElement.dataset.active === 'false');
   }
 
   #setListeners() {
