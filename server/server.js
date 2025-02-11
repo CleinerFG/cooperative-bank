@@ -56,8 +56,6 @@ const serveFile = (directory, filename) => (req, res) => {
 };
 
 // JSON files route handlers
-app.get('/api/events/payment', serveFile(DB_DIR, 'events-payment.json'));
-app.get('/api/events/investment', serveFile(DB_DIR, 'events-investment.json'));
 app.get('/api/account/amount', serveFile(DB_DIR, 'account-amount.json'));
 app.get(
   '/api/loan/overview/payable',

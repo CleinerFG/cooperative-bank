@@ -68,6 +68,10 @@ export class NotificationManager {
     this.#notifications.forEach((notif) => notif.render());
   }
 
+  /**
+   * 
+   * @param {Event} e 
+   */
   #closeOnClickOutside(e) {
     if (
       !this.#btnElement.contains(e.target) &&

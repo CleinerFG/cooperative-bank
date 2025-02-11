@@ -23,14 +23,6 @@ export default class HomePage extends Page {
     `;
   }
 
-  get _eventsTemplate() {
-    return `
-    <section class="section events">
-      <h2 class="section-h2">Events</h2>
-    </section>
-    `;
-  }
-
   get _featureGroupsTemplate() {
     return featureGroups.template;
   }
@@ -40,21 +32,12 @@ export default class HomePage extends Page {
   }
 
   get _template() {
-    return (
-      this._statementTemplate +
-      this._featureGroupsTemplate +
-      this._eventsTemplate
-    );
+    return this._statementTemplate + this._featureGroupsTemplate;
   }
 
   async _initComponents() {
-    const [AccountAmountModule, EventManagerModule] = await Promise.all([
-      import('./components/AccountAmount.js'),
-      import('./components/EventManager.js'),
-    ]);
-
+    const AccountAmountModule = await import('./components/AccountAmount.js');
     new AccountAmountModule.default();
-    new EventManagerModule.default();
   }
 
   _setup() {
