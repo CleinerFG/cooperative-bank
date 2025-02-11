@@ -16,8 +16,8 @@
   --color-primary-light: hsl(169, 96%, 42%);
   --color-primary-light-hover: hsl(169, 96%, 40%);
 
-  --title-color: hsl(220, 41%, 25%);
-  --text-color: #212121;
+  --title-color: #212121;
+  --text-color: #272727;
   --color-bg: hsl(45, 29%, 97%);
 
   --component-border: solid 0.1rem hsl(0, 0%, 80%);
@@ -41,7 +41,7 @@
   --text-color: #dcdcdc;
   --title-color: #faf9f6;
   --color-bg: #000;
- 
+
   --component-border: solid 0.1rem hsl(0, 0%, 20%);
   --component-line-color: hsl(0, 0%, 20%);
   --component-bg-color: hsl(0, 0%, 11%);

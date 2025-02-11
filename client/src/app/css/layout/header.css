@@ -19,7 +19,7 @@
   font-size: 1rem;
 }
 
-.header .icon {
+.header .header-icon {
   width: var(--icon-size);
   height: var(--icon-size);
   padding: 0.2rem;
