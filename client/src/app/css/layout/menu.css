@@ -1,7 +1,7 @@
 .header .btn-menu {
   z-index: 1;
-  margin-right: 0.6rem;
-  padding: 0.3rem;
+  /* margin-right: 0.6rem; */
+  /* padding: 0.3rem; */
   border-radius: 30%;
   transition: all 0.4s ease-in-out;
   cursor: pointer;
@@ -12,10 +12,9 @@
   background-color: var(--component-bg-color);
 }
 
-.header .btn-menu,
-.header .menu-icon {
-  width: 2rem;
-  height: 2rem;
+.header .btn-menu {
+  width: var(--icon-size);
+  height: var(--icon-size);
 }
 
 .header .btn-menu.btn-active {

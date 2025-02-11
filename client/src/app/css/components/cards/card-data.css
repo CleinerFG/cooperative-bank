@@ -91,6 +91,7 @@
 
 .card-data__header > .span-status {
   color: var(--color-bg);
+  font-size: 1rem;
   border-top-right-radius: var(--component-border-radius);
   border-bottom-left-radius: var(--component-border-radius);
   background-color: var(--text-color);

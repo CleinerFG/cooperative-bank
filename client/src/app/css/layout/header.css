@@ -1,6 +1,7 @@
 @import url('menu.css');
 
 .header {
+  padding: 0.6rem;
   height: var(--header-height);
   width: 100%;
   max-width: 768px;
@@ -16,10 +17,10 @@
 
 .header .brand-name {
   font-size: 1rem;
-  margin-left: 0.8rem;
 }
 
-.header .home-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+.header .icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  padding: 0.2rem;
 }
