@@ -1,22 +1,70 @@
-const notificationCategoryMap = {
-  transfer: (sender, value) => ({
-    title: 'Transfer received',
-    desc: `You received a transfer of ${value} from ${sender}`,
-  }),
-  loanStatus: (value, status) => ({
-    title: `Loan ${status}`,
-    desc: `Your loan of ${value} has been ${status}`,
-  }),
-  loanRequest: (value) => ({
-    title: `Loan request received`,
-    desc: `You received a loan request of ${value}`,
-  }),
-  payment: (sender, value) => ({
-    title: 'You received a payment',
-    desc: `${sender} sent ${value}`,
-  }),
-  installment: (value, date) => ({
-    title: 'Installment due soon',
-    desc: `You have an installment due on ${date} in the amount of ${value}`,
-  }),
-};
+import NotificationService from '../../services/NotificationService.js';
+import { Notification } from './Notification.js';
+import '../../types/notificationTypes.js';
+
+export class NotificationManager {
+  #service = NotificationService;
+
+  /**
+   * @type {[TransferNotification|LoanRequestNotification|LoanStatusNotification|PaymentNotification|InstallmentNotification]}
+   */
+  #data = [];
+
+  /**
+   * @type {[Notification]}
+   */
+  #notifications = [];
+
+  constructor() {
+    this.#init();
+  }
+
+  get #btnElement() {
+    return document.getElementById('notifications-btn');
+  }
+
+  get #containerElement() {
+    return document.querySelector('.app-container .notifications-container');
+  }
+
+  async #fetchData() {
+    try {
+      this.#data = await this.#service.fetch();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  #createNotifications() {
+    this.#notifications = this.#data.map((params, index) => {
+      return new Notification(index, params);
+    });
+  }
+
+  #renderNotifications() {
+    this.#containerElement.innerHTML = '';
+    this.#notifications.forEach((notif) => notif.render());
+  }
+
+  #handleClick() {
+    const isDisplayed = this.#btnElement.dataset.display === 'true';
+    console.log(isDisplayed);
+    if (!isDisplayed) {
+      this.#btnElement.dataset.display = 'true';
+      this.#containerElement.style.display = 'fixed';
+      this.#renderNotifications();
+      return;
+    }
+    this.#containerElement.style.display = 'none';
+  }
+
+  #setListeners() {
+    this.#btnElement.addEventListener('click', this.#handleClick.bind(this));
+  }
+
+  async #init() {
+    await this.#fetchData();
+    this.#createNotifications();
+    this.#setListeners();
+  }
+}
