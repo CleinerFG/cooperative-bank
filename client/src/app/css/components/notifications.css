@@ -1,7 +1,7 @@
 .notifications-container {
   background-color: var(--component-bg-color);
   padding: var(--container-padding);
-  border-bottom: hsla(0, 0%, 50%, 0.5) solid 0.5rem;
+  border-bottom: hsla(0, 0%, 50%, 0.2) solid 0.5rem;
   max-height: 93.5vh;
   width: 100%;
   max-width: 768px;

@@ -68,6 +68,17 @@ export class NotificationManager {
     this.#notifications.forEach((notif) => notif.render());
   }
 
+  #closeOnClickOutside(e) {
+    if (
+      !this.#btnElement.contains(e.target) &&
+      !this.#containerElement.contains(e.target)
+    ) {
+      this.#btnElement.dataset.active = 'false';
+      this.#bodyOverflow = '';
+      this.#containerElement.classList.remove('display-flex');
+    }
+  }
+
   #handleClick() {
     const isActive = this.#btnElement.dataset.active === 'true';
 
@@ -84,6 +95,7 @@ export class NotificationManager {
 
   #setListeners() {
     this.#btnElement.addEventListener('click', this.#handleClick.bind(this));
+    window.addEventListener('click', this.#closeOnClickOutside.bind(this));
   }
 
   async #init() {
