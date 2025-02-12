@@ -74,7 +74,7 @@ export default class Select {
     this.#element.classList[method]('select-error');
   }
 
-  #handleListeners() {
+  #setListeners() {
     this.#element.addEventListener('change', () => {
       if (this.#element.value) {
         this._dataValid = true;
@@ -97,6 +97,6 @@ export default class Select {
 
   init() {
     this.#render();
-    this.#handleListeners();
+    this.#setListeners();
   }
 }

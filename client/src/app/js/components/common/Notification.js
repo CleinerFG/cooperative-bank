@@ -65,6 +65,8 @@ export class Notification {
     `;
   }
 
+  
+
   render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
   }

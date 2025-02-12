@@ -60,7 +60,7 @@ export class Modal {
    *
    * @private
    */
-  #defineListeners() {
+  #setListeners() {
     const modalElement = document.getElementById('modal');
     const closeModalBtn = document.querySelector('.modal .close-btn');
     closeModalBtn.addEventListener('click', () => {
@@ -81,7 +81,7 @@ export class Modal {
   _init() {
     this.#bodyOverflow = 'hidden';
     this.#render();
-    this.#defineListeners();
+    this.#setListeners();
     this._setup();
   }
 }
