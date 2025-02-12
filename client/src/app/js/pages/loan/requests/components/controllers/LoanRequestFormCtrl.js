@@ -1,7 +1,7 @@
-import '../../../../../types/formDataType.js';
 import { FormCtrl } from '../../../../../../../global/js/components/controllers/FormCtrl.js';
+import loanService from '../../../../../services/LoanService.js';
 
-export default class NewLoanRequestFormCtrl extends FormCtrl {
+export default class LoanRequestFormCtrl extends FormCtrl {
   get _viewParams() {
     return {
       id: 'new-request-form',
@@ -20,12 +20,12 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
       },
       {
         category: 'default',
-        id: 'value',
+        id: 'creditValue',
         inputmode: 'numeric',
         placeholder: 'R$ 0,00',
         strictToNumber: true,
         formatter: 'currency',
-        labelText: 'Value',
+        labelText: 'Credit value',
       },
       {
         category: 'select',
@@ -69,14 +69,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
     };
   }
 
-  get _endpoint() {
-    return '/loan/requests';
-  }
-
-  /**
-   * @type {FormDataLoanRequest}
-   */
-  get _formData() {
-    return super._formData;
+  get _serviceMethod() {
+    return loanService.newRequest;
   }
 }

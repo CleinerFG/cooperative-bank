@@ -22,9 +22,9 @@ export default class LoanRequestsManager extends LoanManager {
 
   async _fetchByCategory(category) {
     if (category === 'opened') {
-      return LoanService.getLoanRequests('opened');
+      return LoanService.getRequests('opened');
     }
-    return LoanService.getLoanRequests('received');
+    return LoanService.getRequests('received');
   }
 
   get _cardSkelonRows() {

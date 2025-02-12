@@ -1,5 +1,5 @@
-import '../../types/formDataType.js';
 import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
+import authService from '../../services/AuthService.js';
 import {
   cpfValidator,
   emailValidator,
@@ -60,14 +60,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     };
   }
 
-  get _endpoint() {
-    return '/auth/register';
-  }
-
-  /**
-   * @type {FormDataRegister}
-   */
-  get _formData() {
-    return super._formData;
+  get _serviceMethod() {
+    return authService.register;
   }
 }

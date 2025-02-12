@@ -1,5 +1,5 @@
-import '../../types/formDataType.js';
 import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
+import authService from '../../services/AuthService.js';
 
 export class TransactionPasswordFormCtrl extends FormCtrl {
   get _viewParams() {
@@ -29,16 +29,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
     };
   }
 
-  // Add endpoint in the superclass constructor, when backend is defined
-  // Each confirm pass modal has a different endpoint
-  get _endpoint() {
-    return '/api/auth/transaction';
-  }
-
-  /**
-   * @type {FormDataTransactionPassword}
-   */
-  get _formData() {
-    super._formData();
+  get _serviceMethod() {
+    return authService.transaction;
   }
 }

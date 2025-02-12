@@ -1,7 +1,7 @@
 /**
  * @typedef {object} FormDataLoanRequest
  * @property {string} cpf
- * @property {number} value
+ * @property {number} creditValue
  * @property {string} deadline
  * @property {'personal'|'auto'|'mortgage'} modality
  * @property {number} rate

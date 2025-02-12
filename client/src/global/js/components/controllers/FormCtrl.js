@@ -1,7 +1,6 @@
 import '../../types/formElementsType.js';
 import { FormView } from '../views/FormView.js';
 import { AbstractGetterError } from '../../errors/AbstractErrors.js';
-import { FormService } from '../services/FormService.js';
 
 export class FormCtrl {
   #view;
@@ -12,7 +11,6 @@ export class FormCtrl {
       this._formElementsParams,
       this._submitButtonParams
     );
-    this.#service = new FormService(this._endpoint);
     this.#init();
   }
 
@@ -42,10 +40,10 @@ export class FormCtrl {
   }
 
   /**
-   * @type {string}
+   * @type {(data:object)=>Promise}
    */
-  get _endpoint() {
-    new AbstractGetterError('_endpoint');
+  get _serviceMethod() {
+    throw new AbstractGetterError('_serviceMethod');
   }
 
   /**
@@ -79,7 +77,7 @@ export class FormCtrl {
       const isValid = this._handleInputsDataIsValid();
       console.log(this._formData);
       try {
-        if (isValid) this.#service.fetch(this._formData);
+        if (isValid) this._serviceMethod(this._formData);
       } catch (e) {
         console.error(e);
       }

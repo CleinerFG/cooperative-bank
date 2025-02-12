@@ -1,5 +1,5 @@
-import '../../types/formDataType.js';
 import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
+import authService from '../../services/AuthService.js';
 import { emailValidator } from '../../../../global/js/utils/validators.js';
 
 export default class LoginFormCtrl extends FormCtrl {
@@ -35,14 +35,7 @@ export default class LoginFormCtrl extends FormCtrl {
     };
   }
 
-  get _endpoint() {
-    return '/auth/login';
-  }
-
-  /**
-   * @type {FormDataLogin}
-   */
-  get _formData() {
-    return super._formData;
+  get _serviceMethod() {
+    return authService.login;
   }
 }
