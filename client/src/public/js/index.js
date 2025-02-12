@@ -1,3 +1,3 @@
-import publicRouter from './core/publicRouter.js';
+import publicSpa from './core/PublicSpa.js';
 
-publicRouter.init();
+publicSpa.init();

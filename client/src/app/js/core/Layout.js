@@ -1,5 +1,5 @@
-import appRouter from '../../core/appRouter.js';
-import { Theme } from './Theme.js';
+import appRouter from './appRouter.js';
+import theme from '../components/common/Theme.js';
 
 /**
  * Initializes the layout components (Header, Footer and Theme).
@@ -45,7 +45,7 @@ class Layout {
   }
 
   init() {
-    new Theme();
+    theme.init();
     this.#setListeners();
     this.#handleRoutes();
   }

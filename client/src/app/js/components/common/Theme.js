@@ -8,15 +8,11 @@ import {
  * themes, updating assets based on the current theme, and handling
  * user interactions for theme switching.
  */
-export class Theme {
+class Theme {
   /**
    * @type {'dark'|'ligth'}
    */
   #currentTheme;
-
-  constructor() {
-    this.#init();
-  }
 
   /**
    * @type {'dark'|'ligth'}
@@ -73,8 +69,10 @@ export class Theme {
       .addEventListener('click', this.#toggleTheme.bind(this));
   }
 
-  #init() {
+  init() {
     this.#applyStoredTheme();
     this.#setListeners();
   }
 }
+
+export default new Theme();

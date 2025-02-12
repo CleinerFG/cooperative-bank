@@ -1,6 +1,6 @@
-import NotificationService from '../../services/NotificationService.js';
-import { Notification } from './Notification.js';
-import '../../types/notificationTypes.js';
+import NotificationService from '../services/NotificationService.js';
+import { Notification } from '../components/common/Notification.js';
+import '../types/notificationTypes.js';
 
 class NotificationManager {
   #service = NotificationService;

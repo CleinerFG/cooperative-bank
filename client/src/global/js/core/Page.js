@@ -31,16 +31,15 @@ export class Page {
   async _setup() {}
 
   /**
-   * @param {Router} spaRouter
+   * @param {Router} router
    * @param {string} query
    */
-  _handleRoutes(spaRouter, query) {
+  _handleRoutes(router, query) {
     const elements = document.querySelectorAll(query);
-    console.log(elements);
     elements.forEach((element) => {
       element.addEventListener('click', (e) => {
         e.preventDefault();
-        spaRouter.navigateTo(element.getAttribute('href'));
+        router.navigateTo(element.getAttribute('href'));
       });
     });
   }

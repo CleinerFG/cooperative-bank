@@ -1,3 +1,3 @@
-import app from './core/App.js';
+import spaApp from './core/SpaApp.js';
 
-app.init();
+spaApp.init();

@@ -1,7 +1,8 @@
-import { PublicPage } from '../../core/PublicPage.js';
+import { Page } from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
+import publicRouter from '../../core/publicRouter.js';
 
-export default class LoginPage extends PublicPage {
+export default class LoginPage extends Page {
   get _headerTemplate() {
     return `
     <header class="header">
@@ -46,7 +47,7 @@ export default class LoginPage extends PublicPage {
   }
 
   async _setup() {
-    super._setup();
+    this._handleRoutes(publicRouter, '[data-link]');
     const LoginFormCtrlModule = await import('./LoginFormCtrl.js');
     new LoginFormCtrlModule.default();
   }
