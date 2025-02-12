@@ -1,5 +1,5 @@
 import { CardActiveLoan } from '../../overview/components/CardActiveLoan.js';
-import { ConfirmPassModal } from '../../../../../js/components/modal/ConfirmPassModal.js';
+import { ConfirmActionModal } from '../../../../../js/components/modal/ConfirmActionModal.js';
 import {
   numberToCurrency,
   numberToPercent,
@@ -97,12 +97,12 @@ export class CardLoanRequestReceived extends CardActiveLoan {
     document
       .querySelector(`#btn-${this._cssId}-approve`)
       .addEventListener('click', () => {
-        new ConfirmPassModal();
+        new ConfirmActionModal();
       });
     document
       .querySelector(`#btn-${this._cssId}-repprove`)
       .addEventListener('click', () => {
-        new ConfirmPassModal();
+        new ConfirmActionModal();
       });
   }
 }

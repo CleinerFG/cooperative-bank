@@ -57,3 +57,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.5);
 }
+
+input[type='password']::-ms-reveal,
+input[type='password']::-ms-clear {
+  display: none;
+}

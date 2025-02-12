@@ -27,8 +27,8 @@ export class Modal {
     document.body.style.overflow = value;
   }
 
-  _initControllers() {
-    throw new AbstractMethodError('_initControllers');
+  _setup() {
+    throw new AbstractMethodError('_setup');
   }
 
   #build() {
@@ -82,6 +82,6 @@ export class Modal {
     this.#bodyOverflow = 'hidden';
     this.#render();
     this.#defineListeners();
-    this._initControllers();
+    this._setup();
   }
 }

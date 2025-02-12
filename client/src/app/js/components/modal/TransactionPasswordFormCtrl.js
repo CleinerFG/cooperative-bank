@@ -1,7 +1,7 @@
 import '../../types/formDataType.js';
 import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
 
-export class ConfirmPassFormCtrl extends FormCtrl {
+export class TransactionPasswordFormCtrl extends FormCtrl {
   get _viewParams() {
     return {
       id: 'confirm-pass-form',
@@ -15,6 +15,7 @@ export class ConfirmPassFormCtrl extends FormCtrl {
       {
         id: 'transactionPassword',
         category: 'password',
+        labelText: 'Transaction password',
         strictToNumber: true,
       },
     ];
@@ -31,7 +32,7 @@ export class ConfirmPassFormCtrl extends FormCtrl {
   // Add endpoint in the superclass constructor, when backend is defined
   // Each confirm pass modal has a different endpoint
   get _endpoint() {
-    return '';
+    return '/api/auth/transaction';
   }
 
   /**
