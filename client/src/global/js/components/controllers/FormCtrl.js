@@ -35,7 +35,7 @@ export class FormCtrl {
   }
 
   /**
-   * @type {SubmitButtonParams}}
+   * @type {SubmitButtonFormElementParams}}
    */
   get _submitButtonParams() {
     new AbstractGetterError('_submitButtonParams');

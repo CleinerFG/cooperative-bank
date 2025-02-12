@@ -80,3 +80,9 @@
  * @property {string} labelText
  * @property {[{value:string, text:string}]} options
  */
+
+/**
+ * @typedef {object} SubmitButtonFormElementParams
+ * @property {string} id
+ * @property {string} labelText
+ */
