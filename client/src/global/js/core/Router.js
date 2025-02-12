@@ -1,8 +1,5 @@
-/**
- * @typedef {Object} Route
- * @property {string} path
- * @property {() => Promise<any>} pageModule
- */
+import '../types/routesType.js';
+
 export class Router {
   #routes;
   /**
