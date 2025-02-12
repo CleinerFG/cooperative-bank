@@ -23,10 +23,6 @@
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
- * @property {boolean} strictToNumber
- * @property {import('../../utils/validators.js').Validator|undefined} customValidator
- * @property {"text" | "numeric"} inputmode
- * @property {"currency" | "percent" | "cpf"} formatter
  * @property {string} endpoint
  */
 
@@ -74,11 +70,6 @@
  * @property {'search'} category
  * @property {string} id
  * @property {string} labelText
- * @property {string|undefined} placeholder
- * @property {true} strictToNumber
- * @property {'cpf'} formatter
- * @property {'numeric'} inputmode
- * @property {import('../utils/validators.js').Validator|undefined} customValidator
  * @property {string} endpoint
  */
 

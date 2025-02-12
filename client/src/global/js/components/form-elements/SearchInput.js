@@ -1,6 +1,7 @@
 import '../../types/formElementsType.js';
 import Input from './Input.js';
 import { SearchInputService } from '../services/SearchInputService.js';
+import { cpfValidator } from '../../utils/validators.js';
 import { simulateWait } from '../../utils/tests.js';
 import { AssetManager } from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
@@ -19,7 +20,14 @@ export default class SearchInput extends Input {
    * @param {SearchInputParams} params
    */
   constructor(params) {
-    super(params);
+    super({
+      inputmode: 'numeric',
+      placeholder: '000.000.000-00',
+      strictToNumber: true,
+      formatter: 'cpf',
+      customValidator: cpfValidator,
+      ...params,
+    });
     this.#endpoint = params.endpoint;
   }
 

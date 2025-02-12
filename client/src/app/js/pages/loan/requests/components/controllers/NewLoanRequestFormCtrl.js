@@ -19,12 +19,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
       {
         category: 'search',
         id: 'search-creditor',
-        inputmode: 'numeric',
-        placeholder: '000.000.000-00',
-        strictToNumber: true,
         labelText: 'Search for a Creditor',
-        formatter: 'cpf',
-        customValidator: cpfValidator,
         endpoint: '/users',
       },
       {
