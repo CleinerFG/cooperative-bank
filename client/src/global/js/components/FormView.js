@@ -1,5 +1,5 @@
-import '../../types/formElementsType.js';
-import { SubmitButton } from '../form-elements/SubmitButton.js';
+import '../types/formElementsType.js';
+import { SubmitButton } from './form-elements/SubmitButton.js';
 
 export class FormView {
   #containerElement;
@@ -74,10 +74,10 @@ export class FormView {
    */
   async #getFormElementClassByCategory(category) {
     const formElemCatMap = {
-      default: () => import('../form-elements/Input.js'),
-      search: () => import('../form-elements/SearchInput.js'),
-      password: () => import('../form-elements/PasswordInput.js'),
-      select: () => import('../form-elements/Select.js'),
+      default: () => import('./form-elements/Input.js'),
+      search: () => import('./form-elements/SearchInput.js'),
+      password: () => import('./form-elements/PasswordInput.js'),
+      select: () => import('./form-elements/Select.js'),
     };
 
     const module = await formElemCatMap[category]();

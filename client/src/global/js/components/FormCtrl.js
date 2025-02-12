@@ -1,6 +1,6 @@
-import '../../types/formElementsType.js';
-import { FormView } from '../views/FormView.js';
-import { AbstractGetterError } from '../../errors/AbstractErrors.js';
+import '../types/formElementsType.js';
+import { FormView } from './FormView.js';
+import { AbstractGetterError } from '../errors/AbstractErrors.js';
 
 export class FormCtrl {
   #view;

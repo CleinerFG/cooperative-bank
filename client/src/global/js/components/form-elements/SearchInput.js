@@ -1,6 +1,6 @@
 import '../../types/formElementsType.js';
 import Input from './Input.js';
-import { SearchInputService } from '../services/SearchInputService.js';
+import { SearchInputService } from '../SearchInputService.js';
 import { cpfValidator } from '../../utils/validators.js';
 import { simulateWait } from '../../utils/tests.js';
 import { AssetManager } from '../../core/AssetManager.js';

@@ -1,4 +1,4 @@
-import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
+import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
 import authService from '../../services/AuthService.js';
 
 export class TransactionPasswordFormCtrl extends FormCtrl {

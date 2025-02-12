@@ -39,7 +39,7 @@ export default class LoanRequestsPage extends Page {
 
   async _setup() {
     const LoanRequestFormCtrlModule = await import(
-      './components/controllers/LoanRequestFormCtrl.js'
+      './components/LoanRequestFormCtrl.js'
     );
     new LoanRequestFormCtrlModule.default();
   }
