@@ -1,3 +1,4 @@
+import '../../types/formElementsType.js';
 import { zeroValidator, emptyValidator } from '../../utils/validators.js';
 import {
   cpfFormatter,
@@ -11,24 +12,6 @@ import {
   percentToNumber,
 } from '../../utils/formatters.js';
 
-/**
- * @typedef {object} InputParams
- * @property {HTMLElement} containerElement
- * @property {string} id
- * @property {string} labelText
- * @property {string} placeholder
- * @property {string} cssClass
- * @property {boolean} strictToNumber
- * @property {"text" | "numeric" | "email" | "date"} inputmode
- * @property {"text" | "numeric" | "email" | "date"} type
- * @property {"currency" | "percent" | "cpf"} formatter
- * @property {import('../../utils/validators.js').Validator|undefined} customValidator
- */
-
-/**
- * Creating and managing input elements with validation,
- * formatting, and error handling.
- */
 export default class Input {
   #containerElement;
   #strictToNumber;

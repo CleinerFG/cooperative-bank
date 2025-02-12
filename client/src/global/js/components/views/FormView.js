@@ -1,16 +1,6 @@
+import '../../types/formElementsType.js';
 import { SubmitButton } from '../form-elements/SubmitButton.js';
 
-/**
- * @typedef {object} FormViewParams
- * @property {HTMLElement} containerElement
- * @property {string} id
- * @property {string | undefined} cssClass
- * @property {string} title
- */
-
-/**
- * Representing a form view with dynamic input rendering and functionality.
- */
 export class FormView {
   #containerElement;
   #id;
@@ -24,8 +14,8 @@ export class FormView {
   /**
    *
    * @param {FormViewParams} params
-   * @param {Array<import('../form-elements/Input.js').InputParams|import('../form-elements/SearchInput.js').SearchInputParams|import('../form-elements/Select.js').SelectParams} formElementsParams
-   * @param {import('../form-elements/SubmitButton.js').SubmitButtonParams} submitButtonParams
+   * @param {[InputParams|SearchInputParams|SelectParams]} formElementsParams
+   * @param {SubmitButtonParams} submitButtonParams
    */
   constructor(params, formElementsParams, submitButtonParams) {
     this.#containerElement = params.containerElement;

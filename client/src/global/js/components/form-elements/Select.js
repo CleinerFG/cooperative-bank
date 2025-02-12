@@ -1,10 +1,4 @@
-/**
- * @typedef {object} SelectParams
- * @property {HTMLElement} containerElement
- * @property {string} id
- * * @property {string} labelText
- * @property {{value:string, text: string}[]} options
- */
+import '../../types/formElementsType.js';
 
 export default class Select {
   #containerElement;

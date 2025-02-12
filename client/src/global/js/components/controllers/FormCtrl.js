@@ -1,11 +1,8 @@
+import '../../types/formElementsType.js';
 import { FormView } from '../views/FormView.js';
 import { AbstractGetterError } from '../../errors/AbstractErrors.js';
 import { FormService } from '../services/FormService.js';
 
-/**
- * Controller for handling form interactions and data submissions.
- * Manages validation, configuration, and API submission for the form.
- */
 export class FormCtrl {
   #view;
   #service;
@@ -24,21 +21,21 @@ export class FormCtrl {
   }
 
   /**
-   * @type {import('../views/FormView.js').FormViewParams}
+   * @type {FormViewParams}
    */
   get _viewParams() {
     new AbstractGetterError('_viewParams');
   }
 
   /**
-   * @type {Array<import('../form-elements/Input.js').InputParams | import('../form-elements/SearchInput.js').SearchInputParams>}
+   * @type {[FormElementDefault|FormElementPassword|FormElementSearch|FormElementSelect]}
    */
   get _formElementsParams() {
     new AbstractGetterError('_formElementsParams');
   }
 
   /**
-   * @type {import('../form-elements/SubmitButton.js').SubmitButtonParams}}
+   * @type {SubmitButtonParams}}
    */
   get _submitButtonParams() {
     new AbstractGetterError('_submitButtonParams');

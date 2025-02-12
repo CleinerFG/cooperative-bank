@@ -1,4 +1,4 @@
-import '../../types/notificationTypes.js';
+import '../../types/notificationType.js';
 import {
   formatDate,
   numberToCurrency,

@@ -1,3 +1,6 @@
+/**
+ * @returns {'dark'|'light'}
+ */
 function getBodyTheme() {
   return document.body.dataset.theme;
 }

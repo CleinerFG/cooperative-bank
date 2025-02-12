@@ -1,16 +1,6 @@
+import '../../types/formElementsType.js';
 import Input from './Input.js';
 
-/**
- * @typedef {object} SubmitButtonParams
- * @property {HTMLElement} containerElement
- * @property {string} id
- * @property {string} labelText
- * @property {string} cssClass
- */
-
-/**
- * Represents a submit button element.
- */
 export class SubmitButton extends Input {
   /**
    * @param {SubmitButtonParams} params

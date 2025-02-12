@@ -1,26 +1,10 @@
+import '../../types/formElementsType.js';
 import Input from './Input.js';
 import { SearchInputService } from '../services/SearchInputService.js';
 import { simulateWait } from '../../utils/tests.js';
 import { AssetManager } from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
-/**
- * @typedef {object} SearchInputParams
- * @property {HTMLElement} containerElement
- * @property {string} id
- * @property {string} labelText
- * @property {string} cssClass
- * @property {boolean} strictToNumber
- * @property {import('../../utils/validators.js').Validator|undefined} customValidator
- * @property {"text" | "numeric"} inputmode
- * @property {"currency" | "percent" | "cpf"} formatter
- * @property {string} endpoint
- */
-
-/**
- * Represents a search input field that supports asynchronous
- * data retrieval by identifier, displaying the result in a disabled field.
- */
 export default class SearchInput extends Input {
   /**
    * @type {string}
