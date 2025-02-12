@@ -1,10 +1,10 @@
 import '../types/notificationType.js';
 import { Notification } from '../components/common/Notification.js';
 import NotificationService from '../services/NotificationService.js';
-import { createState } from '../../../global/js/utils/hooks.js';
 
 class NotificationManager {
   #service = NotificationService;
+  #documentListener = this.#closeOnClickOutside.bind(this);
 
   /**
    * @type {[TransferNotification|LoanRequestNotification|LoanStatusNotification|PaymentNotification|InstallmentNotification]}
@@ -69,6 +69,14 @@ class NotificationManager {
     this.#notifications.forEach((notif) => notif.render());
   }
 
+  #addDocumentListener() {
+    document.addEventListener('click', this.#documentListener);
+  }
+
+  #removeDocumentListener() {
+    document.removeEventListener('click', this.#documentListener);
+  }
+
   /**
    * @param {boolean} activate
    */
@@ -78,7 +86,12 @@ class NotificationManager {
     this.#containerElement.classList.toggle('display-flex', activate);
     this.#appElement.classList.toggle('blur', activate);
 
-    if (activate) this.#renderNotifications();
+    if (activate) {
+      this.#renderNotifications();
+      this.#addDocumentListener();
+    } else {
+      this.#removeDocumentListener();
+    }
   }
 
   /**
@@ -97,16 +110,12 @@ class NotificationManager {
     this.#toggleActiveState(this.#btnElement.dataset.active === 'false');
   }
 
-  /**
-   * @param {Event} e
-   */
   #handleNotificationRemove(e) {
     console.log(`Notification with index: ${e.detail.index} was removed`);
   }
 
   #setListeners() {
     this.#btnElement.addEventListener('click', this.#handleBtnClick.bind(this));
-    window.addEventListener('click', this.#closeOnClickOutside.bind(this));
     this.#cardsContainerElement.addEventListener(
       'notificationRemove',
       this.#handleNotificationRemove.bind(this)
