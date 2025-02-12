@@ -54,7 +54,7 @@ export class FormCtrl {
    *
    * @returns {object}
    */
-  get #formData() {
+  get _formData() {
     const data = {};
     this.#view.formElements.forEach((formEl) => {
       data[formEl.id] = formEl?.parseValue ?? formEl?.value;
@@ -77,9 +77,9 @@ export class FormCtrl {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isValid = this._handleInputsDataIsValid();
-      console.log(this.#formData);
+      console.log(this._formData);
       try {
-        if (isValid) this.#service.fetch(this.#formData);
+        if (isValid) this.#service.fetch(this._formData);
       } catch (e) {
         console.error(e);
       }

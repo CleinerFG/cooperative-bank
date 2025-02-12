@@ -1,3 +1,4 @@
+import '../../types/formDataType.js';
 import { FormCtrl } from '../../../../global/js/components/controllers/FormCtrl.js';
 
 export class ConfirmPassFormCtrl extends FormCtrl {
@@ -12,7 +13,7 @@ export class ConfirmPassFormCtrl extends FormCtrl {
   get _formElementsParams() {
     return [
       {
-        id: 'transaction-password',
+        id: 'transactionPassword',
         category: 'password',
         strictToNumber: true,
       },
@@ -31,5 +32,12 @@ export class ConfirmPassFormCtrl extends FormCtrl {
   // Each confirm pass modal has a different endpoint
   get _endpoint() {
     return '';
+  }
+
+  /**
+   * @type {FormDataTransactionPassword}
+   */
+  get _formData() {
+    super._formData();
   }
 }

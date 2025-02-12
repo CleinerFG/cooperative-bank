@@ -1,3 +1,4 @@
+import '../../../../../types/formDataType.js';
 import { FormCtrl } from '../../../../../../../global/js/components/controllers/FormCtrl.js';
 
 export default class NewLoanRequestFormCtrl extends FormCtrl {
@@ -28,7 +29,7 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
       },
       {
         category: 'select',
-        id: 'installments',
+        id: 'deadline',
         labelText: 'Deadline (in months)',
         options: [
           { value: '3', text: '03 months' },
@@ -70,5 +71,12 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
 
   get _endpoint() {
     return '/loan/requests';
+  }
+
+  /**
+   * @type {FormDataLoanRequest}
+   */
+  get _formData() {
+    return super._formData;
   }
 }
