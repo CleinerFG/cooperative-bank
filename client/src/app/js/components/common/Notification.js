@@ -39,6 +39,10 @@ export class Notification {
     this.#params = params;
   }
 
+  get #element() {
+    return document.getElementById(`notification-${this.#index}`);
+  }
+
   get #containerElement() {
     return document.querySelector(
       '.app-container .notifications-container .notifications-cards'
@@ -65,9 +69,24 @@ export class Notification {
     `;
   }
 
-  
+  #dispatchEventRemove() {
+    this.#containerElement.dispatchEvent(
+      new CustomEvent('notificationRemove', {
+        detail: { index: this.#index },
+      })
+    );
+  }
+
+  #setListeners() {
+    this.#element.addEventListener('click', (e) => {
+      this.#element.remove();
+      e.stopPropagation();
+      this.#dispatchEventRemove();
+    });
+  }
 
   render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
+    this.#setListeners();
   }
 }

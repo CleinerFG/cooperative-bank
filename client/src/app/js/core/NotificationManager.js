@@ -1,6 +1,7 @@
-import NotificationService from '../services/NotificationService.js';
-import { Notification } from '../components/common/Notification.js';
 import '../types/notificationType.js';
+import { Notification } from '../components/common/Notification.js';
+import NotificationService from '../services/NotificationService.js';
+import { createState } from '../../../global/js/utils/hooks.js';
 
 class NotificationManager {
   #service = NotificationService;
@@ -81,7 +82,6 @@ class NotificationManager {
   }
 
   /**
-   *
    * @param {Event} e
    */
   #closeOnClickOutside(e) {
@@ -93,13 +93,24 @@ class NotificationManager {
     }
   }
 
-  #handleClick() {
+  #handleBtnClick() {
     this.#toggleActiveState(this.#btnElement.dataset.active === 'false');
   }
 
+  /**
+   * @param {Event} e
+   */
+  #handleNotificationRemove(e) {
+    console.log(`Notification with index: ${e.detail.index} was removed`);
+  }
+
   #setListeners() {
-    this.#btnElement.addEventListener('click', this.#handleClick.bind(this));
+    this.#btnElement.addEventListener('click', this.#handleBtnClick.bind(this));
     window.addEventListener('click', this.#closeOnClickOutside.bind(this));
+    this.#cardsContainerElement.addEventListener(
+      'notificationRemove',
+      this.#handleNotificationRemove.bind(this)
+    );
   }
 
   async init() {
