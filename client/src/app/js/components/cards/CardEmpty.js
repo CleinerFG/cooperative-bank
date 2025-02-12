@@ -1,7 +1,7 @@
 import { ASSETS_ROUTE } from '../../constants/routes';
 
 /**
- * Card for when the server returns no data for the entity."
+ * Card for when the server returns no data for the entity
  */
 export class CardEmpty {
   #entity;

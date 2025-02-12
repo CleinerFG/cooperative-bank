@@ -1,18 +1,14 @@
 import { API_BASE_URL } from '../../../global/js/constants.js';
 
 class AccountService {
-  #baseEndpoint = `${API_BASE_URL}/account`;
-
-  async #fetch(endpoint) {
-    const res = await fetch(`${this.#baseEndpoint}${endpoint}`);
-    return await res.json();
-  }
+  #BASE_ENDPOINT = `${API_BASE_URL}/account`;
 
   /**
    * @returns {Promise<{ name: string, birth: string, cpf: string, email: string, registration: string }>}
    */
   async getUserInfo() {
-    return this.#fetch('/user');
+    const res = await fetch(`${this.#BASE_ENDPOINT}/user`);
+    return await res.json();
   }
 
   /**
@@ -20,7 +16,8 @@ class AccountService {
    * @returns {Promise<number>}
    */
   async getAmount() {
-    return this.#fetch('/amount');
+    const res = await fetch(`${this.#BASE_ENDPOINT}/amount`);
+    return await res.json();
   }
 }
 

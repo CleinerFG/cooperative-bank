@@ -3,7 +3,6 @@ import theme from '../components/common/Theme.js';
 
 /**
  * Initializes the layout components (Header, Footer and Theme).
- * Instantiate this class in the main SPA script.
  */
 class Layout {
   get #btnMenuElement() {
