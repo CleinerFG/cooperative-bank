@@ -10,7 +10,6 @@ export default class NewLoanRequestFormCtrl extends FormCtrl {
     return {
       id: 'new-request-form',
       containerElement: document.querySelector('.new-request'),
-      cssClass: 'new-request-form',
       title: 'New request',
     };
   }

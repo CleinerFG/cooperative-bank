@@ -6,7 +6,6 @@ export default class LoginFormCtrl extends FormCtrl {
     return {
       id: 'login-form',
       containerElement: document.querySelector('.form-container'),
-      cssClass: 'login-form',
     };
   }
 
@@ -23,7 +22,6 @@ export default class LoginFormCtrl extends FormCtrl {
       {
         category: 'password',
         id: 'password',
-        cssClass: 'password',
         labelText: 'Password',
       },
     ];

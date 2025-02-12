@@ -31,7 +31,6 @@ export default class Input {
     this._id = params.id;
     this._labelText = params.labelText ?? '';
     this._placeholder = params.placeholder ?? '';
-    this._cssClass = params.cssClass ?? '';
     this.#strictToNumber = params.strictToNumber;
     this._type = params.type ?? 'text';
     this._inputmode = params.inputmode ?? 'text';
@@ -98,7 +97,7 @@ export default class Input {
       <label for="${this._id}" class="label">${this._labelText}</label>
       <div class="inp__wrapper">
         <input id="${this._id}" placeholder="${this._placeholder}" type="${this._type}" inputmode="${this._inputmode}" autocomplete="off" name="${this._id}" aria-label="${this._labelText}"
-        class="inp ${this._cssClass}" data-valid="false">
+        class="inp" data-valid="false">
       </div>
       ${this._errorSpanTemplate}
     </div>`;

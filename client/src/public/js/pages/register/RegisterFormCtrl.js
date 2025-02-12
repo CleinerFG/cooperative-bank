@@ -10,7 +10,6 @@ export default class RegisterFormCtrl extends FormCtrl {
     return {
       id: 'register-form',
       containerElement: document.querySelector('.form-container'),
-      cssClass: 'register-form',
     };
   }
 

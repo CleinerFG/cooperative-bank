@@ -4,7 +4,6 @@ import { SubmitButton } from '../form-elements/SubmitButton.js';
 export class FormView {
   #containerElement;
   #id;
-  #cssClass;
   #title;
   #formElementsParams;
   #submitButtonParams;
@@ -20,7 +19,6 @@ export class FormView {
   constructor(params, formElementsParams, submitButtonParams) {
     this.#containerElement = params.containerElement;
     this.#id = params.id;
-    this.#cssClass = params.cssClass ?? '';
     this.#title = params.title;
     this.#formElementsParams = formElementsParams;
     this.#submitButtonParams = submitButtonParams;
@@ -59,7 +57,7 @@ export class FormView {
 
   get #template() {
     return `
-    <form id="${this.#id}" class="form ${this.#cssClass}">
+    <form id="${this.#id}" class="form">
       ${this.#titleTemplate}
       <div id="form-group-${this.#id}" class="form-group">       
       </div>

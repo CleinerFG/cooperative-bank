@@ -2,7 +2,6 @@
  * @typedef {object} FormViewParams
  * @property {HTMLElement} containerElement
  * @property {string} id
- * @property {string | undefined} cssClass
  * @property {string} title
  */
 
@@ -12,7 +11,6 @@
  * @property {string} id
  * @property {string} labelText
  * @property {string} placeholder
- * @property {string} cssClass
  * @property {boolean} strictToNumber
  * @property {"text" | "numeric" | "email" | "date"} inputmode
  * @property {"text" | "numeric" | "email" | "date"} type
@@ -25,7 +23,6 @@
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
- * @property {string} cssClass
  * @property {boolean} strictToNumber
  * @property {import('../../utils/validators.js').Validator|undefined} customValidator
  * @property {"text" | "numeric"} inputmode
@@ -46,7 +43,6 @@
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
- * @property {string} cssClass
  */
 
 /**
@@ -54,7 +50,6 @@
  * @property {'default'} category
  * @property {string} id
  * @property {string} labelText
- * @property {string|undefined} cssClass
  * @property {string|undefined} placeholder
  * @property {boolean|undefined} strictToNumber
  * @property {'currency'|'cpf'|'percent'|undefined} formatter
