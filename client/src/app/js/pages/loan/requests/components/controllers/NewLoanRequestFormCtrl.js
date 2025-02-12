@@ -1,10 +1,5 @@
 import { FormCtrl } from '../../../../../../../global/js/components/controllers/FormCtrl.js';
-import { cpfValidator } from '../../../../../../../global/js/utils/validators.js';
 
-/**
- * Form for Loan Request.
- * Implements the necessary configurations for the loan request form.
- */
 export default class NewLoanRequestFormCtrl extends FormCtrl {
   get _viewParams() {
     return {
