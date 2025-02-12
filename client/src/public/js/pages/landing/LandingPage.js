@@ -1,3 +1,4 @@
+import '../../types/pageComponentsType.js';
 import { Page } from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import publicRouter from '../../core/publicRouter.js';
@@ -77,11 +78,9 @@ export default class LandingPage extends Page {
   }
 
   /**
-   * @param {Object} feature
-   * @param {string} feature.title
-   * @param {string[]} feature.texts
-   * @param {string} feature.imgFile
-   * @param {string} feature.imgAlt
+   *
+   * @param {LandingFeature} feature
+   * @returns
    */
   _buildFeatureTemplate(feature) {
     const texts = feature.texts
@@ -103,10 +102,10 @@ export default class LandingPage extends Page {
   }
 
   /**
-   * @param {'contact'|'developer'} type
+   * @param {'contact'|'developer'} category
    */
-  _buildSocialMediaTemplate(type) {
-    return this._socialMediaMap[type]
+  _buildSocialMediaTemplate(category) {
+    return this._socialMediaMap[category]
       .map((sm) => {
         return `
         <a href="${sm.href}" target="_blank">
