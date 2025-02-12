@@ -1,5 +1,3 @@
-import { Layout } from './components/common/Layout.js';
-import { appRouter } from './core/appRouter.js';
+import app from './core/App.js';
 
-new Layout();
-appRouter.init();
+app.init();

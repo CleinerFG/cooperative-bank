@@ -34,10 +34,6 @@ export class Router {
 
   init() {
     window.addEventListener('popstate', this.#handleRouting.bind(this));
-
-    document.addEventListener(
-      'DOMContentLoaded',
-      this.#handleRouting.bind(this)
-    );
+    this.#handleRouting();
   }
 }

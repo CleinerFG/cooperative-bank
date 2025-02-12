@@ -24,4 +24,4 @@ const routes = [
   },
 ];
 
-export const appRouter = new Router(routes);
+export default new Router(routes);

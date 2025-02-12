@@ -16,4 +16,4 @@ const routes = [
   },
 ];
 
-export const publicRouter = new Router(routes);
+export default new Router(routes);

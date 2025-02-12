@@ -1,8 +1,5 @@
 import { Router } from './Router.js';
-import {
-  AbstractGetterError,
-  AbstractMethodError,
-} from '../errors/AbstractErrors.js';
+import { AbstractGetterError } from '../errors/AbstractErrors.js';
 import { capitalize } from '../utils/stringUtils.js';
 
 /**
@@ -39,6 +36,7 @@ export class Page {
    */
   _handleRoutes(spaRouter, query) {
     const elements = document.querySelectorAll(query);
+    console.log(elements);
     elements.forEach((element) => {
       element.addEventListener('click', (e) => {
         e.preventDefault();

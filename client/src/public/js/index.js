@@ -1,3 +1,3 @@
-import { publicRouter } from './core/publicRouter.js';
+import publicRouter from './core/publicRouter.js';
 
 publicRouter.init();

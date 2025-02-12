@@ -46,6 +46,7 @@ export default class LoginPage extends PublicPage {
   }
 
   async _setup() {
+    super._setup();
     const LoginFormCtrlModule = await import('./LoginFormCtrl.js');
     new LoginFormCtrlModule.default();
   }

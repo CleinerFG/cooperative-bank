@@ -2,7 +2,7 @@ import NotificationService from '../../services/NotificationService.js';
 import { Notification } from './Notification.js';
 import '../../types/notificationTypes.js';
 
-export class NotificationManager {
+class NotificationManager {
   #service = NotificationService;
 
   /**
@@ -14,10 +14,6 @@ export class NotificationManager {
    * @type {[Notification]}
    */
   #notifications = [];
-
-  constructor() {
-    this.#init();
-  }
 
   get #btnElement() {
     return document.getElementById('notifications-btn');
@@ -106,10 +102,12 @@ export class NotificationManager {
     window.addEventListener('click', this.#closeOnClickOutside.bind(this));
   }
 
-  async #init() {
+  async init() {
     await this.#fetchData();
     this.#createNotifications();
     this.#render();
     this.#setListeners();
   }
 }
+
+export default new NotificationManager();

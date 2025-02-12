@@ -1,16 +1,11 @@
-import { appRouter } from '../../core/appRouter.js';
+import appRouter from '../../core/appRouter.js';
 import { Theme } from './Theme.js';
-import { NotificationManager } from './NotificationManager.js';
 
 /**
  * Initializes the layout components (Header, Footer and Theme).
  * Instantiate this class in the main SPA script.
  */
-export class Layout {
-  constructor() {
-    this.#init();
-  }
-
+class Layout {
   get #btnMenuElement() {
     return document.querySelector('.header .btn-menu');
   }
@@ -49,12 +44,11 @@ export class Layout {
     });
   }
 
-  #init() {
-    document.addEventListener('DOMContentLoaded', () => {
-      new Theme();
-      this.#setListeners();
-      this.#handleRoutes();
-      new NotificationManager();
-    });
+  init() {
+    new Theme();
+    this.#setListeners();
+    this.#handleRoutes();
   }
 }
+
+export default new Layout();
