@@ -24,10 +24,6 @@ class NotificationManager {
     return document.querySelector('.app-container .notifications-container');
   }
 
-  get #appElement() {
-    return document.getElementById('app');
-  }
-
   get #cardsContainerElement() {
     return this.#containerElement.querySelector('.notifications-cards');
   }
@@ -109,8 +105,18 @@ class NotificationManager {
     this.#toggleActiveState(this.#btnElement.dataset.active === 'false');
   }
 
+  /**
+   * @param {Event} e
+   */
   #handleNotificationRemove(e) {
-    console.log(`Notification with index: ${e.detail.index} was removed`);
+    console.log(`Notification with index: ${e.detail.id} was removed`);
+  }
+
+  /**
+   * @param {Event} e
+   */
+  #handleNotificationRead(e) {
+    console.log(`Notification with index: ${e.detail.id} was readed`);
   }
 
   #setListeners() {
@@ -118,6 +124,10 @@ class NotificationManager {
     this.#cardsContainerElement.addEventListener(
       'notificationRemove',
       this.#handleNotificationRemove.bind(this)
+    );
+    this.#cardsContainerElement.addEventListener(
+      'notificationRead',
+      this.#handleNotificationRead.bind(this)
     );
   }
 

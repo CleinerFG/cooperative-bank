@@ -38,7 +38,7 @@ export class Notification {
    */
   constructor(index, params) {
     this.#index = index;
-    this.#params = params;
+    this.#params = { ...params, read: false };
   }
 
   get #element() {
@@ -74,13 +74,23 @@ export class Notification {
   #dispatchEventRemove() {
     this.#containerElement.dispatchEvent(
       new CustomEvent('notificationRemove', {
-        detail: { index: this.#index },
+        detail: { id: this.#params.id },
+      })
+    );
+  }
+
+  #dispatchEventRead() {
+    this.#containerElement.dispatchEvent(
+      new CustomEvent('notificationRead', {
+        detail: { id: this.#params.id },
       })
     );
   }
 
   #handleClick() {
     this.#element.classList.add('read');
+    this.#params.read = true;
+    this.#dispatchEventRead();
   }
 
   #handleDragging() {
@@ -97,7 +107,6 @@ export class Notification {
     const startDrag = (e) => {
       startX = e.touches ? e.touches[0].clientX : e.clientX;
       this.#element.style.transform = 'scale(105%)';
-      console.log('Drag start:', startX);
       addMoveEventListeners();
     };
 
