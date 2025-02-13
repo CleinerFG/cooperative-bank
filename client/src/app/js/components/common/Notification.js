@@ -84,30 +84,27 @@ export class Notification {
   }
 
   #handleDragging() {
-    const MAX_DISTANCE = Notification.#deviceVw * 0.3; //30%
-
+    const MAX_DISTANCE = Notification.#deviceVw * 0.3; // 30%
     let startX = 0;
     let opacity = 1;
 
+    const updateElementStyle = (distance) => {
+      opacity = Math.max(0, 1 - Math.min(Math.abs(distance) / MAX_DISTANCE, 1));
+      this.#element.style.opacity = opacity;
+      this.#element.style.transform = `translateX(${distance}px)`;
+    };
+
     const startDrag = (e) => {
       startX = e.touches ? e.touches[0].clientX : e.clientX;
-      this.#element.style.transform = `scale(105%)`;
+      this.#element.style.transform = 'scale(105%)';
       console.log('Drag start:', startX);
-      this.#element.addEventListener('touchmove', moveDrag);
-      this.#element.addEventListener('mousemove', moveDrag);
+      addMoveEventListeners();
     };
 
     const moveDrag = (e) => {
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const distance = clientX - startX;
-
-      opacity = Math.max(0, 1 - Math.min(Math.abs(distance) / MAX_DISTANCE, 1));
-      this.#element.style.opacity = opacity;
-      this.#element.style.transform = `translateX(${distance}px)`;
-
-      console.log('Move:', clientX);
-      console.log('Distance:', distance);
-      console.log('Opcity:', opacity);
+      updateElementStyle(distance);
     };
 
     const stopDrag = () => {
@@ -115,18 +112,29 @@ export class Notification {
         this.#element.remove();
         this.#dispatchEventRemove();
       } else {
-        opacity = 1;
-        this.#element.style.opacity = opacity;
-        this.#element.style.transform = `translateX(0px)`;
-        this.#element.removeEventListener('touchmove', moveDrag);
-        this.#element.removeEventListener('mousemove', moveDrag);
+        resetElementStyle();
+        removeMoveEventListeners();
       }
-      console.log('Drag end');
+    };
+
+    const addMoveEventListeners = () => {
+      this.#element.addEventListener('touchmove', moveDrag);
+      this.#element.addEventListener('mousemove', moveDrag);
+    };
+
+    const removeMoveEventListeners = () => {
+      this.#element.removeEventListener('touchmove', moveDrag);
+      this.#element.removeEventListener('mousemove', moveDrag);
+    };
+
+    const resetElementStyle = () => {
+      opacity = 1;
+      this.#element.style.opacity = opacity;
+      this.#element.style.transform = 'translateX(0px)';
     };
 
     this.#element.addEventListener('touchstart', startDrag);
     this.#element.addEventListener('mousedown', startDrag);
-
     this.#element.addEventListener('touchend', stopDrag);
     this.#element.addEventListener('mouseup', stopDrag);
   }
