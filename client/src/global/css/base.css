@@ -44,6 +44,3 @@ button {
   filter: invert(100%) brightness(120%) contrast(170%);
 }
 
-.blur {
-  filter: blur(8px);
-}

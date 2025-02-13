@@ -84,7 +84,6 @@ class NotificationManager {
     this.#btnElement.dataset.active = activate ? 'true' : 'false';
     this.#bodyOverflow = activate ? 'hidden' : '';
     this.#containerElement.classList.toggle('display-flex', activate);
-    this.#appElement.classList.toggle('blur', activate);
 
     if (activate) {
       this.#renderNotifications();
