@@ -125,22 +125,11 @@ class NotificationManager {
     console.log(`Notification with index: ${e.detail.id} was removed`);
   }
 
-  /**
-   * @param {Event} e
-   */
-  #handleNotificationRead(e) {
-    console.log(`Notification with index: ${e.detail.id} was readed`);
-  }
-
   #setListeners() {
     this.#btnElement.addEventListener('click', this.#handleBtnClick.bind(this));
     this.#cardsContainerElement.addEventListener(
       'notificationRemove',
       this.#handleNotificationRemove.bind(this)
-    );
-    this.#cardsContainerElement.addEventListener(
-      'notificationRead',
-      this.#handleNotificationRead.bind(this)
     );
   }
 

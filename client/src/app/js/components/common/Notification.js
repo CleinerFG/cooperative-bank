@@ -48,7 +48,7 @@ export class Notification {
   get readState() {
     return this.#params.read;
   }
-  
+
   get #element() {
     return document.getElementById(`notification-${this.#index}`);
   }
@@ -66,8 +66,9 @@ export class Notification {
 
   get #template() {
     const { title, desc } = this.#dataByCategory;
+    const readClass = this.#params.read ? 'read' : '';
     return `
-      <div id="notification-${this.#index}" class="notification">
+      <div id="notification-${this.#index}" class="notification ${readClass}">
         <header class="notification-header">
           <span class="notification-title">${title}</span>
           <span class="notification-time">1 hour ago</span>
@@ -87,18 +88,9 @@ export class Notification {
     );
   }
 
-  #dispatchEventRead() {
-    this.#containerElement.dispatchEvent(
-      new CustomEvent('notificationRead', {
-        detail: { id: this.#params.id },
-      })
-    );
-  }
-
   #handleClick() {
     this.#element.classList.add('read');
     this.#params.read = true;
-    this.#dispatchEventRead();
   }
 
   #handleDragging() {
