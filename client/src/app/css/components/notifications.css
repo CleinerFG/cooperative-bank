@@ -31,18 +31,21 @@
 }
 
 .notifications-cards .notification {
+  cursor: pointer;
   background-color: var(--component-bg-color-dark);
-  padding: var(--container-padding);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   border: var(--component-border);
   border-radius: var(--component-border-radius);
   border-left: var(--color-primary) 0.4rem solid;
+  margin: 0 0.5rem;
+  padding: var(--container-padding);
+  transition: all 0.1s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.notification {
-  cursor: pointer;
+.notification.read {
+  border-left-color: hsla(0, 0%, 50%);
 }
 
 .notification .notification-header {

@@ -5,8 +5,7 @@ import {
 } from '../../../../global/js/utils/formatters.js';
 
 export class Notification {
-  #index;
-  #params;
+  static #deviceVw = window.innerWidth;
   static #categoryMap = {
     transfer: ({ sender, value }) => ({
       title: 'Received Transfer',
@@ -29,6 +28,9 @@ export class Notification {
       desc: `You have an installment due on ${formatDate(date)} in the amount of ${numberToCurrency(value)}`,
     }),
   };
+
+  #index;
+  #params;
 
   /**
    * @param {number} index
@@ -77,15 +79,19 @@ export class Notification {
     );
   }
 
+  #handleClick() {
+    this.#element.classList.add('read');
+  }
+
   #handleDragging() {
-    const MAX_DISTANCE = window.innerWidth * 0.2; // 30% of vw
-    console.log(MAX_DISTANCE);
+    const MAX_DISTANCE = Notification.#deviceVw * 0.3; //30%
 
     let startX = 0;
     let opacity = 1;
 
     const startDrag = (e) => {
       startX = e.touches ? e.touches[0].clientX : e.clientX;
+      this.#element.style.transform = `scale(105%)`;
       console.log('Drag start:', startX);
       this.#element.addEventListener('touchmove', moveDrag);
       this.#element.addEventListener('mousemove', moveDrag);
@@ -93,10 +99,11 @@ export class Notification {
 
     const moveDrag = (e) => {
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const distance = Math.abs(clientX - startX);
+      const distance = clientX - startX;
 
-      opacity = Math.max(0, 1 - Math.min(distance / MAX_DISTANCE, 1));
+      opacity = Math.max(0, 1 - Math.min(Math.abs(distance) / MAX_DISTANCE, 1));
       this.#element.style.opacity = opacity;
+      this.#element.style.transform = `translateX(${distance}px)`;
 
       console.log('Move:', clientX);
       console.log('Distance:', distance);
@@ -109,8 +116,8 @@ export class Notification {
         this.#dispatchEventRemove();
       } else {
         opacity = 1;
-        this.#element.style.transition = 'opacity 0.3s';
         this.#element.style.opacity = opacity;
+        this.#element.style.transform = `translateX(0px)`;
         this.#element.removeEventListener('touchmove', moveDrag);
         this.#element.removeEventListener('mousemove', moveDrag);
       }
@@ -125,11 +132,7 @@ export class Notification {
   }
 
   #setListeners() {
-    // this.#element.addEventListener('click', (e) => {
-    //   this.#element.remove();
-    //   e.stopPropagation();
-    //   this.#dispatchEventRemove();
-    // });
+    this.#element.addEventListener('click', this.#handleClick.bind(this));
     this.#handleDragging();
   }
 
