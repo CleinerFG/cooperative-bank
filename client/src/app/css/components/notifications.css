@@ -41,6 +41,10 @@
   border-left: var(--color-primary) 0.4rem solid;
 }
 
+.notification {
+  cursor: pointer;
+}
+
 .notification .notification-header {
   display: flex;
   justify-content: space-between;

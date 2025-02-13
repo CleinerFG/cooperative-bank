@@ -77,12 +77,60 @@ export class Notification {
     );
   }
 
+  #handleDragging() {
+    const MAX_DISTANCE = window.innerWidth * 0.2; // 30% of vw
+    console.log(MAX_DISTANCE);
+
+    let startX = 0;
+    let opacity = 1;
+
+    const startDrag = (e) => {
+      startX = e.touches ? e.touches[0].clientX : e.clientX;
+      console.log('Drag start:', startX);
+      this.#element.addEventListener('touchmove', moveDrag);
+      this.#element.addEventListener('mousemove', moveDrag);
+    };
+
+    const moveDrag = (e) => {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const distance = Math.abs(clientX - startX);
+
+      opacity = Math.max(0, 1 - Math.min(distance / MAX_DISTANCE, 1));
+      this.#element.style.opacity = opacity;
+
+      console.log('Move:', clientX);
+      console.log('Distance:', distance);
+      console.log('Opcity:', opacity);
+    };
+
+    const stopDrag = () => {
+      if (opacity === 0) {
+        this.#element.remove();
+        this.#dispatchEventRemove();
+      } else {
+        opacity = 1;
+        this.#element.style.transition = 'opacity 0.3s';
+        this.#element.style.opacity = opacity;
+        this.#element.removeEventListener('touchmove', moveDrag);
+        this.#element.removeEventListener('mousemove', moveDrag);
+      }
+      console.log('Drag end');
+    };
+
+    this.#element.addEventListener('touchstart', startDrag);
+    this.#element.addEventListener('mousedown', startDrag);
+
+    this.#element.addEventListener('touchend', stopDrag);
+    this.#element.addEventListener('mouseup', stopDrag);
+  }
+
   #setListeners() {
-    this.#element.addEventListener('click', (e) => {
-      this.#element.remove();
-      e.stopPropagation();
-      this.#dispatchEventRemove();
-    });
+    // this.#element.addEventListener('click', (e) => {
+    //   this.#element.remove();
+    //   e.stopPropagation();
+    //   this.#dispatchEventRemove();
+    // });
+    this.#handleDragging();
   }
 
   render() {
