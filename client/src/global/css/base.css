@@ -45,5 +45,5 @@ button {
 }
 
 .blur {
-  filter: blur(10px);
+  filter: blur(8px);
 }

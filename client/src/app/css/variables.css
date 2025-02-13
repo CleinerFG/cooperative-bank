@@ -16,14 +16,15 @@
   --color-primary-light: hsl(169, 96%, 42%);
   --color-primary-light-hover: hsl(169, 96%, 40%);
 
-  --title-color: #212121;
-  --text-color: #272727;
+  --title-color: hsl(0, 0%, 5%);
+  --text-color: hsl(0, 0%, 10%);
   --color-bg: hsl(45, 29%, 97%);
+  --color-bg-translucent: hsla(0, 0%, 100%, 0.5);
 
   --component-border: solid 0.1rem hsl(0, 0%, 80%);
   --component-line-color: hsl(0, 0%, 80%);
   --component-bg-color: hsl(75, 40%, 98%);
-  --component-bg-color-dark: hsl(0, 0%, 96%);
+  --component-bg-color-dark: hsl(75, 40%, 96%);
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
   --inp-focus-color: hsl(169, 96%, 38%);
@@ -38,9 +39,10 @@
   --color-primary-light: hsl(169, 96%, 18%);
   --color-primary-light-hover: hsl(169, 96%, 20%);
 
-  --text-color: #dcdcdc;
-  --title-color: #faf9f6;
+  --text-color: hsl(0, 0%, 90%);
+  --title-color: hsl(0, 0%, 95%);
   --color-bg: #000;
+  --color-bg-translucent: hsl(0, 0, 0%, 0.5);
 
   --component-border: solid 0.1rem hsl(0, 0%, 20%);
   --component-line-color: hsl(0, 0%, 20%);
