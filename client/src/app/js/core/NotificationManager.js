@@ -1,20 +1,39 @@
 import '../types/notificationType.js';
 import { Notification } from '../components/common/Notification.js';
 import NotificationService from '../services/NotificationService.js';
+import { createState } from '../../../global/js/utils/hooks.js';
 
 class NotificationManager {
   #service = NotificationService;
   #documentListener = this.#closeOnClickOutside.bind(this);
+  #dataState = createState([]);
+  #notificationsState = createState([]);
 
   /**
    * @type {[TransferNotification|LoanRequestNotification|LoanStatusNotification|PaymentNotification|InstallmentNotification]}
    */
-  #data = [];
+  get #data() {
+    const [getState] = this.#dataState;
+    return getState();
+  }
+
+  set #data(value) {
+    const [, setState] = this.#dataState;
+    setState(value);
+  }
 
   /**
    * @type {[Notification]}
    */
-  #notifications = [];
+  get #notifications() {
+    const [getState] = this.#notificationsState;
+    return getState();
+  }
+
+  set #notifications(value) {
+    const [, setState] = this.#notificationsState;
+    setState(value);
+  }
 
   get #btnElement() {
     return document.getElementById('notifications-btn');
