@@ -41,6 +41,14 @@ export class Notification {
     this.#params = { ...params, read: false };
   }
 
+  get id() {
+    return this.#params.id;
+  }
+
+  get readState() {
+    return this.#params.read;
+  }
+  
   get #element() {
     return document.getElementById(`notification-${this.#index}`);
   }

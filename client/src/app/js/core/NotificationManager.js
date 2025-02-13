@@ -6,21 +6,12 @@ import { createState } from '../../../global/js/utils/hooks.js';
 class NotificationManager {
   #service = NotificationService;
   #documentListener = this.#closeOnClickOutside.bind(this);
-  #dataState = createState([]);
-  #notificationsState = createState([]);
 
   /**
    * @type {[TransferNotification|LoanRequestNotification|LoanStatusNotification|PaymentNotification|InstallmentNotification]}
    */
-  get #data() {
-    const [getState] = this.#dataState;
-    return getState();
-  }
-
-  set #data(value) {
-    const [, setState] = this.#dataState;
-    setState(value);
-  }
+  #data = [];
+  #notificationsState = createState([]);
 
   /**
    * @type {[Notification]}
@@ -128,6 +119,9 @@ class NotificationManager {
    * @param {Event} e
    */
   #handleNotificationRemove(e) {
+    this.#notifications = this.#notifications.filter((notif) => {
+      return notif.id !== e.detail.id;
+    });
     console.log(`Notification with index: ${e.detail.id} was removed`);
   }
 
