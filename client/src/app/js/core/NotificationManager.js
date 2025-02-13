@@ -96,6 +96,7 @@ class NotificationManager {
       this.#addDocumentListener();
     } else {
       this.#removeDocumentListener();
+      this.#cardsContainerElement.innerHTML = '';
     }
   }
 
