@@ -4,14 +4,22 @@ import { AbstractGetterError } from '../errors/AbstractErrors.js';
 
 export class FormCtrl {
   #view;
-  #service;
+  #responsePromise;
+  #resolvePromise;
   constructor() {
     this.#view = new FormView(
       this._viewParams,
       this._formElementsParams,
       this._submitButtonParams
     );
+    this.#responsePromise = new Promise((resolve) => {
+      this.#resolvePromise = resolve;
+    });
     this.#init();
+  }
+
+  async getResponse() {
+    return this.#responsePromise;
   }
 
   get _modelClass() {
@@ -71,14 +79,18 @@ export class FormCtrl {
     return isValid;
   }
 
-  #handleSubmit() {
+  async #handleSubmit() {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isValid = this._handleInputsDataIsValid();
       console.log(this._formData);
       try {
-        if (isValid) this._serviceMethod(this._formData);
+        if (isValid) {
+          const res = await this._serviceMethod(this._formData);
+          this.#resolvePromise(res);
+        }
       } catch (e) {
+        this.#resolvePromise(null);
         console.error(e);
       }
     });
