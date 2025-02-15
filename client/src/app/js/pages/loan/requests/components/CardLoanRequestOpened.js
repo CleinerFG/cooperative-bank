@@ -1,5 +1,5 @@
 import { CardActiveLoan } from '../../overview/components/CardActiveLoan.js';
-import { ConfirmActionModal } from '../../../../../js/components/modal/ConfirmActionModal.js';
+import { ConfirmOperationModal } from '../../../../../js/components/modal/ConfirmOperationModal.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import {
   numberToCurrency,
@@ -111,7 +111,7 @@ export class CardLoanRequestOpened extends CardActiveLoan {
     this._containerElement
       .querySelector(`#btn-${this._cssId}-${this._modalAction}`)
       .addEventListener('click', () => {
-        new ConfirmActionModal();
+        new ConfirmOperationModal();
       });
   }
 }

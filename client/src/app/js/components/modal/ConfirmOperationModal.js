@@ -7,7 +7,9 @@ import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
  * @class
  * @extends Modal
  */
-export class ConfirmActionModal extends Modal {
+export class ConfirmOperationModal extends Modal {
+  _token;
+
   get _modalContent() {
     return `
       <h2>Confirm Action</h2>
@@ -15,7 +17,15 @@ export class ConfirmActionModal extends Modal {
     `;
   }
 
-  _setup() {
-    new TransactionPasswordFormCtrl();
+  /**
+   * @type {Promise}
+   */
+  get token() {
+    return this._token;
+  }
+
+  async _setup() {
+    const form = new TransactionPasswordFormCtrl();
+    this._token = await form.getResponse();
   }
 }
