@@ -45,10 +45,6 @@ export class Notification {
     return this.#params.id;
   }
 
-  get readState() {
-    return this.#params.read;
-  }
-
   get #element() {
     return document.getElementById(`notification-${this.#index}`);
   }
@@ -80,17 +76,27 @@ export class Notification {
     `;
   }
 
+  #dispatchEventRead() {
+    this.#containerElement.dispatchEvent(new CustomEvent('notificationRead'));
+  }
+
   #dispatchEventRemove() {
     this.#containerElement.dispatchEvent(
       new CustomEvent('notificationRemove', {
         detail: { id: this.#params.id },
       })
     );
+    if (!this.#params.read) {
+      this.#dispatchEventRead();
+    }
   }
 
   #handleClick() {
-    this.#element.classList.add('read');
-    this.#params.read = true;
+    if (!this.#params.read) {
+      this.#dispatchEventRead();
+      this.#element.classList.add('read');
+      this.#params.read = true;
+    }
   }
 
   #handleDragging() {

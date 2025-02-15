@@ -13,6 +13,7 @@ class NotificationManager {
    */
   #data = [];
   #notificationsState = createState([]);
+  #unreadNotifications = 0;
   #resolveCreateNotificationsPromise;
   #createNotificationsPromise = new Promise((resolve) => {
     this.#resolveCreateNotificationsPromise = resolve;
@@ -33,6 +34,10 @@ class NotificationManager {
 
   get #btnElement() {
     return document.getElementById('notifications-btn');
+  }
+
+  get #unreadNotificationsElement() {
+    return document.getElementById('notifications-unread');
   }
 
   get #containerElement() {
@@ -61,23 +66,31 @@ class NotificationManager {
 
   async #fetchData() {
     try {
-      console.log('wait');
       await simulateWait();
-      console.log('End wait');
       this.#data = await this.#service.fetch();
     } catch (e) {
       console.log(e);
     }
   }
 
-  #createNotifications() {
-    this.#notifications = this.#data.map((params, index) => {
-      return new Notification(index, params);
-    });
-  }
-
   #render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
+  }
+
+  #updateUnreadNotifications() {
+    if (this.#unreadNotifications === 0) {
+      this.#unreadNotificationsElement.style.display = 'none';
+      return;
+    }
+    this.#unreadNotificationsElement.style.display = 'flex';
+    this.#unreadNotificationsElement.textContent = this.#unreadNotifications;
+  }
+
+  #createNotifications() {
+    this.#notifications = this.#data.map((params, index) => {
+      this.#unreadNotifications += 1;
+      return new Notification(index, params);
+    });
   }
 
   #noNotificationsHandler() {
@@ -136,6 +149,11 @@ class NotificationManager {
     this.#toggleActiveState(this.#btnElement.dataset.active === 'false');
   }
 
+  #handleNotificationRead() {
+    this.#unreadNotifications -= 1;
+    this.#updateUnreadNotifications();
+  }
+
   /**
    * @param {Event} e
    */
@@ -146,7 +164,6 @@ class NotificationManager {
     if (!this.#notifications.length) {
       this.#noNotificationsHandler();
     }
-    console.log(`Notification with index: ${e.detail.id} was removed`);
   }
 
   #setListeners() {
@@ -155,6 +172,10 @@ class NotificationManager {
       'notificationRemove',
       this.#handleNotificationRemove.bind(this)
     );
+    this.#cardsContainerElement.addEventListener(
+      'notificationRead',
+      this.#handleNotificationRead.bind(this)
+    );
   }
 
   async init() {
@@ -162,6 +183,7 @@ class NotificationManager {
     this.#setListeners();
     await this.#fetchData();
     this.#createNotifications();
+    this.#updateUnreadNotifications();
     this.#resolveCreateNotificationsPromise(true);
   }
 }

@@ -10,6 +10,25 @@
   z-index: 1;
 }
 
+.btn-notifications {
+  position: relative;
+}
+
+.btn-notifications .counter {
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--color-fail);
+  color: var(--color-off-white);
+  border-radius: 50%;
+  position: absolute;
+  top: -0.1rem;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .notifications-container h2 {
   color: var(--text-color);
   font-size: 1.4rem;
