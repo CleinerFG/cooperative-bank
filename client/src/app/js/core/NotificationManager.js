@@ -70,9 +70,18 @@ class NotificationManager {
     this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
   }
 
+  #noNotificationsHandler() {
+    this.#cardsContainerElement.innerHTML =
+      '<p class="no-notification info-text">No notifications</p>';
+  }
+
   #renderNotifications() {
     this.#cardsContainerElement.innerHTML = '';
-    this.#notifications.forEach((notif) => notif.render());
+    if (this.#notifications.length) {
+      this.#notifications.forEach((notif) => notif.render());
+      return;
+    }
+    this.#noNotificationsHandler();
   }
 
   #addDocumentListener() {
@@ -123,6 +132,9 @@ class NotificationManager {
     this.#notifications = this.#notifications.filter((notif) => {
       return notif.id !== e.detail.id;
     });
+    if (!this.#notifications.length) {
+      this.#noNotificationsHandler();
+    }
     console.log(`Notification with index: ${e.detail.id} was removed`);
   }
 
