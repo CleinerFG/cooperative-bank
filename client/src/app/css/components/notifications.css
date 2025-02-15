@@ -46,6 +46,11 @@
   flex: 1;
 }
 
+.notifications-cards .loader {
+  margin: auto;
+  position: relative;
+}
+
 .notifications-cards .no-notification {
   font-size: 1.2rem;
   margin: auto;

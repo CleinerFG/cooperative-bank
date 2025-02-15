@@ -2,6 +2,7 @@ import '../types/notificationType.js';
 import { Notification } from '../components/common/Notification.js';
 import NotificationService from '../services/NotificationService.js';
 import { createState } from '../../../global/js/utils/hooks.js';
+import { simulateWait } from '../../../global/js/utils/tests.js';
 
 class NotificationManager {
   #service = NotificationService;
@@ -12,6 +13,10 @@ class NotificationManager {
    */
   #data = [];
   #notificationsState = createState([]);
+  #resolveCreateNotificationsPromise;
+  #createNotificationsPromise = new Promise((resolve) => {
+    this.#resolveCreateNotificationsPromise = resolve;
+  });
 
   /**
    * @type {[Notification]}
@@ -48,12 +53,17 @@ class NotificationManager {
   get #template() {
     return `
     <h2>Notifications</h2>
-    <div class="notifications-cards"></div>
+    <div class="notifications-cards">
+      <div class="loader"></div>
+    </div>
     `;
   }
 
   async #fetchData() {
     try {
+      console.log('wait');
+      await simulateWait();
+      console.log('End wait');
       this.#data = await this.#service.fetch();
     } catch (e) {
       console.log(e);
@@ -95,18 +105,19 @@ class NotificationManager {
   /**
    * @param {boolean} activate
    */
-  #toggleActiveState(activate) {
+  async #toggleActiveState(activate) {
     this.#btnElement.dataset.active = activate ? 'true' : 'false';
     this.#bodyOverflow = activate ? 'hidden' : '';
     this.#containerElement.classList.toggle('display-flex', activate);
 
     if (activate) {
-      this.#renderNotifications();
       this.#addDocumentListener();
     } else {
       this.#removeDocumentListener();
-      this.#cardsContainerElement.innerHTML = '';
     }
+
+    await this.#createNotificationsPromise;
+    this.#renderNotifications();
   }
 
   /**
@@ -147,10 +158,11 @@ class NotificationManager {
   }
 
   async init() {
-    await this.#fetchData();
-    this.#createNotifications();
     this.#render();
     this.#setListeners();
+    await this.#fetchData();
+    this.#createNotifications();
+    this.#resolveCreateNotificationsPromise(true);
   }
 }
 
