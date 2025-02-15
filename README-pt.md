@@ -73,3 +73,13 @@ npm install
   ```bash
   npm run server
   ```
+
+- `Dev-test`: Onde há requisições ao servidor, há skelons ou loaders. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso para que eles sejam visíveis.
+
+  - Defina o tempo em segundos **`client/src/global/js/constants.js`**:
+
+    ```js
+    const SIMULATE_WAIT_SERVER = 3;
+    ```
+
+  - No ambiente de produção, se não quiser usar a função `simulateWait()`, basta usar ` Ctrl + Shift + F` no VS Code para localizar todas as chamadas da função e removê-las.

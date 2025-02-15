@@ -73,3 +73,13 @@ npm install
   ```bash
   npm run server
   ```
+
+- `Dev-test`: Where there are server requests, there are skelons or loaders. When running the server locally, you need to add a delay to make them visible.
+
+  - Set the time in seconds **`client/src/global/js/constants.js`**:
+
+    ```js
+    const SIMULATE_WAIT_SERVER = 3;
+    ```
+
+  - In the production environment, if you don't want use the `simulateWait()` function, simply use `Ctrl + Shift + F` in VS Code to find all function calls and remove them.
