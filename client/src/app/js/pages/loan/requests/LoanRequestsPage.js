@@ -42,7 +42,7 @@ export default class LoanRequestsPage extends Page {
       './components/LoanRequestFormCtrl.js'
     );
     const form = new LoanRequestFormCtrlModule.default();
-    const res = await form.getResponse();
-    console.log(res);
+    // const res = await form.getResponse();
+    // console.log(res);
   }
 }

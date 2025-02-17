@@ -87,7 +87,7 @@ export class CardLoanRequestReceived extends CardActiveLoan {
     `;
   }
 
-  _handleModal() {
+  _setListeners() {
     document
       .querySelector(`#btn-${this._cssId}-approve`)
       .addEventListener('click', () => {

@@ -77,12 +77,8 @@ export class Card {
     return document.getElementById(this._cssId);
   }
 
-  _handleModal() {
-    // throw new AbstractMethodError('_handleModal');
-  }
-
   _setListeners() {
-    // throw new AbstractMethodError('_setListeners');
+    throw new AbstractMethodError('_setListeners');
   }
 
   #buildHeaderTemplate() {
@@ -145,7 +141,6 @@ export class Card {
 
   init() {
     this.#render();
-    this._handleModal();
     this._setListeners();
   }
 }

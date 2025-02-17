@@ -101,7 +101,7 @@ export class CardLoanRequestOpened extends CardActiveLoan {
      `;
   }
 
-  _handleModal() {
+  _setListeners() {
     this._containerElement
       .querySelector(`#btn-${this._cssId}-${this._modalAction}`)
       .addEventListener('click', () => {
