@@ -39,6 +39,7 @@ export class Router {
     const module = await match.pageModule();
     const PageClass = module.default;
     new PageClass(queryParams);
+    window.scrollTo(0, 0);
   }
 
   init() {
