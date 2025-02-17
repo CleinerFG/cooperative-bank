@@ -1,0 +1,23 @@
+.info-container {
+  border-top: var(--component-border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.info-label {
+  color: hsl(0, 0%, 50%);
+  font-weight: 500;
+}
+
+.info-value {
+  min-height: 1.2rem;
+  width: 10rem;
+}

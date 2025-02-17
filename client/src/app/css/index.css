@@ -18,4 +18,5 @@
 
 /* Pages */
 @import url('./pages/home.css');
+@import url('./pages/info-pages.css');
 @import url('./pages/my-account.css');

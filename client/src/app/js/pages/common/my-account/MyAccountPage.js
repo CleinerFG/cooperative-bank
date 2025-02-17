@@ -20,7 +20,7 @@ export default class MyAccountPage extends Page {
         <h1 id="name" class="profile-name skelon"></h1>
       </div>
       </div>
-      <div class="profile-info">
+      <div class="info-container">
         <div class="info-item">
           <span class="info-label">Date of birth</span>
           <span id="birth" class="info-value skelon"></span>

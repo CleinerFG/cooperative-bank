@@ -48,30 +48,6 @@
   text-align: center;
 }
 
-.profile-info {
-  border-top: var(--component-border);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.profile-info .info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.profile-info .info-label {
-  color: hsl(0, 0%, 50%);
-  font-weight: 500;
-}
-
-.profile-info .info-value {
-  min-height: 1.2rem;
-  width: 10rem;
-}
-
 @media screen and (min-width: 375px) {
   .profile-container {
     width: 200px;
