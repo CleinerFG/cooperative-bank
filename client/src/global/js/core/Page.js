@@ -7,9 +7,18 @@ import { capitalize } from '../utils/stringUtils.js';
  */
 export class Page {
   static #appElement = document.getElementById('app');
+  #queryParams;
 
-  constructor() {
+  /**
+   * @param {object} queryParams 
+   */
+  constructor(queryParams) {
+    this.#queryParams = queryParams;
     this._init();
+  }
+
+  get _queryParams() {
+    return this.#queryParams;
   }
 
   /**
