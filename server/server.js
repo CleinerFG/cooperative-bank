@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('fs').promises;
 const users = require('./data/db/users.js');
 const { cpfValidator } = require('./utils/validators');
 
@@ -7,6 +8,7 @@ const SERVER_IP = process.env.SERVER_IP;
 
 const express = require('express');
 const path = require('path');
+const { log } = require('console');
 
 const app = express();
 
@@ -57,22 +59,47 @@ const serveFile = (directory, filename) => (req, res) => {
 
 // JSON files route handlers
 app.get('/api/account/amount', serveFile(DB_DIR, 'account-amount.json'));
+
 app.get(
   '/api/loan/overview/payable',
   serveFile(DB_DIR, 'loan-overview-payable.json')
 );
+
 app.get(
   '/api/loan/overview/receivable',
   serveFile(DB_DIR, 'loan-overview-receivable.json')
 );
+
+app.get('/api/loan/overview/details', async (req, res) => {
+  try {
+    const id = req.query.id;
+    const filePath = path.join(DB_DIR, 'loan-overview-details.json');
+
+    const jsonFile = await fs.readFile(filePath, 'utf-8');
+    const data = JSON.parse(jsonFile);
+
+    const loanDetails = data.find((item) => item.id === id);
+    if (!loanDetails) {
+      return res.status(404).json({ error: 'Loan details not found' });
+    }
+
+    res.json(loanDetails);
+  } catch (error) {
+    console.error('Error reading JSON file:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.get(
   '/api/loan/requests/opened',
   serveFile(DB_DIR, 'loan-request-opened.json')
 );
+
 app.get(
   '/api/loan/requests/received',
   serveFile(DB_DIR, 'loan-request-received.json')
 );
+
 app.get('/api/users', (req, res) => {
   const { cpf } = req.query;
 
@@ -88,7 +115,9 @@ app.get('/api/users', (req, res) => {
     return res.status(400).json({ message: e.message });
   }
 });
+
 app.get('/api/account/user', serveFile(DB_DIR, 'account-info.json'));
+
 app.get('/api/notifications', serveFile(DB_DIR, 'notifications.json'));
 
 // Page route handlers

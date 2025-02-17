@@ -13,6 +13,14 @@ class LoanService {
   }
 
   /**
+   * @param {string} id
+   */
+  async getLoanDetails(id) {
+    const res = await fetch(`${this._BASE_ENDPOINT}/overview/details?id=${id}`);
+    return await res.json();
+  }
+
+  /**
    * @param {'received'|'opened'} category
    */
   async getRequests(category) {

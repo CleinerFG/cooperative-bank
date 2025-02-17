@@ -1,0 +1,80 @@
+[
+  {
+    "id": "15466",
+    "modality": "personal",
+    "creditor": "The Trapper",
+    "date": "2024-05-01T20:35:16.253Z",
+    "creditValue": 4200,
+    "totalAmount": 5000,
+    "outstandingBalance": 500,
+    "installments": 10,
+    "installmentValue": 500,
+    "paidInstallments": 9,
+    "rate": 4
+  },
+  {
+    "id": "54566",
+    "modality": "auto",
+    "creditor": "Nurse",
+    "date": "2024-04-07T20:35:16.253Z",
+    "creditValue": 2000,
+    "totalAmount": 3000,
+    "outstandingBalance": 2000,
+    "installments": 8,
+    "installmentValue": 325.5,
+    "paidInstallments": 3,
+    "rate": 3.7
+  },
+  {
+    "id": "46444",
+    "modality": "mortgage",
+    "creditor": "The Trapper",
+    "date": "2024-08-07T20:35:16.253Z",
+    "creditValue": 8000,
+    "totalAmount": 10000,
+    "outstandingBalance": 9000,
+    "installments": 24,
+    "installmentValue": 800.5,
+    "paidInstallments": 5,
+    "rate": 5.25
+  },
+  {
+    "id": "15466",
+    "modality": "personal",
+    "debtor": "Claudette Morel",
+    "date": "2023-06-01T20:35:16.253Z",
+    "creditValue": 2000,
+    "totalAmount": 5000,
+    "outstandingBalance": 1000,
+    "installments": 10,
+    "installmentValue": 250.5,
+    "paidInstallments": 2,
+    "rate": 2.5
+  },
+  {
+    "id": "54566",
+    "modality": "auto",
+    "debtor": "Renato Lyra",
+    "date": "2021-02-17T20:35:16.253Z",
+    "creditValue": 4250,
+    "totalAmount": 5600,
+    "outstandingBalance": 2320,
+    "installments": 8,
+    "installmentValue": 145.5,
+    "paidInstallments": 3,
+    "rate": 4.14
+  },
+  {
+    "id": "46444",
+    "modality": "mortgage",
+    "debtor": "Jake Park",
+    "date": "2024-08-07T20:35:16.253Z",
+    "creditValue": 80000,
+    "totalAmount": 150000,
+    "outstandingBalance": 125000,
+    "installments": 48,
+    "installmentValue": 3825.76,
+    "paidInstallments": 10,
+    "rate": 5.25
+  }
+]
