@@ -28,22 +28,6 @@
   flex: 1;
 }
 
-.card-data__aside {
-  border: var(--component-border);
-  border-radius: var(--component-border-radius);
-  padding: var(--container-padding);
-}
-
-.card-data__aside .payment-progress {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.card-data__aside .card-data__item {
-  padding: 0;
-}
-
 .card-data__item {
   padding: 0.5rem 0;
   display: flex;

@@ -1,5 +1,6 @@
 import { Page } from '../../../../../global/js/core/Page.js';
 import loanService from '../../../services/LoanService.js';
+import { ProgressBar } from './components/progressBar.js';
 import { formatDate } from '../../../../../global/js/utils/formatters.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
@@ -39,6 +40,7 @@ export default class LoanDetailsPage extends Page {
           <span class="info-label">Installment value</span>
           <span id="installmentValue" class="info-value skelon"></span>
         </div>
+        <div class="payment-progress"></div>
       </div>
     </section>
     `;
@@ -85,6 +87,15 @@ export default class LoanDetailsPage extends Page {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  _initComponents() {
+    const container = this._element.querySelector('.payment-progress');
+    new ProgressBar(
+      container,
+      this._apiData.installments,
+      this._apiData.paidInstallments
+    );
   }
 
   async _setup() {

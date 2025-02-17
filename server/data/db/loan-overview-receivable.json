@@ -4,38 +4,20 @@
     "modality": "personal",
     "debtor": "Claudette Morel",
     "date": "2023-06-01T20:35:16.253Z",
-    "creditValue": 2000,
-    "totalAmount": 5000,
-    "outstandingBalance": 1000,
-    "installments": 10,
-    "installmentValue": 250.5,
-    "paidInstallments": 2,
-    "rate": 2.5
+    "creditValue": 2000
   },
   {
     "id": "54566",
     "modality": "auto",
     "debtor": "Renato Lyra",
     "date": "2021-02-17T20:35:16.253Z",
-    "creditValue": 4250,
-    "totalAmount": 5600,
-    "outstandingBalance": 2320,
-    "installments": 8,
-    "installmentValue": 145.5,
-    "paidInstallments": 3,
-    "rate": 4.14
+    "creditValue": 4256
   },
   {
     "id": "46444",
     "modality": "mortgage",
     "debtor": "Jake Park",
     "date": "2024-08-07T20:35:16.253Z",
-    "creditValue": 80000,
-    "totalAmount": 150000,
-    "outstandingBalance": 125000,
-    "installments": 48,
-    "installmentValue": 3825.76,
-    "paidInstallments": 10,
-    "rate": 5.25
+    "creditValue": 80000
   }
 ]

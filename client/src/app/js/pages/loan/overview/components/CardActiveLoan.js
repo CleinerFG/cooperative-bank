@@ -1,12 +1,10 @@
 import {
   formatDate,
   numberToCurrency,
-  numberToPercent,
 } from '../../../../../../global/js/utils/formatters.js';
 import { Card } from '../../../../components/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
-import { ProgressBar } from './progressBar.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 
 /**
@@ -17,12 +15,6 @@ import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
  * @property {string} debtor
  * @property {string} date
  * @property {number} creditValue
- * @property {number} totalAmount
- * @property {number} outstandingBalance
- * @property {number} installments
- * @property {number} installmentValue
- * @property {number} paidInstallments
- * @property {number} rate
  */
 
 /**
@@ -58,22 +50,6 @@ export class CardActiveLoan extends Card {
         label: 'Credit value',
         value: numberToCurrency(this._apiData.creditValue),
       },
-      {
-        label: 'Total amount',
-        value: numberToCurrency(this._apiData.totalAmount),
-      },
-      {
-        label: 'Outstanding balance',
-        value: numberToCurrency(this._apiData.outstandingBalance),
-      },
-      {
-        label: 'Installment value',
-        value: numberToCurrency(this._apiData.installmentValue),
-      },
-      {
-        label: 'Interest rate',
-        value: `${numberToPercent(this._apiData.rate)} p.m.`,
-      },
     ];
   }
 
@@ -90,30 +66,9 @@ export class CardActiveLoan extends Card {
   get _footerTemplate() {
     return `
      <button id="btn-${this._cssId}" class="btn card-data__btn">
-        Installments
+        See details
       </button>
     `;
-  }
-
-  get _asideTemplate() {
-    const item = {
-      label: 'Payment progress',
-      value: `${this._apiData.paidInstallments} of ${this._apiData.installments} installments`,
-    };
-    return `
-      <div class="payment-progress">
-        ${this._buildItemTemplate(item)}
-      </div>
-    `;
-  }
-
-  _initComponents() {
-    const container = this._element.querySelector('.payment-progress');
-    new ProgressBar(
-      container,
-      this._apiData.installments,
-      this._apiData.paidInstallments
-    );
   }
 
   /**

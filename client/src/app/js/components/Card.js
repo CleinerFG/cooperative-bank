@@ -73,13 +73,6 @@ export class Card {
     throw new AbstractGetterError('_footerTemplate');
   }
 
-  /**
-   * @type {string}
-   */
-  get _asideTemplate() {
-    return '';
-  }
-
   get _element() {
     return document.getElementById(this._cssId);
   }
@@ -87,8 +80,6 @@ export class Card {
   _handleModal() {
     throw new AbstractMethodError('_handleModal');
   }
-
-  _initComponents() {}
 
   #buildHeaderTemplate() {
     return `
@@ -130,22 +121,11 @@ export class Card {
     `;
   }
 
-  #buildAsideTemplate() {
-    if (this._asideTemplate)
-      return `
-    <aside class="card-data__aside">
-      ${this._asideTemplate}
-    </aside>
-    `;
-    return '';
-  }
-
   #buildCardTemplate() {
     return `
     <article id="${this._cssId}" class="card card-data ${this._cssClass}">
         ${this.#buildHeaderTemplate()}
         ${this.#buildMainContentTemplate()}
-        ${this.#buildAsideTemplate()}
         ${this.#buildFooterTemplate()}
       </article>
   
@@ -165,7 +145,6 @@ export class Card {
 
   init() {
     this.#render();
-    this._initComponents();
     this._handleModal();
   }
 }
