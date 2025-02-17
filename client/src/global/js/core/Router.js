@@ -17,16 +17,28 @@ export class Router {
     this.#handleRouting();
   }
 
+  /**
+   * @param {string} search
+   */
+  #extractQueryParams(search) {
+    const params = new URLSearchParams(search);
+    return Object.fromEntries(params.entries());
+  }
+
   async #handleRouting() {
-    let match = this.#routes.find((route) => route.path === location.pathname);
+    const url = new URL(location.href);
+    const currentPath = url.pathname;
+    const queryParams = this.#extractQueryParams(url.search);
+
+    let match = this.#routes.find((route) => route.path === currentPath);
 
     if (!match) {
       match = this.#routes[0];
     }
 
     const module = await match.pageModule();
-    const ViewClass = module.default;
-    new ViewClass();
+    const PageClass = module.default;
+    new PageClass(queryParams);
   }
 
   init() {
