@@ -6,6 +6,8 @@ import { Card } from '../../../../components/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
+import appRouter from '../../../../core/appRouter.js';
+import { PAGE_ROUTES } from '../../../../constants/routes.js';
 
 /**
  * @typedef {object} ActiveLoanData
@@ -71,12 +73,13 @@ export class CardActiveLoan extends Card {
     `;
   }
 
-  /**
-   * Handles modal behavior.
-   * In this case, it does not open a modal.
-   * @note The modal for the cardActiveLoan is still to be built.
-   */
-  _handleModal() {
-    // pass
+  _setListeners() {
+    this._containerElement
+      .querySelector(`#btn-${this._cssId}`)
+      .addEventListener('click', () => {
+        appRouter.navigateTo(
+          `${PAGE_ROUTES.loan.details}?id=${this._apiData.id}`
+        );
+      });
   }
 }

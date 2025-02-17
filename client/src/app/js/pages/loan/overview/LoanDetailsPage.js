@@ -40,7 +40,7 @@ export default class LoanDetailsPage extends Page {
           <span class="info-label">Installment value</span>
           <span id="installmentValue" class="info-value skelon"></span>
         </div>
-        <div class="payment-progress"></div>
+        <div class="payment-progress">Payment progress</div>
       </div>
     </section>
     `;
@@ -84,13 +84,14 @@ export default class LoanDetailsPage extends Page {
     try {
       await simulateWait();
       this._apiData = await loanService.getLoanDetails(this._queryParams.id);
+      console.log(this._apiData);
     } catch (e) {
       console.error(e);
     }
   }
 
   _initComponents() {
-    const container = this._element.querySelector('.payment-progress');
+    const container = document.querySelector('.payment-progress');
     new ProgressBar(
       container,
       this._apiData.installments,

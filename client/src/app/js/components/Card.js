@@ -78,7 +78,11 @@ export class Card {
   }
 
   _handleModal() {
-    throw new AbstractMethodError('_handleModal');
+    // throw new AbstractMethodError('_handleModal');
+  }
+
+  _setListeners() {
+    // throw new AbstractMethodError('_setListeners');
   }
 
   #buildHeaderTemplate() {
@@ -92,7 +96,7 @@ export class Card {
   /**
    * @param {CardItem} cardItem
    */
-  _buildItemTemplate(cardItem) {
+  #buildItemTemplate(cardItem) {
     return `
       <div class="card-data__item">
         <span class="card-data__label">${cardItem.label}</span>
@@ -103,7 +107,7 @@ export class Card {
 
   #buildMainContentTemplate() {
     const items = this._itemsArray
-      .map((cardItem) => this._buildItemTemplate(cardItem))
+      .map((cardItem) => this.#buildItemTemplate(cardItem))
       .join('');
 
     return `
@@ -139,12 +143,9 @@ export class Card {
     );
   }
 
-  selfRemove() {
-    this._element.remove();
-  }
-
   init() {
     this.#render();
     this._handleModal();
+    this._setListeners();
   }
 }

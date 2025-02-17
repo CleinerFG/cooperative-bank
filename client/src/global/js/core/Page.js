@@ -10,7 +10,7 @@ export class Page {
   #queryParams;
 
   /**
-   * @param {object} queryParams 
+   * @param {object} queryParams
    */
   constructor(queryParams) {
     this.#queryParams = queryParams;
@@ -64,7 +64,7 @@ export class Page {
   async _init() {
     this.#setPageTitle();
     this.#render();
-    await this._initComponents();
     await this._setup();
+    await this._initComponents();
   }
 }
