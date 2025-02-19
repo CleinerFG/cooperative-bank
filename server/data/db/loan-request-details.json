@@ -30,7 +30,6 @@
     "date": "2024-08-07T20:35:16.253Z",
     "creditValue": 8000,
     "totalAmount": 10000,
-    "outstandingBalance": 9000,
     "installments": 24,
     "installmentValue": 800.5,
     "rate": 5.25,

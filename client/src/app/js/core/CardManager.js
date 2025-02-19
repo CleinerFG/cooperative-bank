@@ -89,7 +89,7 @@ export class CardManager {
   async #fetchData() {
     this.#cardState.state = 'loading';
     try {
-      await simulateWait(2);
+      await simulateWait();
       const promises = this._entityMap.categories.map(async ({ name }) => {
         this.#apiData[name] = await this._fetchService(name);
       });
