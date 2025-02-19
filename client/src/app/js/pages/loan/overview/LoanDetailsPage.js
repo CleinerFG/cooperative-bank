@@ -2,10 +2,17 @@ import '../../../types/loanDetailsType.js';
 import { Page } from '../../../../../global/js/core/Page.js';
 import loanService from '../../../services/LoanService.js';
 import { ProgressBar } from './components/progressBar.js';
-import { formatDate } from '../../../../../global/js/utils/formatters.js';
-import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
-import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
+import { simulateWait } from '../../../../../global/js/utils/tests.js';
+import {
+  formatDate,
+  numberToPercent,
+  numberToCurrency,
+} from '../../../../../global/js/utils/formatters.js';
+import {
+  capitalize,
+  toCamelCase,
+} from '../../../../../global/js/utils/stringUtils.js';
 
 export default class LoanDetailsPage extends Page {
   /**
@@ -16,37 +23,43 @@ export default class LoanDetailsPage extends Page {
   get _infoItemsData() {
     return [
       {
+        label: 'contract date',
+        getValue: () => formatDate(this._apiData?.date),
+        img: 'icon-calendar.svg',
+      },
+      {
         label: 'modality',
-        value: this._apiData?.modality,
+        getValue: () => capitalize(this._apiData?.modality),
         img: 'icon-bank.svg',
       },
       {
         label: 'person',
-        value: this._apiData?.creditor || this._apiData?.debtor,
+        getValue: () =>
+          capitalize(this._apiData?.creditor || this._apiData?.debtor),
         img: 'icon-person.svg',
       },
       {
         label: 'credit value',
-        value: this._apiData?.creditValue,
+        getValue: () => numberToCurrency(this._apiData?.creditValue),
         img: 'icon-money.svg',
       },
       {
         label: 'interest rate',
-        value: this._apiData?.rate,
+        getValue: () => numberToPercent(this._apiData?.rate),
         img: 'icon-percent.svg',
       },
       {
         label: 'total amount',
-        value: this._apiData?.totalAmount,
+        getValue: () => numberToCurrency(this._apiData?.totalAmount),
         img: 'icon-monitoring.svg',
       },
       {
         label: 'outstanding balance',
-        value: this._apiData?.outstandingBalance,
+        getValue: () => numberToCurrency(this._apiData?.outstandingBalance),
       },
       {
         label: 'installment value',
-        value: this._apiData?.installmentValue,
+        getValue: () => numberToCurrency(this._apiData?.installmentValue),
       },
     ];
   }
@@ -56,12 +69,13 @@ export default class LoanDetailsPage extends Page {
       if (img) return `<img class="icon" src="${ASSETS_ROUTE}/icons/${img}">`;
       return '';
     };
+    const valueId = toCamelCase(label);
     return `
       <div class="info-item">
         ${hasImg()}
         <div class="info-item__container">
           <span class="info-label">${capitalize(label)}</span>
-          <span id="" class="info-value skelon"></span>
+          <span id="${valueId}" class="info-value skelon"></span>
         </div>
       </div>
     `;
@@ -101,19 +115,10 @@ export default class LoanDetailsPage extends Page {
 
   _displayData() {
     if (!this._apiData) return;
-    document.getElementById('modality').textContent = this._apiData.modality;
-    document.getElementById('date').textContent = formatDate(
-      this._apiData.date
-    );
-    document.getElementById('creditor').textContent = this._apiData.creditor;
-    document.getElementById('creditValue').textContent =
-      this._apiData.creditValue;
-    document.getElementById('totalAmount').textContent =
-      this._apiData.totalAmount;
-    document.getElementById('outstandingBalance').textContent =
-      this._apiData.outstandingBalance;
-    document.getElementById('installmentValue').textContent =
-      this._apiData.installmentValue;
+    this._infoItemsData.forEach((item) => {
+      const valueId = toCamelCase(item.label);
+      document.getElementById(valueId).textContent = item.getValue();
+    });
     this.#removeSkelons();
   }
 
@@ -138,6 +143,6 @@ export default class LoanDetailsPage extends Page {
 
   async _setup() {
     await this._fetchData();
-    // this._displayData();
+    this._displayData();
   }
 }
