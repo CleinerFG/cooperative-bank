@@ -3,6 +3,11 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
 import publicRouter from '../../core/publicRouter.js';
 
 export default class LoginPage extends Page {
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _headerTemplate() {
     return `
     <header class="header">

@@ -14,7 +14,6 @@ export class Page {
    */
   constructor(queryParams) {
     this.#queryParams = queryParams;
-    this._init();
   }
 
   get _queryParams() {

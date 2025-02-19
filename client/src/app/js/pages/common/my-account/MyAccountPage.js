@@ -9,6 +9,11 @@ import accountService from '../../../services/AccountService.js';
 export default class MyAccountPage extends Page {
   _apiData;
 
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _template() {
     return `
      <div class="cover-photo">

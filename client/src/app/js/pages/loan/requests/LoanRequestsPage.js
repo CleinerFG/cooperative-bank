@@ -1,6 +1,11 @@
 import { Page } from '../../../../../global/js/core/Page.js';
 
 export default class LoanRequestsPage extends Page {
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _newRequestTemplate() {
     return `
     <section class="section new-request">

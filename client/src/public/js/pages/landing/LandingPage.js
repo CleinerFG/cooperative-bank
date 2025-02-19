@@ -4,6 +4,11 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
 import publicRouter from '../../core/publicRouter.js';
 
 export default class LandingPage extends Page {
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _featuresMap() {
     return [
       {

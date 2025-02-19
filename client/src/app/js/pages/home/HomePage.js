@@ -5,6 +5,11 @@ import appRouter from '../../core/appRouter.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 
 export default class HomePage extends Page {
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _statementTemplate() {
     const imgSrc = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
     return `

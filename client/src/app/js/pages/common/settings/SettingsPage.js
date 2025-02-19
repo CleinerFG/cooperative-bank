@@ -1,6 +1,11 @@
 import { Page } from '../../../../../global/js/core/Page.js';
 
 export default class SettingsPage extends Page {
+  constructor() {
+    super();
+    this._init();
+  }
+  
   get _template() {
     return `
     <h1 class="section-h1">In development</h1>

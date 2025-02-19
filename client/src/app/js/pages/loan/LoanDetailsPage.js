@@ -21,6 +21,11 @@ export default class LoanDetailsPage extends Page {
    */
   _apiData;
 
+  constructor(queryParams) {
+    super(queryParams);
+    this._init();
+  }
+
   get _participantByCategory() {
     const queryCategory = this._queryParams.category;
     return queryCategory === 'payable' || queryCategory === 'opened'

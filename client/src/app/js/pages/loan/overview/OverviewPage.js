@@ -1,6 +1,11 @@
 import { Page } from '../../../../../global/js/core/Page.js';
 
 export default class OverviewPage extends Page {
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _introductionTemplate() {
     return `
     <section class="section loans">
