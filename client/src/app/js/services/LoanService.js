@@ -15,11 +15,13 @@ class LoanService {
   }
 
   /**
-   * @param {string} id
-   * @returns {Promise<LoanDetailsData[]>}
+   * @param {{id:string, category:'overview'|'request'}} queryParams
+   * @returns {Promise<[LoanDetailsData|LoanRequestDetailsData]>}
    */
-  async getLoanDetails(id) {
-    const res = await fetch(`${this._BASE_ENDPOINT}/overview/details?id=${id}`);
+  async getLoanDetails(queryParams) {
+    const res = await fetch(
+      `${this._BASE_ENDPOINT}/details?id=${queryParams.id}&category=${queryParams.category}`
+    );
     return await res.json();
   }
 
