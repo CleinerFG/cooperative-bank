@@ -70,10 +70,16 @@ app.get(
   serveFile(DB_DIR, 'loan-overview-receivable.json')
 );
 
-app.get('/api/loan/overview/details', async (req, res) => {
+app.get('/api/loan/details/:category', async (req, res) => {
+  const getFilePath = (category) => {
+    return path.join(DB_DIR, `loan-${category}-details.json`);
+  };
+
   try {
     const id = req.query.id;
-    const filePath = path.join(DB_DIR, 'loan-overview-details.json');
+    const category = req.params.category;
+
+    const filePath = getFilePath(category);
 
     const jsonFile = await fs.readFile(filePath, 'utf-8');
     const data = JSON.parse(jsonFile);

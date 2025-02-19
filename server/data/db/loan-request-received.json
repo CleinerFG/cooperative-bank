@@ -4,22 +4,14 @@
     "modality": "personal",
     "debtor": "Vitorio Toscano",
     "date": "2024-05-01T20:35:16.253Z",
-    "creditValue": 4200,
-    "totalAmount": 5000,
-    "installments": 10,
-    "installmentValue": 425.5,
-    "rate": 4
+    "creditValue": 4200
   },
   {
     "id": "65456",
     "modality": "auto",
     "debtor": "Kate Denson",
     "date": "2024-06-11T20:29:44.418Z",
-    "creditValue": 2500,
-    "totalAmount": 3200,
-    "installments": 10,
-    "installmentValue": 320,
-    "rate": 3.75
+    "creditValue": 2500
   },
   {
     "id": "25456",
@@ -27,9 +19,6 @@
     "debtor": "Jane Romero",
     "date": "2024-08-10T20:35:16.253Z",
     "creditValue": 6000,
-    "totalAmount": 7000,
-    "installments": 10,
-    "installmentValue": 700,
-    "rate": 2.75
+    "totalAmount": 7000
   }
 ]

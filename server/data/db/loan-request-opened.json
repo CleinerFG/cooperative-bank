@@ -5,10 +5,6 @@
     "creditor": "Claudette Morel",
     "date": "2024-05-01T20:35:16.253Z",
     "creditValue": 4200,
-    "totalAmount": 5000,
-    "installments": 10,
-    "installmentValue": 425.5,
-    "rate": 4,
     "status": "rejected"
   },
   {
@@ -17,10 +13,6 @@
     "creditor": "David King",
     "date": "2024-04-07T20:35:16.253Z",
     "creditValue": 2000,
-    "totalAmount": 3000,
-    "installments": 8,
-    "installmentValue": 325.5,
-    "rate": 3.7,
     "status": "approved"
   },
   {
@@ -29,11 +21,6 @@
     "creditor": "The Trapper",
     "date": "2024-08-07T20:35:16.253Z",
     "creditValue": 8000,
-    "totalAmount": 10000,
-    "outstandingBalance": 9000,
-    "installments": 24,
-    "installmentValue": 800.5,
-    "rate": 5.25,
     "status": "pending"
   }
 ]
