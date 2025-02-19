@@ -169,7 +169,7 @@ export default class LandingPage extends Page {
       </div>
       <div class="content-container">
         <h1>Cooperation that connects people</h1>
-        <a class="btn" href="/register" data-link>Sign Up</a>
+        <a class="btn glossy" href="/register" data-link>Sign Up</a>
       </div>
     </section>
     `;

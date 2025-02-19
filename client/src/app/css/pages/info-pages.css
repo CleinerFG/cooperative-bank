@@ -23,6 +23,10 @@
   width: 10rem;
 }
 
+.info-container.loan-details {
+  gap: 0.8rem;
+}
+
 .info-container.loan-details .icon {
   width: 2rem;
 }

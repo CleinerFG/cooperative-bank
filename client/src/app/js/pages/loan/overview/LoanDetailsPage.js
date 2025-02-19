@@ -91,7 +91,7 @@ export default class LoanDetailsPage extends Page {
       <h1 class="section-h1">Loan Details</h1>
       <div class="info-container loan-details">
         ${this._buildInfoItems()}
-        <div class="payment-progress">Payment progress</div>
+        <div class="payment-progress"></div>
       </div>
     </section>
     `;
@@ -136,6 +136,7 @@ export default class LoanDetailsPage extends Page {
     const container = document.querySelector('.payment-progress');
     new ProgressBar(
       container,
+      'payment progress',
       this._apiData.installments,
       this._apiData.paidInstallments
     );

@@ -2,6 +2,7 @@
 
 :root {
   --color-primary: hsl(169, 96%, 38%);
+  --color-primary-glossy: hsl(179, 96%, 38%);
   --color-primary-light: hsl(169, 96%, 42%);
 
   --color-bg-start: hsl(250, 100%, 5%);

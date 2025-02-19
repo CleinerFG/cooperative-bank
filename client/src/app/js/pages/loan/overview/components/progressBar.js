@@ -1,5 +1,8 @@
+import { capitalize } from '../../../../../../global/js/utils/stringUtils';
+
 export class ProgressBar {
   #containerElement;
+  #label;
   #max;
   #current;
 
@@ -8,8 +11,9 @@ export class ProgressBar {
    * @param {number} max
    * @param {number} current
    */
-  constructor(containerElement, max, current) {
+  constructor(containerElement, label, max, current) {
     this.#containerElement = containerElement;
+    this.#label = label;
     this.#max = max;
     this.#current = current;
     this.#init();
@@ -25,8 +29,14 @@ export class ProgressBar {
 
   get #template() {
     return `
-    <div class="progress-bar" data-max="${this.#max}" data-current="${this.#current}">
-      <div class="progress-fill"></div>
+    <div class="progress-bar__container">
+      <div class="info-item">
+        <span class="info-label">${capitalize(this.#label)}</span>
+        <span class="info-value">${this.#current} of ${this.#max}</span>
+      </div>
+      <div class="progress-bar" data-max="${this.#max}" data-current="${this.#current}">
+        <div class="progress-fill glossy"></div>
+      </div>
     </div>
     `;
   }

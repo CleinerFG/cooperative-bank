@@ -1,5 +1,19 @@
+.progress-bar__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.progress-bar__container .info-item {
+  justify-content: space-between;
+}
+
+.progress-bar__container .info-value {
+  width: fit-content;
+}
+
 .progress-bar {
-  height: 0.8rem;
+  height: 1rem;
   width: 100%;
   background-color: hsl(0, 0%, 50%);
   border-radius: 0.4rem;
@@ -7,6 +21,5 @@
 }
 
 .progress-fill {
-  height: 0.8rem;
-  background-color: var(--color-primary);
+  height: 1rem;
 }

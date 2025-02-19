@@ -13,6 +13,7 @@
 
 [data-theme='light'] {
   --color-primary: hsl(169, 96%, 38%);
+  --color-primary-glossy: hsl(179, 96%, 38%);
   --color-primary-light: hsl(169, 96%, 42%);
   --color-primary-light-hover: hsl(169, 96%, 40%);
 
@@ -36,6 +37,7 @@
 
 [data-theme='dark'] {
   --color-primary: hsl(169, 96%, 15%);
+  --color-primary-glossy: hsl(179, 96%, 15%);
   --color-primary-light: hsl(169, 96%, 18%);
   --color-primary-light-hover: hsl(169, 96%, 20%);
 

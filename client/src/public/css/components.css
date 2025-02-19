@@ -6,22 +6,18 @@
   padding: 1rem 3rem;
   border-radius: var(--component-border-radius);
 
-  background: linear-gradient(90deg, hsl(179, 96%, 38%), var(--color-primary), hsl(179, 96%, 38%));
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-glossy),
+    var(--color-primary),
+    var(--color-primary-glossy)
+  );
   background-size: 200% 100%;
   animation: glossy 1.5s linear infinite;
 }
 
 .btn a {
   color: #000;
-}
-
-@keyframes glossy {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: 0% 0;
-  }
 }
 
 .text-strong {
@@ -36,7 +32,7 @@
   }
 
   h2 {
-    font-size: 2rem
+    font-size: 2rem;
   }
 
   .text {

@@ -73,3 +73,23 @@
     transform: rotate(360deg);
   }
 }
+
+.glossy {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-glossy),
+    var(--color-primary),
+    var(--color-primary-glossy)
+  );
+  background-size: 200% 100%;
+  animation: glossy 1.5s linear infinite;
+}
+
+@keyframes glossy {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
