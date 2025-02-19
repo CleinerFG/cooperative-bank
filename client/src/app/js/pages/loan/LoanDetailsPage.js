@@ -60,6 +60,7 @@ export default class LoanDetailsPage extends Page {
   constructor(queryParams) {
     super(queryParams);
     this._setCustomConfig();
+    this._setup();
     this._init();
   }
 
@@ -151,9 +152,12 @@ export default class LoanDetailsPage extends Page {
     }
   }
 
+  _initComponents() {}
+
   async _setup() {
     await this._fetchData();
     this._displayData();
+    this._initComponents();
   }
 
   _setCustomConfig() {

@@ -4,6 +4,7 @@ export default class OverviewPage extends Page {
   constructor() {
     super();
     this._init();
+    this._initComponents();
   }
 
   get _introductionTemplate() {

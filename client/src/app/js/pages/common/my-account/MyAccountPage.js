@@ -12,6 +12,7 @@ export default class MyAccountPage extends Page {
   constructor() {
     super();
     this._init();
+    this._setup();
   }
 
   get _template() {

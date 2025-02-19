@@ -4,6 +4,8 @@ export default class LoanRequestsPage extends Page {
   constructor() {
     super();
     this._init();
+    this._setup();
+    this._initComponents();
   }
 
   get _newRequestTemplate() {

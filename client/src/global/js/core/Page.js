@@ -34,10 +34,6 @@ export class Page {
     throw new AbstractGetterError('_pageTitle');
   }
 
-  async _initComponents() {}
-
-  async _setup() {}
-
   /**
    * @param {Router} router
    * @param {string} query
@@ -63,7 +59,5 @@ export class Page {
   async _init() {
     this.#setPageTitle();
     this.#render();
-    await this._setup();
-    await this._initComponents();
   }
 }

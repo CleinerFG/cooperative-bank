@@ -7,6 +7,7 @@ export default class LandingPage extends Page {
   constructor() {
     super();
     this._init();
+    this._setup();
   }
 
   get _featuresMap() {

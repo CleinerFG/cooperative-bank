@@ -8,6 +8,8 @@ export default class HomePage extends Page {
   constructor() {
     super();
     this._init();
+    this._setup();
+    this._initComponents();
   }
 
   get _statementTemplate() {

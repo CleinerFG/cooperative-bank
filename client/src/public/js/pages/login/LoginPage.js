@@ -6,6 +6,7 @@ export default class LoginPage extends Page {
   constructor() {
     super();
     this._init();
+    this._setup();
   }
 
   get _headerTemplate() {
