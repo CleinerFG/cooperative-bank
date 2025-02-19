@@ -7,7 +7,7 @@ import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js'
 
 export class CardLoanRequest extends CardLoanOverview {
   get _redirectPageRoute() {
-    return `${PAGE_ROUTES.loan.detailsRequest}?id=${this._apiData.id}`;
+    return `${PAGE_ROUTES.loan.detailsRequest}?id=${this._apiData.id}&category=${this._category}`;
   }
 
   /**

@@ -21,7 +21,7 @@ export class CardLoanOverview extends Card {
   }
 
   get _redirectPageRoute() {
-    return `${PAGE_ROUTES.loan.detailsOverview}?id=${this._apiData.id}`;
+    return `${PAGE_ROUTES.loan.detailsOverview}?id=${this._apiData.id}&category=${this._category}`;
   }
 
   /**

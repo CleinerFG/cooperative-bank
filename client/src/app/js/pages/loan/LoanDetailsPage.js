@@ -79,6 +79,11 @@ export default class LoanDetailsPage extends Page {
     throw new AbstractMethodError('_fetchService');
   }
 
+  /**
+   *
+   * @param {number} position
+   * @param {{label: string, getValue: Function, img: string}} item
+   */
   _addInfoItemData(position, item) {
     this.#infoItemsData.splice(position, 0, item);
   }
