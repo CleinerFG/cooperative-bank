@@ -1,4 +1,4 @@
-import '../../types/loanDetailsType.js';
+import '../../types/loanType.js';
 import { Page } from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { simulateWait } from '../../../../global/js/utils/tests.js';
@@ -16,7 +16,7 @@ import { AbstractMethodError } from '../../../../global/js/errors/AbstractErrors
 
 export default class LoanDetailsPage extends Page {
   /**
-   * @type {LoanDetailsData}
+   * @type {LoanRequestDetailsData|LoanOverviewDetailsData}
    */
   _apiData;
   #infoItemsData = [
