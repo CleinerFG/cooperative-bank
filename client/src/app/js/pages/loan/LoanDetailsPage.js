@@ -1,6 +1,5 @@
 import '../../types/loanDetailsType.js';
 import { Page } from '../../../../global/js/core/Page.js';
-import loanService from '../../services/LoanService.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { simulateWait } from '../../../../global/js/utils/tests.js';
 import {
@@ -71,6 +70,14 @@ export default class LoanDetailsPage extends Page {
       : 'debtor';
   }
 
+  /**
+   * @param {string} id
+   * @returns {Promise<[]>}
+   */
+  _fetchService(id) {
+    throw new AbstractMethodError('_fetchService');
+  }
+
   _addInfoItemData(position, item) {
     this.#infoItemsData.splice(position, 0, item);
   }
@@ -137,7 +144,7 @@ export default class LoanDetailsPage extends Page {
   async _fetchData() {
     try {
       await simulateWait();
-      this._apiData = await loanService.getLoanDetails(this._queryParams);
+      this._apiData = await this._fetchService(this._queryParams.id);
       console.log(this._apiData);
     } catch (e) {
       console.error(e);
