@@ -21,7 +21,7 @@ const routes = [
   {
     path: PAGE_ROUTES.loan.detailsRequest,
     pageModule: () =>
-      import('../pages/loan/requests/LoanDetailsRequestPage.js'),
+      import('../pages/loan/requests/LoanRequestDetailsPage.js'),
   },
   {
     path: PAGE_ROUTES.loan.overview,
@@ -30,7 +30,7 @@ const routes = [
   {
     path: PAGE_ROUTES.loan.detailsOverview,
     pageModule: () =>
-      import('../pages/loan/overview/LoanDetailsOverviewPage.js'),
+      import('../pages/loan/overview/LoanOverviewDetailsPage.js'),
   },
   {
     path: PAGE_ROUTES.loan.timeline,
