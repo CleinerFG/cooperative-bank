@@ -1,19 +1,19 @@
-import '../../../types/loanDetailsType.js';
-import { Page } from '../../../../../global/js/core/Page.js';
-import loanService from '../../../services/LoanService.js';
-import { ProgressBar } from './components/progressBar.js';
-import { ASSETS_ROUTE } from '../../../constants/routes.js';
-import { simulateWait } from '../../../../../global/js/utils/tests.js';
+import '../../types/loanDetailsType.js';
+import { Page } from '../../../../global/js/core/Page.js';
+import loanService from '../../services/LoanService.js';
+import { ProgressBar } from './overview/components/progressBar.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
+import { simulateWait } from '../../../../global/js/utils/tests.js';
 import {
   formatDate,
   numberToPercent,
   numberToCurrency,
-} from '../../../../../global/js/utils/formatters.js';
+} from '../../../../global/js/utils/formatters.js';
 import {
   capitalize,
   toCamelCase,
-} from '../../../../../global/js/utils/stringUtils.js';
-import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
+} from '../../../../global/js/utils/stringUtils.js';
+import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 
 export default class LoanDetailsPage extends Page {
   /**

@@ -1,7 +1,6 @@
 import { LoanManager } from '../../LoanManager.js';
 import LoanService from '../../../../services/LoanService.js';
-import { CardLoanRequestReceived } from './CardLoanRequestReceived.js';
-import { CardLoanRequestOpened } from './CardLoanRequestOpened.js';
+import { CardLoanRequest } from './CardLoanRequest.js';
 
 export default class LoanRequestsManager extends LoanManager {
   get _entityMap() {
@@ -10,11 +9,11 @@ export default class LoanRequestsManager extends LoanManager {
       categories: [
         {
           name: 'opened',
-          CardClass: CardLoanRequestOpened,
+          CardClass: CardLoanRequest,
         },
         {
           name: 'received',
-          CardClass: CardLoanRequestReceived,
+          CardClass: CardLoanRequest,
         },
       ],
     };
@@ -28,6 +27,6 @@ export default class LoanRequestsManager extends LoanManager {
   }
 
   get _cardSkelonRows() {
-    return 6;
+    return 2;
   }
 }

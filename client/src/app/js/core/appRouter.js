@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: PAGE_ROUTES.loan.details,
-    pageModule: () => import('../pages/loan/overview/LoanDetailsPage.js'),
+    pageModule: () => import('../pages/loan/LoanDetailsPage.js'),
   },
 ];
 
