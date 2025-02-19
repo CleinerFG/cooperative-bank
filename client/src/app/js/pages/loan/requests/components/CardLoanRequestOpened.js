@@ -1,4 +1,5 @@
-import { CardActiveLoan } from '../../overview/components/CardActiveLoan.js';
+import '../../../../types/loanType.js';
+import { CardLoanOverview } from '../../overview/components/CardLoanOverview.js';
 import { ConfirmOperationModal } from '../../../../../js/components/modal/ConfirmOperationModal.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import {
@@ -8,24 +9,7 @@ import {
 } from '../../../../../../global/js/utils/formatters.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
 
-/**
- * @typedef {object} LoanRequestOpenedData
- * @property {string} id
- * @property {'personal'|'auto'|'mortgage'} modality
- * @property {string} creditor
- * @property {string} date
- * @property {number} creditValue
- * @property {number} totalAmount
- * @property {number} installments
- * @property {number} installmentValue
- * @property {number} rate
- * @property {'pending'|'rejected'|'approved'} status
- */
-
-/**
- * Represents a card component specifically for displaying Loan Request Opened.
- */
-export class CardLoanRequestOpened extends CardActiveLoan {
+export class CardLoanRequestOpened extends CardLoanOverview {
   /**
    * @type {LoanRequestOpenedData}
    */

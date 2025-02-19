@@ -1,4 +1,5 @@
-import { CardActiveLoan } from '../../overview/components/CardActiveLoan.js';
+import '../../../../types/loanType.js';
+import { CardLoanOverview } from '../../overview/components/CardLoanOverview.js';
 import { ConfirmOperationModal } from '../../../../../js/components/modal/ConfirmOperationModal.js';
 import {
   numberToCurrency,
@@ -8,23 +9,7 @@ import {
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
 
-/**
- * @typedef {object} LoanRequestReceivedData
- * @property {string} id
- * @property {'personal'|'auto'|'mortgage'} modality
- * @property {string} debtor
- * @property {string} date
- * @property {number} creditValue
- * @property {number} totalAmount
- * @property {number} installments
- * @property {number} installmentValue
- * @property {number} rate
- */
-
-/**
- * Represents a card component specifically for displaying Loan Request Received.
- */
-export class CardLoanRequestReceived extends CardActiveLoan {
+export class CardLoanRequestReceived extends CardLoanOverview {
   /**
    * @type {LoanRequestReceivedData}
    */

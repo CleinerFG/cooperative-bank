@@ -1,6 +1,6 @@
 import LoanService from '../../../../services/LoanService.js';
 import { LoanManager } from '../../LoanManager.js';
-import { CardActiveLoan } from './CardActiveLoan.js';
+import { CardLoanOverview } from './CardLoanOverview.js';
 
 /**
  * Manages a group of active loans data components.
@@ -12,11 +12,11 @@ export default class ActiveLoanManager extends LoanManager {
       categories: [
         {
           name: 'payable',
-          CardClass: CardActiveLoan,
+          CardClass: CardLoanOverview,
         },
         {
           name: 'receivable',
-          CardClass: CardActiveLoan,
+          CardClass: CardLoanOverview,
         },
       ],
     };

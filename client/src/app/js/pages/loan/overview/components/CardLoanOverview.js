@@ -1,3 +1,5 @@
+import '../../../../types/loanType.js';
+
 import {
   formatDate,
   numberToCurrency,
@@ -9,20 +11,7 @@ import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import appRouter from '../../../../core/appRouter.js';
 import { PAGE_ROUTES } from '../../../../constants/routes.js';
 
-/**
- * @typedef {object} ActiveLoanData
- * @property {string} id
- * @property {'personal'|'auto'|'mortgage'} modality
- * @property {string} creditor
- * @property {string} debtor
- * @property {string} date
- * @property {number} creditValue
- */
-
-/**
- * Represents a card component specifically for displaying Active Loan.
- */
-export class CardActiveLoan extends Card {
+export class CardLoanOverview extends Card {
   get _modalityImgSrc() {
     return {
       personal: ASSETS_ROUTE + '/icons/icon-credit-card.svg',
@@ -32,7 +21,7 @@ export class CardActiveLoan extends Card {
   }
 
   /**
-   * @type {ActiveLoanData}
+   * @type {LoanOverviewData}
    */
   get _apiData() {
     return super._apiData;
