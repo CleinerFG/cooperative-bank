@@ -1,3 +1,4 @@
+import '../types/cardType.js';
 import {
   AbstractGetterError,
   AbstractMethodError,
@@ -13,18 +14,19 @@ import {
  * Base class for creating card components with customizable header, content, and footer sections.
  */
 export class Card {
+  #index;
   #apiData;
   #containerElement;
+  #category;
 
   /**
-   * @param {HTMLElement} containerElement
-   * @param {object} apiData
-   * @param {number} index
+   * @param {CardParams} params
    */
-  constructor(index, apiData, containerElement) {
-    this._index = index;
-    this.#apiData = apiData;
-    this.#containerElement = containerElement;
+  constructor(params) {
+    this.#index = params.index;
+    this.#category = params.category;
+    this.#apiData = params.apiData;
+    this.#containerElement = params.containerElement;
   }
 
   /**
@@ -38,18 +40,15 @@ export class Card {
     return this.#containerElement;
   }
 
-  /**
-   * @type {string}
-   */
-  get _cssId() {
-    return `${this._cssClass}-${this._index}`;
+  get _index() {
+    return this.#index;
   }
 
   /**
    * @type {string}
    */
-  get _cssClass() {
-    throw new AbstractGetterError('_cssClass');
+  get _id() {
+    return `${this.#category}-${this.#index}`;
   }
 
   /**
@@ -74,7 +73,7 @@ export class Card {
   }
 
   get _element() {
-    return document.getElementById(this._cssId);
+    return document.getElementById(this._id);
   }
 
   _setListeners() {
@@ -123,7 +122,7 @@ export class Card {
 
   #buildCardTemplate() {
     return `
-    <article id="${this._cssId}" class="card card-data ${this._cssClass}">
+      <article id="${this._id}" class="card card-data">
         ${this.#buildHeaderTemplate()}
         ${this.#buildMainContentTemplate()}
         ${this.#buildFooterTemplate()}

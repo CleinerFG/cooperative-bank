@@ -38,10 +38,6 @@ export class CardActiveLoan extends Card {
     return super._apiData;
   }
 
-  get _cssClass() {
-    return `active-loan`;
-  }
-
   get _itemsArray() {
     return [
       {
@@ -67,7 +63,7 @@ export class CardActiveLoan extends Card {
 
   get _footerTemplate() {
     return `
-     <button id="btn-${this._cssId}" class="btn card-data__btn">
+     <button id="btn-${this._id}" class="btn card-data__btn">
         See details
       </button>
     `;
@@ -75,7 +71,7 @@ export class CardActiveLoan extends Card {
 
   _setListeners() {
     this._containerElement
-      .querySelector(`#btn-${this._cssId}`)
+      .querySelector(`#btn-${this._id}`)
       .addEventListener('click', () => {
         appRouter.navigateTo(
           `${PAGE_ROUTES.loan.details}?id=${this._apiData.id}`
