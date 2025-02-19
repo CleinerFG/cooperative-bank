@@ -27,6 +27,6 @@ export default class LoanOverviewManager extends LoanManager {
   }
 
   get _cardSkelonRows() {
-    return 7;
+    return 2;
   }
 }
