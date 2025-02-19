@@ -22,7 +22,7 @@ export default class ActiveLoanManager extends LoanManager {
     };
   }
 
-  async _fetchByCategory(category) {
+  async _fetchService(category) {
     if (category === 'payable') {
       return LoanService.getActiveLoans('payable');
     }

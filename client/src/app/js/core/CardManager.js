@@ -5,8 +5,6 @@ import {
   AbstractGetterError,
   AbstractMethodError,
 } from '../../../global/js/errors/AbstractErrors.js';
-import { ASSETS_ROUTE } from '../constants/routes.js';
-import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
 
 /**
  * @typedef {Object} EntityMap
@@ -20,23 +18,13 @@ import { handleIconDark } from '../../../global/js/utils/themeUtils.js';
  * @property {Card} CardClass
  */
 
-/**
- * Manages the functionality of a group of Card
- * with filters, state management and rendering options.
- */
 export class CardManager {
   _cards = {};
   /**
    * @type {CardState}
    */
   #cardStateInstance;
-  #data = {};
-  #useDataFilter;
-  _ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
-
-  constructor(useDataFilter = false) {
-    this.#useDataFilter = useDataFilter;
-  }
+  #apiData = {};
 
   /**
    * @type {HTMLElement}
@@ -59,57 +47,30 @@ export class CardManager {
     throw new AbstractGetterError('_cardSkelonRows');
   }
 
-  get _customTitleTemplate() {
+  get _dashboardTemplate() {
     return '';
   }
 
-  get _customComponentsTemplate() {
-    return '';
+  get _titleTemplate() {
+    throw new AbstractGetterError('_titleTemplate');
   }
 
   /**
-   * @type {(category: string) => Promise<any>[]}
+   * @type {() => Promise<any>[]}
    */
-  async _fetchByCategory() {
-    throw new AbstractMethodError('_fetchByCategory');
+  async _fetchService() {
+    throw new AbstractMethodError('_fetchService');
   }
 
   get #cardsContainerElement() {
     return this._containerElement.querySelector('.cards');
   }
 
-  get #dateFilterTemplate() {
-    if (this.#useDataFilter) {
-      const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
-      return `
-      <div class="dashboard-filter">
-        <div class="inputs-container">
-          <div class="inp-group">
-            <label for="start-date-filter-${this._entityMap.entity}">Start date</label>
-            <input id="start-date-filter-${this._entityMap.entity}" class="inp inp-date" type="date">
-          </div>
-          <div class="inp-group">
-            <label for="end-date-filter-${this._entityMap.entity}">End date</label>
-            <input id="end-date-filter-${this._entityMap.entity}" class="inp inp-date" type="date">
-          </div>
-        </div>
-        <button class="btn-unset btn-filter">
-          <img id="${this._ICON_FILTER_ID}" class="icon filter-icon ${handleIconDark()}" src="${imgSrc}" alt="Filter Icon">
-        </button>
-      </div>
-      `;
-    }
-    return '';
-  }
-
   get #template() {
     return `
     <div class="card-group">
-      <div class="dashboard-container">
-        ${this._customComponentsTemplate}
-        ${this.#dateFilterTemplate}
-      </div>
-      ${this._customTitleTemplate}
+      ${this._dashboardTemplate}
+      ${this._titleTemplate}
       <div class="cards">
       </div>
     </div>
@@ -134,9 +95,9 @@ export class CardManager {
   async #fetchData() {
     this.#cardState.state = 'loading';
     try {
-      await simulateWait();
+      await simulateWait(2);
       const promises = this._entityMap.categories.map(async ({ name }) => {
-        this.#data[name] = await this._fetchByCategory(name);
+        this.#apiData[name] = await this._fetchService(name);
       });
       await Promise.all(promises);
     } catch (e) {
@@ -147,7 +108,7 @@ export class CardManager {
 
   #initCards() {
     this._entityMap.categories.forEach(({ name, CardClass }) => {
-      this._cards[name] = this.#data[name].map((data, index) => {
+      this._cards[name] = this.#apiData[name].map((data, index) => {
         return new CardClass(index, data, this.#cardsContainerElement);
       });
     });

@@ -20,7 +20,7 @@ export default class LoanRequestsManager extends LoanManager {
     };
   }
 
-  async _fetchByCategory(category) {
+  async _fetchService(category) {
     if (category === 'opened') {
       return LoanService.getRequests('opened');
     }
