@@ -1,17 +1,34 @@
 /**
- * @param {string} str
+ * @callback StringHandler
+ * @param {string} value
  * @returns {string}
  */
-export function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+
+/**
+ * @type {StringHandler}
+ */
+export function capitalize(value) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 /**
- * @param {string} str
- * @returns {number}
+ * @type {StringHandler}
  */
-export function monetaryValueToNumber(str) {
-  const numberStr = str
+export function toCamelCase(value) {
+  const splited = value.split(' ');
+  return splited
+    .map((word, index) => {
+      if (index === 0) return word.toLowerCase();
+      return capitalize(word);
+    })
+    .join('');
+}
+
+/**
+ * @type {StringHandler}
+ */
+export function monetaryValueToNumber(value) {
+  const numberStr = value
     .replace(/[R$\s]/g, '')
     .replace(/\./g, '')
     .replace(',', '.');
