@@ -35,9 +35,9 @@ export default class OverviewPage extends Page {
   }
 
   async _initComponents() {
-    const ActiveLoanManagerModule = await import(
-      './components/ActiveLoanManager.js'
+    const LoanOverviewManagerModule = await import(
+      './components/LoanOverviewManager.js'
     );
-    new ActiveLoanManagerModule.default();
+    new LoanOverviewManagerModule.default();
   }
 }

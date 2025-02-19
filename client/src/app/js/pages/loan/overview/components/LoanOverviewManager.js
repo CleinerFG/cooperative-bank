@@ -2,10 +2,7 @@ import LoanService from '../../../../services/LoanService.js';
 import { LoanManager } from '../../LoanManager.js';
 import { CardLoanOverview } from './CardLoanOverview.js';
 
-/**
- * Manages a group of active loans data components.
- */
-export default class ActiveLoanManager extends LoanManager {
+export default class LoanOverviewManager extends LoanManager {
   get _entityMap() {
     return {
       entity: 'active-loans',
