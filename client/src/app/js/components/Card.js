@@ -44,6 +44,10 @@ export class Card {
     return this.#index;
   }
 
+  get _category() {
+    return this.#category;
+  }
+
   /**
    * @type {string}
    */

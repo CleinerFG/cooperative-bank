@@ -59,12 +59,11 @@ export class CardLoanOverview extends Card {
   }
 
   _setListeners() {
+    const pageRoute = `${PAGE_ROUTES.loan.details}?id=${this._apiData.id}&category=${this._category}`;
     this._containerElement
       .querySelector(`#btn-${this._id}`)
       .addEventListener('click', () => {
-        appRouter.navigateTo(
-          `${PAGE_ROUTES.loan.details}?id=${this._apiData.id}`
-        );
+        appRouter.navigateTo(pageRoute);
       });
   }
 }

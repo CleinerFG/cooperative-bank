@@ -21,6 +21,13 @@ export default class LoanDetailsPage extends Page {
    */
   _apiData;
 
+  get _participantByCategory() {
+    const queryCategory = this._queryParams.category;
+    return queryCategory === 'payable' || queryCategory === 'opened'
+      ? 'creditor'
+      : 'debtor';
+  }
+
   get _infoItemsData() {
     return [
       {
@@ -34,7 +41,7 @@ export default class LoanDetailsPage extends Page {
         img: 'icon-bank.svg',
       },
       {
-        label: 'person',
+        label: this._participantByCategory,
         getValue: () =>
           capitalize(this._apiData?.creditor || this._apiData?.debtor),
         img: 'icon-person.svg',
