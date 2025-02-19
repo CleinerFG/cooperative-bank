@@ -10,7 +10,7 @@ class FeatureGroups {
     },
     {
       groupName: 'loan',
-      features: ['requests', 'payments', 'overview', 'timeline'],
+      features: ['requests', 'overview', 'timeline'],
       featureCards: [],
     },
     {

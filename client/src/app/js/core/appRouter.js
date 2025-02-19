@@ -32,6 +32,10 @@ const routes = [
     pageModule: () =>
       import('../pages/loan/overview/LoanDetailsOverviewPage.js'),
   },
+  {
+    path: PAGE_ROUTES.loan.timeline,
+    pageModule: () => import('../pages/loan/timeline/LoanTimelinePage.js'),
+  },
 ];
 
 export default new Router(routes);
