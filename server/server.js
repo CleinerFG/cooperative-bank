@@ -106,6 +106,8 @@ app.get(
   serveFile(DB_DIR, 'loan-request-received.json')
 );
 
+app.get('/api/loan/installments', serveFile(DB_DIR, 'loan-installments.json'));
+
 app.get('/api/users', (req, res) => {
   const { cpf } = req.query;
 
