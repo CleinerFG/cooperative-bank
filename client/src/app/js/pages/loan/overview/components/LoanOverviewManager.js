@@ -21,9 +21,9 @@ export default class LoanOverviewManager extends LoanManager {
 
   async _fetchService(category) {
     if (category === 'payable') {
-      return LoanService.getActiveLoans('payable');
+      return LoanService.getLoansOverview('payable');
     }
-    return LoanService.getActiveLoans('receivable');
+    return LoanService.getLoansOverview('receivable');
   }
 
   get _cardSkelonRows() {

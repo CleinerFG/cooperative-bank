@@ -1,4 +1,5 @@
 import '../types/formDataType.js';
+import '../types/loanType.js';
 import { API_BASE_URL } from '../../../global/js/constants.js';
 
 class LoanService {
@@ -6,14 +7,16 @@ class LoanService {
 
   /**
    * @param {'payable'|'receivable'} category
+   * @returns {Promise<LoanOverviewData[]>}
    */
-  async getActiveLoans(category) {
+  async getLoansOverview(category) {
     const res = await fetch(`${this._BASE_ENDPOINT}/overview/${category}`);
     return await res.json();
   }
 
   /**
    * @param {string} id
+   * @returns {Promise<LoanDetailsData[]>}
    */
   async getLoanDetails(id) {
     const res = await fetch(`${this._BASE_ENDPOINT}/overview/details?id=${id}`);
