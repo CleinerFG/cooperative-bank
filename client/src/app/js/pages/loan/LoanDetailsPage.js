@@ -1,7 +1,6 @@
 import '../../types/loanDetailsType.js';
 import { Page } from '../../../../global/js/core/Page.js';
 import loanService from '../../services/LoanService.js';
-import { ProgressBar } from './overview/components/progressBar.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { simulateWait } from '../../../../global/js/utils/tests.js';
 import {
@@ -14,15 +13,54 @@ import {
   toCamelCase,
 } from '../../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
+import { AbstractMethodError } from '../../../../global/js/errors/AbstractErrors.js';
 
 export default class LoanDetailsPage extends Page {
   /**
    * @type {LoanDetailsData}
    */
   _apiData;
+  #infoItemsData = [
+    {
+      label: 'contract date',
+      getValue: () => formatDate(this._apiData?.date),
+      img: 'icon-calendar.svg',
+    },
+    {
+      label: 'modality',
+      getValue: () => capitalize(this._apiData?.modality),
+      img: 'icon-bank.svg',
+    },
+    {
+      label: this._participantByCategory,
+      getValue: () =>
+        capitalize(this._apiData?.creditor || this._apiData?.debtor),
+      img: 'icon-person.svg',
+    },
+    {
+      label: 'credit value',
+      getValue: () => numberToCurrency(this._apiData?.creditValue),
+      img: 'icon-money.svg',
+    },
+    {
+      label: 'interest rate',
+      getValue: () => numberToPercent(this._apiData?.rate),
+      img: 'icon-percent.svg',
+    },
+    {
+      label: 'total amount',
+      getValue: () => numberToCurrency(this._apiData?.totalAmount),
+      img: 'icon-monitoring.svg',
+    },
+    {
+      label: 'installment value',
+      getValue: () => numberToCurrency(this._apiData?.installmentValue),
+    },
+  ];
 
   constructor(queryParams) {
     super(queryParams);
+    this._setCustomConfig();
     this._init();
   }
 
@@ -33,48 +71,8 @@ export default class LoanDetailsPage extends Page {
       : 'debtor';
   }
 
-  get _infoItemsData() {
-    return [
-      {
-        label: 'contract date',
-        getValue: () => formatDate(this._apiData?.date),
-        img: 'icon-calendar.svg',
-      },
-      {
-        label: 'modality',
-        getValue: () => capitalize(this._apiData?.modality),
-        img: 'icon-bank.svg',
-      },
-      {
-        label: this._participantByCategory,
-        getValue: () =>
-          capitalize(this._apiData?.creditor || this._apiData?.debtor),
-        img: 'icon-person.svg',
-      },
-      {
-        label: 'credit value',
-        getValue: () => numberToCurrency(this._apiData?.creditValue),
-        img: 'icon-money.svg',
-      },
-      {
-        label: 'interest rate',
-        getValue: () => numberToPercent(this._apiData?.rate),
-        img: 'icon-percent.svg',
-      },
-      {
-        label: 'total amount',
-        getValue: () => numberToCurrency(this._apiData?.totalAmount),
-        img: 'icon-monitoring.svg',
-      },
-      {
-        label: 'outstanding balance',
-        getValue: () => numberToCurrency(this._apiData?.outstandingBalance),
-      },
-      {
-        label: 'installment value',
-        getValue: () => numberToCurrency(this._apiData?.installmentValue),
-      },
-    ];
+  _addInfoItemData(position, item) {
+    this.#infoItemsData.splice(position, 0, item);
   }
 
   _buildInfoItemTemplate({ label, img }) {
@@ -96,7 +94,7 @@ export default class LoanDetailsPage extends Page {
   }
 
   _buildInfoItems() {
-    return this._infoItemsData.map(this._buildInfoItemTemplate).join('');
+    return this.#infoItemsData.map(this._buildInfoItemTemplate).join('');
   }
 
   get _detailsTemplate() {
@@ -129,7 +127,7 @@ export default class LoanDetailsPage extends Page {
 
   _displayData() {
     if (!this._apiData) return;
-    this._infoItemsData.forEach((item) => {
+    this.#infoItemsData.forEach((item) => {
       const valueId = toCamelCase(item.label);
       document.getElementById(valueId).textContent = item.getValue();
     });
@@ -146,18 +144,12 @@ export default class LoanDetailsPage extends Page {
     }
   }
 
-  _initComponents() {
-    const container = document.querySelector('.payment-progress');
-    new ProgressBar(
-      container,
-      'payment progress',
-      this._apiData.installments,
-      this._apiData.paidInstallments
-    );
-  }
-
   async _setup() {
     await this._fetchData();
     this._displayData();
+  }
+
+  _setCustomConfig() {
+    throw new AbstractMethodError('_setCustomConfig');
   }
 }

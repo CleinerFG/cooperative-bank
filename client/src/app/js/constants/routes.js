@@ -13,7 +13,8 @@ export const PAGE_ROUTES = {
     requests: `${BASE_URL}/loan/requests`,
     payments: `${BASE_URL}/loan/payments`,
     overview: `${BASE_URL}/loan/overview`,
-    details: `${BASE_URL}/loan/details`,
+    detailsOverview: `${BASE_URL}/loan/details`,
+    detailsRequest: `${BASE_URL}/loan/details`,
     timeline: `${BASE_URL}/loan/timeline`,
   },
   investments: {
