@@ -13,6 +13,7 @@ import {
   capitalize,
   toCamelCase,
 } from '../../../../../global/js/utils/stringUtils.js';
+import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
 
 export default class LoanDetailsPage extends Page {
   /**
@@ -66,7 +67,8 @@ export default class LoanDetailsPage extends Page {
 
   _buildInfoItemTemplate({ label, img }) {
     const hasImg = () => {
-      if (img) return `<img class="icon" src="${ASSETS_ROUTE}/icons/${img}">`;
+      if (img)
+        return `<img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/${img}">`;
       return '';
     };
     const valueId = toCamelCase(label);
