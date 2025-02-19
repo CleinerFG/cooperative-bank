@@ -6,7 +6,8 @@
   gap: 0.5rem;
 }
 
-.info-item {
+.info-item,
+.info-item__container {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -20,4 +21,12 @@
 .info-value {
   min-height: 1.2rem;
   width: 10rem;
+}
+
+.info-container.loan-details .icon {
+  width: 2.5rem;
+}
+
+.info-container.loan-details .info-item {
+  flex-direction: row;
 }
