@@ -44,9 +44,15 @@ export class CardLoanInstallment extends Card {
   }
 
   get _footerTemplate() {
+    let txt = 'Pay';
+    let action = 'pay';
+    if (this._apiData.status === 'paid') {
+      txt = 'See';
+      action = 'see';
+    }
     return `
-     <button id="btn-${this._id}" class="btn card-data__btn">
-        Pay
+     <button id="btn-${this._id}" class="btn card-data__btn" data-action="${action}">
+        ${txt}
       </button>
     `;
   }
