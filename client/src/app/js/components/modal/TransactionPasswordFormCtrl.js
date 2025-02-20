@@ -13,7 +13,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
   get _formElementsParams() {
     return [
       {
-        id: 'transactionPassword',
+        id: 'transactionPass',
         category: 'password',
         labelText: 'Transaction password',
         strictToNumber: true,

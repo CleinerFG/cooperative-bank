@@ -1,5 +1,6 @@
 import '../../../../types/loanType.js';
 
+import { ConfirmOperationModal } from '../../../../components/modal/ConfirmOperationModal.js';
 import {
   formatDate,
   numberToCurrency,
@@ -60,8 +61,12 @@ export class CardLoanInstallment extends Card {
   _setListeners() {
     this._containerElement
       .querySelector(`#btn-${this._id}`)
-      .addEventListener('click', () => {
-        console.log('Installment click -', this._index);
+      .addEventListener('click', async () => {
+        const modal = new ConfirmOperationModal();
+        const token = await modal.token;
+        console.log('Token from server:');
+        console.log(token);
+        console.log('--------');
       });
   }
 }

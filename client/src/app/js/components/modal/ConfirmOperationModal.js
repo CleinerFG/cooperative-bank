@@ -10,6 +10,11 @@ import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
 export class ConfirmOperationModal extends Modal {
   _token;
 
+  constructor() {
+    super();
+    this._init();
+  }
+
   get _modalContent() {
     return `
       <h2>Confirm Action</h2>
@@ -21,11 +26,14 @@ export class ConfirmOperationModal extends Modal {
    * @type {Promise}
    */
   get token() {
+    console.log('token in class');
+
+    console.log(this._token);
     return this._token;
   }
 
   async _setup() {
     const form = new TransactionPasswordFormCtrl();
-    this._token = await form.getResponse();
+    this._token = form.getResponse();
   }
 }

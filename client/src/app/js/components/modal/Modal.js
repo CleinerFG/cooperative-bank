@@ -9,10 +9,6 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
  * The modal is appended to the document body and includes built-in functionality to handle close events.
  */
 export class Modal {
-  constructor() {
-    this._init();
-  }
-
   /**
    * @type {string}
    */

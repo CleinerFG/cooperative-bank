@@ -140,8 +140,8 @@ app.get('*', (req, res) => {
 });
 
 app.post('/api/auth/transaction', (req, res) => {
-  const { pass } = req.body;
-  const isAuthenticated = pass === '123456';
+  const { transactionPass } = req.body;
+  const isAuthenticated = transactionPass === 123456;
   return res
     .status(isAuthenticated ? 200 : 401)
     .json({ success: isAuthenticated });
