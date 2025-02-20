@@ -38,6 +38,7 @@ export class ConfirmOperationModal extends Modal {
   async #handleFormOnSubmit() {
     const res = await this.#form.getResponse();
     this._token = res.token ?? null;
+    console.log(res);
   }
 
   _setListeners() {

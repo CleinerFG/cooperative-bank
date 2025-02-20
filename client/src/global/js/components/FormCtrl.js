@@ -1,6 +1,7 @@
 import '../types/formElementsType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
+import errorCodes from '../../constants/errorCodes.js';
 
 export class FormCtrl {
   #view;
@@ -17,19 +18,19 @@ export class FormCtrl {
   }
 
   get _modelClass() {
-    new AbstractGetterError('_modelClass');
+    throw new AbstractGetterError('_modelClass');
   }
 
   get _viewParams() {
-    new AbstractGetterError('_viewParams');
+    throw new AbstractGetterError('_viewParams');
   }
 
   get _formElementsParams() {
-    new AbstractGetterError('_formElementsParams');
+    throw new AbstractGetterError('_formElementsParams');
   }
 
   get _submitButtonParams() {
-    new AbstractGetterError('_submitButtonParams');
+    throw new AbstractGetterError('_submitButtonParams');
   }
 
   get _serviceMethod() {
@@ -37,22 +38,34 @@ export class FormCtrl {
   }
 
   get _formData() {
-    const data = {};
-    this.#view.formElements.forEach((formEl) => {
+    return this.#view.formElements.reduce((data, formEl) => {
       data[formEl.id] = formEl?.parseValue ?? formEl?.value;
+      return data;
+    }, {});
+  }
+
+  _handleInputErrors(errors) {
+    Object.keys(errors).forEach((key) => {
+      const formEl = this.#view.formElements.find((el) => el.id === key);
+      if (formEl) {
+        formEl.handleFailMessage('add', errorCodes[errors[key]].message);
+      }
     });
-    return data;
   }
 
   _handleInputsDataIsValid() {
     let isValid = true;
+    const errors = {};
+
     this.#view.formElements.forEach((formEl) => {
       if (!formEl.dataValid) {
         isValid = false;
-        formEl.handleFailMessage('add', 'Invalid data');
+        formEl.handleFailMessage('add', errorCodes.VALID_005.message);
+        errors[formEl.id] = 'VALID_005';
       }
     });
-    return isValid;
+
+    return { isValid, errors };
   }
 
   #createNewPromise() {
@@ -70,23 +83,23 @@ export class FormCtrl {
       e.preventDefault();
 
       this.#createNewPromise();
-      const isValid = this._handleInputsDataIsValid();
 
+      const { isValid, errors } = this._handleInputsDataIsValid();
       console.log(this._formData);
 
       if (!isValid) {
-        this.#resolvePromise({ success: false, reason: 'validationFail' });
-        return;
+        return this.#resolvePromise({ success: false, errors });
       }
 
       try {
         const res = await this._serviceMethod(this._formData);
         this.#resolvePromise(res);
+        if (res.errors) {
+          this._handleInputErrors(res.errors);
+        }
       } catch (e) {
         this.#resolvePromise({ success: false, reason: 'serverError' });
         console.error(e);
-      } finally {
-        this.#createNewPromise();
       }
     });
   }

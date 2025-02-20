@@ -1,5 +1,6 @@
 require('dotenv').config();
 const fs = require('fs').promises;
+
 const users = require('./data/db/users.js');
 const { cpfValidator } = require('./utils/validators');
 
@@ -147,9 +148,11 @@ app.post('/api/auth/transaction', (req, res) => {
       .status(200)
       .json({ success: isAuthenticated, token: 'token-123' });
   }
-  return res
-    .status(401)
-    .json({ success: isAuthenticated, token: null, reason: 'invalidPassword' });
+  return res.status(401).json({
+    success: isAuthenticated,
+    token: null,
+    errors: { transactionPass: 'AUTH_004' },
+  });
 });
 
 // Start server
