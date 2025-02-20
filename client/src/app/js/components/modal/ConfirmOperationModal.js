@@ -1,3 +1,4 @@
+import { simulateWait } from '../../../../global/js/utils/tests.js';
 import { Modal } from './Modal.js';
 import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
 
@@ -8,11 +9,23 @@ import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
  * @extends Modal
  */
 export class ConfirmOperationModal extends Modal {
-  _token;
+  #form;
 
   constructor() {
     super();
     this._init();
+  }
+
+  /**
+   * @note When inplemented return token
+   * @returns {Promise<boolean>}
+   */
+  async getToken() {
+    return await this._tokenPromise;
+  }
+
+  get #formElement() {
+    return document.getElementById('confirm-pass-form');
   }
 
   get _modalContent() {
@@ -22,18 +35,20 @@ export class ConfirmOperationModal extends Modal {
     `;
   }
 
-  /**
-   * @type {Promise}
-   */
-  get token() {
-    console.log('token in class');
+  async #handleFormOnSubmit() {
+    const token = await this.#form.getResponse();
+    this._token = token.success;
+  }
 
-    console.log(this._token);
-    return this._token;
+  _setListeners() {
+    super._setListeners();
+    this.#formElement.addEventListener(
+      'submit',
+      this.#handleFormOnSubmit.bind(this)
+    );
   }
 
   async _setup() {
-    const form = new TransactionPasswordFormCtrl();
-    this._token = form.getResponse();
+    this.#form = new TransactionPasswordFormCtrl();
   }
 }

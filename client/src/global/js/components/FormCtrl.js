@@ -6,60 +6,37 @@ export class FormCtrl {
   #view;
   #responsePromise;
   #resolvePromise;
+
   constructor() {
     this.#view = new FormView(
       this._viewParams,
       this._formElementsParams,
       this._submitButtonParams
     );
-    this.#responsePromise = new Promise((resolve) => {
-      this.#resolvePromise = resolve;
-    });
+    this.#createNewPromise();
     this.#init();
-  }
-
-  async getResponse() {
-    return this.#responsePromise;
   }
 
   get _modelClass() {
     new AbstractGetterError('_modelClass');
   }
 
-  /**
-   * @type {FormViewParams}
-   */
   get _viewParams() {
     new AbstractGetterError('_viewParams');
   }
 
-  /**
-   * @type {[FormElementDefault|FormElementPassword|FormElementSearch|FormElementSelect]}
-   */
   get _formElementsParams() {
     new AbstractGetterError('_formElementsParams');
   }
 
-  /**
-   * @type {SubmitButtonFormElementParams}}
-   */
   get _submitButtonParams() {
     new AbstractGetterError('_submitButtonParams');
   }
 
-  /**
-   * @type {(data:object)=>Promise}
-   */
   get _serviceMethod() {
     throw new AbstractGetterError('_serviceMethod');
   }
 
-  /**
-   * Collects and returns the form data.
-   * Uses the model class to format data for the API.
-   *
-   * @returns {object}
-   */
   get _formData() {
     const data = {};
     this.#view.formElements.forEach((formEl) => {
@@ -79,18 +56,31 @@ export class FormCtrl {
     return isValid;
   }
 
+  #createNewPromise() {
+    this.#responsePromise = new Promise((resolve) => {
+      this.#resolvePromise = resolve;
+    });
+  }
+
+  async getResponse() {
+    return this.#responsePromise;
+  }
+
   async #handleSubmit() {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isValid = this._handleInputsDataIsValid();
       console.log(this._formData);
+
+      if (!isValid) return;
+
+      this.#createNewPromise();
+
       try {
-        if (isValid) {
-          const res = await this._serviceMethod(this._formData);
-          this.#resolvePromise(res);
-        }
+        const res = await this._serviceMethod(this._formData);
+        this.#resolvePromise(res);
       } catch (e) {
-        this.#resolvePromise(null);
+        this.#resolvePromise(false);
         console.error(e);
       }
     });

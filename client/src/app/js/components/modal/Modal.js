@@ -9,6 +9,15 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
  * The modal is appended to the document body and includes built-in functionality to handle close events.
  */
 export class Modal {
+  #tokenPromiseResolve;
+  _token = false;
+
+  constructor() {
+    this._tokenPromise = new Promise((resolve) => {
+      this.#tokenPromiseResolve = resolve;
+    });
+  }
+
   /**
    * @type {string}
    */
@@ -21,6 +30,14 @@ export class Modal {
    */
   set #bodyOverflow(value) {
     document.body.style.overflow = value;
+  }
+
+  get #modalElement() {
+    return document.getElementById('modal');
+  }
+
+  get #closeModalBtnElement() {
+    return this.#modalElement.querySelector('.close-btn');
   }
 
   _setup() {
@@ -42,42 +59,27 @@ export class Modal {
     `;
   }
 
-  /**
-   * Renders the modal by appending it to the document body.
-   *
-   * @private
-   */
   #render() {
     document.body.insertAdjacentHTML('beforeend', this.#build());
   }
 
-  /**
-   * Defines event listeners for the modal, including the close button functionality.
-   *
-   * @private
-   */
-  #setListeners() {
-    const modalElement = document.getElementById('modal');
-    const closeModalBtn = document.querySelector('.modal .close-btn');
-    closeModalBtn.addEventListener('click', () => {
-      modalElement.remove();
-      this.#bodyOverflow = '';
-    });
+  #handleCloseModal() {
+    this.#tokenPromiseResolve(this._token);
+    this.#modalElement.remove();
+    this.#bodyOverflow = '';
   }
 
-  /**
-   * Initializes the modal by:
-   * - Setting the body overflow to "hidden".
-   * - Rendering the modal HTML.
-   * - Defining event listeners.
-   * - Initializing controllers (if overridden in a subclass).
-   *
-   * @private
-   */
+  _setListeners() {
+    this.#closeModalBtnElement.addEventListener(
+      'click',
+      this.#handleCloseModal.bind(this)
+    );
+  }
+
   _init() {
     this.#bodyOverflow = 'hidden';
     this.#render();
-    this.#setListeners();
     this._setup();
+    this._setListeners();
   }
 }

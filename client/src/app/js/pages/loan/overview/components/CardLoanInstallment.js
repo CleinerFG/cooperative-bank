@@ -63,10 +63,8 @@ export class CardLoanInstallment extends Card {
       .querySelector(`#btn-${this._id}`)
       .addEventListener('click', async () => {
         const modal = new ConfirmOperationModal();
-        const token = await modal.token;
-        console.log('Token from server:');
-        console.log(token);
-        console.log('--------');
+        const token = await modal.getToken();
+        console.log(`Token from modal: ${token}`);
       });
   }
 }
