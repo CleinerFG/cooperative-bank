@@ -142,9 +142,14 @@ app.get('*', (req, res) => {
 app.post('/api/auth/transaction', (req, res) => {
   const { transactionPass } = req.body;
   const isAuthenticated = transactionPass === 123456;
+  if (isAuthenticated) {
+    return res
+      .status(200)
+      .json({ success: isAuthenticated, token: 'token-123' });
+  }
   return res
-    .status(isAuthenticated ? 200 : 401)
-    .json({ success: isAuthenticated });
+    .status(401)
+    .json({ success: isAuthenticated, token: null, reason: 'invalidPassword' });
 });
 
 // Start server

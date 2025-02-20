@@ -10,7 +10,7 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
  */
 export class Modal {
   #tokenPromiseResolve;
-  _token = false;
+  _token = null;
 
   constructor() {
     this._tokenPromise = new Promise((resolve) => {

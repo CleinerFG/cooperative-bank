@@ -66,17 +66,16 @@ export class FormCtrl {
   }
 
   async #handleSubmit() {
-    console.log('handle');
-
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const isValid = this._handleInputsDataIsValid();
-      console.log(this._formData);
 
       this.#createNewPromise();
+      const isValid = this._handleInputsDataIsValid();
+
+      console.log(this._formData);
+
       if (!isValid) {
-        console.log('Invalid');
-        this.#resolvePromise({ success: false, reason: 'validation_fail' });
+        this.#resolvePromise({ success: false, reason: 'validationFail' });
         return;
       }
 
@@ -84,7 +83,7 @@ export class FormCtrl {
         const res = await this._serviceMethod(this._formData);
         this.#resolvePromise(res);
       } catch (e) {
-        this.#resolvePromise({ success: false, reason: 'server_error' });
+        this.#resolvePromise({ success: false, reason: 'serverError' });
         console.error(e);
       } finally {
         this.#createNewPromise();
