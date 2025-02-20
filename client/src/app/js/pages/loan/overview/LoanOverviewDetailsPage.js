@@ -32,7 +32,7 @@ export default class LoanDetaislOverviewPage extends LoanDetailsPage {
 
   _initComponents() {
     this._paymentProgressHandler();
-    new LoanInstallmentManager();
+    new LoanInstallmentManager(this._apiData.id);
   }
 
   _setCustomConfig() {

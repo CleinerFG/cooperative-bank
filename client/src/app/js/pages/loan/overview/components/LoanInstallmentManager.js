@@ -3,8 +3,9 @@ import loanService from '../../../../services/LoanService.js';
 import { CardLoanInstallment } from './CardLoanInstallment';
 
 export default class LoanInstallmentManager extends CardManager {
-  constructor() {
+  constructor(loanId) {
     super();
+    this._loanId = loanId;
     this._init();
   }
 
@@ -33,7 +34,7 @@ export default class LoanInstallmentManager extends CardManager {
   }
 
   async _fetchService() {
-    return loanService.getInstallments();
+    return loanService.getInstallments(this._loanId);
   }
 
   async _init() {
