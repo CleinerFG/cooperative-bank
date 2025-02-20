@@ -41,6 +41,15 @@ class LoanService {
   }
 
   /**
+   * @param {string} id
+   * @returns {Promise<LoanInstallmentData[]>}
+   */
+  async getInstallments(id) {
+    const res = await fetch(`${this._BASE_ENDPOINT}/installments?id=${id}`);
+    return await res.json();
+  }
+
+  /**
    * @param {FormDataLoanRequest} data
    */
   async newRequest(data) {

@@ -2,8 +2,13 @@ import LoanDetailsPage from '../LoanDetailsPage.js';
 import loanService from '../../../services/LoanService.js';
 import { ProgressBar } from './components/progressBar.js';
 import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
+import LoanInstallmentManager from './components/LoanInstallmentManager.js';
 
 export default class LoanDetaislOverviewPage extends LoanDetailsPage {
+  get _customTemplate() {
+    return '<div id="loan-installments"></div>';
+  }
+
   _fetchService(id) {
     return loanService.getLoanDetailsOverview(id);
   }
@@ -27,6 +32,7 @@ export default class LoanDetaislOverviewPage extends LoanDetailsPage {
 
   _initComponents() {
     this._paymentProgressHandler();
+    new LoanInstallmentManager();
   }
 
   _setCustomConfig() {

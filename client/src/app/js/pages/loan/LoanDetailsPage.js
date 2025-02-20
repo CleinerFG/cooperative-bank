@@ -60,8 +60,8 @@ export default class LoanDetailsPage extends Page {
   constructor(queryParams) {
     super(queryParams);
     this._setCustomConfig();
-    this._setup();
     this._init();
+    this._setup();
   }
 
   get _participantByCategory() {
@@ -71,11 +71,14 @@ export default class LoanDetailsPage extends Page {
       : 'debtor';
   }
 
+  get _customTemplate() {
+    return '';
+  }
+
   /**
-   * @param {string} id
    * @returns {Promise<[]>}
    */
-  _fetchService(id) {
+  _fetchService() {
     throw new AbstractMethodError('_fetchService');
   }
 
@@ -129,6 +132,7 @@ export default class LoanDetailsPage extends Page {
   get _template() {
     return `
     ${this._detailsTemplate}
+    ${this._customTemplate}
     `;
   }
 
