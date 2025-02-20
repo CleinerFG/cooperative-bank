@@ -4,7 +4,7 @@
 
 body {
   background-color: var(--color-bg);
-  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
 }
@@ -14,11 +14,11 @@ body {
   max-width: 768px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
 }
 
 main#app {
-  /* border: var(--component-border); */
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
   margin-top: var(--header-height);
   background-color: var(--color-bg);
