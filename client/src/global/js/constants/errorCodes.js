@@ -1,4 +1,4 @@
-export default {
+export const INP_ERRORS = {
   AUTH_001: {
     desc: 'invalidEmailType',
     message: 'The email must be a valid string',

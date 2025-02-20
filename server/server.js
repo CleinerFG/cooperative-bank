@@ -141,8 +141,8 @@ app.get('*', (req, res) => {
 });
 
 app.post('/api/auth/transaction', (req, res) => {
-  const { transactionPass } = req.body;
-  const isAuthenticated = transactionPass === 123456;
+  const { transactionPassword } = req.body;
+  const isAuthenticated = transactionPassword === 123456;
   if (isAuthenticated) {
     return res
       .status(200)
@@ -151,7 +151,7 @@ app.post('/api/auth/transaction', (req, res) => {
   return res.status(401).json({
     success: isAuthenticated,
     token: null,
-    errors: { transactionPass: 'AUTH_004' },
+    inpErrors: [{ id: 'transactionPassword', cod: 'AUTH_004' }],
   });
 });
 

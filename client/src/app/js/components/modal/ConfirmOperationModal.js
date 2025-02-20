@@ -1,4 +1,4 @@
-import { simulateWait } from '../../../../global/js/utils/tests.js';
+import '../../../../global/js/types/serverResponseType.js';
 import { Modal } from './Modal.js';
 import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
 
@@ -17,7 +17,7 @@ export class ConfirmOperationModal extends Modal {
   }
 
   /**
-   * @note When inplemented return token
+   * @note When inplemented return real token
    * @returns {Promise<boolean>}
    */
   async getToken() {
@@ -35,6 +35,9 @@ export class ConfirmOperationModal extends Modal {
     `;
   }
 
+  /**
+   * @type {ServerFormResponse}
+   */
   async #handleFormOnSubmit() {
     const res = await this.#form.getResponse();
     this._token = res.token ?? null;

@@ -1,7 +1,8 @@
 import '../types/formElementsType.js';
+import '../types/serverResponseType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import errorCodes from '../constants/errorCodes.js';
+import { INP_ERRORS } from '../constants/errorCodes.js';
 
 export class FormCtrl {
   #view;
@@ -44,28 +45,31 @@ export class FormCtrl {
     }, {});
   }
 
-  _handleInputErrors(errors) {
-    Object.keys(errors).forEach((key) => {
-      const formEl = this.#view.formElements.find((el) => el.id === key);
+  /**
+   * @param {InputError[]} inpErrors
+   */
+  _handleInputErrors(inpErrors) {
+    inpErrors.forEach(({ id, cod }) => {
+      const formEl = this.#view.formElements.find((el) => el.id === id);
       if (formEl) {
-        formEl.handleFailMessage('add', errorCodes[errors[key]].message);
+        formEl.handleFailMessage('add', INP_ERRORS[cod].message);
       }
     });
   }
 
   _handleInputsDataIsValid() {
     let isValid = true;
-    const errors = {};
+    const inpErrors = [];
 
     this.#view.formElements.forEach((formEl) => {
       if (!formEl.dataValid) {
         isValid = false;
-        formEl.handleFailMessage('add', errorCodes.VALID_005.message);
-        errors[formEl.id] = 'VALID_005';
+        formEl.handleFailMessage('add', INP_ERRORS.VALID_005.message);
+        inpErrors.push({ id: formEl.id, cod: 'VALID_005' });
       }
     });
 
-    return { isValid, errors };
+    return { isValid, inpErrors };
   }
 
   #createNewPromise() {
@@ -74,6 +78,9 @@ export class FormCtrl {
     });
   }
 
+  /**
+   * @type {Promise<ServerFormResponse|ServerErrorFormResponse>|undefined}
+   */
   async getResponse() {
     return this.#responsePromise;
   }
@@ -84,18 +91,21 @@ export class FormCtrl {
 
       this.#createNewPromise();
 
-      const { isValid, errors } = this._handleInputsDataIsValid();
+      const { isValid, inpErrors } = this._handleInputsDataIsValid();
       console.log(this._formData);
 
       if (!isValid) {
-        return this.#resolvePromise({ success: false, errors });
+        return this.#resolvePromise({ success: false, inpErrors });
       }
 
       try {
+        /**
+         * @type {ServerFormResponse}
+         */
         const res = await this._serviceMethod(this._formData);
         this.#resolvePromise(res);
-        if (res.errors) {
-          this._handleInputErrors(res.errors);
+        if (res.inpErrors) {
+          this._handleInputErrors(res.inpErrors);
         }
       } catch (e) {
         this.#resolvePromise({ success: false, reason: 'serverError' });
