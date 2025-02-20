@@ -137,7 +137,7 @@ export class Card {
 
   #render() {
     this.#containerElement.insertAdjacentHTML(
-      'afterbegin',
+      'beforeend',
       this.#buildCardTemplate()
     );
   }
