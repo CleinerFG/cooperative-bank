@@ -2,6 +2,8 @@ import {
   LOCAL_STORAGE_THEME_KEY,
   DEFAULT_THEME,
 } from '../../constants/theme.js';
+import { AssetManager } from '../../../../global/js/core/AssetManager.js';
+import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 
 /**
  * Manages the app theme, including storing and applying
@@ -43,6 +45,10 @@ class Theme {
     return this.#currentTheme === 'dark' ? 'light' : 'dark';
   }
 
+  #updateThemeModeIcon(theme) {
+    AssetManager.updateAsset('#icon-theme', `icon-${theme}-theme.svg`);
+  }
+
   #updateIcons() {
     const icons = document.querySelectorAll('.icon');
     icons.forEach((icon) => {
@@ -52,6 +58,7 @@ class Theme {
 
   #toggleTheme() {
     this.#updateIcons();
+    this.#updateThemeModeIcon(this.#updatedTheme);
     this.#storedTheme = this.#updatedTheme;
     this.#bodyTheme = this.#updatedTheme;
   }
@@ -72,6 +79,7 @@ class Theme {
   init() {
     this.#applyStoredTheme();
     this.#setListeners();
+    this.#updateThemeModeIcon(this.#currentTheme);
   }
 }
 
