@@ -13,7 +13,6 @@ export class FormCtrl {
       this._formElementsParams,
       this._submitButtonParams
     );
-    this.#createNewPromise();
     this.#init();
   }
 
@@ -67,21 +66,28 @@ export class FormCtrl {
   }
 
   async #handleSubmit() {
+    console.log('handle');
+
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isValid = this._handleInputsDataIsValid();
       console.log(this._formData);
 
-      if (!isValid) return;
-
       this.#createNewPromise();
+      if (!isValid) {
+        console.log('Invalid');
+        this.#resolvePromise({ success: false, reason: 'validation_fail' });
+        return;
+      }
 
       try {
         const res = await this._serviceMethod(this._formData);
         this.#resolvePromise(res);
       } catch (e) {
-        this.#resolvePromise(false);
+        this.#resolvePromise({ success: false, reason: 'server_error' });
         console.error(e);
+      } finally {
+        this.#createNewPromise();
       }
     });
   }
