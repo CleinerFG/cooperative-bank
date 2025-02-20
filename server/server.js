@@ -42,6 +42,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+
 // Helper function to serve files
 const serveFile = (directory, filename) => (req, res) => {
   const filePath = path.join(directory, filename);
@@ -135,6 +137,14 @@ app.get('*', (req, res) => {
     return;
   }
   serveFile(PUBLIC_PAGES_DIR, 'index.html')(req, res);
+});
+
+app.post('/api/auth/transaction', (req, res) => {
+  const { pass } = req.body;
+  const isAuthenticated = pass === '123456';
+  return res
+    .status(isAuthenticated ? 200 : 401)
+    .json({ success: isAuthenticated });
 });
 
 // Start server
