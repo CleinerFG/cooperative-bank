@@ -52,7 +52,7 @@ npm install
     SERVER_IP=localhost
     ```
 
-  - Defina o endereço de IP na constante global **`client/src/global/js/constants.js`**:
+  - Defina o endereço de IP na constante global **`client/src/global/js/constants/config.js`**:
 
     ```js
     const SERVER_IP = 'localhost';
@@ -76,7 +76,7 @@ npm install
 
 - `Dev-test`: Onde há requisições ao servidor, há skelons ou loaders. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso para que eles sejam visíveis.
 
-  - Defina o tempo em segundos **`client/src/global/js/constants.js`**:
+  - Defina o tempo em segundos **`client/src/global/js/constants/config.js`**:
 
     ```js
     const SIMULATE_WAIT_SERVER = 3;

@@ -1,4 +1,4 @@
-import { SIMULATE_WAIT_SERVER } from '../constants.JS';
+import { SIMULATE_WAIT_SERVER } from '../constants/config.js';
 
 /**
  * @param {number} [seconds=2]

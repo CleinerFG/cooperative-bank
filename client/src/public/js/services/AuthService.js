@@ -1,5 +1,5 @@
 import '../types/formDataType.js';
-import { API_BASE_URL } from '../../../global/js/constants.js';
+import { API_BASE_URL } from '../../../global/js/constants/config.js';
 
 class AuthService {
   /**

@@ -1,7 +1,7 @@
 import '../types/formElementsType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import errorCodes from '../../constants/errorCodes.js';
+import errorCodes from '../constants/errorCodes.js';
 
 export class FormCtrl {
   #view;

@@ -1,6 +1,6 @@
 import '../types/formDataType.js';
 import '../types/loanType.js';
-import { API_BASE_URL } from '../../../global/js/constants.js';
+import { API_BASE_URL } from '../../../global/js/constants/config.js';
 
 class LoanService {
   _BASE_ENDPOINT = `${API_BASE_URL}/loan`;

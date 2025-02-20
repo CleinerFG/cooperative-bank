@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../constants.js';
+import { API_BASE_URL } from '../constants/config.js';
 import { NotFoundError } from '../errors/InputErrors.js';
 
 export class SearchInputService {
