@@ -9,6 +9,7 @@
 
   --color-secondary: hsl(220, 41%, 20%);
   --color-secondary-hover: hsl(220, 41%, 25%);
+  --color-dark: #212121;
 }
 
 [data-theme='light'] {
@@ -26,6 +27,7 @@
   --component-line-color: hsl(0, 0%, 80%);
   --component-bg-color: hsl(75, 40%, 98%);
   --component-bg-color-dark: hsl(75, 40%, 96%);
+  --component-status-bg-color: #212121;
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
   --inp-focus-color: hsl(169, 96%, 38%);
@@ -50,6 +52,7 @@
   --component-line-color: hsl(0, 0%, 20%);
   --component-bg-color: hsl(0, 0%, 11%);
   --component-bg-color-dark: hsl(0, 0%, 8%);
+  --component-status-bg-color: #dedede;
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
   --inp-focus-color: hsl(169, 96%, 25%);

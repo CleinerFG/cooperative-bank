@@ -44,27 +44,41 @@ export class CardLoanInstallment extends Card {
     `;
   }
 
-  get _footerTemplate() {
-    let txt = 'Pay';
-    let action = 'pay';
-    if (this._apiData.status === 'paid') {
-      txt = 'See';
-      action = 'see';
+  async #makePaymentHandler() {
+    const modal = new ConfirmOperationModal();
+    const token = await modal.getToken();
+    console.log(`Token from modal: ${token}`);
+  }
+
+  #handleActionBtn() {
+    if (this._apiData.status === 'pending') {
+      this.#makePaymentHandler();
+      return;
     }
+    console.log('---Implement see payment---');
+  }
+
+  get #actionBtnElement() {
+    return this._containerElement.querySelector(`#btn-${this._id}`);
+  }
+
+  get _footerTemplate() {
+    const status = this._apiData.status;
+    const configMap = {
+      txt: status === 'paid' ? 'See' : 'Pay',
+      cssClass: status === 'paid' ? '' : 'btn-attention',
+    };
     return `
-     <button id="btn-${this._id}" class="btn card-data__btn" data-action="${action}">
-        ${txt}
-      </button>
+     <button id="btn-${this._id}" class="btn card-data__btn ${configMap.cssClass}">
+        ${configMap.txt}
+     </button>
     `;
   }
 
   _setListeners() {
-    this._containerElement
-      .querySelector(`#btn-${this._id}`)
-      .addEventListener('click', async () => {
-        const modal = new ConfirmOperationModal();
-        const token = await modal.getToken();
-        console.log(`Token from modal: ${token}`);
-      });
+    this.#actionBtnElement.addEventListener(
+      'click',
+      this.#handleActionBtn.bind(this)
+    );
   }
 }

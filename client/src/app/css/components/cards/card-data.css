@@ -74,11 +74,11 @@
 }
 
 .card-data__header > .span-status {
-  color: var(--color-bg);
   font-size: 1rem;
   border-top-right-radius: var(--component-border-radius);
   border-bottom-left-radius: var(--component-border-radius);
-  background-color: var(--text-color);
+  background-color: var(--component-status-bg-color);
+  color: var(--color-bg);
   padding: 0.2rem 0.6rem;
   position: absolute;
   top: 0;
@@ -86,11 +86,13 @@
 }
 
 .card-data__header .span-fail {
-  color: var(--color-fail);
+  background-color: var(--color-fail);
+  color: var(--color-dark);
 }
 
 .card-data__header .span-success {
-  color: var(--color-success);
+  background-color: var(--color-success);
+  color: var(--color-dark);
 }
 
 .card-data__header .span-date {
