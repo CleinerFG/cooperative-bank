@@ -9,10 +9,12 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
  * The modal is appended to the document body and includes built-in functionality to handle close events.
  */
 export class Modal {
+  #category;
   #tokenPromiseResolve;
   _token = null;
 
-  constructor() {
+  constructor(category) {
+    this.#category = category;
     this._tokenPromise = new Promise((resolve) => {
       this.#tokenPromiseResolve = resolve;
     });
@@ -21,8 +23,15 @@ export class Modal {
   /**
    * @type {string}
    */
-  get _modalContent() {
-    throw new AbstractGetterError('_modalContent');
+  get _headerTemplate() {
+    throw new AbstractGetterError('_headerTemplate');
+  }
+
+  /**
+   * @type {string}
+   */
+  get _contentTemplate() {
+    throw new AbstractGetterError('_contentTemplate');
   }
 
   /**
@@ -34,6 +43,14 @@ export class Modal {
 
   get #modalElement() {
     return document.getElementById('modal');
+  }
+
+  get _headerElement() {
+    return this.#modalElement.querySelector('.modal-header');
+  }
+
+  get _contentElement() {
+    return this.#modalElement.querySelector('.modal-content');
   }
 
   get #closeModalBtnElement() {
@@ -48,12 +65,15 @@ export class Modal {
     return `
     <div id="modal" class="modal">
     <article class="modal-body">
-      <button class="close-btn" aria-label="Close window">
+      <button class="btn-unset close-btn" aria-label="Close window">
         <img src="${ASSETS_ROUTE}/icons/icon-close.svg" alt="Close window"/>
       </button>
-      <section class="modal-content">
-        ${this._modalContent}
-      </section>
+      <div class="modal-container">
+        <header class="modal-header">${this._headerTemplate}</header>
+        <section class="modal-content ${this.#category}">
+          ${this._contentTemplate}
+        </section>
+      </div>
     </article>
     </div>
     `;
@@ -63,7 +83,7 @@ export class Modal {
     document.body.insertAdjacentHTML('beforeend', this.#build());
   }
 
-  #handleCloseModal() {
+  _handleCloseModal() {
     this.#tokenPromiseResolve(this._token);
     this.#modalElement.remove();
     this.#bodyOverflow = '';
@@ -72,7 +92,7 @@ export class Modal {
   _setListeners() {
     this.#closeModalBtnElement.addEventListener(
       'click',
-      this.#handleCloseModal.bind(this)
+      this._handleCloseModal.bind(this)
     );
   }
 

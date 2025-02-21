@@ -1,4 +1,5 @@
 import '../../../../global/js/types/serverResponseType.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { Modal } from './Modal.js';
 import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
 
@@ -12,7 +13,7 @@ export class ConfirmOperationModal extends Modal {
   #form;
 
   constructor() {
-    super();
+    super('confirm-operation');
     this._init();
   }
 
@@ -24,24 +25,54 @@ export class ConfirmOperationModal extends Modal {
     return await this._tokenPromise;
   }
 
+  get #successBtnElement() {
+    return this._contentElement.querySelector('.btn-success');
+  }
+
   get #formElement() {
     return document.getElementById('confirm-pass-form');
   }
 
-  get _modalContent() {
+  get _headerTemplate() {
+    return '<h2 class="modal-title">Authorize operation</h2>';
+  }
+
+  get _contentTemplate() {
     return `
-      <h2>Confirm Action</h2>
-      <p>Enter the numeric transaction password</p>
+      <p class="info-text">Enter the numeric transaction password</p>
     `;
   }
 
-  /**
-   * @type {ServerFormResponse}
-   */
+  #authMessageHandler() {
+    const title = `
+      <img class="icon-success" src="${ASSETS_ROUTE}/icons/icon-success.svg" alt="Success">
+      <h2>Success</h2>
+    `;
+    const message = `
+      <span class="info-text">The operation was authorized.</span>
+      <button class="btn btn-success">OK</button>
+    `;
+    this._headerElement.innerHTML = title;
+    this._contentElement.innerHTML = message;
+  }
+
+  #successBtnHandler() {
+    this.#successBtnElement.addEventListener(
+      'click',
+      this._handleCloseModal.bind(this)
+    );
+  }
+
   async #handleFormOnSubmit() {
+    /**
+     * @type {ServerFormResponse}
+     */
     const res = await this.#form.getResponse();
-    this._token = res.token ?? null;
-    console.log(res);
+    if (res.token) {
+      this._token = res.token;
+      this.#authMessageHandler();
+      this.#successBtnHandler();
+    }
   }
 
   _setListeners() {

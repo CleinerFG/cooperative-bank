@@ -10,7 +10,6 @@ li {
 
 .info-text {
   font-family: var(--info-font-family);
-  text-align: justify;
 }
 
 a:hover {

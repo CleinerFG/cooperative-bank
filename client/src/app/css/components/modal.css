@@ -23,34 +23,45 @@
 }
 
 .modal-body {
+  padding: 0.5rem 1rem 1rem 1rem;
   margin: 1rem;
-  background-color: var(--color-bg);
-  border-radius: var(--component-border-radius);
+  background-color: var(--component-bg-color-dark);
+  border-radius: 0.8rem;
   max-width: 400px;
   position: relative;
 }
 
-.modal-content {
-  padding: var(--container-padding);
+.modal-header {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-title {
+  align-self: self-start;
+}
+
+.modal-header .icon-success {
+  width: 3rem;
+  height: 3rem;
+}
+
+.modal-content {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .modal .close-btn {
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   right: 0;
   position: absolute;
-  color: var(--color-cta);
-  border-top-right-radius: var(--component-border-radius);
-  font-size: 2rem;
-  background-color: transparent;
-  width: 2rem;
-  height: 2rem;
-  border: none;
 }
 
 .modal-form .modal-btn {
