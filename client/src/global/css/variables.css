@@ -5,6 +5,13 @@
   --color-primary-translucent: hsla(169, 96%, 38%, 0.3);
   --color-off-white: #fbfcf8;
 
+  --color-success: hsl(120, 85%, 35%);
+  --color-success-hover: hsl(120, 85%, 37%);
+  --color-attention: hsl(60, 85%, 50%);
+  --color-attention-hover: hsl(60, 85%, 52%);
+  --color-fail: hsl(0, 85%, 65%);
+  --color-fail-hover: hsl(0, 85%, 63%);
+
   --container-padding: 0.8rem;
   --header-height: 3.5rem;
 
