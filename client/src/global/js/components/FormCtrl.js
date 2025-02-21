@@ -18,18 +18,23 @@ export class FormCtrl {
     this.#init();
   }
 
-  get _modelClass() {
-    throw new AbstractGetterError('_modelClass');
-  }
-
+  /**
+   * @type {FormViewParams}
+   */
   get _viewParams() {
     throw new AbstractGetterError('_viewParams');
   }
 
+  /**
+   * @type {[InputParams|SearchInputParams|SelectParams]}
+   */
   get _formElementsParams() {
     throw new AbstractGetterError('_formElementsParams');
   }
 
+  /**
+   * @type {SubmitButtonParams}
+   */
   get _submitButtonParams() {
     throw new AbstractGetterError('_submitButtonParams');
   }

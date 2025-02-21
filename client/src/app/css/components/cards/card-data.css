@@ -39,6 +39,7 @@
 
 .card-data__label {
   text-align: left;
+  font-weight: 450;
 }
 
 .card-data__value {
@@ -47,10 +48,6 @@
 
 .card-data__item + .card-data__item {
   border-top: solid 0.1rem var(--component-line-color);
-}
-
-.card-data__value {
-  font-style: italic;
 }
 
 .card-data__footer {

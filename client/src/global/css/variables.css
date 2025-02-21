@@ -1,4 +1,7 @@
 :root {
+  --text-font-family: 'Roboto', sans-serif;
+  --title-font-family: 'Poppins', sans-serif;
+
   --color-primary-translucent: hsla(169, 96%, 38%, 0.3);
   --color-off-white: #fbfcf8;
 

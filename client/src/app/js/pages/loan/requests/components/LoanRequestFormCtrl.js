@@ -66,6 +66,7 @@ export default class LoanRequestFormCtrl extends FormCtrl {
     return {
       id: 'submit',
       labelText: 'Request',
+      cssClass: 'btn-action',
     };
   }
 

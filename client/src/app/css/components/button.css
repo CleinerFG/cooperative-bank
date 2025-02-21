@@ -3,7 +3,7 @@
   border: none;
   border-radius: var(--component-border-radius);
   background-color: var(--color-secondary);
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .btn-action {

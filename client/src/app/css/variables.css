@@ -3,8 +3,6 @@
 :root {
   --card-state-box-shadow: -0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
 
-  --text-font-family: 'Roboto Condensed', sans-serif;
-  --title-font-family: 'Roboto Slab', serif;
   --info-font-family: 'Open Sans', sans-serif;
 
   --color-dark: #212121;

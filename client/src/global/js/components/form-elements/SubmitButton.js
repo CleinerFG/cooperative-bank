@@ -2,16 +2,18 @@ import '../../types/formElementsType.js';
 import Input from './Input.js';
 
 export class SubmitButton extends Input {
+  #cssClass;
   /**
    * @param {SubmitButtonParams} params
    */
   constructor(params) {
     super(params);
+    this.#cssClass = params.cssClass ?? '';
   }
 
   get _template() {
     return `
-      <button id="${this._id}" class="btn btn-action ${this._cssClass}" type="submit">${this._labelText}</button>`;
+      <button id="${this._id}" class="btn ${this.#cssClass}" type="submit">${this._labelText}</button>`;
   }
 
   /**

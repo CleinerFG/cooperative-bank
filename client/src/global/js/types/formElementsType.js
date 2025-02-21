@@ -38,6 +38,7 @@
  * @typedef {object} SubmitButtonParams
  * @property {HTMLElement} containerElement
  * @property {string} id
+ * @property {string} [cssClass]
  * @property {string} labelText
  */
 
