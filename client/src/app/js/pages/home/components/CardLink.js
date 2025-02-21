@@ -30,7 +30,7 @@ export class CardLink {
     return `card-icon-${this.#groupName}-${this.#name}`;
   }
 
-  get #imgSrc() {
+  get #icon() {
     return `${ASSETS_ROUTE}/icons/icon-${this.#name}.svg`;
   }
 
@@ -42,7 +42,7 @@ export class CardLink {
         <div class="card card-link">
           <img id="${this.#iconId}"
             class="icon card-link__icon ${handleIconDark()}"
-            src="${this.#imgSrc}"
+            src="${this.#icon}"
             alt="${capName} Icon">
           <span class="label card-link__label">${capName}</span>
         </div>

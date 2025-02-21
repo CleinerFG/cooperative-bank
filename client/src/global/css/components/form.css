@@ -26,5 +26,18 @@
 }
 
 .form-title {
-  align-self: start;
+  /* align-self: start; */
+}
+
+.form-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.form-header {
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }

@@ -59,7 +59,7 @@ export class LoanManager extends CardManager {
   }
 
   get #dateFilterTemplate() {
-    const imgSrc = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
+    const icon = `${ASSETS_ROUTE}/icons/icon-filter.svg`;
     return `
         <div class="dashboard-filter">
           <div class="inputs-container">
@@ -73,7 +73,7 @@ export class LoanManager extends CardManager {
             </div>
           </div>
           <button class="btn-unset btn-filter">
-            <img id="${this.#ICON_FILTER_ID}" class="icon filter-icon ${handleIconDark()}" src="${imgSrc}" alt="Filter Icon">
+            <img id="${this.#ICON_FILTER_ID}" class="icon filter-icon ${handleIconDark()}" src="${icon}" alt="Filter Icon">
           </button>
         </div>
         `;

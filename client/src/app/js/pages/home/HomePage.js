@@ -13,7 +13,7 @@ export default class HomePage extends Page {
   }
 
   get _statementTemplate() {
-    const imgSrc = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
+    const icon = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
     return `
     <section class="section statement">
       <h1 class="section-h1">Financial Statement</h1>
@@ -22,7 +22,7 @@ export default class HomePage extends Page {
         <div class="amount-container">
           <span id="span-amount" class="span-amount skelon">R$ * * * * * *</span>
           <button id="amount-visibility-btn" class="btn-unset btn-icon" data-visibility="off">
-            <img id="amount-visibility-icon" class="icon ${handleIconDark()}" src="${imgSrc}" alt="Closed eye">
+            <img id="amount-visibility-icon" class="icon ${handleIconDark()}" src="${icon}" alt="Closed eye">
           </button>
         </div>
       </div>

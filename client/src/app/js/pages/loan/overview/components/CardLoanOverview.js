@@ -12,7 +12,7 @@ import appRouter from '../../../../core/appRouter.js';
 import { PAGE_ROUTES } from '../../../../constants/routes.js';
 
 export class CardLoanOverview extends Card {
-  get _modalityImgSrc() {
+  get _modalityIcon() {
     return {
       personal: ASSETS_ROUTE + '/icons/icon-credit-card.svg',
       auto: ASSETS_ROUTE + '/icons/icon-car.svg',
@@ -47,7 +47,7 @@ export class CardLoanOverview extends Card {
   get _headerTemplate() {
     return `
       <div class="card-title">
-      <img src="${this._modalityImgSrc[this._apiData.modality]}" alt="Modality" class="icon ${handleIconDark()}">
+      <img src="${this._modalityIcon[this._apiData.modality]}" alt="Modality" class="icon ${handleIconDark()}">
       <span>${capitalize(this._apiData.modality)}</span>
       </div>
       <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>

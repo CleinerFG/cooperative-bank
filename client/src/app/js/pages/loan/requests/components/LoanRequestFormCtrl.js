@@ -6,7 +6,7 @@ export default class LoanRequestFormCtrl extends FormCtrl {
     return {
       id: 'new-request-form',
       containerElement: document.querySelector('.new-request'),
-      title: 'New request',
+      header: { title: 'New request', icon: 'icon-new-request.svg' },
     };
   }
 

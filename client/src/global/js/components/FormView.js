@@ -1,10 +1,11 @@
 import '../types/formElementsType.js';
 import { SubmitButton } from './form-elements/SubmitButton.js';
+import { AssetManager } from '../core/AssetManager.js';
 
 export class FormView {
   #containerElement;
   #id;
-  #title;
+  #header;
   #formElementsParams;
   #submitButtonParams;
   #formElements = [];
@@ -19,7 +20,7 @@ export class FormView {
   constructor(params, formElementsParams, submitButtonParams) {
     this.#containerElement = params.containerElement;
     this.#id = params.id;
-    this.#title = params.title;
+    this.#header = params.header;
     this.#formElementsParams = formElementsParams;
     this.#submitButtonParams = submitButtonParams;
     this.#init();
@@ -47,10 +48,15 @@ export class FormView {
     return document.getElementById(`form-group-${this.#id}`);
   }
 
-  get #titleTemplate() {
-    if (this.#title) {
+  get #headerTemplate() {
+    if (this.#header) {
+      const icon = `${AssetManager.iconsPath}${this.#header.icon}`;
       return `
-      <h3 class="form-title">${this.#title}</h3>`;
+      <div class="form-header">
+        <img class="icon form-icon" src="${icon}" alt="Icon ${this.#id}">
+        <h3 class="form-title">${this.#header.title}</h3>
+      </div>
+      `;
     }
     return '';
   }
@@ -58,7 +64,7 @@ export class FormView {
   get #template() {
     return `
     <form id="${this.#id}" class="form">
-      ${this.#titleTemplate}
+      ${this.#headerTemplate}
       <div id="form-group-${this.#id}" class="form-group">       
       </div>
     </form>

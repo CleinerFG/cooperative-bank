@@ -56,11 +56,11 @@ export default class MyAccountPage extends Page {
    * This method is not necessary it is only for displaying the skeleton while loading the image
    */
   async _loadProfileImage() {
-    const imgSrc = '/app/profile-image/user_123.webp';
+    const img = '/app/profile-image/user_123.webp';
     await simulateWait();
 
     const imgElement = document.getElementById('profile-photo');
-    imgElement.setAttribute('src', imgSrc);
+    imgElement.setAttribute('src', img);
     imgElement.onload = () => {
       document.getElementById('photo-loader').remove();
     };

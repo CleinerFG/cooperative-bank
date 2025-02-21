@@ -2,7 +2,7 @@
  * @typedef {object} FormViewParams
  * @property {HTMLElement} containerElement
  * @property {string} id
- * @property {string} title
+ * @property {{title:string,icon:string}} [header]
  */
 
 /**
