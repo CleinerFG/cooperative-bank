@@ -64,13 +64,9 @@ export class CardLoanInstallment extends Card {
 
   get _footerTemplate() {
     const status = this._apiData.status;
-    const configMap = {
-      txt: status === 'paid' ? 'See' : 'Pay',
-      cssClass: status === 'paid' ? '' : 'btn-attention',
-    };
     return `
-     <button id="btn-${this._id}" class="btn card-data__btn ${configMap.cssClass}">
-        ${configMap.txt}
+     <button id="btn-${this._id}" class="btn card-data__btn">
+        ${status === 'paid' ? 'See' : 'Pay'}
      </button>
     `;
   }

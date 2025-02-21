@@ -78,7 +78,7 @@
   border-top-right-radius: var(--component-border-radius);
   border-bottom-left-radius: var(--component-border-radius);
   background-color: var(--component-status-bg-color);
-  color: var(--color-bg);
+  color: var(--color-dark);
   padding: 0.2rem 0.6rem;
   position: absolute;
   top: 0;
@@ -87,12 +87,14 @@
 
 .card-data__header .span-fail {
   background-color: var(--color-fail);
-  color: var(--color-dark);
 }
 
 .card-data__header .span-success {
   background-color: var(--color-success);
-  color: var(--color-dark);
+}
+
+.card-data__header .span-pending {
+  background-color: var(--color-attention);
 }
 
 .card-data__header .span-date {

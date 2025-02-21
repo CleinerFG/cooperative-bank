@@ -12,6 +12,3 @@ li {
   font-family: var(--info-font-family);
 }
 
-a:hover {
-  color: var(--color-cta);
-}

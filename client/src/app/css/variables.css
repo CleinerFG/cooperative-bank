@@ -7,9 +7,13 @@
   --title-font-family: 'Roboto Slab', serif;
   --info-font-family: 'Open Sans', sans-serif;
 
-  --color-secondary: hsl(220, 41%, 20%);
-  --color-secondary-hover: hsl(220, 41%, 25%);
   --color-dark: #212121;
+  --color-success: hsl(120, 85%, 35%);
+  --color-success-hover: hsl(120, 85%, 37%);
+  --color-attention: hsl(60, 85%, 50%);
+  --color-attention-hover: hsl(60, 85%, 52%);
+  --color-fail: hsl(0, 85%, 65%);
+  --color-fail-hover: hsl(0, 85%, 63%);
 }
 
 [data-theme='light'] {
@@ -17,6 +21,14 @@
   --color-primary-glossy: hsl(179, 96%, 38%);
   --color-primary-light: hsl(169, 96%, 42%);
   --color-primary-light-hover: hsl(169, 96%, 40%);
+
+  --color-secondary: hsl(169, 60%, 60%);
+  --color-secondary-hover: hsl(169, 60%, 65%);
+
+  --color-detail: hsl(16, 40%, 60%);
+  --color-cta: hsl(10, 90%, 30%);
+  --color-cta-hover: hsl(10, 90%, 27%);
+  --color-link-hover: hsl(169, 96%, 10%);
 
   --title-color: hsl(0, 0%, 5%);
   --text-color: hsl(0, 0%, 10%);
@@ -38,10 +50,19 @@
 }
 
 [data-theme='dark'] {
-  --color-primary: hsl(169, 96%, 15%);
-  --color-primary-glossy: hsl(179, 96%, 15%);
-  --color-primary-light: hsl(169, 96%, 18%);
+  /* Reduced 20% from luminosity */
+  --color-primary: hsl(169, 96%, 18%);
+  --color-primary-glossy: hsl(179, 96%, 18%);
+  --color-primary-light: hsl(169, 96%, 22%);
   --color-primary-light-hover: hsl(169, 96%, 20%);
+
+  /* Reduced 40% from luminosity */
+  --color-secondary: hsl(169, 60%, 20%);
+  --color-secondary-hover: hsl(169, 60%, 25%);
+
+  --color-detail: hsl(16, 40%, 25%);
+  --color-cta: hsl(10, 60%, 25%);
+  --color-cta-hover: hsl(10, 60%, 23%);
 
   --text-color: hsl(0, 0%, 90%);
   --title-color: hsl(0, 0%, 95%);

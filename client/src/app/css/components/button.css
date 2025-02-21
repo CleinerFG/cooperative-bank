@@ -3,12 +3,12 @@
   border: none;
   border-radius: var(--component-border-radius);
   background-color: var(--color-secondary);
-  color: var(--color-off-white);
+  font-weight: bold;
 }
 
 .btn-action {
-  color: var(--color-off-white);
   background-color: var(--color-cta);
+  color: var(--color-off-white);
 }
 
 .btn-success {
