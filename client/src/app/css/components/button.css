@@ -13,7 +13,6 @@
 
 .btn-success {
   background-color: var(--color-success);
-  color: var(--color-off-white);
 }
 
 .btn-attention {
@@ -22,7 +21,6 @@
 
 .btn-fail {
   background-color: var(--color-fail);
-  color: var(--color-off-white);
 }
 
 .btn:hover {
