@@ -10,13 +10,13 @@
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--text-color);
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--title-font-family);
+  color: var(--title-color);
 }
 
 h1 {
@@ -29,6 +29,14 @@ h2 {
 
 h3 {
   font-size: var(--title-sm);
+}
+
+li {
+  list-style-type: none;
+}
+
+.info-text {
+  font-family: var(--info-font-family);
 }
 
 button {

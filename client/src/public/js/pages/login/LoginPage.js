@@ -28,7 +28,7 @@ export default class LoginPage extends Page {
     return `
     <main class="login-register content-container">
       <div class="info-container">
-        <h1 class="login-h1">${this._infoText}</h1>
+        <h1>${this._infoText}</h1>
       </div>
       <div class="form-container">  
       </div>

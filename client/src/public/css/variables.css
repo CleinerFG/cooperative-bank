@@ -13,6 +13,7 @@
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
 
+  --title-color: hsl(169, 96%, 38%);
   --text-color: #fbfcf8;
   --brand-font-family: 'Quicksand', sans-serif;
 }

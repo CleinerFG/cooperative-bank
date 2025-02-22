@@ -1,11 +1,3 @@
-.btn {
-  padding: var(--padding-md) var(--padding-lg);
-  border: none;
-  border-radius: var(--radius-md);
-  background-color: var(--color-secondary);
-  font-weight: 500;
-}
-
 .btn-action {
   background-color: var(--color-cta);
   color: var(--color-off-white);

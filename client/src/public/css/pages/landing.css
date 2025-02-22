@@ -55,6 +55,10 @@
   );
 }
 
+.hero-section h1 {
+  color: var(--text-color);
+}
+
 .hero-section .content-container {
   max-width: 400px;
   gap: var(--gap-lg);
@@ -62,6 +66,10 @@
 
 .hero-section .content-container .btn {
   border-radius: var(--radius-xl);
+}
+
+.mission-section h2 {
+  color: var(--text-color);
 }
 
 .mission-section .content-container {
@@ -88,18 +96,10 @@
   text-align: left;
 }
 
-.feature-section h2 {
-  color: var(--color-primary);
-}
-
 .feature-section .text-container {
   display: flex;
   flex-direction: column;
   gap: var(--gap-sm);
-}
-
-.footer h2 {
-  color: var(--color-primary);
 }
 
 .footer-container {

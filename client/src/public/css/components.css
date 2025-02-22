@@ -1,9 +1,6 @@
 .btn {
-  border: none;
   color: #000;
-  font-weight: 600;
   padding: 1rem 3rem;
-  border-radius: var(--radius-md);
 
   background: linear-gradient(
     90deg,
@@ -15,14 +12,9 @@
   animation: glossy 1.5s linear infinite;
 }
 
-.btn a {
-  color: #000;
-}
-
 .title-emphasis {
   font-size: var(--title-md);
   display: inline;
-  padding: 0;
   color: var(--color-primary);
 }
 

@@ -2,7 +2,6 @@
 @import url('../../global/css/index.css');
 @import url('./variables.css');
 @import url('./layout/layout.css');
-@import url('./base.css');
 
 /* Components */
 @import url('./components//notifications.css');
