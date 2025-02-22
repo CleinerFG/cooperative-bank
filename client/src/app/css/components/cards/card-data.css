@@ -5,30 +5,26 @@
   max-width: 300px;
   border: var(--component-border);
   background-color: var(--component-bg-color);
-  padding: var(--container-padding);
-
   position: relative;
   flex: 1;
 }
 
 .card-data__header {
-  padding: 0 0.2rem;
+  padding: 0 var(--padding-xs) var(--padding-sm) var(--padding-xs);
   font-size: 1.2rem;
   font-weight: bold;
-  padding-bottom: 0.5rem;
   border-bottom: 0.1rem solid var(--color-detail);
 }
 
 .card-data__content {
-  margin: 0;
-  padding: 0 0.2rem;
+  padding: 0 var(--padding-xs);
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
 .card-data__item {
-  padding: 0.5rem 0;
+  padding: var(--padding-sm) 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -74,7 +70,7 @@
   border-radius: 0 var(--radius-lg) 0 var(--radius-md);
   background-color: var(--component-status-bg-color);
   color: var(--color-dark);
-  padding: 0.2rem 0.6rem;
+  padding: var(--padding-xs) var(--padding-sm);
   position: absolute;
   top: 0;
   right: 0;
@@ -93,7 +89,6 @@
 }
 
 .card-data__header .span-date {
-  padding-left: 0.2rem;
   font-size: 0.8rem;
   font-weight: 500;
 }

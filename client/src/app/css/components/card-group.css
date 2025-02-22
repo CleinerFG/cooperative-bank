@@ -11,14 +11,14 @@
 
 .card-group__h2 {
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--padding-sm);
   border-bottom: hsla(0, 0%, 50%, 0.2) solid 0.1rem;
   text-align: center;
 }
 
 .dashboard-container {
   background-color: var(--color-primary-translucent);
-  padding: var(--container-padding);
+  padding: var(--padding-lg);
   border-radius: var(--radius-xl);
   display: flex;
   flex-wrap: wrap;
@@ -31,7 +31,7 @@
   flex: 1;
   background-color: var(--component-bg-color-dark);
   border-radius: var(--radius-xl);
-  padding: 0.2rem;
+  padding: var(--padding-xs);
   display: flex;
   gap: 0.3rem;
 }
@@ -40,7 +40,7 @@
   flex: 1;
   text-align: center;
   border-radius: var(--radius-xl);
-  padding: 1rem;
+  padding: var(--padding-lg);
   cursor: pointer;
 }
 
@@ -55,7 +55,7 @@
 
 .dashboard-filter {
   background-color: var(--component-bg-color-dark);
-  padding: var(--container-padding);
+  padding: var(--padding-md);
   border-radius: var(--radius-lg);
   flex-basis: 0;
   display: flex;
@@ -77,7 +77,7 @@
 
 .dashboard-filter .inp-date {
   width: 7.5rem;
-  padding: 0.2rem;
+  padding: var(--padding-xs);
 }
 
 .filter-icon {

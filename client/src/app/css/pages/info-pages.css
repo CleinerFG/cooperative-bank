@@ -1,6 +1,6 @@
 .info-container {
   border-top: var(--component-border);
-  padding: 1rem;
+  padding: var(--padding-lg);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

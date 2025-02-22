@@ -1,6 +1,6 @@
 .form {
   max-width: 300px;
-  padding: 1rem;
+  padding: var(--padding-lg);
   border: var(--form-component-border);
   border-radius: var(--radius-lg);
   display: flex;

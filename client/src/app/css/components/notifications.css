@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 768px;
   height: calc(100dvh - var(--header-height));
-  padding: var(--container-padding);
+  padding: var(--padding-lg);
   border-bottom: var(--color-bg);
   display: none;
   position: fixed;
@@ -56,7 +56,7 @@
 }
 
 .notifications-cards {
-  padding: 0.1rem;
+  padding: var(--padding-xs);
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
@@ -81,7 +81,7 @@
   border-radius: var(--radius-lg);
   border-left: var(--color-primary) 0.4rem solid;
   margin: 0 0.5rem;
-  padding: var(--container-padding);
+  padding: var(--padding-md);
   transition: all 0.1s;
   display: flex;
   flex-direction: column;

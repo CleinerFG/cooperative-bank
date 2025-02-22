@@ -5,7 +5,8 @@
 }
 
 .section-h1 {
-  padding: 0.5rem 0;
+  margin-left: calc(0rem - var(--padding-xl));
+  padding: var(--padding-sm) 0 var(--padding-sm) var(--padding-xl);
   background-image: linear-gradient(
     to right,
     #fff0 -15%,

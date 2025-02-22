@@ -2,6 +2,7 @@
   width: 100%;
   min-width: 260px;
   max-width: 300px;
+  padding: var(--padding-md);
   border: var(--component-border);
   border-radius: var(--radius-lg);
   display: flex;
@@ -40,7 +41,6 @@
 .card-state.loading {
   flex-direction: column;
   background-color: var(--component-bg-color);
-  padding: var(--container-padding);
   flex: 1 0 100px;
 }
 
@@ -52,6 +52,7 @@
 .card-state.empty,
 .card-state.error {
   border: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   box-shadow: var(--card-state-box-shadow);
   max-width: 600px;
   background-image: linear-gradient(

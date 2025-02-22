@@ -12,8 +12,14 @@
   --color-fail: hsl(0, 85%, 65%);
   --color-fail-hover: hsl(0, 85%, 63%);
 
-  --container-padding: 0.8rem;
   --header-height: 3.5rem;
+
+  --padding-xs: 0.25rem;
+  --padding-sm: 0.5rem;
+  --padding-md: 0.75rem;
+  --padding-lg: 1rem;
+  --padding-xl: 1.25rem;
+  --padding-xxl: 1.5rem;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -23,5 +29,5 @@
   --radius-full: 50%;
 
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
-  --icon-size: 2.5rem;
+  --icon-size: 2.75rem;
 }

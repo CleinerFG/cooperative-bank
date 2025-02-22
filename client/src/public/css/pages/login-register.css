@@ -3,7 +3,7 @@
 }
 
 .login-register.content-container {
-  padding: var(--container-padding);
+  padding: var(--padding-lg);
   margin: auto;
   margin-top: 6rem;
   margin-bottom: 2rem;
@@ -33,7 +33,6 @@
 }
 
 .login-register.footer {
-  padding: 1.5rem;
   background-color: hsl(0, 0%, 8%);
   scroll-snap-align: none;
 }

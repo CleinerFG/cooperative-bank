@@ -1,5 +1,5 @@
 .btn {
-  padding: 0.8em 1em;
+  padding: var(--padding-md) var(--padding-lg);
   border: none;
   border-radius: var(--radius-md);
   background-color: var(--color-secondary);

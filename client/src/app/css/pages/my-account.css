@@ -4,8 +4,8 @@
     var(--color-bg) 40%,
     var(--color-primary-translucent)
   );
-  padding: 1.5rem 1.8rem 1rem 1.8rem;
-  margin: -0.8rem;
+  padding: var(--padding-xl);
+  margin: calc(0rem - var(--padding-xl));
   margin-bottom: 0;
   position: relative;
   display: flex;

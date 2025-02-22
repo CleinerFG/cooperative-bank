@@ -24,7 +24,7 @@
 }
 
 .cards.feature-cards {
-  padding: var(--container-padding);
+  padding: var(--padding-sm);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }

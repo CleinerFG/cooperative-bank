@@ -42,7 +42,7 @@ button {
 .btn-icon {
   cursor: pointer;
   display: inline-flex;
-  padding: 0.5rem;
+  padding: var(--padding-sm);
 }
 
 .icon-invert {

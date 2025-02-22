@@ -1,7 +1,7 @@
 @import url('menu.css');
 
 .header {
-  padding: 0.6rem;
+  padding: var(--padding-md);
   height: var(--header-height);
   width: 100%;
   max-width: 768px;
@@ -22,6 +22,6 @@
 .header .header-icon {
   width: var(--icon-size);
   height: var(--icon-size);
-  padding: 0.2rem;
+  padding: var(--padding-xs);
   cursor: pointer;
 }
