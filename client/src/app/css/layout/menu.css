@@ -40,19 +40,19 @@
 
 .header .menu-list .menu-item {
   height: fit-content;
-  padding: var(--padding-xs) var(--padding-sm);
+  padding: var(--padding-xs) var(--padding-md);
   cursor: pointer;
 }
 
 .header .menu-list .menu-item:first-child {
   font-weight: 500;
   border-bottom: var(--component-border);
-  padding: var(--padding-sm);
+  padding: var(--padding-md);
 }
 
 .header .menu-list .menu-item:last-child {
   border-top: var(--component-border);
-  padding: var(--padding-sm);
+  padding: var(--padding-md);
 }
 
 .header .theme-icon {
@@ -75,5 +75,5 @@ header .menu-list .menu-item:hover {
 .header .btn-theme {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--gap-xs);
 }

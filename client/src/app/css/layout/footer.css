@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: var(--gap-xxl);
 }
 
 .footer .icon {
@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: var(--gap-xs);
 }
 
 @media (min-width: 768px) {

@@ -1,16 +1,16 @@
 .info-container {
   border-top: var(--component-border);
-  padding: var(--padding-lg);
+  padding: var(--padding-md);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--gap-sm);
 }
 
 .info-item,
 .info-item__container {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--gap-xs);
 }
 
 .info-label {
@@ -21,10 +21,6 @@
 .info-value {
   min-height: 1.2rem;
   width: 10rem;
-}
-
-.info-container.loan-details {
-  gap: 0.8rem;
 }
 
 .info-container.loan-details .icon {

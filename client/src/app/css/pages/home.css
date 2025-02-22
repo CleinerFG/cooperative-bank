@@ -1,7 +1,7 @@
 .statement-amount {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: var(--gap-xs);
 }
 
 .statement-amount span {
@@ -12,7 +12,7 @@
 .amount-container {
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
+  gap: var(--gap-md);
 }
 
 .amount-container .span-amount {

@@ -21,6 +21,20 @@
   --padding-xl: 1.25rem;
   --padding-xxl: 1.5rem;
 
+  --margin-xs: 0.25rem;
+  --margin-sm: 0.5rem;
+  --margin-md: 0.75rem;
+  --margin-lg: 1rem;
+  --margin-xl: 1.25rem;
+  --margin-xxl: 1.5rem;
+
+  --gap-xs: 0.25rem;
+  --gap-sm: 0.5rem;
+  --gap-md: 0.75rem;
+  --gap-lg: 1rem;
+  --gap-xl: 1.25rem;
+  --gap-xxl: 1.5rem;
+
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;

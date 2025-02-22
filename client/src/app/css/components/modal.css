@@ -21,11 +21,17 @@
 .modal-body {
   padding: var(--padding-md) var(--padding-xl) var(--padding-xl)
     var(--padding-xl);
-  margin: 1rem;
+  margin: var(--margin-lg);
   background-color: var(--component-bg-color-dark);
   border-radius: var(--radius-xl);
   max-width: 400px;
   position: relative;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
 }
 
 .modal-header {
@@ -45,10 +51,9 @@
 }
 
 .modal-content {
-  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--gap-sm);
 }
 
 .modal .close-btn {

@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1rem;
+  gap: var(--gap-md);
   background-color: var(--component-bg-color);
 }
 
@@ -14,7 +14,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--gap-sm);
 }
 
 .form-group .inp-group {
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: var(--gap-xs);
 }
 
 .form-icon {
@@ -35,5 +35,5 @@
   align-self: flex-start;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--gap-sm);
 }

@@ -6,18 +6,18 @@
   border: var(--component-border);
   border-radius: var(--radius-lg);
   display: flex;
-  gap: 0.5rem;
+  gap: var(--gap-md);
 }
 
 .card-state__content {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: var(--gap-xs);
 }
 
 .card-state__item {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--gap-sm);
 }
 
 .card-state__label {
@@ -29,12 +29,12 @@
 }
 
 .card-state__text {
-  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
 }
 
 .card-state__text .info-text {
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
   text-align: center;
 }
 
@@ -75,7 +75,6 @@
   .card-state.empty,
   .card-state.error {
     flex-direction: column-reverse;
-    margin-top: 0.5rem;
   }
 
   .card-state__text {

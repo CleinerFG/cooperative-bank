@@ -56,7 +56,7 @@ export class CardLoanOverview extends Card {
 
   get _footerTemplate() {
     return `
-     <button id="btn-${this._id}" class="btn card-data__btn">
+     <button id="btn-${this._id}" class="btn">
         See details
       </button>
     `;

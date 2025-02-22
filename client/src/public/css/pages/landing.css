@@ -5,7 +5,7 @@
 .login-link-container a {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: var(--gap-xs);
 }
 
 .login-icon {
@@ -18,7 +18,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: var(--gap-xxl);
   background-image: linear-gradient(
     to bottom,
     var(--color-bg-start),
@@ -45,7 +45,7 @@
 }
 
 .content-container {
-  gap: 1.5rem;
+  gap: var(--gap-md);
 }
 
 .hero-section {
@@ -60,7 +60,7 @@
 
 .hero-section .content-container {
   max-width: 400px;
-  gap: 1rem;
+  gap: var(--gap-lg);
 }
 
 .hero-section .content-container .btn {
@@ -98,7 +98,7 @@
 .feature-section .text-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--gap-sm);
 }
 
 .footer h2 {
@@ -108,12 +108,18 @@
 .footer-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--gap-md);
 }
 
-.social-media {
+.footer__contact .address {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+.footer .social-media {
+  display: flex;
+  gap: var(--gap-sm);
 }
 
 .social-media__icon {
