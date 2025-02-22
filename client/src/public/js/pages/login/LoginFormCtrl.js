@@ -32,6 +32,7 @@ export default class LoginFormCtrl extends FormCtrl {
     return {
       id: 'submit',
       labelText: 'Login',
+      cssClass: 'glossy',
     };
   }
 

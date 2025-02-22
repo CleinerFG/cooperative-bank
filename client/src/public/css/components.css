@@ -1,15 +1,6 @@
 .btn {
   color: #000;
   padding: 1rem 3rem;
-
-  background: linear-gradient(
-    90deg,
-    var(--color-primary-glossy),
-    var(--color-primary),
-    var(--color-primary-glossy)
-  );
-  background-size: 200% 100%;
-  animation: glossy 1.5s linear infinite;
 }
 
 .title-emphasis {

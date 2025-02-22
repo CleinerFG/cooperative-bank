@@ -76,12 +76,12 @@
 .glossy {
   background: linear-gradient(
     90deg,
-    var(--color-primary-glossy),
-    var(--color-primary),
-    var(--color-primary-glossy)
+    var(--glossy-start),
+    var(--glossy-middle),
+    var(--glossy-end)
   );
   background-size: 200% 100%;
-  animation: glossy 1.5s linear infinite;
+  animation: glossy var(--glossy-duration) linear infinite;
 }
 
 @keyframes glossy {

@@ -2,15 +2,12 @@
 
 :root {
   --card-state-box-shadow: -0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
-
   --info-font-family: 'Open Sans', sans-serif;
-
   --color-dark: #212121;
 }
 
 [data-theme='light'] {
   --color-primary: hsl(169, 96%, 38%);
-  --color-primary-glossy: hsl(179, 96%, 38%);
   --color-primary-light: hsl(169, 96%, 42%);
   --color-primary-light-hover: hsl(169, 96%, 40%);
 
@@ -38,6 +35,10 @@
   --skeleton-start: rgba(0, 0, 0, 0.2);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
   --skeleton-end: rgba(0, 0, 0, 0.2);
+
+  --glossy-start: hsl(189, 98%, 48%);
+  --glossy-middle: hsl(189, 98%, 38%);
+  --glossy-end: hsl(189, 98%, 48%);
 }
 
 [data-theme='dark'] {

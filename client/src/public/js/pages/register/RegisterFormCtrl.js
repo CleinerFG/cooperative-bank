@@ -57,6 +57,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     return {
       id: 'submit',
       labelText: 'Register',
+      cssClass: 'glossy',
     };
   }
 

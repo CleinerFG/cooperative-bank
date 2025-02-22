@@ -12,6 +12,8 @@
   --color-fail: hsl(0, 85%, 65%);
   --color-fail-hover: hsl(0, 85%, 63%);
 
+  --glossy-duration: 2.5s;
+
   --header-height: 3.5rem;
 
   --padding-xs: 0.25rem;
