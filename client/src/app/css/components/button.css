@@ -13,14 +13,17 @@
 
 .btn-success {
   background-color: var(--color-success);
+  font-weight: bold;
 }
 
 .btn-attention {
   background-color: var(--color-attention);
+  font-weight: bold;
 }
 
 .btn-fail {
   background-color: var(--color-fail);
+  font-weight: bold;
 }
 
 .btn:hover {

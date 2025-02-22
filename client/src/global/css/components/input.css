@@ -32,7 +32,7 @@
 }
 
 .inp__wrapper:focus-within {
-  border-color: var(--inp-focus-color);
+  border-color: var(--color-secondary);
   box-shadow: var(--component-box-shadow);
   background-color: transparent;
 }

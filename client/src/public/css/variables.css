@@ -5,11 +5,13 @@
   --color-primary-glossy: hsl(179, 96%, 38%);
   --color-primary-light: hsl(169, 96%, 42%);
 
+  --color-secondary: hsl(189, 98%, 38%);
+  --color-secondary-hover: hsl(189, 98%, 35%);
+
   --color-bg-start: hsl(250, 100%, 5%);
   --color-bg-end: hsl(250, 100%, 2%);
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
-  --inp-focus-color: hsl(169, 96%, 25%);
 
   --text-color: #fbfcf8;
   --brand-font-family: 'Quicksand', sans-serif;

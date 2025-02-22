@@ -5,7 +5,7 @@
 }
 
 .select-box:focus {
-  border-color: var(--inp-focus-color);
+  border-color: var(--color-secondary);
   box-shadow: var(--component-box-shadow);
   outline: none;
 }
