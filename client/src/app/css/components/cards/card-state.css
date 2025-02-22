@@ -3,7 +3,7 @@
   min-width: 260px;
   max-width: 300px;
   border: var(--component-border);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-lg);
   display: flex;
   gap: 0.5rem;
 }
@@ -46,7 +46,7 @@
 
 .card-state.loading .skelon {
   height: 1.8rem;
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-md);
 }
 
 .card-state.empty,

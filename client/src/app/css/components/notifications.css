@@ -20,7 +20,7 @@
   height: 1.5rem;
   background-color: var(--color-cta);
   color: var(--color-off-white);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   position: absolute;
   top: -0.1rem;
   right: 0;
@@ -78,7 +78,7 @@
   cursor: pointer;
   background-color: var(--component-bg-color-dark);
   border: var(--component-border);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-lg);
   border-left: var(--color-primary) 0.4rem solid;
   margin: 0 0.5rem;
   padding: var(--container-padding);

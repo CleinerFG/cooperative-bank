@@ -16,7 +16,7 @@
   height: 1rem;
   width: 100%;
   background-color: hsl(0, 0%, 50%);
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 

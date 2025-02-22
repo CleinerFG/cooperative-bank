@@ -26,7 +26,7 @@
   padding: 0.5rem 1rem 1rem 1rem;
   margin: 1rem;
   background-color: var(--component-bg-color-dark);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-xl);
   max-width: 400px;
   position: relative;
 }

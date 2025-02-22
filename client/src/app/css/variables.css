@@ -47,7 +47,7 @@
   --color-primary-light: hsl(169, 96%, 22%);
   --color-primary-light-hover: hsl(169, 96%, 20%);
 
-  /* Reduced 40% from luminosity */
+  /* Reduced 20% from luminosity */
   --color-secondary: hsl(189, 98%, 18%);
   --color-secondary-hover: hsl(189, 98%, 15%);
 

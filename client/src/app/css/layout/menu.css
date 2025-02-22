@@ -1,12 +1,12 @@
 .header .btn-menu {
   z-index: 1;
-  border-radius: 30%;
+  border-radius: var(--radius-md);
   transition: all 0.4s ease-in-out;
   cursor: pointer;
 }
 
 .header .btn-menu:hover {
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background-color: var(--component-bg-color);
 }
 
@@ -22,7 +22,7 @@
 .header .nav-menu {
   background-color: var(--component-bg-color);
   border: var(--component-border);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-lg);
   display: none;
   position: absolute;
   top: calc(var(--header-height) - 0.3rem);
@@ -64,14 +64,12 @@ header .menu-list .menu-item:hover {
 }
 
 .header .menu-list .menu-item:first-child:hover {
-  border-top-left-radius: var(--component-border-radius);
-  border-top-right-radius: var(--component-border-radius);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .header .menu-list .menu-item:last-child:hover {
   text-decoration: underline;
-  border-bottom-left-radius: var(--component-border-radius);
-  border-bottom-right-radius: var(--component-border-radius);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
 .header .btn-theme {

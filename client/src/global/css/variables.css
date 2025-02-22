@@ -15,7 +15,13 @@
   --container-padding: 0.8rem;
   --header-height: 3.5rem;
 
-  --component-border-radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-xxl: 1.25rem;
+  --radius-full: 50%;
+
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
   --icon-size: 2.5rem;
 }

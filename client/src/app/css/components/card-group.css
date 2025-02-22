@@ -19,7 +19,7 @@
 .dashboard-container {
   background-color: var(--color-primary-translucent);
   padding: var(--container-padding);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-xl);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -30,7 +30,7 @@
 .entity-categories {
   flex: 1;
   background-color: var(--component-bg-color-dark);
-  border-radius: 2rem;
+  border-radius: var(--radius-xl);
   padding: 0.2rem;
   display: flex;
   gap: 0.3rem;
@@ -39,7 +39,7 @@
 .entity-category {
   flex: 1;
   text-align: center;
-  border-radius: 2rem;
+  border-radius: var(--radius-xl);
   padding: 1rem;
   cursor: pointer;
 }
@@ -56,7 +56,7 @@
 .dashboard-filter {
   background-color: var(--component-bg-color-dark);
   padding: var(--container-padding);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-lg);
   flex-basis: 0;
   display: flex;
   justify-content: center;

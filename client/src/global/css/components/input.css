@@ -2,7 +2,7 @@
   width: 100%;
   background-color: var(--component-bg-color);
   border: var(--form-component-border);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-md);
   transition: all 0.2s;
 }
 
@@ -22,7 +22,7 @@
   padding: 0.6rem 0.3rem;
   font-size: 1rem;
   color: var(--font-color);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--radius-md);
   background-color: transparent !important;
   border: none;
 }

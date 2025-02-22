@@ -11,6 +11,7 @@
     #fff0 -15%,
     var(--color-primary-translucent)
   );
+  border-radius: 0 var(--radius-xxl) var(--radius-xxl) 0;
 }
 
 .section-h2 {
