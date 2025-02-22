@@ -42,6 +42,15 @@
   --radius-xxl: 1.25rem;
   --radius-full: 50%;
 
+  --title-sm: 1.25rem;
+  --title-md: 1.5rem;
+  --title-lg: 1.75rem;
+  --title-xl: 2rem;
+
+  --text-sm: 0.75rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
   --icon-size: 2.75rem;
 }

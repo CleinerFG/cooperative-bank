@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: var(--text-font-family);
+  font-size: var(--text-md);
   color: var(--text-color);
 }
 
@@ -19,20 +20,19 @@ h3 {
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: var(--title-lg);
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: var(--title-md);
 }
 
 h3 {
-  font-size: 1.4rem;
+  font-size: var(--title-sm);
 }
 
 button {
   cursor: pointer;
-  font-size: 1rem;
 }
 
 .btn-unset {

@@ -20,8 +20,6 @@
 .select-box {
   width: 100%;
   padding: var(--padding-sm) var(--padding-xs);
-  font-size: 1rem;
-  color: var(--font-color);
   border-radius: var(--radius-md);
   background-color: transparent !important;
   border: none;

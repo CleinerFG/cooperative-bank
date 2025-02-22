@@ -155,7 +155,7 @@ export default class LandingPage extends Page {
     <header class="landing header">
         <div class="brand-container">
           <img class="brand-icon" src="${ASSETS_ROUTE}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
-          <span class="brand-name">COOPERATIVE BANK</span>
+          <span class="brand-name">Cooperative Bank</span>
         </div>
         <div class="login-link-container">
           <a href="/login" data-link>
@@ -186,7 +186,7 @@ export default class LandingPage extends Page {
     <section class="section mission-section">
       <div class="content-container">
         <h2>
-          The <strong class="text-strong">Cooperative Bank</strong> seeks to
+          The <strong class="title-emphasis">Cooperative Bank</strong> seeks to
           transform the way people connect financially
         </h2>
         <p class="text">

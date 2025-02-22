@@ -11,7 +11,6 @@
 
 .card-data__header {
   padding: 0 var(--padding-xs) var(--padding-sm) var(--padding-xs);
-  font-size: 1.2rem;
   font-weight: bold;
   border-bottom: 0.1rem solid var(--color-detail);
 }
@@ -67,12 +66,15 @@
   gap: var(--gap-xs);
 }
 
+.card-data__header .card-title .span-title {
+  font-size: var(--title-sm);
+}
+
 .card-data__header .icon {
   height: 2rem;
 }
 
 .card-data__header > .span-status {
-  font-size: 1rem;
   border-radius: 0 var(--radius-lg) 0 var(--radius-md);
   background-color: var(--component-status-bg-color);
   color: var(--color-dark);
@@ -95,6 +97,6 @@
 }
 
 .card-data__header .span-date {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: 500;
 }

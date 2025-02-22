@@ -1,8 +1,5 @@
-.login-link-container {
-  font-size: 0.8rem;
-}
-
 .login-link-container a {
+  font-size: var(--text-sm);
   display: flex;
   align-items: center;
   gap: var(--gap-xs);

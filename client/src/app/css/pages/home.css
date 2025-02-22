@@ -6,7 +6,7 @@
 
 .statement-amount span {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--text-sm);
 }
 
 .amount-container {
@@ -16,7 +16,7 @@
 }
 
 .amount-container .span-amount {
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
 }
 
 .amount-container .btn-icon {

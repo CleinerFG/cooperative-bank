@@ -32,7 +32,7 @@ export class CardLoanRequest extends CardLoanOverview {
         <div class="card-title">
           <img src="${this._modalityIcon[this._apiData.modality]}" alt="Modality"
            class="icon ${handleIconDark()}">
-          <span>${capitalize(this._apiData.modality)}</span>
+          <span class="span-title">${capitalize(this._apiData.modality)}</span>
         </div>
         ${status}
         <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>

@@ -38,7 +38,7 @@ export class CardLoanInstallment extends Card {
     const status = `<span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>`;
     return `
       <div class="card-title">
-        <span>Installment Nº ${this._index + 1}</span>
+        <span class="span-title">Installment Nº ${this._index + 1}</span>
       </div>
       ${status}
     `;

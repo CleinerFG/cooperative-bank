@@ -15,10 +15,6 @@
   align-items: center;
 }
 
-.header .brand-name {
-  font-size: 1rem;
-}
-
 .header .header-icon {
   width: var(--icon-size);
   height: var(--icon-size);

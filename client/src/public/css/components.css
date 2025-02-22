@@ -1,7 +1,6 @@
 .btn {
   border: none;
   color: #000;
-  font-size: 1rem;
   font-weight: 600;
   padding: 1rem 3rem;
   border-radius: var(--radius-md);
@@ -20,7 +19,8 @@
   color: #000;
 }
 
-.text-strong {
+.title-emphasis {
+  font-size: var(--title-md);
   display: inline;
   padding: 0;
   color: var(--color-primary);
@@ -28,14 +28,15 @@
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 2.5rem;
+    font-size: var(--title-xl);
   }
 
-  h2 {
-    font-size: 2rem;
+  h2,
+  .title-emphasis {
+    font-size: var(--title-lg);
   }
 
   .text {
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
   }
 }
