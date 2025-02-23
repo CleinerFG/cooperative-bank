@@ -11,8 +11,8 @@
 }
 
 .header .btn-menu {
-  width: var(--icon-size);
-  height: var(--icon-size);
+  width: var(--icon-xl);
+  height: var(--icon-xl);
 }
 
 .header .btn-menu.btn-active {

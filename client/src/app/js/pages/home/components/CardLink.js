@@ -41,7 +41,7 @@ export class CardLink {
       <a id="${this.anchorId}" class="card-link__a" rel="next" href="${this.endpoint}" data-link>
         <div class="card card-link">
           <img id="${this.#iconId}"
-            class="icon card-link__icon ${handleIconDark()}"
+            class="icon ${handleIconDark()}"
             src="${this.#icon}"
             alt="${capName} Icon">
           <span class="label card-link__label">${capName}</span>

@@ -80,8 +80,8 @@
   padding: var(--padding-xs);
 }
 
-.filter-icon {
-  width: 2rem;
+.dashboard-filter .icon {
+  height: var(--icon-md);
 }
 
 .btn-filter {
@@ -118,7 +118,7 @@
   .dashboard-filter {
     max-width: 200px;
   }
-  
+
   .entity-categories {
     flex: 1;
   }

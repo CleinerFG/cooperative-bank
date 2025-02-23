@@ -73,7 +73,7 @@ export class LoanManager extends CardManager {
             </div>
           </div>
           <button class="btn-unset btn-filter">
-            <img id="${this.#ICON_FILTER_ID}" class="icon filter-icon ${handleIconDark()}" src="${icon}" alt="Filter Icon">
+            <img id="${this.#ICON_FILTER_ID}" class="icon ${handleIconDark()}" src="${icon}" alt="Filter Icon">
           </button>
         </div>
         `;

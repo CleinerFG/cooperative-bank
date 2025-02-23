@@ -24,7 +24,7 @@
 }
 
 .info-container.loan-details .icon {
-  width: 2rem;
+  height: var(--icon-lg);
 }
 
 .info-container.loan-details .info-item {

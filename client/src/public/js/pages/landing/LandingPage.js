@@ -115,7 +115,7 @@ export default class LandingPage extends Page {
       .map((sm) => {
         return `
         <a href="${sm.href}" target="_blank">
-          <img class="social-media__icon" src="${ASSETS_ROUTE}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
+          <img class="icon" src="${ASSETS_ROUTE}/icons/${sm.iconFile}" loading="lazy" alt="${sm.iconAlt}" />
         </a>
       `;
       })
@@ -160,7 +160,7 @@ export default class LandingPage extends Page {
         <div class="login-link-container">
           <a href="/login" data-link>
             Login
-            <img class="login-icon" src="${ASSETS_ROUTE}/icons/icon-login.svg" alt="Login"/>
+            <img class="icon" src="${ASSETS_ROUTE}/icons/icon-login.svg" alt="Login"/>
           </a>
         </div>
       </header>

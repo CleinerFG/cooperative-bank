@@ -53,6 +53,10 @@ button {
   padding: var(--padding-sm);
 }
 
+.icon {
+  height: var(--icon-sm);
+}
+
 .icon-invert {
   filter: invert(100%) brightness(120%) contrast(170%);
 }

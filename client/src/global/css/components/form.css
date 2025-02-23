@@ -25,9 +25,8 @@
   gap: var(--gap-xs);
 }
 
-.form-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+.form .form-icon {
+  height: var(--icon-xl);
 }
 
 .form-header {

@@ -5,8 +5,8 @@
   gap: var(--gap-xs);
 }
 
-.login-icon {
-  width: 1.8rem;
+.login-link-container .icon {
+  height: var(--icon-md);
 }
 
 .section {
@@ -119,8 +119,8 @@
   gap: var(--gap-sm);
 }
 
-.social-media__icon {
-  width: 2rem;
+.social-media .icon {
+  height: var(--icon-md);
 }
 
 @media (min-width: 768px) {

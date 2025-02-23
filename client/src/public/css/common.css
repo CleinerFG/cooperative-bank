@@ -31,7 +31,7 @@
 }
 
 .brand-icon {
-  width: 2.25rem;
+  height: var(--icon-lg);
 }
 
 .brand-name {

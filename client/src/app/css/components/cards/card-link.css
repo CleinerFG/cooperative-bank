@@ -2,9 +2,9 @@
   background-color: var(--color-primary-light);
   border: none;
   border-radius: var(--radius-xl);
-  width: 110px;
-  height: 130px;
-  padding: var(--padding-xs);
+  width: 7.5rem;
+  height: 9rem;
+  padding: var(--padding-md);
 
   align-items: center;
   justify-content: center;
@@ -12,9 +12,8 @@
   transform: scale(100%) translateY(0);
 }
 
-.card-link__icon {
-  height: 70%;
-  width: 70%;
+.card-link .icon {
+  height: var(--icon-4xl);
 }
 
 .card-link__label {
@@ -23,5 +22,5 @@
 
 .card-link:hover {
   background-color: var(--color-primary-light-hover);
-  transform: translateY(-0.6rem);
+  transform: translateY(-0.5rem);
 }

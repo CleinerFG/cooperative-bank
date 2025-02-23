@@ -9,7 +9,7 @@
 }
 
 .footer .icon {
-  width: 4rem;
+  height: var(--icon-3xl);
 }
 
 .footer .content {

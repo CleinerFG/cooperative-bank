@@ -1,5 +1,6 @@
 .inp__wrapper {
   width: 100%;
+  height: calc(2 + var(--padding-sm));
   background-color: var(--color-bg-2);
   border: var(--form-component-border);
   border-radius: var(--radius-md);
