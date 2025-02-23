@@ -1,7 +1,7 @@
 .cover-photo {
   background: linear-gradient(
     360deg,
-    var(--color-bg) 40%,
+    var(--color-bg-1) 40%,
     var(--color-primary-translucent)
   );
   padding: var(--padding-xl) var(--padding-xl) 0 var(--padding-xl);
@@ -23,7 +23,7 @@
   width: 150px;
   height: 150px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-dark-translucent);
   border-radius: var(--radius-full);
   border: 0.2rem solid var(--component-line-color);
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);

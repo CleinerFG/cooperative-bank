@@ -3,6 +3,7 @@
   --title-font-family: 'Poppins', sans-serif;
 
   --color-primary-translucent: hsla(169, 96%, 38%, 0.3);
+  --color-secondary-translucent: hsla(189, 98%, 38%, 0.3);
   --color-off-white: #fbfcf8;
 
   --color-success: hsl(120, 85%, 35%);
@@ -11,6 +12,11 @@
   --color-attention-hover: hsl(60, 85%, 52%);
   --color-fail: hsl(0, 85%, 65%);
   --color-fail-hover: hsl(0, 85%, 63%);
+  --color-inp-focus: hsl(189, 98%, 38%);
+
+  --color-gray: hsl(0, 0%, 50%);
+  --color-gray-translucent: hsl(0, 0%, 50%, 0.25);
+  --color-dark-translucent: hsla(0, 0%, 0%, 0.7);
 
   --glossy-duration: 2.5s;
 

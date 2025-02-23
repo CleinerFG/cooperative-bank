@@ -3,7 +3,7 @@
   max-width: 768px;
   height: calc(100dvh - var(--header-height));
   padding: var(--padding-lg);
-  border-bottom: var(--color-bg);
+  border-bottom: var(--color-bg-1);
   display: none;
   position: fixed;
   top: var(--header-height);
@@ -71,7 +71,7 @@
 
 .notifications-cards .notification {
   cursor: pointer;
-  background-color: var(--component-bg-color-dark);
+  background-color: var(--color-bg-2);
   border: var(--component-border);
   border-radius: var(--radius-lg);
   border-left: var(--color-primary) 0.4rem solid;

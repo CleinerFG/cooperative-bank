@@ -4,7 +4,7 @@
   min-width: 260px;
   max-width: 300px;
   border: var(--component-border);
-  background-color: var(--component-bg-color);
+  background-color: var(--color-bg-2);
   position: relative;
   flex: 1;
 }
@@ -76,7 +76,6 @@
 
 .card-data__header > .span-status {
   border-radius: 0 var(--radius-lg) 0 var(--radius-md);
-  background-color: var(--component-status-bg-color);
   color: var(--color-dark);
   padding: var(--padding-xs) var(--padding-sm);
   position: absolute;

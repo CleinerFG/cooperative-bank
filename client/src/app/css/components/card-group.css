@@ -17,7 +17,7 @@
 }
 
 .dashboard-container {
-  background-color: var(--color-primary-translucent);
+  background-color: var(--color-secondary-translucent);
   padding: var(--padding-lg);
   border-radius: var(--radius-xl);
   display: flex;
@@ -29,7 +29,7 @@
 
 .entity-categories {
   flex: 1;
-  background-color: var(--component-bg-color-dark);
+  background-color: var(--color-bg-2);
   border-radius: var(--radius-xl);
   padding: var(--padding-xs);
   display: flex;
@@ -45,7 +45,7 @@
 }
 
 .entity-category:hover:not(.entity-category__active) {
-  background-color: hsla(0, 0%, 50%, 0.2);
+  background-color: var(--color-gray-translucent);
 }
 
 .entity-category__active {
@@ -54,7 +54,7 @@
 }
 
 .dashboard-filter {
-  background-color: var(--component-bg-color-dark);
+  background-color: var(--color-bg-2);
   padding: var(--padding-md);
   border-radius: var(--radius-lg);
   flex-basis: 0;

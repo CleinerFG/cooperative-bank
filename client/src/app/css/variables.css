@@ -8,11 +8,12 @@
 
 [data-theme='light'] {
   --color-primary: hsl(169, 96%, 38%);
-  --color-primary-light: hsl(169, 96%, 42%);
-  --color-primary-light-hover: hsl(169, 96%, 40%);
+  --color-primary-light: hsl(169, 96%, 45%);
+  --color-primary-light-hover: hsl(169, 96%, 42%);
 
   --color-secondary: hsl(189, 98%, 38%);
   --color-secondary-hover: hsl(189, 98%, 35%);
+  --color-secondary-translucent: hsla(189, 98%, 38%, 0.2);
 
   --color-detail: hsl(16, 40%, 60%);
   --color-cta: #911f08;
@@ -20,17 +21,15 @@
 
   --title-color: hsl(0, 0%, 5%);
   --text-color: hsl(0, 0%, 10%);
-  --color-bg: hsl(45, 29%, 97%);
   --color-bg-translucent: hsla(0, 0%, 100%, 0.5);
+
+  --color-bg-1: hsl(45, 29%, 97%);
+  --color-bg-2: hsl(45, 10%, 100%);
 
   --component-border: solid 0.1rem hsl(0, 0%, 80%);
   --component-line-color: hsl(0, 0%, 80%);
-  --component-bg-color: hsl(75, 40%, 98%);
-  --component-bg-color-dark: hsl(75, 40%, 96%);
-  --component-status-bg-color: #212121;
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
-  --inp-focus-color: hsl(189, 98%, 38%);
 
   --skeleton-start: rgba(0, 0, 0, 0.2);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
@@ -42,15 +41,14 @@
 }
 
 [data-theme='dark'] {
-  /* Reduced 20% from luminosity */
-  --color-primary: hsl(169, 96%, 18%);
-  --color-primary-glossy: hsl(179, 96%, 18%);
-  --color-primary-light: hsl(169, 96%, 22%);
-  --color-primary-light-hover: hsl(169, 96%, 20%);
+  /* Reduced 30% from luminosity */
+  --color-primary: hsl(169, 96%, 08%);
+  --color-primary-light: hsl(169, 96%, 15%);
+  --color-primary-light-hover: hsl(169, 96%, 12%);
 
-  /* Reduced 20% from luminosity */
-  --color-secondary: hsl(189, 98%, 18%);
-  --color-secondary-hover: hsl(189, 98%, 15%);
+  /* Reduced 25% from luminosity */
+  --color-secondary: hsl(189, 98%, 13%);
+  --color-secondary-hover: hsl(189, 98%, 10%);
 
   --color-detail: hsl(16, 40%, 25%);
   --color-cta: hsl(10, 60%, 25%);
@@ -58,19 +56,21 @@
 
   --text-color: hsl(0, 0%, 90%);
   --title-color: hsl(0, 0%, 95%);
-  --color-bg: #000;
-  --color-bg-translucent: hsl(0, 0, 0%, 0.5);
+  --color-bg-translucent: hsl(0%, 0%, 0%, 0.5);
 
   --component-border: solid 0.1rem hsl(0, 0%, 20%);
   --component-line-color: hsl(0, 0%, 20%);
-  --component-bg-color: hsl(0, 0%, 11%);
-  --component-bg-color-dark: hsl(0, 0%, 8%);
-  --component-status-bg-color: #dedede;
+
+  --color-bg-1: hsl(0, 0%, 0%);
+  --color-bg-2: hsl(0, 0%, 5%);
 
   --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
-  --inp-focus-color: hsl(169, 96%, 25%);
 
   --skeleton-start: rgba(255, 255, 255, 0.2);
   --skeleton-middle: rgba(255, 255, 255, 0.1);
   --skeleton-end: rgba(255, 255, 255, 0.2);
+
+  --glossy-start: hsl(189, 98%, 13%);
+  --glossy-middle: hsl(189, 98%, 18%);
+  --glossy-end: hsl(189, 98%, 13%);
 }

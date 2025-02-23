@@ -7,7 +7,7 @@
 
 .header .btn-menu:hover {
   border-radius: var(--radius-full);
-  background-color: var(--component-bg-color);
+  background-color: var(--color-bg-2);
 }
 
 .header .btn-menu {
@@ -16,11 +16,11 @@
 }
 
 .header .btn-menu.btn-active {
-  background-color: var(--component-bg-color);
+  background-color: var(--color-bg-2);
 }
 
 .header .nav-menu {
-  background-color: var(--component-bg-color);
+  background-color: var(--color-bg-2);
   border: var(--component-border);
   border-radius: var(--radius-lg);
   display: none;
@@ -60,7 +60,7 @@
 }
 
 header .menu-list .menu-item:hover {
-  background-color: hsl(169, 85%, 50%, 10%);
+  background-color: var(--color-secondary-translucent);
 }
 
 .header .menu-list .menu-item:first-child:hover {

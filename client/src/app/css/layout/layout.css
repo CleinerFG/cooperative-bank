@@ -3,7 +3,7 @@
 @import url('./section.css');
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-1);
   min-height: 100dvh;
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@ main#app {
   gap: var(--gap-lg);
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
   margin-top: var(--header-height);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-1);
   padding: var(--padding-xl);
   flex: 1;
 }

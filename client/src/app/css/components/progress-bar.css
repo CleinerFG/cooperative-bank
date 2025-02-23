@@ -15,7 +15,7 @@
 .progress-bar {
   height: 1rem;
   width: 100%;
-  background-color: hsl(0, 0%, 50%);
+  background-color: var(--color-gray);
   border-radius: var(--radius-sm);
   overflow: hidden;
 }

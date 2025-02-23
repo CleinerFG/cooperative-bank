@@ -40,7 +40,7 @@
 
 .card-state.loading {
   flex-direction: column;
-  background-color: var(--component-bg-color);
+  background-color: var(--color-bg-2);
   flex: 1 0 100px;
 }
 
@@ -57,7 +57,7 @@
   max-width: 600px;
   background-image: linear-gradient(
     to top,
-    var(--color-primary-translucent),
+    var(--color-secondary-translucent),
     #ffffff00 90%
   );
   align-items: center;
