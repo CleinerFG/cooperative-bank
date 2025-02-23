@@ -11,8 +11,9 @@
 
 .card-group__h2 {
   width: 100%;
+  border-bottom: var(--border-thickness);
+  border-color: var(--color-secondary-translucent);
   padding-bottom: var(--padding-sm);
-  border-bottom: hsla(0, 0%, 50%, 0.2) solid 0.1rem;
   text-align: center;
 }
 

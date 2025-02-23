@@ -3,7 +3,8 @@
   min-width: 260px;
   max-width: 300px;
   padding: var(--padding-md);
-  border: var(--component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
   border-radius: var(--radius-lg);
   display: flex;
   gap: var(--gap-md);

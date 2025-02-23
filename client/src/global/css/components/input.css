@@ -2,7 +2,8 @@
   width: 100%;
   height: calc(2rem + var(--padding-sm));
   background-color: var(--color-bg-2);
-  border: var(--form-component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
 }
 
 .inp__wrapper,
@@ -51,7 +52,8 @@
 
 .inp-date {
   height: fit-content;
-  border: var(--component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
 }
 
 .inp-date:focus {

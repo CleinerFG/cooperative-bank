@@ -1,5 +1,6 @@
 .select-box {
-  border: var(--form-component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
   cursor: pointer;
   color: var(--color-gray);
 }

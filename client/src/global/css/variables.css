@@ -68,5 +68,6 @@
   --icon-3xl: 4rem;
   --icon-4xl: 5rem;
 
+  --border-thickness: 0.0625rem solid;
   --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
 }

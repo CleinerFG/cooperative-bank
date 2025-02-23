@@ -24,10 +24,8 @@
   --color-bg-1: hsl(45, 29%, 97%);
   --color-bg-2: hsl(45, 10%, 100%);
 
-  --component-border: solid 0.1rem hsl(0, 0%, 80%);
-  --component-line-color: hsl(0, 0%, 80%);
-
-  --form-component-border: solid 0.125rem hsl(0, 0%, 82%);
+  --border-color: hsl(0, 0%, 70%);
+  --line-color: hsl(0, 0%, 80%);
 
   --skeleton-start: rgba(0, 0, 0, 0.2);
   --skeleton-middle: rgba(0, 0, 0, 0.1);
@@ -56,13 +54,11 @@
   --title-color: hsl(0, 0%, 95%);
   --color-bg-translucent: hsl(0%, 0%, 0%, 0.5);
 
-  --component-border: solid 0.1rem hsl(0, 0%, 20%);
-  --component-line-color: hsl(0, 0%, 20%);
+  --border-color: hsl(0, 0%, 30%);
+  --line-color: hsl(0, 0%, 20%);
 
   --color-bg-1: hsl(0, 0%, 0%);
   --color-bg-2: hsl(0, 0%, 5%);
-
-  --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
 
   --skeleton-start: rgba(255, 255, 255, 0.2);
   --skeleton-middle: rgba(255, 255, 255, 0.1);

@@ -1,7 +1,8 @@
 .form {
   max-width: 300px;
   padding: var(--padding-lg);
-  border: var(--form-component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;

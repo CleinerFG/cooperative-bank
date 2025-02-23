@@ -3,7 +3,8 @@
 .card-data {
   min-width: 260px;
   max-width: 300px;
-  border: var(--component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
   background-color: var(--color-bg-2);
   position: relative;
   flex: 1;
@@ -42,7 +43,8 @@
 
 .card-data__item + .card-data__item {
   padding-top: var(--padding-sm);
-  border-top: solid 0.1rem var(--component-line-color);
+  border-top: var(--border-thickness);
+  border-color: var(--line-color);
 }
 
 .card-data__footer {

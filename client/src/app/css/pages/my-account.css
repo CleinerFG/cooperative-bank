@@ -25,7 +25,8 @@
   position: relative;
   background-color: var(--color-dark-translucent);
   border-radius: var(--radius-full);
-  border: 0.2rem solid var(--component-line-color);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;

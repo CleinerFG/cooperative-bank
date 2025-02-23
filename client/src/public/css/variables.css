@@ -13,7 +13,7 @@
   --color-bg-start: hsl(250, 100%, 5%);
   --color-bg-end: hsl(250, 100%, 2%);
 
-  --form-component-border: solid 0.125rem hsl(0, 0%, 18%);
+  --border-color: hsl(0, 0%, 30%);
 
   --title-color: hsl(169, 96%, 38%);
   --text-color: #fbfcf8;

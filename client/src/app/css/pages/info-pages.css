@@ -1,5 +1,6 @@
 .info-container {
-  border-top: var(--component-border);
+  border-top: var(--border-thickness);
+  border-color: var(--border-color);
   padding: var(--padding-md);
   display: flex;
   flex-direction: column;

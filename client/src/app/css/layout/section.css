@@ -16,8 +16,9 @@
 }
 
 .section-h2 {
-  border-bottom: var(--color-primary-translucent) solid 0.1rem;
-  padding-bottom: 0.5rem;
+  border-bottom: var(--border-thickness);
+  border-color: var(--color-secondary-translucent);
+  padding-bottom: var(--padding-sm);
 }
 
 .section .form {

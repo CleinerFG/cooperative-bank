@@ -21,7 +21,8 @@
 
 .header .nav-menu {
   background-color: var(--color-bg-2);
-  border: var(--component-border);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
   border-radius: var(--radius-lg);
   display: none;
   position: absolute;
@@ -46,12 +47,14 @@
 
 .header .menu-list .menu-item:first-child {
   font-weight: 500;
-  border-bottom: var(--component-border);
+  border-bottom: var(--border-thickness);
+  border-color: var(--border-color);
   padding: var(--padding-md);
 }
 
 .header .menu-list .menu-item:last-child {
-  border-top: var(--component-border);
+  border-top: var(--border-thickness);
+  border-color: var(--border-color);
   padding: var(--padding-md);
 }
 
