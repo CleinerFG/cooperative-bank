@@ -2,8 +2,6 @@
 
 :root {
   --card-state-box-shadow: -0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
-  --info-font-family: 'Open Sans', sans-serif;
-  --color-dark: #212121;
 }
 
 [data-theme='light'] {

@@ -29,7 +29,7 @@
 }
 
 .login-register.footer {
-  background-color: hsl(0, 0%, 8%);
+  background-color: var(--color-dark);
   scroll-snap-align: none;
 }
 

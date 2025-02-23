@@ -1,11 +1,10 @@
 :root {
   --text-font-family: 'Roboto', sans-serif;
   --title-font-family: 'Poppins', sans-serif;
+  --info-font-family: 'Open Sans', sans-serif;
 
   --color-primary-translucent: hsla(169, 96%, 38%, 0.3);
   --color-secondary-translucent: hsla(189, 98%, 38%, 0.3);
-  --color-off-white: #fbfcf8;
-
   --color-success: hsl(120, 85%, 35%);
   --color-success-hover: hsl(120, 85%, 37%);
   --color-attention: hsl(60, 85%, 50%);
@@ -14,8 +13,10 @@
   --color-fail-hover: hsl(0, 85%, 63%);
   --color-inp-focus: hsl(189, 98%, 38%);
 
+  --color-off-white: #fbfcf8;
   --color-gray: hsl(0, 0%, 50%);
   --color-gray-translucent: hsl(0, 0%, 50%, 0.25);
+  --color-dark: hsl(0, 0%, 13%);
   --color-dark-translucent: hsla(0, 0%, 0%, 0.7);
 
   --glossy-duration: 2.5s;
