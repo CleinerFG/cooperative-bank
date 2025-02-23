@@ -3,6 +3,7 @@ import '../types/serverResponseType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
 import { INP_ERRORS } from '../constants/errorCodes.js';
+import { simulateWait } from '../utils/tests.js';
 
 export class FormCtrl {
   #view;
@@ -104,9 +105,11 @@ export class FormCtrl {
       }
 
       try {
+        this.#view.setSubmitBtnState(true);
         /**
          * @type {ServerFormResponse}
          */
+        await simulateWait();
         const res = await this._serviceMethod(this._formData);
         this.#resolvePromise(res);
         if (res.inpErrors) {
@@ -115,6 +118,8 @@ export class FormCtrl {
       } catch (e) {
         this.#resolvePromise({ success: false, reason: 'serverError' });
         console.error(e);
+      } finally {
+        this.#view.setSubmitBtnState(false);
       }
     });
   }

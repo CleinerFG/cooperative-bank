@@ -60,7 +60,7 @@
   --skeleton-middle: rgba(255, 255, 255, 0.1);
   --skeleton-end: rgba(255, 255, 255, 0.2);
 
-  --glossy-start: hsl(189, 98%, 13%);
-  --glossy-middle: hsl(189, 98%, 18%);
-  --glossy-end: hsl(189, 98%, 13%);
+  --glossy-start: hsl(189, 98%, 23%);
+  --glossy-middle: hsl(189, 98%, 13%);
+  --glossy-end: hsl(189, 98%, 23%);
 }

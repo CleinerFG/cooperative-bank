@@ -74,13 +74,13 @@ export default class SearchInput extends Input {
 
   async #fetchData() {
     const query = this.#inpQueryElement.value;
-    await simulateWait();
+    await simulateWait(0);
     const service = new SearchInputService(this.#endpoint, query);
     return await service.fetch();
   }
 
   #handleSearchAnimation() {
-    this.#inpResultElement.classList.toggle('inp-skelon');
+    this.#inpResultElement.parentElement.classList.toggle('skelon-inp');
     this.#iconSearchElement.classList.toggle('search-animation');
     if (this.#inpState === 'on') {
       this.#inpResultElement.value = 'Searching...';

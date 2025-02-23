@@ -38,11 +38,8 @@ export class FormView {
     return this.#formElements;
   }
 
-  /**
-   * @type {SubmitButton}
-   */
-  get submitButton() {
-    return this.#submitButton;
+  get #submitBtnElement() {
+    return this.formElement.querySelector(`#${this.#submitButton.id}`);
   }
 
   get #formGroupElement() {
@@ -136,6 +133,14 @@ export class FormView {
         nextInput.focus();
       }
     });
+  }
+
+  /**
+   * @param {boolean} isLoading
+   */
+  setSubmitBtnState(isLoading) {
+    this.#submitBtnElement.classList.toggle('glossy', isLoading);
+    this.#submitBtnElement.disabled = isLoading;
   }
 
   async #init() {

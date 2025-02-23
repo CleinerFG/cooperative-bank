@@ -6,9 +6,9 @@
   --color-secondary: hsl(189, 98%, 38%);
   --color-secondary-hover: hsl(189, 98%, 35%);
 
-  --glossy-start: hsl(189, 98%, 48%);
-  --glossy-middle: hsl(189, 98%, 38%);
-  --glossy-end: hsl(189, 98%, 48%);
+  --glossy-start: hsl(189, 98%, 38%);
+  --glossy-middle: hsl(189, 98%, 58%);
+  --glossy-end: hsl(189, 98%, 38%);
 
   --color-bg-start: hsl(250, 100%, 5%);
   --color-bg-end: hsl(250, 100%, 2%);
