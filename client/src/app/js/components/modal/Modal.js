@@ -65,8 +65,8 @@ export class Modal {
     return `
     <div id="modal" class="modal">
     <article class="modal-body">
-      <button class="btn-unset close-btn" aria-label="Close window">
-        <img src="${ASSETS_ROUTE}/icons/icon-close.svg" alt="Close window"/>
+      <button class="btn-unset btn-icon close-btn" aria-label="Close window">
+        <img class="icon" src="${ASSETS_ROUTE}/icons/icon-close.svg" alt="Close window"/>
       </button>
       <div class="modal-container">
         <header class="modal-header">${this._headerTemplate}</header>

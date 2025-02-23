@@ -1,16 +1,18 @@
 .inp__wrapper {
   width: 100%;
-  height: calc(2 + var(--padding-sm));
+  height: calc(2rem + var(--padding-sm));
   background-color: var(--color-bg-2);
   border: var(--form-component-border);
-  border-radius: var(--radius-md);
-  transition: all 0.2s;
 }
 
-.inp__wrapper-pass,
-.inp__wrapper-search {
+.inp__wrapper,
+.select-box {
+  padding: var(--padding-sm);
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
   display: flex;
   align-items: center;
+  gap: var(--gap-sm);
 }
 
 .inp__wrapper-search {
@@ -19,11 +21,11 @@
 
 .inp,
 .select-box {
+  height: calc(2rem + var(--padding-sm));
   width: 100%;
-  padding: var(--padding-sm) var(--padding-xs);
+  border: none;
   border-radius: var(--radius-md);
   background-color: transparent;
-  border: none;
 }
 
 .inp:focus {
@@ -44,6 +46,7 @@
 }
 
 .inp-date {
+  height: fit-content;
   border: var(--component-border);
 }
 

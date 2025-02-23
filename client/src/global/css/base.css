@@ -39,20 +39,6 @@ li {
   font-family: var(--info-font-family);
 }
 
-button {
-  cursor: pointer;
-}
-
-.btn-unset {
-  all: unset;
-}
-
-.btn-icon {
-  cursor: pointer;
-  display: inline-flex;
-  padding: var(--padding-sm);
-}
-
 .icon {
   height: var(--icon-sm);
 }

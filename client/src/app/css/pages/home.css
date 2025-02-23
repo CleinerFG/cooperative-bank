@@ -19,10 +19,6 @@
   font-size: var(--text-lg);
 }
 
-.amount-container .btn-icon {
-  padding: 0;
-}
-
 .cards.feature-cards {
   padding: var(--padding-sm);
   display: grid;
