@@ -58,8 +58,9 @@
   padding: var(--padding-md);
 }
 
-.header .theme-icon {
-  width: 1.2rem;
+.header .menu-list .icon {
+  height: var(--icon-sm);
+  padding: 0;
 }
 
 header .menu-list .menu-item:hover {
