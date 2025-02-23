@@ -61,6 +61,7 @@
 }
 
 .notifications-cards .loader {
+  position: inherit;
   margin: auto;
 }
 

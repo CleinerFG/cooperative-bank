@@ -56,10 +56,11 @@
 }
 
 .loader {
-  width: 50px;
-  height: 50px;
-  border: 0.5rem solid #f3f3f3;
-  border-top: 0.5rem solid var(--color-primary);
+  width: 3.5rem;
+  height: 3.5rem;
+  position: absolute;
+  border: 0.5rem solid var(--color-gray);
+  border-top-color: var(--color-secondary);
   border-radius: var(--radius-full);
   animation: spin 1s cubic-bezier(0.7, 0, 0.3, 1) infinite;
 }
