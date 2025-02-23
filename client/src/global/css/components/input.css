@@ -32,6 +32,10 @@
   outline: none;
 }
 
+.inp::placeholder {
+  color: var(--color-gray);
+}
+
 .inp__wrapper:focus-within {
   border-color: var(--color-inp-focus);
   box-shadow: var(--component-box-shadow);
@@ -52,10 +56,6 @@
 
 .inp-date:focus {
   border-color: var(--color-inp-focus);
-}
-
-input[type='date'] {
-  color: var(--color-gray);
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {

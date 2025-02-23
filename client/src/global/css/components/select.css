@@ -1,16 +1,17 @@
 .select-box {
   border: var(--form-component-border);
   cursor: pointer;
+  color: var(--color-gray);
+}
+
+.select-box:valid {
+  color: var(--text-color);
 }
 
 .select-box:focus {
   border-color: var(--color-inp-focus);
   box-shadow: var(--component-box-shadow);
   outline: none;
-}
-
-.select-box option {
-  background-color: var(--color-bg-2);
 }
 
 .select-error {
