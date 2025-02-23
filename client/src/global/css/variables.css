@@ -69,5 +69,6 @@
   --icon-4xl: 5rem;
 
   --border-thickness: 0.0625rem solid;
-  --component-box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
+  --box-shadow-sm: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.1);
+  --box-shadow-md: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.15);
 }

@@ -39,7 +39,7 @@
 
 .inp__wrapper:focus-within {
   border-color: var(--color-inp-focus);
-  box-shadow: var(--component-box-shadow);
+  box-shadow: var(--box-shadow-sm);
 }
 
 .inp-error {

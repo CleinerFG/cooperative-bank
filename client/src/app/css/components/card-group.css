@@ -21,6 +21,7 @@
   background-color: var(--color-secondary-translucent);
   padding: var(--padding-lg);
   border-radius: var(--radius-xl);
+  box-shadow: var(--box-shadow-sm);
   display: flex;
   flex-wrap: wrap;
   align-items: center;

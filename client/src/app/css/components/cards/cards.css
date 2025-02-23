@@ -10,7 +10,7 @@
 
 /* Hover */
 .card:hover {
-  box-shadow: 0.2rem 0.2rem 0.3rem #00000033;
+  box-shadow: var(--box-shadow-md);
 }
 
 .cards-container {

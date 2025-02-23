@@ -13,6 +13,7 @@
     var(--color-primary-translucent)
   );
   border-radius: 0 var(--radius-xxl) var(--radius-xxl) 0;
+  box-shadow: var(--box-shadow-sm);
 }
 
 .section-h2 {

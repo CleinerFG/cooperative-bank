@@ -22,7 +22,7 @@
 }
 
 .btn:hover {
-  box-shadow: var(--component-box-shadow);
+  box-shadow: var(--box-shadow-sm);
   background-color: var(--color-secondary-hover);
 }
 

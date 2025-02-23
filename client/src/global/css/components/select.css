@@ -11,7 +11,7 @@
 
 .select-box:focus {
   border-color: var(--color-inp-focus);
-  box-shadow: var(--component-box-shadow);
+  box-shadow: var(--box-shadow-sm);
   outline: none;
 }
 

@@ -54,7 +54,6 @@
 .card-state.error {
   border: none;
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  box-shadow: var(--card-state-box-shadow);
   max-width: 600px;
   background-image: linear-gradient(
     to top,
