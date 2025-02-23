@@ -76,7 +76,7 @@
 }
 
 .dashboard-filter .inp-date {
-  width: 7.5rem;
+  width: 8.25rem;
   padding: var(--padding-xs);
 }
 
@@ -116,8 +116,9 @@
   }
 
   .dashboard-filter {
-    flex: 3;
+    max-width: 200px;
   }
+  
   .entity-categories {
     flex: 1;
   }

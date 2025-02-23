@@ -1,3 +1,23 @@
 [
-
+  {
+    "id": "13805",
+    "modality": "personal",
+    "debtor": "Claudette Morel",
+    "date": "2023-06-01T20:35:16.253Z",
+    "creditValue": 2000
+  },
+  {
+    "id": "84256",
+    "modality": "auto",
+    "debtor": "Renato Lyra",
+    "date": "2021-02-17T20:35:16.253Z",
+    "creditValue": 4256
+  },
+  {
+    "id": "16507",
+    "modality": "mortgage",
+    "debtor": "Jake Park",
+    "date": "2024-08-07T20:35:16.253Z",
+    "creditValue": 80000
+  }
 ]
