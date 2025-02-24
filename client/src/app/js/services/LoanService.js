@@ -18,16 +18,16 @@ class LoanService {
    * @param {string} id
    * @returns {Promise<LoanDetailsData[]>}
    */
-  async getLoanOverviewDetails(id) {
+  async getLoanDetails(id) {
     const res = await fetch(`${this._BASE_ENDPOINT}/overview/details?id=${id}`);
     return await res.json();
   }
 
   /**
    * @param {string} id
-   * @returns {Promise<LoanRequestDetailsData[]>}
+   * @returns {Promise<RequestDetailsData[]>}
    */
-  async getLoanRequestDetails(id) {
+  async getRequestDetails(id) {
     const res = await fetch(`${this._BASE_ENDPOINT}/request/details?id=${id}`);
     return await res.json();
   }

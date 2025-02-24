@@ -9,7 +9,7 @@
  */
 
 /**
- * @typedef {Object} LoanOverviewDetailsData
+ * @typedef {Object} LoanDetailsData
  * @property {string} id
  * @property {'personal'|'auto'|'mortgage'} modality
  * @property {string|undefined} creditor
@@ -33,7 +33,13 @@
  */
 
 /**
- * @typedef {object} LoanRequestData
+ * @typedef {Object} LoanDetailsQueryParams
+ * @property {string} id
+ * @property {'payable'|'receivable'} category
+ */
+
+/**
+ * @typedef {object} RequestData
  * @property {string} id
  * @property {'personal'|'auto'|'mortgage'} modality
  * @property {string|undefined} creditor
@@ -44,7 +50,7 @@
  */
 
 /**
- * @typedef {Object} LoanRequestDetailsData
+ * @typedef {Object} RequestDetailsData
  * @property {string} id
  * @property {'personal'|'auto'|'mortgage'} modality
  * @property {string|undefined} creditor
@@ -55,11 +61,11 @@
  * @property {number} installments
  * @property {number} installmentValue
  * @property {number} rate
- * @property {'pending'|'rejected'|'approved'|undefined} status
+ * @property {'pending'|'rejected'|'approved'} status
  */
 
 /**
- * @typedef {Object} LoanDetailsQueryParams
+ * @typedef {Object} RequestDetailsQueryParams
  * @property {string} id
- * @property {'payable'|'receivable'|'opened'|'received'} category
+ * @property {'opened'|'received'} category
  */

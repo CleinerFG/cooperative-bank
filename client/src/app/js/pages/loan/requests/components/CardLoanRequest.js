@@ -11,7 +11,7 @@ export class CardLoanRequest extends CardLoanOverview {
   }
 
   /**
-   * @type {LoanRequestData}
+   * @type {RequestData}
    */
   get _apiData() {
     return super._apiData;

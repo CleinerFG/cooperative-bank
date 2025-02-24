@@ -9,6 +9,9 @@ export default class LoanDetailsPage extends Page {
    * @type {InfoDataDisplay}
    */
   #infoDataDisplayInstance;
+  /**
+   * @type {LoanDetailsData}
+   */
   #apiData;
 
   constructor(queryParams) {
@@ -29,6 +32,13 @@ export default class LoanDetailsPage extends Page {
       <div id="loan-installments"></div>
     </section>
     `;
+  }
+
+  /**
+   * @type {LoanDetailsQueryParams}
+   */
+  get _queryParams() {
+    return super._queryParams;
   }
 
   get #participantByCategory() {
@@ -110,12 +120,10 @@ export default class LoanDetailsPage extends Page {
     this.#infoDataDisplayInstance = new InfoDataDisplay(params);
   }
 
-  async _fetchData() {
+  async #fetchData() {
     try {
       await simulateWait();
-      this.#apiData = await loanService.getLoanOverviewDetails(
-        this._queryParams.id
-      );
+      this.#apiData = await loanService.getLoanDetails(this._queryParams.id);
       this.#infoDataDisplayInstance.apiData = this.#apiData;
     } catch (e) {
       console.error(e);
@@ -124,7 +132,7 @@ export default class LoanDetailsPage extends Page {
 
   async _setup() {
     this.#infoDataDisplayHandler();
-    await this._fetchData();
+    await this.#fetchData();
     new LoanInstallmentManager(this.#apiData.id);
     this.#infoDataDisplayInstance.display();
   }
