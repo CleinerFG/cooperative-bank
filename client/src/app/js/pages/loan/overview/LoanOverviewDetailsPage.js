@@ -14,7 +14,7 @@ export default class LoanDetaislOverviewPage extends LoanDetailsPage {
   }
 
   _fetchService(id) {
-    return loanService.getLoanDetailsOverview(id);
+    return loanService.getLoanOverviewDetails(id);
   }
 
   _customInfoDataHandler() {

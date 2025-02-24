@@ -73,7 +73,7 @@ app.get(
   serveFile(DB_DIR, 'loan-overview-receivable.json')
 );
 
-app.get('/api/loan/details/:category', async (req, res) => {
+app.get('/api/loan/:category/details', async (req, res) => {
   const getFilePath = (category) => {
     return path.join(DB_DIR, `loan-${category}-details.json`);
   };
