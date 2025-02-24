@@ -34,6 +34,10 @@ export class Modal {
     throw new AbstractGetterError('_contentTemplate');
   }
 
+  get _footerTemplate() {
+    throw new AbstractGetterError('_footerTemplate');
+  }
+
   /**
    * @param {"hidden" | ""} value
    */
@@ -53,6 +57,10 @@ export class Modal {
     return this.#modalElement.querySelector('.modal-content');
   }
 
+  get _footerElement() {
+    return this.#modalElement.querySelector('.modal-footer');
+  }
+
   get #closeModalBtnElement() {
     return this.#modalElement.querySelector('.close-btn');
   }
@@ -70,9 +78,10 @@ export class Modal {
       </button>
       <div class="modal-container">
         <header class="modal-header">${this._headerTemplate}</header>
-        <section class="modal-content ${this.#category}">
+        <main class="modal-content ${this.#category}">
           ${this._contentTemplate}
-        </section>
+        </main>
+        <footer class="modal-footer">${this._footerTemplate}</footer>
       </div>
     </article>
     </div>

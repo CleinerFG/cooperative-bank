@@ -26,7 +26,7 @@ export class ConfirmOperationModal extends Modal {
   }
 
   get #successBtnElement() {
-    return this._contentElement.querySelector('.btn-success');
+    return this._footerElement.querySelector('.btn-success');
   }
 
   get #formElement() {
@@ -43,17 +43,20 @@ export class ConfirmOperationModal extends Modal {
     `;
   }
 
+  get _footerTemplate() {
+    return '';
+  }
+
   #authMessageHandler() {
-    const title = `
+    const header = `
       <img class="icon-success" src="${ASSETS_ROUTE}/icons/icon-success.svg" alt="Success">
       <h2>Success</h2>
     `;
-    const message = `
-      <span class="info-text">The operation was authorized.</span>
-      <button class="btn btn-success">OK</button>
-    `;
-    this._headerElement.innerHTML = title;
+    const message = `<span class="info-text">The operation was authorized.</span>`;
+    const btn = `<button class="btn btn-success">OK</button>`;
+    this._headerElement.innerHTML = header;
     this._contentElement.innerHTML = message;
+    this._footerElement.innerHTML = btn;
   }
 
   #successBtnHandler() {
