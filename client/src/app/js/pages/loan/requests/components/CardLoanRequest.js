@@ -23,7 +23,7 @@ export class CardLoanRequest extends CardLoanOverview {
       const statusCssMap = {
         pending: 'span-pending',
         rejected: 'span-fail',
-        approved: 'span-success',
+        accepted: 'span-success',
       };
       const cssClass = statusCssMap[this._apiData.status];
       status = `<span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>`;

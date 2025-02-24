@@ -46,7 +46,7 @@
  * @property {string|undefined} debtor
  * @property {string} date
  * @property {number} creditValue
- * @property {'pending'|'rejected'|'approved'} status
+ * @property {'pending'|'rejected'|'accepted'} status
  */
 
 /**
@@ -61,7 +61,7 @@
  * @property {number} installments
  * @property {number} installmentValue
  * @property {number} rate
- * @property {'pending'|'rejected'|'approved'} status
+ * @property {'pending'|'rejected'|'accepted'} status
  */
 
 /**

@@ -53,7 +53,11 @@ export default class RequestDetailsPage extends Page {
       {
         label: 'status',
         apiDataProp: 'status',
-        iconPath: iconBasePath + 'icon-status.svg',
+        iconState: {
+          pending: 'loan/details/icon-pending.svg',
+          accepted: 'loan/details/icon-accepted.svg',
+          rejected: 'loan/details/icon-rejected.svg',
+        },
         valueFormatter: 'capitalize',
       },
       {

@@ -39,19 +39,25 @@ export class InfoDataDisplay {
   /**
    * @param {Item} param
    */
-  #buildItem({ label, iconPath }) {
+  #buildItem({ label, iconPath, iconState }) {
+    const id = toCamelCase(label);
     const hasIcon = () => {
-      return iconPath
-        ? `<img class="icon ${handleIconDark()}" src="${AssetManager.iconsPath}${iconPath}">`
-        : '';
+      if (iconState) {
+        return `
+          <div class="icon-state skelon">
+            <img id="${id}-icon" class="info-icon">
+          </div>`;
+      } else if (iconPath) {
+        return `<img id="${id}-icon" class="icon info-icon ${handleIconDark()}" src="${AssetManager.iconsPath}${iconPath}">`;
+      }
+      return '';
     };
-    const valueId = toCamelCase(label);
     return `
       <div class="info-item__container">
         ${hasIcon()}
         <div class="info-item">
           <span class="info-label">${capitalize(label)}</span>
-          <span id="${valueId}" class="info-value skelon"></span>
+          <span id="${id}" class="info-value skelon"></span>
         </div>
       </div>
     `;
@@ -122,7 +128,7 @@ export class InfoDataDisplay {
   /**
    * @param {Item}
    */
-  #displayItem({ label, apiDataProp, valueFormatter }) {
+  #displayItem({ label, apiDataProp, valueFormatter, iconState }) {
     const getFormatedValue = (apiDataProp, valueFormatter) => {
       const formattersMap = {
         capitalize: capitalize,
@@ -134,9 +140,15 @@ export class InfoDataDisplay {
       const value = this.#apiData[apiDataProp];
       return valueFormatter ? formattersMap[valueFormatter](value) : value;
     };
+
     const id = toCamelCase(label);
     const element = this.#containerElement.querySelector(`#${id}`);
     element.textContent = getFormatedValue(apiDataProp, valueFormatter);
+
+    if (iconState) {
+      const stateIcon = iconState[this.#apiData[apiDataProp]];
+      AssetManager.updateAsset(`#${id}-icon`, stateIcon);
+    }
   }
 
   display() {

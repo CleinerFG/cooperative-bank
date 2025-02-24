@@ -22,10 +22,15 @@
 }
 
 .info-value {
-  min-height: var(--text-md);
+  min-height: calc(var(--text-md) + 0.25rem);
   width: 10rem;
 }
 
-.info-container .icon {
+.info-container .icon-state {
+  height: var(--icon-xl);
+  width: var(--icon-xl);
+}
+
+.info-container .info-icon {
   height: var(--icon-xl);
 }
