@@ -1,12 +1,18 @@
+.info-container.account-details {
+  padding: 0;
+}
+
 .cover-photo {
   background: linear-gradient(
     360deg,
-    var(--color-bg-1) 40%,
-    var(--color-primary-translucent)
+    transparent 20%,
+    var(--color-primary-translucent) 80%
   );
-  padding: var(--padding-xl) var(--padding-xl) 0 var(--padding-xl);
+  padding: var(--padding-xl);
   margin: calc(0rem - var(--padding-xl));
   margin-bottom: 0;
+  border-bottom: var(--border-thickness);
+  border-color: var(--line-color);
   position: relative;
   display: flex;
   justify-content: center;
@@ -16,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--gap-sm);
+  gap: var(--gap-md);
 }
 
 .photo-container {
