@@ -43,25 +43,30 @@ export default class MyAccountPage extends Page {
    * @type {Item[]}
    */
   get #infoDataItems() {
+    const iconBasePath = '/account/';
     return [
       {
         label: 'date of birth',
         apiDataProp: 'birth',
         valueFormatter: 'date',
+        iconPath: iconBasePath + 'icon-calendar.svg',
       },
       {
         label: 'cpf',
         apiDataProp: 'cpf',
         valueFormatter: 'cpf',
+        iconPath: iconBasePath + 'icon-document.svg',
       },
       {
         label: 'e-mail',
         apiDataProp: 'email',
+        iconPath: iconBasePath + 'icon-email.svg',
       },
       {
         label: 'registration date',
         apiDataProp: 'registration',
         valueFormatter: 'date',
+        iconPath: iconBasePath + 'icon-register.svg',
       },
     ];
   }
