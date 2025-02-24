@@ -4,9 +4,11 @@
   gap: var(--gap-lg);
 }
 
-.section-h1 {
+.section-h1,
+.brand-container {
   margin-left: calc(0rem - var(--padding-xl));
-  padding: var(--padding-sm) 0 var(--padding-sm) var(--padding-xl);
+  padding: var(--padding-sm) var(--padding-sm) var(--padding-sm)
+    var(--padding-xl);
   background-image: linear-gradient(
     to right,
     #fff0 -15%,

@@ -13,16 +13,20 @@ export default class HomePage extends Page {
   }
 
   get _statementTemplate() {
-    const icon = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
+    const balanceIcon = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
+    const brandIcon = `${ASSETS_ROUTE}/icons/icon-globe.svg`;
     return `
     <section class="section statement">
-      <h1 class="section-h1">Financial Statement</h1>
+      <div class="brand-container">
+        <h1 class="brand-name">Cooperative Bank</h1>
+        <img class="icon ${handleIconDark()}" src="${brandIcon}" alt="Closed eye">
+      </div>
       <div class="statement-balance">
         <span class="balance-label">Balance</span>
         <div class="balance-container">
           <span id="balance-value" class="balance-value skelon">R$ * * * * * *</span>
           <button id="balance-visibility-btn" class="btn-unset btn-icon" data-visibility="off">
-            <img id="balance-visibility-icon" class="icon ${handleIconDark()}" src="${icon}" alt="Closed eye">
+            <img id="balance-visibility-icon" class="icon ${handleIconDark()}" src="${balanceIcon}" alt="Closed eye">
           </button>
         </div>
       </div>

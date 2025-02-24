@@ -1,3 +1,13 @@
+.statement .brand-container {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.brand-container .icon {
+  height: var(--icon-md);
+}
+
 .statement-balance {
   display: flex;
   flex-direction: column;
