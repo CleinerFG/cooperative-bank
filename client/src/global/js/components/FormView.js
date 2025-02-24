@@ -47,7 +47,7 @@ export class FormView {
 
   get #headerTemplate() {
     if (this.#header) {
-      const icon = `${AssetManager.iconsPath}${this.#header.icon}`;
+      const icon = `${AssetManager.iconsPath}/form/${this.#header.icon}`;
       return `
       <div class="form-header">
         <img class="form-icon" src="${icon}" alt="Icon ${this.#id}">

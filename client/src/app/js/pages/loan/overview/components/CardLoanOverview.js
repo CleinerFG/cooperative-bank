@@ -14,9 +14,9 @@ import { PAGE_ROUTES } from '../../../../constants/routes.js';
 export class CardLoanOverview extends Card {
   get _modalityIcon() {
     return {
-      personal: ASSETS_ROUTE + '/icons/icon-credit-card.svg',
-      auto: ASSETS_ROUTE + '/icons/icon-car.svg',
-      mortgage: ASSETS_ROUTE + '/icons/icon-house.svg',
+      personal: ASSETS_ROUTE + '/icons/loan/icon-credit-card.svg',
+      auto: ASSETS_ROUTE + '/icons/loan/icon-car.svg',
+      mortgage: ASSETS_ROUTE + '/icons/loan/icon-house.svg',
     };
   }
 

@@ -154,7 +154,7 @@ export default class LandingPage extends Page {
     return `
     <header class="landing header">
         <div class="brand-container">
-          <img class="brand-icon" src="${ASSETS_ROUTE}/icons/icon-globe.svg" alt="Cooperative Bank Icon"/>
+          <img class="brand-icon" src="${ASSETS_ROUTE}/icons/icon-brand.svg" alt="Cooperative Bank Icon"/>
           <span class="brand-name">Cooperative Bank</span>
         </div>
         <div class="login-link-container">

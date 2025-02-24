@@ -56,7 +56,7 @@ export default class SearchInput extends Input {
   }
 
   get _template() {
-    const icon = `${AssetManager.iconsPath}icon-search.svg`;
+    const icon = `${AssetManager.iconsPath}/form/icon-search.svg`;
     return `
       <div class="inp-group ">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>

@@ -28,7 +28,7 @@ export default class LoanDetailsPage extends Page {
     {
       label: 'modality',
       getValue: () => capitalize(this._apiData?.modality),
-      img: 'icon-bank.svg',
+      img: 'icon-modality.svg',
     },
     {
       label: this._participantByCategory,
@@ -39,7 +39,7 @@ export default class LoanDetailsPage extends Page {
     {
       label: 'credit value',
       getValue: () => numberToCurrency(this._apiData?.creditValue),
-      img: 'icon-money.svg',
+      img: 'icon-value.svg',
     },
     {
       label: 'interest rate',
@@ -49,11 +49,12 @@ export default class LoanDetailsPage extends Page {
     {
       label: 'total amount',
       getValue: () => numberToCurrency(this._apiData?.totalAmount),
-      img: 'icon-monitoring.svg',
+      img: 'icon-total.svg',
     },
     {
       label: 'installment value',
       getValue: () => numberToCurrency(this._apiData?.installmentValue),
+      img: 'icon-installment.svg',
     },
   ];
 
@@ -101,7 +102,7 @@ export default class LoanDetailsPage extends Page {
   _buildInfoItemTemplate({ label, img }) {
     const hasImg = () => {
       if (img)
-        return `<img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/${img}">`;
+        return `<img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/loan/details/${img}">`;
       return '';
     };
     const valueId = toCamelCase(label);

@@ -14,7 +14,7 @@ export default class HomePage extends Page {
 
   get _statementTemplate() {
     const balanceIcon = `${ASSETS_ROUTE}/icons/icon-visibility-off.svg`;
-    const brandIcon = `${ASSETS_ROUTE}/icons/icon-globe.svg`;
+    const brandIcon = `${ASSETS_ROUTE}/icons/icon-brand.svg`;
     return `
     <section class="section statement">
       <div class="brand-container">

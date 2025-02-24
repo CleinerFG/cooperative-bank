@@ -21,6 +21,7 @@ export default class LoanDetaislOverviewPage extends LoanDetailsPage {
     this._addInfoItemData(6, {
       label: 'outstanding balance',
       getValue: () => numberToCurrency(this._apiData?.outstandingBalance),
+      img: 'icon-outstanding.svg',
     });
   }
 
