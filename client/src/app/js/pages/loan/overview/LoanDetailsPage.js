@@ -1,19 +1,19 @@
-import loanService from '../../../services/LoanService.js';
-import LoanInstallmentManager from './components/LoanInstallmentManager.js';
 import { Page } from '../../../../../global/js/core/Page.js';
+import loanService from '../../../services/LoanService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
+import LoanInstallmentManager from './components/LoanInstallmentManager.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
-export default class LoanDetaislPage extends Page {
+export default class LoanDetailsPage extends Page {
   /**
    * @type {InfoDataDisplay}
    */
   #infoDataDisplayInstance;
+  #apiData;
 
   constructor(queryParams) {
     super(queryParams);
     this._init();
-    this._initComponents();
     this._setup();
   }
 
@@ -110,39 +110,22 @@ export default class LoanDetaislPage extends Page {
     this.#infoDataDisplayInstance = new InfoDataDisplay(params);
   }
 
-  _initComponents() {
-    this.#infoDataDisplayHandler();
-  }
-
   async _fetchData() {
     try {
       await simulateWait();
-      const data = await loanService.getLoanOverviewDetails(
+      this.#apiData = await loanService.getLoanOverviewDetails(
         this._queryParams.id
       );
-      this.#infoDataDisplayInstance.apiData = data;
+      this.#infoDataDisplayInstance.apiData = this.#apiData;
     } catch (e) {
       console.error(e);
     }
   }
 
   async _setup() {
+    this.#infoDataDisplayHandler();
     await this._fetchData();
+    new LoanInstallmentManager(this.#apiData.id);
     this.#infoDataDisplayInstance.display();
   }
-
-  // _paymentProgressHandler() {
-  //   const container = document.querySelector('.payment-progress');
-  //   new ProgressBar(
-  //     container,
-  //     'payment progress',
-  //     this._apiData.installments,
-  //     this._apiData.paidInstallments
-  //   );
-  // }
-
-  // _initComponents() {
-  //   this._paymentProgressHandler();
-  //   new LoanInstallmentManager(this._apiData.id);
-  // }
 }
