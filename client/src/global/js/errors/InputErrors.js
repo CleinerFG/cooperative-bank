@@ -36,6 +36,6 @@ export class InvalidPasswordError extends Error {
 
 export class InvalidEmailError extends Error {
   constructor() {
-    super('Invalid e-mail');
+    super('Invalid email');
   }
 }

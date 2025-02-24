@@ -58,7 +58,7 @@ export default class MyAccountPage extends Page {
         iconPath: iconBasePath + 'icon-document.svg',
       },
       {
-        label: 'e-mail',
+        label: 'email',
         apiDataProp: 'email',
         iconPath: iconBasePath + 'icon-email.svg',
       },

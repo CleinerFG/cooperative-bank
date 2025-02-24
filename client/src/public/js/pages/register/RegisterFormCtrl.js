@@ -39,7 +39,7 @@ export default class RegisterFormCtrl extends FormCtrl {
       {
         id: 'email',
         category: 'default',
-        labelText: 'E-mail',
+        labelText: 'Email',
         inputmode: 'email',
         type: 'email',
         customValidator: emailValidator,

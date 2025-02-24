@@ -47,9 +47,9 @@ export class InfoDataDisplay {
     };
     const valueId = toCamelCase(label);
     return `
-      <div class="info-item">
+      <div class="info-item__container">
         ${hasIcon()}
-        <div class="info-item__container">
+        <div class="info-item">
           <span class="info-label">${capitalize(label)}</span>
           <span id="${valueId}" class="info-value skelon"></span>
         </div>

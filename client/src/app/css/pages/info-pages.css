@@ -4,17 +4,15 @@
   gap: var(--gap-md);
 }
 
-.info-item,
 .info-item__container {
   display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.info-item {
+  display: flex;
   gap: var(--gap-xs);
-}
-
-.info-container .info-item {
-  flex-direction: row;
-}
-
-.info-item__container {
   flex-direction: column;
 }
 
@@ -29,5 +27,5 @@
 }
 
 .info-container .icon {
-  height: var(--icon-lg);
+  height: var(--icon-xl);
 }
