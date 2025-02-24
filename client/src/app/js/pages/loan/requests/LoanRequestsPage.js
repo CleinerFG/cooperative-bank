@@ -8,12 +8,13 @@ export default class LoanRequestsPage extends Page {
     this._initComponents();
   }
 
-  get _newRequestTemplate() {
+  get _introductionTemplate() {
     return `
-    <section class="section new-request">
-      <h1 class="section-h1">Take Out a Loan</h1>
+    <section class="section">
+      <h1 class="section-h1">Requests</h1>
       <p class="info-text">To obtain a loan, the creditor needs to access their own account and accept the loan request.
       </p>
+      <div class="new-request"></div>
     </section>
     `;
   }
@@ -21,14 +22,14 @@ export default class LoanRequestsPage extends Page {
   get _requestsTemplate() {
     return `
     <section class="section loans">
-      <h2 class="section-h2">Loan Requests</h2>
+      <h2 class="section-h2">Active Requests</h2>
     </section>
     `;
   }
 
   get _template() {
     return `
-    ${this._newRequestTemplate}
+    ${this._introductionTemplate}
     ${this._requestsTemplate}
     `;
   }
