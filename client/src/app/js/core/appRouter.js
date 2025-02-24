@@ -33,8 +33,7 @@ const routes = [
   },
   {
     path: PAGE_ROUTES.loan.detailsOverview,
-    pageModule: () =>
-      import('../pages/loan/overview/LoanOverviewDetailsPage.js'),
+    pageModule: () => import('../pages/loan/overview/LoanDetailsPage.js'),
   },
   {
     path: PAGE_ROUTES.loan.timeline,
