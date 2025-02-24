@@ -19,8 +19,7 @@
 }
 
 .modal-body {
-  padding: var(--padding-md) var(--padding-xl) var(--padding-xl)
-    var(--padding-xl);
+  padding: var(--padding-xl);
   margin: var(--margin-lg);
   background-color: var(--color-bg-2);
   border-radius: var(--radius-xl);
