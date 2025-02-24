@@ -12,6 +12,7 @@
   --color-detail: hsl(16, 40%, 60%);
   --color-cta: #911f08;
   --color-cta-hover: hsl(10, 90%, 27%);
+  --color-gray-light: hsl(0, 0%, 40%);
 
   --title-color: hsl(0, 0%, 5%);
   --text-color: hsl(0, 0%, 10%);
@@ -45,6 +46,7 @@
   --color-detail: hsl(16, 40%, 25%);
   --color-cta: hsl(10, 60%, 25%);
   --color-cta-hover: hsl(10, 60%, 23%);
+  --color-gray-light: hsl(0, 0%, 60%);
 
   --text-color: hsl(0, 0%, 90%);
   --title-color: hsl(0, 0%, 95%);
