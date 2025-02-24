@@ -1,10 +1,11 @@
+import '../types/accountType.js';
 import { API_BASE_URL } from '../../../global/js/constants/config.js';
 
 class AccountService {
   #BASE_ENDPOINT = `${API_BASE_URL}/account`;
 
   /**
-   * @returns {Promise<{ name: string, birth: string, cpf: string, email: string, registration: string }>}
+   * @returns {Promise<UserInfo>}
    */
   async getUserInfo() {
     const res = await fetch(`${this.#BASE_ENDPOINT}/user`);
@@ -13,7 +14,7 @@ class AccountService {
 
   /**
    *
-   * @returns {Promise<number>}
+   * @returns {Promise<Balance>}
    */
   async getBalance() {
     const res = await fetch(`${this.#BASE_ENDPOINT}/balance`);

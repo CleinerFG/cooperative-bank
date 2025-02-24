@@ -5,6 +5,9 @@ import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { ApiDataNotDefinedError } from '../../../errors/ApiDataNotDefinedError.js';
 
 export default class MyAccountPage extends Page {
+  /**
+   * @type {UserInfo}
+   */
   #apiData;
   /**
    * @type {InfoDataDisplay}
