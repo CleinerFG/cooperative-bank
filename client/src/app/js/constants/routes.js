@@ -10,6 +10,7 @@ export const PAGE_ROUTES = {
     extract: `${BASE_URL}/wallet/extract`,
   },
   loan: {
+    newRequest: `${BASE_URL}/loan/new-request`,
     requests: `${BASE_URL}/loan/requests`,
     payments: `${BASE_URL}/loan/payments`,
     overview: `${BASE_URL}/loan/overview`,

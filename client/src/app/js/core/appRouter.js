@@ -15,6 +15,10 @@ const routes = [
     pageModule: () => import('../pages/common/settings/SettingsPage.js'),
   },
   {
+    path: PAGE_ROUTES.loan.newRequest,
+    pageModule: () => import('../pages/loan/new-request/NewRequestPage.js'),
+  },
+  {
     path: PAGE_ROUTES.loan.requests,
     pageModule: () => import('../pages/loan/requests/LoanRequestsPage.js'),
   },

@@ -1,5 +1,5 @@
-import { FormCtrl } from '../../../../../../global/js/components/FormCtrl.js';
-import loanService from '../../../../services/LoanService.js';
+import { FormCtrl } from '../../../../../global/js/components/FormCtrl.js';
+import loanService from '../../../services/LoanService.js';
 
 export default class LoanRequestFormCtrl extends FormCtrl {
   get _viewParams() {
