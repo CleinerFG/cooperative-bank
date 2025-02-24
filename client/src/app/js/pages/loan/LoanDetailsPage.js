@@ -64,6 +64,13 @@ export default class LoanDetailsPage extends Page {
     this._setup();
   }
 
+  /**
+   * @type {LoanDetailsQueryParams}
+   */
+  get _queryParams() {
+    return super._queryParams;
+  }
+
   get _participantByCategory() {
     const queryCategory = this._queryParams.category;
     return queryCategory === 'payable' || queryCategory === 'opened'
@@ -113,25 +120,15 @@ export default class LoanDetailsPage extends Page {
     return this.#infoItemsData.map(this._buildInfoItemTemplate).join('');
   }
 
-  get _detailsTemplate() {
+  get _template() {
     return `
     <section class="section">
-      <h1 class="section-h1">Loan Details</h1>
+      <h1 class="section-h1">${this._pageTitle}</h1>
       <div class="info-container loan-details">
         ${this._buildInfoItems()}
         <div class="payment-progress"></div>
       </div>
     </section>
-    `;
-  }
-
-  get _pageTitle() {
-    return 'Loan Details';
-  }
-
-  get _template() {
-    return `
-    ${this._detailsTemplate}
     ${this._customTemplate}
     `;
   }
@@ -155,7 +152,6 @@ export default class LoanDetailsPage extends Page {
     try {
       await simulateWait();
       this._apiData = await this._fetchService(this._queryParams.id);
-      console.log(this._apiData);
     } catch (e) {
       console.error(e);
     }

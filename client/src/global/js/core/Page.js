@@ -10,7 +10,7 @@ export class Page {
   #queryParams;
 
   /**
-   * @param {object} queryParams
+   * @param {Object.<string, string>} queryParams
    */
   constructor(queryParams) {
     this.#queryParams = queryParams;

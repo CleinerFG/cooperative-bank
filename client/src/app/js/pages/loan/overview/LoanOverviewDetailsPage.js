@@ -5,6 +5,10 @@ import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
 import LoanInstallmentManager from './components/LoanInstallmentManager.js';
 
 export default class LoanDetaislOverviewPage extends LoanDetailsPage {
+  get _pageTitle() {
+    return 'Loan Details';
+  }
+
   get _customTemplate() {
     return '<div id="loan-installments"></div>';
   }

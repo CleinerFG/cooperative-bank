@@ -3,6 +3,10 @@ import loanService from '../../../services/LoanService.js';
 import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
 
 export default class LoanRequestDetailsPage extends LoanDetailsPage {
+  get _pageTitle() {
+    return 'Request Details';
+  }
+
   _fetchService(id) {
     return loanService.getLoanDetailsRequest(id);
   }

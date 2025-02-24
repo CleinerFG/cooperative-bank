@@ -44,7 +44,7 @@
  */
 
 /**
- * @typedef {object} LoanRequestDetailsData
+ * @typedef {Object} LoanRequestDetailsData
  * @property {string} id
  * @property {'personal'|'auto'|'mortgage'} modality
  * @property {string|undefined} creditor
@@ -56,4 +56,10 @@
  * @property {number} installmentValue
  * @property {number} rate
  * @property {'pending'|'rejected'|'approved'|undefined} status
+ */
+
+/**
+ * @typedef {Object} LoanDetailsQueryParams
+ * @property {string} id
+ * @property {'payable'|'receivable'|'opened'|'received'} category
  */
