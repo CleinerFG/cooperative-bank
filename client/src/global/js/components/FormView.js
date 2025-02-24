@@ -1,7 +1,6 @@
 import '../types/formElementsType.js';
 import { SubmitButton } from './form-elements/SubmitButton.js';
 import { AssetManager } from '../core/AssetManager.js';
-import { handleIconDark } from '../utils/themeUtils.js';
 
 export class FormView {
   #containerElement;
@@ -51,7 +50,7 @@ export class FormView {
       const icon = `${AssetManager.iconsPath}${this.#header.icon}`;
       return `
       <div class="form-header">
-        <img class="icon form-icon ${handleIconDark()}" src="${icon}" alt="Icon ${this.#id}">
+        <img class="form-icon" src="${icon}" alt="Icon ${this.#id}">
         <h3 class="form-title">${this.#header.title}</h3>
       </div>
       `;
