@@ -3,7 +3,8 @@
  * @property {string} label
  * @property {string} [iconPath]
  * @property {string} apiDataProp
- * @property {'currency'|'date'|'percent'|'cpf'} [valueFormatter='capitalize']
+ * @property {{apiDataPropMax:number, apiDataPropCurrent:number}} [progressBar]
+ * @property {'currency'|'date'|'percent'|'cpf'|'capitalize'} [valueFormatter]
  */
 
 /**

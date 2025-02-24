@@ -22,4 +22,5 @@
 
 .progress-fill {
   height: 1rem;
+  width: 0;
 }

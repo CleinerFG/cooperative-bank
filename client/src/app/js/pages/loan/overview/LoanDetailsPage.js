@@ -1,5 +1,4 @@
 import loanService from '../../../services/LoanService.js';
-import { ProgressBar } from './components/progressBar.js';
 import LoanInstallmentManager from './components/LoanInstallmentManager.js';
 import { Page } from '../../../../../global/js/core/Page.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
@@ -53,11 +52,13 @@ export default class LoanDetaislPage extends Page {
         label: 'modality',
         apiDataProp: 'modality',
         iconPath: iconBasePath + 'icon-modality.svg',
+        valueFormatter: 'capitalize',
       },
       {
         label: this.#participantByCategory,
         apiDataProp: this.#participantByCategory,
         iconPath: iconBasePath + 'icon-person.svg',
+        valueFormatter: 'capitalize',
       },
       {
         label: 'credit value',
@@ -88,6 +89,14 @@ export default class LoanDetaislPage extends Page {
         apiDataProp: 'outstandingBalance',
         iconPath: iconBasePath + 'icon-outstanding.svg',
         valueFormatter: 'currency',
+      },
+      {
+        label: 'payment progress',
+        type: 'progressBar',
+        progressBar: {
+          apiDataPropMax: 'installments',
+          apiDataPropCurrent: 'paidInstallments',
+        },
       },
     ];
   }

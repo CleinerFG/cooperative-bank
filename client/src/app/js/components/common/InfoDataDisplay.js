@@ -1,17 +1,18 @@
 import '../../types/infoDataDisplayType.js';
+import { ProgressBar } from './progressBar.js';
+import { AssetManager } from '../../../../global/js/core/AssetManager.js';
+import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 import {
   toCamelCase,
   capitalize,
 } from '../../../../global/js/utils/stringUtils.js';
-import { AssetManager } from '../../../../global/js/core/AssetManager.js';
-import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
-import { ApiDataNotDefinedError } from '../../errors/ApiDataNotDefinedError.js';
 import {
   formatCpf,
   formatDate,
   numberToCurrency,
   numberToPercent,
 } from '../../../../global/js/utils/formatters.js';
+import { ApiDataNotDefinedError } from '../../errors/ApiDataNotDefinedError.js';
 
 export class InfoDataDisplay {
   #containerElement;
@@ -36,47 +37,53 @@ export class InfoDataDisplay {
   }
 
   /**
-   * @param {Item}
+   * @param {Item} param
    */
-  #getFormatedValue({ apiDataProp, valueFormatter }) {
-    const formattersMap = {
-      capitalize: capitalize,
-      percent: numberToPercent,
-      currency: numberToCurrency,
-      date: formatDate,
-      cpf: formatCpf,
+  #buildItem({ label, iconPath }) {
+    const hasIcon = () => {
+      return iconPath
+        ? `<img class="icon ${handleIconDark()}" src="${AssetManager.iconsPath}${iconPath}">`
+        : '';
     };
-    const value = this.#apiData[apiDataProp];
-    if (valueFormatter) {
-      return formattersMap[valueFormatter](value);
-    }
-    return formattersMap.capitalize(value);
+    const valueId = toCamelCase(label);
+    return `
+      <div class="info-item">
+        ${hasIcon()}
+        <div class="info-item__container">
+          <span class="info-label">${capitalize(label)}</span>
+          <span id="${valueId}" class="info-value skelon"></span>
+        </div>
+      </div>
+    `;
   }
 
   /**
    * @param {Item} param
    */
-  #buildItemTemplate({ label, iconPath }) {
-    const hasIcon = () => {
-      if (iconPath) {
-        return `<img class="icon ${handleIconDark()}" src="${AssetManager.iconsPath}${iconPath}">`;
-      }
-      return '';
-    };
-    const valueId = toCamelCase(label);
-    return `
-        <div class="info-item">
-          ${hasIcon()}
-          <div class="info-item__container">
-            <span class="info-label">${capitalize(label)}</span>
-            <span id="${valueId}" class="info-value skelon"></span>
-          </div>
-        </div>
-      `;
+  #buildProgressBar({ label }) {
+    const progressBarInstance = new ProgressBar(this.#containerElement, label);
+    this.#items = this.#items.map((item) => {
+      return item.label === label
+        ? {
+            ...item,
+            progressBar: { ...item.progressBar, instance: progressBarInstance },
+          }
+        : item;
+    });
+    return progressBarInstance.template;
+  }
+
+  /**
+   * @param {Item} item
+   */
+  #buildItemByType(item) {
+    return item.progressBar
+      ? this.#buildProgressBar(item)
+      : this.#buildItem(item);
   }
 
   #buildItemsTemplate() {
-    return this.#items.map(this.#buildItemTemplate).join('');
+    return this.#items.map(this.#buildItemByType.bind(this)).join('');
   }
 
   get #template() {
@@ -97,17 +104,46 @@ export class InfoDataDisplay {
       .forEach((el) => el.classList.remove('skelon'));
   }
 
+  /**
+   * @param {Item}
+   */
+  #displayProgressBar({ progressBar }) {
+    console.table(this.#apiData);
+
+    const max = this.#apiData[progressBar.apiDataPropMax];
+    const current = this.#apiData[progressBar.apiDataPropCurrent];
+    /**
+     * @type {ProgressBar}
+     */
+    const instance = progressBar.instance;
+    instance.updateProgress(current, max);
+  }
+
+  /**
+   * @param {Item}
+   */
+  #displayItem({ label, apiDataProp, valueFormatter }) {
+    const getFormatedValue = (apiDataProp, valueFormatter) => {
+      const formattersMap = {
+        capitalize: capitalize,
+        percent: numberToPercent,
+        currency: numberToCurrency,
+        date: formatDate,
+        cpf: formatCpf,
+      };
+      const value = this.#apiData[apiDataProp];
+      return valueFormatter ? formattersMap[valueFormatter](value) : value;
+    };
+    const id = toCamelCase(label);
+    const element = this.#containerElement.querySelector(`#${id}`);
+    element.textContent = getFormatedValue(apiDataProp, valueFormatter);
+  }
+
   display() {
     if (!this.#apiData) throw new ApiDataNotDefinedError();
     this.#items.forEach((item) => {
-      console.table({
-        label: item.label,
-        value: this.#getFormatedValue(item),
-        formatter: item.valueFormatter,
-      });
-      const valueId = toCamelCase(item.label);
-      this.#containerElement.querySelector(`#${valueId}`).textContent =
-        this.#getFormatedValue(item);
+      if (item.progressBar) return this.#displayProgressBar(item);
+      return this.#displayItem(item);
     });
     this.#removeSkelons();
   }
