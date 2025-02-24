@@ -14,8 +14,8 @@ class FeatureGroups {
       featureCards: [],
     },
     {
-      groupName: 'investments',
-      features: ['all', 'reports'],
+      groupName: 'investment',
+      features: ['search', 'reports'],
       featureCards: [],
     },
   ];

@@ -34,7 +34,7 @@ export class CardLink {
   }
 
   get #icon() {
-    return `${ASSETS_ROUTE}/icons/icon-${this.#name}.svg`;
+    return `${ASSETS_ROUTE}/icons/${this.#groupName}/icon-${this.#name}.svg`;
   }
 
   get template() {
