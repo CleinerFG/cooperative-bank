@@ -23,16 +23,15 @@ const routes = [
     pageModule: () => import('../pages/loan/requests/LoanRequestsPage.js'),
   },
   {
-    path: PAGE_ROUTES.loan.detailsRequest,
-    pageModule: () =>
-      import('../pages/loan/requests/LoanRequestDetailsPage.js'),
+    path: PAGE_ROUTES.loan.requestDetails,
+    pageModule: () => import('../pages/loan/requests/RequestDetailsPage.js'),
   },
   {
     path: PAGE_ROUTES.loan.overview,
     pageModule: () => import('../pages/loan/overview/OverviewPage.js'),
   },
   {
-    path: PAGE_ROUTES.loan.detailsOverview,
+    path: PAGE_ROUTES.loan.overviewDetails,
     pageModule: () => import('../pages/loan/overview/LoanDetailsPage.js'),
   },
   {

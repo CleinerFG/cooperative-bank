@@ -14,8 +14,8 @@ export const PAGE_ROUTES = {
     requests: `${BASE_URL}/loan/requests`,
     payments: `${BASE_URL}/loan/payments`,
     overview: `${BASE_URL}/loan/overview`,
-    detailsOverview: `${BASE_URL}/loan/overview/details`,
-    detailsRequest: `${BASE_URL}/loan/request/details`,
+    overviewDetails: `${BASE_URL}/loan/overview/details`,
+    requestDetails: `${BASE_URL}/loan/request/details`,
     timeline: `${BASE_URL}/loan/timeline`,
   },
   investments: {

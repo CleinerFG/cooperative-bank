@@ -22,10 +22,10 @@
   width: 10rem;
 }
 
-.info-container.loan-details .icon {
+.info-container .icon {
   height: var(--icon-lg);
 }
 
-.info-container.loan-details .info-item {
+.info-container .info-item {
   flex-direction: row;
 }
