@@ -1,18 +1,24 @@
 import { Page } from '../../../../../global/js/core/Page.js';
-import {
-  formatCpf,
-  formatDate,
-} from '../../../../../global/js/utils/formatters.js';
-import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import accountService from '../../../services/AccountService.js';
+import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
+import { simulateWait } from '../../../../../global/js/utils/tests.js';
+import { ApiDataNotDefinedError } from '../../../errors/ApiDataNotDefinedError.js';
 
 export default class MyAccountPage extends Page {
-  _apiData;
+  #apiData;
+  /**
+   * @type {InfoDataDisplay}
+   */
+  #infoDataDisplayInstance;
 
   constructor() {
     super();
     this._init();
     this._setup();
+  }
+
+  get _pageTitle() {
+    return 'My Account';
   }
 
   get _template() {
@@ -26,36 +32,51 @@ export default class MyAccountPage extends Page {
         <h1 id="name" class="profile-name skelon"></h1>
       </div>
       </div>
-      <div class="info-container account-details">
-        <div class="info-item">
-          <span class="info-label">Date of birth</span>
-          <span id="birth" class="info-value skelon"></span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">CPF</span>
-          <span id="cpf" class="info-value skelon"></span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">E-mail</span>
-          <span id="email" class="info-value skelon"></span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">Registration date</span>
-          <span id="registration" class="info-value skelon"></span>
-        </div>
-      </div>
+      <div class="info-container account-details"></div>
     `;
   }
 
-  get _pageTitle() {
-    return 'My Account';
+  /**
+   * @type {Item[]}
+   */
+  get #infoDataItems() {
+    return [
+      {
+        label: 'date of birth',
+        apiDataProp: 'birth',
+        valueFormatter: 'date',
+      },
+      {
+        label: 'cpf',
+        apiDataProp: 'cpf',
+        valueFormatter: 'cpf',
+      },
+      {
+        label: 'e-mail',
+        apiDataProp: 'email',
+      },
+      {
+        label: 'registration date',
+        apiDataProp: 'registration',
+        valueFormatter: 'date',
+      },
+    ];
+  }
+
+  #infoDataDisplayHandler() {
+    const container = document.querySelector('.info-container.account-details');
+    const params = {
+      containerElement: container,
+      items: this.#infoDataItems,
+    };
+    this.#infoDataDisplayInstance = new InfoDataDisplay(params);
   }
 
   /**
    * @note
    * This method is not necessary it is only for displaying the skeleton while loading the image
    */
-  async _loadProfileImage() {
+  async #loadProfileImage() {
     const img = '/app/profile-image/user_123.webp';
     await simulateWait();
 
@@ -66,38 +87,28 @@ export default class MyAccountPage extends Page {
     };
   }
 
-  #removeSkelons() {
-    document
-      .querySelectorAll('.skelon')
-      .forEach((el) => el.classList.remove('skelon'));
+  #displayName() {
+    if (!this.#apiData) throw new ApiDataNotDefinedError();
+    const nameElement = document.getElementById('name');
+    nameElement.textContent = this.#apiData.name;
+    nameElement.classList.remove('skelon');
   }
 
-  _displayData() {
-    if (!this._apiData) return;
-    document.getElementById('name').textContent = this._apiData.name;
-    document.getElementById('birth').textContent = formatDate(
-      this._apiData.birth
-    );
-    document.getElementById('cpf').textContent = formatCpf(this._apiData.cpf);
-    document.getElementById('email').textContent = this._apiData.email;
-    document.getElementById('registration').textContent = formatDate(
-      this._apiData.registration
-    );
-    this.#removeSkelons();
-  }
-
-  async _fetchData() {
+  async #fetchData() {
     try {
       await simulateWait();
-      this._apiData = await accountService.getUserInfo();
+      this.#apiData = await accountService.getUserInfo();
+      this.#infoDataDisplayInstance.apiData = this.#apiData;
     } catch (e) {
       console.error(e);
     }
   }
 
   async _setup() {
-    this._loadProfileImage();
-    await this._fetchData();
-    this._displayData();
+    this.#infoDataDisplayHandler();
+    this.#loadProfileImage();
+    await this.#fetchData();
+    this.#displayName();
+    this.#infoDataDisplayInstance.display();
   }
 }
