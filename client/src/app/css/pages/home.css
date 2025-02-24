@@ -1,22 +1,22 @@
-.statement-amount {
+.statement-balance {
   display: flex;
   flex-direction: column;
   gap: var(--gap-xs);
 }
 
-.statement-amount span {
-  font-weight: 600;
-  font-size: var(--text-sm);
+.statement-balance .balance-label {
+  font-family: var(--info-font-family);
 }
 
-.amount-container {
+.balance-container {
   display: flex;
   justify-content: space-between;
   gap: var(--gap-md);
 }
 
-.amount-container .span-amount {
+.balance-container .balance-value {
   font-size: var(--text-lg);
+  font-weight: 500;
 }
 
 .cards.feature-cards {

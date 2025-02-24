@@ -17,12 +17,12 @@ export default class HomePage extends Page {
     return `
     <section class="section statement">
       <h1 class="section-h1">Financial Statement</h1>
-      <div class="statement-amount">
-        <span>Account Amount</span>
-        <div class="amount-container">
-          <span id="span-amount" class="span-amount skelon">R$ * * * * * *</span>
-          <button id="amount-visibility-btn" class="btn-unset btn-icon" data-visibility="off">
-            <img id="amount-visibility-icon" class="icon ${handleIconDark()}" src="${icon}" alt="Closed eye">
+      <div class="statement-balance">
+        <span class="balance-label">Balance</span>
+        <div class="balance-container">
+          <span id="balance-value" class="balance-value skelon">R$ * * * * * *</span>
+          <button id="balance-visibility-btn" class="btn-unset btn-icon" data-visibility="off">
+            <img id="balance-visibility-icon" class="icon ${handleIconDark()}" src="${icon}" alt="Closed eye">
           </button>
         </div>
       </div>
@@ -43,8 +43,8 @@ export default class HomePage extends Page {
   }
 
   async _initComponents() {
-    const AccountAmountModule = await import('./components/AccountAmount.js');
-    new AccountAmountModule.default();
+    const AccountBalanceModule = await import('./components/AccountBalance.js');
+    new AccountBalanceModule.default();
   }
 
   _setup() {

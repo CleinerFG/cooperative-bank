@@ -15,8 +15,8 @@ class AccountService {
    *
    * @returns {Promise<number>}
    */
-  async getAmount() {
-    const res = await fetch(`${this.#BASE_ENDPOINT}/amount`);
+  async getBalance() {
+    const res = await fetch(`${this.#BASE_ENDPOINT}/balance`);
     return await res.json();
   }
 }

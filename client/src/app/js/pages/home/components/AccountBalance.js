@@ -1,29 +1,25 @@
-import AccountService from '../../../services/AccountService.js';
+import accountService from '../../../services/AccountService.js';
 import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
 import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
-/**
- * Manages the display of the account amount on the page.
- * Handles fetching amount, formatting it, and toggling the visibility.
- */
-export default class AccountAmount {
-  #amountValue;
+export default class AccountBalance {
+  #balanceValue;
 
   constructor() {
     this.#init();
   }
 
   get #btnVisibilityElement() {
-    return document.getElementById('amount-visibility-btn');
+    return document.getElementById('balance-visibility-btn');
   }
 
-  get #spanAmountElement() {
-    return document.getElementById('span-amount');
+  get #spanBalanceElement() {
+    return document.getElementById('balance-value');
   }
 
   get #iconElement() {
-    return document.getElementById('amount-visibility-icon');
+    return document.getElementById('balance-visibility-icon');
   }
 
   /**
@@ -36,35 +32,35 @@ export default class AccountAmount {
   async #fetchData() {
     try {
       await simulateWait();
-      this.#amountValue = await AccountService.getAmount();
-      this.#spanAmountElement.classList.remove('skelon');
+      this.#balanceValue = await accountService.getBalance();
+      this.#spanBalanceElement.classList.remove('skelon');
     } catch (e) {
       console.error(e);
     }
   }
 
-  #updateAmountVisibility() {
+  #updateBalanceVisibility() {
     this.#btnVisibilityElement.dataset.visibility =
       this.#currentVisibility === 'on' ? 'off' : 'on';
   }
 
   #updateIconVisibility() {
-    this.#handleAssets(this.#currentVisibility);
+    this.#updateIcon(this.#currentVisibility);
     const alt = this.#currentVisibility === 'on' ? 'Opened eye' : 'Closed eye';
     this.#iconElement.setAttribute('alt', alt);
   }
 
-  #showAmount() {
-    this.#spanAmountElement.textContent =
+  #showBalanceValue() {
+    this.#spanBalanceElement.textContent =
       this.#currentVisibility === 'on'
-        ? numberToCurrency(this.#amountValue)
+        ? numberToCurrency(this.#balanceValue)
         : 'R$ * * * * * *';
   }
 
   #toggleVisibility() {
-    this.#updateAmountVisibility();
+    this.#updateBalanceVisibility();
     this.#updateIconVisibility();
-    this.#showAmount();
+    this.#showBalanceValue();
   }
 
   #setListeners() {
@@ -77,9 +73,9 @@ export default class AccountAmount {
   /**
    * @param {"on" | "off"} visibility
    */
-  #handleAssets(visibility) {
+  #updateIcon(visibility) {
     AssetManager.updateAsset(
-      '#amount-visibility-icon',
+      '#balance-visibility-icon',
       `icon-visibility-${visibility}.svg`
     );
   }
