@@ -1,5 +1,8 @@
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
-import { capitalize } from '../../../../../global/js/utils/stringUtils.js';
+import {
+  titleCase,
+  normalizeKebabCase,
+} from '../../../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
 
 /**
@@ -35,7 +38,7 @@ export class CardLink {
   }
 
   get template() {
-    const capName = capitalize(this.#name);
+    const name = titleCase(normalizeKebabCase(this.#name));
     return `
     <div class="card-link__container">
       <a id="${this.anchorId}" class="card-link__a" rel="next" href="${this.endpoint}" data-link>
@@ -43,8 +46,8 @@ export class CardLink {
           <img id="${this.#iconId}"
             class="icon ${handleIconDark()}"
             src="${this.#icon}"
-            alt="${capName} Icon">
-          <span class="label card-link__label">${capName}</span>
+            alt="${name} Icon">
+          <span class="label card-link__label">${name}</span>
         </div>
       </a>
     </div>

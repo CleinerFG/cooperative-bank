@@ -14,6 +14,21 @@ export function capitalize(value) {
 /**
  * @type {StringHandler}
  */
+export function titleCase(value) {
+  const words = value.split(' ');
+  return words.map((word) => capitalize(word)).join(' ');
+}
+
+/**
+ * @type {StringHandler}
+ */
+export function normalizeKebabCase(value) {
+  return value.replace('-', ' ');
+}
+
+/**
+ * @type {StringHandler}
+ */
 export function toCamelCase(value) {
   const splited = value.split(' ');
   return splited
