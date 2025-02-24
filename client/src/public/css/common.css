@@ -48,7 +48,7 @@
 
 .footer {
   background-color: #000;
-  padding: var(--padding-xxl);
+  padding: var(--padding-2xl);
   display: flex;
   flex-direction: column;
   justify-content: center;

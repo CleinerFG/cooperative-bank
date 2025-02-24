@@ -14,7 +14,7 @@
     #fff0 -15%,
     var(--color-primary-translucent)
   );
-  border-radius: 0 var(--radius-xxl) var(--radius-xxl) 0;
+  border-radius: 0 var(--radius-2xl) var(--radius-2xl) 0;
   box-shadow: var(--box-shadow-sm);
 }
 
@@ -23,4 +23,3 @@
   border-color: var(--color-secondary-translucent);
   padding-bottom: var(--padding-sm);
 }
-
