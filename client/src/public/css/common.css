@@ -35,7 +35,6 @@
 }
 
 .brand-name {
-  font-size: var(--text-sm);
   font-family: var(--brand-font-family);
 }
 

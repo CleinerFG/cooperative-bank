@@ -14,7 +14,7 @@ export default class LoginPage extends Page {
     <header class="header">
       <a class="brand-container" href="/" data-link>
         <img class="icon brand-icon" src="${ASSETS_ROUTE}/icons/icon-globe.svg" alt="Globe">
-        <span class="brand-name">COOPERATIVE BANK</span>
+        <span class="brand-name">Cooperative Bank</span>
       </a>
     </header>
     `;
