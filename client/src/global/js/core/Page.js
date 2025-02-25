@@ -2,7 +2,7 @@ import { Router } from './Router.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
 import { titleCase } from '../utils/stringUtils.js';
 
-export class Page {
+export default class Page {
   #queryParams;
 
   /**

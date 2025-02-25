@@ -1,4 +1,4 @@
-import { Page } from '../../../../../global/js/core/Page.js';
+import Page from '../../../../../global/js/core/Page.js';
 import accountService from '../../../services/AccountService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
@@ -21,7 +21,7 @@ export default class MyAccountPage extends Page {
   }
 
   get _pageTitle() {
-    return 'My Account';
+    return 'my account';
   }
 
   get _template() {

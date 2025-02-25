@@ -1,4 +1,4 @@
-import { Page } from '../../../../../global/js/core/Page.js';
+import Page from '../../../../../global/js/core/Page.js';
 import loanService from '../../../services/LoanService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';

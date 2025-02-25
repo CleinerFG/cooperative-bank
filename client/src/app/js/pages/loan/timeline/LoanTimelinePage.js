@@ -1,4 +1,4 @@
-import { Page } from '../../../../../global/js/core/Page.js';
+import Page from '../../../../../global/js/core/Page.js';
 
 export default class LoanTimelinePage extends Page {
   constructor() {

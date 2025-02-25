@@ -1,4 +1,4 @@
-import { Page } from '../../../../global/js/core/Page.js';
+import Page from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { featureGroups } from './components/FeatureGroups.js';
 import appRouter from '../../core/appRouter.js';
