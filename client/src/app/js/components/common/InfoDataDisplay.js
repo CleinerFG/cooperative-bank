@@ -160,3 +160,5 @@ export class InfoDataDisplay {
     this.#removeSkelons();
   }
 }
+
+export default InfoDataDisplay;
