@@ -170,7 +170,7 @@ app.post('/api/auth/transaction', (req, res) => {
   return res.status(401).json({
     success: isAuthenticated,
     token: null,
-    inpErrors: [{ id: 'transactionPassword', cod: 'AUTH_004' }],
+    inpErrors: [{ id: 'transactionPassword', cod: 'AUTH_002' }],
   });
 });
 

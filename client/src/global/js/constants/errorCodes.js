@@ -1,17 +1,9 @@
 export const INP_ERRORS = {
   AUTH_001: {
-    desc: 'invalidEmailType',
-    message: 'The email must be a valid string',
-  },
-  AUTH_002: {
-    desc: 'invalidPasswordType',
-    message: 'The password must be valid',
-  },
-  AUTH_003: {
     desc: 'incorrectEmail',
     message: 'The email is incorrect',
   },
-  AUTH_004: {
+  AUTH_002: {
     desc: 'incorrectPassword',
     message: 'The password is incorrect',
   },
