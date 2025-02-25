@@ -7,6 +7,7 @@ import {
 } from '../../../../../../global/js/utils/formatters.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { Card } from '../../../../components/Card.js';
+import { OperationDetailsModal } from '../../../../components/modal/OperationDetailsModal.js';
 
 export class CardInstallmentPayable extends Card {
   /**
@@ -50,7 +51,18 @@ export class CardInstallmentPayable extends Card {
   }
 
   async _seePaymentInfoHandler() {
-    console.log('---Implement see payment---');
+    try {
+      const serviceModule = await import('../../../../services/LoanService.js');
+      const service = serviceModule.default;
+      const params = {
+        serviceMethod: service.getInstallmentPayment,
+        operationId: this._apiData.id,
+        title: 'payment details',
+      };
+      new OperationDetailsModal(params);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   #handleActionBtn() {
