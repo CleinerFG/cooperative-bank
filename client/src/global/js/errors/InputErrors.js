@@ -1,41 +1,28 @@
+import { INP_ERRORS } from '../constants/errorCodes';
 export class EmptyValueError extends Error {
   constructor() {
-    super('This field cannot be empty');
-  }
-}
-
-export class ZeroValueError extends Error {
-  constructor() {
-    super('This field cannot be zero');
-  }
-}
-
-export class OutsideValueError extends Error {
-  constructor() {
-    super("The value can't be outside the list");
-  }
-}
-
-export class NotFoundError extends Error {
-  constructor(message = 'No results found') {
-    super(message);
+    super(INP_ERRORS.VALID_001.message);
   }
 }
 
 export class InvalidCpfError extends Error {
   constructor() {
-    super('Invalid CPF');
+    super(INP_ERRORS.VALID_004.message);
   }
 }
 
 export class InvalidPasswordError extends Error {
-  constructor(message) {
+  constructor(errorCod, match) {
+    const message =
+      typeof INP_ERRORS[errorCod].message === 'function'
+        ? INP_ERRORS[errorCod].message(match[0])
+        : INP_ERRORS[errorCod].message;
     super(message);
   }
 }
 
 export class InvalidEmailError extends Error {
   constructor() {
-    super('Invalid email');
+    super(INP_ERRORS.VALID_014.message);
   }
 }

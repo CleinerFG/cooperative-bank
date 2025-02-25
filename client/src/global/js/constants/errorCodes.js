@@ -35,6 +35,43 @@ export const INP_ERRORS = {
     desc: 'invalidData',
     message: 'The data is invalid',
   },
+  VALID_006: {
+    desc: 'must8CharsLong',
+    message: 'The password must be at least 8 characters long',
+  },
+  VALID_007: {
+    desc: 'mustLowercaseChar',
+    message: 'The password must contain at least one lowercase letter',
+  },
+  VALID_008: {
+    desc: 'mustUppercaseChar',
+    message: 'The password must contain at least one uppercase letter',
+  },
+  VALID_009: {
+    desc: 'mustNumber',
+    message: 'The password must contain at least one number',
+  },
+  VALID_010: {
+    desc: 'mustSpecialChar',
+    message: 'The password must contain at least one special character',
+  },
+  VALID_011: {
+    desc: 'canNotBlankSpace',
+    message: 'The password cannot have blank space',
+  },
+  VALID_012: {
+    desc: 'canNotSeqPattern',
+    message: (value) => `The password cannot have sequential pattern: ${value}`,
+  },
+  VALID_013: {
+    desc: 'canNotCharSeq',
+    message: (value) =>
+      `The password cannot have consecutive repetitions: ${value}`,
+  },
+  VALID_014: {
+    desc: 'invalidEmail',
+    message: 'The email must be a valid string',
+  },
 };
 
 export const GET_ERRORS = {

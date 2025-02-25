@@ -1,5 +1,5 @@
 import '../../types/formElementsType.js';
-import { zeroValidator, emptyValidator } from '../../utils/validators.js';
+import { emptyValidator } from '../../utils/validators.js';
 import {
   cpfFormatter,
   currencyFormatter,
@@ -20,7 +20,7 @@ export default class Input {
   /**
    * @type {import("../../utils/validators.js").Validator[]}
    */
-  #validators = [emptyValidator, zeroValidator];
+  #validators = [emptyValidator];
   #customValidator;
 
   /**

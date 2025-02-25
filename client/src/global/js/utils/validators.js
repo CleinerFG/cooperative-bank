@@ -3,7 +3,6 @@ import {
   InvalidCpfError,
   InvalidEmailError,
   InvalidPasswordError,
-  ZeroValueError,
 } from '../errors/InputErrors.js';
 
 /**
@@ -16,15 +15,8 @@ import {
  * @type {Validator}
  */
 export function emptyValidator(value) {
-  if (value === '') throw new EmptyValueError();
-}
-
-/**
- * @type {Validator}
- */
-export function zeroValidator(value) {
   const regex = /R\$\s0,00|0,00\s%|^0+$/;
-  if (regex.test(value)) throw new ZeroValueError();
+  if (regex.test(value) || value === '') throw new EmptyValueError();
 }
 
 /**
@@ -61,49 +53,25 @@ export function cpfValidator(value) {
  */
 export function passwordValidator(value) {
   const rules = [
-    {
-      regex: /^.{8,}$/,
-      message: 'The password must be at least 8 characters long',
-    },
-    {
-      regex: /[a-z]/,
-      message: 'The password must contain at least one lowercase letter',
-    },
-    {
-      regex: /[A-Z]/,
-      message: 'The password must contain at least one uppercase letter',
-    },
-    { regex: /\d/, message: 'The password must contain at least one number' },
-    {
-      regex: /[\W]/,
-      message: 'The password must contain at least one special character',
-    },
-    {
-      regex: /\s/,
-      message: 'The password cannot have blank space',
-      negate: true,
-    },
+    { regex: /^.{8,}$/, errorCod: 'VALID_006' },
+    { regex: /[a-z]/, errorCod: 'VALID_007' },
+    { regex: /[A-Z]/, errorCod: 'VALID_008' },
+    { regex: /\d/, errorCod: 'VALID_009' },
+    { regex: /[\W]/, errorCod: 'VALID_010' },
+    { regex: /\s/, errorCod: 'VALID_011', negate: true },
     {
       regex:
         /(012|123|234|345|456|567|678|789|890|abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz)/i,
-      message: (match) =>
-        `The password cannot have sequential pattern: ${match[0]}`,
+      errorCod: 'VALID_012',
       negate: true,
     },
-    {
-      regex: /(.)\1{2,}/,
-      message: (match) =>
-        `The password cannot have consecutive repetitions: ${match[0]}`,
-      negate: true,
-    },
+    { regex: /(.)\1{2,}/, errorCod: 'VALID_013', negate: true },
   ];
 
-  for (const { regex, message, negate } of rules) {
+  for (const { regex, errorCod, negate } of rules) {
     const match = value.match(regex);
     if ((negate && match) || (!negate && !match)) {
-      throw new InvalidPasswordError(
-        typeof message === 'function' ? message(match) : message
-      );
+      throw new InvalidPasswordError(errorCod, match);
     }
   }
 }
