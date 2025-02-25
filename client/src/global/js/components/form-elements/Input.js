@@ -45,6 +45,10 @@ export default class Input {
     return this._id;
   }
 
+  get _containerElement() {
+    return this.#containerElement;
+  }
+
   get _inputElement() {
     return document.getElementById(this._id);
   }

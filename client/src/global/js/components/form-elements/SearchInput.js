@@ -1,17 +1,14 @@
 import '../../types/formElementsType.js';
+import '../../types/serverResponseType.js';
 import Input from './Input.js';
-import { SearchInputService } from '../SearchInputService.js';
+import searchUserService from '../SearchUserService.js';
+import { GET_ERRORS, INP_ERRORS } from '../../constants/errorCodes.js';
 import { cpfValidator } from '../../utils/validators.js';
 import { simulateWait } from '../../utils/tests.js';
 import assetManager from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
 export default class SearchInput extends Input {
-  /**
-   * @type {string}
-   */
-  #endpoint;
-
   #INP_QUERY_ID = `${this._id}`;
   #INP_RESULT_ID = `${this._id}-result`;
   #ICON_SEARCH_ID = `${this._id}-search-icon`;
@@ -28,31 +25,30 @@ export default class SearchInput extends Input {
       customValidator: cpfValidator,
       ...params,
     });
-    this.#endpoint = params.endpoint;
   }
 
   get #inpQueryElement() {
-    return document.getElementById(this.#INP_QUERY_ID);
+    return this._containerElement.querySelector(`#${this.#INP_QUERY_ID}`);
   }
 
   get #inpResultElement() {
-    return document.getElementById(this.#INP_RESULT_ID);
+    return this._containerElement.querySelector(`#${this.#INP_RESULT_ID}`);
   }
 
   get #iconSearchElement() {
-    return document.getElementById(this.#ICON_SEARCH_ID);
+    return this._containerElement.querySelector(`#${this.#ICON_SEARCH_ID}`);
   }
 
-  get #inpState() {
+  get #searchState() {
     return this.#inpQueryElement.dataset.search;
   }
 
   /**
-   * @param {"on" | "off"} value
+   * @param {boolean} value
    */
-  set #inpState(value) {
+  set #searchState(value) {
     this.#inpQueryElement.dataset.search = value;
-    this.#handleSearchAnimation();
+    this.#searchAnimationHandler();
   }
 
   get _template() {
@@ -74,53 +70,80 @@ export default class SearchInput extends Input {
 
   async #fetchData() {
     const query = this.#inpQueryElement.value;
-    await simulateWait(0);
-    const service = new SearchInputService(this.#endpoint, query);
-    return await service.fetch();
+    try {
+      await simulateWait();
+      return await searchUserService.getUserByCpf(query);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
-  #handleSearchAnimation() {
+  #searchAnimationHandler() {
     this.#inpResultElement.parentElement.classList.toggle('skelon-inp');
     this.#iconSearchElement.classList.toggle('search-animation');
-    if (this.#inpState === 'on') {
+    if (this.#searchState === 'true') {
       this.#inpResultElement.value = 'Searching...';
     }
   }
 
-  #handleSearchSuccess(value) {
+  /**
+   * @param {User} res
+   */
+  #searchSuccessHandler(res) {
+    const name = res.name;
     this._dataValid = true;
-    this.#inpResultElement.value = value;
+    this.#inpResultElement.value = name;
     this.handleFailMessage('remove');
   }
 
-  #handleSearchError(message) {
+  /**
+   * @param {ServerGetErrorResponse} res
+   */
+  #searchFailHandler(res) {
+    let message = '';
+    if (GET_ERRORS[res.error]) {
+      message = GET_ERRORS[res.error].message;
+    } else {
+      message = INP_ERRORS[res.error].message;
+    }
     this._dataValid = false;
     this.#inpResultElement.value = '';
     this.handleFailMessage('add', message);
   }
 
-  async _handleSearch() {
-    if (!this.dataValid) return;
-    try {
-      this.#inpState = 'on';
-      const data = await this.#fetchData();
-      this.#handleSearchSuccess(data.name);
-    } catch (e) {
-      this.#handleSearchError(e.message);
-    } finally {
-      this.#inpState = 'off';
+  #searchIsValid() {
+    if (this.#searchState === 'true') return false;
+    if (!this.dataValid) {
+      this.#inpResultElement.value = '';
+      return false;
     }
+    return true;
   }
 
-  _setListeners() {
+  async #handleSearch() {
+    if (!this.#searchIsValid()) return;
+
+    this.#searchState = true;
+    const res = await this.#fetchData();
+
+    if (!res.error) {
+      this.#searchSuccessHandler(res);
+    } else {
+      this.#searchFailHandler(res);
+    }
+
+    this.#searchState = false;
+  }
+
+  #setListeners() {
     this.#inpQueryElement.addEventListener(
       'blur',
-      this._handleSearch.bind(this)
+      this.#handleSearch.bind(this)
     );
   }
 
   init() {
     super.init();
-    this._setListeners();
+    this.#setListeners();
   }
 }

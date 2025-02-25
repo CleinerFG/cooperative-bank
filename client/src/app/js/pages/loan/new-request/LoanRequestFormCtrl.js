@@ -16,7 +16,6 @@ export default class LoanRequestFormCtrl extends FormCtrl {
         category: 'search',
         id: 'search-creditor',
         labelText: 'Search for a Creditor',
-        endpoint: '/users',
       },
       {
         category: 'default',

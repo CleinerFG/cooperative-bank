@@ -16,3 +16,8 @@
  * @property {false} success
  * @property {'serverError'} reason
  */
+
+/**
+ * @typedef {Object} ServerGetErrorResponse
+ * @property {string} error
+ */

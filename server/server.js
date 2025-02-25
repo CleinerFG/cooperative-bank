@@ -89,7 +89,7 @@ app.get('/api/loan/:category/details', async (req, res) => {
 
     const loanDetails = data.find((item) => item.id === id);
     if (!loanDetails) {
-      return res.status(404).json({ error: 'Loan details not found' });
+      return res.status(404).json({ error: 'LOAN_001' });
     }
 
     res.json(loanDetails);
@@ -121,7 +121,7 @@ app.get('/api/loan/installments/payment', async (req, res) => {
 
     const payment = data.find((item) => item.id === id);
     if (!payment) {
-      return res.status(404).json({ error: 'Payment not found' });
+      return res.status(404).json({ error: 'LOAN_002' });
     }
     res.json(payment);
   } catch (error) {
@@ -138,11 +138,11 @@ app.get('/api/users', (req, res) => {
     const parseCpf = cpf.replace(/[.-]/g, '');
     const user = users.find((u) => u.cpf === parseCpf);
     if (!user) {
-      return res.status(404).json({ message: 'Not found user' });
+      return res.status(404).json({ error: 'USER_001' });
     }
-    return res.status(200).json(user);
+    return res.status(200).json({ name: user.name });
   } catch (e) {
-    return res.status(400).json({ message: e.message });
+    return res.status(400).json({ error: 'VALID_004' });
   }
 });
 

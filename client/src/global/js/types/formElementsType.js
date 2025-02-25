@@ -23,7 +23,6 @@
  * @property {HTMLElement} containerElement
  * @property {string} id
  * @property {string} labelText
- * @property {string} endpoint
  */
 
 /**

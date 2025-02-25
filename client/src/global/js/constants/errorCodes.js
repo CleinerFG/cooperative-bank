@@ -36,3 +36,10 @@ export const INP_ERRORS = {
     message: 'The data is invalid',
   },
 };
+
+export const GET_ERRORS = {
+  USER_001: {
+    desc: 'notFoundUser',
+    message: 'The user was not found',
+  },
+};
