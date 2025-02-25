@@ -33,6 +33,13 @@
  */
 
 /**
+ * @typedef {Object} LoanInstallmentPaymentData
+ * @property {string} id
+ * @property {string} date
+ * @property {number} value
+ */
+
+/**
  * @typedef {Object} LoanDetailsQueryParams
  * @property {string} id
  * @property {'payable'|'receivable'} category

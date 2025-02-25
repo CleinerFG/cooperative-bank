@@ -111,7 +111,7 @@ app.get(
 
 app.get('/api/loan/installments', serveFile(DB_DIR, 'loan-installments.json'));
 
-app.get('/api/loan/installments/payments', async (req, res) => {
+app.get('/api/loan/installments/payment', async (req, res) => {
   try {
     const id = req.query.id;
     const filePath = path.join(DB_DIR, `loan-installment-payments.json`);

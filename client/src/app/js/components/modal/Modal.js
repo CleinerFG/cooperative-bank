@@ -34,6 +34,9 @@ export class Modal {
     throw new AbstractGetterError('_contentTemplate');
   }
 
+  /**
+   * @type {string}
+   */
   get _footerTemplate() {
     throw new AbstractGetterError('_footerTemplate');
   }
