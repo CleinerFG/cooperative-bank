@@ -1,7 +1,7 @@
 import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 import '../../types/operationDetailsModalType.js';
 import { Modal } from './Modal.js';
-// import { InfoDataDisplay } from '../common/InfoDataDisplay.js';
+import { InfoDataDisplay } from '../common/InfoDataDisplay.js';
 
 export class OperationDetailsModal extends Modal {
   #apiData;
@@ -33,7 +33,7 @@ export class OperationDetailsModal extends Modal {
   }
 
   get _footerTemplate() {
-    return '<button class="btn btn-success">OK</button>';
+    return '<button class="btn">OK</button>';
   }
 
   async #fetchData() {
