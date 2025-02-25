@@ -1,6 +1,6 @@
 import { AbstractMethodError } from '../errors/AbstractErrors.js';
 
-export class Spa {
+export default class Spa {
   _setup() {
     throw new AbstractMethodError();
   }

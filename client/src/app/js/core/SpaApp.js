@@ -1,4 +1,4 @@
-import { Spa } from '../../../global/js/core/Spa.js';
+import Spa from '../../../global/js/core/Spa.js';
 import appRouter from './appRouter.js';
 import layout from './Layout.js';
 import notificationManager from './NotificationManager.js';

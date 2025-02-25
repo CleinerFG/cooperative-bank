@@ -1,4 +1,4 @@
-import { Spa } from '../../../global/js/core/Spa.js';
+import Spa from '../../../global/js/core/Spa.js';
 import publicRouter from './publicRouter.js';
 
 class PublicSpa extends Spa {
