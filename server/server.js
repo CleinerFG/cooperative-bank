@@ -111,6 +111,25 @@ app.get(
 
 app.get('/api/loan/installments', serveFile(DB_DIR, 'loan-installments.json'));
 
+app.get('/api/loan/installments/payments', async (req, res) => {
+  try {
+    const id = req.query.id;
+    const filePath = path.join(DB_DIR, `loan-installment-payments.json`);
+
+    const jsonFile = await fs.readFile(filePath, 'utf-8');
+    const data = JSON.parse(jsonFile);
+
+    const payment = data.find((item) => item.id === id);
+    if (!payment) {
+      return res.status(404).json({ error: 'Payment not found' });
+    }
+    res.json(payment);
+  } catch (error) {
+    console.error('Error reading JSON file:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.get('/api/users', (req, res) => {
   const { cpf } = req.query;
 

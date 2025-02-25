@@ -20,10 +20,9 @@ export default class LoanOverviewManager extends LoanManager {
   }
 
   async _fetchService(category) {
-    if (category === 'payable') {
-      return LoanService.getLoansOverview('payable');
-    }
-    return LoanService.getLoansOverview('receivable');
+    return category === 'payable'
+      ? LoanService.getLoansOverview('payable')
+      : LoanService.getLoansOverview('receivable');
   }
 
   get _cardSkelonRows() {

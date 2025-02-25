@@ -1,11 +1,19 @@
 import { CardManager } from '../../../../core/CardManager.js';
 import loanService from '../../../../services/LoanService.js';
-import { CardLoanInstallment } from './CardLoanInstallment';
+import { CardInstallmentPayable } from './CardInstallmentPayable.js';
 
 export default class LoanInstallmentManager extends CardManager {
-  constructor(loanId) {
+  #loanId;
+  #loanType;
+  /**
+   *
+   * @param {string} loanId
+   * @param {'payable'|'receivable'} loanType
+   */
+  constructor(loanId, loanType) {
     super();
-    this._loanId = loanId;
+    this.#loanId = loanId;
+    this.#loanType = loanType;
     this._init();
   }
 
@@ -19,7 +27,8 @@ export default class LoanInstallmentManager extends CardManager {
       categories: [
         {
           name: 'installment',
-          CardClass: CardLoanInstallment,
+          entityType: this.#loanType,
+          CardClass: CardInstallmentPayable,
         },
       ],
     };
@@ -34,7 +43,7 @@ export default class LoanInstallmentManager extends CardManager {
   }
 
   async _fetchService() {
-    return loanService.getInstallments(this._loanId);
+    return loanService.getInstallments(this.#loanId);
   }
 
   async _init() {

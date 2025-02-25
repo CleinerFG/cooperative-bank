@@ -133,7 +133,7 @@ export default class LoanDetailsPage extends Page {
   async _setup() {
     this.#infoDataDisplayHandler();
     await this.#fetchData();
-    new LoanInstallmentManager(this.#apiData.id);
+    new LoanInstallmentManager(this.#apiData.id, this._queryParams.category);
     this.#infoDataDisplayInstance.display();
   }
 }

@@ -8,7 +8,7 @@ import {
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { Card } from '../../../../components/Card.js';
 
-export class CardLoanInstallment extends Card {
+export class CardInstallmentPayable extends Card {
   /**
    * @type {LoanInstallmentData}
    */
@@ -30,17 +30,16 @@ export class CardLoanInstallment extends Card {
   }
 
   get _headerTemplate() {
-    const statusCssMap = {
-      pending: 'span-pending',
-      paid: 'span-success',
-    };
-    const cssClass = statusCssMap[this._apiData.status];
-    const status = `<span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>`;
+    const status = this._apiData.status;
+    const cssClass = status === 'pending' ? 'span-pending' : 'span-success';
+    const spanStatus = `
+      <span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>
+      `;
     return `
       <div class="card-title">
         <span class="span-title">Installment Nº ${this._index + 1}</span>
       </div>
-      ${status}
+      ${spanStatus}
     `;
   }
 
@@ -50,12 +49,14 @@ export class CardLoanInstallment extends Card {
     console.log(`Token from modal: ${token}`);
   }
 
-  #handleActionBtn() {
-    if (this._apiData.status === 'pending') {
-      this.#makePaymentHandler();
-      return;
-    }
+  async _seePaymentInfoHandler() {
     console.log('---Implement see payment---');
+  }
+
+  #handleActionBtn() {
+    return this._apiData.status === 'pending'
+      ? this.#makePaymentHandler()
+      : this._seePaymentInfoHandler();
   }
 
   get #actionBtnElement() {
