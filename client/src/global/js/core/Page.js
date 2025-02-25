@@ -1,23 +1,15 @@
 import { Router } from './Router.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import { capitalize } from '../utils/stringUtils.js';
+import { titleCase } from '../utils/stringUtils.js';
 
-/**
- * Represents a view/controller for a page.
- */
 export class Page {
-  static #appElement = document.getElementById('app');
   #queryParams;
 
   /**
-   * @param {Object.<string, string>} queryParams
+   * @param {Object<string, string>} queryParams
    */
   constructor(queryParams) {
     this.#queryParams = queryParams;
-  }
-
-  get _queryParams() {
-    return this.#queryParams;
   }
 
   /**
@@ -34,26 +26,34 @@ export class Page {
     throw new AbstractGetterError('_pageTitle');
   }
 
+  get #appElement() {
+    return document.getElementById('app');
+  }
+
+  get _queryParams() {
+    return this.#queryParams;
+  }
+
   /**
    * @param {Router} router
-   * @param {string} query
+   * @param {string} querySelector
    */
-  _handleRoutes(router, query) {
-    const elements = document.querySelectorAll(query);
-    elements.forEach((element) => {
-      element.addEventListener('click', (e) => {
+  _handleRoutes(router, querySelector) {
+    const elements = document.querySelectorAll(querySelector);
+    elements.forEach((el) => {
+      el.addEventListener('click', (e) => {
         e.preventDefault();
-        router.navigateTo(element.getAttribute('href'));
+        router.navigateTo(el.getAttribute('href'));
       });
     });
   }
 
   #setPageTitle() {
-    document.title = capitalize(this._pageTitle);
+    document.title = titleCase(this._pageTitle);
   }
 
   #render() {
-    Page.#appElement.innerHTML = this._template;
+    this.#appElement.innerHTML = this._template;
   }
 
   async _init() {
