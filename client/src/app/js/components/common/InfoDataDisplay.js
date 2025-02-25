@@ -1,6 +1,6 @@
 import '../../types/infoDataDisplayType.js';
 import { ProgressBar } from './progressBar.js';
-import { AssetManager } from '../../../../global/js/core/AssetManager.js';
+import assetManager from '../../../../global/js/core/AssetManager.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 import {
   toCamelCase,
@@ -48,7 +48,7 @@ export class InfoDataDisplay {
             <img id="${id}-icon" class="info-icon">
           </div>`;
       } else if (iconPath) {
-        return `<img id="${id}-icon" class="icon info-icon ${handleIconDark()}" src="${AssetManager.iconsPath}${iconPath}">`;
+        return `<img id="${id}-icon" class="icon info-icon ${handleIconDark()}" src="${assetManager.iconsPath}${iconPath}">`;
       }
       return '';
     };
@@ -147,7 +147,7 @@ export class InfoDataDisplay {
 
     if (iconState) {
       const stateIcon = iconState[this.#apiData[apiDataProp]];
-      AssetManager.updateAsset(`#${id}-icon`, stateIcon);
+      assetManager.updateAsset(`#${id}-icon`, stateIcon);
     }
   }
 

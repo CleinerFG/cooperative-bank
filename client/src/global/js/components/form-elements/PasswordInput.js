@@ -1,5 +1,5 @@
 import Input from './Input.js';
-import { AssetManager } from '../../core/AssetManager.js';
+import assetManager from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
 export default class PasswordInput extends Input {
@@ -35,7 +35,7 @@ export default class PasswordInput extends Input {
         <button id="${this.#BTN_VISIBILITY_ID}" type="button" class="btn-unset btn-icon">
           <img id="${this.#ICON_VISIBILITY_ID}"
           class="icon ${handleIconDark()}"
-          src="${AssetManager.iconsPath}/icon-visibility-off.svg"
+          src="${assetManager.iconsPath}/icon-visibility-off.svg"
           alt="Closed eye">
         </button>
       </div>
@@ -47,7 +47,7 @@ export default class PasswordInput extends Input {
    * @param {"on" | "off"} visibilityState
    */
   _handleAsset(visibilityState) {
-    AssetManager.updateAsset(
+    assetManager.updateAsset(
       `#${this.#ICON_VISIBILITY_ID}`,
       `icon-visibility-${visibilityState}.svg`
     );

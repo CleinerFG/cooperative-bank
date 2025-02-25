@@ -1,6 +1,6 @@
 import '../types/formElementsType.js';
 import { SubmitButton } from './form-elements/SubmitButton.js';
-import { AssetManager } from '../core/AssetManager.js';
+import assetManager from '../core/AssetManager.js';
 
 export class FormView {
   #containerElement;
@@ -47,7 +47,7 @@ export class FormView {
 
   get #headerTemplate() {
     if (this.#header) {
-      const icon = `${AssetManager.iconsPath}/form/${this.#header.icon}`;
+      const icon = `${assetManager.iconsPath}/form/${this.#header.icon}`;
       return `
       <div class="form-header">
         <img class="form-icon" src="${icon}" alt="Icon ${this.#id}">

@@ -1,6 +1,6 @@
 import accountService from '../../../services/AccountService.js';
 import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
-import { AssetManager } from '../../../../../global/js/core/AssetManager.js';
+import assetManager from '../../../../../global/js/core/AssetManager.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
 export default class AccountBalance {
@@ -74,7 +74,7 @@ export default class AccountBalance {
    * @param {"on" | "off"} visibility
    */
   #updateIcon(visibility) {
-    AssetManager.updateAsset(
+    assetManager.updateAsset(
       '#balance-visibility-icon',
       `icon-visibility-${visibility}.svg`
     );

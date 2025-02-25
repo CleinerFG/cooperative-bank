@@ -2,8 +2,7 @@ import {
   LOCAL_STORAGE_THEME_KEY,
   DEFAULT_THEME,
 } from '../../constants/theme.js';
-import { AssetManager } from '../../../../global/js/core/AssetManager.js';
-import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
+import assetManager from '../../../../global/js/core/AssetManager.js';
 
 /**
  * Manages the app theme, including storing and applying
@@ -46,7 +45,7 @@ class Theme {
   }
 
   #updateThemeModeIcon(theme) {
-    AssetManager.updateAsset('#icon-theme', `icon-${theme}-theme.svg`);
+    assetManager.updateAsset('#icon-theme', `icon-${theme}-theme.svg`);
   }
 
   #updateIcons() {

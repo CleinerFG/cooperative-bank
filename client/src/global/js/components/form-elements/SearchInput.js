@@ -3,7 +3,7 @@ import Input from './Input.js';
 import { SearchInputService } from '../SearchInputService.js';
 import { cpfValidator } from '../../utils/validators.js';
 import { simulateWait } from '../../utils/tests.js';
-import { AssetManager } from '../../core/AssetManager.js';
+import assetManager from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
 export default class SearchInput extends Input {
@@ -56,7 +56,7 @@ export default class SearchInput extends Input {
   }
 
   get _template() {
-    const icon = `${AssetManager.iconsPath}/form/icon-search.svg`;
+    const icon = `${assetManager.iconsPath}/form/icon-search.svg`;
     return `
       <div class="inp-group ">
         <label for="${this.#INP_QUERY_ID}" class="label form-group__label">${this._labelText}</label>
