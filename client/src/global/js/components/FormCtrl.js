@@ -44,11 +44,11 @@ export class FormCtrl {
     throw new AbstractGetterError('_serviceMethod');
   }
 
-  get _formData() {
-    return this.#view.formElements.reduce((data, formEl) => {
-      data[formEl.id] = formEl?.parseValue ?? formEl?.value;
-      return data;
-    }, {});
+  _getFormData() {
+    // return this.#view.formElements.reduce(async (data, formEl) => {
+    //   data[formEl.id] = (await formEl?.getParseValue()) ?? formEl?.value;
+    //   return data;
+    // }, {});
   }
 
   /**
@@ -98,7 +98,7 @@ export class FormCtrl {
       this.#createNewPromise();
 
       const { isValid, inpErrors } = this._handleInputsDataIsValid();
-      console.log(this._formData);
+      console.log(this._getFormData());
 
       if (!isValid) {
         return this.#resolvePromise({ success: false, inpErrors });
@@ -110,7 +110,7 @@ export class FormCtrl {
          * @type {ServerFormResponse}
          */
         await simulateWait();
-        const res = await this._serviceMethod(this._formData);
+        const res = await this._serviceMethod(this._getFormData());
         this.#resolvePromise(res);
         if (res.inpErrors) {
           this._handleInputErrors(res.inpErrors);

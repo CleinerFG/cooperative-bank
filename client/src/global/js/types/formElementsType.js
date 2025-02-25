@@ -11,10 +11,9 @@
  * @property {string} id
  * @property {string} labelText
  * @property {string} placeholder
- * @property {boolean} strictToNumber
  * @property {"text" | "numeric" | "email" | "date"} inputmode
  * @property {"text" | "numeric" | "email" | "date"} type
- * @property {"currency" | "percent" | "cpf"} formatter
+ * @property {"currency" | "percent" | "cpf" | "strictNumber"} [formatter]
  * @property {import('../../utils/validators.js').Validator|undefined} customValidator
  */
 
@@ -47,11 +46,10 @@
  * @property {string} id
  * @property {string} labelText
  * @property {string|undefined} placeholder
- * @property {boolean|undefined} strictToNumber
- * @property {'currency'|'cpf'|'percent'|undefined} formatter
- * @property {'text'|'numeric'|'email'|'date'|undefined} inputmode
+ * @property {'currency'|'cpf'|'percent'|"strictNumber"} [formatter]
+ * @property {'text'|'numeric'|'email'|'date'} [inputmode="text"]
  * @property {'date'|'email'|undefined} type
- * @property {import('../utils/validators.js').Validator|undefined} customValidator
+ * @property {import('../utils/validators.js').Validator|undefined} [customValidator]
  */
 
 /**
@@ -60,9 +58,8 @@
  * @property {string} id
  * @property {string} labelText
  * @property {string|undefined} placeholder
- * @property {boolean|undefined} strictToNumber
  * @property {'text'|'numeric'|undefined} inputmode
- * @property {import('../utils/validators.js').Validator|undefined} customValidator
+ * @property {import('../utils/validators.js').Validator|undefined} [customValidator]
  */
 
 /**

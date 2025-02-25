@@ -7,10 +7,19 @@ import { numberToCurrency, numberToPercent } from './formatters.js';
  */
 
 /**
+ * @param {string} value
+ * @returns {Number}
+ */
+function strictNumber(value) {
+  return value.replace(/\D/g, '');
+}
+
+/**
  * @type {InputFormatter}
  */
 export function currencyFormatter(ev) {
   let value = ev.target.value;
+  value = strictNumber(value);
   value = numberToCurrency(value / 100);
   ev.target.value = value;
 }
@@ -20,6 +29,7 @@ export function currencyFormatter(ev) {
  */
 export function percentFormatter(ev) {
   let value = ev.target.value;
+  value = strictNumber(value);
   value = numberToPercent(value / 100);
   ev.target.value = value;
 
@@ -39,7 +49,8 @@ export function strictNumberFormatter(ev) {
  * @type {InputFormatter}
  */
 export function cpfFormatter(ev) {
-  let value = ev.target.value.replace(/\D/g, '');
+  let value = ev.target.value;
+  value = strictNumber(value);
   value = value.slice(0, 11);
   if (value.length === 11) {
     value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');

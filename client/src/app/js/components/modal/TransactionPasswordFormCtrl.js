@@ -16,7 +16,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
         id: 'transactionPassword',
         category: 'password',
         labelText: 'Password',
-        strictToNumber: true,
+        formatter: 'strictNumber',
       },
     ];
   }
