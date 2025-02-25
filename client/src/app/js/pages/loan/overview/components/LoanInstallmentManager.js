@@ -1,6 +1,6 @@
 import { CardManager } from '../../../../core/CardManager.js';
 import loanService from '../../../../services/LoanService.js';
-import { CardInstallmentPayable } from './CardInstallmentPayable.js';
+import { CardInstallment } from './CardInstallment.js';
 
 export default class LoanInstallmentManager extends CardManager {
   #loanId;
@@ -28,7 +28,7 @@ export default class LoanInstallmentManager extends CardManager {
         {
           name: 'installment',
           entityType: this.#loanType,
-          CardClass: CardInstallmentPayable,
+          CardClass: CardInstallment,
         },
       ],
     };

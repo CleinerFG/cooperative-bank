@@ -81,7 +81,7 @@ export class OperationDetailsModal extends Modal {
 
   async #fetchData() {
     try {
-      await simulateWait(5);
+      await simulateWait();
       const res = await this.#serviceMethod(this.#operationId);
       if (res.error) {
         this.#fetchDetailsFailHandler(res.error);

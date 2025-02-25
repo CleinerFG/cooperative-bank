@@ -9,7 +9,7 @@ import {
 /**
  * @typedef {Object} EntityMap
  * @property {string} entity
- * @property {{name:string, CardClass:Card}[]} categories
+ * @property {{name:string, entityType:string, CardClass:Card}[]} categories
  */
 
 export class CardManager {
@@ -101,13 +101,14 @@ export class CardManager {
   }
 
   #initCards() {
-    this._entityMap.categories.forEach(({ name, CardClass }) => {
+    this._entityMap.categories.forEach(({ name, entityType, CardClass }) => {
       this._cards[name] = this.#apiData[name].map((data, index) => {
         const params = {
           index: index,
           apiData: data,
           containerElement: this.#cardsContainerElement,
           category: name,
+          entityType: entityType,
         };
         return new CardClass(params);
       });

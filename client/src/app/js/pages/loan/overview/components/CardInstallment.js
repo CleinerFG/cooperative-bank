@@ -9,7 +9,7 @@ import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { Card } from '../../../../components/Card.js';
 import { OperationDetailsModal } from '../../../../components/modal/OperationDetailsModal.js';
 
-export class CardInstallmentPayable extends Card {
+export class CardInstallment extends Card {
   /**
    * @type {LoanInstallmentData}
    */
@@ -50,10 +50,12 @@ export class CardInstallmentPayable extends Card {
     console.log(`Token from modal: ${token}`);
   }
 
-  async _seePaymentInfoHandler() {
+  async #seePaymentInfoHandler() {
     try {
       const serviceModule = await import('../../../../services/LoanService.js');
       const service = serviceModule.default;
+      console.table(this._apiData);
+
       const params = {
         serviceMethod: service.getInstallmentPayment,
         operationId: this._apiData.id,
@@ -65,29 +67,40 @@ export class CardInstallmentPayable extends Card {
     }
   }
 
-  #handleActionBtn() {
-    return this._apiData.status === 'pending'
-      ? this.#makePaymentHandler()
-      : this._seePaymentInfoHandler();
+  #actionBtnHandler() {
+    this.#actionBtnElement.addEventListener(
+      'click',
+      this.#actionBtnConfig.action.bind(this)
+    );
   }
 
   get #actionBtnElement() {
     return this._containerElement.querySelector(`#btn-${this._id}`);
   }
 
-  get _footerTemplate() {
+  get #actionBtnConfig() {
     const status = this._apiData.status;
+    return {
+      label:
+        (this._entityType === 'payable') & (status === 'pending')
+          ? 'Pay'
+          : 'See',
+      action:
+        (this._entityType === 'payable') & (status === 'pending')
+          ? this.#makePaymentHandler
+          : this.#seePaymentInfoHandler,
+    };
+  }
+
+  get _footerTemplate() {
     return `
      <button id="btn-${this._id}" class="btn">
-        ${status === 'paid' ? 'See' : 'Pay'}
+        ${this.#actionBtnConfig.label}
      </button>
     `;
   }
 
   _setListeners() {
-    this.#actionBtnElement.addEventListener(
-      'click',
-      this.#handleActionBtn.bind(this)
-    );
+    this.#actionBtnHandler();
   }
 }

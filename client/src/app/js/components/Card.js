@@ -18,6 +18,7 @@ export class Card {
   #apiData;
   #containerElement;
   #category;
+  #entityType;
 
   /**
    * @param {CardParams} params
@@ -26,6 +27,7 @@ export class Card {
     this.#index = params.index;
     this.#category = params.category;
     this.#apiData = params.apiData;
+    this.#entityType = params.entityType;
     this.#containerElement = params.containerElement;
   }
 
@@ -46,6 +48,10 @@ export class Card {
 
   get _category() {
     return this.#category;
+  }
+
+  get _entityType() {
+    return this.#entityType;
   }
 
   /**
