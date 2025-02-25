@@ -1,26 +1,44 @@
 const BASE_URL = '/app';
 export const PAGE_ROUTES = {
-  home: `${BASE_URL}`,
-  common: {
-    myAccount: `${BASE_URL}/my-account`,
-    settings: `${BASE_URL}/settings`,
+  home: {
+    path: `${BASE_URL}`,
+    pageModule: () => import('../pages/home/HomePage.js'),
   },
-  wallet: {
-    transfer: `${BASE_URL}/wallet/transfer`,
-    extract: `${BASE_URL}/wallet/extract`,
+  common: {
+    myAccount: {
+      path: `${BASE_URL}/my-account`,
+      pageModule: () => import('../pages/common/my-account/MyAccountPage.js'),
+    },
+    settings: {
+      path: `${BASE_URL}/settings`,
+      pageModule: () => import('../pages/common/settings/SettingsPage.js'),
+    },
   },
   loan: {
-    newRequest: `${BASE_URL}/loan/new-request`,
-    requests: `${BASE_URL}/loan/requests`,
-    payments: `${BASE_URL}/loan/payments`,
-    overview: `${BASE_URL}/loan/overview`,
-    overviewDetails: `${BASE_URL}/loan/overview/details`,
-    requestDetails: `${BASE_URL}/loan/request/details`,
-    timeline: `${BASE_URL}/loan/timeline`,
-  },
-  investments: {
-    all: `${BASE_URL}/investments/all`,
-    reports: `${BASE_URL}/investments/reports`,
+    newRequest: {
+      path: `${BASE_URL}/loan/new-request`,
+      pageModule: () => import('../pages/loan/new-request/NewRequestPage.js'),
+    },
+    requests: {
+      path: `${BASE_URL}/loan/requests`,
+      pageModule: () => import('../pages/loan/requests/LoanRequestsPage.js'),
+    },
+    requestDetails: {
+      path: `${BASE_URL}/loan/request/details`,
+      pageModule: () => import('../pages/loan/requests/RequestDetailsPage.js'),
+    },
+    overview: {
+      path: `${BASE_URL}/loan/overview`,
+      pageModule: () => import('../pages/loan/overview/OverviewPage.js'),
+    },
+    overviewDetails: {
+      path: `${BASE_URL}/loan/overview/details`,
+      pageModule: () => import('../pages/loan/overview/LoanDetailsPage.js'),
+    },
+    timeline: {
+      path: `${BASE_URL}/loan/timeline`,
+      pageModule: () => import('../pages/loan/timeline/LoanTimelinePage.js'),
+    },
   },
 };
 

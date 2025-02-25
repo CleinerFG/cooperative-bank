@@ -1,20 +1,31 @@
 import '../types/routesType.js';
 
 export class Router {
+  /**@type {RouteMap[]} */
   #routes;
   /**
-   * @param {Route[]} routes
+   * @param {{string:{RouteMap}}} routesMap
    */
-  constructor(routes) {
-    this.#routes = routes;
+  constructor(routesMap) {
+    this.#routes = Router.#flatRoutes(routesMap);
   }
 
   /**
-   * @param {string} url
+   * @returns {RouteMap[]}
    */
-  navigateTo(url) {
-    history.pushState(null, null, url);
-    this.#handleRouting();
+  static #flatRoutes(routes) {
+    const result = [];
+    const traverse = (node) => {
+      Object.values(node).forEach((value) => {
+        if (value.path && value.pageModule) {
+          result.push({ path: value.path, pageModule: value.pageModule });
+        } else if (typeof value === 'object') {
+          traverse(value);
+        }
+      });
+    };
+    traverse(routes);
+    return result;
   }
 
   /**
@@ -40,6 +51,14 @@ export class Router {
     const PageClass = module.default;
     new PageClass(queryParams);
     window.scrollTo(0, 0);
+  }
+
+  /**
+   * @param {string} url
+   */
+  navigateTo(url) {
+    history.pushState(null, null, url);
+    this.#handleRouting();
   }
 
   init() {

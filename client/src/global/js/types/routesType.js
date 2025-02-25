@@ -1,5 +1,5 @@
 /**
- * @typedef {Object} Route
+ * @typedef {Object} RouteMap
  * @property {string} path
  * @property {() => Promise<any>} pageModule
  */
