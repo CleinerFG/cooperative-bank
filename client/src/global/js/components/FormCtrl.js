@@ -81,8 +81,8 @@ export class FormCtrl {
     this.#view.formComponents.forEach((component) => {
       if (!component.dataValid) {
         isValid = false;
-        component.handleFailMessage('add', INP_ERRORS.VALID_005.message);
-        errors.push({ id: component.id, cod: 'VALID_005' });
+        component.handleFailMessage('add', INP_ERRORS.VALID_003.message);
+        errors.push({ id: component.id, cod: 'VALID_003' });
       }
     });
 

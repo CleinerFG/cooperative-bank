@@ -1,15 +1,6 @@
-import {
-  EmptyValueError,
-  InvalidCpfError,
-  InvalidEmailError,
-  InvalidPasswordError,
-} from '../errors/InputErrors.js';
+import '../types/validatorsType.js';
 
-/**
- * A function that validates an input value.
- * @callback Validator
- * @param {string} value
- */
+import { EmptyValueError, InvalidCpfError } from '../errors/InputErrors.js';
 
 /**
  * @type {Validator}
@@ -45,48 +36,4 @@ export function cpfValidator(value) {
   if (remainder !== parseInt(value[10])) throw new InvalidCpfError();
 
   return true;
-}
-
-/**
- * @type {Validator}
- * @param {string} value
- */
-export function passwordValidator(value) {
-  const rules = [
-    { regex: /^.{8,}$/, errorCod: 'VALID_006' },
-    { regex: /[a-z]/, errorCod: 'VALID_007' },
-    { regex: /[A-Z]/, errorCod: 'VALID_008' },
-    { regex: /\d/, errorCod: 'VALID_009' },
-    { regex: /[\W]/, errorCod: 'VALID_010' },
-    { regex: /\s/, errorCod: 'VALID_011', negate: true },
-    {
-      regex:
-        /(012|123|234|345|456|567|678|789|890|abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz)/i,
-      errorCod: 'VALID_012',
-      negate: true,
-    },
-    { regex: /(.)\1{2,}/, errorCod: 'VALID_013', negate: true },
-  ];
-
-  for (const { regex, errorCod, negate } of rules) {
-    const match = value.match(regex);
-    if ((negate && match) || (!negate && !match)) {
-      throw new InvalidPasswordError(errorCod, match);
-    }
-  }
-}
-
-/**
- * @type {Validator}
- * @param {string} value
- */
-export function emailValidator(value) {
-  const localPart = /^[\w._%+-]+/;
-  const domainName = /[\w.-]+/;
-  const topLevelDomain = /\.[\w]{2,}$/;
-
-  const regex = new RegExp(
-    `^${localPart.source}@${domainName.source}${topLevelDomain.source}$`
-  );
-  if (!regex.test(value)) throw new InvalidEmailError();
 }

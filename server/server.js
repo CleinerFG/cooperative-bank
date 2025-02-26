@@ -142,7 +142,7 @@ app.get('/api/users', (req, res) => {
     }
     return res.status(200).json({ name: user.name });
   } catch (e) {
-    return res.status(400).json({ error: 'VALID_004' });
+    return res.status(400).json({ error: 'VALID_002' });
   }
 });
 
