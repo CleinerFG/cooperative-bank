@@ -26,7 +26,7 @@ export default class Input {
   }
 
   get _inputElement() {
-    return document.getElementById(this._id);
+    return this._containerElement.querySelector(`#${this._id}`);
   }
 
   /**

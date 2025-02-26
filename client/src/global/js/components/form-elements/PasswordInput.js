@@ -6,25 +6,6 @@ export default class PasswordInput extends Input {
   #BTN_VISIBILITY_ID = `${this._id}-visibility-btn`;
   #ICON_VISIBILITY_ID = `${this._id}-visibility-icon`;
 
-  get #btnVisibilityElement() {
-    return document.getElementById(this.#BTN_VISIBILITY_ID);
-  }
-
-  get #iconVisibilityElement() {
-    return document.getElementById(this.#ICON_VISIBILITY_ID);
-  }
-
-  get #inpVisibilityState() {
-    return this._inputElement.dataset.visibility;
-  }
-
-  /**
-   * @param {"on" | "off"} value
-   */
-  set #inpVisibilityState(value) {
-    this._inputElement.dataset.visibility = value;
-  }
-
   get _template() {
     return `
     <div class="inp-group ">
@@ -43,34 +24,53 @@ export default class PasswordInput extends Input {
     </div>`;
   }
 
+  get #btnVisibilityElement() {
+    return this._containerElement.querySelector(`#${this.#BTN_VISIBILITY_ID}`);
+  }
+
+  get #iconVisibilityElement() {
+    return this._containerElement.querySelector(`#${this.#ICON_VISIBILITY_ID}`);
+  }
+
+  get #inpVisibilityState() {
+    return this._inputElement.dataset.visibility;
+  }
+
+  /**
+   * @param {"on" | "off"} value
+   */
+  set #inpVisibilityState(value) {
+    this._inputElement.dataset.visibility = value;
+  }
+
   /**
    * @param {"on" | "off"} visibilityState
    */
-  _handleAsset(visibilityState) {
+  #updateIcon(visibilityState) {
     assetManager.updateAsset(
       `#${this.#ICON_VISIBILITY_ID}`,
       `icon-visibility-${visibilityState}.svg`
     );
   }
 
-  _toggleInpType() {
+  #toggleInpType() {
     const currentType = this._inputElement.type;
     this._inputElement.type = currentType === 'text' ? 'password' : 'text';
   }
 
-  _toggleVisibility() {
+  #toggleVisibility() {
     const alt = this.#inpVisibilityState === 'on' ? 'Closed eye' : 'Opened eye';
     this.#iconVisibilityElement.setAttribute('alt', alt);
 
     const newState = this.#inpVisibilityState === 'on' ? 'off' : 'on';
-    this._handleAsset(newState);
+    this.#updateIcon(newState);
     this.#inpVisibilityState = newState;
   }
 
   _setListeners() {
     this.#btnVisibilityElement.addEventListener('click', () => {
-      this._toggleVisibility();
-      this._toggleInpType();
+      this.#toggleVisibility();
+      this.#toggleInpType();
     });
   }
 
