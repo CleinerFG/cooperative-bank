@@ -42,11 +42,11 @@ export default class Select extends FormComponent {
   }
 
   init() {
-    super.init();
-    super._addCustomListener({
+    this._render();
+    this._addCustomListener({
       eventType: 'change',
       listener: this.#handleValidationOnChange.bind(this),
     });
-    super._setHandlers(['listeners']);
+    this._setHandlers();
   }
 }

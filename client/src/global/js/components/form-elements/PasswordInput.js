@@ -74,7 +74,7 @@ export default class PasswordInput extends Input {
     this.#inpVisibilityState = newState;
   }
 
-  _setListeners() {
+  _setBtnListener() {
     this.#btnVisibilityElement.addEventListener('click', () => {
       this.#toggleVisibility();
       this.#toggleInpType();
@@ -83,6 +83,6 @@ export default class PasswordInput extends Input {
 
   init() {
     super.init();
-    this._setListeners();
+    this._setBtnListener();
   }
 }

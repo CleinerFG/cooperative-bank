@@ -76,45 +76,12 @@ export default class FormComponent {
     return `<span id="${this.#id}-error" class="error-message"></span>`;
   }
 
-  get #errorSpanElement() {
-    return this._containerElement.querySelector(`#${this.#id}-error`);
-  }
-
   get _template() {
     throw new AbstractGetterError('_template');
   }
 
-  /**
-   *
-   * @param {CustomListener} listenerConfig
-   */
-  _addCustomListener(listenerConfig) {
-    this.#listeners.push(listenerConfig);
-  }
-
-  async getParseValue() {
-    const value = this._formElement.value;
-    if (this.#formatter) {
-      const module = await import('../../utils/formatters.js');
-      const formattersMap = {
-        cpf: module.cpfToString,
-        currency: module.currencyToNumber,
-        percent: module.percentToNumber,
-        strictNumber: (value) => Number(value),
-      };
-      return formattersMap[this.#formatter](value);
-    }
-    return value;
-  }
-
-  /**
-   * @param {"add" | "remove"} method
-   * @param {string} message
-   */
-  handleFailMessage(method, message) {
-    if (method === 'remove') message = '';
-    this.#errorSpanElement.innerHTML = message;
-    this._formElement.parentElement.classList[method]('inp-error');
+  get #errorSpanElement() {
+    return this._containerElement.querySelector(`#${this.#id}-error`);
   }
 
   #handleValidationOnBlur() {
@@ -155,25 +122,46 @@ export default class FormComponent {
     if (this.#customValidator) this.#validators.push(this.#customValidator);
   }
 
-  #render() {
+  _render() {
     this.#containerElement.insertAdjacentHTML('beforeend', this._template);
   }
 
   /**
-   * @param {['listeners'|'formatter']} useHandlers
+   *
+   * @param {CustomListener} listenerConfig
    */
-  _setHandlers(useHandlers) {
-    this.#setCustomValidator();
-    const handlersMap = {
-      listeners: this.#setListeners.bind(this),
-      formatter: this.#setFormatter.bind(this),
-    };
-    useHandlers.forEach((handler) => {
-      handlersMap[handler]();
-    });
+  _addCustomListener(listenerConfig) {
+    this.#listeners.push(listenerConfig);
   }
 
-  init() {
-    this.#render();
+  _setHandlers() {
+    this.#setCustomValidator();
+    this.#setFormatter();
+    this.#setListeners();
+  }
+
+  async getParseValue() {
+    const value = this._formElement.value;
+    if (this.#formatter) {
+      const module = await import('../../utils/formatters.js');
+      const formattersMap = {
+        cpf: module.cpfToString,
+        currency: module.currencyToNumber,
+        percent: module.percentToNumber,
+        strictNumber: (value) => Number(value),
+      };
+      return formattersMap[this.#formatter](value);
+    }
+    return value;
+  }
+
+  /**
+   * @param {"add" | "remove"} method
+   * @param {string} message
+   */
+  handleFailMessage(method, message) {
+    if (method === 'remove') message = '';
+    this.#errorSpanElement.innerHTML = message;
+    this._formElement.parentElement.classList[method]('inp-error');
   }
 }

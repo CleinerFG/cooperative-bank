@@ -15,4 +15,8 @@ export class SubmitButton extends FormComponent {
     return `
       <button id="${this.id}" class="btn ${this.#cssClass}" type="submit">${this._labelText}</button>`;
   }
+
+  init() {
+    this._render();
+  }
 }

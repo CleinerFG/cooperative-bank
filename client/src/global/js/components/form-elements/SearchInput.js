@@ -133,11 +133,11 @@ export default class SearchInput extends Input {
   }
 
   init() {
-    super.init();
-    super._addCustomListener({
+    this._render();
+    this._addCustomListener({
       eventType: 'blur',
       listener: this.#handleSearch.bind(this),
     });
-    super._setHandlers(['listeners', 'formatter']);
+    this._setHandlers();
   }
 }

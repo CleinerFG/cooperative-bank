@@ -57,7 +57,7 @@ export default class Input extends FormComponent {
   }
 
   init() {
-    super.init();
-    super._setHandlers(['listeners', 'formatter']);
+    this._render();
+    this._setHandlers();
   }
 }
