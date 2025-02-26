@@ -1,7 +1,7 @@
 import {
   LOCAL_STORAGE_THEME_KEY,
   DEFAULT_THEME,
-} from '../../constants/theme.js';
+} from '../../constants/config.js';
 import assetManager from '../../../../global/js/core/AssetManager.js';
 
 /**
