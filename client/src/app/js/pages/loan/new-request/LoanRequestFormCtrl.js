@@ -6,6 +6,10 @@ import {
 import loanService from '../../../services/LoanService.js';
 
 export default class LoanRequestFormCtrl extends FormCtrl {
+  constructor() {
+    super([]);
+  }
+
   get _viewParams() {
     return {
       id: 'new-request-form',

@@ -2,19 +2,27 @@ import '../types/formElementsType.js';
 import '../types/serverResponseType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import { INP_ERRORS } from '../constants/errorCodes.js';
 import { simulateWait } from '../utils/tests.js';
+import { INP_ERRORS } from '../constants/errorCodes.js';
 
 export class FormCtrl {
   #view;
   #responsePromise;
   #resolvePromise;
+  #serverErrorCodes;
 
-  constructor() {
+  /**
+   * @param {{string:{desc:string, message:string}}[]} serverErrorCodes
+   */
+  constructor(serverErrorCodes) {
     this.#view = new FormView(
       this._viewParams,
       this._formComponentsParams,
       this._submitButtonParams
+    );
+    this.#serverErrorCodes = serverErrorCodes.reduce(
+      (acc, obj) => ({ ...acc, ...obj }),
+      {}
     );
     this.#init();
   }
@@ -62,9 +70,7 @@ export class FormCtrl {
       const component = this.#view.formComponents.find(
         (el) => el.id === componentId
       );
-      if (component) {
-        component.handleFailMessage('add', INP_ERRORS[error].message);
-      }
+      component.handleFailMessage('add', this.#serverErrorCodes[error].message);
     });
   }
 

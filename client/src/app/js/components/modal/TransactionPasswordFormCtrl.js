@@ -1,7 +1,12 @@
 import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
+import { AUTH_ERRORS } from '../../../../global/js/constants/errorCodes.js';
 import authService from '../../services/AuthService.js';
 
 export class TransactionPasswordFormCtrl extends FormCtrl {
+  constructor() {
+    super([AUTH_ERRORS]);
+  }
+
   get _viewParams() {
     return {
       id: 'confirm-pass-form',

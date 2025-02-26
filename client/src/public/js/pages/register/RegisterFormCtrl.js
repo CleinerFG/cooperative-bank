@@ -4,6 +4,10 @@ import { cpfValidator } from '../../../../global/js/utils/validators.js';
 import { emailValidator, passwordValidator } from '../../helpers/validators.js';
 
 export default class RegisterFormCtrl extends FormCtrl {
+  constructor() {
+    super([]);
+  }
+
   get _viewParams() {
     return {
       id: 'register-form',
