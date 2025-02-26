@@ -14,7 +14,7 @@ export default class RegisterFormCtrl extends FormCtrl {
     };
   }
 
-  get _formElementsParams() {
+  get _formComponentsParams() {
     return [
       {
         id: 'cpf',

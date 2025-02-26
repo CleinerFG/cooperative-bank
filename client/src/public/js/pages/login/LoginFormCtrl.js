@@ -10,7 +10,7 @@ export default class LoginFormCtrl extends FormCtrl {
     };
   }
 
-  get _formElementsParams() {
+  get _formComponentsParams() {
     return [
       {
         id: 'email',

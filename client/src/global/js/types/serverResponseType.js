@@ -1,13 +1,13 @@
 /**
- * @typedef {Object} InputError
- * @property {string} id
- * @property {string} cod
+ * @typedef {Object} FormError
+ * @property {string} componentId
+ * @property {string} error
  */
 
 /**
  * @typedef {Object} ServerFormResponse
  * @property {boolean} success
- * @property {InputError[]} inpErrors
+ * @property {FormError[]} errors
  * @property {string} [token]
  */
 

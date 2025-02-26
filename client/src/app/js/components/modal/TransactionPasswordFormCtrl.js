@@ -10,7 +10,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
     };
   }
 
-  get _formElementsParams() {
+  get _formComponentsParams() {
     return [
       {
         id: 'transactionPassword',

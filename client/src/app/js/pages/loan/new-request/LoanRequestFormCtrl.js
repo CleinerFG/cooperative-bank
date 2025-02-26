@@ -14,7 +14,7 @@ export default class LoanRequestFormCtrl extends FormCtrl {
     };
   }
 
-  get _formElementsParams() {
+  get _formComponentsParams() {
     return [
       {
         category: 'search',

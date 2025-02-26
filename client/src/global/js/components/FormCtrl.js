@@ -13,7 +13,7 @@ export class FormCtrl {
   constructor() {
     this.#view = new FormView(
       this._viewParams,
-      this._formElementsParams,
+      this._formComponentsParams,
       this._submitButtonParams
     );
     this.#init();
@@ -27,14 +27,14 @@ export class FormCtrl {
   }
 
   /**
-   * @type {[InputParams|SearchInputParams|SelectParams]}
+   * @type {[InputOnFormView|SearchOnFormView|PasswordOnFormView|SelectOnFormView]}
    */
-  get _formElementsParams() {
-    throw new AbstractGetterError('_formElementsParams');
+  get _formComponentsParams() {
+    throw new AbstractGetterError('_formComponentsParams');
   }
 
   /**
-   * @type {SubmitButtonParams}
+   * @type {SubmitButtonOnFormView}
    */
   get _submitButtonParams() {
     throw new AbstractGetterError('_submitButtonParams');
@@ -44,44 +44,71 @@ export class FormCtrl {
     throw new AbstractGetterError('_serviceMethod');
   }
 
-  _getFormData() {
-    // return this.#view.formElements.reduce(async (data, formEl) => {
-    //   data[formEl.id] = (await formEl?.getParseValue()) ?? formEl?.value;
-    //   return data;
-    // }, {});
+  async #getFormData() {
+    const formComponents = this.#view.formComponents;
+    const data = {};
+    for (let i = 0; i < formComponents.length; i++) {
+      const component = formComponents[i];
+      data[component.id] = await component.getParseValue();
+    }
+    return data;
   }
 
   /**
-   * @param {InputError[]} inpErrors
+   * @param {FormError[]} errors
    */
-  _handleInputErrors(inpErrors) {
-    inpErrors.forEach(({ id, cod }) => {
-      const formEl = this.#view.formElements.find((el) => el.id === id);
-      if (formEl) {
-        formEl.handleFailMessage('add', INP_ERRORS[cod].message);
+  #formComponentErrorsHandler(errors) {
+    errors.forEach(({ componentId, error }) => {
+      const component = this.#view.formComponents.find(
+        (el) => el.id === componentId
+      );
+      if (component) {
+        component.handleFailMessage('add', INP_ERRORS[error].message);
       }
     });
-  }
-
-  _handleInputsDataIsValid() {
-    let isValid = true;
-    const inpErrors = [];
-
-    this.#view.formElements.forEach((formEl) => {
-      if (!formEl.dataValid) {
-        isValid = false;
-        formEl.handleFailMessage('add', INP_ERRORS.VALID_005.message);
-        inpErrors.push({ id: formEl.id, cod: 'VALID_005' });
-      }
-    });
-
-    return { isValid, inpErrors };
   }
 
   #createNewPromise() {
     this.#responsePromise = new Promise((resolve) => {
       this.#resolvePromise = resolve;
     });
+  }
+
+  #dataIsValidHandler() {
+    let isValid = true;
+    const errors = [];
+
+    this.#view.formComponents.forEach((component) => {
+      if (!component.dataValid) {
+        isValid = false;
+        component.handleFailMessage('add', INP_ERRORS.VALID_005.message);
+        errors.push({ id: component.id, cod: 'VALID_005' });
+      }
+    });
+
+    if (!isValid) this.#resolvePromise({ success: false, errors });
+
+    return isValid;
+  }
+
+  async #trySubmitHandler() {
+    this.#view.setSubmitBtnState(true);
+
+    await simulateWait();
+    const data = await this.#getFormData();
+    const res = await this._serviceMethod(data);
+    this.#resolvePromise(res);
+
+    if (res.errors) this.#formComponentErrorsHandler(res.errors);
+  }
+
+  #catchSubmitHandler(e) {
+    this.#resolvePromise({ success: false, reason: 'serverError' });
+    console.error(e);
+  }
+
+  #finallySubmitHandler() {
+    this.#view.setSubmitBtnState(false);
   }
 
   /**
@@ -91,40 +118,27 @@ export class FormCtrl {
     return this.#responsePromise;
   }
 
-  async #handleSubmit() {
+  async #submitHandler() {
     this.#view.formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       this.#createNewPromise();
+      console.table(await this.#getFormData());
 
-      const { isValid, inpErrors } = this._handleInputsDataIsValid();
-      console.log(this._getFormData());
-
-      if (!isValid) {
-        return this.#resolvePromise({ success: false, inpErrors });
-      }
+      const isValid = this.#dataIsValidHandler();
+      if (!isValid) return;
 
       try {
-        this.#view.setSubmitBtnState(true);
-        /**
-         * @type {ServerFormResponse}
-         */
-        await simulateWait();
-        const res = await this._serviceMethod(this._getFormData());
-        this.#resolvePromise(res);
-        if (res.inpErrors) {
-          this._handleInputErrors(res.inpErrors);
-        }
+        await this.#trySubmitHandler();
       } catch (e) {
-        this.#resolvePromise({ success: false, reason: 'serverError' });
-        console.error(e);
+        this.#catchSubmitHandler(e);
       } finally {
-        this.#view.setSubmitBtnState(false);
+        this.#finallySubmitHandler();
       }
     });
   }
 
   #init() {
-    this.#handleSubmit();
+    this.#submitHandler();
   }
 }

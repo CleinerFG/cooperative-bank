@@ -12,14 +12,14 @@
   background-color: var(--color-bg-2);
 }
 
-.form-group {
+.form-components {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap-sm);
 }
 
-.form-group .inp-group {
+.form-components .inp-group {
   width: 100%;
   display: flex;
   justify-content: space-around;

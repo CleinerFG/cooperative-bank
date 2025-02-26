@@ -6,43 +6,45 @@ export class FormView {
   #containerElement;
   #id;
   #header;
-  #formElementsParams;
+  #formComponentsParams;
   #submitButtonParams;
-  #formElements = [];
-  #submitButton;
+  #formComponents = [];
+  #submitBtnFormComponent;
 
   /**
    *
    * @param {FormViewParams} params
-   * @param {[InputParams|SearchInputParams|SelectParams]} formElementsParams
-   * @param {SubmitButtonParams} submitButtonParams
+   * @param {[FormComponentsOnFormView]} formComponentsParams
+   * @param {SubmitButtonOnFormView} submitButtonParams
    */
-  constructor(params, formElementsParams, submitButtonParams) {
+  constructor(params, formComponentsParams, submitButtonParams) {
     this.#containerElement = params.containerElement;
     this.#id = params.id;
     this.#header = params.header;
-    this.#formElementsParams = formElementsParams;
+    this.#formComponentsParams = formComponentsParams;
     this.#submitButtonParams = submitButtonParams;
     this.#init();
   }
 
   get formElement() {
-    return document.getElementById(this.#id);
+    return this.#containerElement.querySelector(`#${this.#id}`);
   }
 
   /**
-   * @type {Array<Input | SearchInput | PasswordInput>}
+   * @type {Array<import('./form-elements/FormComponent.js'.default)>}
    */
-  get formElements() {
-    return this.#formElements;
+  get formComponents() {
+    return this.#formComponents;
   }
 
   get #submitBtnElement() {
-    return this.formElement.querySelector(`#${this.#submitButton.id}`);
+    return this.formElement.querySelector(
+      `#${this.#submitBtnFormComponent.id}`
+    );
   }
 
   get #formGroupElement() {
-    return document.getElementById(`form-group-${this.#id}`);
+    return this.#containerElement.querySelector(`#form-components-${this.#id}`);
   }
 
   get #headerTemplate() {
@@ -62,7 +64,7 @@ export class FormView {
     return `
     <form id="${this.#id}" class="form">
       ${this.#headerTemplate}
-      <div id="form-group-${this.#id}" class="form-group">       
+      <div id="form-components-${this.#id}" class="form-components">       
       </div>
     </form>
     `;
@@ -75,59 +77,54 @@ export class FormView {
   /**
    * @param {'default'|'search'|'password'|'select'} category
    */
-  async #getFormElementClassByCategory(category) {
-    const formElemCatMap = {
+  async #getFormComponentClassByCategory(category) {
+    const formElemModMap = {
       default: () => import('./form-elements/Input.js'),
       search: () => import('./form-elements/SearchInput.js'),
       password: () => import('./form-elements/PasswordInput.js'),
       select: () => import('./form-elements/Select.js'),
     };
 
-    const module = await formElemCatMap[category]();
+    const module = await formElemModMap[category]();
     return module.default;
   }
 
-  async #buildFormElements() {
-    for (const params of this.#formElementsParams) {
-      const InpClass = await this.#getFormElementClassByCategory(
+  async #initFormComponents() {
+    for (const params of this.#formComponentsParams) {
+      const InpClass = await this.#getFormComponentClassByCategory(
         params.category
       );
       params.containerElement = this.#formGroupElement;
       const inp = new InpClass(params);
       inp.init();
-      this.#formElements.push(inp);
+      this.#formComponents.push(inp);
     }
   }
 
-  #buildSubmitBtn() {
+  #initSubmitBtn() {
     const params = this.#submitButtonParams;
     params.containerElement = this.formElement;
     const btn = new SubmitButton(params);
     btn.init();
-    this.#submitButton = btn;
+    this.#submitBtnFormComponent = btn;
   }
 
-  /**
-   * Change focus between form inputs when pressing "Enter" or "Tab".
-   */
-  #handleChangeFocus() {
+  #changeFocusHandler() {
+    const formElements = Array.from(
+      this.formElement.querySelectorAll('input, select')
+    );
+    const getNextInput = (currentIndex) => {
+      for (let i = currentIndex + 1; i < formElements.length; i++) {
+        if (!formElements[i].disabled) {
+          return formElements[i];
+        }
+      }
+      return formElements[0];
+    };
     this.formElement.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === 'Tab') {
         e.preventDefault();
-        const formElements = Array.from(
-          this.formElement.querySelectorAll('input, select')
-        );
         const index = formElements.indexOf(document.activeElement);
-
-        const getNextInput = (currentIndex) => {
-          for (let i = currentIndex + 1; i < formElements.length; i++) {
-            if (!formElements[i].disabled) {
-              return formElements[i];
-            }
-          }
-          return formElements[0];
-        };
-
         const nextInput = getNextInput(index);
         nextInput.focus();
       }
@@ -144,8 +141,8 @@ export class FormView {
 
   async #init() {
     this.#render();
-    await this.#buildFormElements();
-    this.#buildSubmitBtn();
-    this.#handleChangeFocus();
+    await this.#initFormComponents();
+    this.#initSubmitBtn();
+    this.#changeFocusHandler();
   }
 }

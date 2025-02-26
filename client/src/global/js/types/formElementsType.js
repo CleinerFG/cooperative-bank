@@ -78,7 +78,11 @@
 // --- Form components in form view
 
 /**
- * @typedef {object} FormElementInput
+ * @typedef {InputOnFormView|PasswordOnFormView|SearchOnFormView|SelectOnFormView} FormComponentsOnFormView
+ */
+
+/**
+ * @typedef {object} InputOnFormView
  * @property {'default'} category
  * @property {string} id
  * @property {string} labelText
@@ -89,7 +93,7 @@
  */
 
 /**
- * @typedef {object} FormElementPassword
+ * @typedef {object} PasswordOnFormView
  * @property {'password'} category
  * @property {string} id
  * @property {string} labelText
@@ -99,14 +103,14 @@
  */
 
 /**
- * @typedef {object} FormElementSearch
+ * @typedef {object} SearchOnFormView
  * @property {'search'} category
  * @property {string} id
  * @property {string} labelText
  */
 
 /**
- * @typedef {object} FormElementSelect
+ * @typedef {object} SelectOnFormView
  * @property {'select'} category
  * @property {string} id
  * @property {string} labelText
@@ -114,7 +118,7 @@
  */
 
 /**
- * @typedef {object} FormElementSubmitButton
+ * @typedef {object} SubmitButtonOnFormView
  * @property {string} id
  * @property {string} labelText
  * @property {string} [cssClass]
