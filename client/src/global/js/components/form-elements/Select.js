@@ -1,51 +1,16 @@
 import '../../types/formElementsType.js';
+import { INP_ERRORS } from '../../constants/errorCodes.js';
+import Input from './Input.js';
 
-export default class Select {
-  #containerElement;
-  #id;
-  #labelText;
+export default class Select extends Input {
   #options;
 
   /**
    * @param {SelectParams} params
    */
   constructor(params) {
-    this.#containerElement = params.containerElement;
-    this.#id = params.id;
-    this.#labelText = params.labelText;
+    super(params);
     this.#options = params.options;
-  }
-
-  /**
-   * @type {string}
-   */
-  get id() {
-    return this.#id;
-  }
-
-  /**
-   * @type {string}
-   */
-  get value() {
-    return this.#element.value;
-  }
-
-  /**
-   * @type {boolean}
-   */
-  get dataValid() {
-    return this.#element.dataset.valid === 'true';
-  }
-
-  /**
-   * @param {boolean} bool
-   */
-  set _dataValid(bool) {
-    this.#element.dataset.valid = bool;
-  }
-
-  get #element() {
-    return document.getElementById(this.#id);
   }
 
   get #optionsTemplate() {
@@ -54,49 +19,29 @@ export default class Select {
       .join('');
   }
 
-  get #template() {
+  get _template() {
     return `
       <div class="inp-group ">
-        <label for="${this.#id}" class="label">${this.#labelText}</label>
-        <select id="${this.#id}" class="select-box" data-valid="false" required>
-          <option value="" disabled selected>Select an option</option>
-          ${this.#optionsTemplate}
-        </select>
+        <label for="${this._id}" class="label">${this._labelText}</label>
+        <div class="inp__wrapper">
+          <select id="${this._id}" class="select" data-valid="false" required>
+            <option value="" disabled selected>Select an option</option>
+            ${this.#optionsTemplate}
+          </select>
+        </div>
+        ${this._errorSpanTemplate}
       </div>
       `;
   }
 
-  /**
-   * @param {"add" | "remove"} method
-   * @param {string} errorMessage
-   */
-  handleFailMessage(method) {
-    this.#element.classList[method]('select-error');
-  }
-
-  #setListeners() {
-    this.#element.addEventListener('change', () => {
-      if (this.#element.value) {
-        this._dataValid = true;
-      } else {
-        this._dataValid = false;
-      }
+  #setBlurOnChange() {
+    this._inputElement.addEventListener('change', () => {
+      this._inputElement.blur();
     });
-    this.#element.addEventListener('blur', () => {
-      if (!this.dataValid) {
-        this.handleFailMessage('add');
-        return;
-      }
-      this.handleFailMessage('remove');
-    });
-  }
-
-  #render() {
-    this.#containerElement.insertAdjacentHTML('beforeend', this.#template);
   }
 
   init() {
-    this.#render();
-    this.#setListeners();
+    super.init();
+    this.#setBlurOnChange();
   }
 }

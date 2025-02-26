@@ -6,8 +6,7 @@
   border-color: var(--border-color);
 }
 
-.inp__wrapper,
-.select-box {
+.inp__wrapper {
   padding: var(--padding-sm);
   border-radius: var(--radius-md);
   transition: all 0.2s;
@@ -21,7 +20,7 @@
 }
 
 .inp,
-.select-box {
+.select {
   height: calc(2rem + var(--padding-sm));
   width: 100%;
   border: none;

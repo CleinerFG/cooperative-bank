@@ -1,20 +1,12 @@
-.select-box {
-  border: var(--border-thickness);
-  border-color: var(--border-color);
+.select {
   cursor: pointer;
   color: var(--color-gray);
 }
 
-.select-box:valid {
+.select:valid {
   color: var(--text-color);
 }
 
-.select-box:focus {
-  border-color: var(--color-inp-focus);
-  box-shadow: var(--box-shadow-sm);
+.select:focus {
   outline: none;
-}
-
-.select-error {
-  border-color: var(--color-fail);
 }
