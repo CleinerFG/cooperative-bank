@@ -1,4 +1,8 @@
 import { FormCtrl } from '../../../../../global/js/components/FormCtrl.js';
+import {
+  creditValueValidator,
+  interestRateValidator,
+} from '../../../helpers/loanValidators.js';
 import loanService from '../../../services/LoanService.js';
 
 export default class LoanRequestFormCtrl extends FormCtrl {
@@ -22,6 +26,7 @@ export default class LoanRequestFormCtrl extends FormCtrl {
         id: 'creditValue',
         formatter: 'currency',
         labelText: 'Credit value',
+        customValidator: creditValueValidator,
       },
       {
         category: 'select',
@@ -51,6 +56,7 @@ export default class LoanRequestFormCtrl extends FormCtrl {
         id: 'rate',
         formatter: 'percent',
         labelText: 'Interest Rate',
+        customValidator: interestRateValidator,
       },
     ];
   }

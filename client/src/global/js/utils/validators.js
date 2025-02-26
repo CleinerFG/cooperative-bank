@@ -15,7 +15,7 @@ import {
  * @type {Validator}
  */
 export function emptyValidator(value) {
-  const regex = /R\$\s0,00|0,00\%|^0+$/;
+  const regex = /R\$\s0,00|^0,00\%$|^0+$/;
   if (regex.test(value) || value === '') throw new EmptyValueError();
 }
 
