@@ -20,8 +20,6 @@ export default class LoanRequestFormCtrl extends FormCtrl {
       {
         category: 'default',
         id: 'creditValue',
-        inputmode: 'numeric',
-        placeholder: 'R$ 0,00',
         formatter: 'currency',
         labelText: 'Credit value',
       },
@@ -51,8 +49,6 @@ export default class LoanRequestFormCtrl extends FormCtrl {
       {
         category: 'default',
         id: 'rate',
-        inputmode: 'numeric',
-        placeholder: '0,00%',
         formatter: 'percent',
         labelText: 'Interest Rate',
       },

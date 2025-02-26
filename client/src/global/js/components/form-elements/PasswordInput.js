@@ -3,15 +3,22 @@ import assetManager from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
 export default class PasswordInput extends Input {
-  #BTN_VISIBILITY_ID = `${this._id}-visibility-btn`;
-  #ICON_VISIBILITY_ID = `${this._id}-visibility-icon`;
+  #BTN_VISIBILITY_ID = `${this.id}-visibility-btn`;
+  #ICON_VISIBILITY_ID = `${this.id}-visibility-icon`;
+
+  /**
+   * @type {PasswordInputParams}
+   */
+  constructor(params) {
+    super(params);
+  }
 
   get _template() {
     return `
     <div class="inp-group ">
-      <label for="${this._id}" class="label">${this._labelText}</label>
+      <label for="${this.id}" class="label">${this._labelText}</label>
       <div class="inp__wrapper inp__wrapper-pass">
-        <input id="${this._id}" type="password" inputmode="${this._inputmode}" name="${this._id}" aria-label="${this._labelText}" autocomplete="off"
+        <input id="${this.id}" type="password" inputmode="${this._inputmode}" name="${this.id}" aria-label="${this._labelText}" autocomplete="off"
         class="inp" data-visibility="off" data-valid="false">
         <button id="${this.#BTN_VISIBILITY_ID}" type="button" class="btn-unset btn-icon">
           <img id="${this.#ICON_VISIBILITY_ID}"
@@ -33,14 +40,14 @@ export default class PasswordInput extends Input {
   }
 
   get #inpVisibilityState() {
-    return this._inputElement.dataset.visibility;
+    return this._formElement.dataset.visibility;
   }
 
   /**
    * @param {"on" | "off"} value
    */
   set #inpVisibilityState(value) {
-    this._inputElement.dataset.visibility = value;
+    this._formElement.dataset.visibility = value;
   }
 
   /**
@@ -54,8 +61,8 @@ export default class PasswordInput extends Input {
   }
 
   #toggleInpType() {
-    const currentType = this._inputElement.type;
-    this._inputElement.type = currentType === 'text' ? 'password' : 'text';
+    const currentType = this._formElement.type;
+    this._formElement.type = currentType === 'text' ? 'password' : 'text';
   }
 
   #toggleVisibility() {

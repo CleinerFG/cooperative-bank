@@ -9,18 +9,15 @@ import assetManager from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
 export default class SearchInput extends Input {
-  #INP_QUERY_ID = `${this._id}`;
-  #INP_RESULT_ID = `${this._id}-result`;
-  #ICON_SEARCH_ID = `${this._id}-search-icon`;
+  #INP_QUERY_ID = `${this.id}`;
+  #INP_RESULT_ID = `${this.id}-result`;
+  #ICON_SEARCH_ID = `${this.id}-search-icon`;
 
   /**
    * @param {SearchInputParams} params
    */
   constructor(params) {
     super({
-      inputmode: 'numeric',
-      placeholder: '000.000.000-00',
-      strictToNumber: true,
       formatter: 'cpf',
       customValidator: cpfValidator,
       ...params,
@@ -135,15 +132,12 @@ export default class SearchInput extends Input {
     this.#searchState = false;
   }
 
-  #setListeners() {
-    this.#inpQueryElement.addEventListener(
-      'blur',
-      this.#handleSearch.bind(this)
-    );
-  }
-
   init() {
     super.init();
-    this.#setListeners();
+    super._addCustomListener({
+      eventType: 'blur',
+      listener: this.#handleSearch.bind(this),
+    });
+    super._setHandlers(['listeners', 'formatter']);
   }
 }

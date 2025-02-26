@@ -1,8 +1,8 @@
 import '../../types/formElementsType.js';
 import { INP_ERRORS } from '../../constants/errorCodes.js';
-import Input from './Input.js';
+import FormComponent from './FormComponent.js';
 
-export default class Select extends Input {
+export default class Select extends FormComponent {
   #options;
 
   /**
@@ -22,9 +22,9 @@ export default class Select extends Input {
   get _template() {
     return `
       <div class="inp-group ">
-        <label for="${this._id}" class="label">${this._labelText}</label>
+        <label for="${this.id}" class="label">${this._labelText}</label>
         <div class="inp__wrapper">
-          <select id="${this._id}" class="select" data-valid="false" required>
+          <select id="${this.id}" class="select" data-valid="false" required>
             <option value="" disabled selected>Select an option</option>
             ${this.#optionsTemplate}
           </select>
@@ -34,14 +34,19 @@ export default class Select extends Input {
       `;
   }
 
-  #setBlurOnChange() {
-    this._inputElement.addEventListener('change', () => {
-      this._inputElement.blur();
-    });
+  #handleValidationOnChange() {
+    const value = this._formElement.value;
+    if (!value) return;
+    this._dataValid = true;
+    this.handleFailMessage('remove');
   }
 
   init() {
     super.init();
-    this.#setBlurOnChange();
+    super._addCustomListener({
+      eventType: 'change',
+      listener: this.#handleValidationOnChange.bind(this),
+    });
+    super._setHandlers(['listeners']);
   }
 }
