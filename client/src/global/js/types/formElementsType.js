@@ -2,13 +2,6 @@
  * @typedef {"currency" | "percent" | "cpf" | "strictNumber"} InputFormatters
  */
 
-/**
- * @typedef {object} FormViewParams
- * @property {HTMLElement} containerElement
- * @property {string} id
- * @property {{title:string,icon:string}} [header]
- */
-
 // --- Form components and subclasses types
 
 /**
@@ -35,7 +28,7 @@
  * @property {HTMLElement} containerElement
  * @property {string} labelText
  * @property {string} [placeholder]
- * @property {"email" | "date"} [type]
+ * @property {"email" | "date"} [type="text"]
  * @property {InputFormatters} [formatter]
  * @property {import('../utils/validators.js').Validator} [customValidator]
  */
@@ -76,13 +69,22 @@
 // --- --- ---
 
 /**
- * @typedef {object} FormElementDefault
+ * @typedef {object} FormViewParams
+ * @property {HTMLElement} containerElement
+ * @property {string} id
+ * @property {{title:string,icon:string}} [header]
+ */
+
+// --- Form components in form view
+
+/**
+ * @typedef {object} FormElementInput
  * @property {'default'} category
  * @property {string} id
  * @property {string} labelText
- * @property {string|undefined} [placeholder]
+ * @property {string} [placeholder]
  * @property {InputFormatters} [formatter]
- * @property {'date'|'email'|undefined} type
+ * @property {'date'|'email'} [type]
  * @property {import('../utils/validators.js').Validator|undefined} [customValidator]
  */
 
@@ -91,10 +93,9 @@
  * @property {'password'} category
  * @property {string} id
  * @property {string} labelText
- * @property {'strictNumber'} [formatter]
  * @property {string|undefined} [placeholder]
- *
- * @property {import('../utils/validators.js').Validator|undefined} [customValidator]
+ * @property {'strictNumber'} [formatter]
+ * @property {import('../utils/validators.js').Validator} [customValidator]
  */
 
 /**
@@ -102,7 +103,6 @@
  * @property {'search'} category
  * @property {string} id
  * @property {string} labelText
- * @property {string} endpoint
  */
 
 /**
@@ -114,7 +114,10 @@
  */
 
 /**
- * @typedef {object} SubmitButtonFormElementParams
+ * @typedef {object} FormElementSubmitButton
  * @property {string} id
  * @property {string} labelText
+ * @property {string} [cssClass]
  */
+
+// --- --- ---

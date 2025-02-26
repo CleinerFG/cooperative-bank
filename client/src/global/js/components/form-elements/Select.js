@@ -1,5 +1,4 @@
 import '../../types/formElementsType.js';
-import { INP_ERRORS } from '../../constants/errorCodes.js';
 import FormComponent from './FormComponent.js';
 
 export default class Select extends FormComponent {
