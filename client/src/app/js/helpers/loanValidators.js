@@ -3,7 +3,8 @@ import {
   percentToNumber,
 } from '../../../global/js/utils/formatters.js';
 import { MAX_LOAN_RATE, MIN_LOAN_CREDIT_VALUE } from '../constants/config.js';
-import InvalidInterestRate, {
+import {
+  InvalidInterestRate,
   InvalidCreditValue,
 } from '../errors/loanErrors.js';
 

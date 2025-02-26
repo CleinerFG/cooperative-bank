@@ -1,4 +1,4 @@
-import { LOAN_ERRORS } from '../constants/loanErrorCodes.js';
+import { LOAN_ERRORS } from '../constants/errorCodes.js';
 
 export class InvalidCreditValue extends Error {
   constructor() {

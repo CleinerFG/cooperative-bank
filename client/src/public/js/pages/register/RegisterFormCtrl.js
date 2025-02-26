@@ -1,7 +1,7 @@
 import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
 import authService from '../../services/AuthService.js';
 import { cpfValidator } from '../../../../global/js/utils/validators.js';
-import { emailValidator, passwordValidator } from '../../utils/validators.js';
+import { emailValidator, passwordValidator } from '../../helpers/validators.js';
 
 export default class RegisterFormCtrl extends FormCtrl {
   get _viewParams() {
