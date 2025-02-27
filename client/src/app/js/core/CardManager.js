@@ -13,10 +13,9 @@ import {
  */
 
 export class CardManager {
-  _cards = {};
-  /**
-   * @type {CardState}
-   */
+  /**@type {{string:Card}} */
+  #cards = {};
+  /** @type {CardState} */
   #cardStateInstance;
   #apiData = {};
 
@@ -56,6 +55,10 @@ export class CardManager {
     throw new AbstractMethodError('_fetchService');
   }
 
+  get _titleElement() {
+    return this._containerElement.querySelector('.card-group__h2');
+  }
+
   get #cardsContainerElement() {
     return this._containerElement.querySelector('.cards');
   }
@@ -64,7 +67,7 @@ export class CardManager {
     return `
     <div class="card-group">
       ${this._dashboardTemplate}
-      ${this._titleTemplate}
+      <h2 class="card-group__h2">${this._titleTemplate}</h2>
       <div class="cards">
       </div>
     </div>
@@ -90,10 +93,11 @@ export class CardManager {
     this.#cardState.state = 'loading';
     try {
       await simulateWait(0);
-      const promises = this._entityMap.categories.map(async ({ name }) => {
-        this.#apiData[name] = await this._fetchService(name);
-      });
-      await Promise.all(promises);
+      const categories = this._entityMap.categories;
+      for (let i = 0; i < categories.length; i++) {
+        const cat = categories[i];
+        this.#apiData[cat.name] = await this._fetchService(cat.name);
+      }
     } catch (e) {
       this.#cardState.state = 'error';
       console.error(e);
@@ -102,7 +106,7 @@ export class CardManager {
 
   #initCards() {
     this._entityMap.categories.forEach(({ name, entityType, CardClass }) => {
-      this._cards[name] = this.#apiData[name].map((data, index) => {
+      this.#cards[name] = this.#apiData[name].map((data, index) => {
         const params = {
           index: index,
           apiData: data,
@@ -116,9 +120,9 @@ export class CardManager {
   }
 
   renderCards(category) {
-    if (this._cards[category].length) {
+    if (this.#cards[category].length) {
       this.#cardsContainerElement.innerHTML = '';
-      this._cards[category].forEach((card) => card.init());
+      this.#cards[category].forEach((card) => card.init());
     } else {
       this.#cardState.state = 'empty';
     }

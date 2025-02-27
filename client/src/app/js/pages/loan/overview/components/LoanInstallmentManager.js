@@ -39,7 +39,7 @@ export default class LoanInstallmentManager extends CardManager {
   }
 
   get _titleTemplate() {
-    return '<h2 class="card-group__h2">Installments</h2>';
+    return 'Installments';
   }
 
   async _fetchService() {

@@ -5,18 +5,11 @@ import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 
 export class LoanManager extends CardManager {
-  #FILTER_CATEGORY_1_ID;
-  #FILTER_CATEGORY_2_ID;
-  #ACTIVE_CATEGORY_ID;
-  #ICON_FILTER_ID;
+  #ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
+  #activeCategory = this._entityMap.categories[0];
 
   constructor() {
     super();
-    this.#FILTER_CATEGORY_1_ID = `${this._entityMap.categories[0].name}-${this._entityMap.entity}-filter-1`;
-    this.#FILTER_CATEGORY_2_ID = `${this._entityMap.categories[1].name}-${this._entityMap.entity}-filter-2`;
-    this.#ACTIVE_CATEGORY_ID = `active-category-${this._entityMap.entity}`;
-    this.#ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
-    this._activeCategory = this._entityMap.categories[0];
     this._init();
   }
 
@@ -31,29 +24,24 @@ export class LoanManager extends CardManager {
     throw new AbstractMethodError('_fetchService');
   }
 
-  get #btnFilter1Element() {
-    return this._containerElement.querySelector(
-      `#${this.#FILTER_CATEGORY_1_ID}`
-    );
+  /** @param {number} n */
+  #getFilterCategoryId(n) {
+    return `${this._entityMap.categories[n].name}-${this._entityMap.entity}-filter-${n}`;
   }
 
-  get #btnFilter2Element() {
+  /** @param {number} n */
+  #getFilterBtnElement(n) {
     return this._containerElement.querySelector(
-      `#${this.#FILTER_CATEGORY_2_ID}`
+      `#${this.#getFilterCategoryId(n)}`
     );
-  }
-
-  get #activeCategoryElement() {
-    return this._containerElement.querySelector(`#${this.#ACTIVE_CATEGORY_ID}`);
   }
 
   get #categoriesSwitchTemplate() {
-    const catName1 = capitalize(this._entityMap.categories[0].name);
-    const catName2 = capitalize(this._entityMap.categories[1].name);
+    const getCatName = (n) => capitalize(this._entityMap.categories[n].name);
     return `
       <div class="entity-categories">
-        <div id="${this.#FILTER_CATEGORY_1_ID}" class="entity-category entity-category__active">${catName1}</div>
-        <div id="${this.#FILTER_CATEGORY_2_ID}" class="entity-category">${catName2}</div>
+        <div id="${this.#getFilterCategoryId(0)}" class="entity-category active">${getCatName(0)}</div>
+        <div id="${this.#getFilterCategoryId(1)}" class="entity-category">${getCatName(1)}</div>
       </div>
       `;
   }
@@ -89,38 +77,42 @@ export class LoanManager extends CardManager {
   }
 
   get _titleTemplate() {
-    const activeCatName = capitalize(this._activeCategory.name);
-    return `<h2 id="${this.#ACTIVE_CATEGORY_ID}" class="card-group__h2">${activeCatName}</h2>`;
+    return capitalize(this.#activeCategory.name);
+  }
+
+  #toggleActiveBtn() {
+    const upActiveCat = (cat) => {
+      this.#activeCategory = cat;
+      this._titleElement.textContent = capitalize(cat.name);
+    };
+
+    const index = this._entityMap.categories.findIndex(
+      (category) => category.name === this.#activeCategory.name
+    );
+    const nextIndex = (index + 1) % 2;
+
+    const activeBtn = this.#getFilterBtnElement(index);
+    const nextActiveBtn = this.#getFilterBtnElement(nextIndex);
+
+    activeBtn.classList.remove('active');
+    nextActiveBtn.classList.add('active');
+
+    upActiveCat(this._entityMap.categories[nextIndex]);
+    this.renderCards(this.#activeCategory.name);
   }
 
   #setListeners() {
-    const updateActiveCategory = (category) => {
-      this._activeCategory = category;
-      this.#activeCategoryElement.textContent = capitalize(category.name);
-    };
-    const toggle = () => {
-      const buttonsMap = {
-        0: this.#btnFilter1Element,
-        1: this.#btnFilter2Element,
-      };
-      const index = this._entityMap.categories.findIndex(
-        (category) => category.name === this._activeCategory.name
+    for (let i = 0; i < 2; i++) {
+      this.#getFilterBtnElement(i).addEventListener(
+        'click',
+        this.#toggleActiveBtn.bind(this)
       );
-      const nextIndex = (index + 1) % 2;
-      const activeBtn = buttonsMap[index];
-      const nextActiveBtn = buttonsMap[nextIndex];
-      activeBtn.classList.remove('entity-category__active');
-      nextActiveBtn.classList.add('entity-category__active');
-      updateActiveCategory(this._entityMap.categories[nextIndex]);
-      this.renderCards(this._activeCategory.name);
-    };
-    this.#btnFilter1Element.addEventListener('click', toggle);
-    this.#btnFilter2Element.addEventListener('click', toggle);
+    }
   }
 
   async _init() {
     await super._init();
     this.#setListeners();
-    this.renderCards(this._activeCategory.name);
+    this.renderCards(this.#activeCategory.name);
   }
 }

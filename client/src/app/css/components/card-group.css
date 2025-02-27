@@ -46,11 +46,11 @@
   cursor: pointer;
 }
 
-.entity-category:hover:not(.entity-category__active) {
+.entity-category:hover:not(.active) {
   background-color: var(--color-gray-translucent);
 }
 
-.entity-category__active {
+.entity-category.active {
   background-color: var(--color-cta);
   color: var(--color-off-white);
 }
