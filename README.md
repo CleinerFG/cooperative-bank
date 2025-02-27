@@ -79,7 +79,7 @@ npm install
   - Set the time in seconds **`client/src/global/js/constants/config.js`**:
 
     ```js
-    const SIMULATE_WAIT_SERVER = 3;
+    const SIMULATE_SERVER_WAIT = 3;
     ```
 
   - In the production environment, if you don't want use the `simulateWait()` function, simply use `Ctrl + Shift + F` in VS Code to find all function calls and remove them.
