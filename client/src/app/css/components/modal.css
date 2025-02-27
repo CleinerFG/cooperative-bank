@@ -28,6 +28,10 @@
   position: relative;
 }
 
+.modal-body .modal-icon {
+  height: var(--icon-3xl);
+}
+
 .modal-container {
   display: flex;
   flex-direction: column;
@@ -43,10 +47,6 @@
 
 .modal-title {
   align-self: self-start;
-}
-
-.modal-header .icon-success {
-  height: var(--icon-3xl);
 }
 
 .modal-content {

@@ -2,7 +2,7 @@ import '../../types/formElementsType.js';
 import '../../types/serverResponseType.js';
 import Input from './Input.js';
 import searchUserService from '../SearchUserService.js';
-import { GET_ERRORS, INP_ERRORS } from '../../constants/errorCodes.js';
+import { USER_ERRORS, INP_ERRORS } from '../../constants/errorCodes.js';
 import { cpfValidator } from '../../utils/validators.js';
 import { simulateWait } from '../../utils/tests.js';
 import assetManager from '../../core/AssetManager.js';
@@ -98,8 +98,8 @@ export default class SearchInput extends Input {
    */
   #searchFailHandler(res) {
     let message = '';
-    if (GET_ERRORS[res.error]) {
-      message = GET_ERRORS[res.error].message;
+    if (USER_ERRORS[res.error]) {
+      message = USER_ERRORS[res.error].message;
     } else {
       message = INP_ERRORS[res.error].message;
     }

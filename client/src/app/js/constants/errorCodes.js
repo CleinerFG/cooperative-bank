@@ -13,4 +13,8 @@ export const LOAN_ERRORS = {
     desc: 'invalidRate',
     message: `The interest rate cannot be greater than ${numberToPercent(MAX_LOAN_RATE)} p.m`,
   },
+  LOAN_003: {
+    desc: 'notFoundInstallmentPay',
+    message: 'This installment has not been paid',
+  },
 };

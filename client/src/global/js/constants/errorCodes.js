@@ -28,7 +28,7 @@ export const INP_ERRORS = {
   },
 };
 
-export const GET_ERRORS = {
+export const USER_ERRORS = {
   USER_001: {
     desc: 'notFoundUser',
     message: 'The user was not found',

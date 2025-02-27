@@ -121,7 +121,7 @@ app.get('/api/loan/installments/payment', async (req, res) => {
 
     const payment = data.find((item) => item.id === id);
     if (!payment) {
-      return res.status(404).json({ error: 'LOAN_002' });
+      return res.status(404).json({ error: 'LOAN_003' });
     }
     res.json(payment);
   } catch (error) {

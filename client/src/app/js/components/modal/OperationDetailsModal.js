@@ -1,5 +1,7 @@
 import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 import { simulateWait } from '../../../../global/js/utils/tests.js';
+import { LOAN_ERRORS } from '../../constants/errorCodes.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
 import '../../types/operationDetailsModalType.js';
 import { Modal } from './Modal.js';
 
@@ -76,13 +78,15 @@ export class OperationDetailsModal extends Modal {
   async #fecthDetailsSuccessHandler() {
     this.#infoDataDisplay.apiData = this.#apiData;
     this.#infoDataDisplay.display();
-    this.#confirmBtnElement.classList.add('btn-success');
   }
 
+  /**
+   * @param {'LOAN_003'} error
+   */
   #fetchDetailsFailHandler(error) {
-    const span = `<span>${error}</span>`;
-    this._contentElement.innerHTML = span;
-    this.#confirmBtnElement.classList.add('btn-fail');
+    const icon = `<img class="modal-icon" src="${ASSETS_ROUTE}/icons/icon-warning.svg" />`;
+    const message = `<span class="info-text">${LOAN_ERRORS[error].message}</span>`;
+    this._contentElement.innerHTML = icon + message;
   }
 
   async #fetchData() {

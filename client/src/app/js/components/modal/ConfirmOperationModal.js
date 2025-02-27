@@ -43,7 +43,7 @@ export class ConfirmOperationModal extends Modal {
 
   #authMessageHandler() {
     const header = `
-      <img class="icon-success" src="${ASSETS_ROUTE}/icons/icon-success.svg" alt="Success">
+      <img class="modal-icon" src="${ASSETS_ROUTE}/icons/icon-success.svg" alt="Success">
       <h2>Success</h2>
     `;
     const message = `<span class="info-text">The operation was authorized.</span>`;
