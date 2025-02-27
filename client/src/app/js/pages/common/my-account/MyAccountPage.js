@@ -12,7 +12,7 @@ export default class MyAccountPage extends Page {
   /**
    * @type {InfoDataDisplay}
    */
-  #infoDataDisplayInstance;
+  #infoDataDisplay;
 
   constructor() {
     super();
@@ -77,7 +77,7 @@ export default class MyAccountPage extends Page {
       containerElement: container,
       items: this.#infoDataItems,
     };
-    this.#infoDataDisplayInstance = new InfoDataDisplay(params);
+    this.#infoDataDisplay = new InfoDataDisplay(params);
   }
 
   /**
@@ -106,7 +106,7 @@ export default class MyAccountPage extends Page {
     try {
       await simulateWait();
       this.#apiData = await accountService.getUserInfo();
-      this.#infoDataDisplayInstance.apiData = this.#apiData;
+      this.#infoDataDisplay.apiData = this.#apiData;
     } catch (e) {
       console.error(e);
     }
@@ -117,6 +117,6 @@ export default class MyAccountPage extends Page {
     this.#loadProfileImage();
     await this.#fetchData();
     this.#displayName();
-    this.#infoDataDisplayInstance.display();
+    this.#infoDataDisplay.display();
   }
 }

@@ -19,12 +19,12 @@ export default class NewRequestPage extends Page {
   }
 
   get _pageTitle() {
-    return 'New Loan Request';
+    return 'new loan request';
   }
 
   async _setup() {
-    const LoanRequestFormCtrlModule = await import('./LoanRequestFormCtrl.js');
-    const form = new LoanRequestFormCtrlModule.default();
+    const RequestFormCtrlModule = await import('./RequestFormCtrl.js');
+    const form = new RequestFormCtrlModule.default();
     // const res = await form.getResponse();
     // console.log(res);
   }

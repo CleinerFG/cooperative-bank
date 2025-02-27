@@ -3,12 +3,13 @@ import loanService from '../../../services/LoanService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
 import LoanInstallmentManager from './components/LoanInstallmentManager.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
+import { titleCase } from '../../../../../global/js/utils/stringUtils.js';
 
 export default class LoanDetailsPage extends Page {
   /**
    * @type {InfoDataDisplay}
    */
-  #infoDataDisplayInstance;
+  #infoDataDisplay;
   /**
    * @type {LoanDetailsData}
    */
@@ -21,13 +22,13 @@ export default class LoanDetailsPage extends Page {
   }
 
   get _pageTitle() {
-    return 'Loan Details';
+    return 'loan details';
   }
 
   get _template() {
     return `
     <section class="section">
-      <h1 class="section-h1">${this._pageTitle}</h1>
+      <h1 class="section-h1">${titleCase(this._pageTitle)}</h1>
       <div class="info-container loan-details"></div>
       <div id="loan-installments"></div>
     </section>
@@ -117,14 +118,14 @@ export default class LoanDetailsPage extends Page {
       containerElement: container,
       items: this.#infoDataItems,
     };
-    this.#infoDataDisplayInstance = new InfoDataDisplay(params);
+    this.#infoDataDisplay = new InfoDataDisplay(params);
   }
 
   async #fetchData() {
     try {
       await simulateWait();
       this.#apiData = await loanService.getLoanDetails(this._queryParams.id);
-      this.#infoDataDisplayInstance.apiData = this.#apiData;
+      this.#infoDataDisplay.apiData = this.#apiData;
     } catch (e) {
       console.error(e);
     }
@@ -134,6 +135,6 @@ export default class LoanDetailsPage extends Page {
     this.#infoDataDisplayHandler();
     await this.#fetchData();
     new LoanInstallmentManager(this.#apiData.id, this._queryParams.category);
-    this.#infoDataDisplayInstance.display();
+    this.#infoDataDisplay.display();
   }
 }

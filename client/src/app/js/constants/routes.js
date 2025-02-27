@@ -14,6 +14,16 @@ export const PAGE_ROUTES = {
       pageModule: () => import('../pages/common/settings/SettingsPage.js'),
     },
   },
+  wallet: {
+    transfer: {
+      path: `${BASE_URL}/wallet/transfer`,
+      pageModule: () => import('../pages/wallet/transfer/TransferPage.js'),
+    },
+    extract: {
+      path: `${BASE_URL}/wallet/extract`,
+      pageModule: () => import('../pages/wallet/extract/ExtractPage.js'),
+    },
+  },
   loan: {
     newRequest: {
       path: `${BASE_URL}/loan/new-request`,
@@ -21,7 +31,7 @@ export const PAGE_ROUTES = {
     },
     requests: {
       path: `${BASE_URL}/loan/requests`,
-      pageModule: () => import('../pages/loan/requests/LoanRequestsPage.js'),
+      pageModule: () => import('../pages/loan/requests/RequestsPage.js'),
     },
     requestDetails: {
       path: `${BASE_URL}/loan/request/details`,
@@ -37,7 +47,17 @@ export const PAGE_ROUTES = {
     },
     timeline: {
       path: `${BASE_URL}/loan/timeline`,
-      pageModule: () => import('../pages/loan/timeline/LoanTimelinePage.js'),
+      pageModule: () => import('../pages/loan/timeline/TimelinePage.js'),
+    },
+  },
+  investment: {
+    search: {
+      path: `${BASE_URL}/investment/search`,
+      pageModule: () => import('../pages/investment/search/SearchPage.js'),
+    },
+    reports: {
+      path: `${BASE_URL}/investment/reports`,
+      pageModule: () => import('../pages/investment/reports/ReportsPage.js'),
     },
   },
 };

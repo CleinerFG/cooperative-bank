@@ -1,6 +1,6 @@
 import Page from '../../../../../global/js/core/Page.js';
 
-export default class LoanRequestsPage extends Page {
+export default class RequestsPage extends Page {
   constructor() {
     super();
     this._init();
@@ -16,7 +16,7 @@ export default class LoanRequestsPage extends Page {
   }
 
   get _pageTitle() {
-    return 'Loan Requests';
+    return 'loan requests';
   }
 
   async _initComponents() {

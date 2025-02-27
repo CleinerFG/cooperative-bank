@@ -5,7 +5,7 @@ import {
 } from '../../../helpers/loanValidators.js';
 import loanService from '../../../services/LoanService.js';
 
-export default class LoanRequestFormCtrl extends FormCtrl {
+export default class RequestFormCtrl extends FormCtrl {
   constructor() {
     super([]);
   }
