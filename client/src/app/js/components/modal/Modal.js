@@ -4,10 +4,6 @@ import {
 } from '../../../../global/js/errors/AbstractErrors.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 
-/**
- *  A modal component with a customizable content section.
- * The modal is appended to the document body and includes built-in functionality to handle close events.
- */
 export class Modal {
   #category;
   #tokenPromiseResolve;

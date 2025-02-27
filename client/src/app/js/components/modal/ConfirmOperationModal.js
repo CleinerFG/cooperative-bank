@@ -3,12 +3,6 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { Modal } from './Modal.js';
 import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
 
-/**
- * Specifically designed for confirming actions via a numeric transaction password.
- *
- * @class
- * @extends Modal
- */
 export class ConfirmOperationModal extends Modal {
   #form;
 
@@ -30,7 +24,7 @@ export class ConfirmOperationModal extends Modal {
   }
 
   get #formElement() {
-    return document.getElementById('confirm-pass-form');
+    return this._contentElement.querySelector('#confirm-pass-form');
   }
 
   get _headerTemplate() {

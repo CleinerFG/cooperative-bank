@@ -8,6 +8,7 @@ export class OperationDetailsModal extends Modal {
   #serviceMethod;
   #operationId;
   #title;
+  #infoDataDisplay;
 
   /**
    * @param {OperationDetailsModalParams} params
@@ -40,19 +41,14 @@ export class OperationDetailsModal extends Modal {
     return this._footerElement.querySelector('.btn');
   }
 
-  #confirmBtnHandler() {
-    this.#confirmBtnElement.addEventListener(
-      'click',
-      this._handleCloseModal.bind(this)
-    );
-  }
+  async #initInfoDataDisplay() {
+    const module = await import('../common/InfoDataDisplay.js');
+    const InfoDataDisplay = module.default;
 
-  async #fecthDetailsSuccessHandler() {
-    const InfoDataDisplayModule = await import('../common/InfoDataDisplay.js');
-    const InfoDataDisplay = InfoDataDisplayModule.default;
     const container = this._contentElement.querySelector(
       '.info-container.operation-details'
     );
+
     const infoDataItems = [
       {
         label: 'date',
@@ -67,9 +63,19 @@ export class OperationDetailsModal extends Modal {
     ];
 
     const params = { containerElement: container, items: infoDataItems };
-    const infoDataDisplayInstance = new InfoDataDisplay(params);
-    infoDataDisplayInstance.apiData = this.#apiData;
-    infoDataDisplayInstance.display();
+    this.#infoDataDisplay = new InfoDataDisplay(params);
+  }
+
+  #confirmBtnHandler() {
+    this.#confirmBtnElement.addEventListener(
+      'click',
+      this._handleCloseModal.bind(this)
+    );
+  }
+
+  async #fecthDetailsSuccessHandler() {
+    this.#infoDataDisplay.apiData = this.#apiData;
+    this.#infoDataDisplay.display();
     this.#confirmBtnElement.classList.add('btn-success');
   }
 
@@ -83,10 +89,9 @@ export class OperationDetailsModal extends Modal {
     try {
       await simulateWait();
       const res = await this.#serviceMethod(this.#operationId);
-      if (res.error) {
-        this.#fetchDetailsFailHandler(res.error);
-        return;
-      }
+
+      if (res.error) return this.#fetchDetailsFailHandler(res.error);
+
       this.#apiData = res;
       this.#fecthDetailsSuccessHandler();
     } catch (e) {
@@ -100,6 +105,7 @@ export class OperationDetailsModal extends Modal {
   }
 
   _setup() {
+    this.#initInfoDataDisplay();
     this.#fetchData();
   }
 }
