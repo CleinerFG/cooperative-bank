@@ -1,12 +1,7 @@
-/**
- * Card skelon for when the app is fetching data
- */
 export class CardLoading {
   #nRows;
 
-  /**
-   * @param {number} nRows
-   */
+  /** @param {number} nRows */
   constructor(nRows) {
     this.#nRows = nRows;
   }

@@ -6,7 +6,7 @@ import {
   numberToCurrency,
 } from '../../../../../../global/js/utils/formatters.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
-import { Card } from '../../../../components/Card.js';
+import { Card } from '../../../../components/cards/Card.js';
 import { OperationDetailsModal } from '../../../../components/modal/OperationDetailsModal.js';
 
 export class CardInstallment extends Card {
@@ -54,7 +54,6 @@ export class CardInstallment extends Card {
     try {
       const serviceModule = await import('../../../../services/LoanService.js');
       const service = serviceModule.default;
-      console.table(this._apiData);
 
       const params = {
         serviceMethod: service.getInstallmentPayment,
@@ -102,5 +101,10 @@ export class CardInstallment extends Card {
 
   _setListeners() {
     this.#actionBtnHandler();
+  }
+
+  init() {
+    this._render();
+    this._setListeners();
   }
 }

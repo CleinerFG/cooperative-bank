@@ -2,10 +2,6 @@ import { CardLoading } from './CardLoading.js';
 import { CardError } from './CardError.js';
 import { CardEmpty } from './CardEmpty.js';
 
-/**
- * Manages and renders different card states (loading, empty or error).
- * This class provides templates and logic to display each state in a specified container.
- */
 export class CardState {
   #containerElement;
   #entity;
@@ -48,9 +44,7 @@ export class CardState {
 
   get #templateByState() {
     const template = this.#cards[this.#state].template;
-    if (this.#state === 'loading') {
-      return template.repeat(4);
-    }
+    if (this.#state === 'loading') return template.repeat(4);
     return template;
   }
 

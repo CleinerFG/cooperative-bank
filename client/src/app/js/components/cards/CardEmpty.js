@@ -1,14 +1,10 @@
-import { ASSETS_ROUTE } from '../../constants/routes';
+import { normalizeKebabCase } from '../../../../global/js/utils/stringUtils.js';
+import { ASSETS_ROUTE } from '../../constants/routes.js';
 
-/**
- * Card for when the server returns no data for the entity
- */
 export class CardEmpty {
   #entity;
 
-  /**
-   * @param {string} entity
-   */
+  /** @param {string} entity */
   constructor(entity) {
     this.#entity = entity;
   }
@@ -24,7 +20,7 @@ export class CardEmpty {
 
   get #texts() {
     return [
-      `There are no ${this.#entity.replace('-', ' ')}...`,
+      `There are no ${normalizeKebabCase(this.#entity)}...`,
       "When there is news, we'll let you know ; )",
     ];
   }

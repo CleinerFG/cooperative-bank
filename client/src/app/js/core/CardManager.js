@@ -1,4 +1,4 @@
-import { Card } from '../components/Card.js';
+import { Card } from '../components/cards/Card.js';
 import { CardState } from '../components/cards/CardState.js';
 import { simulateWait } from '../../../global/js/utils/tests.js';
 import {

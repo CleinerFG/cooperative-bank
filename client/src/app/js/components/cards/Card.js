@@ -1,8 +1,8 @@
-import '../types/cardType.js';
+import '../../types/cardType.js';
 import {
   AbstractGetterError,
   AbstractMethodError,
-} from '../../../global/js/errors/AbstractErrors.js';
+} from '../../../../global/js/errors/AbstractErrors.js';
 
 /**
  * @typedef {Object} CardItem
@@ -10,9 +10,6 @@ import {
  * @property {string} value
  */
 
-/**
- * Base class for creating card components with customizable header, content, and footer sections.
- */
 export class Card {
   #index;
   #apiData;
@@ -83,14 +80,10 @@ export class Card {
   }
 
   get _element() {
-    return document.getElementById(this._id);
+    return this.#containerElement.querySelector(`#${this._id}`);
   }
 
-  _setListeners() {
-    throw new AbstractMethodError('_setListeners');
-  }
-
-  #buildHeaderTemplate() {
+  #buildHeader() {
     return `
         <header class="card-data__header">
         ${this._headerTemplate}
@@ -101,7 +94,7 @@ export class Card {
   /**
    * @param {CardItem} cardItem
    */
-  #buildItemTemplate(cardItem) {
+  #buildItem(cardItem) {
     return `
       <div class="card-data__item">
         <span class="card-data__label">${cardItem.label}</span>
@@ -110,9 +103,9 @@ export class Card {
     `;
   }
 
-  #buildMainContentTemplate() {
+  #buildMainContent() {
     const items = this._itemsArray
-      .map((cardItem) => this.#buildItemTemplate(cardItem))
+      .map((cardItem) => this.#buildItem(cardItem))
       .join('');
 
     return `
@@ -122,7 +115,7 @@ export class Card {
     `;
   }
 
-  #buildFooterTemplate() {
+  #buildFooter() {
     return `
     <footer class="card-data__footer">
       ${this._footerTemplate}
@@ -130,26 +123,21 @@ export class Card {
     `;
   }
 
-  #buildCardTemplate() {
+  #buildCard() {
     return `
       <article id="${this._id}" class="card card-data">
-        ${this.#buildHeaderTemplate()}
-        ${this.#buildMainContentTemplate()}
-        ${this.#buildFooterTemplate()}
+        ${this.#buildHeader()}
+        ${this.#buildMainContent()}
+        ${this.#buildFooter()}
       </article>
   
     `;
   }
 
-  #render() {
+  _render() {
     this.#containerElement.insertAdjacentHTML(
       'beforeend',
-      this.#buildCardTemplate()
+      this.#buildCard()
     );
-  }
-
-  init() {
-    this.#render();
-    this._setListeners();
   }
 }

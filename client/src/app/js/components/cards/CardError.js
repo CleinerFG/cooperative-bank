@@ -1,8 +1,6 @@
+import { normalizeKebabCase } from '../../../../global/js/utils/stringUtils.js';
 import { ASSETS_ROUTE } from '../../constants/routes';
 
-/**
- * Card for when the server returns a error for the request
- */
 export class CardError {
   #entity;
 
@@ -27,7 +25,7 @@ export class CardError {
       <img id="${this.#imgId}" class="card-state__img" 
         src="${ASSETS_ROUTE}/images/${this.#randomImgFile}">
       <div class="card-state__text">
-        <p class="info-text">Oops! Something went wrong while trying to load the ${this.#entity.replace('-', ' ')} data.</p>
+        <p class="info-text">Oops! Something went wrong while trying to load the ${normalizeKebabCase(this.#entity)} data.</p>
         <p class="info-text">Please check your internet connection and try again later.</p>
       </div>
     `;

@@ -4,7 +4,7 @@ import {
   formatDate,
   numberToCurrency,
 } from '../../../../../../global/js/utils/formatters.js';
-import { Card } from '../../../../components/Card.js';
+import { Card } from '../../../../components/cards/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
@@ -20,15 +20,15 @@ export class CardLoanOverview extends Card {
     };
   }
 
-  get _redirectPageRoute() {
-    return `${PAGE_ROUTES.loan.overviewDetails.path}?id=${this._apiData.id}&category=${this._category}`;
-  }
-
   /**
    * @type {LoanOverviewData}
    */
   get _apiData() {
     return super._apiData;
+  }
+
+  get _redirectPageRoute() {
+    return `${PAGE_ROUTES.loan.overviewDetails.path}?id=${this._apiData.id}&category=${this._category}`;
   }
 
   get _itemsArray() {
@@ -68,5 +68,10 @@ export class CardLoanOverview extends Card {
       .addEventListener('click', () => {
         appRouter.navigateTo(this._redirectPageRoute);
       });
+  }
+
+  init() {
+    this._render();
+    this._setListeners();
   }
 }
