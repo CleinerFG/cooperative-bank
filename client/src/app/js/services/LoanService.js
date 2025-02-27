@@ -39,7 +39,7 @@ class LoanService {
   }
 
   /**
-   * @param {'received'|'opened'} category
+   * @param {'received'|'open'} category
    */
   async getRequests(category) {
     const res = await fetch(

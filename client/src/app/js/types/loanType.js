@@ -74,5 +74,5 @@
 /**
  * @typedef {Object} RequestDetailsQueryParams
  * @property {string} id
- * @property {'opened'|'received'} category
+ * @property {'open'|'received'} category
  */

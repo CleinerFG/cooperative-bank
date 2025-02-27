@@ -66,7 +66,7 @@ export default class PasswordInput extends Input {
   }
 
   #toggleVisibility() {
-    const alt = this.#inpVisibilityState === 'on' ? 'Closed eye' : 'Opened eye';
+    const alt = this.#inpVisibilityState === 'on' ? 'Closed eye' : 'Open eye';
     this.#iconVisibilityElement.setAttribute('alt', alt);
 
     const newState = this.#inpVisibilityState === 'on' ? 'off' : 'on';

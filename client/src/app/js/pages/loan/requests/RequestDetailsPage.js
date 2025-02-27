@@ -42,7 +42,7 @@ export default class RequestDetailsPage extends Page {
 
   get #participantByCategory() {
     const category = this._queryParams.category;
-    return category === 'opened' ? 'creditor' : 'debtor';
+    return category === 'open' ? 'creditor' : 'debtor';
   }
 
   /**

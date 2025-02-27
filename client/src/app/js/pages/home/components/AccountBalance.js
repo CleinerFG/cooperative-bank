@@ -46,7 +46,7 @@ export default class AccountBalance {
 
   #updateIconVisibility() {
     this.#updateIcon(this.#currentVisibility);
-    const alt = this.#currentVisibility === 'on' ? 'Opened eye' : 'Closed eye';
+    const alt = this.#currentVisibility === 'on' ? 'Open eye' : 'Closed eye';
     this.#iconElement.setAttribute('alt', alt);
   }
 

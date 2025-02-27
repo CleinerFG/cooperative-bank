@@ -99,10 +99,7 @@ app.get('/api/loan/:category/details', async (req, res) => {
   }
 });
 
-app.get(
-  '/api/loan/requests/opened',
-  serveFile(DB_DIR, 'loan-request-opened.json')
-);
+app.get('/api/loan/requests/open', serveFile(DB_DIR, 'loan-request-open.json'));
 
 app.get(
   '/api/loan/requests/received',

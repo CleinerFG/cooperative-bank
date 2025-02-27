@@ -8,7 +8,7 @@ export default class LoanRequestsManager extends LoanManager {
       entity: 'loan-requests',
       categories: [
         {
-          name: 'opened',
+          name: 'open',
           CardClass: CardLoanRequest,
         },
         {
@@ -20,8 +20,8 @@ export default class LoanRequestsManager extends LoanManager {
   }
 
   async _fetchService(category) {
-    return category === 'opened'
-      ? LoanService.getRequests('opened')
+    return category === 'open'
+      ? LoanService.getRequests('open')
       : LoanService.getRequests('received');
   }
 

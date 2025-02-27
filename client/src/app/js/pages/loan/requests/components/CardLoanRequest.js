@@ -19,7 +19,7 @@ export class CardLoanRequest extends CardLoanOverview {
 
   get _headerTemplate() {
     let status = '';
-    if (this._category === 'opened') {
+    if (this._category === 'open') {
       const statusCssMap = {
         pending: 'span-pending',
         rejected: 'span-fail',
