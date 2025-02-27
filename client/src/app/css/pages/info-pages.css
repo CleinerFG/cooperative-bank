@@ -34,3 +34,9 @@
 .info-container .info-icon {
   height: var(--icon-xl);
 }
+
+.info-block {
+  display: flex;
+  gap: var(--gap-sm);
+}
+

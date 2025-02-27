@@ -1,4 +1,6 @@
 import Page from '../../../../../global/js/core/Page.js';
+import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
+import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
 export default class OverviewPage extends Page {
   constructor() {
@@ -11,7 +13,10 @@ export default class OverviewPage extends Page {
     return `
     <section class="section loans">
       <h1 class="section-h1">Overview</h1>
-      <p class="info-text">On this page, you will find all active loans and their total value report.</p>
+      <div class="info-block">
+        <img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/icon-info.svg"/>
+        <p class="info-text">Here you will find all your active loans, both payable and receivable, along with their details.</p>
+      </div>
     </section>
     `;
   }
