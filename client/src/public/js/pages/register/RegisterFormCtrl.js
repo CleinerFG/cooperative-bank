@@ -21,7 +21,7 @@ export default class RegisterFormCtrl extends FormCtrl {
       {
         id: 'cpf',
         category: 'default',
-        labelText: translate('cpf'),
+        labelText: 'CPF',
         formatter: 'cpf',
         customValidator: cpfValidator,
       },

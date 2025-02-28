@@ -53,7 +53,7 @@ export default class MyAccountPage extends Page {
         iconPath: iconBasePath + 'icon-calendar.svg',
       },
       {
-        label: translate('cpf'),
+        label: 'CPF',
         apiDataProp: 'cpf',
         valueFormatter: 'cpf',
         iconPath: iconBasePath + 'icon-document.svg',

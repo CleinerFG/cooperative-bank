@@ -5,6 +5,7 @@ export default {
   pass: 'Password',
   confirm: 'Confirm',
   email: 'Email',
+  birthDate: 'Date of birth',
 
   // Errors message
   incorrectEmail: 'The email is incorrect',
@@ -28,8 +29,6 @@ export default {
   value: 'Value',
   pay: 'Pay',
   success: 'Success',
-  birthDate: 'Date of birth',
-  cpf: 'CPF',
 
   // Component - Notifications
   transferReceived: 'Transfer received',
