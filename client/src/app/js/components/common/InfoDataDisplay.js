@@ -2,10 +2,7 @@ import '../../types/infoDataDisplayType.js';
 import { ProgressBar } from './progressBar.js';
 import assetManager from '../../../../global/js/core/AssetManager.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
-import {
-  toCamelCase,
-  capitalize,
-} from '../../../../global/js/utils/stringUtils.js';
+import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 import {
   formatCpf,
   formatDate,
@@ -39,8 +36,8 @@ export class InfoDataDisplay {
   /**
    * @param {Item} param
    */
-  #buildItem({ label, iconPath, iconState }) {
-    const id = toCamelCase(label);
+  #buildItem({ apiDataProp, iconPath, iconState, label }) {
+    const id = apiDataProp;
     const hasIcon = () => {
       if (iconState) {
         return `
@@ -56,7 +53,7 @@ export class InfoDataDisplay {
       <div class="info-item__container">
         ${hasIcon()}
         <div class="info-item">
-          <span class="info-label">${capitalize(label)}</span>
+          <span class="info-label">${label}</span>
           <span id="${id}" class="info-value skelon"></span>
         </div>
       </div>
@@ -128,7 +125,7 @@ export class InfoDataDisplay {
   /**
    * @param {Item}
    */
-  #displayItem({ label, apiDataProp, valueFormatter, iconState }) {
+  #displayItem({ apiDataProp, valueFormatter, iconState }) {
     const getFormatedValue = (apiDataProp, valueFormatter) => {
       const formattersMap = {
         capitalize: capitalize,
@@ -141,7 +138,7 @@ export class InfoDataDisplay {
       return valueFormatter ? formattersMap[valueFormatter](value) : value;
     };
 
-    const id = toCamelCase(label);
+    const id = apiDataProp;
     const element = this.#containerElement.querySelector(`#${id}`);
     element.textContent = getFormatedValue(apiDataProp, valueFormatter);
 
