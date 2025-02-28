@@ -1,13 +1,11 @@
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
 import {
-  titleCase,
   normalizeKebabCase,
+  toCamelCase,
 } from '../../../../../global/js/utils/stringUtils.js';
 import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
+import { translate } from '../../../../../global/js/i18n/Translator.js';
 
-/**
- * Represents a clickable card component that redirects to a page in the application.
- */
 export class CardLink {
   #groupName;
   #name;
@@ -38,7 +36,8 @@ export class CardLink {
   }
 
   get template() {
-    const name = titleCase(normalizeKebabCase(this.#name));
+    const normalizedName = toCamelCase(normalizeKebabCase(this.#name));
+    const name = translate(normalizedName);
     return `
     <div class="card-link__container">
       <a id="${this.anchorId}" class="card-link__a" rel="next" href="${this.endpoint}" data-link>

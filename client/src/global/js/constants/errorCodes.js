@@ -1,36 +1,37 @@
+import { translate } from '../i18n/Translator.js';
+
+const prototype = {
+  get message() {
+    return translate(this.desc);
+  },
+};
+
 export const AUTH_ERRORS = {
-  AUTH_001: {
-    desc: 'incorrectEmail',
-    message: 'The email is incorrect',
-  },
-  AUTH_002: {
-    desc: 'incorrectPassword',
-    message: 'The password is incorrect',
-  },
+  AUTH_001: Object.create(prototype, {
+    desc: { value: 'incorrectEmail' },
+  }),
+  AUTH_002: Object.create(prototype, {
+    desc: { value: 'incorrectPassword' },
+  }),
 };
 
 export const INP_ERRORS = {
-  VALID_001: {
-    desc: 'fieldIsRequired',
-    message: 'This field is required',
-  },
-  VALID_002: {
-    desc: 'invalidCpf',
-    message: 'The CPF is invalid',
-  },
-  VALID_003: {
-    desc: 'invalidData',
-    message: 'The data is invalid',
-  },
-  VALID_004: {
-    desc: 'invalidEmail',
-    message: 'The email must be a valid string',
-  },
+  VALID_001: Object.create(prototype, {
+    desc: { value: 'fieldIsRequired' },
+  }),
+  VALID_002: Object.create(prototype, {
+    desc: { value: 'invalidCpf' },
+  }),
+  VALID_003: Object.create(prototype, {
+    desc: { value: 'invalidData' },
+  }),
+  VALID_004: Object.create(prototype, {
+    desc: { value: 'invalidEmail' },
+  }),
 };
 
 export const USER_ERRORS = {
-  USER_001: {
-    desc: 'notFoundUser',
-    message: 'The user was not found',
-  },
+  USER_001: Object.create(prototype, {
+    desc: { value: 'notFoundUser' },
+  }),
 };

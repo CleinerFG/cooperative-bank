@@ -4,6 +4,7 @@ import { LOAN_ERRORS } from '../../constants/errorCodes.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import '../../types/operationDetailsModalType.js';
 import { Modal } from './Modal.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export class OperationDetailsModal extends Modal {
   #apiData;
@@ -53,12 +54,12 @@ export class OperationDetailsModal extends Modal {
 
     const infoDataItems = [
       {
-        label: 'date',
+        label: translate('date'),
         apiDataProp: 'date',
         valueFormatter: 'date',
       },
       {
-        label: 'value',
+        label: translate('value'),
         apiDataProp: 'value',
         valueFormatter: 'currency',
       },

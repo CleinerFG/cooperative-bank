@@ -1,4 +1,5 @@
 import Page from '../../../../../global/js/core/Page.js';
+import { translate } from '../../../../../global/js/i18n/Translator.js';
 import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
@@ -12,11 +13,10 @@ export default class NewRequestPage extends Page {
   get _template() {
     return `
       <section class="section">
-        <h1 class="section-h1">Take Out a Loan</h1>
+        <h1 class="section-h1">${translate('takeOutLoan')}</h1>
         <div class="info-block">
           <img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/icon-info.svg"/>
-          <p class="info-text">To obtain a loan, the creditor needs to access their own account and accept the loan request.
-          </p>
+          <p class="info-text">${translate('takeLoanInfo')}</p>
         </div>
         <div class="new-request"></div>
       </section>
@@ -24,7 +24,7 @@ export default class NewRequestPage extends Page {
   }
 
   get _pageTitle() {
-    return 'new loan request';
+    return translate('newLoanRequest');
   }
 
   async _setup() {

@@ -1,8 +1,8 @@
 import { CardManager } from '../../core/CardManager.js';
-import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 import { AbstractMethodError } from '../../../../global/js/errors/AbstractErrors.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export class LoanManager extends CardManager {
   #ICON_FILTER_ID = `icon-filter-${this._entityMap.entity}`;
@@ -37,7 +37,7 @@ export class LoanManager extends CardManager {
   }
 
   get #categoriesSwitchTemplate() {
-    const getCatName = (n) => capitalize(this._entityMap.categories[n].name);
+    const getCatName = (n) => translate(this._entityMap.categories[n].name);
     return `
       <div class="entity-categories">
         <div id="${this.#getFilterCategoryId(0)}" class="entity-category active">${getCatName(0)}</div>
@@ -52,11 +52,11 @@ export class LoanManager extends CardManager {
         <div class="dashboard-filter">
           <div class="inputs-container">
             <div class="inp-group">
-              <label for="start-date-filter-${this._entityMap.entity}">Start date</label>
+              <label for="start-date-filter-${this._entityMap.entity}">${translate('startDate')}</label>
               <input id="start-date-filter-${this._entityMap.entity}" class="inp inp-date" type="date">
             </div>
             <div class="inp-group">
-              <label for="end-date-filter-${this._entityMap.entity}">End date</label>
+              <label for="end-date-filter-${this._entityMap.entity}">${translate('endDate')}</label>
               <input id="end-date-filter-${this._entityMap.entity}" class="inp inp-date" type="date">
             </div>
           </div>
@@ -77,13 +77,13 @@ export class LoanManager extends CardManager {
   }
 
   get _titleTemplate() {
-    return capitalize(this.#activeCategory.name);
+    return translate(this.#activeCategory.name);
   }
 
   #toggleActiveBtn() {
     const upActiveCat = (cat) => {
       this.#activeCategory = cat;
-      this._titleElement.textContent = capitalize(cat.name);
+      this._titleElement.textContent = translate(cat.name);
     };
 
     const index = this._entityMap.categories.findIndex(

@@ -10,6 +10,7 @@ import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js'
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import appRouter from '../../../../core/appRouter.js';
 import { PAGE_ROUTES } from '../../../../constants/routes.js';
+import { translate } from '../../../../../../global/js/i18n/Translator.js';
 
 export class CardLoanOverview extends Card {
   get _modalityIcon() {
@@ -34,11 +35,13 @@ export class CardLoanOverview extends Card {
   get _itemsArray() {
     return [
       {
-        label: this._apiData.creditor ? 'Creditor' : 'Debtor',
+        label: this._apiData.creditor
+          ? translate('creditor')
+          : translate('debtor'),
         value: this._apiData.creditor || this._apiData.debtor,
       },
       {
-        label: 'Credit value',
+        label: translate('creditValue'),
         value: numberToCurrency(this._apiData.creditValue),
       },
     ];
@@ -48,16 +51,16 @@ export class CardLoanOverview extends Card {
     return `
       <div class="card-title">
       <img src="${this._modalityIcon[this._apiData.modality]}" alt="Modality" class="icon ${handleIconDark()}">
-      <span class="span-title">${capitalize(this._apiData.modality)}</span>
+      <span class="span-title">${translate(this._apiData.modality)}</span>
       </div>
-      <span class="span-date">Started on ${formatDate(this._apiData.date)}</span>
+      <span class="span-date">${translate('startOn')} ${formatDate(this._apiData.date)}</span>
     `;
   }
 
   get _footerTemplate() {
     return `
      <button id="btn-${this._id}" class="btn">
-        See details
+        ${translate('seeDetails')}
       </button>
     `;
   }

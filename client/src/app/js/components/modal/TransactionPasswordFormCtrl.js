@@ -1,5 +1,6 @@
 import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
 import { AUTH_ERRORS } from '../../../../global/js/constants/errorCodes.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 import authService from '../../services/AuthService.js';
 
 export class TransactionPasswordFormCtrl extends FormCtrl {
@@ -20,7 +21,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
       {
         id: 'transactionPassword',
         category: 'password',
-        labelText: 'Password',
+        labelText: translate('pass'),
         formatter: 'strictNumber',
       },
     ];
@@ -30,7 +31,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
     return {
       id: 'transaction-confirm',
       cssClass: 'modal-btn',
-      labelText: 'Confirm',
+      labelText: translate('confirm'),
     };
   }
 

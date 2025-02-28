@@ -3,29 +3,36 @@ import {
   formatDate,
   numberToCurrency,
 } from '../../../../global/js/utils/formatters.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export class Notification {
   static #deviceVw = window.innerWidth;
   static #categoryMap = {
     transfer: ({ sender, value }) => ({
-      title: 'Received Transfer',
-      desc: `You received a transfer of ${numberToCurrency(value)} from ${sender}`,
+      title: translate('transferReceived'),
+      desc: translate('transferReceivedDesc')(numberToCurrency(value), sender),
     }),
     loanStatus: ({ value, status }) => ({
-      title: `Loan ${status}`,
-      desc: `Your loan of ${numberToCurrency(value)} has been ${status}`,
+      title: translate('loanStatusUp'),
+      desc: translate('loanStatusUpDesc')(
+        numberToCurrency(value),
+        translate(status)
+      ),
     }),
     loanRequest: ({ value }) => ({
-      title: 'Loan Request Received',
-      desc: `You received a loan request of ${numberToCurrency(value)}`,
+      title: translate('loanReqReceived'),
+      desc: translate('loanReqReceivedDesc')(numberToCurrency(value)),
     }),
     payment: ({ sender, value }) => ({
-      title: 'Received Payment',
-      desc: `${sender} sent ${numberToCurrency(value)}`,
+      title: translate('payReceived'),
+      desc: translate('payReceivedDesc')(numberToCurrency(value), sender),
     }),
     installment: ({ value, date }) => ({
-      title: 'Installment Due Soon',
-      desc: `You have an installment due on ${formatDate(date)} in the amount of ${numberToCurrency(value)}`,
+      title: translate('installmentDue'),
+      desc: translate('installmentDueDesc')(
+        numberToCurrency(value),
+        formatDate(date)
+      ),
     }),
   };
 

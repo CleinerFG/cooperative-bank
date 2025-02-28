@@ -1,4 +1,5 @@
 import Page from '../../../../../global/js/core/Page.js';
+import { translate } from '../../../../../global/js/i18n/Translator.js';
 import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
@@ -12,10 +13,10 @@ export default class OverviewPage extends Page {
   get _introductionTemplate() {
     return `
     <section class="section loans">
-      <h1 class="section-h1">Overview</h1>
+      <h1 class="section-h1">${translate('overview')}</h1>
       <div class="info-block">
         <img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/icon-info.svg"/>
-        <p class="info-text">Here you will find all your active loans, both payable and receivable, along with their details.</p>
+        <p class="info-text">${translate('overviewInfo')}</p>
       </div>
     </section>
     `;

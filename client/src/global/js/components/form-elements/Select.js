@@ -1,3 +1,4 @@
+import { translate } from '../../i18n/Translator.js';
 import '../../types/formElementsType.js';
 import FormComponent from './FormComponent.js';
 
@@ -24,7 +25,7 @@ export default class Select extends FormComponent {
         <label for="${this.id}" class="label">${this._labelText}</label>
         <div class="inp__wrapper">
           <select id="${this.id}" class="select" data-valid="false" required>
-            <option value="" disabled selected>Select an option</option>
+            <option value="" disabled selected>${translate('selectOption')}</option>
             ${this.#optionsTemplate}
           </select>
         </div>

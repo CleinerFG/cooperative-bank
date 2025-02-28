@@ -1,6 +1,8 @@
 export default {
   // Form
   selectOption: 'Selecione uma opção',
+  pass: 'Senha',
+  confirm: 'Confirmar',
 
   // Errors message
   incorrectEmail: 'O email é incorreto',
@@ -18,6 +20,28 @@ export default {
 
   // Generics
   seeDetails: 'Ver detalhes',
+  status: 'Status',
+  date: 'Data',
+  dueDate: 'Data de vencimento',
+  value: 'Valor',
+  pay: 'Pagar',
+  success: 'Sucesso',
+
+  // Component - Notifications
+  transferReceived: 'Transferência recebida',
+  transferReceivedDesc: (value, sender) =>
+    `Você recebeu uma transferência de ${value} de ${sender}`,
+  loanStatusUp: 'Atualização de empréstimo',
+  loanStatusUpDesc: (value, status) =>
+    `Seu empréstimo de ${value} foi ${status}`,
+  loanReqReceived: 'Solicitação de empréstimo recebida',
+  loanReqReceivedDesc: (value) =>
+    `Você recebeu uma solicitação de empréstimo de ${value}`,
+  payReceived: 'Pagamento recebido',
+  payReceivedDesc: (value, sender) => `${sender} enviou ${value}`,
+  installmentDue: 'Parcela vencendo',
+  installmentDueDesc: (value, date) =>
+    `Você tem uma parcela que vence em ${date} no valor de ${value}`,
 
   // Component - Dashboard
   startDate: 'Data de início',
@@ -44,7 +68,7 @@ export default {
   email: 'email',
   registerDate: 'Data de registro',
 
-  // Page Loan - New request
+  // Loan - New request
   newLoanRequest: 'Nova solicitação de empréstimo',
   takeOutLoan: 'Fazer um empréstimo',
   takeLoanInfo:
@@ -53,24 +77,24 @@ export default {
   searchCreditor: 'Procure um credor',
   deadline: 'Prazo',
   months: 'Meses',
-  modality: 'Modalidade',
   personalCredit: 'Crédito pessoal',
   autoCredit: 'Crédito automotivo',
   mortgageCredit: 'Crédito imobiliário',
-  interestRatePm: 'Taxa de juros a.m.',
 
-  // Page Loan - Request
+  // Loan - Request
   requestsInfo:
-    'Aqui você pode conferir todas as solicitações abertas e recebidas, juntamente de seus detalhes',
+    'Aqui você pode conferir todas as solicitações abertas e recebidas',
   activeRequests: 'Solicitações ativas',
   loanRequests: 'Solicitações de empréstimo',
   open: 'Abertas',
   received: 'Recebidas',
+  requestDetails: 'Detalhes da solicitação',
 
   // Loan
   pending: 'Pendente',
   rejected: 'Rejeitada',
   accepted: 'Aceita',
+  paid: 'Pago',
   auto: 'Automotivo',
   personal: 'Pessoal',
   mortgage: 'Imobiliário',
@@ -78,4 +102,26 @@ export default {
   creditor: 'Credor',
   debtor: 'Devedor',
   creditValue: 'Valor do crédito',
+  installment: 'Parcela',
+  installments: 'Parcelas',
+  modality: 'Modalidade',
+  contractDate: 'Data do contrato',
+  interestRatePm: 'Taxa de juros a.m.',
+  totalAmount: 'Montante total',
+  installmentValue: 'Valor da parcela',
+  outstandingBalance: 'Saldo devedor',
+  payProgress: 'Progresso do pagamento',
+  payable: 'A pagar',
+  receivable: 'A receber',
+  payDetails: 'Detalhes do pagamento',
+
+  // Loan - Overview
+  overviewInfo:
+    'Aqui você encontra todos seus empréstimos ativos, tanto os empréstimos a pagar quanto a receber',
+  loanDetails: 'Detalhes do empréstimo',
+
+  // Modal
+  authOperation: 'Autorize a operação',
+  enterNumTransPass: 'Insira a senha de transação numérica',
+  authOperationSuccess: 'A operação foi autorizada',
 };

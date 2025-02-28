@@ -1,3 +1,4 @@
+import { translate } from '../../../../global/js/i18n/Translator.js';
 import '../../../../global/js/types/serverResponseType.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { Modal } from './Modal.js';
@@ -28,12 +29,12 @@ export class ConfirmOperationModal extends Modal {
   }
 
   get _headerTemplate() {
-    return '<h2 class="modal-title">Authorize operation</h2>';
+    return `<h2 class="modal-title">${translate('authOperation')}</h2>`;
   }
 
   get _contentTemplate() {
     return `
-      <p class="info-text">Enter the numeric transaction password</p>
+      <p class="info-text">${translate('enterNumTransPass')}</p>
     `;
   }
 
@@ -44,9 +45,9 @@ export class ConfirmOperationModal extends Modal {
   #authMessageHandler() {
     const header = `
       <img class="modal-icon" src="${ASSETS_ROUTE}/icons/icon-success.svg" alt="Success">
-      <h2>Success</h2>
+      <h2>${translate('success')}</h2>
     `;
-    const message = `<span class="info-text">The operation was authorized.</span>`;
+    const message = `<span class="info-text">${translate('authOperationSuccess')}</span>`;
     const btn = `<button class="btn btn-success">OK</button>`;
     this._headerElement.innerHTML = header;
     this._contentElement.innerHTML = message;

@@ -3,6 +3,7 @@ import accountService from '../../../services/AccountService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { ApiDataNotDefinedError } from '../../../errors/ApiDataNotDefinedError.js';
+import { translate } from '../../../../../global/js/i18n/Translator.js';
 
 export default class MyAccountPage extends Page {
   /**
@@ -21,7 +22,7 @@ export default class MyAccountPage extends Page {
   }
 
   get _pageTitle() {
-    return 'my account';
+    return translate('myAccount');
   }
 
   get _template() {
@@ -46,24 +47,24 @@ export default class MyAccountPage extends Page {
     const iconBasePath = '/account/';
     return [
       {
-        label: 'date of birth',
+        label: translate('birthDate'),
         apiDataProp: 'birth',
         valueFormatter: 'date',
         iconPath: iconBasePath + 'icon-calendar.svg',
       },
       {
-        label: 'cpf',
+        label: translate('cpf'),
         apiDataProp: 'cpf',
         valueFormatter: 'cpf',
         iconPath: iconBasePath + 'icon-document.svg',
       },
       {
-        label: 'email',
+        label: translate('email'),
         apiDataProp: 'email',
         iconPath: iconBasePath + 'icon-email.svg',
       },
       {
-        label: 'registration date',
+        label: translate('registerDate'),
         apiDataProp: 'registration',
         valueFormatter: 'date',
         iconPath: iconBasePath + 'icon-register.svg',

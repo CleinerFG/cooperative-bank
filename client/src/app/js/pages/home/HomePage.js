@@ -3,6 +3,7 @@ import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { featureGroups } from './components/FeatureGroups.js';
 import appRouter from '../../core/appRouter.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class HomePage extends Page {
   constructor() {
@@ -22,7 +23,7 @@ export default class HomePage extends Page {
         <img class="icon ${handleIconDark()}" src="${brandIcon}" alt="Closed eye">
       </div>
       <div class="statement-balance">
-        <span class="balance-label">Balance</span>
+        <span class="balance-label">${translate('balance')}</span>
         <div class="balance-container">
           <span id="balance-value" class="balance-value skelon">R$ * * * * * *</span>
           <button id="balance-visibility-btn" class="btn-unset btn-icon" data-visibility="off">

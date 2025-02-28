@@ -1,3 +1,4 @@
+import { translate } from '../../../global/js/i18n/Translator.js';
 import {
   numberToCurrency,
   numberToPercent,
@@ -7,14 +8,16 @@ import { MAX_LOAN_RATE, MIN_LOAN_CREDIT_VALUE } from './config.js';
 export const LOAN_ERRORS = {
   LOAN_001: {
     desc: 'invalidCreditValue',
-    message: `The credit value cannot be less than ${numberToCurrency(MIN_LOAN_CREDIT_VALUE)}`,
+    message: translate('invalidCreditValue')(
+      numberToCurrency(MIN_LOAN_CREDIT_VALUE)
+    ),
   },
   LOAN_002: {
     desc: 'invalidRate',
-    message: `The interest rate cannot be greater than ${numberToPercent(MAX_LOAN_RATE)} p.m`,
+    message: translate('invalidRate')(numberToPercent(MAX_LOAN_RATE)),
   },
   LOAN_003: {
     desc: 'notFoundInstallmentPay',
-    message: 'This installment has not been paid',
+    message: translate('notFoundInstallmentPay'),
   },
 };

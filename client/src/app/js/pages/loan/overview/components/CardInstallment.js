@@ -8,6 +8,7 @@ import {
 import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { Card } from '../../../../components/cards/Card.js';
 import { OperationDetailsModal } from '../../../../components/modal/OperationDetailsModal.js';
+import { translate } from '../../../../../../global/js/i18n/Translator.js';
 
 export class CardInstallment extends Card {
   /**
@@ -20,11 +21,11 @@ export class CardInstallment extends Card {
   get _itemsArray() {
     return [
       {
-        label: 'Due date',
+        label: translate('dueDate'),
         value: formatDate(this._apiData.dueDate),
       },
       {
-        label: 'Value',
+        label: translate('value'),
         value: numberToCurrency(this._apiData.value),
       },
     ];
@@ -34,11 +35,11 @@ export class CardInstallment extends Card {
     const status = this._apiData.status;
     const cssClass = status === 'pending' ? 'span-pending' : 'span-success';
     const spanStatus = `
-      <span class="span-status ${cssClass}">${capitalize(this._apiData.status)}</span>
+      <span class="span-status ${cssClass}">${translate(this._apiData.status)}</span>
       `;
     return `
       <div class="card-title">
-        <span class="span-title">Installment Nº ${this._index + 1}</span>
+        <span class="span-title">${translate('installment')} Nº ${this._index + 1}</span>
       </div>
       ${spanStatus}
     `;
@@ -58,7 +59,7 @@ export class CardInstallment extends Card {
       const params = {
         serviceMethod: service.getInstallmentPayment,
         operationId: this._apiData.id,
-        title: 'payment details',
+        title: translate('payDetails'),
       };
       new OperationDetailsModal(params);
     } catch (e) {
@@ -82,8 +83,8 @@ export class CardInstallment extends Card {
     return {
       label:
         (this._entityType === 'payable') & (status === 'pending')
-          ? 'Pay'
-          : 'See',
+          ? translate('pay')
+          : translate('seeDetails'),
       action:
         (this._entityType === 'payable') & (status === 'pending')
           ? this.#makePaymentHandler

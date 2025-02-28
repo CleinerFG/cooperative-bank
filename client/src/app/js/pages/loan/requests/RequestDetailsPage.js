@@ -3,6 +3,7 @@ import loanService from '../../../services/LoanService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
 import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { titleCase } from '../../../../../global/js/utils/stringUtils.js';
+import { translate } from '../../../../../global/js/i18n/Translator.js';
 
 export default class RequestDetailsPage extends Page {
   /**
@@ -21,7 +22,7 @@ export default class RequestDetailsPage extends Page {
   }
 
   get _pageTitle() {
-    return 'request details';
+    return translate('requestDetails');
   }
 
   get _template() {
@@ -52,7 +53,7 @@ export default class RequestDetailsPage extends Page {
     const iconBasePath = '/loan/details/';
     return [
       {
-        label: 'status',
+        label: translate('status'),
         apiDataProp: 'status',
         iconState: {
           pending: 'loan/details/icon-pending.svg',
@@ -62,43 +63,43 @@ export default class RequestDetailsPage extends Page {
         valueFormatter: 'capitalize',
       },
       {
-        label: 'contract date',
+        label: translate('contractDate'),
         apiDataProp: 'date',
         iconPath: iconBasePath + 'icon-calendar.svg',
         valueFormatter: 'date',
       },
       {
-        label: 'modality',
+        label: translate('modality'),
         apiDataProp: 'modality',
         iconPath: iconBasePath + 'icon-modality.svg',
         valueFormatter: 'capitalize',
       },
       {
-        label: this.#participantByCategory,
+        label: translate(this.#participantByCategory),
         apiDataProp: this.#participantByCategory,
         iconPath: iconBasePath + 'icon-person.svg',
         valueFormatter: 'capitalize',
       },
       {
-        label: 'credit value',
+        label: translate('creditValue'),
         apiDataProp: 'creditValue',
         iconPath: iconBasePath + 'icon-value.svg',
         valueFormatter: 'currency',
       },
       {
-        label: 'interest rate',
+        label: translate('interestRatePm'),
         apiDataProp: 'rate',
         iconPath: iconBasePath + 'icon-percent.svg',
         valueFormatter: 'percent',
       },
       {
-        label: 'total amount',
+        label: translate('totalAmount'),
         apiDataProp: 'totalAmount',
         iconPath: iconBasePath + 'icon-total.svg',
         valueFormatter: 'currency',
       },
       {
-        label: 'installment value',
+        label: translate('installmentValue'),
         apiDataProp: 'installmentValue',
         iconPath: iconBasePath + 'icon-installment.svg',
         valueFormatter: 'currency',

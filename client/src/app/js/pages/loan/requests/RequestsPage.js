@@ -1,4 +1,5 @@
 import Page from '../../../../../global/js/core/Page.js';
+import { translate } from '../../../../../global/js/i18n/Translator.js';
 import { handleIconDark } from '../../../../../global/js/utils/themeUtils.js';
 import { ASSETS_ROUTE } from '../../../constants/routes.js';
 
@@ -12,17 +13,17 @@ export default class RequestsPage extends Page {
   get _template() {
     return `
       <section class="section loans">
-        <h1 class="section-h1">Active Requests</h1>
+        <h1 class="section-h1">${translate('activeRequests')}</h1>
         <div class="info-block">
           <img class="icon ${handleIconDark()}" src="${ASSETS_ROUTE}/icons/icon-info.svg"/>
-          <p class="info-text">Here you can check all open and received loan requests, along with their details.</p>
+          <p class="info-text">${translate('requestsInfo')}</p>
       </div>
       </section>
     `;
   }
 
   get _pageTitle() {
-    return 'loan requests';
+    return translate('loanRequests');
   }
 
   async _initComponents() {
