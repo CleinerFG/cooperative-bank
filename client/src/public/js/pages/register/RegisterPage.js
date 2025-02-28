@@ -1,21 +1,22 @@
 import LoginPage from '../login/LoginPage.js';
 import publicRouter from '../../core/publicRouter.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class RegisterPage extends LoginPage {
   get _infoText() {
-    return 'Join the Cooperative Bank';
+    return translate('joinBank');
   }
 
   get _footerTemplate() {
     return `
     <footer class="login-register footer">
-      <a href="/login" data-link>I am a customer</a>
+      <a href="/login" data-link>${translate('iCustomer')}</a>
     </footer>
     `;
   }
 
   get _pageTitle() {
-    return 'Cooperative Bank - Register';
+    return translate('register');
   }
 
   async _setup() {

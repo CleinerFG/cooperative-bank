@@ -1,8 +1,10 @@
 export default {
   // Form
   selectOption: 'Select an option',
+  login: 'Login',
   pass: 'Password',
   confirm: 'Confirm',
+  email: 'Email',
 
   // Errors message
   incorrectEmail: 'The email is incorrect',
@@ -26,6 +28,8 @@ export default {
   value: 'Value',
   pay: 'Pay',
   success: 'Success',
+  birthDate: 'Date of birth',
+  cpf: 'CPF',
 
   // Component - Notifications
   transferReceived: 'Transfer received',
@@ -62,9 +66,6 @@ export default {
 
   // My account page
   myAccount: 'My account',
-  birthDate: 'Date of birth',
-  cpf: 'CPF',
-  email: 'email',
   registerDate: 'Regitration date',
 
   // Loan - New request
@@ -122,4 +123,39 @@ export default {
   authOperation: 'Authorize operation',
   enterNumTransPass: 'Enter the numeric transaction password',
   authOperationSuccess: 'The operation was authorized',
+
+  // Landing
+  heroTitle: 'Cooperation that connects people',
+  signUp: 'Sign Up',
+  missionTitle:
+    'The <strong class="title-emphasis">Cooperative Bank</strong> seeks to transform the way people connect financially',
+  missionTxt:
+    'Our mission is to create a collaborative banking system, where each customer is also a partner, joining forces to grow together and generate prosperity for all.',
+  askFriendsLoans: 'Ask friends for loans',
+  askFriendsLoansTxt1:
+    'Use the Cooperative Bank to request loans from your friends and family.',
+  askFriendsLoansTxt2: 'We provide an innovative way to borrow money.',
+  askFriendsLoansTxt3:
+    "You're in control! You decide from whom you want to borrow.",
+  investMoney: 'Invest your money',
+  investMoneyTxt1:
+    'Investing in the Cooperative Bank is simple and accessible.',
+  investMoneyTxt2: 'With just a few clicks, you can start growing your money.',
+  investMoneyTxt3: 'All of this is free of administrative fees.',
+  fastSecTransfer: 'Fast and secure transfers',
+  fastSecTransferTxt1: 'Make your transactions quickly and easily.',
+  fastSecTransferTxt2: 'All in just a few seconds and with complete security.',
+  contactUs: 'Contact us',
+  development: 'Development',
+  devBy: 'By Cleiner Furlani',
+
+  // Login
+  accessAccount: 'Access your Cooperative Bank Account',
+  iNotCustomer: 'I am not a customer',
+
+  // Register
+  register: 'Register',
+  joinBank: 'Join the Cooperative Bank',
+  iCustomer: 'I am a customer',
+  name: 'Name',
 };

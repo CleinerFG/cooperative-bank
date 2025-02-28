@@ -1,6 +1,7 @@
 import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
 import authService from '../../services/AuthService.js';
 import { emailValidator } from '../../helpers/validators.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class LoginFormCtrl extends FormCtrl {
   constructor() {
@@ -19,7 +20,7 @@ export default class LoginFormCtrl extends FormCtrl {
       {
         id: 'email',
         category: 'default',
-        labelText: 'Email',
+        labelText: translate('email'),
         inputmode: 'email',
         type: 'email',
         customValidator: emailValidator,
@@ -27,7 +28,7 @@ export default class LoginFormCtrl extends FormCtrl {
       {
         category: 'password',
         id: 'password',
-        labelText: 'Password',
+        labelText: translate('pass'),
       },
     ];
   }
@@ -35,7 +36,7 @@ export default class LoginFormCtrl extends FormCtrl {
   get _submitButtonParams() {
     return {
       id: 'submit',
-      labelText: 'Login',
+      labelText: translate('login'),
       cssClass: 'glossy',
     };
   }

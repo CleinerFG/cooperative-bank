@@ -2,6 +2,7 @@ import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
 import authService from '../../services/AuthService.js';
 import { cpfValidator } from '../../../../global/js/utils/validators.js';
 import { emailValidator, passwordValidator } from '../../helpers/validators.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class RegisterFormCtrl extends FormCtrl {
   constructor() {
@@ -20,32 +21,32 @@ export default class RegisterFormCtrl extends FormCtrl {
       {
         id: 'cpf',
         category: 'default',
-        labelText: 'CPF',
+        labelText: translate('cpf'),
         formatter: 'cpf',
         customValidator: cpfValidator,
       },
       {
         id: 'name',
         category: 'default',
-        labelText: 'Name',
+        labelText: translate('name'),
       },
       {
         id: 'birth',
         category: 'default',
-        labelText: 'Birth',
+        labelText: translate('birthDate'),
         type: 'date',
       },
       {
         id: 'email',
         category: 'default',
-        labelText: 'Email',
+        labelText: translate('email'),
         type: 'email',
         customValidator: emailValidator,
       },
       {
         id: 'password',
         category: 'password',
-        labelText: 'Password',
+        labelText: translate('pass'),
         customValidator: passwordValidator,
       },
     ];
@@ -54,7 +55,7 @@ export default class RegisterFormCtrl extends FormCtrl {
   get _submitButtonParams() {
     return {
       id: 'submit',
-      labelText: 'Register',
+      labelText: translate('register'),
       cssClass: 'glossy',
     };
   }

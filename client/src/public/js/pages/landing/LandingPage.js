@@ -2,6 +2,7 @@ import '../../types/pageComponentsType.js';
 import Page from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import publicRouter from '../../core/publicRouter.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class LandingPage extends Page {
   constructor() {
@@ -13,30 +14,30 @@ export default class LandingPage extends Page {
   get _featuresMap() {
     return [
       {
-        title: 'Ask friends for loans',
+        title: translate('askFriendsLoans'),
         texts: [
-          'Use the Cooperative Bank to request loans from your friends and family.',
-          'We provide an innovative way to borrow money.',
-          " You're in control! You decide from whom you want to borrow.",
+          translate('askFriendsLoansTxt1'),
+          translate('askFriendsLoansTxt2'),
+          translate('askFriendsLoansTxt3'),
         ],
         imgFile: 'handshake.jpeg',
         imgAlt: 'handshake',
       },
       {
-        title: 'Invest your money',
+        title: translate('investMoney'),
         texts: [
-          'Investing in the Cooperative Bank is simple and accessible.',
-          'With just a few clicks, you can start growing your money.',
-          'All of this is free of administrative fees.',
+          translate('investMoneyTxt1'),
+          translate('investMoneyTxt2'),
+          translate('investMoneyTxt3'),
         ],
         imgFile: 'easy-invest.jpeg',
         imgAlt: 'Smiling woman',
       },
       {
-        title: 'Fast and secure transfers',
+        title: translate('fastSecTransfer'),
         texts: [
-          'Make your transactions quickly and easily.',
-          'All in just a few seconds and with complete security.',
+          translate('fastSecTransferTxt1'),
+          translate('fastSecTransferTxt2'),
         ],
         imgFile: 'money.jpeg',
         imgAlt: 'Money and gold coins',
@@ -125,7 +126,7 @@ export default class LandingPage extends Page {
   _buildContactTemplate() {
     return `
       <div class="footer-container footer__contact">
-        <h2>Contact us</h2>
+        <h2>${translate('contactUs')}</h2>
         <address class="address">
           <p>(650) 999-9999</p>
           <p>California St, Downtown Palo Alto, Palo Alto, CA 94301, United States</p>
@@ -141,8 +142,8 @@ export default class LandingPage extends Page {
   _buildDeveloperTemplate() {
     return `
       <div class="footer-container footer__developer">
-        <h2>Development</h2>
-        <p>By Cleiner Furlani</p>
+        <h2>${translate('development')}</h2>
+        <p>${translate('devBy')}</p>
         <div class="social-media">
           ${this._buildSocialMediaTemplate('developer')}
         </div>
@@ -159,7 +160,7 @@ export default class LandingPage extends Page {
         </div>
         <div class="login-link-container">
           <a href="/login" data-link>
-            Login
+            ${translate('login')}
             <img class="icon" src="${ASSETS_ROUTE}/icons/icon-login.svg" alt="Login"/>
           </a>
         </div>
@@ -174,8 +175,8 @@ export default class LandingPage extends Page {
         <img class="img" src="${ASSETS_ROUTE}/images/bank.jpeg" alt="Modern Bank" />
       </div>
       <div class="content-container">
-        <h1>Cooperation that connects people</h1>
-        <a class="btn glossy" href="/register" data-link>Sign Up</a>
+        <h1>${translate('heroTitle')}</h1>
+        <a class="btn glossy" href="/register" data-link>${translate('signUp')}</a>
       </div>
     </section>
     `;
@@ -185,15 +186,8 @@ export default class LandingPage extends Page {
     return `
     <section class="section mission-section">
       <div class="content-container">
-        <h2>
-          The <strong class="title-emphasis">Cooperative Bank</strong> seeks to
-          transform the way people connect financially
-        </h2>
-        <p class="text">
-          Our mission is to create a collaborative banking system, where each
-          customer is also a partner, joining forces to grow together and
-          generate prosperity for all.
-        </p>
+        <h2>${translate('missionTitle')}</h2>
+        <p class="text">${translate('missionTxt')}</p>
       </div>
     </section>
     `;

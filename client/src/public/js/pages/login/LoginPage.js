@@ -1,4 +1,5 @@
 import Page from '../../../../global/js/core/Page.js';
+import { translate } from '../../../../global/js/i18n/Translator.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import publicRouter from '../../core/publicRouter.js';
 
@@ -21,7 +22,7 @@ export default class LoginPage extends Page {
   }
 
   get _infoText() {
-    return 'Access your Cooperative Bank Account';
+    return translate('accessAccount');
   }
 
   get _mainContainer() {
@@ -39,13 +40,13 @@ export default class LoginPage extends Page {
   get _footerTemplate() {
     return `
     <footer class="login-register footer">
-      <a href="/register" data-link>I am not a customer</a>
+      <a href="/register" data-link>${translate('iNotCustomer')}</a>
     </footer>
     `;
   }
 
   get _pageTitle() {
-    return 'Cooperative Bank - Login';
+    return translate('login');
   }
 
   get _template() {
