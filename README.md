@@ -83,6 +83,8 @@ The project follows the MVC architecture, organizing functions and classes modul
   npm run dev:server
   ```
 
+  - **`server/.env`**: Add `NODE_ENV=production`, by default this variable is set to `development`.
+
 - `Dev-test`: Where there are server requests, there are skelons or loaders. When running the server locally, you need to add a delay to make them visible.
 
   - Set the time in seconds **`client/src/global/js/constants/config.js`**:

@@ -83,6 +83,8 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
   npm run dev:server
   ```
 
+  - **`server/.env`**: Adicionar `NODE_ENV=production`, por padrão essa variável é definida como `development`.
+
 - `Dev-test`: Onde há requisições ao servidor, há skelons ou loaders. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso para que eles sejam visíveis.
 
   - Defina o tempo em segundos **`client/src/global/js/constants/config.js`**:
