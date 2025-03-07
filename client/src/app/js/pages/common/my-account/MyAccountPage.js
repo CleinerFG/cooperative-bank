@@ -106,7 +106,7 @@ export default class MyAccountPage extends Page {
   async #fetchData() {
     try {
       await simulateWait();
-      this.#apiData = await accountService.getUserInfo();
+      this.#apiData = await accountService.getDetails();
       this.#infoDataDisplay.apiData = this.#apiData;
     } catch (e) {
       console.error(e);

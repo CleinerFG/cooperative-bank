@@ -7,8 +7,8 @@ class AccountService {
   /**
    * @returns {Promise<UserInfo>}
    */
-  async getUserInfo() {
-    const res = await fetch(`${this.#BASE_ENDPOINT}/user`);
+  async getDetails() {
+    const res = await fetch(`${this.#BASE_ENDPOINT}/details`);
     return await res.json();
   }
 
