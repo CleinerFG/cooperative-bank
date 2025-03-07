@@ -6,7 +6,7 @@ let cachedDb = null;
 const loadDb = async () => {
   try {
     const data = await fs.readFile(
-      path.resolve(__dirname, `../db/database.json`),
+      path.resolve(__dirname, `../data/database.json`),
       'utf-8'
     );
     return JSON.parse(data);
