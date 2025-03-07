@@ -45,21 +45,25 @@ The project follows the MVC architecture, organizing functions and classes modul
 
 ### Project Config
 
-- `Server IP`: Set the server location.
+- `Ip and Port`: Sets the server location.
 
-  - Create a `.env` file in **`server/.env`**:
+  - Create a file `.env` in **`server/.env`** and **`client/.env`**.
+
+    - **`server/.env`**:
+
+    ```
+    IP=localhost
+    PORT=8080
+    ```
+
+    - **`client/.env`**:
 
     ```
     SERVER_IP=localhost
+    SERVER_PORT=8080
     ```
 
-  - Set the IP address in the global constant **`client/src/global/js/constants/config.js`**:
-
-    ```js
-    const SERVER_IP = 'localhost';
-    ```
-
-  **Note:** To set up the server on the local network, replace `locahost` with the local IP address.
+  **Note:** To configure the server at another address, simply update the variables in both. By default it is set to `locahost:8080`.
 
 ### Start (Development or Production)
 

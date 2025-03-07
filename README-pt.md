@@ -45,21 +45,25 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
 
 ### Configuração do Projeto
 
-- `IP do Servidor`: Defina a localização do servidor.
+- `Ip e Porta`: Defina a localização do servidor.
 
-  - Crie um arquivo `.env` em **`server/.env`**:
+  - Crie um arquivo `.env` em **`server/.env`** e **`client/.env`**.
+
+    - **`server/.env`**:
+
+    ```
+    IP=localhost
+    PORT=8080
+    ```
+
+    - **`client/.env`**:
 
     ```
     SERVER_IP=localhost
+    SERVER_PORT=8080
     ```
 
-  - Defina o endereço de IP na constante global **`client/src/global/js/constants/config.js`**:
-
-    ```js
-    const SERVER_IP = 'localhost';
-    ```
-
-  **Nota:** Para configurar o servidor na rede local, substitua `locahost` pelo endereço de ip local.
+  **Nota:** Para configurar servidor em outro endereço basta atualizar as variáveis em ambos. Por padrão é definido como `locahost:8080`.
 
 ### Iniciar (Desenvolvimento ou Produção)
 
