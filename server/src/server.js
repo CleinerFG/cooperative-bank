@@ -46,6 +46,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+const accountRoutes = require('./routes/accountRoutes.js');
+app.use('/api/account', accountRoutes);
+
 // Helper function to serve files
 const serveFile = (directory, filename) => (req, res) => {
   const filePath = path.join(directory, filename);
@@ -60,9 +63,6 @@ const serveFile = (directory, filename) => (req, res) => {
     }
   });
 };
-
-// JSON files route handlers
-app.get('/api/account/balance', serveFile(DB_DIR, 'account-balance.json'));
 
 app.get(
   '/api/loan/overview/payable',
@@ -144,7 +144,6 @@ app.get('/api/users', (req, res) => {
   }
 });
 
-app.get('/api/account/user', serveFile(DB_DIR, 'account-info.json'));
 
 app.get('/api/notifications', serveFile(DB_DIR, 'notifications.json'));
 

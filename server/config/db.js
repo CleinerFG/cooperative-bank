@@ -4,7 +4,6 @@ const path = require('path');
 let cachedDb = null;
 
 const loadDb = async () => {
-  console.log('load data');
   try {
     const data = await fs.readFile(
       path.resolve(__dirname, `../db/database.json`),
@@ -18,8 +17,6 @@ const loadDb = async () => {
 };
 
 const getDb = async () => {
-  console.log(cachedDb);
-
   if (!cachedDb) {
     cachedDb = await loadDb();
   }
