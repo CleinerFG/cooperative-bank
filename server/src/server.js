@@ -6,8 +6,7 @@ const { cpfValidator } = require('./utils/validators');
 
 const { formatTime } = require('./utils/formatters');
 
-const IP = process.env.IP ?? 'localhost';
-const PORT = process.env.PORT ?? 8080;
+const { IP, PORT } = require('../config/serverConfig.js');
 
 const express = require('express');
 const path = require('path');
