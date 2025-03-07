@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const DotenvWebpack = require('dotenv-webpack');
 
 /**
  * @param {'app'|'public'} spaType
@@ -54,6 +55,7 @@ module.exports = (spaType) => {
       ],
     },
     plugins: [
+      new DotenvWebpack(),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, `../src/${spaType}/index.html`),
         filename: 'index.html',

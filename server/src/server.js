@@ -5,7 +5,9 @@ const users = require('./data/db/users.js');
 const { cpfValidator } = require('./utils/validators');
 
 const { formatTime } = require('./utils/formatters');
-const SERVER_IP = process.env.SERVER_IP;
+
+const IP = process.env.IP ?? 'localhost';
+const PORT = process.env.PORT ?? 8080;
 
 const express = require('express');
 const path = require('path');
@@ -172,7 +174,6 @@ app.post('/api/auth/transaction', (req, res) => {
 });
 
 // Start server
-const PORT = 8080;
-app.listen(PORT, SERVER_IP, () => {
-  console.log(`Server running at http://${SERVER_IP}:${PORT}`);
+app.listen(PORT, IP, () => {
+  console.log(`Server running at http://${IP}:${PORT}`);
 });
