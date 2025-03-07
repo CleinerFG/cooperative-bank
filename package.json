@@ -1,19 +1,31 @@
 {
   "name": "cooperative-bank",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install": "npm run install:client && npm run install:server",
     "dev:client": "npm --prefix client run dev",
     "dev:server": "npm --prefix server run dev",
     "start:client": "npm --prefix client run build",
     "start:server": "npm --prefix server run start"
   },
   "keywords": [
-    "bank",
-    "finance",
-    "transactions",
-    "loans",
-    "payments"
+    "Bank",
+    "Finance",
+    "Transactions",
+    "Loans",
+    "Payments",
+    "Investments",
+    "HTML",
+    "CSS",
+    "JS",
+    "Webpack",
+    "Babel",
+    "Express",
+    "API",
+    "Rest",
+    "SPA"
   ],
   "author": "Cleiner Furlani",
   "license": "ISC",
