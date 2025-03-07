@@ -38,15 +38,16 @@ The project follows the MVC architecture, organizing functions and classes modul
 
 ### Install Dependencies
 
-```bash
-npm install
-```
+- Run the command at the root of the project **`/`**.
+  ```bash
+  npm run install
+  ```
 
-### Start Project
+### Project Config
 
 - `Server IP`: Set the server location.
 
-  - Create a `.env` file in the root of the project with the variable:
+  - Create a `.env` file in **`server/.env`**:
 
     ```
     SERVER_IP=localhost
@@ -60,18 +61,22 @@ npm install
 
   **Note:** To set up the server on the local network, replace `locahost` with the local IP address.
 
-- `Front-end`: Build the project using `webpack`.
+### Start (Development or Production)
+
+- Run the commands at the project root **`/`**.
+
+- `Production Mode`:
 
   ```bash
-  npm run build
+  npm run start:client
+  npm run start:server
   ```
 
-- `Back-end`: Start the local server with `Express.js`.
-
-  - Note: The server is currently a basic implementation for testing front-end functionalities. A more robust version is planned for future updates.
+- `Development Mode`:
 
   ```bash
-  npm run server
+  npm run dev:client
+  npm run dev:server
   ```
 
 - `Dev-test`: Where there are server requests, there are skelons or loaders. When running the server locally, you need to add a delay to make them visible.
