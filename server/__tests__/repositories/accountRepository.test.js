@@ -1,4 +1,4 @@
-const accountRepository = require('../../src/repositories/accountRepository');
+const repository = require('../../src/repositories/accountRepository');
 const db = require('../../config/db');
 
 jest.mock('../../config/db');
@@ -8,15 +8,17 @@ describe('Account Repository', () => {
     jest.clearAllMocks();
   });
 
-  test('getBalance', async () => {
-    const mockDb = { account: { balance: 4532.45 } };
-    db.getDb.mockResolvedValue(mockDb);
+  test('getBalance should return the correct balance', async () => {
+    const mockBalance = { account: { balance: 4532.45 } };
+    db.getDb.mockResolvedValue(mockBalance);
 
-    const balance = await accountRepository.getBalance();
+    const balance = await repository.getBalance();
+
     expect(balance).toBe(4532.45);
+    expect(db.getDb).toHaveBeenCalledTimes(1);
   });
 
-  test('getDetails', async () => {
+  test('getDetails should return the correct account details', async () => {
     const detailsData = {
       name: 'Meg Thomas',
       birth: '2000-05-01T00:00:00.000Z',
@@ -25,13 +27,15 @@ describe('Account Repository', () => {
       registration: '2025-01-10T00:00:00.000Z',
     };
 
-    const mockDb = {
+    const mockDetails = {
       account: { details: detailsData },
     };
 
-    db.getDb.mockResolvedValue(mockDb);
+    db.getDb.mockResolvedValue(mockDetails);
 
-    const details = await accountRepository.getDetails();
+    const details = await repository.getDetails();
+
     expect(details).toEqual(detailsData);
+    expect(db.getDb).toHaveBeenCalledTimes(1);
   });
 });
