@@ -2,9 +2,9 @@ require('dotenv').config();
 const fs = require('fs').promises;
 
 const users = require('./data/db/users.js');
-const { cpfValidator } = require('./utils/validators');
+const { cpfValidator } = require('./lib/utils/validators.js');
 
-const { formatTime } = require('./utils/formatters');
+const { formatTime } = require('./lib/utils/formatters.js');
 
 const { IP, PORT } = require('../config/serverConfig.js');
 
