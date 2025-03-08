@@ -4,10 +4,10 @@ const {
 } = require('../../../src/lib/helpers/loanValidators');
 
 describe('Helpers - Loan Validators', () => {
-  test('Loan request category is valid', () => {
+  test('requestCategoryIsValid should return true for valid loan request categories and throw InvalidLoanRequestCategoryError for invalid category', () => {
     expect(requestCategoryIsValid('open')).toBe(true);
     expect(requestCategoryIsValid('received')).toBe(true);
-    expect(() => requestCategoryIsValid('other')).toThrow(
+    expect(() => requestCategoryIsValid('other')).toThrowError(
       InvalidLoanRequestCategoryError
     );
   });
