@@ -40,8 +40,10 @@ app.use(logMiddleware);
 app.use(express.json());
 
 const accountRoutes = require('./routes/accountRoutes.js');
+const userRoutes = require('./routes/userRoutes.js');
 // const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
 app.use('/api/account', accountRoutes);
+app.use('/api/users', userRoutes);
 // app.use('/api/loans/requests', loanRequestsRoutes);
 
 // Helper function to serve files
@@ -123,21 +125,21 @@ app.get('/api/loan/installments/payment', async (req, res) => {
   }
 });
 
-app.get('/api/users', (req, res) => {
-  const { cpf } = req.query;
+// app.get('/api/users', (req, res) => {
+//   const { cpf } = req.query;
 
-  try {
-    cpfValidator(cpf);
-    const parseCpf = cpf.replace(/[.-]/g, '');
-    const user = users.find((u) => u.cpf === parseCpf);
-    if (!user) {
-      return res.status(404).json({ error: 'USER_001' });
-    }
-    return res.status(200).json({ name: user.name });
-  } catch (e) {
-    return res.status(400).json({ error: 'VALID_002' });
-  }
-});
+//   try {
+//     cpfValidator(cpf);
+//     const parseCpf = cpf.replace(/[.-]/g, '');
+//     const user = users.find((u) => u.cpf === parseCpf);
+//     if (!user) {
+//       return res.status(404).json({ error: 'USER_001' });
+//     }
+//     return res.status(200).json({ name: user.name });
+//   } catch (e) {
+//     return res.status(400).json({ error: 'VALID_002' });
+//   }
+// });
 
 app.get('/api/notifications', serveFile(DB_DIR, 'notifications.json'));
 
