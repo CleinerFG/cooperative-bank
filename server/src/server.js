@@ -3,8 +3,7 @@ const fs = require('fs').promises;
 
 const users = require('./data/db/users.js');
 const { cpfValidator } = require('./lib/utils/validators.js');
-
-const { formatTime } = require('./lib/utils/formatters.js');
+const logMiddleware = require('./middlewares/logMiddleware.js');
 
 const { IP, PORT } = require('../config/serverConfig.js');
 
@@ -37,12 +36,7 @@ app.use('/app/static', express.static(APP_STATIC_DIR));
 // Test: serve profile image!
 app.use('/app/profile-image', express.static(PROFILE_STATIC_DIR));
 
-// Middleware to log requests
-app.use((req, res, next) => {
-  console.log(`[${formatTime(new Date())}] ${req.method} ${req.url}`);
-  next();
-});
-
+app.use(logMiddleware);
 app.use(express.json());
 
 const accountRoutes = require('./routes/accountRoutes.js');
