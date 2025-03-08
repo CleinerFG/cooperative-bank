@@ -1,4 +1,4 @@
-const { getUserByCpf } = require('../repositories/userRepository');
+const repository = require('../repositories/userRepository');
 const { cpfValidator } = require('../lib/utils/validators');
 
 module.exports = {
@@ -7,6 +7,6 @@ module.exports = {
    */
   async getUserByCpf(cpf) {
     cpfValidator(cpf);
-    return getUserByCpf(cpf.replace(/[.-]/g, ''));
+    return repository.getUserByCpf(cpf.replace(/[.-]/g, ''));
   },
 };
