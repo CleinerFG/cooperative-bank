@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "jest",
+    "test:verbose": "jest --verbose",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
