@@ -4,6 +4,7 @@ const requestCategoryIsValid = (category) => {
   if (!['open', 'received'].includes(category)) {
     throw new InvalidLoanRequestCategoryError();
   }
+  return true;
 };
 
 module.exports = { requestCategoryIsValid };
