@@ -4,7 +4,7 @@ module.exports = {
   async getUserByCpf(req, res) {
     try {
       const cpf = req.params.cpf;
-      const user = service.getUserByCpf(cpf);
+      const user = await service.getUserByCpf(cpf);
       if (!user) {
         return res.status(404).json({ error: 'USER_001' });
       }

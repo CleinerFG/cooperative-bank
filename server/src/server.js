@@ -1,8 +1,6 @@
 require('dotenv').config();
 const fs = require('fs').promises;
 
-const users = require('./data/db/users.js');
-const { cpfValidator } = require('./lib/utils/validators.js');
 const logMiddleware = require('./middlewares/logMiddleware.js');
 
 const { IP, PORT } = require('../config/serverConfig.js');
@@ -124,22 +122,6 @@ app.get('/api/loan/installments/payment', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
-// app.get('/api/users', (req, res) => {
-//   const { cpf } = req.query;
-
-//   try {
-//     cpfValidator(cpf);
-//     const parseCpf = cpf.replace(/[.-]/g, '');
-//     const user = users.find((u) => u.cpf === parseCpf);
-//     if (!user) {
-//       return res.status(404).json({ error: 'USER_001' });
-//     }
-//     return res.status(200).json({ name: user.name });
-//   } catch (e) {
-//     return res.status(400).json({ error: 'VALID_002' });
-//   }
-// });
 
 app.get('/api/notifications', serveFile(DB_DIR, 'notifications.json'));
 
