@@ -1,19 +1,13 @@
 const repository = require('../repositories/loanRequestRepository');
-const InvalidLoanRequestCategoryError = require('../core/errors/loans/InvalidLoanRequestCategoryError');
-const MustBeStringError = require('../core/errors/MustBeStringError');
-
-const categoryIsValid = (category) => {
-  if (!['open', 'received'].includes(category)) {
-    throw new InvalidLoanRequestCategoryError();
-  }
-};
+const { isString } = require('../lib/utils/validators');
+const { requestCategoryIsValid } = require('../lib/helpers/loanValidators');
 
 module.exports = {
   /**
    * @param {'open'|'received'} category
    */
   async getByCategory(category) {
-    categoryIsValid(category);
+    requestCategoryIsValid(category);
     return repository.getByCategory(category);
   },
   /**
@@ -21,10 +15,8 @@ module.exports = {
    * @param {string} id
    */
   async getDetailsByCategoryAndId(category, id) {
-    categoryIsValid(category);
-    if (typeof id !== 'string') {
-      throw new MustBeStringError('id');
-    }
+    requestCategoryIsValid(category);
+    isString(id);
     return repository.getDetailsByCategoryAndId(category, id);
   },
 };

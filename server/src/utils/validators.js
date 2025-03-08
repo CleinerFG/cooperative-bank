@@ -1,4 +1,4 @@
-const InvalidCpfError = require('../core/errors/InvalidCpfError');
+const InvalidCpfError = require('../errors/InvalidCpfError');
 
 /**
  * @param {string} value
