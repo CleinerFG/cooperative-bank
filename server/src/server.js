@@ -40,9 +40,9 @@ app.use(logMiddleware);
 app.use(express.json());
 
 const accountRoutes = require('./routes/accountRoutes.js');
-const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
+// const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
 app.use('/api/account', accountRoutes);
-app.use('/api/loans/requests', loanRequestsRoutes);
+// app.use('/api/loans/requests', loanRequestsRoutes);
 
 // Helper function to serve files
 const serveFile = (directory, filename) => (req, res) => {
@@ -94,6 +94,13 @@ app.get('/api/loan/:category/details', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+app.get('/api/loan/requests/open', serveFile(DB_DIR, 'loan-request-open.json'));
+
+app.get(
+  '/api/loan/requests/received',
+  serveFile(DB_DIR, 'loan-request-received.json')
+);
 
 app.get('/api/loan/installments', serveFile(DB_DIR, 'loan-installments.json'));
 
