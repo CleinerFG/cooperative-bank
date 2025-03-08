@@ -6,7 +6,7 @@ module.exports = {
       const cpf = req.params.cpf;
       const user = await service.getUserByCpf(cpf);
       if (!user) {
-        return res.status(404).json({ error: 'USER_001' });
+        return res.status(404).json({ error: 'notFoundUser' });
       }
       res.json({ name: user.name });
     } catch (e) {

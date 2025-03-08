@@ -114,7 +114,7 @@ app.get('/api/loan/installments/payment', async (req, res) => {
 
     const payment = data.find((item) => item.id === id);
     if (!payment) {
-      return res.status(404).json({ error: 'LOAN_003' });
+      return res.status(404).json({ error: 'notFoundInstallmentPay' });
     }
     res.json(payment);
   } catch (error) {
@@ -145,7 +145,9 @@ app.post('/api/auth/transaction', (req, res) => {
   return res.status(401).json({
     success: isAuthenticated,
     token: null,
-    errors: [{ componentId: 'transactionPassword', error: 'AUTH_002' }],
+    errors: [
+      { componentId: 'transactionPassword', error: 'incorrectPassword' },
+    ],
   });
 });
 
