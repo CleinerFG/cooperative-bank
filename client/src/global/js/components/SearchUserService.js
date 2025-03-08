@@ -6,7 +6,7 @@ class SearchUserService {
    * @returns {Promise<User>}
    */
   async getUserByCpf(cpf) {
-    const res = await fetch(`${API_BASE_URL}/users?cpf=${cpf}`);
+    const res = await fetch(`${API_BASE_URL}/users/${cpf}`);
     return await res.json();
   }
 }
