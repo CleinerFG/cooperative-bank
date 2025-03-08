@@ -1,4 +1,42 @@
 {
+  "users": [
+    {
+      "cpf": "06740386064",
+      "name": "Ace Visconti"
+    },
+    {
+      "cpf": "14481718064",
+      "name": "Ada Wong"
+    },
+    {
+      "cpf": "16932827042",
+      "name": "Adam Francis"
+    },
+    {
+      "cpf": "47887836069",
+      "name": "Ashley J. Williams"
+    },
+    {
+      "cpf": "40746480083",
+      "name": "Cheryl Mason"
+    },
+    {
+      "cpf": "18456752070",
+      "name": "Claudette Morel"
+    },
+    {
+      "cpf": "53229328019",
+      "name": "David King"
+    },
+    {
+      "cpf": "44060509060",
+      "name": "Detective David Tapp"
+    },
+    {
+      "cpf": "57256063091",
+      "name": "Dwight Fairfield"
+    }
+  ],
   "account": {
     "details": {
       "name": "Meg Thomas",
