@@ -4,7 +4,7 @@ module.exports = {
   /**
    * @param {string} cpf
    */
-  async getUserByCpf(cpf) {
+  async findUserByCpf(cpf) {
     const db = await getDb();
     return db.users.find((user) => user.cpf === cpf);
   },

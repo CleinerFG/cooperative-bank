@@ -5,7 +5,7 @@ module.exports = {
     const { category } = req.params;
     try {
       const requests = await service.getAllByCategory(category);
-      if (!requests) return res.status(204);
+      if (!requests || requests.length === 0) return res.status(204);
       return res.json(requests);
     } catch (e) {
       return res.status(400).json({ error: e.message });

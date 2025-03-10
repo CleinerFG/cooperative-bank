@@ -4,7 +4,7 @@ module.exports = {
   /**
    * @param {'payable'|'receivable'} category
    */
-  async getAllByCategory(category) {
+  async findAllByCategory(category) {
     const db = await getDb();
     return db.loan[category];
   },
@@ -12,8 +12,8 @@ module.exports = {
    * @param {'payable'|'receivable'} category
    * @param {string} id
    */
-  async getDetailsByCategoryAndId(category, id) {
+  async findDetailsByCategoryAndId(category, id) {
     const db = await getDb();
-    return db.loan.details[category].find((loan) => (loan.id === id));
+    return db.loan.details[category].find((loan) => loan.id === id);
   },
 };

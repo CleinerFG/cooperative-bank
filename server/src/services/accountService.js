@@ -2,9 +2,9 @@ const repository = require('../repositories/accountRepository');
 
 module.exports = {
   async getBalance() {
-    return repository.getBalance();
+    return repository.findBalance();
   },
   async getDetails() {
-    return repository.getDetails();
+    return repository.findDetails();
   },
 };

@@ -8,7 +8,7 @@ module.exports = {
    */
   async getAllByCategory(category) {
     requestCategoryIsValid(category);
-    return repository.getAllByCategory(category);
+    return repository.findAllByCategory(category);
   },
   /**
    * @param {'open'|'received'} category
@@ -17,6 +17,6 @@ module.exports = {
   async getDetailsByCategoryAndId(category, id) {
     requestCategoryIsValid(category);
     isString(id);
-    return repository.getDetailsByCategoryAndId(category, id);
+    return repository.findDetailsByCategoryAndId(category, id);
   },
 };
