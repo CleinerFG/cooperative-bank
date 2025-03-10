@@ -13,10 +13,10 @@ module.exports = {
     }
   },
 
-  async getPaymentById(req, res) {
+  async getPaymentByInstallmentId(req, res) {
     try {
-      const { id } = req.params;
-      const payment = await service.getPaymentById(id);
+      const { installmentId } = req.params;
+      const payment = await service.getPaymentByInstallmentId(installmentId);
       if (!payment) return res.sendStatus(204);
       return res.json(payment);
     } catch (e) {

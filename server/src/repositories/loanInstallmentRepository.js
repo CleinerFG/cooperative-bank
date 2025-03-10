@@ -2,19 +2,11 @@ const { getDb } = require('../../config/db');
 
 module.exports = {
   /**
-   * @param {string} id
+   * @param {string} loanId
    */
-  async getAllByLoanId(id) {
+  async findAllByLoanId(loanId) {
     const db = await getDb();
-    // Base without use id for tests
+    // Base without use loanId for tests
     return db.loanInstallments;
-  },
-  /**
-   * @param {string} id
-   */
-  async getPaymentById(id) {
-    const db = await getDb();
-    // Base without use id for tests
-    return db.loanInstallmentPayments;
   },
 };

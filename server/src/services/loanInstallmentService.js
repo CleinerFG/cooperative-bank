@@ -1,19 +1,20 @@
-const repository = require('../repositories/loanInstallmentRepository');
+const installmentRepository = require('../repositories/loanInstallmentRepository');
+const loanPaymentRepository = require('../repositories/loanPaymentRepository');
 const { isString } = require('../lib/utils/validators');
 
 module.exports = {
   /**
-   * @param {string} id
+   * @param {string} loanId
    */
-  async getAllByLoanId(id) {
-    isString(id);
-    return repository.getAllByLoanId(id);
+  async getAllByLoanId(loanId) {
+    isString(loanId);
+    return installmentRepository.findAllByLoanId(loanId);
   },
   /**
-   * @param {string} id
+   * @param {string} installmentId
    */
-  async getPaymentById(id) {
-    isString(id);
-    return repository.getPaymentById(id);
+  async getPaymentByInstallmentId(installmentId) {
+    isString(installmentId);
+    return loanPaymentRepository.findByInstallmentId(installmentId);
   },
 };

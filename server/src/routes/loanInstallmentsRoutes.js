@@ -3,6 +3,6 @@ const router = express.Router();
 const controller = require('../controllers/loanInstallmentController');
 
 router.get('/:loanId', controller.getAllByLoanId);
-router.get('/payment/:id', controller.getPaymentById);
+router.get('/payment/:installmentId', controller.getPaymentByInstallmentId);
 
 module.exports = router;
