@@ -44,12 +44,14 @@ const userRoutes = require('./routes/userRoutes.js');
 const loanRoutes = require('./routes/loanRoutes.js');
 const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
 const loanInstallmentsRoutes = require('./routes/loanInstallmentsRoutes.js');
+const notificationsRoutes = require('./routes/notificationsRoutes.js');
 
 app.use('/api/account', accountRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/loans', loanRoutes);
 app.use('/api/loans/requests', loanRequestsRoutes);
 app.use('/api/loans/installments', loanInstallmentsRoutes);
+app.use('/api/notifications', notificationsRoutes);
 
 // Helper function to serve files
 const serveFile = (directory, filename) => (req, res) => {
@@ -130,7 +132,6 @@ app.get('/api/loan/installments/payment', async (req, res) => {
   }
 });
 
-app.get('/api/notifications', serveFile(DB_DIR, 'notifications.json'));
 
 // Page route handlers
 app.get('*', (req, res) => {
