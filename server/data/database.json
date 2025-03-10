@@ -178,7 +178,7 @@
     }
   },
   "loan": {
-    "payble": [
+    "payable": [
       {
         "id": "96732",
         "modality": "personal",
