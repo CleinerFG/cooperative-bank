@@ -19,10 +19,8 @@ const PUBLIC_STATIC_DIR = path.resolve(
   __dirname,
   '../../client/dist/public/static'
 );
-const PUBLIC_PAGES_DIR = path.resolve(__dirname, '../../client/dist/public');
+
 const APP_STATIC_DIR = path.resolve(__dirname, '../../client/dist/app/static');
-const APP_DIR = path.resolve(__dirname, '../../client/dist/app');
-const DB_DIR = path.resolve(__dirname, 'data/db');
 
 // Middleware for public static files
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
@@ -38,13 +36,13 @@ app.use(logMiddleware);
 app.use(express.json());
 
 // New routes structure
-
 const accountRoutes = require('./routes/accountRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 const loansRoutes = require('./routes/loansRoutes.js');
 const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
 const loanInstallmentsRoutes = require('./routes/loanInstallmentsRoutes.js');
 const notificationsRoutes = require('./routes/notificationsRoutes.js');
+const spaRoutes = require('./routes/spaRoutes.js');
 
 app.use('/api/account', accountRoutes);
 app.use('/api/users', userRoutes);
@@ -52,31 +50,7 @@ app.use('/api/loans', loansRoutes);
 app.use('/api/loans/requests', loanRequestsRoutes);
 app.use('/api/loans/installments', loanInstallmentsRoutes);
 app.use('/api/notifications', notificationsRoutes);
-
-// Helper function to serve files
-const serveFile = (directory, filename) => (req, res) => {
-  const filePath = path.join(directory, filename);
-  console.log(`Sending file: ${filePath}`);
-  console.log(`Filename: ${filename}`);
-  console.log('----//----');
-
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      console.error(`Error sending file: ${filePath}`, err);
-      res.status(500).send('Error loading file.');
-    }
-  });
-};
-
-
-// Page route handlers
-app.get('*', (req, res) => {
-  if (req.path.startsWith('/app')) {
-    serveFile(APP_DIR, 'index.html')(req, res);
-    return;
-  }
-  serveFile(PUBLIC_PAGES_DIR, 'index.html')(req, res);
-});
+app.use(spaRoutes);
 
 app.post('/api/auth/transaction', (req, res) => {
   const { transactionPassword } = req.body;
