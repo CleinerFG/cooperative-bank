@@ -6,9 +6,9 @@ module.exports = {
   /**
    * @param {'open'|'received'} category
    */
-  async getByCategory(category) {
+  async getAllByCategory(category) {
     requestCategoryIsValid(category);
-    return repository.getByCategory(category);
+    return repository.getAllByCategory(category);
   },
   /**
    * @param {'open'|'received'} category

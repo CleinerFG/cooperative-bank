@@ -1,10 +1,10 @@
 const service = require('../services/loanRequestService');
 
 module.exports = {
-  async getByCategory(req, res) {
+  async getAllByCategory(req, res) {
     const category = req.params.category;
     try {
-      const requests = await service.getByCategory(category);
+      const requests = await service.getAllByCategory(category);
       return res.json(requests);
     } catch (e) {
       return res.status(400).json({ error: e.message });

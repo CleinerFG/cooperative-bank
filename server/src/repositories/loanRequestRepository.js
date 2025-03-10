@@ -4,16 +4,9 @@ module.exports = {
   /**
    * @param {'open'|'received'} category
    */
-  async getByCategory(category) {
+  async getAllByCategory(category) {
     const db = await getDb();
-    switch (category) {
-      case 'open':
-        return db.loanRequests.open;
-      case 'received':
-        return db.loanRequests.received;
-      default:
-        return null;
-    }
+    return db.loanRequests[category];
   },
   /**
    * @param {'open'|'received'} category
