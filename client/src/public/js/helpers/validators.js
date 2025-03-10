@@ -1,6 +1,6 @@
 import '../../../global/js/types/validatorsType.js';
 
-import { InvalidEmailError, InvalidPasswordError } from './InputErrors.js';
+import { InvalidEmailError, InvalidPasswordError } from '../errors/InputErrors.js';
 
 /**
  * @type {Validator}
