@@ -358,5 +358,73 @@
       "value": 124.65,
       "date": "2024-02-07T18:05:12.283Z"
     }
+  ],
+  "notifications": [
+    {
+      "id": "shs468hgf",
+      "category": "transfer",
+      "value": 500,
+      "sender": "Claudette Morel",
+      "date": "2025-02-11T10:00:00Z"
+    },
+    {
+      "id": "sdfgf54gd",
+      "category": "transfer",
+      "value": 2000,
+      "sender": "Ada Wong",
+      "date": "2025-02-12T14:30:00Z"
+    },
+    {
+      "id": "rsdtyrf5hfg4",
+      "category": "loanRequest",
+      "value": 10000,
+      "date": "2025-02-10T09:00:00Z"
+    },
+    {
+      "id": "esdf45g4ghj5h4f5g",
+      "category": "loanRequest",
+      "value": 5000,
+      "date": "2025-02-09T16:45:00Z"
+    },
+    {
+      "id": "5ds4g56dfg4",
+      "category": "loanStatus",
+      "value": 10000,
+      "status": "accepted",
+      "date": "2025-02-10T10:00:00Z"
+    },
+    {
+      "id": "sdf54ds4gdf6",
+      "category": "loanStatus",
+      "value": 5000,
+      "status": "rejected",
+      "date": "2025-02-09T17:00:00Z"
+    },
+    {
+      "id": "5fds4sd6g4dfg",
+      "category": "payment",
+      "value": 1500,
+      "sender": "Leon Kennedy",
+      "date": "2025-02-11T11:30:00Z"
+    },
+    {
+      "id": "4safd46sdf46",
+      "category": "payment",
+      "value": 3000,
+      "sender": "Rebecca Champlers",
+      "date": "2025-02-12T13:00:00Z"
+    },
+    {
+      "id": "5rdg746fdh645gf",
+      "category": "installment",
+      "value": 200,
+      "date": "2025-02-11T12:00:00Z"
+    },
+    {
+      "id": "df546gfd4h5",
+      "category": "installment",
+      "value": 300,
+      "date": "2025-02-12T15:00:00Z"
+    }
   ]
 }
