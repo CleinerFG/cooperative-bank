@@ -14,6 +14,6 @@ module.exports = {
    */
   async getDetailsByCategoryAndId(category, id) {
     const db = await getDb();
-    return db.loan.details[category].find((loan) => (loan.id = id));
+    return db.loan.details[category].find((loan) => (loan.id === id));
   },
 };
