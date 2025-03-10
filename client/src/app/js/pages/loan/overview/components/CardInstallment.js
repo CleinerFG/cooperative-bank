@@ -5,10 +5,10 @@ import {
   formatDate,
   numberToCurrency,
 } from '../../../../../../global/js/utils/formatters.js';
-import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import { Card } from '../../../../components/cards/Card.js';
 import { OperationDetailsModal } from '../../../../components/modal/OperationDetailsModal.js';
 import { translate } from '../../../../../../global/js/i18n/Translator.js';
+import { LOAN_ERRORS } from '../../../../constants/errorCodes.js';
 
 export class CardInstallment extends Card {
   /**
@@ -60,6 +60,7 @@ export class CardInstallment extends Card {
         serviceMethod: service.getInstallmentPayment,
         operationId: this._apiData.id,
         title: translate('payDetails'),
+        errorCodes: LOAN_ERRORS,
       };
       new OperationDetailsModal(params);
     } catch (e) {

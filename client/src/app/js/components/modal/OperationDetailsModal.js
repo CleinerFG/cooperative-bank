@@ -1,6 +1,5 @@
 import { capitalize } from '../../../../global/js/utils/stringUtils.js';
 import { simulateWait } from '../../../../global/js/utils/tests.js';
-import { LOAN_ERRORS } from '../../constants/errorCodes.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import '../../types/operationDetailsModalType.js';
 import { Modal } from './Modal.js';
@@ -12,6 +11,7 @@ export class OperationDetailsModal extends Modal {
   #operationId;
   #title;
   #infoDataDisplay;
+  #errorCodes;
 
   /**
    * @param {OperationDetailsModalParams} params
@@ -21,6 +21,7 @@ export class OperationDetailsModal extends Modal {
     this.#serviceMethod = params.serviceMethod;
     this.#operationId = params.operationId;
     this.#title = params.title;
+    this.#errorCodes = params.errorCodes;
     this._init();
   }
 
@@ -86,7 +87,7 @@ export class OperationDetailsModal extends Modal {
    */
   #fetchDetailsFailHandler(error) {
     const icon = `<img class="modal-icon" src="${ASSETS_ROUTE}/icons/icon-warning.svg" />`;
-    const message = `<span class="info-text">${LOAN_ERRORS[error]}</span>`;
+    const message = `<span class="info-text">${this.#errorCodes[error]}</span>`;
     this._contentElement.innerHTML = icon + message;
   }
 
