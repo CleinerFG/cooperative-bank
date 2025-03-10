@@ -43,11 +43,13 @@ const accountRoutes = require('./routes/accountRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 const loanRoutes = require('./routes/loanRoutes.js');
 const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
+const loanInstallmentsRoutes = require('./routes/loanInstallmentsRoutes.js');
 
 app.use('/api/account', accountRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/loans', loanRoutes);
 app.use('/api/loans/requests', loanRequestsRoutes);
+app.use('/api/loans/installments', loanInstallmentsRoutes);
 
 // Helper function to serve files
 const serveFile = (directory, filename) => (req, res) => {

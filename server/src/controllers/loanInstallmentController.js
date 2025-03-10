@@ -1,4 +1,4 @@
-const repository = require('../service/loanInstallmentService');
+const service = require('../services/loanInstallmentService');
 
 module.exports = {
   async getAllByLoanId(req, res) {
