@@ -7,7 +7,6 @@ import {
 import { Card } from '../../../../components/cards/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
-import { capitalize } from '../../../../../../global/js/utils/stringUtils.js';
 import appRouter from '../../../../core/appRouter.js';
 import { PAGE_ROUTES } from '../../../../constants/routes.js';
 import { translate } from '../../../../../../global/js/i18n/Translator.js';

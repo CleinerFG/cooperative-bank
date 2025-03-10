@@ -3,37 +3,37 @@ import '../types/loanType.js';
 import { API_BASE_URL } from '../../../global/js/constants/config.js';
 
 class LoanService {
-  static #BASE_ENDPOINT = `${API_BASE_URL}/loan`;
+  static #BASE_ENDPOINT = `${API_BASE_URL}/loans`;
 
   /**
    * @param {'payable'|'receivable'} category
    * @returns {Promise<LoanOverviewData[]>}
    */
   async getLoansOverview(category) {
-    const res = await fetch(
-      `${LoanService.#BASE_ENDPOINT}/overview/${category}`
-    );
+    const res = await fetch(`${LoanService.#BASE_ENDPOINT}/${category}`);
     return await res.json();
   }
 
   /**
+   * @param {'payable'|'receivable'} id
    * @param {string} id
    * @returns {Promise<LoanDetailsData[]>}
    */
-  async getLoanDetails(id) {
+  async getLoanDetails(category, id) {
     const res = await fetch(
-      `${LoanService.#BASE_ENDPOINT}/overview/details?id=${id}`
+      `${LoanService.#BASE_ENDPOINT}/${category}/details/${id}`
     );
     return await res.json();
   }
 
   /**
+   * @param {'open'|'received'} id
    * @param {string} id
    * @returns {Promise<RequestDetailsData[]>}
    */
-  async getRequestDetails(id) {
+  async getRequestDetails(category, id) {
     const res = await fetch(
-      `${LoanService.#BASE_ENDPOINT}/request/details?id=${id}`
+      `${LoanService.#BASE_ENDPOINT}/requests/${category}/details/${id}`
     );
     return await res.json();
   }
@@ -49,23 +49,23 @@ class LoanService {
   }
 
   /**
-   * @param {string} id
+   * @param {string} loanId
    * @returns {Promise<LoanInstallmentData[]>}
    */
-  async getInstallments(id) {
+  async getInstallments(loanId) {
     const res = await fetch(
-      `${LoanService.#BASE_ENDPOINT}/installments?id=${id}`
+      `${LoanService.#BASE_ENDPOINT}/installments/${loanId}`
     );
     return await res.json();
   }
 
   /**
-   * @param {string} id
+   * @param {string} installmentId
    * @returns {Promise<LoanInstallmentPaymentData[]>}
    */
-  async getInstallmentPayment(id) {
+  async getInstallmentPayment(installmentId) {
     const res = await fetch(
-      `${LoanService.#BASE_ENDPOINT}/installments/payment?id=${id}`
+      `${LoanService.#BASE_ENDPOINT}/installments/payment/${installmentId}`
     );
     return await res.json();
   }

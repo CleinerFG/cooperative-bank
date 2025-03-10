@@ -119,7 +119,8 @@ export default class RequestDetailsPage extends Page {
   async #fetchData() {
     try {
       await simulateWait();
-      this.#apiData = await loanService.getRequestDetails(this._queryParams.id);
+      const { category, id } = this._queryParams;
+      this.#apiData = await loanService.getRequestDetails(category, id);
       this.#infoDataDisplay.apiData = this.#apiData;
     } catch (e) {
       console.error(e);
