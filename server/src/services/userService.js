@@ -5,8 +5,8 @@ module.exports = {
   /**
    * @param {string} cpf
    */
-  async getUserByCpf(cpf) {
+  async getByCpf(cpf) {
     cpfValidator(cpf);
-    return repository.findUserByCpf(cpf.replace(/[.-]/g, ''));
+    return repository.findByCpf(cpf.replace(/[.-]/g, ''));
   },
 };
