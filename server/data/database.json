@@ -308,5 +308,55 @@
         }
       ]
     }
-  }
+  },
+  "loanInstallments": [
+    {
+      "id": 243325,
+      "value": 124.65,
+      "dueDate": "2024-01-07T20:35:16.253Z",
+      "status": "paid"
+    },
+    {
+      "id": 243326,
+      "value": 124.65,
+      "dueDate": "2024-02-07T20:35:16.253Z",
+      "status": "paid"
+    },
+    {
+      "id": 243327,
+      "value": 124.65,
+      "dueDate": "2024-03-07T20:35:16.253Z",
+      "status": "pending"
+    },
+    {
+      "id": 243328,
+      "value": 124.65,
+      "dueDate": "2024-04-07T20:35:16.253Z",
+      "status": "pending"
+    },
+    {
+      "id": 243329,
+      "value": 124.65,
+      "dueDate": "2024-05-07T20:35:16.253Z",
+      "status": "pending"
+    },
+    {
+      "id": 243320,
+      "value": 124.65,
+      "dueDate": "2024-06-07T20:35:16.253Z",
+      "status": "pending"
+    }
+  ],
+  "loanInstallmentPayments": [
+    {
+      "id": "243325",
+      "value": 124.65,
+      "date": "2024-01-07T15:37:17.283Z"
+    },
+    {
+      "id": "243326",
+      "value": 124.65,
+      "date": "2024-02-07T18:05:12.283Z"
+    }
+  ]
 }
