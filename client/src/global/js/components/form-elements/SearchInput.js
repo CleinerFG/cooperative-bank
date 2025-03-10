@@ -99,9 +99,9 @@ export default class SearchInput extends Input {
   #searchFailHandler(res) {
     let message = '';
     if (USER_ERRORS[res.error]) {
-      message = USER_ERRORS[res.error].message;
+      message = USER_ERRORS[res.error];
     } else {
-      message = INP_ERRORS[res.error].message;
+      message = INP_ERRORS[res.error];
     }
     this._dataValid = false;
     this.#inpResultElement.value = '';

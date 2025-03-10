@@ -1,37 +1,20 @@
 import { translate } from '../i18n/Translator.js';
 
-const prototype = {
-  get message() {
-    return translate(this.desc);
-  },
-};
-
 export const AUTH_ERRORS = {
-  AUTH_001: Object.create(prototype, {
-    desc: { value: 'incorrectEmail' },
-  }),
-  AUTH_002: Object.create(prototype, {
-    desc: { value: 'incorrectPassword' },
-  }),
+  incorrectEmail: translate('incorrectEmail'),
+  incorrectPassword: translate('incorrectPassword'),
+  cpfIsRegistered: translate('cpfIsRegistered'),
+  emailIsRegistered: translate('emailIsRegistered'),
+  invalidPass: translate('invalidPass'),
 };
 
 export const INP_ERRORS = {
-  VALID_001: Object.create(prototype, {
-    desc: { value: 'fieldIsRequired' },
-  }),
-  VALID_002: Object.create(prototype, {
-    desc: { value: 'invalidCpf' },
-  }),
-  VALID_003: Object.create(prototype, {
-    desc: { value: 'invalidData' },
-  }),
-  VALID_004: Object.create(prototype, {
-    desc: { value: 'invalidEmail' },
-  }),
+  fieldIsRequired: translate('fieldIsRequired'),
+  invalidCpf: translate('invalidCpf'),
+  invalidData: translate('invalidData'),
+  invalidEmail: translate('invalidEmail'),
 };
 
 export const USER_ERRORS = {
-  USER_001: Object.create(prototype, {
-    desc: { value: 'notFoundUser' },
-  }),
+  notFoundUser: translate('notFoundUser'),
 };

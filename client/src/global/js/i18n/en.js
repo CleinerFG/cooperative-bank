@@ -10,6 +10,7 @@ export default {
   // Errors message
   incorrectEmail: 'The email is incorrect',
   incorrectPassword: 'The password is incorrect',
+  invalidPass: 'The password is invalid',
   fieldIsRequired: 'This field is required',
   invalidCpf: 'The CPF is invalid',
   invalidData: 'The data is invalid',
@@ -157,4 +158,16 @@ export default {
   joinBank: 'Join the Cooperative Bank',
   iCustomer: 'I am a customer',
   name: 'Name',
+
+  // Register - Pass errors
+  must8CharsLong: 'The password must be at least 8 characters long',
+  mustLowercaseChar: 'The password must contain at least one lowercase letter',
+  mustUppercaseChar: 'The password must contain at least one uppercase letter',
+  mustNumber: 'The password must contain at least one number',
+  mustSpecialChar: 'The password must contain at least one special character',
+  canNotBlankSpace: 'The password cannot have blank space',
+  canNotSeqPattern: (value) =>
+    `The password cannot have sequential pattern: ${value}`,
+  canNotCharSeq: (value) =>
+    `The password cannot have consecutive repetitions: ${value}`,
 };

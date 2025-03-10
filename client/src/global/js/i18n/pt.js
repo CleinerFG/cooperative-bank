@@ -160,4 +160,16 @@ export default {
   joinBank: 'Junte-se ao Cooperative Bank',
   iCustomer: 'Eu sou um cliente',
   name: 'Nome',
+
+  // Register - Pass errors
+  must8CharsLong: 'A senha deve ter pelo menos 8 caracteres',
+  mustLowercaseChar: 'A senha deve conter pelo menos uma letra minúscula',
+  mustUppercaseChar: 'A senha deve conter pelo menos uma letra maiúscula',
+  mustNumber: 'A senha deve conter pelo menos um número',
+  mustSpecialChar: 'A senha deve conter pelo menos um caractere especial',
+  canNotBlankSpace: 'A senha não pode ter espaços em branco',
+  canNotSeqPattern: (value) =>
+    `A senha não pode ter padrão sequencial: ${value}`,
+  canNotCharSeq: (value) =>
+    `A senha não pode ter repetições consecutivas: ${value}`,
 };

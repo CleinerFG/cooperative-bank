@@ -82,11 +82,11 @@ export class OperationDetailsModal extends Modal {
   }
 
   /**
-   * @param {'LOAN_003'} error
+   * @param {'notFoundInstallmentPay'} error
    */
   #fetchDetailsFailHandler(error) {
     const icon = `<img class="modal-icon" src="${ASSETS_ROUTE}/icons/icon-warning.svg" />`;
-    const message = `<span class="info-text">${LOAN_ERRORS[error].message}</span>`;
+    const message = `<span class="info-text">${LOAN_ERRORS[error]}</span>`;
     this._contentElement.innerHTML = icon + message;
   }
 

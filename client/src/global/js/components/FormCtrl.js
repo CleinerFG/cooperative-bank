@@ -70,7 +70,7 @@ export class FormCtrl {
       const component = this.#view.formComponents.find(
         (el) => el.id === componentId
       );
-      component.handleFailMessage('add', this.#serverErrorCodes[error].message);
+      component.handleFailMessage('add', this.#serverErrorCodes[error]);
     });
   }
 
@@ -83,12 +83,11 @@ export class FormCtrl {
   #dataIsValidHandler() {
     let isValid = true;
     const errors = [];
-
     this.#view.formComponents.forEach((component) => {
       if (!component.dataValid) {
         isValid = false;
-        component.handleFailMessage('add', INP_ERRORS.VALID_003.message);
-        errors.push({ id: component.id, cod: 'VALID_003' });
+        component.handleFailMessage('add', INP_ERRORS.invalidData);
+        errors.push({ id: component.id, cod: 'invalidData' });
       }
     });
 
