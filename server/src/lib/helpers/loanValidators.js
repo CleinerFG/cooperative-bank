@@ -1,4 +1,4 @@
-const InvalidLoanRequestCategoryError = require('../../errors/loan/InvalidLoanRequestCategoryError');
+const InvalidLoanCategoryError = require('../../errors/loan/InvalidLoanCategoryError.js');
 
 const requestCategoryIsValid = (category) => {
   if (!['open', 'received'].includes(category)) {
@@ -7,4 +7,11 @@ const requestCategoryIsValid = (category) => {
   return true;
 };
 
-module.exports = { requestCategoryIsValid };
+const loanCategoryIsValid = (category) => {
+  if (!['payable', 'receivable'].includes(category)) {
+    throw new InvalidLoanCategoryError();
+  }
+  return true;
+};
+
+module.exports = { requestCategoryIsValid, loanCategoryIsValid };
