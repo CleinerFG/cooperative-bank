@@ -68,62 +68,6 @@ const serveFile = (directory, filename) => (req, res) => {
   });
 };
 
-app.get(
-  '/api/loan/overview/payable',
-  serveFile(DB_DIR, 'loan-overview-payable.json')
-);
-
-app.get(
-  '/api/loan/overview/receivable',
-  serveFile(DB_DIR, 'loan-overview-receivable.json')
-);
-
-app.get('/api/loan/:category/details', async (req, res) => {
-  const getFilePath = (category) => {
-    return path.join(DB_DIR, `loan-${category}-details.json`);
-  };
-
-  try {
-    const id = req.query.id;
-    const category = req.params.category;
-
-    const filePath = getFilePath(category);
-
-    const jsonFile = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(jsonFile);
-
-    const loanDetails = data.find((item) => item.id === id);
-    if (!loanDetails) {
-      return res.status(404).json({ error: 'LOAN_001' });
-    }
-
-    res.json(loanDetails);
-  } catch (error) {
-    console.error('Error reading JSON file:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-app.get('/api/loan/installments', serveFile(DB_DIR, 'loan-installments.json'));
-
-app.get('/api/loan/installments/payment', async (req, res) => {
-  try {
-    const id = req.query.id;
-    const filePath = path.join(DB_DIR, `loan-installment-payments.json`);
-
-    const jsonFile = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(jsonFile);
-
-    const payment = data.find((item) => item.id === id);
-    if (!payment) {
-      return res.status(404).json({ error: 'notFoundInstallmentPay' });
-    }
-    res.json(payment);
-  } catch (error) {
-    console.error('Error reading JSON file:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
 // Page route handlers
 app.get('*', (req, res) => {
