@@ -2,20 +2,22 @@ const service = require('../services/loanService');
 
 module.exports = {
   async getAllByCategory(req, res) {
-    const category = req.params.category;
     try {
-      const requests = await service.getAllByCategory(category);
-      return res.json(requests);
+      const { category } = req.params;
+      const loans = await service.getAllByCategory(category);
+      if (!loans || loans.length === 0) return res.sendStatus(204);
+      return res.json(loans);
     } catch (e) {
       return res.status(400).json({ error: e.message });
     }
   },
+
   async getDetailsByCategoryAndId(req, res) {
-    const category = req.params.category;
-    const id = req.params.id;
     try {
-      const request = await service.getDetailsByCategoryAndId(category, id);
-      return res.json(request);
+      const { category, id } = req.params;
+      const loan = await service.getDetailsByCategoryAndId(category, id);
+      if (!loan) return res.sendStatus(204);
+      return res.json(loan);
     } catch (e) {
       return res.status(400).json({ error: e.message });
     }
