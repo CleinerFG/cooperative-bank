@@ -1,5 +1,8 @@
-const InvalidLoanRequestCategoryError = require('../../../src/errors/loan/InvalidLoanRequestCategoryError');
-const InvalidLoanCategoryError = require('../../../src/errors/loan/InvalidLoanCategoryError');
+const {
+  InvalidLoanCategoryError,
+  InvalidLoanRequestCategoryError,
+} = require('../../../src/errors/LoanErrors');
+
 const {
   requestCategoryIsValid,
   loanCategoryIsValid,

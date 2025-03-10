@@ -1,5 +1,7 @@
-const InvalidLoanRequestCategoryError = require('../../errors/loan/InvalidLoanRequestCategoryError.js')
-const InvalidLoanCategoryError = require('../../errors/loan/InvalidLoanCategoryError.js');
+const {
+  InvalidLoanCategoryError,
+  InvalidLoanRequestCategoryError,
+} = require('../../errors/LoanErrors');
 
 const requestCategoryIsValid = (category) => {
   if (!['open', 'received'].includes(category)) {
