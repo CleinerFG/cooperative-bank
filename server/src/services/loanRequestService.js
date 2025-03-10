@@ -1,5 +1,4 @@
 const repository = require('../repositories/loanRequestRepository');
-const { isString } = require('../lib/utils/validators');
 const { requestCategoryIsValid } = require('../lib/helpers/loanValidators');
 
 module.exports = {
@@ -16,7 +15,6 @@ module.exports = {
    */
   async getDetailsByCategoryAndId(category, id) {
     requestCategoryIsValid(category);
-    isString(id);
     return repository.findDetailsByCategoryAndId(category, id);
   },
 };
