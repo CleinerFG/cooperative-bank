@@ -12,7 +12,7 @@ export class FormCtrl {
   #serverErrorCodes;
 
   /**
-   * @param {{string:{desc:string, message:string}}[]} serverErrorCodes
+   * @param {{string:string}[]} serverErrorCodes
    */
   constructor(serverErrorCodes) {
     this.#view = new FormView(
