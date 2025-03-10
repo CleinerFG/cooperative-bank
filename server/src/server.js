@@ -41,14 +41,14 @@ app.use(express.json());
 
 const accountRoutes = require('./routes/accountRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
-const loanRoutes = require('./routes/loanRoutes.js');
+const loansRoutes = require('./routes/loansRoutes.js');
 const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
 const loanInstallmentsRoutes = require('./routes/loanInstallmentsRoutes.js');
 const notificationsRoutes = require('./routes/notificationsRoutes.js');
 
 app.use('/api/account', accountRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/loans', loanRoutes);
+app.use('/api/loans', loansRoutes);
 app.use('/api/loans/requests', loanRequestsRoutes);
 app.use('/api/loans/installments', loanInstallmentsRoutes);
 app.use('/api/notifications', notificationsRoutes);
