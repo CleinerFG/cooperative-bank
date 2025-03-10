@@ -1,3 +1,4 @@
+const InvalidLoanRequestCategoryError = require('../../errors/loan/InvalidLoanRequestCategoryError.js')
 const InvalidLoanCategoryError = require('../../errors/loan/InvalidLoanCategoryError.js');
 
 const requestCategoryIsValid = (category) => {
