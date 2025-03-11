@@ -9,4 +9,13 @@ module.exports = {
     const details = await service.getDetails();
     return res.json(details);
   },
+  async getProfileImg(req, res) {
+    const id = '123'; // Initial test
+    try {
+      const photoPath = await service.getProfileImgPathById(id);
+      res.sendFile(photoPath);
+    } catch (e) {
+      res.status(404).json({ error: 'notFoundPhoto' });
+    }
+  },
 };
