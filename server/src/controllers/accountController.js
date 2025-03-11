@@ -15,7 +15,7 @@ module.exports = {
       const photoPath = await service.getProfileImgPathById(id);
       res.sendFile(photoPath);
     } catch (e) {
-      res.status(404).json({ error: 'notFoundPhoto' });
+      res.status(204);
     }
   },
 };

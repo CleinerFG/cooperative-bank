@@ -13,12 +13,23 @@ class AccountService {
   }
 
   /**
-   *
    * @returns {Promise<Balance>}
    */
   async getBalance() {
     const res = await fetch(`${this.#BASE_ENDPOINT}/balance`);
     return await res.json();
+  }
+
+  /**
+   * @returns {Promise<string>}
+   */
+  async getProfileImgUrl() {
+    const res = await fetch(`${this.#BASE_ENDPOINT}/profile-img`);
+    if (res.status === 200) {
+      const blob = await res.blob();
+      return URL.createObjectURL(blob);
+    }
+    return '';
   }
 }
 

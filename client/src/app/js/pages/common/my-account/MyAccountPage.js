@@ -81,19 +81,19 @@ export default class MyAccountPage extends Page {
     this.#infoDataDisplay = new InfoDataDisplay(params);
   }
 
-  /**
-   * @note
-   * This method is not necessary it is only for displaying the skeleton while loading the image
-   */
   async #loadProfileImage() {
-    const img = '/app/profile-image/user_123.webp';
-    await simulateWait();
-
-    const imgElement = document.getElementById('profile-photo');
-    imgElement.setAttribute('src', img);
-    imgElement.onload = () => {
-      document.getElementById('photo-loader').remove();
-    };
+    try {
+      const url = await accountService.getProfileImgUrl();
+      console.log(url);
+      await simulateWait();
+      const imgElement = document.getElementById('profile-photo');
+      imgElement.setAttribute('src', url);
+      imgElement.onload = () => {
+        document.getElementById('photo-loader').remove();
+      };
+    } catch (e) {
+      console.error(e.message);
+    }
   }
 
   #displayName() {
