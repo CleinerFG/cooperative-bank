@@ -1,4 +1,9 @@
 require('dotenv').config();
-const createDatabasesByEnvMode = require('./handlers/createDatabasesByEnvMode');
 
-createDatabasesByEnvMode();
+const setupMysqlDb = require('./handlers/setupMysqlDb');
+const setupMongoDb = require('./handlers/setupMongoDb');
+
+(async () => {
+  await setupMysqlDb();
+  await setupMongoDb();
+})();
