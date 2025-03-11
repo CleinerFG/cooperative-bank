@@ -1,6 +1,5 @@
 import { Card } from '../components/cards/Card.js';
 import { CardState } from '../components/cards/CardState.js';
-import { simulateWait } from '../../../global/js/utils/tests.js';
 import {
   AbstractGetterError,
   AbstractMethodError,
@@ -92,7 +91,6 @@ export class CardManager {
   async #fetchData() {
     this.#cardState.state = 'loading';
     try {
-      await simulateWait(0);
       const categories = this._entityMap.categories;
       for (let i = 0; i < categories.length; i++) {
         const cat = categories[i];

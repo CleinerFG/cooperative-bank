@@ -1,7 +1,6 @@
 import Page from '../../../../../global/js/core/Page.js';
 import loanService from '../../../services/LoanService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
-import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { titleCase } from '../../../../../global/js/utils/stringUtils.js';
 import { translate } from '../../../../../global/js/i18n/Translator.js';
 
@@ -118,7 +117,6 @@ export default class RequestDetailsPage extends Page {
 
   async #fetchData() {
     try {
-      await simulateWait();
       const { category, id } = this._queryParams;
       this.#apiData = await loanService.getRequestDetails(category, id);
       this.#infoDataDisplay.apiData = this.#apiData;

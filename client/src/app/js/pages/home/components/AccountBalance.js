@@ -1,7 +1,6 @@
 import accountService from '../../../services/AccountService.js';
 import { numberToCurrency } from '../../../../../global/js/utils/formatters.js';
 import assetManager from '../../../../../global/js/core/AssetManager.js';
-import { simulateWait } from '../../../../../global/js/utils/tests.js';
 
 export default class AccountBalance {
   #balanceValue;
@@ -31,7 +30,6 @@ export default class AccountBalance {
 
   async #fetchData() {
     try {
-      await simulateWait();
       this.#balanceValue = await accountService.getBalance();
       this.#spanBalanceElement.classList.remove('skelon');
     } catch (e) {

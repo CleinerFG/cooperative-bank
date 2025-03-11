@@ -4,7 +4,6 @@ import Input from './Input.js';
 import searchUserService from '../SearchUserService.js';
 import { USER_ERRORS, INP_ERRORS } from '../../constants/errorCodes.js';
 import { cpfValidator } from '../../utils/validators.js';
-import { simulateWait } from '../../utils/tests.js';
 import assetManager from '../../core/AssetManager.js';
 import { handleIconDark } from '../../utils/themeUtils.js';
 
@@ -68,7 +67,6 @@ export default class SearchInput extends Input {
   async #fetchData() {
     const query = this.#inpQueryElement.value;
     try {
-      await simulateWait();
       return await searchUserService.getUserByCpf(query);
     } catch (e) {
       console.error(e);

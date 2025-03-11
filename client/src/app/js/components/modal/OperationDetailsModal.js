@@ -1,5 +1,4 @@
 import { capitalize } from '../../../../global/js/utils/stringUtils.js';
-import { simulateWait } from '../../../../global/js/utils/tests.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import '../../types/operationDetailsModalType.js';
 import { Modal } from './Modal.js';
@@ -93,7 +92,6 @@ export class OperationDetailsModal extends Modal {
 
   async #fetchData() {
     try {
-      await simulateWait();
       const res = await this.#serviceMethod(this.#operationId);
 
       if (res.error) return this.#fetchDetailsFailHandler(res.error);

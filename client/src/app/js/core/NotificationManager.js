@@ -2,7 +2,6 @@ import '../types/notificationType.js';
 import { Notification } from '../components/common/Notification.js';
 import NotificationService from '../services/NotificationService.js';
 import { createState } from '../../../global/js/utils/hooks.js';
-import { simulateWait } from '../../../global/js/utils/tests.js';
 
 class NotificationManager {
   #service = NotificationService;
@@ -66,7 +65,6 @@ class NotificationManager {
 
   async #fetchData() {
     try {
-      await simulateWait();
       this.#data = await this.#service.fetch();
     } catch (e) {
       console.log(e);

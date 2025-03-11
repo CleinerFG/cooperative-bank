@@ -1,7 +1,6 @@
 import Page from '../../../../../global/js/core/Page.js';
 import accountService from '../../../services/AccountService.js';
 import { InfoDataDisplay } from '../../../components/common/InfoDataDisplay.js';
-import { simulateWait } from '../../../../../global/js/utils/tests.js';
 import { ApiDataNotDefinedError } from '../../../errors/ApiDataNotDefinedError.js';
 import { translate } from '../../../../../global/js/i18n/Translator.js';
 
@@ -84,7 +83,6 @@ export default class MyAccountPage extends Page {
   async #loadProfileImage() {
     try {
       const url = await accountService.getProfileImgUrl();
-      await simulateWait();
       const imgElement = document.getElementById('profile-photo');
       imgElement.setAttribute('src', url);
       imgElement.onload = () => {
@@ -104,7 +102,6 @@ export default class MyAccountPage extends Page {
 
   async #fetchData() {
     try {
-      await simulateWait();
       this.#apiData = await accountService.getDetails();
       this.#infoDataDisplay.apiData = this.#apiData;
     } catch (e) {

@@ -2,7 +2,6 @@ import '../types/formElementsType.js';
 import '../types/serverResponseType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import { simulateWait } from '../utils/tests.js';
 import { INP_ERRORS } from '../constants/errorCodes.js';
 
 export class FormCtrl {
@@ -99,7 +98,6 @@ export class FormCtrl {
   async #trySubmitHandler() {
     this.#view.setSubmitBtnState(true);
 
-    await simulateWait();
     const data = await this.#getFormData();
     const res = await this._serviceMethod(data);
     this.#resolvePromise(res);
