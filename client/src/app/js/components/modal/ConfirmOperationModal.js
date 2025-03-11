@@ -2,7 +2,7 @@ import { translate } from '../../../../global/js/i18n/Translator.js';
 import '../../../../global/js/types/serverResponseType.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { Modal } from './Modal.js';
-import { TransactionPasswordFormCtrl } from './TransactionPasswordFormCtrl.js';
+import { OperationPasswordFormCtrl } from './OperationPasswordFormCtrl.js';
 
 export class ConfirmOperationModal extends Modal {
   #form;
@@ -34,7 +34,7 @@ export class ConfirmOperationModal extends Modal {
 
   get _contentTemplate() {
     return `
-      <p class="info-text">${translate('enterNumTransPass')}</p>
+      <p class="info-text">${translate('enterNumOpPass')}</p>
     `;
   }
 
@@ -82,6 +82,6 @@ export class ConfirmOperationModal extends Modal {
   }
 
   async _setup() {
-    this.#form = new TransactionPasswordFormCtrl();
+    this.#form = new OperationPasswordFormCtrl();
   }
 }

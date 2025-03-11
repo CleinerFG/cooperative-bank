@@ -40,9 +40,9 @@ app.use('/api/notifications', notificationsRoutes);
 app.use(spaRoutes);
 
 app.post('/api/auth/transaction', (req, res) => {
-  const { transactionPassword } = req.body;
+  const { operationPassword } = req.body;
 
-  const isAuthenticated = transactionPassword === 123456;
+  const isAuthenticated = operationPassword === 123456;
   if (isAuthenticated) {
     return res
       .status(200)
@@ -51,9 +51,7 @@ app.post('/api/auth/transaction', (req, res) => {
   return res.status(401).json({
     success: isAuthenticated,
     token: null,
-    errors: [
-      { componentId: 'transactionPassword', error: 'incorrectPassword' },
-    ],
+    errors: [{ componentId: 'operationPassword', error: 'incorrectPassword' }],
   });
 });
 

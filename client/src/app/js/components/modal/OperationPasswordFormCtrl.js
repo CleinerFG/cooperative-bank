@@ -3,7 +3,7 @@ import { AUTH_ERRORS } from '../../../../global/js/constants/errorCodes.js';
 import { translate } from '../../../../global/js/i18n/Translator.js';
 import authService from '../../services/AuthService.js';
 
-export class TransactionPasswordFormCtrl extends FormCtrl {
+export class OperationPasswordFormCtrl extends FormCtrl {
   constructor() {
     super([AUTH_ERRORS]);
   }
@@ -19,7 +19,7 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
   get _formComponentsParams() {
     return [
       {
-        id: 'transactionPassword',
+        id: 'operationPassword',
         category: 'password',
         labelText: translate('pass'),
         formatter: 'strictNumber',
@@ -29,13 +29,13 @@ export class TransactionPasswordFormCtrl extends FormCtrl {
 
   get _submitButtonParams() {
     return {
-      id: 'transaction-confirm',
+      id: 'transactionConfirm',
       cssClass: 'modal-btn',
       labelText: translate('confirm'),
     };
   }
 
   get _serviceMethod() {
-    return authService.transaction;
+    return authService.operation;
   }
 }

@@ -3,10 +3,10 @@ import { API_BASE_URL } from '../../../global/js/constants/config.js';
 
 class AuthService {
   /**
-   * @param {FormDataTransactionPassword} data
+   * @param {FormDataoperationPassword} data
    */
-  async transaction(data) {
-    const res = await fetch(`${API_BASE_URL}/auth/transaction`, {
+  async operation(data) {
+    const res = await fetch(`${API_BASE_URL}/auth/operation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

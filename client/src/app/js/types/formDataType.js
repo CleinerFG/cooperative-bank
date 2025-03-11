@@ -8,6 +8,6 @@
  */
 
 /**
- * @typedef {object} FormDataTransactionPassword
- * @property {string} transactionPassword
+ * @typedef {object} FormDataOperationPassword
+ * @property {string} operationPassword
  */

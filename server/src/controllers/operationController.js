@@ -2,15 +2,15 @@ const service = require('../services/operationService');
 
 module.exports = {
   auth: (req, res) => {
-    const { transactionPassword } = req.body;
+    const { operationPassword } = req.body;
     try {
-      const isAuth = service.auth(transactionPassword);
+      const isAuth = service.auth(operationPassword);
       if (isAuth) return res.json({ success: isAuth, token: 'token-123' });
       return res.status(401).json({
         success: isAuth,
         token: null,
         errors: [
-          { componentId: 'transactionPassword', error: 'incorrectPassword' },
+          { componentId: 'operationPassword', error: 'incorrectPassword' },
         ],
       });
     } catch (e) {

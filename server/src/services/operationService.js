@@ -1,9 +1,9 @@
 module.exports = {
   /**
-   * @param {number} transactionPassword
+   * @param {number} operationPassword
    */
-  auth(transactionPassword) {
-    const isAuth = transactionPassword === 123456;
+  auth(operationPassword) {
+    const isAuth = operationPassword === 123456;
     return isAuth;
   },
 };

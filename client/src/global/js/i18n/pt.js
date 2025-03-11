@@ -122,7 +122,7 @@ export default {
 
   // Modal
   authOperation: 'Autorize a operação',
-  enterNumTransPass: 'Insira a senha de transação numérica',
+  enterNumOpPass: 'Insira a senha de operação numérica',
   authOperationSuccess: 'A operação foi autorizada',
 
   // Landing

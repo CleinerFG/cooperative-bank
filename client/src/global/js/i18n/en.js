@@ -121,7 +121,7 @@ export default {
 
   // Modal
   authOperation: 'Authorize operation',
-  enterNumTransPass: 'Enter the numeric transaction password',
+  enterNumOpPass: 'Enter the numeric operation password',
   authOperationSuccess: 'The operation was authorized',
 
   // Landing
