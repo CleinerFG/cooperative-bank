@@ -4,11 +4,13 @@
   "scripts": {
     "install:client": "cd client && npm install",
     "install:server": "cd server && npm install",
-    "install": "npm run install:client && npm run install:server",
+    "install:databases": "cd databases && npm install",
+    "install": "npm run install:client && npm run install:server && npm run install:databases",
     "dev:client": "npm --prefix client run dev",
     "dev:server": "npm --prefix server run dev",
     "start:client": "npm --prefix client run build",
-    "start:server": "npm --prefix server run start"
+    "start:server": "npm --prefix server run start",
+    "set:databases": "npm --prefix databases run start"
   },
   "keywords": [
     "Bank",
