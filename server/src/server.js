@@ -1,21 +1,24 @@
 require('dotenv').config();
+
 const {
   APP_STATIC_DIR,
   PUBLIC_STATIC_DIR,
 } = require('./constants/spaConstants.js');
-const logMiddleware = require('./middlewares/logMiddleware.js');
 const { IP, PORT } = require('../config/serverConfig.js');
+
+const logMiddleware = require('./middlewares/logMiddleware.js');
+const simulateDelayMiddleware = require('./middlewares/simulateDelayMiddleware.js');
+
 const express = require('express');
-const path = require('path');
 
 const app = express();
-
 
 app.use('/app/static', express.static(APP_STATIC_DIR));
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 
 app.use(logMiddleware);
 app.use(express.json());
+app.use('/api', simulateDelayMiddleware);
 
 // New routes structure
 const accountRoutes = require('./routes/accountRoutes.js');
