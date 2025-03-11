@@ -1,22 +1,21 @@
 require('dotenv').config();
 const mysql = require('mysql2');
 
-const createConnection = () => {
-  const host = process.env.MYSQL_HOST;
-  const port = process.env.MYSQL_PORT;
-  const user = process.env.MYSQL_USER;
-  const password = process.env.MYSQL_PASSWORD;
+if (!process.env.MYSQL_HOST) {
+  throw new Error('Missing .env variables. Ensure MYSQL_HOST is set.');
+}
 
-  const connection = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
+const pool = mysql
+  .createPool({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    port: process.env.MYSQL_PORT,
     database: 'cooperative_bank',
-    multipleStatements: true,
-  });
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+  })
+  .promise();
 
-  return connection;
-};
-
-module.exports = createConnection;
+module.exports = pool;
