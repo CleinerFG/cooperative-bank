@@ -52,14 +52,14 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
     - **`server/.env`**:
 
     ```
-    IP=localhost
+    HOST=localhost
     PORT=8080
     ```
 
     - **`client/.env`**:
 
     ```
-    SERVER_IP=localhost
+    SERVER_HOST=localhost
     SERVER_PORT=8080
     ```
 
@@ -94,8 +94,9 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
     ```
 
   - No ambiente de produção, basta remover o middleware:
-  
+
     **`server/src/server.js`**
+
     ```js
     app.use('/api', simulateDelayMiddleware);
     ```

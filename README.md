@@ -52,14 +52,14 @@ The project follows the MVC architecture, organizing functions and classes modul
     - **`server/.env`**:
 
     ```
-    IP=localhost
+    HOST=localhost
     PORT=8080
     ```
 
     - **`client/.env`**:
 
     ```
-    SERVER_IP=localhost
+    SERVER_HOST=localhost
     SERVER_PORT=8080
     ```
 
@@ -94,8 +94,9 @@ The project follows the MVC architecture, organizing functions and classes modul
     ```
 
   - In the production environment, just remove de middleware:
-  
+
     **`server/src/server.js`**
+
     ```js
     app.use('/api', simulateDelayMiddleware);
     ```
