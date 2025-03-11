@@ -39,23 +39,6 @@ app.use('/api/loans/installments', loanInstallmentsRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use(spaRoutes);
 
-app.post('/api/auth/transaction', (req, res) => {
-  const { operationPassword } = req.body;
-
-  const isAuthenticated = operationPassword === 123456;
-  if (isAuthenticated) {
-    return res
-      .status(200)
-      .json({ success: isAuthenticated, token: 'token-123' });
-  }
-  return res.status(401).json({
-    success: isAuthenticated,
-    token: null,
-    errors: [{ componentId: 'operationPassword', error: 'incorrectPassword' }],
-  });
-});
-
-// Start server
 app.listen(PORT, IP, () => {
   console.log(`Server running at http://${IP}:${PORT}`);
 });
