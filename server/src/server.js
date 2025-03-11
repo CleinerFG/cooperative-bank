@@ -10,17 +10,9 @@ const path = require('path');
 
 const app = express();
 
-// Constants
-const PROFILE_STATIC_DIR = path.resolve(
-  __dirname,
-  'data/uploads/profile-images'
-);
 
 app.use('/app/static', express.static(APP_STATIC_DIR));
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
-
-// Test: serve profile image!
-app.use('/app/profile-image', express.static(PROFILE_STATIC_DIR));
 
 app.use(logMiddleware);
 app.use(express.json());

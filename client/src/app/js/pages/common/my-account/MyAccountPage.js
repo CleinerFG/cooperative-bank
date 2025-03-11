@@ -84,7 +84,6 @@ export default class MyAccountPage extends Page {
   async #loadProfileImage() {
     try {
       const url = await accountService.getProfileImgUrl();
-      console.log(url);
       await simulateWait();
       const imgElement = document.getElementById('profile-photo');
       imgElement.setAttribute('src', url);
