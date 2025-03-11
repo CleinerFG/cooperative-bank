@@ -1,10 +1,10 @@
 require('dotenv').config();
-const fs = require('fs').promises;
-
+const {
+  APP_STATIC_DIR,
+  PUBLIC_STATIC_DIR,
+} = require('./constants/spaConstants.js');
 const logMiddleware = require('./middlewares/logMiddleware.js');
-
 const { IP, PORT } = require('../config/serverConfig.js');
-
 const express = require('express');
 const path = require('path');
 
@@ -15,20 +15,10 @@ const PROFILE_STATIC_DIR = path.resolve(
   __dirname,
   'data/uploads/profile-images'
 );
-const PUBLIC_STATIC_DIR = path.resolve(
-  __dirname,
-  '../../client/dist/public/static'
-);
 
-const APP_STATIC_DIR = path.resolve(__dirname, '../../client/dist/app/static');
-
-// Middleware for public static files
+app.use('/app/static', express.static(APP_STATIC_DIR));
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 
-// Middleware for app static files
-app.use('/app/static', express.static(APP_STATIC_DIR));
-
-// Middleware for public static files
 // Test: serve profile image!
 app.use('/app/profile-image', express.static(PROFILE_STATIC_DIR));
 
