@@ -85,12 +85,17 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
 
   - **`server/.env`**: Adicionar `NODE_ENV=production`, por padrão essa variável é definida como `development`.
 
-- `Dev-test`: Onde há requisições ao servidor, há skelons ou loaders. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso para que eles sejam visíveis.
+- `Dev-test`: Onde há requisições a `/api`, há skelons ou loaders no client. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso para que eles sejam visíveis.
 
-  - Defina o tempo em segundos **`client/src/global/js/constants/config.js`**:
+  - Defina o tempo em milissegundos **`server/src/constants/serverConstants.js`**:
 
     ```js
-    const SIMULATE_SERVER_WAIT = 3;
+    const SIMULATE_RES_DELAY = 3000;
     ```
 
-  - No ambiente de produção, se não quiser usar a função `simulateWait()`, basta usar ` Ctrl + Shift + F` no VS Code para localizar todas as chamadas da função e removê-las.
+  - No ambiente de produção, basta remover o middleware:
+  
+    **`server/src/server.js`**
+    ```js
+    app.use('/api', simulateDelayMiddleware);
+    ```

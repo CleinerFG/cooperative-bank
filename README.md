@@ -85,12 +85,17 @@ The project follows the MVC architecture, organizing functions and classes modul
 
   - **`server/.env`**: Add `NODE_ENV=production`, by default this variable is set to `development`.
 
-- `Dev-test`: Where there are server requests, there are skelons or loaders. When running the server locally, you need to add a delay to make them visible.
+- `Dev-test`: Where there are requests to `/api`, there are skelons or loaders in the client. When running the server locally, you need to add a delay to make them visible.
 
-  - Set the time in seconds **`client/src/global/js/constants/config.js`**:
+  - Set the time in milliseconds **`server/src/constants/serverConstants.js`**:
 
     ```js
-    const SIMULATE_SERVER_WAIT = 3;
+    const SIMULATE_RES_DELAY = 3000;
     ```
 
-  - In the production environment, if you don't want use the `simulateWait()` function, simply use `Ctrl + Shift + F` in VS Code to find all function calls and remove them.
+  - In the production environment, just remove de middleware:
+  
+    **`server/src/server.js`**
+    ```js
+    app.use('/api', simulateDelayMiddleware);
+    ```
