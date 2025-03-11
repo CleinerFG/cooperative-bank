@@ -1,4 +1,7 @@
 require('dotenv').config();
+const checkDotenvFileExists = require('./utils/checkDotenvFileExists.js');
+checkDotenvFileExists();
+
 const displayErrors = require('./utils/displayErrors.js');
 const {
   ENV,
