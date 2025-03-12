@@ -20,8 +20,10 @@ CREATE TABLE IF NOT EXISTS accounts (
   balance DECIMAL(14,2) DEFAULT 0,
   status_id INT DEFAULT 1,
 
-  FOREIGN KEY (user_id) REFERENCES users (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES account_statuses (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
 CREATE INDEX idx_user_id ON accounts (user_id);
@@ -42,9 +44,12 @@ CREATE TABLE IF NOT EXISTS loans (
   installments_qty INT NOT NULL,
   status_id INT DEFAULT 1,
 
-  FOREIGN KEY (debtor_account_id) REFERENCES accounts (id),
-  FOREIGN KEY (creditor_account_id) REFERENCES accounts (id),
+  FOREIGN KEY (debtor_account_id) REFERENCES accounts (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  FOREIGN KEY (creditor_account_id) REFERENCES accounts (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES loan_statuses (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
 CREATE INDEX idx_debtor_account_id ON loans (debtor_account_id);
@@ -63,8 +68,10 @@ CREATE TABLE IF NOT EXISTS loan_installments (
   due_date date NOT NULL,
   status_id INT DEFAULT 1,
 
-  FOREIGN KEY (loan_id) REFERENCES loans (id),
+  FOREIGN KEY (loan_id) REFERENCES loans (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES loan_installment_statuses (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
 CREATE INDEX idx_loan_id ON loan_installments (loan_id);
@@ -77,6 +84,7 @@ CREATE TABLE IF NOT EXISTS loan_payments (
   value DECIMAL(11,2) NOT NULL,
 
   FOREIGN KEY (installment_id) REFERENCES loan_installments (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
 CREATE INDEX idx_installment_id ON loan_payments (installment_id);
@@ -94,9 +102,12 @@ CREATE TABLE IF NOT EXISTS transfers (
   value DECIMAL(14,2) NOT NULL,
   status_id INT DEFAULT 1,
 
-  FOREIGN KEY (sender_account_id) REFERENCES accounts (id),
-  FOREIGN KEY (receiver_account_id) REFERENCES accounts (id),
+  FOREIGN KEY (sender_account_id) REFERENCES accounts (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  FOREIGN KEY (receiver_account_id) REFERENCES accounts (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES transfer_statuses (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
 CREATE INDEX idx_sender_account_id ON transfers (sender_account_id);
@@ -117,8 +128,10 @@ CREATE TABLE IF NOT EXISTS investments (
   value DECIMAL(11,2) NOT NULL,
   status_id INT DEFAULT 1,
 
-  FOREIGN KEY (account_id) REFERENCES accounts (id),
+  FOREIGN KEY (account_id) REFERENCES accounts (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES investment_statuses (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
 CREATE INDEX idx_account_id ON investments (account_id);
@@ -148,9 +161,12 @@ CREATE TABLE IF NOT EXISTS operations (
   flow_id INT NOT NULL,
   value DECIMAL(14,2) NOT NULL,
 
-  FOREIGN KEY (account_id) REFERENCES accounts (id),
-  FOREIGN KEY (category_id) REFERENCES operation_categories (id),
+  FOREIGN KEY (account_id) REFERENCES accounts (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  FOREIGN KEY (category_id) REFERENCES operation_categories (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (flow_id) REFERENCES operation_flows (id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
   );
 
 CREATE INDEX idx_account_id ON operations (account_id);
