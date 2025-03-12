@@ -1,9 +1,11 @@
+const log = require('./consoleLogger');
+
 module.exports = (error) => {
   if (error.errors) {
     error.errors.forEach((err, idx) => {
-      console.error(`-->[${idx}] ${err.code}: ${err.message}`);
+      log.error(`- [${idx}] ${err.code}: ${err.message}`);
     });
   } else {
-    console.error(error.message || JSON.stringify(error));
+    log.error(`- ${error.message || JSON.stringify(error)}`);
   }
 };

@@ -1,23 +1,24 @@
-const displayErrors = require('../../utils/displayErrors');
 const createPool = require('./createPool');
 const pool = createPool();
+const log = require('../../utils/consoleLogger');
+const displayErrors = require('../../utils/displayErrors');
 
 module.exports = async (dbName) => {
-  let status;
-
+  let success;
   try {
-    console.log(`Trying to create database: ${dbName}`);
+    log.info(`- Trying to create database: ${dbName}`);
     await pool.query(`CREATE DATABASE IF NOT EXISTS ${dbName}`);
-    status = 'Success';
+    success = true;
     return true;
   } catch (e) {
-    status = 'Fail';
-    console.error('Error creating the database:');
+    success = false;
+    log.error('- Error creating the database:');
     displayErrors(e);
     return false;
   } finally {
     await pool.end();
-    console.log(`Status: ${status}`);
-    console.log('Pool connection end');
+    const logType = success ? 'info' : 'error';
+    log[logType](`- Success: ${success}`);
+    log.info('- Pool connection end');
   }
 };

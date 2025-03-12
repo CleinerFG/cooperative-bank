@@ -1,5 +1,7 @@
+const log = require('../utils/consoleLogger');
+
 module.exports = () => {
-  console.log('---> [DB Setup - MongoDb]');
-  console.log('In development...');
-  console.log('---> [DB Setup - MongoDb] Finished');
+  log.info('[DB Setup - MongoDb] Stated');
+  log.info('- In development...');
+  log.info('[DB Setup - MongoDb] Finished');
 };
