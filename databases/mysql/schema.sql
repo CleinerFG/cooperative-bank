@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS accounts (
   user_id INT NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(60) NOT NULL,
-  created_at DATETIME DEFAULT NOW(),
+  created_at DATETIME NOT NULL DEFAULT NOW(),
   operation_password VARCHAR(60) DEFAULT NULL,
-  balance DECIMAL(14,2) DEFAULT 0,
-  status_id INT DEFAULT 1,
+  balance DECIMAL(14,2) NOT NULL DEFAULT 0,
+  status_id INT NOT NULL DEFAULT 1,
 
   FOREIGN KEY (user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS loans (
   value DECIMAL(11,2) NOT NULL,
   month_rate DECIMAL(4,2) NOT NULL,
   installments_qty INT NOT NULL,
-  status_id INT DEFAULT 1,
+  status_id INT NOT NULL DEFAULT 1,
 
   FOREIGN KEY (debtor_account_id) REFERENCES accounts (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS loan_installments (
   loan_id INT NOT NULL,
   value DECIMAL(11,2) NOT NULL,
   due_date date NOT NULL,
-  status_id INT DEFAULT 1,
+  status_id INT NOT NULL DEFAULT 1,
 
   FOREIGN KEY (loan_id) REFERENCES loans (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS loan_installments (
 CREATE TABLE IF NOT EXISTS loan_payments (
   id INT AUTO_INCREMENT PRIMARY KEY,
   installment_id INT NOT NULL,
-  date DATETIME DEFAULT NOW(),
+  date DATETIME NOT NULL DEFAULT NOW() ,
   value DECIMAL(11,2) NOT NULL,
 
   FOREIGN KEY (installment_id) REFERENCES loan_installments (id)
@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS transfers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   sender_account_id INT NOT NULL,
   receiver_account_id INT NOT NULL,
-  date DATETIME DEFAULT NOW(),
+  date DATETIME NOT NULL DEFAULT NOW() ,
   value DECIMAL(14,2) NOT NULL,
-  status_id INT DEFAULT 1,
+  status_id INT NOT NULL DEFAULT 1,
 
   FOREIGN KEY (sender_account_id) REFERENCES accounts (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS investments (
   liquidy_date DATETIME NOT NULL,
   month_rate DECIMAL(4,2) NOT NULL,
   value DECIMAL(11,2) NOT NULL,
-  status_id INT DEFAULT 1,
+  status_id INT NOT NULL DEFAULT 1,
 
   FOREIGN KEY (account_id) REFERENCES accounts (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
