@@ -7,6 +7,7 @@ const {
 const { pool } = require('../mysql/scripts/config.js');
 const createDb = require('../mysql/scripts/createDb.js');
 const createTables = require('../mysql/scripts/createTables.js');
+const setIndexes = require('../mysql/scripts/setIndexes.js');
 
 const log = require('../utils/consoleLogger.js');
 const displayError = require('../utils/displayError.js');
@@ -19,6 +20,7 @@ module.exports = async () => {
     log.info('[DB Setup - Mysql] Started');
     await createDb(dbName, dropExistingDb);
     await createTables(dbName);
+    await setIndexes(dbName);
   } catch (e) {
     log.fatal('- Error setting database!');
     displayError(e);
