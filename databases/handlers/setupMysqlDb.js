@@ -9,7 +9,7 @@ const createDb = require('../mysql/scripts/createDb.js');
 const createTables = require('../mysql/scripts/createTables.js');
 
 const log = require('../utils/consoleLogger.js');
-const displayErrors = require('../utils/displayErrors.js');
+const displayError = require('../utils/displayError.js');
 
 const dbName = ENV === 'development' ? MYSQL_DB_NAME_DEV : MYSQL_DB_NAME_PROD;
 const dropExistingDb = ENV === 'development';
@@ -20,8 +20,8 @@ module.exports = async () => {
     await createDb(dbName, dropExistingDb);
     await createTables(dbName);
   } catch (e) {
-    log.fatal('- Setting database error!');
-    displayErrors(e);
+    log.fatal('- Error setting database!');
+    displayError(e);
   } finally {
     await pool.end();
     log.info('- Pool connection closed');
