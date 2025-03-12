@@ -13,6 +13,7 @@ module.exports = (dbName = null) => {
     password: MYSQL_PASSWORD,
     port: MYSQL_PORT,
     database: dbName,
+    multipleStatements: true,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,

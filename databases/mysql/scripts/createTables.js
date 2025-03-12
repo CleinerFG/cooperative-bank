@@ -10,7 +10,7 @@ const readSchemaFile = async () => {
     console.log('Trying to read: schema.sql');
     const sql = await fs.readFile(schemaPath, 'utf-8');
     status = 'Success';
-    return sql;
+    return sql.trim().replace(/\s+/g, ' ');
   } catch (e) {
     status = 'Fail';
     console.error('Error reading file "schema.sql":');
