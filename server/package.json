@@ -20,7 +20,9 @@
     "JS",
     "Express",
     "API",
-    "Rest"
+    "Rest",
+    "MySQL",
+    "SQL"
   ],
   "author": "Cleiner Furlani",
   "license": "ISC",

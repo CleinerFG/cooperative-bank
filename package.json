@@ -27,7 +27,9 @@
     "Express",
     "API",
     "Rest",
-    "SPA"
+    "SPA",
+    "MySQL",
+    "SQL"
   ],
   "author": "Cleiner Furlani",
   "license": "ISC",
