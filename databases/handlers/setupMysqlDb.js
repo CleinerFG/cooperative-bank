@@ -19,16 +19,30 @@ const dropExistingDb = ENV === 'development';
 module.exports = async () => {
   try {
     log.info('[DB Setup - Mysql] Started');
+    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+
     const dbExists = await checkDbExists(dbName);
-    await createDb(dbName, dropExistingDb);
+    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+
+    await createDb(dbName, dbExists, dropExistingDb);
+    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+
     await createTables(dbName);
-    await setDefaultSeeds(dbName);
+    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+
+    if (ENV === 'development' || !dbExists) {
+      await setDefaultSeeds(dbName);
+      log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+    }
   } catch (e) {
-    log.fatal('- Error setting database!');
+    log.fatal('-> Error setting database!');
     displayError(e);
+    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
   } finally {
+    log.info(`-> Closing pool connection...`);
     await pool.end();
-    log.info('- Pool connection closed');
+    log.info('- The pool connection was closed');
+    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
     log.info('[DB Setup - Mysql] Finished');
   }
 };
