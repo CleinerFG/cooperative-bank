@@ -1,13 +1,14 @@
-const { ENV, MYSQL_DB_NAME_BY_ENV } = require('../../config/constants.js');
+const { ENV, MYSQL_DB_NAME_BY_ENV } = require('../../config/constants');
 
-const { pool } = require('../mysql/scripts/pool.js');
-const checkDbExists = require('../mysql/scripts/checkDbExists.js');
-const createDb = require('../mysql/scripts/createDb.js');
-const createTables = require('../mysql/scripts/createTables.js');
-const setDefaultSeeds = require('../mysql/scripts/setDefaultSeeds.js');
+const { pool } = require('../mysql/scripts/pool');
+const checkDbExists = require('../mysql/scripts/checkDbExists');
+const createDb = require('../mysql/scripts/createDb');
+const createTables = require('../mysql/scripts/createTables');
+const setDefaultSeeds = require('../mysql/scripts/setDefaultSeeds');
+const setTimeZone = require('../mysql/scripts/setTimeZone');
 
-const { log, logRow } = require('../utils/consoleLogger.js');
-const displayError = require('../utils/displayError.js');
+const { log, logRow } = require('../utils/consoleLogger');
+const displayError = require('../utils/displayError');
 
 const dbName = MYSQL_DB_NAME_BY_ENV;
 const dropExistingDb = ENV === 'development';
@@ -21,6 +22,9 @@ module.exports = async () => {
     logRow('section');
 
     await createDb(dbName, dbExists, dropExistingDb);
+    logRow('section');
+
+    await setTimeZone(dbName);
     logRow('section');
 
     await createTables(dbName);
