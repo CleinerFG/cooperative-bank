@@ -1,10 +1,10 @@
+const { ENV } = require('../../config/constants.js');
 const {
-  ENV,
   MYSQL_DB_NAME_DEV,
   MYSQL_DB_NAME_PROD,
-} = require('../constants.js');
+} = require('../../config/db/constants.js');
 
-const { pool } = require('../mysql/scripts/config.js');
+const { pool } = require('../mysql/scripts/pool.js');
 const checkDbExists = require('../mysql/scripts/checkDbExists.js');
 const createDb = require('../mysql/scripts/createDb.js');
 const createTables = require('../mysql/scripts/createTables.js');

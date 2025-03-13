@@ -1,4 +1,4 @@
-const { pool } = require('./config');
+const { pool } = require('./pool');
 const { log } = require('../../utils/consoleLogger');
 
 /**
