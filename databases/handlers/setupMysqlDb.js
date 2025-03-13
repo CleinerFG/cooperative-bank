@@ -10,7 +10,7 @@ const createDb = require('../mysql/scripts/createDb.js');
 const createTables = require('../mysql/scripts/createTables.js');
 const setDefaultSeeds = require('../mysql/scripts/setDefaultSeeds.js');
 
-const log = require('../utils/consoleLogger.js');
+const { log, logRow } = require('../utils/consoleLogger.js');
 const displayError = require('../utils/displayError.js');
 
 const dbName = ENV === 'development' ? MYSQL_DB_NAME_DEV : MYSQL_DB_NAME_PROD;
@@ -18,31 +18,30 @@ const dropExistingDb = ENV === 'development';
 
 module.exports = async () => {
   try {
-    log.info('[DB Setup - Mysql] Started');
-    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+    log('title', 'DB Setup - Mysql Started');
+    logRow('section');
 
     const dbExists = await checkDbExists(dbName);
-    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+    logRow('section');
 
     await createDb(dbName, dbExists, dropExistingDb);
-    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+    logRow('section');
 
     await createTables(dbName);
-    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+    logRow('section');
 
     if (ENV === 'development' || !dbExists) {
       await setDefaultSeeds(dbName);
-      log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+      logRow('section');
     }
   } catch (e) {
-    log.fatal('-> Error setting database!');
+    log('fatal', 'Error setting database!');
     displayError(e);
-    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
+    logRow('section');
   } finally {
-    log.info(`-> Closing pool connection...`);
+    log('section', 'Closing pool connection...');
     await pool.end();
-    log.info('- The pool connection was closed');
-    log.info('- - - - - - - - - - - - - - - - - - - - - - -');
-    log.info('[DB Setup - Mysql] Finished');
+    log('content', 'The pool connection was closed');
+    log('title', 'DB Setup - Mysql Finished');
   }
 };

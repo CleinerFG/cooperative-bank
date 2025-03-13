@@ -2,12 +2,10 @@ require('dotenv').config();
 
 const setupMysqlDb = require('./handlers/setupMysqlDb');
 const setupMongoDb = require('./handlers/setupMongoDb');
-const log = require('./utils/consoleLogger');
+const { logRow } = require('./utils/consoleLogger');
 
 (async () => {
   await setupMysqlDb();
-  log.info(
-    '~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~ - ~'
-  );
+  logRow('end')
   await setupMongoDb();
 })();

@@ -1,19 +1,19 @@
-const log = require('./consoleLogger');
+const { log } = require('./consoleLogger');
 
 const econnrefusedMessage = `Possible causes:
-- The target server or service is not running.
-- The server is configured to not accept connections from your machine or network.
-- A firewall or other security is blocking the connection.
-- The host or port is incorrect.
+The target server or service is not running.
+The server is configured to not accept connections from your machine or network.
+A firewall or other security is blocking the connection.
+The host or port is incorrect.
 `;
 
 const timeOutMessage = `Possible causes:
-- The host or port is incorrect.
-- Simultaneous connection limit.
-- Unstable connection.
+The host or port is incorrect.
+Simultaneous connection limit.
+Unstable connection.
 `;
 
-const accessDeniedMessage = `- User or password is incorrect`;
+const accessDeniedMessage = `User or password is incorrect`;
 
 const errorsMap = {
   ECONNREFUSED: {
@@ -32,10 +32,10 @@ const errorsMap = {
 
 module.exports = (error) => {
   if (errorsMap[error.code]) {
-    log.error(errorsMap[error.code].title);
-    log.error(errorsMap[error.code].message);
+    log('error', errorsMap[error.code].title);
+    log('error', errorsMap[error.code].message);
   } else {
-    log.error('Unknown error:');
-    log.error(error);
+    log('error', 'Unknown error:');
+    log('error', error);
   }
 };

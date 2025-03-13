@@ -1,5 +1,5 @@
 const { pool } = require('./config');
-const log = require('../../utils/consoleLogger');
+const { log } = require('../../utils/consoleLogger');
 
 /**
  * @param {string} dbName
@@ -8,12 +8,12 @@ const log = require('../../utils/consoleLogger');
  */
 module.exports = async (dbName, dbExists, dropExistingDb) => {
   if (dropExistingDb && dbExists) {
-    log.info(`-> Deleting existing DB...`);
+    log('section', `Deleting existing DB...`);
     await pool.query(`DROP DATABASE ${dbName}`);
-    log.info(`- DB deleted: : ${dbName}`);
+    log('content', `DB deleted: : ${dbName}`);
   }
 
-  log.info(`-> Creating DB...`);
+  log('section', `Creating DB...`);
   await pool.query(`CREATE DATABASE ${dbName}`);
-  log.info(`- DB created: ${dbName}`)
+  log('content', `DB created: ${dbName}`);
 };
