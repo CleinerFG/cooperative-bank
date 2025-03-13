@@ -8,15 +8,15 @@ INSERT INTO users (cpf, full_name, birth) VALUES
   ('27803226086', 'Jake Park', '1991-02-09'),
   ('48745826056', 'David King', '1989-11-21');
 
-INSERT INTO accounts (user_id, email, password) VALUES
-  (1, 'ashley.williams@email.com', '12345678a'),
-  (2, 'cheryl.mason@email.com', '12345678b'),
-  (3, 'ada.wong@email.com', '12345678c'),
-  (4, 'claudette.morel@email.com', '12345678d'),
-  (5, 'dwight.fairfield@email.com', '12345678e'),
-  (6, 'meg.thomas@email.com', '12345678f'),
-  (7, 'jake.park@email.com', '12345678g'),
-  (8, 'david.king2@email.com', '12345678h');
+INSERT INTO accounts (user_id, email, password, balance) VALUES
+  (1, 'ashley.williams@email.com', '12345678a', 48376),
+  (2, 'cheryl.mason@email.com', '12345678b', 32546),
+  (3, 'ada.wong@email.com', '12345678c', 0),
+  (4, 'claudette.morel@email.com', '12345678d', 0),
+  (5, 'dwight.fairfield@email.com', '12345678e', 0),
+  (6, 'meg.thomas@email.com', '12345678f', 4556),
+  (7, 'jake.park@email.com', '12345678g', 0),
+  (8, 'david.king2@email.com', '12345678h', 0);
 
 INSERT INTO loans (
   debtor_account_id,

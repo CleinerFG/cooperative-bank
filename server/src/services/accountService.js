@@ -6,10 +6,12 @@ const { log } = require('console');
 
 module.exports = {
   async getBalance() {
-    return repository.findBalance();
+    // Test abstract id
+    return repository.findBalanceById(6);
   },
   async getDetails() {
-    return repository.findDetails();
+    // Test abstract id
+    return repository.findDetailsById(6);
   },
   /**
    * @param {string} id
