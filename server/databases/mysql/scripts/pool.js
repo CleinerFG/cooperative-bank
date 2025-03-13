@@ -4,7 +4,7 @@ const {
   MYSQL_PORT,
   MYSQL_USER,
   MYSQL_PASSWORD,
-} = require('../../../config/db/constants');
+} = require('../../../config/constants');
 
 const pool = mysql.createPool({
   host: MYSQL_HOST,

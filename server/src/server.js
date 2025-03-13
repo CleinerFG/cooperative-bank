@@ -4,7 +4,7 @@ const {
   APP_STATIC_DIR,
   PUBLIC_STATIC_DIR,
 } = require('./constants/spaConstants.js');
-const { HOST, PORT } = require('../config/serverConfig.js');
+const { SERVER_HOST, SERVER_PORT } = require('../config/constants.js');
 
 const logMiddleware = require('./middlewares/logMiddleware.js');
 const simulateDelayMiddleware = require('./middlewares/simulateDelayMiddleware.js');
@@ -39,6 +39,6 @@ app.use('/api/loans/installments', loanInstallmentsRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use(spaRoutes);
 
-app.listen(PORT, HOST, () => {
-  console.log(`Server running at http://${HOST}:${PORT}`);
+app.listen(SERVER_PORT, SERVER_HOST, () => {
+  console.log(`Server running at http://${SERVER_HOST}:${SERVER_PORT}`);
 });

@@ -1,8 +1,4 @@
-const { ENV } = require('../../config/constants.js');
-const {
-  MYSQL_DB_NAME_DEV,
-  MYSQL_DB_NAME_PROD,
-} = require('../../config/db/constants.js');
+const { ENV, MYSQL_DB_NAME_BY_ENV } = require('../../config/constants.js');
 
 const { pool } = require('../mysql/scripts/pool.js');
 const checkDbExists = require('../mysql/scripts/checkDbExists.js');
@@ -13,7 +9,7 @@ const setDefaultSeeds = require('../mysql/scripts/setDefaultSeeds.js');
 const { log, logRow } = require('../utils/consoleLogger.js');
 const displayError = require('../utils/displayError.js');
 
-const dbName = ENV === 'development' ? MYSQL_DB_NAME_DEV : MYSQL_DB_NAME_PROD;
+const dbName = MYSQL_DB_NAME_BY_ENV;
 const dropExistingDb = ENV === 'development';
 
 module.exports = async () => {
