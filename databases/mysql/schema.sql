@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 CREATE TABLE IF NOT EXISTS loan_statuses (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  description enum('pending', 'active', 'completed', 'canceled', 'rejected') NOT NULL
+  description enum('pending', 'active', 'finished', 'canceled', 'rejected') NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS loans (
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS investments (
 
 CREATE TABLE IF NOT EXISTS operation_categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  record_table enum('loans', 'loan_payments', 'investments', 'transfers') NOT NULL
+  record_table enum('loans', 'loan_payments', 'transfers', 'investments') NOT NULL
 )
 COMMENT = 'This table defines the categories of operations, specifying the type of record
 associated with each operation. The "record_table" column represents the source table
