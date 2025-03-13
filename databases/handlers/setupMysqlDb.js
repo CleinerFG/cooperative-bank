@@ -5,6 +5,7 @@ const {
 } = require('../constants.js');
 
 const { pool } = require('../mysql/scripts/config.js');
+const checkDbExists = require('../mysql/scripts/checkDbExists.js');
 const createDb = require('../mysql/scripts/createDb.js');
 const createTables = require('../mysql/scripts/createTables.js');
 const setDefaultSeeds = require('../mysql/scripts/setDefaultSeeds.js');
@@ -18,6 +19,7 @@ const dropExistingDb = ENV === 'development';
 module.exports = async () => {
   try {
     log.info('[DB Setup - Mysql] Started');
+    const dbExists = await checkDbExists(dbName);
     await createDb(dbName, dropExistingDb);
     await createTables(dbName);
     await setDefaultSeeds(dbName);
