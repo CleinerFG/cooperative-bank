@@ -14,7 +14,6 @@ const readSeedsFile = async () => {
 
 module.exports = async (dbName) => {
   const sql = await readSeedsFile();
-
   log('section', 'Seeding tables...');
   await pool.query(`USE ${dbName}; ${sql}`);
   log('content', 'The tables were seeded');
