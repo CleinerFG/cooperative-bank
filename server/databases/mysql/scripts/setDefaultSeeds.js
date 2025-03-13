@@ -3,7 +3,7 @@ const path = require('path');
 const { pool } = require('./pool');
 const { log } = require('../../utils/consoleLogger');
 
-const readSchemaFile = async () => {
+const readSeedsFile = async () => {
   const seedsPath = path.resolve(__dirname, '../default_seeds.sql');
 
   log('section', 'Reading: default_seeds.sql');
@@ -13,7 +13,7 @@ const readSchemaFile = async () => {
 };
 
 module.exports = async (dbName) => {
-  const sql = await readSchemaFile();
+  const sql = await readSeedsFile();
 
   log('section', 'Seeding tables...');
   await pool.query(`USE ${dbName}; ${sql}`);
