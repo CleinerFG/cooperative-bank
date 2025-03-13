@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS account_statuses (
 
 CREATE TABLE IF NOT EXISTS accounts (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
+  user_id INT UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(60) NOT NULL,
   created_at DATETIME NOT NULL DEFAULT NOW(),
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS loans (
   id INT AUTO_INCREMENT PRIMARY KEY,
   debtor_account_id INT NOT NULL,
   creditor_account_id INT NOT NULL,
-  contract_date DATETIME NOT NULL,
+  contract_date DATETIME NOT NULL DEFAULT NOW(),
   value DECIMAL(11,2) NOT NULL,
   month_rate DECIMAL(4,2) NOT NULL,
   installments_qty INT NOT NULL,
@@ -46,8 +46,11 @@ CREATE TABLE IF NOT EXISTS loans (
   FOREIGN KEY (creditor_account_id) REFERENCES accounts (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES loan_statuses (id)
-    ON UPDATE RESTRICT ON DELETE RESTRICT
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+
+  CONSTRAINT chk_debtor_not_creditor CHECK (debtor_account_id <> creditor_account_id)
 );
+
 
 CREATE TABLE IF NOT EXISTS loan_installment_statuses (
   id INT AUTO_INCREMENT PRIMARY KEY,
