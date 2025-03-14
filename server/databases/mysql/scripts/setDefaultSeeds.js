@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
-const { pool } = require('./pool');
+const { getConnection } = require('./config');
 const { log } = require('../../utils/consoleLogger');
 
 const readSeedsFile = async () => {
@@ -12,9 +12,11 @@ const readSeedsFile = async () => {
   return sql.trim().replace(/\s+/g, ' ');
 };
 
-module.exports = async (dbName) => {
+module.exports = async () => {
   const sql = await readSeedsFile();
+  const connection = await getConnection();
+
   log('section', 'Seeding tables...');
-  await pool.query(`USE ${dbName}; ${sql}`);
+  await connection.query(sql);
   log('content', 'The tables were seeded');
 };

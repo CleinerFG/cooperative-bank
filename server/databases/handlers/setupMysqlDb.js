@@ -1,17 +1,15 @@
-const { ENV, MYSQL_DB_NAME_BY_ENV } = require('../../config/constants');
+const { ENV } = require('../../config/constants');
+const { closePool } = require('../mysql/scripts/config');
 
-const { pool } = require('../mysql/scripts/pool');
 const checkDbExists = require('../mysql/scripts/checkDbExists');
 const createDb = require('../mysql/scripts/createDb');
 const createTables = require('../mysql/scripts/createTables');
 const setDefaultSeeds = require('../mysql/scripts/setDefaultSeeds');
-const setTimeZone = require('../mysql/scripts/setTimeZone');
+const populateDb = require('../mysql/scripts/populateDb');
 
 const { log, logRow } = require('../utils/consoleLogger');
 const displayError = require('../utils/displayError');
-const populateDb = require('../mysql/scripts/populateDb');
 
-const dbName = MYSQL_DB_NAME_BY_ENV;
 const dropExistingDb = ENV === 'development';
 
 module.exports = async () => {
@@ -19,25 +17,22 @@ module.exports = async () => {
     log('title', 'DB Setup - Mysql Started');
     logRow('section');
 
-    const dbExists = await checkDbExists(dbName);
+    const dbExists = await checkDbExists();
     logRow('section');
 
-    await createDb(dbName, dbExists, dropExistingDb);
+    await createDb(dbExists, dropExistingDb);
     logRow('section');
 
-    await setTimeZone(dbName);
-    logRow('section');
-
-    await createTables(dbName);
+    await createTables();
     logRow('section');
 
     if (ENV === 'development' || !dbExists) {
-      await setDefaultSeeds(dbName);
+      await setDefaultSeeds();
       logRow('section');
     }
 
     if (ENV === 'development') {
-      await populateDb(dbName);
+      await populateDb();
       logRow('section');
     }
   } catch (e) {
@@ -45,9 +40,7 @@ module.exports = async () => {
     displayError(e);
     logRow('section');
   } finally {
-    log('section', 'Closing pool connection...');
-    await pool.end();
-    log('content', 'The pool connection was closed');
+    await closePool();
     log('title', 'DB Setup - Mysql Finished');
   }
 };

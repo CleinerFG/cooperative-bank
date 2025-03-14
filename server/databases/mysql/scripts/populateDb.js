@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
-const { pool } = require('./pool');
+const { getConnection } = require('./config');
 const { log } = require('../../utils/consoleLogger');
 
 const readPopulateSeedsFile = async () => {
@@ -12,9 +12,11 @@ const readPopulateSeedsFile = async () => {
   return sql.trim().replace(/\s+/g, ' ');
 };
 
-module.exports = async (dbName) => {
+module.exports = async () => {
   const sql = await readPopulateSeedsFile();
+  const connection = await getConnection();
+
   log('section', 'Populating tables...');
-  await pool.query(`USE ${dbName}; ${sql}`);
+  await connection.query(sql);
   log('content', 'The tables were populeted');
 };

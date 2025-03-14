@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
-const { pool } = require('./pool');
+const { getConnection } = require('./config');
 const { log } = require('../../utils/consoleLogger');
 
 const readSchemaFile = async () => {
@@ -12,10 +12,11 @@ const readSchemaFile = async () => {
   return sql.trim().replace(/\s+/g, ' ');
 };
 
-module.exports = async (dbName) => {
+module.exports = async () => {
   const sql = await readSchemaFile();
+  const connection = await getConnection()
 
   log('section', 'Creating tables...');
-  await pool.query(`USE ${dbName}; ${sql}`);
+  await connection.query(sql);
   log('content', 'The tables were created');
 };
