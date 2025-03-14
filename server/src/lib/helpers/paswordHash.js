@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const {
   PasswordHashingError,
   ComparePasswordError,
-} = require('../../errors/HashingError');
+} = require('../../errors/HashingErrors');
 
 /**
  * @param {string} password
