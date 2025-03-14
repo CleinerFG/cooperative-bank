@@ -1,7 +1,3 @@
-INSERT INTO account_statuses (description) VALUES
-  ('active'),
-  ('closed');
-
 INSERT INTO loan_statuses (description) VALUES
   ('pending'),
   ('active'),

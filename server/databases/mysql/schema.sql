@@ -3,29 +3,12 @@ CREATE TABLE IF NOT EXISTS users (
   opaque_id VARCHAR(36) UNIQUE NOT NULL,
   full_name VARCHAR(255) NOT NULL,
   cpf VARCHAR(11) UNIQUE NOT NULL,
-  birth DATE NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS account_statuses (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  description enum('active', 'closed') NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS accounts (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  opaque_id VARCHAR(36) UNIQUE NOT NULL,
-  user_id INT UNIQUE NOT NULL,
+  birth DATE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(60) NOT NULL,
   created_at DATETIME NOT NULL DEFAULT NOW(),
   operation_password VARCHAR(60) DEFAULT NULL,
-  balance DECIMAL(14,2) NOT NULL DEFAULT 0,
-  status_id INT NOT NULL DEFAULT 1,
-
-  FOREIGN KEY (user_id) REFERENCES users (id)
-    ON UPDATE RESTRICT ON DELETE RESTRICT,
-  FOREIGN KEY (status_id) REFERENCES account_statuses (id)
-    ON UPDATE RESTRICT ON DELETE RESTRICT
+  balance DECIMAL(14,2) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS loan_statuses (
@@ -36,24 +19,23 @@ CREATE TABLE IF NOT EXISTS loan_statuses (
 CREATE TABLE IF NOT EXISTS loans (
   id INT AUTO_INCREMENT PRIMARY KEY,
   opaque_id VARCHAR(36) UNIQUE NOT NULL,
-  debtor_account_id INT NOT NULL,
-  creditor_account_id INT NOT NULL,
+  debtor_user_id INT NOT NULL,
+  creditor_user_id INT NOT NULL,
   contract_date DATETIME NOT NULL DEFAULT NOW(),
   value DECIMAL(11,2) NOT NULL,
   month_rate DECIMAL(4,2) NOT NULL,
   installments_qty INT NOT NULL,
   status_id INT NOT NULL DEFAULT 1,
 
-  FOREIGN KEY (debtor_account_id) REFERENCES accounts (id)
+  FOREIGN KEY (debtor_user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
-  FOREIGN KEY (creditor_account_id) REFERENCES accounts (id)
+  FOREIGN KEY (creditor_user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES loan_statuses (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
-  CONSTRAINT chk_debtor_not_creditor CHECK (debtor_account_id <> creditor_account_id)
+  CONSTRAINT chk_debtor_not_creditor CHECK (debtor_user_id <> creditor_user_id)
 );
-
 
 CREATE TABLE IF NOT EXISTS loan_installment_statuses (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -93,15 +75,15 @@ CREATE TABLE IF NOT EXISTS transfer_statuses (
 CREATE TABLE IF NOT EXISTS transfers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   opaque_id VARCHAR(36) UNIQUE NOT NULL,
-  sender_account_id INT NOT NULL,
-  receiver_account_id INT NOT NULL,
+  sender_user_id INT NOT NULL,
+  receiver_user_id INT NOT NULL,
   date DATETIME NOT NULL DEFAULT NOW() ,
   value DECIMAL(14,2) NOT NULL,
   status_id INT NOT NULL DEFAULT 1,
 
-  FOREIGN KEY (sender_account_id) REFERENCES accounts (id)
+  FOREIGN KEY (sender_user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
-  FOREIGN KEY (receiver_account_id) REFERENCES accounts (id)
+  FOREIGN KEY (receiver_user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES transfer_statuses (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT
@@ -115,14 +97,14 @@ CREATE TABLE IF NOT EXISTS investment_statuses (
 CREATE TABLE IF NOT EXISTS investments (
   id INT AUTO_INCREMENT PRIMARY KEY,
   opaque_id VARCHAR(36) UNIQUE NOT NULL,
-  account_id INT NOT NULL,
+  user_id INT NOT NULL,
   contract_date DATETIME NOT NULL,
   liquidy_date DATETIME NOT NULL,
   month_rate DECIMAL(4,2) NOT NULL,
   value DECIMAL(11,2) NOT NULL,
   status_id INT NOT NULL DEFAULT 1,
 
-  FOREIGN KEY (account_id) REFERENCES accounts (id)
+  FOREIGN KEY (user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (status_id) REFERENCES investment_statuses (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT
@@ -147,13 +129,13 @@ CREATE TABLE IF NOT EXISTS operation_flows (
 CREATE TABLE IF NOT EXISTS operations (
   id INT AUTO_INCREMENT PRIMARY KEY,
   opaque_id VARCHAR(36) UNIQUE NOT NULL,
-  account_id INT NOT NULL,
+  user_id INT NOT NULL,
   category_id INT NOT NULL,
   category_record_id INT NOT NULL COMMENT 'Polymorphic relationship: contains a record from the table specified in "record_table" of the table "operation_categories" according to the "category_id" of this table',
   flow_id INT NOT NULL,
   value DECIMAL(14,2) NOT NULL,
 
-  FOREIGN KEY (account_id) REFERENCES accounts (id)
+  FOREIGN KEY (user_id) REFERENCES users (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   FOREIGN KEY (category_id) REFERENCES operation_categories (id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
