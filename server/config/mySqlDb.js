@@ -41,7 +41,7 @@ const executeTransaction = async (...queries) => {
 };
 
 pool.on('connection', async (connection) => {
-  await connection.query("SET time_zone='+00:00'");
+  await connection.promise().query("SET time_zone='+00:00'");
 });
 
 module.exports = { pool, executeTransaction };
