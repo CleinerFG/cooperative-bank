@@ -1,4 +1,8 @@
 const bcrypt = require('bcryptjs');
+const {
+  PasswordHashingError,
+  ComparePasswordError,
+} = require('../../errors/HashingError');
 
 const createPasswordHash = async (password) => {
   try {
@@ -6,8 +10,7 @@ const createPasswordHash = async (password) => {
     const hashedPassword = await bcrypt.hash(password, salt);
     return hashedPassword;
   } catch (e) {
-    console.error('Hash pass error:', e);
-    throw e;
+    throw new PasswordHashingError(e.message);
   }
 };
 
@@ -16,8 +19,7 @@ const comparePassword = async (password, hashedPassword) => {
     const match = await bcrypt.compare(password, hashedPassword);
     return match;
   } catch (e) {
-    console.error('Comapare error:', e);
-    throw e;
+    throw new ComparePasswordError(e.message);
   }
 };
 
