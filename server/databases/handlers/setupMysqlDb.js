@@ -31,10 +31,10 @@ module.exports = async () => {
       logRow('section');
     }
 
-    if (ENV === 'development') {
-      await populateDb();
-      logRow('section');
-    }
+    // if (ENV === 'development') {
+    //   await populateDb();
+    //   logRow('section');
+    // }
   } catch (e) {
     log('fatal', 'Error setting database!');
     displayError(e);

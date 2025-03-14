@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   full_name VARCHAR(255) NOT NULL,
   cpf VARCHAR(11) UNIQUE NOT NULL,
   birth DATE NOT NULL
@@ -12,6 +13,7 @@ CREATE TABLE IF NOT EXISTS account_statuses (
 
 CREATE TABLE IF NOT EXISTS accounts (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   user_id INT UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(60) NOT NULL,
@@ -33,6 +35,7 @@ CREATE TABLE IF NOT EXISTS loan_statuses (
 
 CREATE TABLE IF NOT EXISTS loans (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   debtor_account_id INT NOT NULL,
   creditor_account_id INT NOT NULL,
   contract_date DATETIME NOT NULL DEFAULT NOW(),
@@ -59,6 +62,7 @@ CREATE TABLE IF NOT EXISTS loan_installment_statuses (
 
 CREATE TABLE IF NOT EXISTS loan_installments (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   loan_id INT NOT NULL,
   value DECIMAL(11,2) NOT NULL,
   due_date date NOT NULL,
@@ -72,6 +76,7 @@ CREATE TABLE IF NOT EXISTS loan_installments (
 
 CREATE TABLE IF NOT EXISTS loan_payments (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   installment_id INT NOT NULL,
   date DATETIME NOT NULL DEFAULT NOW() ,
   value DECIMAL(11,2) NOT NULL,
@@ -87,6 +92,7 @@ CREATE TABLE IF NOT EXISTS transfer_statuses (
 
 CREATE TABLE IF NOT EXISTS transfers (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   sender_account_id INT NOT NULL,
   receiver_account_id INT NOT NULL,
   date DATETIME NOT NULL DEFAULT NOW() ,
@@ -108,6 +114,7 @@ CREATE TABLE IF NOT EXISTS investment_statuses (
 
 CREATE TABLE IF NOT EXISTS investments (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   account_id INT NOT NULL,
   contract_date DATETIME NOT NULL,
   liquidy_date DATETIME NOT NULL,
@@ -139,6 +146,7 @@ CREATE TABLE IF NOT EXISTS operation_flows (
 
 CREATE TABLE IF NOT EXISTS operations (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  opaque_id VARCHAR(36) UNIQUE NOT NULL,
   account_id INT NOT NULL,
   category_id INT NOT NULL,
   category_record_id INT NOT NULL COMMENT 'Polymorphic relationship: contains a record from the table specified in "record_table" of the table "operation_categories" according to the "category_id" of this table',
