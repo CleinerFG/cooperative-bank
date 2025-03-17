@@ -1,8 +1,7 @@
 const { PROFILE_IMGS_DIR } = require('../constants/serverConstants');
 const path = require('path');
 const fs = require('fs/promises');
-const repository = require('../repositories/accountRepository');
-const { log } = require('console');
+const repository = require('../repositories/userRepository');
 
 module.exports = {
   async getBalance() {
