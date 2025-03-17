@@ -1,5 +1,6 @@
 const { sequelize } = require('../index');
 require('../../../../models/UserModel');
+require('../../../../models/LoanModel');
 const { log, logRow } = require('../../../../lib/utils/consoleLogger');
 
 module.exports = async () => {
