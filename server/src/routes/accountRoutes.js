@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/accountController');
+const controller = require('../controllers/userController');
 
 router.get('/balance', controller.getBalance);
 router.get('/details', controller.getDetails);
