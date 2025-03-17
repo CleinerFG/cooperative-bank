@@ -8,9 +8,9 @@ const UserModel = sequelize.define('User', {
     autoIncrement: true,
   },
   opaqueId: {
-    type: DataTypes.STRING(36),
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     unique: true,
-    allowNull: false,
   },
   fullName: {
     type: DataTypes.STRING(255),
