@@ -1,16 +1,16 @@
-const model = require('../models/UserModel');
+const Model = require('../models/UserModel');
 
 module.exports = {
   async findByCpf(cpf) {
-    const user = await model.findOne({
+    const user = await Model.findOne({
       where: { cpf },
       attributes: ['fullName', 'cpf'],
     });
-    return user.toJSON() || null;
+    return user ? user.toJSON() : null;
   },
 
   async findBalanceById(id) {
-    const user = await model.findByPk(id, {
+    const user = await Model.findByPk(id, {
       attributes: ['balance'],
       where: { id },
     });
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   async findDetailsById(id) {
-    const user = await model.findByPk(id, {
+    const user = await Model.findByPk(id, {
       attributes: [
         'fullName',
         'birth',
@@ -27,6 +27,6 @@ module.exports = {
         ['created_at', 'registration'],
       ],
     });
-    return user.toJSON() || null;
+    return user ? user.toJSON() : null;
   },
 };

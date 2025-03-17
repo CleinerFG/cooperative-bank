@@ -13,6 +13,9 @@
   "jest": {
     "setupFiles": [
       "<rootDir>/__tests__/jest.setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/jest.setup.js"
     ]
   },
   "keywords": [
