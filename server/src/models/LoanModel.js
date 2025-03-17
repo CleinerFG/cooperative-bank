@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/databases/mysql/index');
-const UserModel = require('./UserModel');
 
 const LoanModel = sequelize.define(
   'Loan',
@@ -66,13 +65,15 @@ const LoanModel = sequelize.define(
   }
 );
 
-LoanModel.belongsTo(UserModel, {
-  foreignKey: 'debtorUserId',
-  as: 'debtor',
-});
-LoanModel.belongsTo(UserModel, {
-  foreignKey: 'creditorUserId',
-  as: 'creditor',
-});
+LoanModel.associate = (models) => {
+  LoanModel.belongsTo(models.User, {
+    foreignKey: 'debtorUserId',
+    as: 'debtor',
+  });
+  LoanModel.belongsTo(models.User, {
+    foreignKey: 'creditorUserId',
+    as: 'creditor',
+  });
+};
 
 module.exports = LoanModel;

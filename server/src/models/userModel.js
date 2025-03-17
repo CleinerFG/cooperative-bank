@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/databases/mysql/index');
-const LoanModel = require('./LoanModel');
 
 const UserModel = sequelize.define(
   'User',
@@ -51,13 +50,15 @@ const UserModel = sequelize.define(
   }
 );
 
-UserModel.hasMany(LoanModel, {
-  foreignKey: 'debtorUserId',
-  as: 'debtorLoans',
-});
-UserModel.hasMany(LoanModel, {
-  foreignKey: 'creditorUserId',
-  as: 'creditorLoans',
-});
+UserModel.associate = (models) => {
+  UserModel.hasMany(models.Loan, {
+    foreignKey: 'debtorUserId',
+    as: 'debtorLoans',
+  });
+  UserModel.hasMany(models.Loan, {
+    foreignKey: 'creditorUserId',
+    as: 'creditorLoans',
+  });
+};
 
 module.exports = UserModel;
