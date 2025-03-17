@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const { Sequelize } = require('sequelize');
 const {
   MYSQL_DB_NAME_BY_ENV,
@@ -7,7 +5,8 @@ const {
   MYSQL_PASSWORD,
   MYSQL_HOST,
   MYSQL_PORT,
-} = require('../constants');
+} = require('../../constants');
+const { log, logRow } = require('../../../lib/utils/consoleLogger');
 
 const sequelize = new Sequelize(
   MYSQL_DB_NAME_BY_ENV,
@@ -32,13 +31,11 @@ const sequelize = new Sequelize(
   }
 );
 
-(async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('MySql - Connection has benn establisedh with success');
-  } catch (e) {
-    console.error('Unable to connect to the database:', e);
-  }
-})();
+const closeConnection = async () => {
+  log('section', 'Closing sequelize connection...');
+  sequelize.close();
+  log('content', 'Connection was closed');
+  logRow('section');
+};
 
-module.exports = sequelize;
+module.exports = { sequelize, closeConnection };

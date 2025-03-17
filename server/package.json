@@ -8,7 +8,7 @@
     "test:verbose": "jest --verbose",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "set:databases": "node databases/index.js"
+    "set:databases": "node src/config/databases/mysql/setup.js"
   },
   "keywords": [
     "Cooperative",
