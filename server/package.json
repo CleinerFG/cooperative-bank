@@ -10,6 +10,11 @@
     "dev": "nodemon src/server.js",
     "set:databases": "node src/config/databases/mysql/setup.js"
   },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/__tests__/jest.setup.js"
+    ]
+  },
   "keywords": [
     "Cooperative",
     "Bank",
