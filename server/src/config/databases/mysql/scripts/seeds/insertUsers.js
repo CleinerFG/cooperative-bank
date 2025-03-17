@@ -1,4 +1,7 @@
 const UserModel = require('../../../../../models/UserModel');
+const {
+  createPasswordHash,
+} = require('../../../../../lib/helpers/paswordHash');
 
 const data = [
   { cpf: '14481718064', fullName: 'Ashley Williams', birth: '1978-04-08' },
@@ -30,14 +33,14 @@ module.exports = async () => {
 
     const email = createEmail(fullName);
     const balance = randomBalance();
-    const password = 'passTest123';
+    const passHash = await createPasswordHash(`myPassword${i}`);
 
     const userModel = await UserModel.create({
       fullName,
       cpf,
       birth,
       email,
-      password,
+      password: passHash,
       balance,
     });
 
