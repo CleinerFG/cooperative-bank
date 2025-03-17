@@ -1,5 +1,5 @@
-const sequelize = require('./mysqlConfig');
-require('../../src/models/UserModel');
+const sequelize = require('.');
+require('../../../src/models/UserModel');
 
 (async () => {
   await sequelize.sync({ force: true, match: /_(testmode|devmode)$/ });
