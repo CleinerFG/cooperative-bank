@@ -9,7 +9,7 @@ const syncModels = require('./scripts/syncModels');
 
 const { log, logRow } = require('../../../lib/utils/consoleLogger');
 const displayError = require('../../../lib/utils/displayError');
-
+const populateDb = require('./scripts/seeds/populateDb');
 
 const setup = async () => {
   try {
@@ -17,7 +17,7 @@ const setup = async () => {
     await createDb();
     await checkSequelizeConnection();
     await syncModels();
-    
+    await populateDb();
   } catch (e) {
     logRow('section');
     log('fatal', 'Error setting database!');
