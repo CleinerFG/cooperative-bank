@@ -7,7 +7,7 @@ const {
   MYSQL_PORT,
 } = require('./constants');
 
-module.exports = new Sequelize(
+const sequelize = new Sequelize(
   MYSQL_DB_NAME_BY_ENV,
   MYSQL_USER,
   MYSQL_PASSWORD,
@@ -15,7 +15,7 @@ module.exports = new Sequelize(
     host: MYSQL_HOST,
     port: MYSQL_PORT,
     dialect: 'mysql',
-    logging: true,
+    logging: false,
     pool: {
       max: 10,
       min: 0,
@@ -30,3 +30,14 @@ module.exports = new Sequelize(
     sync: { force: false },
   }
 );
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('MySql - Connection has benn establisedh with success');
+  } catch (e) {
+    console.error('Unable to connect to the database:', e);
+  }
+})();
+
+module.exports = sequelize;
