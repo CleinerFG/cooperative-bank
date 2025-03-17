@@ -22,7 +22,7 @@ app.use('/api', simulateDelayMiddleware);
 
 // New routes structure
 const authRoutes = require('./routes/authRoutes.js');
-const accountRoutes = require('./routes/accountRoutes.js');
+// const accountRoutes = require('./routes/accountRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 const loansRoutes = require('./routes/loansRoutes.js');
 const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
@@ -31,7 +31,7 @@ const notificationsRoutes = require('./routes/notificationsRoutes.js');
 const spaRoutes = require('./routes/spaRoutes.js');
 
 app.use('/api/auth', authRoutes);
-app.use('/api/account', accountRoutes);
+// app.use('/api/account', accountRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/loans', loansRoutes);
 app.use('/api/loans/requests', loanRequestsRoutes);
