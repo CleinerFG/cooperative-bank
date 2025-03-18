@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const {
   MYSQL_HOST,
   MYSQL_USER,
