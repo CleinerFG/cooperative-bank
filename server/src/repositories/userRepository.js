@@ -1,12 +1,25 @@
+const { Op } = require('sequelize');
 const Model = require('../models/UserModel');
 
 module.exports = {
+  async create({ fullName, cpf, birth, email, password }) {
+    return await Model.create({ fullName, cpf, birth, email, password });
+  },
+
   async findByCpf(cpf) {
     const user = await Model.findOne({
       where: { cpf },
       attributes: ['fullName', 'cpf'],
     });
-    return user ? user.toJSON() : null;
+    return user;
+  },
+
+  async findEmail({ email }) {
+    return await Model.findOne({ where: { email }, attributes: ['email'] });
+  },
+
+  async findCpf({ cpf }) {
+    return await Model.findOne({ where: { cpf }, attributes: ['cpf'] });
   },
 
   async findBalanceById(id) {
@@ -27,6 +40,6 @@ module.exports = {
         ['created_at', 'registration'],
       ],
     });
-    return user ? user.toJSON() : null;
+    return user;
   },
 };
