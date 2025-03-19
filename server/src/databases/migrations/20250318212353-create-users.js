@@ -13,6 +13,7 @@ module.exports = {
       opaque_id: {
         type: Sequelize.UUID,
         unique: true,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
       },
       full_name: {
