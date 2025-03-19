@@ -29,7 +29,10 @@ const genUniqueCpf = async () => {
 
   do {
     cpf = genCpf();
-    cpfNotFound = await UserModel.findOne({ where: { cpf } });
+    cpfNotFound = await UserModel.findOne({
+      where: { cpf },
+      attributes: ['cpf'],
+    });
   } while (cpfNotFound);
 
   return cpf;
@@ -44,7 +47,10 @@ const genUniqueEmail = async (firstName, lastName) => {
       firstName: firstName.toLowerCase(),
       lastName: lastName.toLowerCase(),
     });
-    emailNotFound = await UserModel.findOne({ where: { email } });
+    emailNotFound = await UserModel.findOne({
+      where: { email },
+      attributes: ['email'],
+    });
   } while (emailNotFound);
 
   return email;
