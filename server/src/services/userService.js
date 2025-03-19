@@ -1,4 +1,4 @@
-const { PROFILE_IMGS_DIR } = require('../constants/serverConstants');
+const { PROFILE_IMGS_DIR } = require('../config/constants');
 const path = require('path');
 const fs = require('fs/promises');
 const repository = require('../repositories/userRepository');

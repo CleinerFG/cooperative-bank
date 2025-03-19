@@ -1,4 +1,4 @@
-const { APP_DIR, PUBLIC_DIR } = require('../constants/spaConstants');
+const { APP_DIR, PUBLIC_DIR } = require('../config/constants');
 const path = require('path');
 
 module.exports = {
