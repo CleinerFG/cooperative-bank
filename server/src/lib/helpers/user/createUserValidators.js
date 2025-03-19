@@ -1,5 +1,4 @@
 const userRepository = require('../../../repositories/userRepository');
-const { removeTimestamp } = require('../../utils/dataNormalizer');
 const {
   datetimeValidator,
   cpfValidator,
@@ -29,6 +28,8 @@ const userEmailValidator = async (email) => {
   if (typeof email !== 'string') return [false, 'emailMustBeString'];
   try {
     emailValidator(email);
+    const emailExists = await userRepository.findEmail({ email });
+    if (emailExists) return [false, 'emailAlreadyExists'];
     return [true, null];
   } catch (e) {
     if (e.message === 'invalidEmail') return [false, e.message];
