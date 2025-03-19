@@ -38,7 +38,7 @@ const genPerson = async () => {
   const cpf = await genUniqueCpf();
   const email = await genUniqueEmail(firstName, lastName);
 
-  const birth = faker.date.birthdate().toISOString();
+  const birth = faker.date.birthdate().toISOString().split('T')[0];
   const password = firstName + lastName;
   const balance = faker.number.float({ min: 1000, max: 1000000 });
 
@@ -52,7 +52,7 @@ const createUser = async () => {
     ...person,
     password: hashPass,
   });
-  return model;
+  return { model: model, person: { ...person, hashPass } };
 };
 
 module.exports = { createUser };
