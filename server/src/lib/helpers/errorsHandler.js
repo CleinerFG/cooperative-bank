@@ -4,7 +4,7 @@ module.exports = {
     return { error: { type: 'server' } };
   },
 
-  userErrorsHandler: (fields) => {
-    return { error: { type: 'user', fields } };
+  clientErrorsHandler: (fields) => {
+    return { error: { type: 'client', fields } };
   },
 };

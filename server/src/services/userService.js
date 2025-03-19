@@ -3,9 +3,12 @@ const path = require('path');
 const fs = require('fs/promises');
 const { PROFILE_IMGS_DIR } = require('../config/constants');
 const { userValidateAll } = require('../lib/helpers/user/createUserValidators');
-const { removeTimestamp } = require('../lib/utils/dataNormalizer');
 const {
-  userErrorsHandler,
+  removeTimestamp,
+  removeCpfFormatting,
+} = require('../lib/utils/dataNormalizer');
+const {
+  clientErrorsHandler,
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
 
@@ -21,16 +24,15 @@ module.exports = {
       });
 
       if (isValid) {
-        const cpfNormalized = cpf.replace(/[\.-]/g, '');
         return await userRepository.create({
           fullName,
-          cpf: cpfNormalized,
+          cpf: removeCpfFormatting(cpf),
           birth: removeTimestamp(birth),
           email,
           password,
         });
       }
-      return userErrorsHandler(errors);
+      return clientErrorsHandler(errors);
     } catch (e) {
       return serverErrorHandler(e);
     }
