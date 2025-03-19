@@ -15,9 +15,11 @@ const {
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
     try {
+      const normalizedCpf = removeCpfFormatting(cpf);
+
       const [isValid, errors] = await userValidateAll({
         fullName,
-        cpf,
+        cpf: normalizedCpf,
         birth,
         email,
         password,
@@ -26,7 +28,7 @@ module.exports = {
       if (isValid) {
         return await userRepository.create({
           fullName,
-          cpf: removeCpfFormatting(cpf),
+          cpf: normalizedCpf,
           birth: removeTimestamp(birth),
           email,
           password,
