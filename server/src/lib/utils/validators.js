@@ -1,10 +1,10 @@
-const datetimeValidator = (dateString) => {
-  const date = new Date(dateString);
+const datetimeValidator = (str) => {
+  const date = new Date(str);
   if (isNaN(date.getTime())) throw new Error('invalidDatetime');
   return true;
 };
 
-const emailValidator = (string) => {
+const emailValidator = (str) => {
   const localPart = /^[\w._%+-]+/;
   const domainName = /[\w.-]+/;
   const topLevelDomain = /\.[\w]{2,}$/;
@@ -12,8 +12,33 @@ const emailValidator = (string) => {
   const regex = new RegExp(
     `^${localPart.source}@${domainName.source}${topLevelDomain.source}$`
   );
-  if (!regex.test(string)) throw new Error('invalidEmail');
+  if (!regex.test(str)) throw new Error('invalidEmail');
   return true;
+};
+
+const passwordValidator = (str) => {
+  const rules = [
+    { regex: /^.{8,}$/, error: 'must8CharsLong' },
+    { regex: /[a-z]/, error: 'mustLowercaseChar' },
+    { regex: /[A-Z]/, error: 'mustUppercaseChar' },
+    { regex: /\d/, error: 'mustNumber' },
+    { regex: /[\W]/, error: 'mustSpecialChar' },
+    { regex: /\s/, error: 'cannotBlankSpace', negate: true },
+    {
+      regex:
+        /(012|123|234|345|456|567|678|789|890|abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz)/i,
+      error: 'cannotSeqPattern',
+      negate: true,
+    },
+    { regex: /(.)\1{2,}/, error: 'cannotCharSeq', negate: true },
+  ];
+
+  for (const { regex, error, negate } of rules) {
+    const match = str.match(regex);
+    if ((negate && match) || (!negate && !match)) {
+      throw new Error(error);
+    }
+  }
 };
 
 const cpfValidator = (value) => {
@@ -40,4 +65,9 @@ const cpfValidator = (value) => {
   return true;
 };
 
-module.exports = { datetimeValidator, cpfValidator, emailValidator };
+module.exports = {
+  datetimeValidator,
+  cpfValidator,
+  emailValidator,
+  passwordValidator,
+};

@@ -9,6 +9,7 @@ const {
   datetimeValidator,
   cpfValidator,
   emailValidator,
+  passwordValidator,
 } = require('../../utils/validators');
 
 const userFullNameValidator = (fullName) => {
@@ -151,20 +152,59 @@ const userLegalAgeValidator = (birth) => {
   }
 };
 
-const userValidateAll = async ({ fullName, cpf, email, birth }) => {
-  const errors = {};
-  const normalized = {};
+const userPasswordValidation = (password) => {
+  const field = {
+    name: 'password',
+    isValid: false,
+    error: null,
+    normalized: null,
+  };
 
+  if (typeof password !== 'string') {
+    field.error = 'mustBeString';
+    return field;
+  }
+
+  try {
+    passwordValidator(password);
+
+    field.isValid = true;
+    field.normalized = password;
+
+    return field;
+  } catch (e) {
+    if (
+      [
+        'must8CharsLong',
+        'mustLowercaseChar',
+        'mustUppercaseChar',
+        'mustNumber',
+        'mustSpecialChar',
+        'cannotBlankSpace',
+        'cannotSeqPattern',
+        'cannotCharSeq',
+      ].includes(e.message)
+    ) {
+      field.error = e.message;
+      return field;
+    }
+    throw e;
+  }
+};
+
+const userValidateAll = async ({ fullName, cpf, email, birth, password }) => {
   const fullNameValidation = userFullNameValidator(fullName);
   const cpfValidation = await userCpfValidator(cpf);
   const emailValidation = await userEmailValidator(email);
   const birthValidation = userLegalAgeValidator(birth);
+  const passwordValidation = userPasswordValidation(password);
 
   const validations = [
     fullNameValidation,
     cpfValidation,
     emailValidation,
     birthValidation,
+    passwordValidation,
   ];
 
   const isValid = validations.every((field) => field.isValid);
@@ -186,5 +226,6 @@ module.exports = {
   userCpfValidator,
   userEmailValidator,
   userLegalAgeValidator,
+  userPasswordValidation,
   userValidateAll,
 };
