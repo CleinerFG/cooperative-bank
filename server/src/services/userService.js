@@ -4,11 +4,6 @@ const fs = require('fs/promises');
 const { PROFILE_IMGS_DIR } = require('../config/constants');
 const { userValidateAll } = require('../lib/helpers/user/createUserValidators');
 const {
-  removeTimestamp,
-  removeCpfFormatting,
-  removeBlankSpace,
-} = require('../lib/utils/dataNormalizer');
-const {
   clientErrorsHandler,
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
@@ -16,11 +11,9 @@ const {
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
     try {
-      const normalizedCpf = removeCpfFormatting(cpf);
-
-      const [isValid, errors] = await userValidateAll({
+      const [isValid, fields] = await userValidateAll({
         fullName,
-        cpf: normalizedCpf,
+        cpf,
         birth,
         email,
         password,
@@ -28,14 +21,14 @@ module.exports = {
 
       if (isValid) {
         return await userRepository.create({
-          fullName: removeBlankSpace(fullName),
-          cpf: normalizedCpf,
-          birth: removeTimestamp(birth),
-          email,
+          fullName: fields.fullName,
+          cpf: fields.cpf,
+          birth: fields.birth,
+          email: fields.email,
           password,
         });
       }
-      return clientErrorsHandler(errors);
+      return clientErrorsHandler(fields);
     } catch (e) {
       return serverErrorHandler(e);
     }

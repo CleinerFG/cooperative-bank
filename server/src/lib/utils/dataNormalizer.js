@@ -1,13 +1,13 @@
 const removeBlankSpace = (str) => {
-  return string.replace(/\s{2,}/g, ' ');
+  return str.replace(/\s{2,}/g, ' ');
 };
 
 const removeCpfFormatting = (cpf) => {
   return cpf.replace(/[\.\-]/g, '');
 };
 
-const removeTimestamp = (dateString) => {
-  return dateString.split('T')[0];
+const removeTimestamp = (dateStr) => {
+  return dateStr.split('T')[0];
 };
 
 function titleCase(str) {

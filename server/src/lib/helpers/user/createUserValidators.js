@@ -1,44 +1,127 @@
 const userRepository = require('../../../repositories/userRepository');
 const {
+  titleCase,
+  removeBlankSpace,
+  removeCpfFormatting,
+  removeTimestamp,
+} = require('../../utils/dataNormalizer');
+const {
   datetimeValidator,
   cpfValidator,
   emailValidator,
 } = require('../../utils/validators');
 
 const userFullNameValidator = (fullName) => {
-  if (typeof fullName !== 'string') return [false, 'fullNameMustBeString'];
-  if (RegExp(/\d/g).test(fullName)) return [false, 'fullNameCannotHaveNumbers'];
-  return [true, null];
+  const field = {
+    name: 'fullName',
+    isValid: false,
+    error: null,
+    normalized: null,
+  };
+
+  if (typeof fullName !== 'string') {
+    field.error = 'mustBeString';
+    return field;
+  }
+
+  if (RegExp(/\d/g).test(fullName)) {
+    field.error = 'cannotHaveNumbers';
+    return field;
+  }
+
+  const normalized = titleCase(removeBlankSpace(fullName));
+  field.isValid = true;
+  field.normalized = normalized;
+
+  return field;
 };
 
 const userCpfValidator = async (cpf) => {
-  if (typeof cpf !== 'string') return [false, 'cpfMustBeString'];
+  const field = {
+    name: 'cpf',
+    isValid: false,
+    error: null,
+    normalized: null,
+  };
+
+  if (typeof cpf !== 'string') {
+    field.error = 'mustBeString';
+    return field;
+  }
+
   try {
     cpfValidator(cpf);
-    const cpfExists = await userRepository.findCpf({ cpf });
-    if (cpfExists) return [false, 'cpfAlreadyExists'];
-    return [true, null];
+    const normalized = removeCpfFormatting(cpf);
+    const cpfExists = await userRepository.findCpf({ cpf: normalized });
+
+    if (cpfExists) {
+      field.error = 'alreadyExists';
+      return field;
+    }
+
+    field.isValid = true;
+    field.normalized = normalized;
+
+    return field;
   } catch (e) {
-    if (e.message === 'invalidCpf') return [false, e.message];
+    if (e.message === 'invalidCpf') {
+      field.error = e.message;
+      return field;
+    }
+
     throw e;
   }
 };
 
 const userEmailValidator = async (email) => {
-  if (typeof email !== 'string') return [false, 'emailMustBeString'];
+  const field = {
+    name: 'email',
+    isValid: false,
+    error: null,
+    normalized: null,
+  };
+
+  if (typeof email !== 'string') {
+    field.error = 'mustBeString';
+    return field;
+  }
+
   try {
     emailValidator(email);
     const emailExists = await userRepository.findEmail({ email });
-    if (emailExists) return [false, 'emailAlreadyExists'];
-    return [true, null];
+
+    if (emailExists) {
+      field.error = 'alreadyExists';
+      return field;
+    }
+
+    field.isValid = true;
+    field.normalized = email;
+
+    return field;
   } catch (e) {
-    if (e.message === 'invalidEmail') return [false, e.message];
+    if (e.message === 'invalidEmail') {
+      field.error = e.message;
+      return field;
+    }
+
     throw e;
   }
 };
 
 const userLegalAgeValidator = (birth) => {
-  if (typeof birth !== 'string') return [false, 'birthMustBeString'];
+  const field = {
+    name: 'birth',
+    isValid: false,
+    error: null,
+    normalized: null,
+  };
+
+  if (typeof birth !== 'string') {
+    field.error = 'mustBeString';
+    return field;
+  }
+
   try {
     datetimeValidator(birth);
 
@@ -50,31 +133,52 @@ const userLegalAgeValidator = (birth) => {
     const day = today.getUTCDate() - birthDate.getUTCDate();
 
     if (!(age >= 18 && month >= 0 && day >= 0)) {
-      return [false, 'isNot18YearsOld'];
+      field.error = 'isNot18YearsOld';
+      return field;
     }
-    return [true, null];
+
+    field.isValid = true;
+    field.normalized = removeTimestamp(birth);
+
+    return field;
   } catch (e) {
-    if (e.message === 'invalidDatetime') return [false, e.message];
+    if (e.message === 'invalidDatetime') {
+      field.error = e.message;
+      return field;
+    }
+
     throw e;
   }
 };
 
 const userValidateAll = async ({ fullName, cpf, email, birth }) => {
   const errors = {};
+  const normalized = {};
 
-  const [fullNameIsValid, fullNameError] = userFullNameValidator(fullName);
-  const [cpfIsValid, cpfError] = await userCpfValidator(cpf);
-  const [emailIsValid, emailError] = await userEmailValidator(email);
-  const [birthIsValid, birthError] = userLegalAgeValidator(birth);
+  const fullNameValidation = userFullNameValidator(fullName);
+  const cpfValidation = await userCpfValidator(cpf);
+  const emailValidation = await userEmailValidator(email);
+  const birthValidation = userLegalAgeValidator(birth);
 
-  if (!fullNameIsValid) errors.fullName = fullNameError;
-  if (!cpfIsValid) errors.cpf = cpfError;
-  if (!emailIsValid) errors.email = emailError;
-  if (!birthIsValid) errors.birth = birthError;
+  const validations = [
+    fullNameValidation,
+    cpfValidation,
+    emailValidation,
+    birthValidation,
+  ];
 
-  const isValid = Object.keys(errors).length === 0;
+  const isValid = validations.every((field) => field.isValid);
 
-  return [isValid, errors];
+  const fields = validations.reduce((acc, field) => {
+    if (isValid) {
+      acc[field.name] = field.normalized;
+    } else if (field.error) {
+      acc[field.name] = field.error;
+    }
+    return acc;
+  }, {});
+
+  return [isValid, fields];
 };
 
 module.exports = {
