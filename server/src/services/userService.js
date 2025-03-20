@@ -22,14 +22,14 @@ module.exports = {
 
       if (isValid) {
         const passwordHash = await createPasswordHash(fields.password);
-
-        return await userRepository.create({
+        await userRepository.create({
           fullName: fields.fullName,
           cpf: fields.cpf,
           birth: fields.birth,
           email: fields.email,
           password: passwordHash,
         });
+        return { success: true };
       }
       return clientErrorsHandler(fields);
     } catch (e) {

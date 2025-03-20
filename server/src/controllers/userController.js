@@ -4,6 +4,14 @@ module.exports = {
   async create(req, res) {
     const data = req.body;
     const result = await service.create({ ...data });
+
+    if (result.error) {
+      if (result.error === 'client') {
+        return res.status(400).json(result);
+      }
+      return res.status(500).json(result);
+    }
+
     return res.json(result);
   },
 
