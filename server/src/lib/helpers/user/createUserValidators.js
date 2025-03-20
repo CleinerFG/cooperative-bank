@@ -12,7 +12,7 @@ const {
   passwordValidator,
 } = require('../../utils/validators');
 
-const userFullNameValidator = (fullName) => {
+const fullNameValidation = (fullName) => {
   const field = {
     name: 'fullName',
     isValid: false,
@@ -24,9 +24,9 @@ const userFullNameValidator = (fullName) => {
     field.error = 'mustBeString';
     return field;
   }
-
-  if (RegExp(/\d/g).test(fullName)) {
-    field.error = 'cannotHaveNumbers';
+  
+  if (RegExp(/[^a-zA-Z\s]/g).test(fullName)) {
+    field.error = 'invalidFullName';
     return field;
   }
 
@@ -37,7 +37,7 @@ const userFullNameValidator = (fullName) => {
   return field;
 };
 
-const userCpfValidator = async (cpf) => {
+const cpfValidation = async (cpf) => {
   const field = {
     name: 'cpf',
     isValid: false,
@@ -74,7 +74,7 @@ const userCpfValidator = async (cpf) => {
   }
 };
 
-const userEmailValidator = async (email) => {
+const emailValidation = async (email) => {
   const field = {
     name: 'email',
     isValid: false,
@@ -110,7 +110,7 @@ const userEmailValidator = async (email) => {
   }
 };
 
-const userLegalAgeValidator = (birth) => {
+const legalAgeValidation = (birth) => {
   const field = {
     name: 'birth',
     isValid: false,
@@ -152,7 +152,7 @@ const userLegalAgeValidator = (birth) => {
   }
 };
 
-const userPasswordValidation = (password) => {
+const passwordValidation = (password) => {
   const field = {
     name: 'password',
     isValid: false,
@@ -193,11 +193,11 @@ const userPasswordValidation = (password) => {
 };
 
 const userValidateAll = async ({ fullName, cpf, email, birth, password }) => {
-  const fullNameValidation = userFullNameValidator(fullName);
-  const cpfValidation = await userCpfValidator(cpf);
-  const emailValidation = await userEmailValidator(email);
-  const birthValidation = userLegalAgeValidator(birth);
-  const passwordValidation = userPasswordValidation(password);
+  const fullNameValidation = fullNameValidation(fullName);
+  const cpfValidation = await cpfValidation(cpf);
+  const emailValidation = await emailValidation(email);
+  const birthValidation = legalAgeValidation(birth);
+  const passwordValidation = passwordValidation(password);
 
   const validations = [
     fullNameValidation,
@@ -222,10 +222,10 @@ const userValidateAll = async ({ fullName, cpf, email, birth, password }) => {
 };
 
 module.exports = {
-  userFullNameValidator,
-  userCpfValidator,
-  userEmailValidator,
-  userLegalAgeValidator,
-  userPasswordValidation,
+  fullNameValidation,
+  cpfValidation,
+  emailValidation,
+  legalAgeValidation,
+  passwordValidation,
   userValidateAll,
 };
