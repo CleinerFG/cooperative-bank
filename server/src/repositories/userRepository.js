@@ -6,7 +6,7 @@ module.exports = {
     return await Model.create({ fullName, cpf, birth, email, password });
   },
 
-  async findByCpf(cpf) {
+  async findByCpf({ cpf }) {
     const user = await Model.findOne({
       where: { cpf },
       attributes: ['fullName', 'cpf'],

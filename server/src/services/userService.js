@@ -8,6 +8,7 @@ const {
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
+const { findByCpfValidation } = require('../lib/helpers/user/findValidator');
 
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
@@ -37,9 +38,16 @@ module.exports = {
     }
   },
 
-  async getByCpf(cpf) {
-    // cpfValidator(cpf);
-    return userRepository.findByCpf(cpf.replace(/[.-]/g, ''));
+  async getByCpf({ cpf }) {
+    try {
+      const [isValid, result] = findByCpfValidation(cpf);
+      if (isValid) {
+        return await userRepository.findByCpf({ cpf: result.cpf });
+      }
+      return clientErrorsHandler(result);
+    } catch (e) {
+      return serverErrorHandler(e);
+    }
   },
 
   async getBalance() {

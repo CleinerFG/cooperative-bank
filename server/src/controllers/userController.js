@@ -16,16 +16,21 @@ module.exports = {
   },
 
   async getByCpf(req, res) {
-    try {
-      const cpf = req.params.cpf;
-      const user = await service.getByCpf(cpf);
-      if (!user) {
-        return res.status(404).json({ error: 'notFoundUser' });
-      }
-      res.json(user);
-    } catch (e) {
-      res.status(400).json({ error: e.message });
+    const cpf = req.params.cpf;
+    const result = await service.getByCpf({ cpf });
+
+    if (!result) {
+      return res.status(204).json({});
     }
+
+    if (result.error) {
+      if (result.error === 'client') {
+        return res.status(400).json(result);
+      }
+      return res.status(500).json(result);
+    }
+
+    return res.json(result);
   },
 
   async getBalance(req, res) {
