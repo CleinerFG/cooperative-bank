@@ -1,12 +1,14 @@
 const repository = require('../repositories/loanRequestRepository');
-const { requestCategoryIsValid } = require('../lib/helpers/loanValidators');
+const {
+  requestCategoryValidator,
+} = require('../lib/helpers/loan/genericValidators');
 
 module.exports = {
   /**
    * @param {'open'|'received'} category
    */
   async getAllByCategory(category) {
-    requestCategoryIsValid(category);
+    requestCategoryValidator(category);
     return repository.findAllByCategory(category);
   },
   /**
@@ -14,7 +16,7 @@ module.exports = {
    * @param {string} id
    */
   async getDetailsByCategoryAndId(category, id) {
-    requestCategoryIsValid(category);
+    requestCategoryValidator(category);
     return repository.findDetailsByCategoryAndId(category, id);
   },
 };
