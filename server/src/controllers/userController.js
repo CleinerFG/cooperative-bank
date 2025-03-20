@@ -1,36 +1,19 @@
 const service = require('../services/userService');
+const controllerResponseHandler = require('../lib/helpers/controllerResponseHandler.js');
 
 module.exports = {
   async create(req, res) {
     const data = req.body;
     const result = await service.create({ ...data });
 
-    if (result.error) {
-      if (result.error === 'client') {
-        return res.status(400).json(result);
-      }
-      return res.status(500).json(result);
-    }
-
-    return res.json(result);
+    return controllerResponseHandler(res, result);
   },
 
   async getByCpf(req, res) {
     const cpf = req.params.cpf;
     const result = await service.getByCpf({ cpf });
 
-    if (!result) {
-      return res.status(204).json({});
-    }
-
-    if (result.error) {
-      if (result.error === 'client') {
-        return res.status(400).json(result);
-      }
-      return res.status(500).json(result);
-    }
-
-    return res.json(result);
+    return controllerResponseHandler(res, result);
   },
 
   async getBalance(req, res) {
