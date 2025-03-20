@@ -1,5 +1,5 @@
 const removeBlankSpace = (str) => {
-  return str.replace(/\s{2,}/g, ' ');
+  return str.replace(/\s{2,}/g, ' ').trim();
 };
 
 const removeCpfFormatting = (cpf) => {
