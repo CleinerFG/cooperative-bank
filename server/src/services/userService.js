@@ -6,6 +6,7 @@ const { userValidateAll } = require('../lib/helpers/user/createUserValidators');
 const {
   removeTimestamp,
   removeCpfFormatting,
+  removeBlankSpace,
 } = require('../lib/utils/dataNormalizer');
 const {
   clientErrorsHandler,
@@ -27,7 +28,7 @@ module.exports = {
 
       if (isValid) {
         return await userRepository.create({
-          fullName,
+          fullName: removeBlankSpace(fullName),
           cpf: normalizedCpf,
           birth: removeTimestamp(birth),
           email,
