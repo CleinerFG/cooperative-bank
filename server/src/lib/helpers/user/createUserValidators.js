@@ -193,13 +193,13 @@ const passwordValidation = (password) => {
 };
 
 const userValidateAll = async ({ fullName, cpf, email, birth, password }) => {
+  const promises = [cpfValidation(cpf), emailValidation(email)];
 
   const validations = [
     fullNameValidation(fullName),
-    await cpfValidation(cpf),
-    await emailValidation(email),
     legalAgeValidation(birth),
     passwordValidation(password),
+    ...(await Promise.all(promises)),
   ];
 
   const isValid = validations.every((field) => field.isValid);
