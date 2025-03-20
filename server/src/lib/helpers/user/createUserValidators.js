@@ -24,7 +24,7 @@ const fullNameValidation = (fullName) => {
     field.error = 'mustBeString';
     return field;
   }
-  
+
   if (RegExp(/[^a-zA-Z\s]/g).test(fullName)) {
     field.error = 'invalidFullName';
     return field;
@@ -193,18 +193,13 @@ const passwordValidation = (password) => {
 };
 
 const userValidateAll = async ({ fullName, cpf, email, birth, password }) => {
-  const fullNameValidation = fullNameValidation(fullName);
-  const cpfValidation = await cpfValidation(cpf);
-  const emailValidation = await emailValidation(email);
-  const birthValidation = legalAgeValidation(birth);
-  const passwordValidation = passwordValidation(password);
 
   const validations = [
-    fullNameValidation,
-    cpfValidation,
-    emailValidation,
-    birthValidation,
-    passwordValidation,
+    fullNameValidation(fullName),
+    await cpfValidation(cpf),
+    await emailValidation(email),
+    legalAgeValidation(birth),
+    passwordValidation(password),
   ];
 
   const isValid = validations.every((field) => field.isValid);
