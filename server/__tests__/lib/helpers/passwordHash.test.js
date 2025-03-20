@@ -7,7 +7,7 @@ describe('Helpers - Password hash', () => {
   test('createPasswordHash should return a hash string', async () => {
     const hash = await createPasswordHash('myPassword123');
     expect(typeof hash).toBe('string');
-    expect(hash.length).toBeGreaterThan(0);
+    expect(hash.length).toEqual(60);
   });
 
   test('comparePassword should return true for matching passwords', async () => {

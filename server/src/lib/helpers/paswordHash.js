@@ -1,8 +1,5 @@
 const bcrypt = require('bcryptjs');
-const {
-  PasswordHashingError,
-  ComparePasswordError,
-} = require('../../errors/HashingErrors');
+const PasswordHashingError = require('../../errors/PasswordHashingError');
 
 /**
  * @param {string} password
@@ -26,7 +23,7 @@ const comparePassword = async (password, hashedPassword) => {
     const match = await bcrypt.compare(password, hashedPassword);
     return match;
   } catch (e) {
-    throw new ComparePasswordError(e.message);
+    throw new PasswordHashingError(e.message);
   }
 };
 
