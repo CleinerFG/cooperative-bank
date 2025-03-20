@@ -7,6 +7,7 @@ const {
   clientErrorsHandler,
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
+const { createPasswordHash } = require('../lib/helpers/paswordHash');
 
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
@@ -20,12 +21,14 @@ module.exports = {
       });
 
       if (isValid) {
+        const passwordHash = await createPasswordHash(fields.password);
+
         return await userRepository.create({
           fullName: fields.fullName,
           cpf: fields.cpf,
           birth: fields.birth,
           email: fields.email,
-          password,
+          password: passwordHash,
         });
       }
       return clientErrorsHandler(fields);
