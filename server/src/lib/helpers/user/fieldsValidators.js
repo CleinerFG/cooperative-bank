@@ -74,7 +74,7 @@ const cpfValidation = async (cpf) => {
   }
 };
 
-const emailValidation = async (email) => {
+const emailValidation = async (email, findInDb) => {
   const field = {
     name: 'email',
     isValid: false,
@@ -89,11 +89,14 @@ const emailValidation = async (email) => {
 
   try {
     emailValidator(email);
-    const emailExists = await userRepository.findEmail({ email });
 
-    if (emailExists) {
-      field.error = 'alreadyExists';
-      return field;
+    if (findInDb) {
+      const emailExists = await userRepository.findEmail({ email });
+
+      if (emailExists) {
+        field.error = 'alreadyExists';
+        return field;
+      }
     }
 
     field.isValid = true;
@@ -192,8 +195,8 @@ const passwordValidation = (password) => {
   }
 };
 
-const userValidateAll = async ({ fullName, cpf, email, birth, password }) => {
-  const promises = [cpfValidation(cpf), emailValidation(email)];
+const createValidateAll = async ({ fullName, cpf, email, birth, password }) => {
+  const promises = [cpfValidation(cpf), emailValidation(email, true)];
 
   const validations = [
     fullNameValidation(fullName),
@@ -222,5 +225,5 @@ module.exports = {
   emailValidation,
   legalAgeValidation,
   passwordValidation,
-  userValidateAll,
+  createValidateAll,
 };
