@@ -7,6 +7,9 @@ const {
   PUBLIC_STATIC_DIR,
 } = require('./config/constants.js');
 
+const cookierParser = require('cookie-parser');
+
+const authTokenMiddleware = require('./middlewares/authTokenMiddleware.js');
 const logMiddleware = require('./middlewares/logMiddleware.js');
 const simulateDelayMiddleware = require('./middlewares/simulateDelayMiddleware.js');
 
@@ -14,11 +17,15 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
+app.use(cookierParser());
+
+// app.use('/app*', authTokenMiddleware);
 app.use('/app/static', express.static(APP_STATIC_DIR));
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 
 app.use(logMiddleware);
-app.use(express.json());
+
 app.use('/api', simulateDelayMiddleware);
 
 // New routes structure

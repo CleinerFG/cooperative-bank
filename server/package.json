@@ -47,7 +47,6 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.13.0",
-    "parser": "^0.1.4",
     "sequelize": "^6.37.6"
   }
 }

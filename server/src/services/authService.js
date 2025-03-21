@@ -9,6 +9,7 @@ const {
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
 const { COOKIE_SECRET } = require('../config/constants');
+const { createToken, validateToken } = require('../lib/handlers/tokenHandler');
 
 module.exports = {
   login: async ({ email, password }) => {
@@ -28,8 +29,23 @@ module.exports = {
       if (!passMatch)
         return clientErrorsHandler({ password: 'incorrectPassword' });
 
-      const token = jwt.sign({ opaqueId: user.opaqueId }, COOKIE_SECRET);
+      const token = createToken(user.opaqueId);
+
       return { token };
+    } catch (e) {
+      return serverErrorHandler(e);
+    }
+  },
+
+  authenticateToken: (token) => {
+    try {
+      const [auth, result] = validateToken(token);
+
+      if (!auth) {
+        return clientErrorsHandler({ token: result });
+      }
+
+      return { auth: true, opaqueId: result };
     } catch (e) {
       return serverErrorHandler(e);
     }
