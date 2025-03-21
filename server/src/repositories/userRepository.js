@@ -6,7 +6,7 @@ module.exports = {
     return await Model.create({ fullName, cpf, birth, email, password });
   },
 
-  async findByEmail({ email }) {
+  async findByEmail(email) {
     const user = await Model.findOne({
       where: { email },
       attributes: ['opaqueId', 'password'],
@@ -21,7 +21,7 @@ module.exports = {
     return null;
   },
 
-  async findByCpf({ cpf }) {
+  async findByCpf(cpf) {
     const user = await Model.findOne({
       where: { cpf },
       attributes: ['fullName', 'cpf'],
@@ -36,7 +36,7 @@ module.exports = {
     return null;
   },
 
-  async findEmail({ email }) {
+  async findEmail(email) {
     const user = await Model.findOne({
       where: { email },
       attributes: ['email'],
@@ -44,7 +44,7 @@ module.exports = {
     return user ? user.email : null;
   },
 
-  async findCpf({ cpf }) {
+  async findCpf(cpf) {
     const user = await Model.findOne({
       where: { cpf },
       attributes: ['cpf'],

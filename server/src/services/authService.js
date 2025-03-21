@@ -20,9 +20,7 @@ module.exports = {
 
       if (!isValid) return clientErrorsHandler(fields);
 
-      const user = await userRepository.findByEmail({
-        email,
-      });
+      const user = await userRepository.findByEmail(email);
 
       if (!user) return clientErrorsHandler({ email: 'notFound' });
 

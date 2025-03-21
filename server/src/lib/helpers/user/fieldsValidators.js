@@ -56,7 +56,7 @@ const cpfValidation = async (cpf, findInDb) => {
     const normalized = removeCpfFormatting(cpf);
 
     if (findInDb) {
-      const cpfExists = await userRepository.findCpf({ cpf: normalized });
+      const cpfExists = await userRepository.findCpf(normalized);
       if (cpfExists) {
         field.error = 'alreadyExists';
         return field;
@@ -94,7 +94,7 @@ const emailValidation = async (email, findInDb) => {
     emailValidator(email);
 
     if (findInDb) {
-      const emailExists = await userRepository.findEmail({ email });
+      const emailExists = await userRepository.findEmail(email);
 
       if (emailExists) {
         field.error = 'alreadyExists';

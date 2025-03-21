@@ -44,7 +44,7 @@ module.exports = {
       const [isValid, result] = await findByCpfValidation({ cpf });
       if (!isValid) return clientErrorsHandler(result);
 
-      return await userRepository.findByCpf({ cpf: result.cpf });
+      return await userRepository.findByCpf(result.cpf);
     } catch (e) {
       return serverErrorHandler(e);
     }
