@@ -2,37 +2,38 @@ const userRepository = require('../repositories/userRepository');
 const path = require('path');
 const fs = require('fs/promises');
 const { PROFILE_IMGS_DIR } = require('../config/constants');
-const { userValidateAll } = require('../lib/helpers/user/createUserValidators');
+const {
+  createUserValidation,
+  findByCpfValidation,
+} = require('../lib/helpers/user/serviceValidators');
 const {
   clientErrorsHandler,
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
-const { findByCpfValidation } = require('../lib/helpers/user/findMethodsValidator');
 
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
     try {
-      const [isValid, fields] = await userValidateAll({
+      const [isValid, fields] = await createUserValidation({
         fullName,
         cpf,
         birth,
         email,
         password,
       });
+      if (!isValid) return clientErrorsHandler(fields);
 
-      if (isValid) {
-        const passwordHash = await createPasswordHash(fields.password);
-        await userRepository.create({
-          fullName: fields.fullName,
-          cpf: fields.cpf,
-          birth: fields.birth,
-          email: fields.email,
-          password: passwordHash,
-        });
-        return { success: true };
-      }
-      return clientErrorsHandler(fields);
+      const passwordHash = await createPasswordHash(fields.password);
+
+      await userRepository.create({
+        fullName: fields.fullName,
+        cpf: fields.cpf,
+        birth: fields.birth,
+        email: fields.email,
+        password: passwordHash,
+      });
+      return { success: true };
     } catch (e) {
       return serverErrorHandler(e);
     }
@@ -40,11 +41,10 @@ module.exports = {
 
   async getByCpf({ cpf }) {
     try {
-      const [isValid, result] = findByCpfValidation(cpf);
-      if (isValid) {
-        return await userRepository.findByCpf({ cpf: result.cpf });
-      }
-      return clientErrorsHandler(result);
+      const [isValid, result] = await findByCpfValidation({ cpf });
+      if (!isValid) return clientErrorsHandler(result);
+
+      return await userRepository.findByCpf({ cpf: result.cpf });
     } catch (e) {
       return serverErrorHandler(e);
     }

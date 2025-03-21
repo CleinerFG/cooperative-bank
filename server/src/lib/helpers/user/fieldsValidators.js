@@ -1,3 +1,4 @@
+const { password } = require('../../../config/databases/mysql');
 const userRepository = require('../../../repositories/userRepository');
 const {
   titleCase,
@@ -37,7 +38,7 @@ const fullNameValidation = (fullName) => {
   return field;
 };
 
-const cpfValidation = async (cpf) => {
+const cpfValidation = async (cpf, findInDb) => {
   const field = {
     name: 'cpf',
     isValid: false,
@@ -53,11 +54,13 @@ const cpfValidation = async (cpf) => {
   try {
     cpfValidator(cpf);
     const normalized = removeCpfFormatting(cpf);
-    const cpfExists = await userRepository.findCpf({ cpf: normalized });
 
-    if (cpfExists) {
-      field.error = 'alreadyExists';
-      return field;
+    if (findInDb) {
+      const cpfExists = await userRepository.findCpf({ cpf: normalized });
+      if (cpfExists) {
+        field.error = 'alreadyExists';
+        return field;
+      }
     }
 
     field.isValid = true;
@@ -155,7 +158,7 @@ const legalAgeValidation = (birth) => {
   }
 };
 
-const passwordValidation = (password) => {
+const passwordValidation = (password, useRegex) => {
   const field = {
     name: 'password',
     isValid: false,
@@ -169,7 +172,7 @@ const passwordValidation = (password) => {
   }
 
   try {
-    passwordValidator(password);
+    if (useRegex) passwordValidator(password);
 
     field.isValid = true;
     field.normalized = password;
@@ -195,35 +198,10 @@ const passwordValidation = (password) => {
   }
 };
 
-const createValidateAll = async ({ fullName, cpf, email, birth, password }) => {
-  const promises = [cpfValidation(cpf), emailValidation(email, true)];
-
-  const validations = [
-    fullNameValidation(fullName),
-    legalAgeValidation(birth),
-    passwordValidation(password),
-    ...(await Promise.all(promises)),
-  ];
-
-  const isValid = validations.every((field) => field.isValid);
-
-  const fields = validations.reduce((acc, field) => {
-    if (isValid) {
-      acc[field.name] = field.normalized;
-    } else if (field.error) {
-      acc[field.name] = field.error;
-    }
-    return acc;
-  }, {});
-
-  return [isValid, fields];
-};
-
 module.exports = {
   fullNameValidation,
   cpfValidation,
   emailValidation,
   legalAgeValidation,
   passwordValidation,
-  createValidateAll,
 };
