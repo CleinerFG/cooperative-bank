@@ -8,7 +8,7 @@ const {
   serverErrorHandler,
 } = require('../lib/helpers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
-const { findByCpfValidation } = require('../lib/helpers/user/findValidator');
+const { findByCpfValidation } = require('../lib/helpers/user/findMethodsValidator');
 
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
