@@ -6,20 +6,50 @@ module.exports = {
     return await Model.create({ fullName, cpf, birth, email, password });
   },
 
+  async findByEmail({ email }) {
+    const user = await Model.findOne({
+      where: { email },
+      attributes: ['opaqueId', 'password'],
+    });
+
+    if (user) {
+      return {
+        opaqueId: user.opaqueId,
+        passwordHash: user.password,
+      };
+    }
+    return null;
+  },
+
   async findByCpf({ cpf }) {
     const user = await Model.findOne({
       where: { cpf },
       attributes: ['fullName', 'cpf'],
     });
-    return user;
+
+    if (user) {
+      return {
+        fullName: user.fullName,
+        cpf: user.cpf,
+      };
+    }
+    return null;
   },
 
   async findEmail({ email }) {
-    return await Model.findOne({ where: { email }, attributes: ['email'] });
+    const user = await Model.findOne({
+      where: { email },
+      attributes: ['email'],
+    });
+    return user ? user.email : null;
   },
 
   async findCpf({ cpf }) {
-    return await Model.findOne({ where: { cpf }, attributes: ['cpf'] });
+    const user = await Model.findOne({
+      where: { cpf },
+      attributes: ['cpf'],
+    });
+    return user ? user.cpf : null;
   },
 
   async findBalanceById(id) {
@@ -32,14 +62,18 @@ module.exports = {
 
   async findDetailsById(id) {
     const user = await Model.findByPk(id, {
-      attributes: [
-        'fullName',
-        'birth',
-        'cpf',
-        'email',
-        ['created_at', 'registration'],
-      ],
+      attributes: ['fullName', 'birth', 'cpf', 'email', 'created_at'],
     });
-    return user;
+
+    if (user) {
+      return {
+        fullName: user.fullName,
+        birth: user.birth,
+        cpf: user.cpf,
+        email: user.email,
+        registration: user.createdAt,
+      };
+    }
+    return null;
   },
 };
