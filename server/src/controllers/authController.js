@@ -8,9 +8,9 @@ module.exports = {
 
     if (result.error) {
       if (result.error === 'client') {
-        return res.status(400).json(serviceResult);
+        return res.status(400).json(result);
       }
-      return res.status(500).json(serviceResult);
+      return res.status(500).json(result);
     }
 
     const token = result.token;
