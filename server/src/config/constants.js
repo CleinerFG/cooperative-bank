@@ -8,6 +8,7 @@ const ENV = process.env.NODE_ENV ?? 'development';
 // Server
 const SERVER_HOST = process.env.SERVER_HOST ?? 'localhost';
 const SERVER_PORT = process.env.SERVER_PORT ?? 8080;
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
 const UPLOADS_DIR = path.resolve(__dirname, '../../uploads');
 const PROFILE_IMGS_DIR = path.join(UPLOADS_DIR, 'profile-images');
 
@@ -44,6 +45,7 @@ module.exports = {
   ENV,
   SERVER_HOST,
   SERVER_PORT,
+  COOKIE_SECRET,
   PROFILE_IMGS_DIR,
   SIMULATE_RES_DELAY,
   APP_STATIC_DIR,
