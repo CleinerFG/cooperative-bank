@@ -36,7 +36,7 @@ module.exports = {
     }
   },
 
-  async getByCpf({ cpf }) {
+  async getByCpf(cpf) {
     try {
       return await userRepository.findByCpf(cpf);
     } catch (e) {

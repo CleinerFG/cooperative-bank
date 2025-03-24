@@ -1,10 +1,10 @@
-const { body } = require('express-validator');
+const { body, param } = require('express-validator');
 const {
   titleCase,
   removeBlankSpace,
   removeCpfFormatting,
   removeTimestamp,
-} = require('../../../lib/utils/dataNormalizer');
+} = require('../../lib/utils/dataNormalizer');
 
 const {
   datetimeValidator,
@@ -20,23 +20,29 @@ const {
   passDontHaveCharSequence,
 } = require('./helpers');
 
+const getField = (type, name) => {
+  return type === 'param' ? param(name) : body(name);
+};
+
 module.exports = {
-  fullNameValidation: () => {
-    return body('fullName')
+  fullNameValidation: (type) => {
+    const field = getField(type, 'fullName');
+    return field
       .isString()
       .withMessage('mustBeString')
       .trim()
       .notEmpty()
       .withMessage('isRequired')
-      .isAlpha()
+      .matches(/^[A-Za-z\s]+$/)
       .withMessage('invalid')
       .customSanitizer((value) => {
         return titleCase(removeBlankSpace(value));
       });
   },
 
-  cpfValidation: () => {
-    return body('cpf')
+  cpfValidation: (type) => {
+    const field = getField(type, 'cpf');
+    return field
       .isString()
       .withMessage('mustBeString')
       .trim()
@@ -47,8 +53,9 @@ module.exports = {
       .withMessage('invalid');
   },
 
-  emailValidation: () => {
-    return body('email')
+  emailValidation: (type) => {
+    const field = getField(type, 'email');
+    return field
       .isString()
       .withMessage('mustBeString')
       .trim()
@@ -58,8 +65,9 @@ module.exports = {
       .withMessage('invalid');
   },
 
-  legalAgeValidation: () => {
-    return body('birth')
+  legalAgeValidation: (type) => {
+    const field = getField(type, 'birth');
+    return field
       .isString()
       .withMessage('mustBeString')
       .customSanitizer(removeTimestamp)
@@ -69,8 +77,9 @@ module.exports = {
       .withMessage('isNotGreater18YearsOld');
   },
 
-  passwordValidation: () => {
-    return body('password')
+  passwordValidation: (type) => {
+    const field = getField(type, 'password');
+    return field
       .isString()
       .withMessage('mustBeString')
       .custom(passHave8Chars)
