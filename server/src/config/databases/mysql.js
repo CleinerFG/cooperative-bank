@@ -1,6 +1,5 @@
-const { MYSQL_DB_NAME_BY_ENV } = require('../constants');
-
 require('dotenv').config();
+const { MYSQL_DB_NAME_BY_ENV } = require('../constants');
 
 module.exports = {
   dialect: 'mysql',

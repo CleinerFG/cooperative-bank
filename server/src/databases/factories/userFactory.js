@@ -1,15 +1,9 @@
-const UserModel = require('../../models/UserModel');
+const userService = require('../../services/userService');
 const { genPerson } = require('./factoryUtils');
-const { createPasswordHash } = require('../../lib/helpers/paswordHash');
 
 const createUser = async () => {
   const person = await genPerson();
-  const hashPass = await createPasswordHash(person.password);
-  const model = await UserModel.create({
-    ...person,
-    password: hashPass,
-  });
-  return { model: model, person: { ...person, hashPass } };
+  await userService.create({ ...person });
 };
 
-module.exports = { genPerson, createUser };
+module.exports = { createUser };

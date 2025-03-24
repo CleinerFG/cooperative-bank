@@ -1,5 +1,9 @@
 const { faker } = require('@faker-js/faker');
 const UserModel = require('../../models/UserModel');
+const {
+  checkCpfExists,
+  checkEmailExists,
+} = require('../../lib/helpers/user/fieldsValidators');
 
 const genCpf = () => {
   const calculateCheckDigit = (cpf, weight) => {
@@ -25,33 +29,26 @@ const genCpf = () => {
 
 const genUniqueCpf = async () => {
   let cpf;
-  let cpfNotFound;
-
+  let field = { isValid: false };
   do {
     cpf = genCpf();
-    cpfNotFound = await UserModel.findOne({
-      where: { cpf },
-      attributes: ['cpf'],
-    });
-  } while (cpfNotFound);
+    field = await checkCpfExists(cpf);
+  } while (!field.isValid);
 
   return cpf;
 };
 
 const genUniqueEmail = async (firstName, lastName) => {
   let email;
-  let emailNotFound;
+  let field = { isValid: false };
 
   do {
     email = faker.internet.email({
       firstName: firstName.toLowerCase(),
       lastName: lastName.toLowerCase(),
     });
-    emailNotFound = await UserModel.findOne({
-      where: { email },
-      attributes: ['email'],
-    });
-  } while (emailNotFound);
+    field = await checkEmailExists(email);
+  } while (!field.isValid);
 
   return email;
 };
@@ -66,9 +63,8 @@ const genPerson = async () => {
 
   const birth = faker.date.birthdate().toISOString().split('T')[0];
   const password = firstName + lastName;
-  const balance = faker.number.float({ min: 1000, max: 1000000 });
 
-  return { fullName, cpf, birth, email, password, balance };
+  return { fullName, cpf, birth, email, password };
 };
 
 module.exports = { genCpf, genUniqueCpf, genUniqueEmail, genPerson };
