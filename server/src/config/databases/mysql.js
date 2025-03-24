@@ -1,20 +1,14 @@
-require('dotenv').config();
+const { MYSQL_DB_NAME_BY_ENV } = require('../constants');
 
-const {
-  MYSQL_HOST,
-  MYSQL_USER,
-  MYSQL_PASSWORD,
-  MYSQL_PORT,
-  MYSQL_DB_NAME_BY_ENV,
-} = require('../constants');
+require('dotenv').config();
 
 module.exports = {
   dialect: 'mysql',
-  host: MYSQL_HOST,
-  username: MYSQL_USER,
-  password: MYSQL_PASSWORD,
+  host: process.env.MYSQL_HOST ?? 'localhost',
+  username: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
   database: MYSQL_DB_NAME_BY_ENV,
-  port: MYSQL_PORT,
+  port: process.env.MYSQL_PORT ?? 3306,
   define: {
     timestamps: true,
     underscored: true,

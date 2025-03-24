@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-const { COOKIE_SECRET } = require('../../config/constants');
+const { cookieSecret } = require('../../config/config');
 
 module.exports = {
   createToken: (opaqueId) => {
-    const token = jwt.sign({ opaqueId }, COOKIE_SECRET, {
+    const token = jwt.sign({ opaqueId }, cookieSecret, {
       expiresIn: 3600000, // 1h
     });
     return token;
@@ -11,7 +11,7 @@ module.exports = {
 
   validateToken: (token) => {
     try {
-      const { opaqueId } = jwt.verify(token, COOKIE_SECRET);
+      const { opaqueId } = jwt.verify(token, cookieSecret);
 
       if (!opaqueId) throw new Error('opaqueIdNotDefined');
 

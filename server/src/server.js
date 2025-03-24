@@ -1,11 +1,7 @@
 require('dotenv').config();
 
-const {
-  SERVER_HOST,
-  SERVER_PORT,
-  APP_STATIC_DIR,
-  PUBLIC_STATIC_DIR,
-} = require('./config/constants.js');
+const { host, port } = require('./config/config.js');
+const { APP_STATIC_DIR, PUBLIC_STATIC_DIR } = require('./config/constants.js');
 
 const cookierParser = require('cookie-parser');
 
@@ -47,6 +43,6 @@ app.use('/api/users', userRoutes);
 // app.use('/api/notifications', notificationsRoutes);
 app.use(spaRoutes);
 
-app.listen(SERVER_PORT, SERVER_HOST, () => {
-  console.log(`Server running at http://${SERVER_HOST}:${SERVER_PORT}`);
+app.listen(port, host, () => {
+  console.log(`Server running at http://${host}:${port}`);
 });

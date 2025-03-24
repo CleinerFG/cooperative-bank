@@ -1,9 +1,9 @@
-const { SIMULATE_RES_DELAY } = require('../config/constants');
+const { simulateResDelayMs } = require('../config/config');
 
 const waitMiddleware = (req, res, next) => {
   setTimeout(() => {
     next();
-  }, SIMULATE_RES_DELAY);
+  }, simulateResDelayMs);
 };
 
 module.exports = waitMiddleware;
