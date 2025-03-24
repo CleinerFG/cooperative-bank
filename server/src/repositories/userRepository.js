@@ -2,7 +2,14 @@ const UserModel = require('../models/UserModel');
 
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
-    return await UserModel.create({ fullName, cpf, birth, email, password });
+    return await UserModel.create({
+      fullName,
+      cpf,
+      birth,
+      email,
+      password,
+      balance: 100000,
+    });
   },
 
   async findByEmail(email) {
