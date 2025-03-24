@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
-const { cookieSecret } = require('../../config/config');
+const { cookieSecret, tokenExpires } = require('../../config/config');
 
 module.exports = {
   createToken: (opaqueId) => {
     const token = jwt.sign({ opaqueId }, cookieSecret, {
-      expiresIn: 3600000, // 1h
+      expiresIn: tokenExpires,
     });
     return token;
   },

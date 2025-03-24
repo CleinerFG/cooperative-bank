@@ -1,3 +1,4 @@
+const { tokenExpires } = require('../config/config');
 const responseHandler = require('../lib/handlers/responseHandler');
 const authService = require('../services/authService');
 
@@ -13,7 +14,7 @@ module.exports = {
         httpOnly: true,
         secure: true,
         sameSite: 'strict',
-        maxAge: 3600000, // 1h
+        maxAge: tokenExpires,
       });
       return res.json();
     });
