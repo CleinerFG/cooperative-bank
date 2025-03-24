@@ -3,7 +3,7 @@ const { comparePassword } = require('../lib/helpers/paswordHash');
 const {
   clientErrorsHandler,
   serverErrorHandler,
-} = require('../lib/helpers/errorsHandler');
+} = require('../lib/handlers/errorsHandler');
 const { createToken, validateToken } = require('../lib/handlers/tokenHandler');
 
 module.exports = {

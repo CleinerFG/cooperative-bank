@@ -8,7 +8,7 @@ const {
 const {
   clientErrorsHandler,
   serverErrorHandler,
-} = require('../lib/helpers/errorsHandler');
+} = require('../lib/handlers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
 
 module.exports = {
