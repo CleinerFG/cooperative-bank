@@ -1,4 +1,4 @@
-const Model = require('../models/UserModel');
+const UserModel = require('../models/UserModel');
 
 module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
@@ -6,7 +6,7 @@ module.exports = {
   },
 
   async findByEmail(email) {
-    const user = await Model.findOne({
+    const user = await UserModel.findOne({
       where: { email },
       attributes: ['opaqueId', 'password'],
     });
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   async findByCpf(cpf) {
-    const user = await Model.findOne({
+    const user = await UserModel.findOne({
       where: { cpf },
       attributes: ['fullName', 'cpf'],
     });
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   async findEmail(email) {
-    const user = await Model.findOne({
+    const user = await UserModel.findOne({
       where: { email },
       attributes: ['email'],
     });
@@ -44,24 +44,25 @@ module.exports = {
   },
 
   async findCpf(cpf) {
-    const user = await Model.findOne({
+    const user = await UserModel.findOne({
       where: { cpf },
       attributes: ['cpf'],
     });
     return user ? user.cpf : null;
   },
 
-  async findBalanceById(id) {
-    const user = await Model.findByPk(id, {
+  async findAccountBalance(opaqueId) {
+    const user = await UserModel.findOne({
+      where: { opaqueId },
       attributes: ['balance'],
-      where: { id },
     });
     return user ? user.balance : null;
   },
 
-  async findDetailsById(id) {
-    const user = await Model.findByPk(id, {
-      attributes: ['fullName', 'birth', 'cpf', 'email', 'created_at'],
+  async findAccountDetails(opaqueId) {
+    const user = await UserModel.findOne({
+      where: { opaqueId },
+      attributes: ['fullName', 'birth', 'cpf', 'email', 'createdAt'],
     });
 
     if (user) {

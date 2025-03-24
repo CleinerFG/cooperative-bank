@@ -44,20 +44,30 @@ module.exports = {
     }
   },
 
-  async getBalance() {
-    // Test abstract id
-    return userRepository.findBalanceById(6);
+  async getAccountBalance(opaqueId) {
+    try {
+      const balance = await userRepository.findAccountBalance(opaqueId);
+      return Number(balance);
+    } catch (e) {
+      return serverErrorHandler(e);
+    }
   },
-  async getDetails() {
-    // Test abstract id
-    return userRepository.findDetailsById(6);
+
+  async getAccountDetails(opaqueId) {
+    try {
+      return userRepository.findAccountDetails(opaqueId);
+    } catch (e) {
+      return serverErrorHandler(e);
+    }
   },
-  /**
-   * @param {string} id
-   */
-  async getProfileImgPathById(id) {
-    const photoPath = path.join(PROFILE_IMGS_DIR, `${id}.webp`);
-    await fs.access(photoPath);
-    return photoPath;
+
+  async getProfileImgPath(opaqueId) {
+    try {
+      const photoPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
+      await fs.access(photoPath);
+      return photoPath;
+    } catch (e) {
+      return serverErrorHandler(e);
+    }
   },
 };

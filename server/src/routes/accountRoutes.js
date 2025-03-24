@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/userController');
+const userController = require('../controllers/userController');
+const authTokenMiddleware = require('../middlewares/authTokenMiddleware');
 
-router.get('/balance', controller.getBalance);
-router.get('/details', controller.getDetails);
-router.get('/profile-img', controller.getProfileImg);
+router.get('/balance', authTokenMiddleware, userController.getAccountBalance);
+router.get('/details', authTokenMiddleware, userController.getAccountDetails);
+router.get(
+  '/profile-img',
+  authTokenMiddleware,
+  userController.getProfileImgPath
+);
 
 module.exports = router;

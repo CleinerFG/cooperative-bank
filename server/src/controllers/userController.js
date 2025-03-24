@@ -1,34 +1,36 @@
-const service = require('../services/userService');
+const userService = require('../services/userService');
 const responseHandler = require('../lib/handlers/responseHandler.js');
 
 module.exports = {
   async create(req, res) {
     const data = req.body;
-    const result = await service.create({ ...data });
+    const result = await userService.create({ ...data });
 
     return responseHandler(res, result, () => res.status(201).json());
   },
 
   async getByCpf(req, res) {
     const cpf = req.params.cpf;
-    const result = await service.getByCpf(cpf);
+    const result = await userService.getByCpf(cpf);
     return responseHandler(res, result);
   },
 
-  async getBalance(req, res) {
-    const balance = await service.getBalance();
+  async getAccountBalance(req, res) {
+    const opaqueId = req.userOpaqueId;
+    const balance = await userService.getAccountBalance(opaqueId);
     return res.json(balance);
   },
 
-  async getDetails(req, res) {
-    const details = await service.getDetails();
+  async getAccountDetails(req, res) {
+    const opaqueId = req.userOpaqueId;
+    const details = await userService.getAccountDetails(opaqueId);
     return res.json(details);
   },
 
-  async getProfileImg(req, res) {
-    const id = '123'; // Initial test
+  async getProfileImgPath(req, res) {
+    const opaqueId = req.userOpaqueId;
     try {
-      const photoPath = await service.getProfileImgPathById(id);
+      const photoPath = await userService.getProfileImgPathById(opaqueId);
       res.sendFile(photoPath);
     } catch (e) {
       res.status(204);

@@ -16,7 +16,6 @@ const app = express();
 app.use(express.json());
 app.use(cookierParser());
 
-// app.use('/app*', authTokenMiddleware);
 app.use('/app/static', express.static(APP_STATIC_DIR));
 app.use('/public/static', express.static(PUBLIC_STATIC_DIR));
 
@@ -26,7 +25,7 @@ app.use('/api', simulateDelayMiddleware);
 
 // New routes structure
 const authRoutes = require('./routes/authRoutes.js');
-// const accountRoutes = require('./routes/accountRoutes.js');
+const accountRoutes = require('./routes/accountRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 // const loansRoutes = require('./routes/loansRoutes.js');
 // const loanRequestsRoutes = require('./routes/loanRequestRoutes.js');
@@ -35,7 +34,7 @@ const userRoutes = require('./routes/userRoutes.js');
 const spaRoutes = require('./routes/spaRoutes.js');
 
 app.use('/api/auth', authRoutes);
-// app.use('/api/account', accountRoutes);
+app.use('/api/account', accountRoutes);
 app.use('/api/users', userRoutes);
 // app.use('/api/loans', loansRoutes);
 // app.use('/api/loans/requests', loanRequestsRoutes);
