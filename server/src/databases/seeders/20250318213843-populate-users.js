@@ -1,6 +1,7 @@
 'use strict';
 
 const { createUser } = require('../factories/userFactory');
+const { seedUsersLogger } = require('../loggers');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
       }
       await Promise.all(promises);
     } catch (e) {
-      console.error(e);
+      seedUsersLogger.error(e.message);
     }
   },
 
