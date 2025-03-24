@@ -4,7 +4,6 @@ const fs = require('fs/promises');
 const { PROFILE_IMGS_DIR } = require('../config/constants');
 const {
   createUserValidation,
-  findByCpfValidation,
 } = require('../lib/helpers/user/serviceValidators');
 const {
   clientErrorsHandler,
@@ -16,21 +15,19 @@ module.exports = {
   async create({ fullName, cpf, birth, email, password }) {
     try {
       const [isValid, fields] = await createUserValidation({
-        fullName,
         cpf,
-        birth,
         email,
-        password,
       });
+
       if (!isValid) return clientErrorsHandler(fields);
 
-      const passwordHash = await createPasswordHash(fields.password);
+      const passwordHash = await createPasswordHash(password);
 
       await userRepository.create({
-        fullName: fields.fullName,
-        cpf: fields.cpf,
-        birth: fields.birth,
-        email: fields.email,
+        fullName: fullName,
+        cpf: cpf,
+        birth: birth,
+        email: email,
         password: passwordHash,
       });
       return { success: true };
@@ -40,14 +37,13 @@ module.exports = {
   },
 
   async getByCpf({ cpf }) {
-    try {
-      const [isValid, result] = await findByCpfValidation({ cpf });
-      if (!isValid) return clientErrorsHandler(result);
-
-      return await userRepository.findByCpf(result.cpf);
-    } catch (e) {
-      return serverErrorHandler(e);
-    }
+    // try {
+    //   const [isValid, result] = await findByCpfValidation({ cpf });
+    //   if (!isValid) return clientErrorsHandler(result);
+    //   return await userRepository.findByCpf(result.cpf);
+    // } catch (e) {
+    //   return serverErrorHandler(e);
+    // }
   },
 
   async getBalance() {

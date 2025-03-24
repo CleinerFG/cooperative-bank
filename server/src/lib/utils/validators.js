@@ -45,9 +45,9 @@ const passwordValidator = (str) => {
 const cpfValidator = (str) => {
   str = str.replace(/[.-]/g, '');
 
-  if (!/^[0-9]{11}$/.test(str)) throw new Error('invalidCpf');
+  if (!/^[0-9]{11}$/.test(str)) throw new Error('invalid');
 
-  if (/^(\d)\1{10}$/.test(str)) throw new Error('invalidCpf');
+  if (/^(\d)\1{10}$/.test(str)) throw new Error('invalid');
 
   let sum = 0,
     remainder;
@@ -55,13 +55,13 @@ const cpfValidator = (str) => {
   for (let i = 1; i <= 9; i++) sum += parseInt(str[i - 1]) * (11 - i);
   remainder = (sum * 10) % 11;
   if (remainder === 10 || remainder === 11) remainder = 0;
-  if (remainder !== parseInt(str[9])) throw new Error('invalidCpf');
+  if (remainder !== parseInt(str[9])) throw new Error('invalid');
 
   sum = 0;
   for (let i = 1; i <= 10; i++) sum += parseInt(str[i - 1]) * (12 - i);
   remainder = (sum * 10) % 11;
   if (remainder === 10 || remainder === 11) remainder = 0;
-  if (remainder !== parseInt(str[10])) throw new Error('invalidCpf');
+  if (remainder !== parseInt(str[10])) throw new Error('invalid');
 
   return true;
 };
