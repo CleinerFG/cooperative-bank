@@ -12,7 +12,6 @@ module.exports = {
   async getByCpf(req, res) {
     const cpf = req.params.cpf;
     const result = await service.getByCpf({ cpf });
-
     return controllerResponseHandler(res, result);
   },
 

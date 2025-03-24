@@ -37,13 +37,11 @@ module.exports = {
   },
 
   async getByCpf({ cpf }) {
-    // try {
-    //   const [isValid, result] = await findByCpfValidation({ cpf });
-    //   if (!isValid) return clientErrorsHandler(result);
-    //   return await userRepository.findByCpf(result.cpf);
-    // } catch (e) {
-    //   return serverErrorHandler(e);
-    // }
+    try {
+      return await userRepository.findByCpf(cpf);
+    } catch (e) {
+      return serverErrorHandler(e);
+    }
   },
 
   async getBalance() {

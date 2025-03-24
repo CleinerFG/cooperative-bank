@@ -6,7 +6,7 @@ module.exports = {
   async login(req, res) {
     const { email, password } = req.body;
     const result = await authService.login({ email, password });
-
+    
     if (result.error) {
       if (result.error === 'client') {
         return res.status(400).json(result);
