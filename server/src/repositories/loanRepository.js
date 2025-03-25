@@ -1,19 +1,13 @@
-const { getDb } = require('../../config/db');
+const LoanModel = require('../models/LoanModel');
 
 module.exports = {
-  /**
-   * @param {'payable'|'receivable'} category
-   */
-  async findAllByCategory(category) {
-    const db = await getDb();
-    return db.loan[category];
-  },
-  /**
-   * @param {'payable'|'receivable'} category
-   * @param {string} id
-   */
-  async findDetailsByCategoryAndId(category, id) {
-    const db = await getDb();
-    return db.loan.details[category].find((loan) => loan.id === id);
+  async create({ debtorId, creditorId, value, monthRate, installmentsQty }) {
+    await LoanModel.crete({
+      debtorId,
+      creditorId,
+      value,
+      monthRate,
+      installmentsQty,
+    });
   },
 };

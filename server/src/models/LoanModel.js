@@ -1,14 +1,9 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, INTEGER } = require('sequelize');
 const { sequelize } = require('../config/databases/mysql/index');
 
 const LoanModel = sequelize.define(
   'Loan',
   {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     opaqueId: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -24,8 +19,6 @@ const LoanModel = sequelize.define(
     },
     contractDate: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
     value: {
       type: DataTypes.DECIMAL(11, 2),
@@ -39,22 +32,16 @@ const LoanModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    status: {
-      type: DataTypes.ENUM(
-        'pending',
-        'active',
-        'finished',
-        'canceled',
-        'rejected'
-      ),
+    status_id: {
+      type: INTEGER,
       allowNull: false,
-      defaultValue: 'pending',
+      defaultValue: 0,
     },
   },
   {
     tableName: 'loans',
     validate: {
-      checkDebtorCreditor() {
+      checkSameDebtorCreditor() {
         if (this.debtorUserId === this.creditorUserId) {
           throw new Error(
             'Debtor user ID cannot be the same as creditor user ID.'

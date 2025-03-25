@@ -45,15 +45,15 @@ const UserModel = sequelize.define(
   }
 );
 
-// UserModel.associate = (models) => {
-//   UserModel.hasMany(models.Loan, {
-//     foreignKey: 'debtorUserId',
-//     as: 'debtorLoans',
-//   });
-//   UserModel.hasMany(models.Loan, {
-//     foreignKey: 'creditorUserId',
-//     as: 'creditorLoans',
-//   });
-// };
+UserModel.associate = (models) => {
+  UserModel.hasMany(models.Loan, {
+    foreignKey: 'debtorUserId',
+    as: 'debtorLoans',
+  });
+  UserModel.hasMany(models.Loan, {
+    foreignKey: 'creditorUserId',
+    as: 'creditorLoans',
+  });
+};
 
 module.exports = UserModel;
