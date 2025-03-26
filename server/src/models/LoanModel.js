@@ -1,5 +1,5 @@
 const { DataTypes, INTEGER } = require('sequelize');
-const { sequelize } = require('../config/databases/mysql/index');
+const sequelize = require('../databases');
 
 const LoanModel = sequelize.define(
   'Loan',
@@ -60,6 +60,10 @@ LoanModel.associate = (models) => {
   LoanModel.belongsTo(models.User, {
     foreignKey: 'creditorUserId',
     as: 'creditor',
+  });
+  LoanModel.belongsTo(models.LoanStatus, {
+    foreignKey: 'statusId',
+    as: 'status',
   });
 };
 
