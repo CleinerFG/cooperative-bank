@@ -1,5 +1,5 @@
 const userService = require('../../services/userService');
-const { seedUsersLogger } = require('../loggers');
+const { seedUsersLogger } = require('../../lib/utils/loggers');
 
 const { genPerson } = require('./factoryUtils');
 

@@ -30,7 +30,6 @@ module.exports = {
       if (!auth) {
         return clientErrorsHandler({ token: result });
       }
-
       return { auth: true, opaqueId: result };
     } catch (e) {
       return serverErrorHandler(e);

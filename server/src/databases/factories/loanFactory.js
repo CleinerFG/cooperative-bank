@@ -1,5 +1,5 @@
 const LoanStatusModel = require('../../models/LoanStatusModel');
-const { seedDefaultLogger } = require('../loggers');
+const { seedDefaultLogger } = require('../../lib/utils/loggers');
 
 const createLoanStatuses = async () => {
   const defaultStatuses = [

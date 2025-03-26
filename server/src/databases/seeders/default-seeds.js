@@ -1,7 +1,7 @@
 'use strict';
 
 const sequelize = require('../index');
-const { seedDefaultLogger } = require('../loggers');
+const { seedDefaultLogger } = require('../../lib/utils/loggers');
 const { createLoanStatuses } = require('../factories/loanFactory');
 
 /** @type {import('sequelize-cli').Migration} */
