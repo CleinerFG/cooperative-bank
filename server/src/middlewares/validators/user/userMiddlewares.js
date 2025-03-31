@@ -6,7 +6,7 @@ const {
   legalAgeValidation,
   passwordValidation,
 } = require('./fieldsValidators');
-const validationResponseHandler = require('./validationResponseHandler');
+const validationResponseHandler = require('../validationResponseHandler');
 
 module.exports = {
   createUserMiddleware: [

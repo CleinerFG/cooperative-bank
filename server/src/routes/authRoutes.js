@@ -4,7 +4,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const {
   loginUserMiddleware,
-} = require('../middlewares/validators/userMiddlewares');
+} = require('../middlewares/validators/user/userMiddlewares');
 
 router.post('/login', loginUserMiddleware, authController.login);
 // router.post('/operation', controller.auth);

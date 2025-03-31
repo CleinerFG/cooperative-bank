@@ -5,7 +5,7 @@ const authTokenMiddleware = require('../middlewares/authTokenMiddleware');
 const {
   createUserMiddleware,
   getUserByCpfMiddleware,
-} = require('../middlewares/validators/userMiddlewares');
+} = require('../middlewares/validators/user/userMiddlewares');
 
 router.get(
   '/:cpf',

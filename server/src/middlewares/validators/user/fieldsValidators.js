@@ -4,7 +4,7 @@ const {
   removeBlankSpace,
   removeCpfFormatting,
   removeTimestamp,
-} = require('../../lib/utils/dataNormalizer');
+} = require('../../../lib/utils/dataNormalizer');
 
 const {
   datetimeValidator,
