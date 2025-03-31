@@ -4,7 +4,7 @@ module.exports = (validations) => {
 
   const fields = validationsFlat.reduce((acc, field) => {
     if (!field.isValid) {
-      acc[field.name] = field.error;
+      acc[field.name] = [field.error];
     }
     return acc;
   }, {});
