@@ -12,6 +12,26 @@ module.exports = {
     });
   },
 
+  async findAll() {
+    const users = await UserModel.findAll();
+    if (users.length > 0) {
+      return users.map((user) => {
+        return {
+          id: user.id,
+          opaqueId: user.opaqueId,
+          fullName: user.fullName,
+          cpf: user.cpf,
+          birth: user.birth,
+          email: user.email,
+          balance: user.balance,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        };
+      });
+    }
+    return null;
+  },
+
   async findByEmail(email) {
     const user = await UserModel.findOne({
       where: { email },
