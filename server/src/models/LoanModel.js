@@ -40,15 +40,6 @@ const LoanModel = sequelize.define(
   },
   {
     tableName: 'loans',
-    validate: {
-      checkSameDebtorCreditor() {
-        if (this.debtorUserId === this.creditorUserId) {
-          throw new Error(
-            'Debtor user ID cannot be the same as creditor user ID.'
-          );
-        }
-      },
-    },
   }
 );
 
