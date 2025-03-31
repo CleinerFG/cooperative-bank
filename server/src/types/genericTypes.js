@@ -7,3 +7,8 @@
  * @property {'client'} error
  * @property {FieldError} fields
  */
+
+/**
+ * @typedef {Object} SuccessReturn
+ * @property {true} success
+ */
