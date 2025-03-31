@@ -25,6 +25,8 @@ module.exports = {
   ENV,
   MYSQL_DB_NAME_BY_ENV,
   PROFILE_IMGS_DIR,
+  APP_DIR,
+  PUBLIC_DIR,
   APP_STATIC_DIR,
   PUBLIC_STATIC_DIR,
 };
