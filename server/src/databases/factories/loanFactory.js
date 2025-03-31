@@ -1,4 +1,7 @@
 const LoanStatusModel = require('../../models/LoanStatusModel');
+const LoanModel = require('../../models/LoanModel');
+const userRepository = require('../../repositories/userRepository');
+
 const { seedDefaultLogger } = require('../../lib/utils/loggers');
 
 const createLoanStatuses = async () => {
@@ -25,4 +28,9 @@ const createLoanStatuses = async () => {
   }
 };
 
-module.exports = { createLoanStatuses };
+const createLoan = async () => {
+  const users = await userRepository.findAll();
+  users.forEach((user) => console.table(user));
+};
+
+module.exports = { createLoanStatuses, createLoan };

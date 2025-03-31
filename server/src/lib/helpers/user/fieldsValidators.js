@@ -4,6 +4,7 @@ const checkCpfExists = async (cpf) => {
   const field = {
     name: 'cpf',
     isValid: false,
+    error: 'alreadyExists',
   };
 
   const cpfExists = await userRepository.findCpf(cpf);
@@ -17,6 +18,7 @@ const checkEmailExists = async (email) => {
   const field = {
     name: 'email',
     isValid: false,
+    error: 'alreadyExists',
   };
 
   const emailExists = await userRepository.findEmail(email);
