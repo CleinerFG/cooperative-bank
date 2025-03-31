@@ -1,5 +1,4 @@
 const { faker } = require('@faker-js/faker');
-const UserModel = require('../../models/UserModel');
 const {
   checkCpfExists,
   checkEmailExists,
@@ -62,7 +61,7 @@ const genPerson = async () => {
   const email = await genUniqueEmail(firstName, lastName);
 
   const birth = faker.date.birthdate().toISOString().split('T')[0];
-  const password = firstName + lastName;
+  const password = firstName + lastName
 
   return { fullName, cpf, birth, email, password };
 };
