@@ -1,13 +1,11 @@
-const UserModel = require('../../models/UserModel');
+const userService = require('../../services/userService');
 const { seedUsersLogger } = require('../../lib/utils/loggers');
 
 const { genPerson } = require('./factoryUtils');
-const { createPasswordHash } = require('../../lib/helpers/paswordHash');
 
 const createUser = async () => {
   const person = await genPerson();
-  const passHash = await createPasswordHash(person.password);
-  await UserModel.create({ ...person, password: passHash });
+  await userService.create({ ...person });
   seedUsersLogger.info(JSON.stringify(person, null, 2));
 };
 
