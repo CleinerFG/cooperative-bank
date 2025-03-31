@@ -1,17 +1,26 @@
+const {} = require('../types/user/repositoryTypes');
 const UserModel = require('../models/UserModel');
 
 module.exports = {
-  async create({ fullName, cpf, birth, email, password }) {
-    return await UserModel.create({
-      fullName,
-      cpf,
-      birth,
-      email,
-      password,
+  /**
+   * @param {CreateProps} data
+   * @returns {Promise<boolean>}
+   */
+  async create(data) {
+    const user = await UserModel.create({
+      fullName: data.fullName,
+      cpf: data.cpf,
+      birth: data.birth,
+      email: data.email,
+      password: data.password,
       balance: 100000,
     });
+    return user ? true : false;
   },
 
+  /**
+   * @returns {Promise<FindReturn[]|null>}
+   */
   async findAll() {
     const users = await UserModel.findAll();
     if (users.length > 0) {
@@ -32,6 +41,10 @@ module.exports = {
     return null;
   },
 
+  /**
+   * @param {string} email
+   * @returns {Promise<FindByEmailReturn|null>}
+   */
   async findByEmail(email) {
     const user = await UserModel.findOne({
       where: { email },
@@ -47,21 +60,29 @@ module.exports = {
     return null;
   },
 
+  /**
+   * @param {string} cpf
+   * @returns {Promise<FindByCpfReturn|null>}
+   */
   async findByCpf(cpf) {
     const user = await UserModel.findOne({
       where: { cpf },
-      attributes: ['fullName', 'cpf'],
+      attributes: ['cpf', 'fullName'],
     });
 
     if (user) {
       return {
-        fullName: user.fullName,
         cpf: user.cpf,
+        fullName: user.fullName,
       };
     }
     return null;
   },
 
+  /**
+   * @param {string} email
+   * @returns {Promise<string|null>}
+   */
   async findEmail(email) {
     const user = await UserModel.findOne({
       where: { email },
@@ -70,6 +91,10 @@ module.exports = {
     return user ? user.email : null;
   },
 
+  /**
+   * @param {string} cpf
+   * @returns {Promise<string|null>}
+   */
   async findCpf(cpf) {
     const user = await UserModel.findOne({
       where: { cpf },
@@ -78,6 +103,10 @@ module.exports = {
     return user ? user.cpf : null;
   },
 
+  /**
+   * @param {string} opaqueId
+   * @returns {Promise<string|null>}
+   */
   async findAccountBalance(opaqueId) {
     const user = await UserModel.findOne({
       where: { opaqueId },
@@ -86,6 +115,10 @@ module.exports = {
     return user ? user.balance : null;
   },
 
+  /**
+   * @param {string} opaqueId
+   * @returns {Promise<FindAccountDetailsReturn|null>}
+   */
   async findAccountDetails(opaqueId) {
     const user = await UserModel.findOne({
       where: { opaqueId },
@@ -94,9 +127,9 @@ module.exports = {
 
     if (user) {
       return {
+        cpf: user.cpf,
         fullName: user.fullName,
         birth: user.birth,
-        cpf: user.cpf,
         email: user.email,
         registration: user.createdAt,
       };
