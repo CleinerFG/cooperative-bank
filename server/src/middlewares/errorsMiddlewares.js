@@ -10,6 +10,6 @@ module.exports = {
     next(err);
   },
   globalErrorsMiddleware: (err, req, res, next) => {
-    res.status(500).json(serverErrorHandler(err));
+    return res.status(500).json(serverErrorHandler(err));
   },
 };
