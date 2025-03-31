@@ -32,7 +32,7 @@ const LoanModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    status_id: {
+    statusId: {
       type: INTEGER,
       allowNull: false,
       defaultValue: 0,
