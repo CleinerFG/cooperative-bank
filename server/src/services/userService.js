@@ -5,69 +5,43 @@ const { PROFILE_IMGS_DIR } = require('../config/constants');
 const {
   createUserValidation,
 } = require('../lib/helpers/user/serviceValidators');
-const {
-  clientErrorsHandler,
-  serverErrorHandler,
-} = require('../lib/handlers/errorsHandler');
+const { clientErrorsHandler } = require('../lib/handlers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
 
 module.exports = {
-  async create({ fullName, cpf, birth, email, password }) {
-    try {
-      const [isValid, fields] = await createUserValidation({
-        cpf,
-        email,
-      });
+  async create(data) {
+    const [isValid, fields] = await createUserValidation({
+      ...data,
+    });
 
-      if (!isValid) return clientErrorsHandler(fields);
+    if (!isValid) return clientErrorsHandler(fields);
 
-      const passwordHash = await createPasswordHash(password);
+    const passwordHash = await createPasswordHash(data.password);
 
-      await userRepository.create({
-        fullName: fullName,
-        cpf: cpf,
-        birth: birth,
-        email: email,
-        password: passwordHash,
-      });
-      return { success: true };
-    } catch (e) {
-      return serverErrorHandler(e);
-    }
+    await userRepository.create({
+      ...data,
+      password: passwordHash,
+    });
+
+    return { success: true };
   },
 
   async getByCpf(cpf) {
-    try {
-      return await userRepository.findByCpf(cpf);
-    } catch (e) {
-      return serverErrorHandler(e);
-    }
+    return await userRepository.findByCpf(cpf);
   },
 
   async getAccountBalance(opaqueId) {
-    try {
-      const balance = await userRepository.findAccountBalance(opaqueId);
-      return Number(balance);
-    } catch (e) {
-      return serverErrorHandler(e);
-    }
+    const balance = await userRepository.findAccountBalance(opaqueId);
+    return Number(balance);
   },
 
   async getAccountDetails(opaqueId) {
-    try {
-      return userRepository.findAccountDetails(opaqueId);
-    } catch (e) {
-      return serverErrorHandler(e);
-    }
+    return userRepository.findAccountDetails(opaqueId);
   },
 
   async getProfileImgPath(opaqueId) {
-    try {
-      const photoPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
-      await fs.access(photoPath);
-      return photoPath;
-    } catch (e) {
-      return serverErrorHandler(e);
-    }
+    const photoPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
+    await fs.access(photoPath);
+    return photoPath;
   },
 };
