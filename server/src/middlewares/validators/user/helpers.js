@@ -19,7 +19,7 @@ module.exports = {
     const month = today.getUTCMonth() - birthDate.getUTCMonth();
     const day = today.getUTCDate() - birthDate.getUTCDate();
 
-    return age >= 18 && month >= 0 && day >= 0;
+    return age > 18 || (age === 18 && month >= 0 && day >= 0);
   },
 
   cpfValidator: (str) => {
