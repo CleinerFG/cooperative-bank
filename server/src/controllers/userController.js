@@ -5,7 +5,6 @@ module.exports = {
   async create(req, res) {
     const data = req.body;
     const result = await userService.create({ ...data });
-
     return responseHandler(res, result, () => res.status(201).json());
   },
 
