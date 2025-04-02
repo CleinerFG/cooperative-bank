@@ -7,10 +7,6 @@ const { APP_STATIC_DIR, PUBLIC_STATIC_DIR } = require('./config/constants.js');
 const cookierParser = require('cookie-parser');
 
 const authTokenMiddleware = require('./middlewares/authTokenMiddleware.js');
-const {
-  globalErrorsMiddleware,
-  jsonInvalidMiddleware,
-} = require('./middlewares/errorsMiddlewares.js');
 const logMiddleware = require('./middlewares/logMiddleware.js');
 const simulateDelayMiddleware = require('./middlewares/simulateDelayMiddleware.js');
 
@@ -19,7 +15,6 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use(jsonInvalidMiddleware);
 app.use(cookierParser());
 
 app.use('/app/static', express.static(APP_STATIC_DIR));
@@ -38,6 +33,7 @@ const loanRoutes = require('./routes/loanRoutes.js');
 // const loanInstallmentsRoutes = require('./routes/loanInstallmentsRoutes.js');
 // const notificationsRoutes = require('./routes/notificationsRoutes.js');
 const spaRoutes = require('./routes/spaRoutes.js');
+const errorsMiddleware = require('./middlewares/errorsMiddleware.js');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/account', accountRoutes);
@@ -47,7 +43,7 @@ app.use('/api/loans', loanRoutes);
 // app.use('/api/loans/installments', loanInstallmentsRoutes);
 // app.use('/api/notifications', notificationsRoutes);
 app.use(spaRoutes);
-app.use(globalErrorsMiddleware);
+app.use(errorsMiddleware);
 
 app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}`);
