@@ -1,5 +1,6 @@
 const {} = require('../types/user/repositoryTypes');
 const UserModel = require('../models/UserModel');
+const { User } = require('../databases/mysql');
 
 module.exports = {
   /**
@@ -7,7 +8,7 @@ module.exports = {
    * @returns {Promise<boolean>}
    */
   async create(data) {
-    const user = await UserModel.create({
+    const user = await User.create({
       fullName: data.fullName,
       cpf: data.cpf,
       birth: data.birth,
