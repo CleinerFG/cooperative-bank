@@ -5,16 +5,32 @@ class Repository {
     this.Model = db[modelName];
   }
 
+  // static plainRecord(model) {
+  //   return model ? model.get({ plain: true }) : null;
+  // }
+
+  // static plainRecords(models) {
+  //   if (models.length)
+  //     return models.map((model) => Repository.plainRecord(model));
+  //   return [];
+  // }
+
   async create(data) {
-    return await this.Model.create(data);
+    const newRecord = await this.Model.create(data);
+    return newRecord
   }
 
   async findAll() {
-    return await this.Model.findAll();
+    const records = await this.Model.findAll();
+    return records
   }
 
   async updateById(data, id) {
-    return await this.Model.update(data, { where: { id } });
+    const [affectedRows, updatedRows] = await this.Model.update(data, {
+      where: { id },
+    });
+    // initial test
+    return { affectedRows, updatedRows };
   }
 
   async deleteById(data, id) {
