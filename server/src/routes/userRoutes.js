@@ -1,18 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
-const authTokenMiddleware = require('../middlewares/authTokenMiddleware');
+// const authTokenMiddleware = require('../middlewares/authTokenMiddleware');
 const {
   createUserMiddleware,
   getUserByCpfMiddleware,
 } = require('../middlewares/validators/user/userMiddlewares');
 
-router.get(
-  '/:cpf',
-  authTokenMiddleware,
-  getUserByCpfMiddleware,
-  controller.getByCpf
-);
+router.get('/:cpf', getUserByCpfMiddleware, controller.getByCpf);
 router.post('/', createUserMiddleware, controller.create);
 
 module.exports = router;
