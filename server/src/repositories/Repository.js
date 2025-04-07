@@ -17,12 +17,12 @@ class Repository {
 
   async create(data) {
     const newRecord = await this.Model.create(data);
-    return newRecord
+    return newRecord;
   }
 
   async findAll() {
     const records = await this.Model.findAll();
-    return records
+    return records;
   }
 
   async updateById(data, id) {

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const config = require(path.resolve(__dirname, '../../config/databases/mysql'));
+const config = require(path.resolve(__dirname, './config.js'));
 
 const modelsPath = path.resolve(__dirname, './models');
 const db = {};

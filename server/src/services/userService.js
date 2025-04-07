@@ -1,4 +1,3 @@
-const {} = require('../types/user/serviceTypes');
 const userRepository = require('../repositories/userRepository');
 const path = require('path');
 const fs = require('fs/promises');
@@ -10,10 +9,6 @@ const { clientErrorsHandler } = require('../lib/handlers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
 
 module.exports = {
-  /**
-   * @param {CreateProps} data
-   * @returns {Promise<CreateReturn>}
-   */
   async create(data) {
     const [isValid, fields] = await createUserValidation({
       ...data,
@@ -31,27 +26,15 @@ module.exports = {
     return { success: true };
   },
 
-  /**
-   * @param {string} cpf
-   * @returns {Promise<GetByCpfReturn|null>}
-   */
   async getByCpf(cpf) {
     return await userRepository.findByCpf(cpf);
   },
 
-  /**
-   * @param {string} opaqueId
-   * @returns {Promise<number>}
-   */
   async getAccountBalance(opaqueId) {
     const balance = await userRepository.findAccountBalance(opaqueId);
     return Number(balance);
   },
 
-  /**
-   * @param {string} opaqueId
-   * @returns {Promise<GetAccountDetailsReturn|null>}
-   */
   async getAccountDetails(opaqueId) {
     return userRepository.findAccountDetails(opaqueId);
   },
