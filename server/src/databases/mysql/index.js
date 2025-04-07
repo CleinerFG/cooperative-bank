@@ -3,7 +3,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const config = require(path.resolve(__dirname, '../../config/databases/mysql'));
 
-const modelsPath = path.resolve(__dirname, '../../models/mysql');
+const modelsPath = path.resolve(__dirname, './models');
 const db = {};
 const sequelize = new Sequelize(config);
 
