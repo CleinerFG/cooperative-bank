@@ -1,3 +1,4 @@
+const Service = require('./Service');
 const userRepository = require('../repositories/userRepository');
 const path = require('path');
 const fs = require('fs/promises');
@@ -7,41 +8,69 @@ const {
 } = require('../lib/helpers/user/serviceValidators');
 const { clientErrorsHandler } = require('../lib/handlers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
+const InvalidFieldsError = require('../errors/InvalidFieldsError');
 
-module.exports = {
+class UserService extends Service {
+  constructor() {
+    super(userRepository);
+  }
+
   async create(data) {
     const [isValid, fields] = await createUserValidation({
       ...data,
     });
 
-    if (!isValid) return clientErrorsHandler(fields);
+    if (!isValid) throw new InvalidFieldsError(fields);
 
     const passwordHash = await createPasswordHash(data.password);
 
-    await userRepository.create({
+    await super.create({
       ...data,
       password: passwordHash,
     });
 
     return { success: true };
-  },
+  }
+}
 
-  async getByCpf(cpf) {
-    return await userRepository.findByCpf(cpf);
-  },
+const userService = new UserService();
 
-  async getAccountBalance(opaqueId) {
-    const balance = await userRepository.findAccountBalance(opaqueId);
-    return Number(balance);
-  },
+module.exports = userService;
 
-  async getAccountDetails(opaqueId) {
-    return userRepository.findAccountDetails(opaqueId);
-  },
+// module.exports = {
+//   async create(data) {
+//     const [isValid, fields] = await createUserValidation({
+//       ...data,
+//     });
 
-  async getProfileImgPath(opaqueId) {
-    const photoPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
-    await fs.access(photoPath);
-    return photoPath;
-  },
-};
+//     if (!isValid) return clientErrorsHandler(fields);
+
+//     const passwordHash = await createPasswordHash(data.password);
+
+//     await userRepository.create({
+//       ...data,
+//       password: passwordHash,
+//     });
+
+//     return { success: true };
+//   },
+
+//   async getByCpf(cpf) {
+//     return await userRepository.findByCpf(cpf);
+//   },
+
+//   async getAccountBalance(opaqueId) {
+//     const balance = await userRepository.findAccountBalance(opaqueId);
+//     return Number(balance);
+//   },
+
+//   async getAccountDetails(opaqueId) {
+//     return userRepository.findAccountDetails(opaqueId);
+//   },
+
+//   async getProfileImgPath(opaqueId) {
+//     const photoPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
+//     await fs.access(photoPath);
+//     return photoPath;
+//   },
+// };
