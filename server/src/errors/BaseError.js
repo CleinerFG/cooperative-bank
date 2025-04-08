@@ -1,3 +1,5 @@
+const { serverErrorsLogger } = require('../lib/utils/loggers');
+
 class BaseError extends Error {
   #options;
   #status;
@@ -11,6 +13,7 @@ class BaseError extends Error {
   get #responseData() {
     if (this.#status >= 400 && this.#status < 500) return this.#options;
 
+    serverErrorsLogger.error(this.#options.err);
     return {
       error: 'server',
     };
