@@ -1,27 +1,50 @@
+const jwt = require('jsonwebtoken');
+const { tokenExpires, cookieSecret } = require('../config/config');
 const userRepository = require('../repositories/userRepository');
 const { comparePassword } = require('../lib/helpers/paswordHash');
-const { clientErrorsHandler } = require('../lib/handlers/errorsHandler');
-const { createToken, validateToken } = require('../lib/handlers/tokenHandler');
+const InvalidFieldsError = require('../errors/InvalidFieldsError');
+const AuthTokenError = require('../errors/AuthTokenError');
+class AuthService {
+  constructor() {
+    this.repository = userRepository;
+  }
 
-module.exports = {
-  login: async ({ email, password }) => {
-    const user = await userRepository.findByEmail(email);
-    if (!user) return clientErrorsHandler({ email: 'notFound' });
+  #createToken(userOpaqueId) {
+    const token = jwt.sign({ userOpaqueId }, cookieSecret, {
+      expiresIn: tokenExpires,
+    });
+    return token;
+  }
 
-    const passMatch = await comparePassword(password, user.passwordHash);
+  async login(email, password) {
+    const user = await this.repository.findByEmail(email);
+    if (!user) throw new InvalidFieldsError({ email: ['userNotFound'] });
+
+    const passMatch = await comparePassword(String(password), user.password);
     if (!passMatch)
-      return clientErrorsHandler({ password: 'incorrectPassword' });
+      throw new InvalidFieldsError({ password: ['incorrectPassword'] });
 
-    const token = createToken(user.opaqueId);
-    return { token };
-  },
+    return this.#createToken(user.opaqueId);
+  }
 
-  authenticateToken: (token) => {
-    const [auth, result] = validateToken(token);
+  authenticateToken(token) {
+    try {
+      const { userOpaqueId } = jwt.verify(token, cookieSecret);
+      return { auth: true, userOpaqueId };
+    } catch (err) {
+      if (err instanceof jwt.JsonWebTokenError) {
+        if (err.message === 'jwt must be provided')
+          throw new AuthTokenError('notProvidedToken');
 
-    if (!auth) {
-      return clientErrorsHandler({ token: result });
+        if (err.name === 'TokenExpiredError')
+          throw new AuthTokenError('tokenExpired');
+
+        throw new AuthTokenError('invalidToken');
+      }
+      throw err;
     }
-    return { auth: true, opaqueId: result };
-  },
-};
+  }
+}
+
+const authService = new AuthService();
+module.exports = authService;
