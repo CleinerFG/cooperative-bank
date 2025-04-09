@@ -8,15 +8,19 @@ class UserController extends Controller {
   }
 
   async create(req, res, next) {
-    const body = filterBody(req.body, [
-      'fullName',
-      'cpf',
-      'birth',
-      'email',
-      'password',
-    ]);
-    req.body = body;
-    return super.create(req, res, next);
+    try {
+      const body = filterBody(req.body, [
+        'fullName',
+        'cpf',
+        'birth',
+        'email',
+        'password',
+      ]);
+      req.body = body;
+      return super.create(req, res, next);
+    } catch (err) {
+      next(err);
+    }
   }
 }
 
