@@ -1,7 +1,11 @@
 const BaseError = require('./BaseError');
 
 class InvalidRequestError extends BaseError {
-  constructor(message) {
+  static messages = {
+    opaqueId: 'invalidOpaqueId',
+  };
+  constructor(key) {
+    const message = InvalidRequestError.messages[key];
     super({ error: 'request', message }, 400);
   }
 }

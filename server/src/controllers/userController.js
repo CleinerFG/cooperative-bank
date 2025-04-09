@@ -27,7 +27,7 @@ class UserController extends Controller {
   async getAccountBalance(req, res, next) {
     try {
       const opaqueId = req.userOpaqueId;
-      if (!opaqueId) throw new InvalidRequestError('invalidOpaqueId');
+      if (!opaqueId) throw new InvalidRequestError('opaqueId');
 
       const balance = await this.service.getAccountBalance(opaqueId);
       return res.json(balance);
