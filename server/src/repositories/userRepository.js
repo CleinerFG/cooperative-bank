@@ -10,7 +10,6 @@ class UserRepository extends Repository {
       where: { email },
       attributes: ['opaqueId', 'password'],
     });
-
   }
 
   async findByCpf(cpf) {
@@ -35,10 +34,11 @@ class UserRepository extends Repository {
   }
 
   async findAccountBalance(opaqueId) {
-    return this.Model.findOne({
+    const user = await this.Model.findOne({
       where: { opaqueId },
       attributes: ['balance'],
     });
+    return user.balance;
   }
 
   async findAccountDetails(opaqueId) {

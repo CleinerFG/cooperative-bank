@@ -1,4 +1,5 @@
 const Controller = require('./Controller.js');
+const InvalidRequestError = require('../errors/InvalidRequestError.js');
 const userService = require('../services/userService.js');
 const { filterBody } = require('../lib/utils/reqUtils.js');
 
@@ -18,6 +19,18 @@ class UserController extends Controller {
       ]);
       req.body = body;
       return super.create(req, res, next);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async getAccountBalance(req, res, next) {
+    try {
+      const opaqueId = req.userOpaqueId;
+      if (!opaqueId) throw new InvalidRequestError('invalidOpaqueId');
+
+      const balance = await this.service.getAccountBalance(opaqueId);
+      return res.json(balance);
     } catch (err) {
       next(err);
     }
