@@ -1,14 +1,16 @@
 const { tokenExpires } = require('../config/config');
-const responseHandler = require('../lib/handlers/responseHandler');
 const authService = require('../services/authService');
 
-module.exports = {
-  async login(req, res) {
-    const { email, password } = req.body;
-    const result = await authService.login({ email, password });
+class AuthController {
+  constructor() {
+    this.service = authService;
+  }
 
-    return responseHandler(res, result, () => {
-      const token = result.token;
+  async login(req, res, next) {
+    const { email, password } = req.body;
+
+    try {
+      const token = await this.service.login(email, password);
 
       res.cookie('token', token, {
         httpOnly: true,
@@ -16,7 +18,12 @@ module.exports = {
         sameSite: 'strict',
         maxAge: tokenExpires,
       });
-      return res.json();
-    });
-  },
-};
+      return res.json({ success: true });
+    } catch (err) {
+      next(err);
+    }
+  }
+}
+
+const authController = new AuthController();
+module.exports = authController;
