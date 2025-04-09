@@ -36,6 +36,12 @@ class UserService extends Service {
     const balance = await this.repository.findAccountBalance(opaqueId);
     return +balance;
   }
+
+  async getAccountDetails(opaqueId) {
+    const a = await this.repository.findAccountDetails(opaqueId);
+    console.log(a);
+    return a;
+  }
 }
 
 const userService = new UserService();

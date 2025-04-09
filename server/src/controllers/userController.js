@@ -35,6 +35,18 @@ class UserController extends Controller {
       next(err);
     }
   }
+
+  async getAccountDetails(req, res, next) {
+    try {
+      const opaqueId = req.userOpaqueId;
+      if (!opaqueId) throw new InvalidRequestError('opaqueId');
+
+      const details = await this.service.getAccountDetails(opaqueId);
+      return res.json(details);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 const userController = new UserController();
