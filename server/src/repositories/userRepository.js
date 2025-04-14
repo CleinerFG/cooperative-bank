@@ -44,7 +44,13 @@ class UserRepository extends Repository {
   async findAccountDetails(opaqueId) {
     return this.Model.findOne({
       where: { opaqueId },
-      attributes: ['fullName', 'birth', 'cpf', 'email', 'createdAt'],
+      attributes: [
+        'fullName',
+        'birth',
+        'cpf',
+        'email',
+        ['created_at', 'registration'],
+      ],
     });
   }
 }

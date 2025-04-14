@@ -2,7 +2,7 @@ import ApiService from '../../../global/js/core/ApiService.js';
 class AuthService extends ApiService {
   async login(data) {
     const res = await super.post('/auth/login', data);
-    if (res.success) window.location.href = '/app';
+    if (res.status === 200) window.location.href = '/app';
     return res;
   }
 

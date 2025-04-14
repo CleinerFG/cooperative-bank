@@ -1,35 +1,21 @@
-import '../types/accountType.js';
-import { API_BASE_URL } from '../../../global/js/constants/config.js';
+import ApiService from '../../../global/js/core/ApiService.js';
 
-class AccountService {
-  #BASE_ENDPOINT = `${API_BASE_URL}/account`;
-
-  /**
-   * @returns {Promise<UserInfo>}
-   */
+class AccountService extends ApiService {
   async getDetails() {
-    const res = await fetch(`${this.#BASE_ENDPOINT}/details`);
-    return await res.json();
+    return (await super.get('/account/details')).json();
   }
 
-  /**
-   * @returns {Promise<Balance>}
-   */
   async getBalance() {
-    const res = await fetch(`${this.#BASE_ENDPOINT}/balance`);
-    return await res.json();
+    return (await super.get('/account/balance')).json();
   }
 
-  /**
-   * @returns {Promise<string>}
-   */
   async getProfileImgUrl() {
-    const res = await fetch(`${this.#BASE_ENDPOINT}/profile-img`);
-    if (res.status === 200) {
-      const blob = await res.blob();
-      return URL.createObjectURL(blob);
-    }
-    return '';
+    // const res = await fetch(`${this.#BASE_ENDPOINT}/profile-img`);
+    // if (res.status === 200) {
+    //   const blob = await res.blob();
+    //   return URL.createObjectURL(blob);
+    // }
+    // return '';
   }
 }
 
