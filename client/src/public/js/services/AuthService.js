@@ -1,8 +1,9 @@
 import ApiService from '../../../global/js/core/ApiService.js';
-
 class AuthService extends ApiService {
   async login(data) {
-    return await super.post('/auth/login', data);
+    const res = await super.post('/auth/login', data);
+    if (res.success) window.location.href = '/app';
+    return res;
   }
 
   async register(data) {
