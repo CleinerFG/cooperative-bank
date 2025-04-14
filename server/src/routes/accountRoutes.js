@@ -13,6 +13,10 @@ router.get(
   authTokenMiddleware,
   controller.getAccountDetails.bind(controller)
 );
-// router.get('/profile-img', controller.getProfileImgPath);
+router.get(
+  '/profile-img',
+  authTokenMiddleware,
+  controller.getProfileImg.bind(controller)
+);
 
 module.exports = router;

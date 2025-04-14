@@ -10,12 +10,12 @@ class AccountService extends ApiService {
   }
 
   async getProfileImgUrl() {
-    // const res = await fetch(`${this.#BASE_ENDPOINT}/profile-img`);
-    // if (res.status === 200) {
-    //   const blob = await res.blob();
-    //   return URL.createObjectURL(blob);
-    // }
-    // return '';
+    const res = await super.get('/account/profile-img');
+    if (res.status === 200) {
+      const blob = await res.blob();
+      return URL.createObjectURL(blob);
+    }
+    return '';
   }
 }
 

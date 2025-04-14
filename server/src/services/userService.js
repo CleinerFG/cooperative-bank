@@ -31,6 +31,10 @@ class UserService extends Service {
     return { success: true };
   }
 
+  async getByCpf(cpf) {
+    return this.repository.findByCpf(cpf);
+  }
+
   async getAccountBalance(opaqueId) {
     const balance = await this.repository.findAccountBalance(opaqueId);
     return +balance;
@@ -40,8 +44,15 @@ class UserService extends Service {
     return this.repository.findAccountDetails(opaqueId);
   }
 
-  async getByCpf(cpf) {
-    return this.repository.findByCpf(cpf);
+  async getProfileImgPath(opaqueId) {
+    const imgPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
+    try {
+      await fs.stat(imgPath);
+      return imgPath;
+    } catch (err) {
+      if (err.code === 'ENOENT') return null;
+      throw err;
+    }
   }
 }
 

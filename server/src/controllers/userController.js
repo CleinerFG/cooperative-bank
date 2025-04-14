@@ -24,6 +24,14 @@ class UserController extends Controller {
     }
   }
 
+  async getByCpf(req, res) {
+    const { cpf } = req.params;
+    const user = await this.service.getByCpf(cpf);
+
+    if (!user) return res.status(404).json();
+    return res.json(user);
+  }
+
   async getAccountBalance(req, res, next) {
     try {
       const opaqueId = req.userOpaqueId;
@@ -48,12 +56,18 @@ class UserController extends Controller {
     }
   }
 
-  async getByCpf(req, res) {
-    const { cpf } = req.params;
-    const user = await this.service.getByCpf(cpf);
+  async getProfileImg(req, res, next) {
+    try {
+      const opaqueId = req.userOpaqueId;
+      if (!opaqueId) throw new InvalidRequestError('opaqueId');
 
-    if (!user) return res.status(404).json();
-    return res.json(user);
+      const img = await this.service.getProfileImgPath(opaqueId);
+      if (!img) return res.status(404).json();
+
+      return res.sendFile(img);
+    } catch (err) {
+      next(err);
+    }
   }
 }
 
