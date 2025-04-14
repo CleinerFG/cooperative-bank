@@ -1,5 +1,4 @@
 import LoginPage from '../login/LoginPage.js';
-import publicRouter from '../../core/publicRouter.js';
 import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class RegisterPage extends LoginPage {
@@ -20,7 +19,7 @@ export default class RegisterPage extends LoginPage {
   }
 
   async _setup() {
-    this._handleRoutes(publicRouter, '[data-link]');
+    this._handleRoutes('[data-link]');
     const RegisterFormCtrl = await import('./RegisterFormCtrl.js');
     new RegisterFormCtrl.default();
   }

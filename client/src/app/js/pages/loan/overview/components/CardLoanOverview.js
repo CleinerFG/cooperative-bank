@@ -7,7 +7,7 @@ import {
 import { Card } from '../../../../components/cards/Card.js';
 import { ASSETS_ROUTE } from '../../../../constants/routes.js';
 import { handleIconDark } from '../../../../../../global/js/utils/themeUtils.js';
-import appRouter from '../../../../core/appRouter.js';
+import router from '../../../../../../global/js/core/Router.js';
 import { PAGE_ROUTES } from '../../../../constants/routes.js';
 import { translate } from '../../../../../../global/js/i18n/Translator.js';
 
@@ -68,7 +68,7 @@ export class CardLoanOverview extends Card {
     this._containerElement
       .querySelector(`#btn-${this._id}`)
       .addEventListener('click', () => {
-        appRouter.navigateTo(this._redirectPageRoute);
+        router.navigateTo(this._redirectPageRoute);
       });
   }
 

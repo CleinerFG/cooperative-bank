@@ -1,7 +1,6 @@
 import '../../types/pageComponentsType.js';
 import Page from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
-import publicRouter from '../../core/publicRouter.js';
 import { translate } from '../../../../global/js/i18n/Translator.js';
 
 export default class LandingPage extends Page {
@@ -221,6 +220,6 @@ export default class LandingPage extends Page {
   }
 
   _setup() {
-    this._handleRoutes(publicRouter, '[data-link]');
+    this._handleRoutes('[data-link]');
   }
 }

@@ -1,7 +1,6 @@
 import Page from '../../../../global/js/core/Page.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
 import { featureGroups } from './components/FeatureGroups.js';
-import appRouter from '../../core/appRouter.js';
 import { handleIconDark } from '../../../../global/js/utils/themeUtils.js';
 import { translate } from '../../../../global/js/i18n/Translator.js';
 
@@ -53,6 +52,6 @@ export default class HomePage extends Page {
   }
 
   _setup() {
-    this._handleRoutes(appRouter, '.feature-cards [data-link]');
+    this._handleRoutes('.feature-cards [data-link]');
   }
 }

@@ -1,18 +1,11 @@
-import '../types/routesType.js';
+import routes from '../constants/routes.js';
 
-export class Router {
-  /**@type {RouteMap[]} */
+class Router {
   #routes;
-  /**
-   * @param {{string:{RouteMap}}} routesMap
-   */
   constructor(routesMap) {
     this.#routes = Router.#flatRoutes(routesMap);
   }
 
-  /**
-   * @returns {RouteMap[]}
-   */
   static #flatRoutes(routes) {
     const result = [];
     const traverse = (node) => {
@@ -28,9 +21,6 @@ export class Router {
     return result;
   }
 
-  /**
-   * @param {string} search
-   */
   #extractQueryParams(search) {
     const params = new URLSearchParams(search);
     return Object.fromEntries(params.entries());
@@ -53,9 +43,6 @@ export class Router {
     window.scrollTo(0, 0);
   }
 
-  /**
-   * @param {string} url
-   */
   navigateTo(url) {
     history.pushState(null, null, url);
     this.#handleRouting();
@@ -66,3 +53,7 @@ export class Router {
     this.#handleRouting();
   }
 }
+
+const router = new Router(routes);
+
+export default router;

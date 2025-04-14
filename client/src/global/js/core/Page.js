@@ -1,4 +1,4 @@
-import { Router } from './Router.js';
+import router from './Router.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
 import { titleCase } from '../utils/stringUtils.js';
 
@@ -34,11 +34,7 @@ export default class Page {
     return this.#queryParams;
   }
 
-  /**
-   * @param {Router} router
-   * @param {string} querySelector
-   */
-  _handleRoutes(router, querySelector) {
+  _handleRoutes(querySelector) {
     const elements = document.querySelectorAll(querySelector);
     elements.forEach((el) => {
       el.addEventListener('click', (e) => {

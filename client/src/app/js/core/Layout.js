@@ -1,4 +1,4 @@
-import appRouter from './appRouter.js';
+import router from '../../../global/js/core/Router.js';
 import theme from '../components/common/Theme.js';
 import menu from '../components/common/Menu.js';
 
@@ -8,7 +8,7 @@ class Layout {
     anchors.forEach((element) => {
       element.addEventListener('click', (e) => {
         e.preventDefault();
-        appRouter.navigateTo(element.getAttribute('href'));
+        router.navigateTo(element.getAttribute('href'));
       });
     });
   }

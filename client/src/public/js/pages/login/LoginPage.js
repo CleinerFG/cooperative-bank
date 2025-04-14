@@ -1,7 +1,6 @@
 import Page from '../../../../global/js/core/Page.js';
 import { translate } from '../../../../global/js/i18n/Translator.js';
 import { ASSETS_ROUTE } from '../../constants/routes.js';
-import publicRouter from '../../core/publicRouter.js';
 
 export default class LoginPage extends Page {
   constructor() {
@@ -54,7 +53,7 @@ export default class LoginPage extends Page {
   }
 
   async _setup() {
-    this._handleRoutes(publicRouter, '[data-link]');
+    this._handleRoutes('[data-link]');
     const LoginFormCtrlModule = await import('./LoginFormCtrl.js');
     new LoginFormCtrlModule.default();
   }
