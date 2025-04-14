@@ -1,8 +1,5 @@
-import '../types/formElementsType.js';
-import '../types/serverResponseType.js';
 import { FormView } from './FormView.js';
 import { AbstractGetterError } from '../errors/AbstractErrors.js';
-import { INP_ERRORS } from '../constants/errorCodes.js';
 
 export class FormCtrl {
   #view;
@@ -10,9 +7,6 @@ export class FormCtrl {
   #resolvePromise;
   #serverErrorCodes;
 
-  /**
-   * @param {{string:string}[]} serverErrorCodes
-   */
   constructor(serverErrorCodes) {
     this.#view = new FormView(
       this._viewParams,
@@ -26,23 +20,14 @@ export class FormCtrl {
     this.#init();
   }
 
-  /**
-   * @type {FormViewParams}
-   */
   get _viewParams() {
     throw new AbstractGetterError('_viewParams');
   }
 
-  /**
-   * @type {[InputOnFormView|SearchOnFormView|PasswordOnFormView|SelectOnFormView]}
-   */
   get _formComponentsParams() {
     throw new AbstractGetterError('_formComponentsParams');
   }
 
-  /**
-   * @type {SubmitButtonOnFormView}
-   */
   get _submitButtonParams() {
     throw new AbstractGetterError('_submitButtonParams');
   }
@@ -61,15 +46,10 @@ export class FormCtrl {
     return data;
   }
 
-  /**
-   * @param {FormError[]} errors
-   */
-  #formComponentErrorsHandler(errors) {
-    errors.forEach(({ componentId, error }) => {
-      const component = this.#view.formComponents.find(
-        (el) => el.id === componentId
-      );
-      component.handleFailMessage('add', this.#serverErrorCodes[error]);
+  #errorHandler(res) {
+    Object.keys(res.fields).forEach((key) => {
+      const field = this.#view.formComponents.find((el) => el.id === key);
+      field.handleFailMessage('add', res.fields[key][0]);
     });
   }
 
@@ -101,8 +81,7 @@ export class FormCtrl {
     const data = await this.#getFormData();
     const res = await this._serviceMethod(data);
     this.#resolvePromise(res);
-
-    if (res.errors) this.#formComponentErrorsHandler(res.errors);
+    if (res.error) this.#errorHandler(res);
   }
 
   #catchSubmitHandler(e) {
@@ -114,9 +93,6 @@ export class FormCtrl {
     this.#view.setSubmitBtnState(false);
   }
 
-  /**
-   * @type {Promise<ServerFormResponse|ServerErrorFormResponse>|undefined}
-   */
   async getResponse() {
     return this.#responsePromise;
   }
