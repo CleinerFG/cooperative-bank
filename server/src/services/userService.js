@@ -6,7 +6,6 @@ const { PROFILE_IMGS_DIR } = require('../config/constants');
 const {
   createUserValidation,
 } = require('../lib/helpers/user/serviceValidators');
-const { clientErrorsHandler } = require('../lib/handlers/errorsHandler');
 const { createPasswordHash } = require('../lib/helpers/paswordHash');
 const InvalidFieldsError = require('../errors/InvalidFieldsError');
 
