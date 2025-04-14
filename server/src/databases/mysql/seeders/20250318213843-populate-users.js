@@ -1,7 +1,7 @@
 'use strict';
 
 const { createUser } = require('../factories/userFactory');
-const { seedUsersLogger } = require('../../lib/utils/loggers');
+const { seedUsersLogger } = require('../../../lib/utils/loggers');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
