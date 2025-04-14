@@ -7,7 +7,11 @@ const {
   getUserByCpfMiddleware,
 } = require('../middlewares/validators/user/userMiddlewares');
 
-// router.get('/:cpf', getUserByCpfMiddleware, controller.getByCpf);
+router.get(
+  '/:cpf',
+  getUserByCpfMiddleware,
+  controller.getByCpf.bind(controller)
+);
 router.post('/', createUserMiddleware, controller.create.bind(controller));
 
 module.exports = router;

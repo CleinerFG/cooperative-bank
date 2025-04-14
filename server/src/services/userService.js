@@ -39,46 +39,12 @@ class UserService extends Service {
   async getAccountDetails(opaqueId) {
     return this.repository.findAccountDetails(opaqueId);
   }
+
+  async getByCpf(cpf) {
+    return this.repository.findByCpf(cpf);
+  }
 }
 
 const userService = new UserService();
 
 module.exports = userService;
-
-// module.exports = {
-//   async create(data) {
-//     const [isValid, fields] = await createUserValidation({
-//       ...data,
-//     });
-
-//     if (!isValid) return clientErrorsHandler(fields);
-
-//     const passwordHash = await createPasswordHash(data.password);
-
-//     await userRepository.create({
-//       ...data,
-//       password: passwordHash,
-//     });
-
-//     return { success: true };
-//   },
-
-//   async getByCpf(cpf) {
-//     return await userRepository.findByCpf(cpf);
-//   },
-
-//   async getAccountBalance(opaqueId) {
-//     const balance = await userRepository.findAccountBalance(opaqueId);
-//     return Number(balance);
-//   },
-
-//   async getAccountDetails(opaqueId) {
-//     return userRepository.findAccountDetails(opaqueId);
-//   },
-
-//   async getProfileImgPath(opaqueId) {
-//     const photoPath = path.join(PROFILE_IMGS_DIR, `${opaqueId}.webp`);
-//     await fs.access(photoPath);
-//     return photoPath;
-//   },
-// };
