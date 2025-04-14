@@ -1,34 +1,15 @@
-import '../types/formDataType.js';
-import { API_BASE_URL } from '../../../global/js/constants/config.js';
+import ApiService from '../../../global/js/core/ApiService.js';
 
-class AuthService {
-  /**
-   * @param {FormDataLogin} data
-   */
+class AuthService extends ApiService {
   async login(data) {
-    const res = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    return await res.json();
+    return await super.post('/auth/login', data);
   }
 
-  /**
-   * @param {FormDataRegister} data
-   */
   async register(data) {
-    const res = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    return await res.json();
+    return await super.post('/users', data);
   }
 }
 
-export default new AuthService();
+const authService = new AuthService();
+
+export default authService;
