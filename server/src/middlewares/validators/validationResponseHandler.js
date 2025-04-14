@@ -1,25 +1,24 @@
-const { validationResult, body } = require('express-validator');
+const { validationResult } = require('express-validator');
+const InvalidFieldsError = require('../../errors/InvalidFieldsError');
 
-const formatErrors = (errors) => {
-  return errors.array().reduce(
-    (acc, error) => {
-      const field = acc.fields[error.path];
-      if (field) {
-        field.push(error.msg);
-        acc.fields[error.path] = field;
-      } else {
-        acc.fields[error.path] = [error.msg];
-      }
-      return acc;
-    },
-    { error: 'client', fields: {} }
-  );
+const formatErrorsFields = (errors) => {
+  const fields = {};
+  errors.forEach((err) => {
+    if (fields[err.path]) {
+      fields[err.path].push(err.msg);
+    } else {
+      fields[err.path] = [err.msg];
+    }
+  });
+  return fields;
 };
 
 module.exports = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json(formatErrors(errors));
+  const { errors } = validationResult(req);
+
+  if (errors.length) {
+    const fields = formatErrorsFields(errors);
+    throw new InvalidFieldsError(fields);
   }
   next();
 };
