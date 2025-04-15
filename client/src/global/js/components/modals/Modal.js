@@ -60,7 +60,7 @@ export class Modal {
     return this.#modalElement.querySelector('.modal-footer');
   }
 
-  get #closeModalBtnElement() {
+  get _closeModalBtnElement() {
     return this.#modalElement.querySelector('.close-btn');
   }
 
@@ -98,7 +98,7 @@ export class Modal {
   }
 
   _setListeners() {
-    this.#closeModalBtnElement.addEventListener(
+    this._closeModalBtnElement.addEventListener(
       'click',
       this._handleCloseModal.bind(this)
     );
