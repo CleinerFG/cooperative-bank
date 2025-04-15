@@ -50,6 +50,11 @@ export default {
   startDate: 'Start date',
   endDate: 'End date',
 
+  // Auth
+  notAuthTitle: 'Not authenticated',
+  notAuthMsg:
+    'You are not authenticated, you will be redirected to the login page',
+
   // Home page
   balance: 'Balance',
   wallet: 'Wallet',

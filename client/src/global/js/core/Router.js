@@ -1,3 +1,4 @@
+import NotAuthModal from '../components/modals/NotAuthModal.js';
 import routes from '../constants/routes.js';
 import authService from '../services/AuthService.js';
 
@@ -29,6 +30,8 @@ class Router {
   }
 
   async #handleProtectRoutes(url) {
+    new NotAuthModal();
+
     if (this.#isAuth) return false;
 
     const isProtect = url.pathname.startsWith('/app');
@@ -38,7 +41,7 @@ class Router {
     this.#isAuth = res.ok;
 
     if (!this.#isAuth) {
-      window.location.href = '/login';
+      // window.location.href = '/login';
       return true;
     }
     return false;

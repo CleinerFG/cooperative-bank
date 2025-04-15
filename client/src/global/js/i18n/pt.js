@@ -50,6 +50,11 @@ export default {
   startDate: 'Data de início',
   endDate: 'Data de término',
 
+  // Auth
+  notAuthTitle: 'Não autenticado',
+  notAuthMsg:
+    'Você não está autenticado, você será redirecionado para a página de login',
+
   // Home page
   balance: 'Saldo',
   wallet: 'Carteira',
