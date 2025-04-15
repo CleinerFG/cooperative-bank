@@ -2,8 +2,7 @@ import ApiService from './ApiService.js';
 
 class AuthService extends ApiService {
   async check() {
-    const res = await super.get('/auth/check');
-    console.log(res);
+    return super.get('/auth/check');
   }
 
   async login(data) {
