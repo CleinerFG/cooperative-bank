@@ -1,5 +1,11 @@
-import ApiService from '../../../global/js/core/ApiService.js';
+import ApiService from './ApiService.js';
+
 class AuthService extends ApiService {
+  async check() {
+    const res = await super.get('/auth/check');
+    console.log(res);
+  }
+
   async login(data) {
     const res = await super.post('/auth/login', data);
     if (res.status === 200) window.location.href = '/app';
@@ -12,5 +18,4 @@ class AuthService extends ApiService {
 }
 
 const authService = new AuthService();
-
 export default authService;

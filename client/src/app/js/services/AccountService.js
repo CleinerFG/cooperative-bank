@@ -1,4 +1,4 @@
-import ApiService from '../../../global/js/core/ApiService.js';
+import ApiService from '../../../global/js/services/ApiService.js';
 
 class AccountService extends ApiService {
   async getDetails() {

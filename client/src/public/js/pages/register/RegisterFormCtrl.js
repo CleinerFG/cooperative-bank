@@ -1,5 +1,5 @@
 import { FormCtrl } from '../../../../global/js/components/FormCtrl.js';
-import authService from '../../services/AuthService.js';
+import authService from '../../../../global/js/services/AuthService.js';
 import { cpfValidator } from '../../../../global/js/utils/validators.js';
 import { emailValidator, passwordValidator } from '../../helpers/validators.js';
 import { translate } from '../../../../global/js/i18n/Translator.js';
