@@ -23,6 +23,14 @@ class AuthController {
       next(err);
     }
   }
+
+  async check(req, res, next) {
+    try {
+      return res.json({ auth: true });
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 const authController = new AuthController();
