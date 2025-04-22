@@ -1,0 +1,46 @@
+@import './variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $text-font-family;
+  font-size: $text-md;
+  color: $text-color;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $title-font-family;
+  color: $title-color;
+}
+
+h1 {
+  font-size: $title-lg;
+}
+
+h2 {
+  font-size: $title-md;
+}
+
+h3 {
+  font-size: $title-sm;
+}
+
+li {
+  list-style-type: none;
+}
+
+.info-text {
+  font-family: $info-font-family;
+}
+
+.icon {
+  height: $icon-sm;
+}
