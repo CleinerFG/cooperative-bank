@@ -1,0 +1,50 @@
+.brand-container:hover span {
+  text-decoration: underline;
+}
+
+.login-register.content-container {
+  padding: var(--padding-lg);
+  margin: auto;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.info-container {
+  max-width: 400px;
+}
+
+.form {
+  max-width: 320px;
+  text-align: left;
+  background-color: transparent;
+}
+
+.form .inp {
+  background-color: transparent;
+}
+
+.form .btn {
+  width: 100%;
+}
+
+.login-register.footer {
+  background-color: var(--color-dark);
+  scroll-snap-align: none;
+}
+
+.login-register.footer a {
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.login-register.footer a:hover {
+  color: var(--color-secondary-hover);
+}
+
+@media (min-width: 768px) {
+  .login-register.content-container {
+    flex-direction: row;
+    flex: 1;
+  }
+}

@@ -1,0 +1,68 @@
+@import url('../../global/css/variables.css');
+
+[data-theme='light'] {
+  --color-primary: hsl(169, 96%, 38%);
+  --color-primary-light: hsl(169, 96%, 45%);
+  --color-primary-light-hover: hsl(169, 96%, 42%);
+
+  --color-secondary: hsl(189, 98%, 38%);
+  --color-secondary-hover: hsl(189, 98%, 35%);
+  --color-secondary-translucent: hsla(189, 98%, 38%, 0.2);
+
+  --color-detail: hsl(16, 40%, 60%);
+  --color-cta: #911f08;
+  --color-cta-hover: hsl(10, 90%, 27%);
+  --color-gray-light: hsl(0, 0%, 40%);
+
+  --title-color: hsl(0, 0%, 5%);
+  --text-color: hsl(0, 0%, 10%);
+  --color-bg-translucent: hsla(0, 0%, 100%, 0.5);
+
+  --color-bg-1: hsl(45, 29%, 97%);
+  --color-bg-2: hsl(45, 10%, 100%);
+
+  --border-color: hsl(0, 0%, 70%);
+  --line-color: hsl(0, 0%, 80%);
+
+  --skeleton-start: rgba(0, 0, 0, 0.2);
+  --skeleton-middle: rgba(0, 0, 0, 0.1);
+  --skeleton-end: rgba(0, 0, 0, 0.2);
+
+  --glossy-start: hsl(189, 98%, 48%);
+  --glossy-middle: hsl(189, 98%, 38%);
+  --glossy-end: hsl(189, 98%, 48%);
+}
+
+[data-theme='dark'] {
+  /* Reduced 30% from luminosity */
+  --color-primary: hsl(169, 96%, 08%);
+  --color-primary-light: hsl(169, 96%, 15%);
+  --color-primary-light-hover: hsl(169, 96%, 12%);
+
+  /* Reduced 25% from luminosity */
+  --color-secondary: hsl(189, 98%, 13%);
+  --color-secondary-hover: hsl(189, 98%, 10%);
+
+  --color-detail: hsl(16, 40%, 25%);
+  --color-cta: hsl(10, 60%, 25%);
+  --color-cta-hover: hsl(10, 60%, 23%);
+  --color-gray-light: hsl(0, 0%, 60%);
+
+  --text-color: hsl(0, 0%, 90%);
+  --title-color: hsl(0, 0%, 95%);
+  --color-bg-translucent: hsl(0%, 0%, 0%, 0.5);
+
+  --border-color: hsl(0, 0%, 30%);
+  --line-color: hsl(0, 0%, 20%);
+
+  --color-bg-1: hsl(0, 0%, 0%);
+  --color-bg-2: hsl(0, 0%, 5%);
+
+  --skeleton-start: rgba(255, 255, 255, 0.2);
+  --skeleton-middle: rgba(255, 255, 255, 0.1);
+  --skeleton-end: rgba(255, 255, 255, 0.2);
+
+  --glossy-start: hsl(189, 98%, 23%);
+  --glossy-middle: hsl(189, 98%, 13%);
+  --glossy-end: hsl(189, 98%, 23%);
+}

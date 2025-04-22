@@ -1,0 +1,26 @@
+.card-link {
+  background-color: var(--color-primary-light);
+  border: none;
+  border-radius: var(--radius-xl);
+  width: 7.5rem;
+  height: 9rem;
+  padding: var(--padding-md);
+
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-xs);
+  transform: scale(100%) translateY(0);
+}
+
+.card-link .icon {
+  height: var(--icon-4xl);
+}
+
+.card-link__label {
+  text-align: center;
+}
+
+.card-link:hover {
+  background-color: var(--color-primary-light-hover);
+  transform: translateY(-0.5rem);
+}

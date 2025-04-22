@@ -1,0 +1,127 @@
+.card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+}
+
+.card-group .cards {
+  width: 100%;
+}
+
+.card-group__h2 {
+  width: 100%;
+  border-bottom: var(--border-thickness);
+  border-color: var(--color-secondary-translucent);
+  padding-bottom: var(--padding-sm);
+  text-align: center;
+}
+
+.dashboard-container {
+  background-color: var(--color-secondary-translucent);
+  padding: var(--padding-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--box-shadow-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-md);
+}
+
+.entity-categories {
+  flex: 1;
+  background-color: var(--color-bg-2);
+  border-radius: var(--radius-xl);
+  padding: var(--padding-xs);
+  display: flex;
+  gap: var(--gap-sm);
+}
+
+.entity-category {
+  flex: 1;
+  text-align: center;
+  border-radius: var(--radius-xl);
+  padding: var(--padding-lg);
+  cursor: pointer;
+}
+
+.entity-category:hover:not(.active) {
+  background-color: var(--color-gray-translucent);
+}
+
+.entity-category.active {
+  background-color: var(--color-cta);
+  color: var(--color-off-white);
+}
+
+.dashboard-filter {
+  background-color: var(--color-bg-2);
+  padding: var(--padding-md);
+  border-radius: var(--radius-lg);
+  flex-basis: 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-sm);
+}
+
+.dashboard-filter .inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+}
+
+.dashboard-filter .inp-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+.dashboard-filter .inp-date {
+  width: 8.25rem;
+  padding: var(--padding-xs);
+}
+
+.dashboard-filter .icon {
+  height: var(--icon-md);
+}
+
+.btn-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 425px) {
+  .dashboard-filter {
+    flex: 1;
+  }
+
+  .dashboard-container {
+    max-width: 380px;
+  }
+
+  .entity-categories {
+    max-width: 380px;
+  }
+}
+
+@media screen and (min-width: 475px) {
+  .dashboard-filter {
+    flex-basis: 330px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard-container {
+    max-width: 570px;
+  }
+
+  .dashboard-filter {
+    max-width: 200px;
+  }
+
+  .entity-categories {
+    flex: 1;
+  }
+}

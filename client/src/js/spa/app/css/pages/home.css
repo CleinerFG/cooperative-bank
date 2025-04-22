@@ -1,0 +1,48 @@
+.statement .brand-container {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.brand-container .icon {
+  height: var(--icon-md);
+}
+
+.statement-balance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+.statement-balance .balance-label {
+  font-family: var(--info-font-family);
+}
+
+.balance-container {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.balance-container .balance-value {
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
+
+.cards.feature-cards {
+  padding: var(--padding-sm);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 425px) {
+  .cards.feature-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .cards.feature-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,100 @@
+.notifications-container {
+  width: 100%;
+  max-width: 768px;
+  height: calc(100dvh - var(--header-height));
+  padding: var(--padding-lg);
+  border-bottom: var(--color-bg-1);
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  z-index: 1;
+}
+
+.btn-notifications {
+  position: relative;
+}
+
+.btn-notifications .counter {
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--color-cta);
+  color: var(--color-off-white);
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: -0.1rem;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 
+@Note: before only is visible if container !== none
+*/
+.notifications-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-translucent);
+  backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+.notifications-container.display-flex {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+.notifications-cards {
+  padding: var(--padding-xs);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  flex: 1;
+}
+
+.notifications-cards .loader {
+  position: inherit;
+  margin: auto;
+}
+
+.notifications-cards .no-notification {
+  font-size: var(--text-lg);
+  margin: auto;
+}
+
+.notifications-cards .notification {
+  cursor: pointer;
+  background-color: var(--color-bg-2);
+  border: var(--border-thickness);
+  border-color: var(--border-color);
+  border-radius: var(--radius-lg);
+  border-left: var(--color-primary) 0.4rem solid;
+  margin: 0 var(--margin-sm);
+  padding: var(--padding-md);
+  transition: all 0.1s;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+.notification.read {
+  border-left-color: hsl(0, 0%, 50%, 50%);
+}
+
+.notification .notification-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification .notification-time,
+.notification .notification-title {
+  font-weight: 500;
+}
