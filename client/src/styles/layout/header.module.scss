@@ -1,0 +1,22 @@
+@import '../variables.scss';
+
+.header {
+  padding: $padding-md;
+  height: $header-height;
+  width: 100%;
+  max-width: 768px;
+  background-color: var(--color-primary);
+  z-index: 1;
+
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .icon {
+  height: $icon-xl;
+  padding: $padding-xs;
+  cursor: pointer;
+}
