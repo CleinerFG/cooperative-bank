@@ -1,11 +1,5 @@
-@import '../variables.scss';
-
-body {
-  background-color: var(--color-bg-1);
-  min-height: 100dvh;
-  display: flex;
-  justify-content: center;
-}
+@use '../abstracts' as *;
+@use '../theme';
 
 .app {
   width: 100%;

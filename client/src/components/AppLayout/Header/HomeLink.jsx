@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import { GoHome } from "react-icons/go";
 
 export default function HomeLink() {
   return (
     <Link to="/app" rel="home">
-      <HomeRoundedIcon style={{ color: '#fff' }} />
+      <GoHome />
     </Link>
   );
 }

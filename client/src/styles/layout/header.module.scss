@@ -1,4 +1,5 @@
-@import '../variables.scss';
+@use '../abstracts' as *;
+@use '../theme';
 
 .header {
   padding: $padding-md;

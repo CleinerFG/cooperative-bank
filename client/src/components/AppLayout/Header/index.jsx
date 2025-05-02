@@ -1,4 +1,4 @@
-// import HomeLink from './HomeLink';
+import HomeLink from './HomeLink';
 // import Menu from './Menu';
 
 import styles from '../../../styles/layout/header.module.scss';
@@ -7,7 +7,8 @@ export default function Header() {
   return (
     <>
       <header id="header" className={styles.header}>
-        {/* <HomeLink />
+        <HomeLink />
+        {/*
         <button className="btn-unset btn-notifications" type="button">
           <div id="notifications-unread" className="counter"></div>
           <img

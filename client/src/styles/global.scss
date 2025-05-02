@@ -1,4 +1,5 @@
-@import './variables.scss';
+@use './abstracts/' as *;
+@use './theme';
 
 * {
   padding: 0;
@@ -6,7 +7,14 @@
   box-sizing: border-box;
   font-family: $text-font-family;
   font-size: $text-md;
-  color: $text-color;
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--color-bg-1);
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
 }
 
 a {
@@ -18,7 +26,7 @@ h1,
 h2,
 h3 {
   font-family: $title-font-family;
-  color: $title-color;
+  color: var(--title-color);
 }
 
 h1 {
@@ -37,10 +45,10 @@ li {
   list-style-type: none;
 }
 
-.info-text {
-  font-family: $info-font-family;
+svg {
+  color: var(--text-color);
 }
 
-.icon {
-  height: $icon-sm;
+.info-text {
+  font-family: $info-font-family;
 }
