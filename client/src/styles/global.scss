@@ -47,6 +47,9 @@ li {
 
 svg {
   color: var(--text-color);
+  width: $icon-md;
+  height: $icon-md;
+  stroke-width: 0.5;
 }
 
 .info-text {

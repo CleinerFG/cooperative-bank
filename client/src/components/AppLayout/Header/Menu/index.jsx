@@ -7,11 +7,7 @@ export default function Menu() {
         data-active="false"
         aria-label="Menu"
       >
-        <img
-          className="icon"
-          src="/app/static/assets/icons/icon-menu.svg"
-          alt="Menu Icon"
-        />
+        
       </button>
       <nav className="nav-menu" aria-label="Main navigation">
         <ul className="menu-list">
