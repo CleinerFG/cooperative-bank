@@ -9,7 +9,6 @@ import {
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  console.log('test');
   const [theme, setTheme] = useState(() => {
     const localTheme = localStorage.getItem('cooperative-bank-theme');
     if (localTheme) return localTheme;

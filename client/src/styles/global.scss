@@ -49,7 +49,8 @@ svg {
   color: var(--text-color);
   width: $icon-md;
   height: $icon-md;
-  stroke-width: 0.5;
+  // stroke-width: 0.5;
+  @include flex-center;
 }
 
 .info-text {

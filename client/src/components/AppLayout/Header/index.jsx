@@ -1,5 +1,5 @@
 import HomeLink from './HomeLink';
-// import Menu from './Menu';
+import Menu from './Menu';
 
 import styles from '../../../styles/layout/header.module.scss';
 
@@ -18,7 +18,8 @@ export default function Header() {
           />
         </button>
 
-        <Menu /> */}
+         */}
+        <Menu />
       </header>
     </>
   );
