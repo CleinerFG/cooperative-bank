@@ -1,5 +1,4 @@
 @use '@styles/abstracts' as *;
-@use '@styles/theme.scss';
 
 .btn {
   @include btn-unset;
@@ -19,7 +18,7 @@
   background-color: #ef4444;
   color: white;
   border-radius: 50%;
-  font-size: 0.75rem;
+  font-size: var(--font-xs);
   width: calc($icon-sm - 20%);
   height: calc($icon-sm - 20%);
 }

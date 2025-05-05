@@ -1,5 +1,4 @@
 @use '@styles/abstracts' as *;
-@use '@styles/theme.scss';
 
 .container {
   @include flex-center;
@@ -13,5 +12,4 @@
   background-color: var(--color-secondary);
   border-radius: 50%;
   font-weight: bold;
-  font-size: 1.25rem;
 }

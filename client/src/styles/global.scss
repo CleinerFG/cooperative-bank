@@ -1,13 +1,11 @@
 @use './abstracts/' as *;
 @use './theme';
+@use './typography';
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: $text-font-family;
-  font-size: $text-md;
-  color: var(--text-color);
 }
 
 body {
@@ -23,25 +21,6 @@ button {
   cursor: pointer;
 }
 
-h1,
-h2,
-h3 {
-  font-family: $title-font-family;
-  color: var(--title-color);
-}
-
-h1 {
-  font-size: $title-lg;
-}
-
-h2 {
-  font-size: $title-md;
-}
-
-h3 {
-  font-size: $title-sm;
-}
-
 li {
   list-style-type: none;
 }
@@ -51,8 +30,4 @@ svg {
   width: $icon-sm;
   height: $icon-sm;
   @include flex-center;
-}
-
-.info-text {
-  font-family: $info-font-family;
 }
