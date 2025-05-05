@@ -2,9 +2,8 @@
 @use '../theme';
 
 .btn {
+  @include btn-unset;
   position: relative;
-  background-color: transparent;
-  border: none;
 }
 
 .btn svg {

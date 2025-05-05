@@ -18,6 +18,5 @@
 
 .btnTheme {
   @extend .item;
-  border: none;
-  background-color: transparent;
+  @include btn-unset;
 }
