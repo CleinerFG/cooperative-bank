@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
-import Footer from './Footer';
+import BottomNav from './BottomNav';
 import styles from '../../styles/layout/layout.module.scss';
 
 export default function AppLayout() {
@@ -11,7 +11,7 @@ export default function AppLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
-      <Footer />
+      <BottomNav />
     </div>
   );
 }

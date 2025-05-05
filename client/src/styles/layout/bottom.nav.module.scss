@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+@use '../theme.scss';
+
+.container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: $padding-sm;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--color-primary);
+}
+
+.item {
+  @include flex-center;
+  flex-direction: column;
+}
+
+.btnTheme {
+  @extend .item;
+  border: none;
+  background-color: transparent;
+}
