@@ -29,25 +29,3 @@
   font-weight: bold;
   font-size: 1.25rem;
 }
-
-.notifications {
-  position: relative;
-}
-
-.notifications svg {
-  width: $icon-md;
-  height: $icon-md;
-}
-
-.notifications .badge {
-  @include flex-center;
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #ef4444;
-  color: white;
-  border-radius: 50%;
-  font-size: 0.75rem;
-  width: $icon-sm;
-  height: $icon-sm;
-}
