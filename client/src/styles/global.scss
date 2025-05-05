@@ -17,7 +17,8 @@ body {
   justify-content: center;
 }
 
-a {
+a,
+button {
   text-decoration: none;
   cursor: pointer;
 }
@@ -34,7 +35,6 @@ h1 {
 }
 
 h2 {
-  
   font-size: $title-md;
 }
 
@@ -48,9 +48,8 @@ li {
 
 svg {
   color: var(--text-color);
-  width: $icon-md;
-  height: $icon-md;
-  // stroke-width: 0.5;
+  width: $icon-sm;
+  height: $icon-sm;
   @include flex-center;
 }
 
