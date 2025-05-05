@@ -1,11 +1,16 @@
+import Notifications from './Notifications';
+import UserProfile from './UserProfile';
+
 import styles from '../../../styles/layout/header.module.scss';
-import TopContent from './TopContent';
 
 export default function Header() {
   return (
     <>
       <header className={styles.container}>
-        <TopContent />
+        <div className={styles.headerTop}>
+          <UserProfile />
+          <Notifications />
+        </div>
 
         {/* <div className="account-info">
           <p className="account-label">Saldo em conta</p>

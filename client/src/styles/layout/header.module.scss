@@ -17,7 +17,7 @@
 
 .userProfile {
   @include flex-center;
-  gap: $gap-md;
+  gap: $gap-sm;
 }
 
 .userAvatar {

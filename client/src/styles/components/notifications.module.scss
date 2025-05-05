@@ -7,8 +7,8 @@
 }
 
 .btn svg {
-  width: $icon-md;
-  height: $icon-md;
+  width: $icon-sm;
+  height: $icon-sm;
 }
 
 .btn .count {
@@ -20,6 +20,6 @@
   color: white;
   border-radius: 50%;
   font-size: 0.75rem;
-  width: $icon-sm;
-  height: $icon-sm;
+  width: calc($icon-sm - 20%);
+  height: calc($icon-sm - 20%);
 }
