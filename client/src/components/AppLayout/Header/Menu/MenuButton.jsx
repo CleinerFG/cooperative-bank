@@ -1,4 +1,4 @@
-import { IoMenu } from 'react-icons/io5';
+import { AlignJustify } from 'lucide-react';
 
 import styles from '../../../../styles/components/menu.module.scss';
 
@@ -11,7 +11,7 @@ export default function MenuButton({ ref, onToggleNav }) {
       onClick={() => onToggleNav((prev) => !prev)}
       aria-label="Menu Button"
     >
-      <IoMenu />
+      <AlignJustify />
     </button>
   );
 }

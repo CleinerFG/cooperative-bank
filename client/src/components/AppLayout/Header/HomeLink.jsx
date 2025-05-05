@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { GoHomeFill } from 'react-icons/go';
+import { House } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 export default function HomeLink() {
   return (
     <Link to="/app" rel="home">
-      <GoHomeFill aria-label="Home Icon" />
+      <House aria-label="Home Icon" />
     </Link>
   );
 }

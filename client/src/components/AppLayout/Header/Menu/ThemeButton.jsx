@@ -1,4 +1,4 @@
-import { MdLightMode, MdDarkMode } from 'react-icons/md';
+import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../../../contexts/theme';
 
 import styles from '../../../../styles/components/menu.module.scss';
@@ -14,12 +14,9 @@ export default function ThemeButton() {
     >
       <span>Switch Theme</span>
       {theme === 'light' ? (
-        <MdLightMode
-          className={styles.themeIcon}
-          aria-label="Theme Mode Icon"
-        />
+        <Sun className={styles.themeIcon} aria-label="Theme Mode Icon" />
       ) : (
-        <MdDarkMode className={styles.themeIcon} aria-label="Theme Mode Icon" />
+        <Moon className={styles.themeIcon} aria-label="Theme Mode Icon" />
       )}
     </button>
   );
