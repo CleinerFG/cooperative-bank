@@ -1,7 +1,7 @@
 import { Bell } from 'lucide-react';
-import styles from '../../../../styles/components/notifications.module.scss';
+import styles from './styles.module.scss';
 
-function NotificationsButton({ onDisplay }) {
+function BellButton({ onDisplay }) {
   return (
     <button
       type="button"
@@ -14,4 +14,4 @@ function NotificationsButton({ onDisplay }) {
   );
 }
 
-export default NotificationsButton;
+export default BellButton;

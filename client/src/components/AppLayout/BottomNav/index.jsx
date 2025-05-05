@@ -1,7 +1,7 @@
 import NavLink from './NavLink';
 import ThemeButton from './ThemeButton';
 import { House, LogOut } from 'lucide-react';
-import styles from '../../../styles/layout/bottom.nav.module.scss';
+import styles from './styles.module.scss';
 
 export default function BottomNav() {
   return (

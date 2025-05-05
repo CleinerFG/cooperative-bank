@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
 import BottomNav from './BottomNav';
-import styles from '../../styles/layout/layout.module.scss';
+import styles from './styles.module.scss';
 
 export default function AppLayout() {
   return (

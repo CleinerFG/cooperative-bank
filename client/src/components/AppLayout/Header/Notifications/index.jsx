@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import NotificationsButton from './NotificationsButton';
+import BellButton from './BellButton';
 
 function Notifications() {
   const [isDisplayed, setIsDisplayed] = useState(false);
 
   return (
     <>
-      <NotificationsButton onDisplay={setIsDisplayed} />
+      <BellButton onDisplay={setIsDisplayed} />
       {isDisplayed && alert('show notifications')}
     </>
   );

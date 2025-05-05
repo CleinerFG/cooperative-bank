@@ -2,7 +2,7 @@ import Notifications from './Notifications';
 import UserProfile from './UserProfile';
 import AccountBalance from './AccountBalance';
 
-import styles from '../../../styles/layout/header.module.scss';
+import styles from './styles.module.scss';
 
 export default function Header() {
   return (

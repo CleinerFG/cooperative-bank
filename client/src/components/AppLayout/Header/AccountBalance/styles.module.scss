@@ -1,0 +1,17 @@
+@use '@styles/abstracts' as *;
+@use '@styles/theme.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
+}
+
+.balanceContainer {
+  display: flex;
+}
+
+.balance {
+  display: flex;
+  flex-direction: row;
+}

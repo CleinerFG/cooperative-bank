@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import styles from '../../../styles/layout/bottom.nav.module.scss';
+import styles from './styles.module.scss';
 
 export default function NavLink({ txt, redirectTo, children }) {
   return (

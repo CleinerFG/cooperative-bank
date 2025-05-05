@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { EyeClosed, Eye, Asterisk } from 'lucide-react';
-import styles from '../../../styles/layout/header.module.scss';
+import styles from './styles.module.scss';
 
 function genAsterisk() {
   const asterisks = new Array(5).fill(null).map((_, i) => <Asterisk key={i} />);
@@ -15,7 +15,7 @@ function getBalance() {
 function AccountBalance() {
   const [isHidden, setIsHidden] = useState(true);
   return (
-    <div className={styles.accountInfo}>
+    <div className={styles.container}>
       <p>Amount</p>
       <div className={styles.balanceContainer}>
         <div className={styles.balance}>

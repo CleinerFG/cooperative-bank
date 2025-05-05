@@ -1,7 +1,7 @@
-import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../../contexts/theme';
 
-import styles from '../../../styles/layout/bottom.nav.module.scss';
+import { Sun, Moon } from 'lucide-react';
+import styles from './styles.module.scss';
 
 export default function ThemeButton() {
   const { theme, toggleTheme } = useTheme();
