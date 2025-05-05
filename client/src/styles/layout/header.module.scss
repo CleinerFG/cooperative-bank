@@ -1,22 +1,53 @@
 @use '../abstracts' as *;
 @use '../theme';
 
-.header {
+.container {
   @include flex-center;
   padding: $padding-md;
-  height: $header-height;
   width: 100%;
-  max-width: 768px;
   background-color: var(--color-primary);
-  z-index: 1;
-
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
 }
 
-.header .icon {
-  height: $icon-xl;
-  padding: $padding-xs;
-  cursor: pointer;
+.headerTop {
+  @include flex-center;
+  width: 100%;
+  justify-content: space-between;
+  padding: $padding-md;
+}
+
+.userProfile {
+  @include flex-center;
+  gap: $gap-md;
+}
+
+.userAvatar {
+  @include flex-center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.notifications {
+  position: relative;
+}
+
+.notifications svg {
+  width: $icon-md;
+  height: $icon-md;
+}
+
+.notifications .badge {
+  @include flex-center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  width: $icon-sm;
+  height: $icon-sm;
 }
