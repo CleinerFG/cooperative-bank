@@ -9,6 +9,7 @@ const navLinks = [
     redirectTo: '/app/transactions',
     iconName: 'ArrowLeftRight',
   },
+  { label: 'Account', redirectTo: '/app/account', iconName: 'CircleUser' },
   { label: 'Settings', redirectTo: '/app/settings', iconName: 'Settings' },
 ];
 
@@ -23,7 +24,7 @@ export default function BottomNav() {
           key={redirectTo}
         />
       ))}
-      <ThemeButton />
+      {/* <ThemeButton /> */}
     </nav>
   );
 }
