@@ -1,0 +1,24 @@
+@use '@styles/abstracts' as *;
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  border-top: solid 1px hsla(0, 0%, 0%, 0.1);
+  padding-top: $padding-lg;;
+}
+
+.actionLink {
+  @include flex-center;
+  flex-direction: column;
+  gap: $gap-xs;
+
+  .iconContainer {
+    padding: $padding-md;
+    border-radius: $radius-full;
+    background-color: var(--color-neutral-transparent);
+  }
+
+  .label {
+    font-size: var(--font-sm);
+  }
+}

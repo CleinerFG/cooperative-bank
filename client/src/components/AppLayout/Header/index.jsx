@@ -3,6 +3,7 @@ import UserProfile from './UserProfile';
 import AccountBalance from './AccountBalance';
 
 import styles from './styles.module.scss';
+import QuickActions from './QuickActions';
 
 export default function Header() {
   return (
@@ -12,8 +13,8 @@ export default function Header() {
           <UserProfile />
           <Notifications />
         </div>
-
         <AccountBalance />
+        <QuickActions />
       </header>
     </>
   );
