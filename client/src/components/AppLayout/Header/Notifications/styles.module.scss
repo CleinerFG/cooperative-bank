@@ -12,12 +12,12 @@
 .btn .count {
   @include flex-center;
   position: absolute;
-  top: -0.25rem;
-  right: -0.25rem;
+  top: -0.1rem;
+  right: -0.4rem;
   background-color: var(--color-cta);
   color: var(--color-neutral-0);
   border-radius: $radius-full;
   font-size: var(--font-xs);
-  width: calc($icon-sm - 35%);
-  height: calc($icon-sm - 35%);
+  width: calc($icon-xs);
+  height: calc($icon-xs);
 }

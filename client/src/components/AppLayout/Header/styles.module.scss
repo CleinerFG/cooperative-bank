@@ -2,16 +2,7 @@
 
 .container {
   display: flex;
-  flex-direction: column;
-  gap: $gap-xl;
-  padding: $padding-xl $padding-lg;
-  width: 100%;
-  background-color: var(--color-primary-300);
-  border-radius: 0 0 $radius-2xl $radius-2xl;
-}
-
-.headerTop {
-  @include flex-center;
-  width: 100%;
   justify-content: space-between;
+  padding: $padding-md $padding-lg;
+  background-color: var(--color-primary-300);
 }

@@ -8,9 +8,9 @@ export default function AppLayout() {
   return (
     <div className={styles.app}>
       <Header />
-      <main className={styles.main}>
+      <div className={styles.content}>
         <Outlet />
-      </main>
+      </div>
       <NavBar />
     </div>
   );

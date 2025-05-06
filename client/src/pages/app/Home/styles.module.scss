@@ -1,0 +1,11 @@
+@use '@styles/abstracts' as *;
+
+.summaryPanel {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+  background-color: var(--color-primary-300);
+  padding: $padding-md $padding-lg;
+  border-radius: 0 0 $radius-2xl $radius-2xl;
+  box-shadow: $shadow-sm;
+}

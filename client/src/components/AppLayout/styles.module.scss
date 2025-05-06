@@ -1,21 +1,18 @@
 @use '@styles/abstracts' as *;
 
 .app {
-  width: 100%;
+  width: 100vw;
   height: 100dvh;
   max-width: 768px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: relative;
 }
 
-.main {
+.content {
   display: flex;
   flex-direction: column;
   gap: $gap-lg;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-  background-color: var(--color-bg-1);
-  padding: $padding-xl;
+  background-color: var(--color-neutral-05);
   flex: 1;
 }
