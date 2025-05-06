@@ -1,37 +1,60 @@
 [data-theme='light'] {
-  --color-primary: hsl(169, 96%, 38%);
-  --color-primary-light: hsl(169, 96%, 45%);
-  --color-primary-light-hover: hsl(169, 96%, 42%);
+  --color-neutral-0: hsl(0, 0%, 99%);
+  --color-neutral-10: hsl(0, 0%, 90%);
+  --color-neutral-20: hsl(0, 0%, 80%);
+  --color-neutral-30: hsl(0, 0%, 70%);
+  --color-neutral-40: hsl(0, 0%, 60%);
+  --color-neutral-50: hsl(0, 0%, 50%);
+  --color-neutral-60: hsl(0, 0%, 40%);
+  --color-neutral-70: hsl(0, 0%, 30%);
+  --color-neutral-80: hsl(0, 0%, 20%);
+  --color-neutral-90: hsl(0, 0%, 10%);
+  --color-neutral-100: hsl(0, 0%, 0%);
 
-  --color-secondary: hsl(189, 98%, 38%);
-  --color-secondary-hover: hsl(189, 98%, 35%);
-  --color-secondary-translucent: hsla(189, 98%, 38%, 0.2);
+  --color-primary-100: hsl(169, 80%, 92%);
+  --color-primary-200: hsl(169, 80%, 75%);
+  --color-primary-300: hsl(169, 80%, 50%);
+  --color-primary-400: hsl(169, 80%, 40%);
+  --color-primary-500: hsl(169, 95%, 15%);
 
-  --color-detail: hsl(16, 40%, 60%);
-  --color-cta: #911f08;
-  --color-cta-hover: hsl(10, 90%, 27%);
-  --color-gray-light: hsl(0, 0%, 40%);
+  --color-secondary-100: hsl(189, 90%, 90%);
+  --color-secondary-200: hsl(189, 90%, 70%);
+  --color-secondary-300: hsl(189, 90%, 58%);
+  --color-secondary-400: hsl(189, 90%, 40%);
+  --color-secondary-500: hsl(189, 98%, 15%);
+
+  --color-cta: #f45434;
+  --cta-hover: #f6755b;
 
   --title-color: hsl(0, 0%, 5%);
   --text-color: hsl(0, 0%, 10%);
-  --color-bg-translucent: hsla(0, 0%, 100%, 0.5);
 
-  --color-bg-1: hsl(45, 29%, 97%);
-  --color-bg-2: hsl(45, 10%, 100%);
+  --skeleton-start: hsla(0, 0%, 0%, 0.2);
+  --skeleton-middle: hsla(0, 0%, 0%, 0.1);
+  --skeleton-end: hsla(0, 0%, 0%, 0.2);
 
-  --border-color: hsl(0, 0%, 70%);
-  --line-color: hsl(0, 0%, 80%);
-
-  --skeleton-start: rgba(0, 0, 0, 0.2);
-  --skeleton-middle: rgba(0, 0, 0, 0.1);
-  --skeleton-end: rgba(0, 0, 0, 0.2);
-
-  --glossy-start: hsl(189, 98%, 48%);
+  --glossy-start: #02cef2;
   --glossy-middle: hsl(189, 98%, 38%);
   --glossy-end: hsl(189, 98%, 48%);
 }
 
 [data-theme='dark'] {
+  --color-neutral-0: hsl(0, 0%, 0%);
+  --color-neutral-10: hsl(0, 0%, 10%);
+  --color-neutral-20: hsl(0, 0%, 20%);
+  --color-neutral-30: hsl(0, 0%, 30%);
+  --color-neutral-40: hsl(0, 0%, 40%);
+  --color-neutral-50: hsl(0, 0%, 50%);
+  --color-neutral-60: hsl(0, 0%, 60%);
+  --color-neutral-70: hsl(0, 0%, 70%);
+  --color-neutral-80: hsl(0, 0%, 80%);
+  --color-neutral-90: hsl(0, 0%, 90%);
+  --color-neutral-100: hsl(0, 0%, 100%);
+
+
+  --color-cta: #911f08;
+  --color-cta-hover: #a42309;
+
   /* Reduced 30% from luminosity */
   --color-primary: hsl(169, 96%, 08%);
   --color-primary-light: hsl(169, 96%, 15%);

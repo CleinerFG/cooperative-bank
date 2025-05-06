@@ -7,7 +7,8 @@
   padding: $padding-sm;
   display: flex;
   justify-content: space-around;
-  background-color: var(--color-primary);
+  background-color: var(--color-neutral-0);
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
 }
 
 .item {
