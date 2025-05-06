@@ -8,15 +8,11 @@
   display: flex;
   justify-content: space-around;
   background-color: var(--color-neutral-0);
-  border-top: 2px solid rgba(0, 0, 0, 0.05);
+  border-top: $border-thickness;
 }
 
-.item {
+.item,
+.btnTheme {
   @include flex-center;
   flex-direction: column;
-}
-
-.btnTheme {
-  @extend .item;
-  @include btn-unset;
 }

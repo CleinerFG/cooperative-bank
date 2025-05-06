@@ -16,7 +16,7 @@ function AccountBalance() {
   const [isHidden, setIsHidden] = useState(true);
   return (
     <div className={styles.container}>
-      <p>Amount</p>
+      <p className={styles.balanceLabel}>Balance</p>
       <div className={styles.balanceContainer}>
         <div className={styles.balance}>
           {isHidden ? genAsterisk() : getBalance()}

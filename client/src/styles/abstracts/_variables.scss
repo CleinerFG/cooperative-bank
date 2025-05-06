@@ -16,8 +16,6 @@ $color-dark-translucent: hsla(0, 0%, 0%, 0.7);
 
 $glossy-duration: 2.5s;
 
-$header-height: 3.5rem;
-
 $padding-xs: 0.25rem;
 $padding-sm: 0.5rem;
 $padding-md: 0.75rem;
@@ -46,7 +44,8 @@ $radius-xl: 1rem;
 $radius-2xl: 1.25rem;
 $radius-full: 50%;
 
-$icon-sm: 1.25rem;
+$icon-xs: 1.25rem;
+$icon-sm: 1.5rem;
 $icon-md: 2rem;
 $icon-lg: 2.5rem;
 $icon-xl: 2.75rem;
@@ -54,6 +53,6 @@ $icon-2xl: 3.5rem;
 $icon-3xl: 4rem;
 $icon-4xl: 5rem;
 
-$border-thickness: 0.0625rem solid;
+$border-thickness: 0.0625rem solid rgba(0, 0, 0, 0.1);
 $box-shadow-sm: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.1);
 $box-shadow-md: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.15);

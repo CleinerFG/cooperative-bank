@@ -1,7 +1,6 @@
 @use '@styles/abstracts' as *;
 
 .btn {
-  @include btn-unset;
   position: relative;
 }
 
@@ -13,12 +12,12 @@
 .btn .count {
   @include flex-center;
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #ef4444;
-  color: white;
-  border-radius: 50%;
+  top: -0.25rem;
+  right: -0.25rem;
+  background-color: var(--color-cta);
+  color: var(--color-neutral-0);
+  border-radius: $radius-full;
   font-size: var(--font-xs);
-  width: calc($icon-sm - 20%);
-  height: calc($icon-sm - 20%);
+  width: calc($icon-sm - 35%);
+  height: calc($icon-sm - 35%);
 }

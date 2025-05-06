@@ -17,6 +17,8 @@ body {
 
 a,
 button {
+  background-color: transparent;
+  border: none;
   text-decoration: none;
   cursor: pointer;
 }
@@ -27,7 +29,7 @@ li {
 
 svg {
   color: var(--text-color);
-  width: $icon-sm;
-  height: $icon-sm;
+  width: $icon-xs;
+  height: $icon-xs;
   @include flex-center;
 }

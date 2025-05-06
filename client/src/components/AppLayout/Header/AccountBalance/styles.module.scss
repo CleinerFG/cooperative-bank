@@ -8,9 +8,16 @@
 
 .balanceContainer {
   display: flex;
+  gap: $gap-sm;
+}
+
+.balanceLabel {
+  font-size: var(--font-sm);
 }
 
 .balance {
-  display: flex;
+  @include flex-center;
   flex-direction: row;
+  font-size: var(--font-2xl);
+  font-weight: bold;
 }
