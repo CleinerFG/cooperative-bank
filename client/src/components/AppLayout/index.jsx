@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
-import BottomNav from './BottomNav';
+import NavBar from './NavBar';
 import styles from './styles.module.scss';
 
 export default function AppLayout() {
@@ -11,7 +11,7 @@ export default function AppLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
-      <BottomNav />
+      <NavBar />
     </div>
   );
 }
