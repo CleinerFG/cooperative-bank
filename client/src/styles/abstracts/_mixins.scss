@@ -1,5 +1,49 @@
+@use './variables' as *;
+
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@mixin container($size, $activeRadius: true, $activeGap: true) {
+  $padding: null;
+  $radius: null;
+  $gap: null;
+
+  @if $size == xs {
+    $padding: $padding-xs;
+    $radius: $radius-xs;
+    $gap: $gap-xs;
+  } @else if $size == sm {
+    $padding: $padding-sm;
+    $radius: $radius-sm;
+    $gap: $gap-sm;
+  } @else if $size == md {
+    $padding: $padding-md;
+    $radius: $radius-md;
+    $gap: $gap-md;
+  } @else if $size == lg {
+    $padding: $padding-lg;
+    $radius: $radius-lg;
+    $gap: $gap-lg;
+  } @else if $size == xl {
+    $padding: $padding-xl;
+    $radius: $radius-xl;
+    $gap: $gap-xl;
+  } @else if $size == 2xl {
+    $padding: $padding-2xl;
+    $radius: $radius-2xl;
+    $gap: $gap-2xl;
+  }
+
+  padding: $padding;
+  background-color: var(--color-neutral-0);
+
+  @if $activeRadius {
+    border-radius: $radius;
+  }
+  @if $activeGap {
+    gap: $gap;
+  }
 }

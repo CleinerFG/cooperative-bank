@@ -37,11 +37,12 @@ $gap-lg: 1rem;
 $gap-xl: 1.25rem;
 $gap-2xl: 1.5rem;
 
-$radius-sm: 0.25rem;
-$radius-md: 0.5rem;
-$radius-lg: 0.75rem;
-$radius-xl: 1rem;
-$radius-2xl: 1.25rem;
+$radius-xs: 0.25rem;
+$radius-sm: 0.5rem;
+$radius-md: 0.75rem;
+$radius-lg: 1rem;
+$radius-xl: 1.25rem;
+$radius-2xl: 1.5rem;
 $radius-full: 50%;
 
 $icon-xs: 1.25rem;
@@ -54,5 +55,3 @@ $icon-3xl: 4rem;
 $icon-4xl: 5rem;
 
 $border-thickness: 0.0625rem solid rgba(0, 0, 0, 0.1);
-$box-shadow-sm: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.1);
-$box-shadow-md: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.15);
