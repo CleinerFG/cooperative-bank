@@ -1,5 +1,5 @@
 import LinkItem from './LinkItem';
-import ThemeButton from './ThemeButton';
+// import ThemeButton from './ThemeButton';
 import styles from './styles.module.scss';
 
 const navLinks = [

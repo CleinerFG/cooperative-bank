@@ -2,16 +2,15 @@
 @use '@styles/abstracts' as *;
 
 .container {
-  display: flex;
+  @include flex-container(md, row, true);
   justify-content: space-around;
   border-top: solid 1px hsla(0, 0%, 0%, 0.1);
   padding-top: map.get($paddings, lg);
 }
 
 .actionLink {
-  @include flex-center;
-  flex-direction: column;
-  gap: map.get($gaps, xs);
+  @include flex-container(xs, column, true);
+  align-items: center;
 
   .iconContainer {
     padding: map.get($paddings, md);

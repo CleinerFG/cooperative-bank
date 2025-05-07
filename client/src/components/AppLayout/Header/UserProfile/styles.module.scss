@@ -2,8 +2,8 @@
 @use '@styles/abstracts' as *;
 
 .container {
-  @include flex-center;
-  gap: map.get($gaps, sm);
+  @include flex-container(sm, row, true);
+  align-items: center;
 }
 
 .avatar {

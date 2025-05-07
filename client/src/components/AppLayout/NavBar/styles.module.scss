@@ -1,27 +1,31 @@
 @use 'sass:map';
 @use '@styles/abstracts' as *;
 
+$container-size: md;
+
 .container {
-  display: flex;
+  @include flex-container($container-size, row, false, true, false);
   justify-content: space-around;
   background-color: var(--color-neutral-10);
 }
 
-.btnTheme,
+%base-link {
+  @include flex-container(xs, column, true);
+  align-items: center;
+}
+
 .linkItem {
-  @include flex-center;
-  flex-direction: column;
-  padding: map.get($paddings, md) 0;
+  @extend %base-link;
 }
 
 .linkItemActive {
-  @extend .linkItem;
+  @extend %base-link;
   position: relative;
 
   &::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: calc(0rem - map.get($paddings, $container-size));
     width: 120%;
     height: rem(4);
     background-color: var(--color-secondary-300);

@@ -16,9 +16,9 @@ function AccountBalance() {
   const [isHidden, setIsHidden] = useState(true);
   return (
     <div className={styles.container}>
-      <p className={styles.balanceLabel}>Balance</p>
-      <div className={styles.balanceContainer}>
-        <div className={styles.balance}>
+      <p className={styles.label}>Balance</p>
+      <div className={styles.valueContainer}>
+        <div className={styles.value}>
           {isHidden ? genAsterisk() : getBalance()}
         </div>
         <button onClick={() => setIsHidden((prev) => !prev)}>

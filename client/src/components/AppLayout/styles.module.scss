@@ -2,18 +2,15 @@
 @use '@styles/abstracts' as *;
 
 .app {
+  @include flex-container(2xl, column);
   width: 100vw;
   height: 100dvh;
   max-width: 768px;
-  display: flex;
-  flex-direction: column;
   position: relative;
-}
 
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: map.get($gaps, lg);
-  background-color: var(--color-neutral-0);
-  flex: 1;
+  .content {
+    @include flex-container(xl, column);
+    background-color: var(--color-neutral-0);
+    flex: 1;
+  }
 }

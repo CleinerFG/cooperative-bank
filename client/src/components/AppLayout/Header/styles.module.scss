@@ -2,8 +2,9 @@
 @use '@styles/abstracts' as *;
 
 .container {
-  display: flex;
+  @include flex-container(md, row, true, true, false);
   justify-content: space-between;
-  padding: map.get($paddings, md) map.get($paddings, lg);
+  padding-left: map.get($paddings, lg);
+  padding-right: map.get($paddings, lg);
   background-color: var(--color-primary-300);
 }
