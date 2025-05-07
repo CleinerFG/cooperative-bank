@@ -1,18 +1,13 @@
+@use './functions' as *;
+
 $sizes: (
-  // 12px
-  xs: 0.75rem,
-  // 14px
-  sm: 0.875rem,
-  // 16px
-  md: 1rem,
-  // 18px
-  lg: 1.125rem,
-  // 20px
-  xl: 1.25rem,
-  // 24px
-  2xl: 1.5rem,
-  // 30px
-  3xl: 1.875rem
+  xs: rem(12),
+  sm: rem(14),
+  md: rem(16),
+  lg: rem(18),
+  xl: rem(20),
+  2xl: rem(24),
+  3xl: rem(30),
 );
 
 $families: (

@@ -22,9 +22,9 @@
     position: absolute;
     top: 0;
     width: 120%;
-    height: 0.3rem;
+    height: rem(4);
     background-color: var(--color-secondary-300);
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0 0 map-get($radius, sm) map-get($radius, sm);
   }
 
   font-weight: 500;

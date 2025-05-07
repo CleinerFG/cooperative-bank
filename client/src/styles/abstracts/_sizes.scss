@@ -1,43 +1,45 @@
+@use './functions' as *;
+
 $paddings: (
-  xs: 0.25rem,
-  sm: 0.5rem,
-  md: 0.75rem,
-  lg: 1rem,
-  xl: 1.25rem,
-  2xl: 1.5rem,
+  xs: rem(4),
+  sm: rem(8),
+  md: rem(12),
+  lg: rem(16),
+  xl: rem(20),
+  2xl: rem(24),
 );
 
 $margins: (
-  xs: 0.25rem,
-  sm: 0.5rem,
-  md: 0.75rem,
-  lg: 1rem,
-  xl: 1.25rem,
-  2xl: 1.5rem,
+  xs: rem(4),
+  sm: rem(8),
+  md: rem(12),
+  lg: rem(16),
+  xl: rem(20),
+  2xl: rem(24),
 );
 
 $gaps: (
-  xs: 0.25rem,
-  sm: 0.5rem,
-  md: 0.75rem,
-  lg: 1rem,
-  xl: 1.25rem,
-  2xl: 1.5rem,
+  xs: rem(4),
+  sm: rem(8),
+  md: rem(12),
+  lg: rem(16),
+  xl: rem(20),
+  2xl: rem(24),
 );
 
 $radius: (
-  xs: 0.25rem,
-  sm: 0.5rem,
-  md: 0.75rem,
-  lg: 1rem,
-  xl: 1.25rem,
-  2xl: 1.5rem,
+  xs: rem(4),
+  sm: rem(8),
+  md: rem(12),
+  lg: rem(16),
+  xl: rem(20),
+  2xl: rem(24),
   full: 50%,
 );
 
 $icons: (
-  xs: 1.25rem,
-  sm: 1.5rem,
+  xs: rem(20),
+  sm: rem(24),
   md: 2rem,
   lg: 2.5rem,
   xl: 2.75rem,
