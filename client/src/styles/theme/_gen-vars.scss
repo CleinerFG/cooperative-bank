@@ -1,0 +1,18 @@
+@use './colors' as colors;
+@use './gradients' as gradients;
+
+@mixin execute-each($map) {
+  @each $name, $value in $map {
+    --color-#{$name}: #{$value};
+  }
+}
+
+[data-theme='light'] {
+  @include execute-each(colors.$light);
+  @include execute-each(gradients.$light);
+}
+
+[data-theme='dark'] {
+  @include execute-each(colors.$dark);
+  @include execute-each(gradients.$dark);
+}
