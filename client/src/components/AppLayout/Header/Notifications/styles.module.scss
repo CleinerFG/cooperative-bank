@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@styles/abstracts' as *;
 
 .btn {
@@ -5,8 +6,8 @@
 }
 
 .btn svg {
-  width: map-get($icons, sm);
-  height: map-get($icons, sm);
+  width: map.get($icons, sm);
+  height: map.get($icons, sm);
 }
 
 .btn .count {
@@ -16,8 +17,8 @@
   right: rem(-6);
   background-color: var(--color-cta);
   color: var(--color-neutral-0);
-  border-radius: map-get($radius, full);
-  font-size: map-get($font-sizes, xs);
-  width: map-get($icons, xs);
-  height: map-get($icons, xs);
+  border-radius: map.get($radius, full);
+  font-size: map.get($font-sizes, xs);
+  width: map.get($icons, xs);
+  height: map.get($icons, xs);
 }

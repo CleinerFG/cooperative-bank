@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@styles/abstracts' as *;
 
 .app {
@@ -12,7 +13,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: map-get($gaps, lg);
+  gap: map.get($gaps, lg);
   background-color: var(--color-neutral-0);
   flex: 1;
 }

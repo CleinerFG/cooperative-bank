@@ -1,24 +1,25 @@
+@use 'sass:map';
 @use '@styles/abstracts' as *;
 
 .container {
   display: flex;
   justify-content: space-around;
   border-top: solid 1px hsla(0, 0%, 0%, 0.1);
-  padding-top: map-get($paddings, lg);
+  padding-top: map.get($paddings, lg);
 }
 
 .actionLink {
   @include flex-center;
   flex-direction: column;
-  gap: map-get($gaps, xs);
+  gap: map.get($gaps, xs);
 
   .iconContainer {
-    padding: map-get($paddings, md);
-    border-radius: map-get($radius, full);
+    padding: map.get($paddings, md);
+    border-radius: map.get($radius, full);
     background-color: var(--color-neutral-transparent-10);
   }
 
   .label {
-    font-size: map-get($font-sizes, sm);
+    font-size: map.get($font-sizes, sm);
   }
 }

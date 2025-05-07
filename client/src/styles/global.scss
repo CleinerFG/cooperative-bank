@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use './abstracts/' as *;
 @use '@styles/theme';
 @use './typography';
@@ -29,7 +30,7 @@ li {
 
 svg {
   color: var(--color-neutral-500);
-  width: map-get($icons, xs);
-  height: map-get($icons, xs);
+  width: map.get($icons, xs);
+  height: map.get($icons, xs);
   @include flex-center;
 }

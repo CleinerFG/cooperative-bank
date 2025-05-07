@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@styles/abstracts' as *;
 
 .container {
@@ -10,7 +11,7 @@
 .linkItem {
   @include flex-center;
   flex-direction: column;
-  padding: map-get($paddings, md) 0;
+  padding: map.get($paddings, md) 0;
 }
 
 .linkItemActive {
@@ -24,7 +25,7 @@
     width: 120%;
     height: rem(4);
     background-color: var(--color-secondary-300);
-    border-radius: 0 0 map-get($radius, sm) map-get($radius, sm);
+    border-radius: 0 0 map.get($radius, sm) map.get($radius, sm);
   }
 
   font-weight: 500;

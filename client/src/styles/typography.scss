@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@styles/abstracts' as *;
 
 html {
@@ -5,7 +6,7 @@ html {
 }
 
 * {
-  font-family: map-get($font-families, default);
+  font-family: map.get($font-families, default);
 }
 
 h1,
@@ -17,11 +18,11 @@ h3 {
 p,
 span {
   color: var(--color-neutral-300);
-  font-size: map-get($font-sizes, md);
+  font-size: map.get($font-sizes, md);
 }
 
 .info-text {
-  font-family: map-get($font-families, info);
+  font-family: map.get($font-families, info);
 }
 
 @media (min-width: 768px) {

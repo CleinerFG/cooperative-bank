@@ -1,11 +1,12 @@
+@use 'sass:map';
 @use '@styles/abstracts' as *;
 
 .summaryPanel {
   display: flex;
   flex-direction: column;
-  gap: map-get($gaps, md);
+  gap: map.get($gaps, md);
   background-color: var(--color-primary-300);
-  padding: map-get($paddings, md) map-get($paddings, lg);
-  border-radius: 0 0 map-get($radius, 2xl) map-get($radius, 2xl);
-  box-shadow: map-get($shadows, sm);
+  padding: map.get($paddings, md) map.get($paddings, lg);
+  border-radius: 0 0 map.get($radius, 2xl) map.get($radius, 2xl);
+  box-shadow: map.get($shadows, sm);
 }
