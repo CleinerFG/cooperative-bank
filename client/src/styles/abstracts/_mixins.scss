@@ -7,44 +7,24 @@
   justify-content: center;
 }
 
-@mixin container($size, $activeRadius: true, $activeGap: true) {
-  $padding: null;
-  $radius: null;
-  $gap: null;
-
-  @if $size == xs {
-    $padding: $padding-xs;
-    $radius: $radius-xs;
-    $gap: $gap-xs;
-  } @else if $size == sm {
-    $padding: $padding-sm;
-    $radius: $radius-sm;
-    $gap: map.get($gaps, sm);
-  } @else if $size == md {
-    $padding: map.get($paddings, md);
-    $radius: $radius-md;
-    $gap: map.get($gaps, md);
-  } @else if $size == lg {
-    $padding: map.get($paddings, lg);
-    $radius: $radius-lg;
-    $gap: $gap-lg;
-  } @else if $size == xl {
-    $padding: $padding-xl;
-    $radius: $radius-xl;
-    $gap: $gap-xl;
-  } @else if $size == 2xl {
-    $padding: $padding-2xl;
-    $radius: map.get($radius, 2xl);
-    $gap: $gap-2xl;
-  }
-
-  padding: $padding;
+@mixin container-flex(
+  $size,
+  $direction: row,
+  $with-gap: false,
+  $with-padding: false,
+  $with-radius: false
+) {
+  display: flex;
+  flex-direction: $direction;
   background-color: var(--color-neutral-0);
 
-  @if $activeRadius {
-    border-radius: $radius;
+  @if $with-gap {
+    gap: map.get($gaps, $size);
   }
-  @if $activeGap {
-    gap: $gap;
+  @if $with-padding {
+    padding: map.get($paddings, $size);
+  }
+  @if $with-radius {
+    border-radius: map.get($radius, $size);
   }
 }
