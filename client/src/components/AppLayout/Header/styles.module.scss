@@ -3,6 +3,6 @@
 .container {
   display: flex;
   justify-content: space-between;
-  padding: $padding-md $padding-lg;
+  padding: map-get($paddings, md) map-get($paddings, lg);
   background-color: var(--color-primary-300);
 }

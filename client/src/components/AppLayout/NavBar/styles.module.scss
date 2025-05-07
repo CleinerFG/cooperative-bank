@@ -10,7 +10,7 @@
 .linkItem {
   @include flex-center;
   flex-direction: column;
-  padding: $padding-md 0;
+  padding: map-get($paddings, md) 0;
 }
 
 .linkItemActive {

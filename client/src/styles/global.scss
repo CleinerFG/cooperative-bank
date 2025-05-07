@@ -29,7 +29,7 @@ li {
 
 svg {
   color: var(--text-color);
-  width: $icon-xs;
-  height: $icon-xs;
+  width: map-get($icons, xs);
+  height: map-get($icons, xs);
   @include flex-center;
 }

@@ -2,7 +2,7 @@
 
 .container {
   @include flex-center;
-  gap: $gap-sm;
+  gap: map-get($gaps, sm);
 }
 
 .avatar {
@@ -10,7 +10,7 @@
   width: 2.5rem;
   height: 2.5rem;
   background-color: var(--color-primary-200);
-  box-shadow: $shadow-sm;
+  box-shadow: map-get($shadows, sm);
   border-radius: 50%;
   font-size: var(--font-xl);
   font-weight: 700;

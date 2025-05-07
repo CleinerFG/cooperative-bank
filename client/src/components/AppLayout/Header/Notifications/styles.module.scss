@@ -5,8 +5,8 @@
 }
 
 .btn svg {
-  width: $icon-sm;
-  height: $icon-sm;
+  width: map-get($icons, sm);
+  height: map-get($icons, sm);
 }
 
 .btn .count {
@@ -16,8 +16,8 @@
   right: -0.4rem;
   background-color: var(--color-cta);
   color: var(--color-neutral-0);
-  border-radius: $radius-full;
+  border-radius: map-get($radius, full);
   font-size: var(--font-xs);
-  width: calc($icon-xs);
-  height: calc($icon-xs);
+  width: map-get($icons, xs);
+  height: map-get($icons, xs);
 }

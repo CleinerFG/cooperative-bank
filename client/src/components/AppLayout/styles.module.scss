@@ -12,7 +12,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: $gap-lg;
+  gap: map-get($gaps, lg);
   background-color: var(--color-neutral-05);
   flex: 1;
 }
