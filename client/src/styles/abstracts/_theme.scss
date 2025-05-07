@@ -1,0 +1,13 @@
+@use './colors' as *;
+
+[data-theme='light'] {
+  @each $name, $value in $light {
+    --color-#{$name}: #{$value};
+  }
+}
+
+[data-theme='dark'] {
+  @each $name, $value in $dark {
+    --color-#{$name}: #{$value};
+  }
+}

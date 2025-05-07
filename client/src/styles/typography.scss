@@ -6,17 +6,17 @@ html {
 
 * {
   font-family: map-get($font-families, default);
-  color: var(--text-color);
 }
 
 h1,
 h2,
 h3 {
-  color: var(--title-color);
+  color: var(--color-neutral-500);
 }
 
 p,
 span {
+  color: var(--color-neutral-300);
   font-size: map-get($font-sizes, md);
 }
 

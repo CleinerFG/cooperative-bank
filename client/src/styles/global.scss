@@ -1,5 +1,5 @@
 @use './abstracts/' as *;
-@use './theme';
+@use './abstracts/theme';
 @use './typography';
 
 * {
@@ -28,7 +28,7 @@ li {
 }
 
 svg {
-  color: var(--text-color);
+  color: var(--color-neutral-500);
   width: map-get($icons, xs);
   height: map-get($icons, xs);
   @include flex-center;
