@@ -12,12 +12,12 @@
 }
 
 .balanceLabel {
-  font-size: var(--font-sm);
+  font-size: map-get($font-sizes, sm);
 }
 
 .balance {
   @include flex-center;
   flex-direction: row;
-  font-size: var(--font-2xl);
+  font-size: map-get($font-sizes, 2xl);
   font-weight: bold;
 }

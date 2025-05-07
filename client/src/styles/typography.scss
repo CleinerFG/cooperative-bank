@@ -1,22 +1,11 @@
-$base-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$info-font-family: 'Open Sans', sans-serif;
-$brand-font-family: 'Quicksand', sans-serif;
+@use '@styles/abstracts' as *;
 
-:root {
-  --font-scale: 1;
-
-  /* Typography sizes */
-  --font-xs: calc(12px * var(--font-scale));
-  --font-sm: calc(14px * var(--font-scale));
-  --font-base: calc(16px * var(--font-scale));
-  --font-lg: calc(18px * var(--font-scale));
-  --font-xl: calc(20px * var(--font-scale));
-  --font-2xl: calc(24px * var(--font-scale));
-  --font-3xl: calc(30px * var(--font-scale));
+html {
+  font-size: 100%;
 }
 
 * {
-  font-family: $base-font-family;
+  font-family: map-get($font-families, default);
   color: var(--text-color);
 }
 
@@ -28,15 +17,21 @@ h3 {
 
 p,
 span {
-  font-size: var(--font-base);
+  font-size: map-get($font-sizes, md);
 }
 
 .info-text {
-  font-family: $info-font-family;
+  font-family: map-get($font-families, info);
 }
 
 @media (min-width: 768px) {
-  :root {
-    --font-scale: 1.25;
+  html {
+    font-size: 125%;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 135%;
   }
 }

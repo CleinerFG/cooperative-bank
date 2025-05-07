@@ -1,0 +1,34 @@
+$sizes: (
+  // 12px
+  xs: 0.75rem,
+  // 14px
+  sm: 0.875rem,
+  // 16px
+  md: 1rem,
+  // 18px
+  lg: 1.125rem,
+  // 20px
+  xl: 1.25rem,
+  // 24px
+  2xl: 1.5rem,
+  // 30px
+  3xl: 1.875rem
+);
+
+$families: (
+  default: (
+    'Segoe UI',
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif,
+  ),
+  info: (
+    'Open Sans',
+    sans-serif,
+  ),
+  brand: (
+    'Quicksand',
+    sans-serif,
+  ),
+);

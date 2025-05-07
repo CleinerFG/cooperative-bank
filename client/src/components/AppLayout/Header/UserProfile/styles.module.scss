@@ -12,6 +12,6 @@
   background-color: var(--color-primary-200);
   box-shadow: map-get($shadows, sm);
   border-radius: 50%;
-  font-size: var(--font-xl);
+  font-size: map-get($font-sizes, xl);
   font-weight: 700;
 }

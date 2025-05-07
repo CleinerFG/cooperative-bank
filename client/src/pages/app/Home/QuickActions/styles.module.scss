@@ -19,6 +19,6 @@
   }
 
   .label {
-    font-size: var(--font-sm);
+    font-size: map-get($font-sizes, sm);
   }
 }
