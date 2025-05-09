@@ -12,7 +12,7 @@ const navLinks = [
   { label: 'Settings', navigateTo: '/app/settings', iconName: 'Settings' },
 ];
 
-export default function BottomNav() {
+export default function NavBar() {
   return (
     <nav className={styles.container}>
       {navLinks.map(({ label, navigateTo, iconName }) => (
