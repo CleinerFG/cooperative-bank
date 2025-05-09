@@ -1,6 +1,7 @@
 import { useTheme } from '../../../contexts/theme';
 
 import { Sun, Moon } from 'lucide-react';
+// import * as Icons from 'lucide-react';
 import styles from './styles.module.scss';
 
 export default function ThemeButton() {

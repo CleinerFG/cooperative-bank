@@ -1,5 +1,4 @@
 import LinkItem from './LinkItem';
-// import ThemeButton from './ThemeButton';
 import styles from './styles.module.scss';
 
 const navLinks = [
@@ -24,7 +23,6 @@ export default function BottomNav() {
           key={navigateTo}
         />
       ))}
-      {/* <ThemeButton /> */}
     </nav>
   );
 }
