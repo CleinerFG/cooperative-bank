@@ -1,12 +1,18 @@
 @use 'sass:map';
 @use '@styles/abstracts' as *;
 
-.app {
+.appWrapper {
   @include flex-container(2xl, column);
   width: 100vw;
   height: 100dvh;
   max-width: 768px;
   position: relative;
+  overflow: hidden;
+
+  .motionPage {
+    width: 100%;
+    height: 100%;
+  }
 
   .content {
     @include flex-container(xl, column);
