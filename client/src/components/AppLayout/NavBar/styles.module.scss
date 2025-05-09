@@ -12,6 +12,7 @@ $container-size: md;
 %base-link {
   @include flex-container(xs, column, true);
   align-items: center;
+  position: relative;
 }
 
 .linkItem {
@@ -20,17 +21,14 @@ $container-size: md;
 
 .linkItemActive {
   @extend %base-link;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: calc(0rem - map.get($paddings, $container-size));
-    width: 120%;
-    height: rem(4);
-    background-color: var(--color-secondary-300);
-    border-radius: 0 0 map.get($radius, sm) map.get($radius, sm);
-  }
-
   font-weight: 500;
+}
+
+.activeIndicator {
+  position: absolute;
+  top: calc(0rem - map.get($paddings, $container-size));
+  width: 120%;
+  height: rem(4);
+  background-color: var(--color-secondary-300);
+  border-radius: 0 0 map.get($radius, sm) map.get($radius, sm);
 }

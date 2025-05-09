@@ -1,10 +1,19 @@
 import { NavLink } from 'react-router-dom';
+import ActiveIndicator from './ActiveIndicator';
 
 import * as Icons from 'lucide-react';
 import styles from './styles.module.scss';
 
 function LinkItem({ label, navigateTo, iconName }) {
   const Icon = Icons[iconName];
+
+  const renderLinkContent = ({ isActive }) => (
+    <>
+      {isActive && <ActiveIndicator />}
+      <Icon />
+      <span>{label}</span>
+    </>
+  );
 
   return (
     <NavLink
@@ -14,8 +23,7 @@ function LinkItem({ label, navigateTo, iconName }) {
         isActive ? styles.linkItemActive : styles.linkItem
       }
     >
-      <Icon />
-      <span>{label}</span>
+      {renderLinkContent}
     </NavLink>
   );
 }
