@@ -2,12 +2,14 @@ import { motion } from 'motion/react';
 
 import styles from './styles.module.scss';
 
-function MotionWrapper({ key, children }) {
+function MotionWrapper({ motionKey, direction, children }) {
+  const offset = 100;
+  const xInital = direction === 'forward' ? offset : -offset;
   return (
     <>
       <motion.div
-        key={key}
-        initial={{ x: '40%', opacity: 0 }}
+        key={motionKey}
+        initial={{ x: `${xInital}%`, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
         className={styles.motionPage}
