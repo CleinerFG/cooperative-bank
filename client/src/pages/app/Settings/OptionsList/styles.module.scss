@@ -1,0 +1,21 @@
+@use '@styles/abstracts' as *;
+
+.listItem {
+  .link {
+    @include flex-container('lg', row, true, true);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px hsla(0, 0%, 0%, 0.1);
+
+    .labelContainer {
+      @include flex-container('sm', row, true);
+      align-items: center;
+      font-weight: 500;
+    }
+  }
+
+  .link:hover {
+    background-color: var(--color-neutral-20);
+    transition: all 0.5s;
+  }
+}
