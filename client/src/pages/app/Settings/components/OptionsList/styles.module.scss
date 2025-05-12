@@ -2,10 +2,8 @@
 
 .listItem {
   .link {
-    @include flex-container('lg', row, true, true);
+    @extend %option-row;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: solid 1px hsla(0, 0%, 0%, 0.1);
 
     .labelContainer {
       @include flex-container('sm', row, true);
@@ -15,7 +13,6 @@
   }
 
   .link:hover {
-    background-color: var(--color-neutral-20);
-    transition: all 0.5s;
+    @extend %option-row-hover;
   }
 }

@@ -3,14 +3,10 @@
 
 .container {
   .rowContainer {
-    @include flex-container(lg, row, false, true);
-    gap: map.get($gaps, sm);
-    align-items: center;
-    border-bottom: solid rem(1) hsla(0, 0%, 0%, 0.1);
+    @extend %option-row;
   }
 
   .rowContainer:hover {
-    cursor: pointer;
-    background-color: var(--color-neutral-20);
+    @extend %option-row-hover;
   }
 }

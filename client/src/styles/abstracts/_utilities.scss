@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use './mixins' as *;
+@use './sizes' as *;
+@use './functions' as *;
+
+%option-row {
+  @include flex-container('lg', row, true, true);
+  gap: map.get($gaps, sm);
+  align-items: center;
+  border-bottom: solid rem(1) hsla(0, 0%, 0%, 0.1);
+}
+
+%option-row-hover {
+  cursor: pointer;
+  background-color: var(--color-neutral-20);
+  transition: all 0.5s;
+}
