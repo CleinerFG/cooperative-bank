@@ -1,5 +1,5 @@
-import OptionsList from './OptionsList';
-import UpdateLayout from './components/UpdateLayout';
+import OptionsList from './components/OptionsList';
+import UpdateLayout from './components/Layout/UpdateLayout';
 
 const BASE_ROUTE = '/app/settings';
 

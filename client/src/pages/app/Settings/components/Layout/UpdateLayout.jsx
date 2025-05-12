@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLayout } from '../contexts/layout';
+import { useLayout } from '../../contexts/layout';
 
 function UpdateLayout({title}) {
   const { setTitle } = useLayout();

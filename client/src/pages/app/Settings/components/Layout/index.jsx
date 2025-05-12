@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import { LayoutContext } from './contexts/layout';
+import { LayoutContext } from '../../contexts/layout';
 
 function SettingsLayout() {
   const [title, setTitle] = useState('');

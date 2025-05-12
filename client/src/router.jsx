@@ -5,7 +5,7 @@ import AppHome from './pages/app/Home';
 
 import Settings from './pages/app/Settings';
 import Appearance from './pages/app/Settings/Appearance';
-import SettingsLayout from './pages/app/Settings/SettingsLayout';
+import SettingsLayout from './pages/app/Settings/components/Layout';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
       // { path: 'settings/appearance', element: <Appearance /> },
       {
         path: 'settings',
-        element: <SettingsLayout/>,
+        element: <SettingsLayout />,
         children: [
           { index: true, element: <Settings /> },
           { path: 'appearance', element: <Appearance /> },
