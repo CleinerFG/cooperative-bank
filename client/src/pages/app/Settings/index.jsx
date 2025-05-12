@@ -1,4 +1,5 @@
 import OptionsList from './OptionsList';
+import UpdateLayout from './components/UpdateLayout';
 
 const BASE_ROUTE = '/app/settings';
 
@@ -17,9 +18,10 @@ const settingsOptions = [
 
 function Settings() {
   return (
-    <main>
+    <>
+      <UpdateLayout title="Settings" />
       <OptionsList items={settingsOptions} />
-    </main>
+    </>
   );
 }
 
