@@ -6,6 +6,7 @@ import AppHome from './pages/app/Home';
 import Settings from './pages/app/Settings';
 import Appearance from './pages/app/Settings/Appearance';
 import SettingsLayout from './pages/app/Settings/components/Layout';
+import Languages from './pages/app/Settings/Languages';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Settings /> },
           { path: 'appearance', element: <Appearance /> },
+          { path: 'languages', element: <Languages /> },
         ],
       },
     ],
