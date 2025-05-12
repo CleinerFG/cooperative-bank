@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
 import styles from './styles.module.scss';

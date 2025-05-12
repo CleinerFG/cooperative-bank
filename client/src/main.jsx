@@ -8,8 +8,8 @@ import './styles/global.scss';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </ThemeProvider>
+  <ThemeProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </ThemeProvider>
   </StrictMode>
 );

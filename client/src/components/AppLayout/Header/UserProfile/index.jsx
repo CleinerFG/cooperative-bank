@@ -4,9 +4,6 @@ function UserProfile() {
   return (
     <div className={styles.container}>
       <div className={styles.avatar}>M</div>
-      <div>
-        <h3>Hello, Meg</h3>
-      </div>
     </div>
   );
 }
