@@ -1,8 +1,9 @@
 import OptionsList from './components/OptionsList';
 import UpdateLayout from './components/Layout/UpdateLayout';
 
-const BASE_ROUTE = '/app/settings';
+import { Settings2 } from 'lucide-react';
 
+const BASE_ROUTE = '/app/settings';
 const settingsOptions = [
   {
     label: 'Appearance',
@@ -19,7 +20,7 @@ const settingsOptions = [
 function Settings() {
   return (
     <>
-      <UpdateLayout title="Settings" />
+      <UpdateLayout title="Settings" Icon={Settings2} />
       <OptionsList items={settingsOptions} />
     </>
   );

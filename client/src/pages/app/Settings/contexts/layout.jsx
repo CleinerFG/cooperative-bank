@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react';
 
 export const LayoutContext = createContext({
-  title: '',
-  setTitle: () => {},
+  layoutProps: {},
+  setLayoutProps: () => {},
 });
 
 export const useLayout = () => useContext(LayoutContext);

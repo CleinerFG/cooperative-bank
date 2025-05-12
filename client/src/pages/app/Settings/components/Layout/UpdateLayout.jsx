@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useLayout } from '../../contexts/layout';
 
-function UpdateLayout({title}) {
-  const { setTitle } = useLayout();
+function UpdateLayout({ title, Icon }) {
+  const { setLayoutProps } = useLayout();
   useEffect(() => {
-    setTitle(title);
+    setLayoutProps({ title, Icon });
   });
   return null;
 }

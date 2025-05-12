@@ -2,12 +2,15 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { LayoutContext } from '../../contexts/layout';
 
+import styles from './styles.module.scss';
+
 function SettingsLayout() {
-  const [title, setTitle] = useState('');
+  const [layoutProps, setLayoutProps] = useState({ title: '', Icon: null });
   return (
-    <LayoutContext.Provider value={{ title, setTitle }}>
+    <LayoutContext.Provider value={{ layoutProps, setLayoutProps }}>
       <div>
-        <h1>{title}</h1>
+        {<layoutProps.Icon />}
+        <h1 className={styles.title}>{layoutProps.title}</h1>
       </div>
       <main>
         <Outlet />
