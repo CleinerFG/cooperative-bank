@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 function SettingsLayout() {
   const [layoutProps, setLayoutProps] = useState({ title: '', Icon: null });
-  const matchRootRoute = useMatch('app/settings/');
+  const matchRootRoute = useMatch({ path: 'app/settings/', end: true });
 
   return (
     <LayoutContext.Provider value={{ layoutProps, setLayoutProps }}>
