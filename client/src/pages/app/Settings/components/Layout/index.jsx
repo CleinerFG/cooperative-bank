@@ -8,8 +8,8 @@ function SettingsLayout() {
   const [layoutProps, setLayoutProps] = useState({ title: '', Icon: null });
   return (
     <LayoutContext.Provider value={{ layoutProps, setLayoutProps }}>
-      <div>
-        {<layoutProps.Icon />}
+      <div className={styles.titleContainer}>
+        {layoutProps.Icon && <layoutProps.Icon className={styles.icon} />}
         <h1 className={styles.title}>{layoutProps.title}</h1>
       </div>
       <main>

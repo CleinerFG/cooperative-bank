@@ -1,8 +1,18 @@
 @use 'sass:map';
 @use '@styles/abstracts' as *;
 
-.title {
+.titleContainer {
   @include flex-container(md, row, true, true);
-  font-size: map.get($font-sizes, xl);
+  align-items: center;
   border-bottom: solid rem(2) var(--color-neutral-50);
+
+  .title {
+    font-size: map.get($font-sizes, xl);
+  }
+
+  .icon {
+    width: map.get($icons, sm);
+    height: map.get($icons, sm);
+    stroke-width: 2.5;
+  }
 }
