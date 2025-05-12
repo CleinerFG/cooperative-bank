@@ -3,32 +3,29 @@ import {
   useState,
   useContext,
   useEffect,
-  useCallback,
 } from 'react';
+
+const LOCAL_STORAGE_THEME_KEY = 'cooperative-bank-theme';
+const DEFAULT_THEME = 'light';
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    const localTheme = localStorage.getItem('cooperative-bank-theme');
-    if (localTheme) return localTheme;
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    const localTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
+    if (['dark', 'light'].includes(localTheme)) {
+      return localTheme;
+    }
+    return DEFAULT_THEME;
   });
 
-  const toggleTheme = useCallback(() => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  }, []);
-
   useEffect(() => {
-    localStorage.setItem('cooperative-bank-theme', theme);
     document.body.setAttribute('data-theme', theme);
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, updateTheme: setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
