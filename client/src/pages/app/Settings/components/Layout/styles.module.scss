@@ -16,3 +16,16 @@
     stroke-width: 2.5;
   }
 }
+
+.titleContainerWeak {
+  @extend .titleContainer;
+  
+  .title {
+    color: var(--color-neutral-100);
+    font-weight: 500;
+  }
+
+  .icon {
+    color: var(--color-neutral-100); 
+  }
+}
