@@ -1,0 +1,42 @@
+@use '@styles/abstracts' as *;
+
+.container {
+  @include flex-container(lg, column, true, true);
+
+  .radioContent {
+    @include flex-container(md, row, true);
+    align-items: center;
+  }
+}
+
+.radioContainer {
+  @include flex-container(sm, row, true);
+  justify-content: space-between;
+  width: 100% ;
+  align-items: center;
+}
+
+.radio {
+  @include flex-center;
+  cursor: pointer;
+  appearance: none;
+  width: rem(20);
+  height: rem(20);
+  border: rem(2) solid var(--color-neutral-50);
+  border-radius: 50%;
+
+  &:before {
+    content: '';
+    width: rem(12);
+    height: rem(12);
+    border-radius: 50%;
+    background-color: transparent;
+  }
+
+  &:checked {
+    border: rem(2) solid var(--color-secondary-300);
+    &:before {
+      background-color: var(--color-secondary-300);
+    }
+  }
+}

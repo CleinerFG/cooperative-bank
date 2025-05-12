@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import RadioButton from './RadioButton';
 
+import styles from './styles.module.scss';
+
 function RadioGroup({ options, defaultValue, groupName, onRadioChecked }) {
   const [selectedValue, setSelectedValue] = useState(defaultValue || '');
 
@@ -10,16 +12,19 @@ function RadioGroup({ options, defaultValue, groupName, onRadioChecked }) {
   };
 
   return (
-    <div>
-      {options.map(({ label, value }) => (
-        <RadioButton
-          key={value}
-          name={groupName}
-          label={label}
-          value={value}
-          checked={selectedValue === value}
-          onChange={handleChange}
-        />
+    <div className={styles.container}>
+      {options.map(({ label, value, Icon }) => (
+        <div className={styles.radioContent}>
+          {Icon && <Icon />}
+          <RadioButton
+            key={value}
+            name={groupName}
+            label={label}
+            value={value}
+            checked={selectedValue === value}
+            onChange={handleChange}
+          />
+        </div>
       ))}
     </div>
   );
