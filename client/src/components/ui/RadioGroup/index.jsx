@@ -1,30 +1,29 @@
 import { useState } from 'react';
-import RadioButton from './RadioButton';
+import RadioButton from '../RadioButton';
+import RadioRow from './RadioRow';
 
 import styles from './styles.module.scss';
 
-function RadioGroup({ options, defaultValue, groupName, onRadioChecked }) {
-  const [selectedValue, setSelectedValue] = useState(defaultValue || '');
+function RadioGroup({ options, defaultValue = '', groupName, onRadioChecked }) {
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
 
-  const handleChange = (ev) => {
-    setSelectedValue(ev.target.value);
-    onRadioChecked(ev.target.value);
+  const handleRadioChecked = (value) => {
+    setSelectedValue(value);
+    onRadioChecked(value);
   };
 
   return (
     <div className={styles.container}>
       {options.map(({ label, value, Icon }) => (
-        <div className={styles.radioContent}>
-          {Icon && <Icon />}
-          <RadioButton
-            key={value}
-            name={groupName}
-            label={label}
-            value={value}
-            checked={selectedValue === value}
-            onChange={handleChange}
-          />
-        </div>
+        <RadioRow
+          key={value}
+          label={label}
+          value={value}
+          Icon={Icon}
+          checked={selectedValue === value}
+          onSelect={handleRadioChecked}
+          name={groupName}
+        />
       ))}
     </div>
   );
