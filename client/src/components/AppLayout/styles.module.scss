@@ -7,7 +7,7 @@
   height: 100dvh;
   max-width: 768px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 
   .motionPage {
     width: 100%;
@@ -16,6 +16,7 @@
 
   .content {
     @include flex-container(xl, column);
+    padding-bottom: 5rem;
     background-color: var(--color-neutral-0);
     flex: 1;
   }

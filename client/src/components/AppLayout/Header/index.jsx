@@ -1,12 +1,12 @@
 import Notifications from './Notifications';
-import UserProfile from './UserProfile';
+import UserProfile from './UserProfile/';
 
 import styles from './styles.module.scss';
 
 export default function Header() {
   return (
     <>
-      <header className={styles.container}>
+      <header className={styles.header}>
         <UserProfile />
         <Notifications />
       </header>
