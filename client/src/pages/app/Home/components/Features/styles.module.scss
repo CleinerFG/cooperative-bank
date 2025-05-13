@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '@styles/abstracts' as *;
+@use '../styles.module.scss' as *;
 
 .container {
   display: flex;
@@ -8,12 +9,7 @@
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: map.get($gaps, lg);
-  padding: map.get($paddings, lg);
-  background-color: var(--color-neutral-20);
-  border-radius: map.get($radius, xl);
+  @extend %card-container;
 
   .actionLinks {
     display: flex;
