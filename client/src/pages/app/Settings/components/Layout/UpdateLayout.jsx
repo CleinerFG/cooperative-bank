@@ -6,7 +6,7 @@ function UpdateLayout({ title, Icon }) {
   useEffect(() => {
     setLayoutProps({ title, Icon });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [title]);
   return null;
 }
 
