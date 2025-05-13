@@ -11,9 +11,12 @@
     "pay": "Pay",
     "recharge": "Recharge",
 
-    "appearance": "Appearance",
-    "languages": "Languages",
-    "setLang": "Set language",
+    "myCards": "My cards",
+    "cardOf": "Card of",
+    "credit": "Credit",
+    "debit": "Debit",
+    "holder": "Holder",
+    "validity": "Validity",
 
     "loans": "Loans",
     "new": "New",
@@ -21,6 +24,10 @@
     "pending": "Pending",
     "history": "History",
     "investments": "Investments",
-    "search": "search"
+    "search": "search",
+
+    "appearance": "Appearance",
+    "languages": "Languages",
+    "setLang": "Set language"
   }
 }

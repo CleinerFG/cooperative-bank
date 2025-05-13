@@ -11,9 +11,12 @@
     "pay": "Pagar",
     "recharge": "Recarregar",
 
-    "appearance": "Aparência",
-    "languages": "Idiomas",
-    "setLang": "Definir idioma",
+    "myCards": "Meus cartões",
+    "cardOf": "Cartão de",
+    "credit": "Crédito",
+    "debit": "Débito",
+    "holder": "Titular",
+    "validity": "Validade",
 
     "loans": "Empréstimos",
     "new": "Novo",
@@ -21,6 +24,10 @@
     "pending": "Pendentes",
     "history": "Histórico",
     "investments": "Investimentos",
-    "search": "Buscar"
+    "search": "Buscar",
+
+    "appearance": "Aparência",
+    "languages": "Idiomas",
+    "setLang": "Definir idioma"
   }
 }

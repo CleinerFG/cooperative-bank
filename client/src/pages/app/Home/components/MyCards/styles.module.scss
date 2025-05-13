@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use '@styles/abstracts' as *;
+@use '../styles.module.scss' as *;
+
+.container {
+  @extend %card-container;
+  margin-bottom: map.get($paddings, xl);
+}
+
+.cardCarousel {
+  display: flex;
+  gap: map.get($gaps, lg);
+  padding: map.get($paddings, md);
+  overflow-x: scroll;
+}
+
+.cardCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+.bankCard {
+  min-width: rem(250);
+  height: rem(150);
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary-100),
+    var(--color-secondary-300)
+  );
+  border-radius: map.get($radius, lg);
+  padding: map.get($paddings, lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: map.get($shadows, md);
+
+  .cardNumber {
+    font-size: map.get($font-sizes, lg);
+    letter-spacing: rem(2);
+  }
+
+  .cardType {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cardIcon {
+    width: map.get($icons, md);
+    height: map.get($icons, md);
+    stroke-width: 5%;
+  }
+
+  .cardDetails {
+    display: flex;
+    justify-content: space-between;
+    font-size: map.get($font-sizes, xs);
+  }
+}

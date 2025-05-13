@@ -40,10 +40,8 @@ $radius: (
 $icons: (
   xs: rem(20),
   sm: rem(24),
-  md: 2rem,
-  lg: 2.5rem,
-  xl: 2.75rem,
-  2xl: 3.5rem,
-  3xl: 4rem,
-  4xl: 5rem,
+  md: rem(28),
+  lg: rem(32),
+  xl: rem(36),
+  2xl: rem(40),
 );

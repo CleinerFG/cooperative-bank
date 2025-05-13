@@ -8,4 +8,5 @@
   padding: map.get($paddings, lg);
   background-color: var(--color-neutral-20);
   border-radius: map.get($radius, xl);
+  box-shadow: map.get($shadows, lg);
 }
