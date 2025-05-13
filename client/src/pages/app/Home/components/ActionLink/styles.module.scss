@@ -8,7 +8,7 @@
   .iconContainer {
     padding: map.get($paddings, md);
     border-radius: map.get($radius, full);
-    background-color: var(--color-neutral-transparent-10);
+    background-color: var(--color-primary-200);
   }
 
   .label {

@@ -19,7 +19,6 @@
       width: rem(65);
       div {
         border-radius: map.get($radius, md);
-        background-color: var(--color-primary-200);
       }
     }
   }
