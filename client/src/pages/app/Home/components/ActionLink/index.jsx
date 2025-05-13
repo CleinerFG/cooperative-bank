@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import * as Icons from 'lucide-react';
 import styles from './styles.module.scss';
 
-function ActionLink({ label, navigateTo, iconName }) {
+function ActionLink({ label, navigateTo, Icon }) {
   const { t } = useTranslation();
-  const Icon = Icons[iconName];
 
   return (
     <Link className={styles.actionLink} to={navigateTo}>
-      <div className={styles.iconContainer}>
-        <Icon />
-      </div>
+      <div className={styles.iconContainer}>{Icon && <Icon />}</div>
       <span className={styles.label}>{t(label)}</span>
     </Link>
   );

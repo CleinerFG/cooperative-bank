@@ -17,7 +17,7 @@ function AccountBalance() {
   const { t } = useTranslation();
   const [isHidden, setIsHidden] = useState(true);
   return (
-    <div className={styles.container}>
+    <div className={styles.accountBalance}>
       <p className={styles.label}>{t('balance')}</p>
       <div className={styles.valueContainer}>
         <div className={styles.value}>

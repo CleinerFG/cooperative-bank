@@ -1,16 +1,11 @@
-import AccountBalance from './AccountBalance';
-import QuickActions from './QuickActions';
-
-import styles from './styles.module.scss';
+import SummaryPanel from './components/SummaryPanel';
 
 function Home() {
   return (
     <>
-      <section className={styles.summaryPanel}>
-        <AccountBalance />
-        <QuickActions />
-      </section>
-      <main></main>
+      <SummaryPanel />
+      <main>
+      </main>
     </>
   );
 }

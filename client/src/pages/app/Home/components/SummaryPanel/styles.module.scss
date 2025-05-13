@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use '@styles/abstracts' as *;
+
+.summaryPanel {
+  @include flex-container(md, column, true, true, false);
+  padding-left: map.get($paddings, lg);
+  padding-right: map.get($paddings, lg);
+  border-radius: 0 0 map.get($radius, 2xl) map.get($radius, 2xl);
+  background-color: var(--color-primary-300);
+  box-shadow: map.get($shadows, sm);
+}
+
+.quickActions {
+  @include flex-container(md, row, true);
+  justify-content: space-around;
+  border-top: solid 1px hsla(0, 0%, 0%, 0.1);
+  padding-top: map.get($paddings, lg);
+}
+
+.accountBalance {
+  @include flex-container(xs, column, true);
+
+  .label {
+    font-size: map.get($font-sizes, sm);
+  }
+
+  .valueContainer {
+    @include flex-container(sm, row, true);
+
+    .value {
+      @include flex-container(xs, row, false);
+      align-items: center;
+      font-size: map.get($font-sizes, 2xl);
+      font-weight: bold;
+    }
+  }
+}
