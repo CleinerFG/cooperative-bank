@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import RadioButton from '../RadioButton';
 import RadioRow from './RadioRow';
 
 import styles from './styles.module.scss';
