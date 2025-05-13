@@ -2,10 +2,10 @@ import styles from './styles.module.scss';
 import ActionLink from './ActionLink';
 
 const actionsLinks = [
-  { label: 'Transfer', navigateTo: '/app/transfers', iconName: 'Send' },
-  { label: 'Pix', navigateTo: '/app/pix', iconName: 'QrCode' },
-  { label: 'Pay', navigateTo: '/app/pay', iconName: 'Barcode' },
-  { label: 'Recharge', navigateTo: '/app/recharge', iconName: 'Smartphone' },
+  { label: 'transfer', navigateTo: '/app/transfers', iconName: 'Send' },
+  { label: 'pix', navigateTo: '/app/pix', iconName: 'QrCode' },
+  { label: 'pay', navigateTo: '/app/pay', iconName: 'Barcode' },
+  { label: 'recharge', navigateTo: '/app/recharge', iconName: 'Smartphone' },
 ];
 
 function QuickActions() {

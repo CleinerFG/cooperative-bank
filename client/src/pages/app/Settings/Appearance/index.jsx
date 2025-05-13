@@ -6,7 +6,7 @@ import { Eclipse } from 'lucide-react';
 function Appearance() {
   return (
     <>
-      <UpdateLayout title="Appearance" Icon={Eclipse} />
+      <UpdateLayout title="appearance" Icon={Eclipse} />
       <ThemeRadioGroup />
     </>
   );

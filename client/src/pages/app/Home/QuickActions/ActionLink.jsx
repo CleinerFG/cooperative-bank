@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import * as Icons from 'lucide-react';
 import styles from './styles.module.scss';
 
 function ActionLink({ label, navigateTo, iconName }) {
+  const { t } = useTranslation();
   const Icon = Icons[iconName];
 
   return (
@@ -11,7 +13,7 @@ function ActionLink({ label, navigateTo, iconName }) {
       <div className={styles.iconContainer}>
         <Icon />
       </div>
-      <span className={styles.label}>{label}</span>
+      <span className={styles.label}>{t(label)}</span>
     </Link>
   );
 }

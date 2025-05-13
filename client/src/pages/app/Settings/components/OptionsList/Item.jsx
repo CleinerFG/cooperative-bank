@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import * as Icons from 'lucide-react';
@@ -6,6 +7,7 @@ import styles from './styles.module.scss';
 const ChevronIcon = Icons.ChevronRight;
 
 function Item({ label, navigateTo, iconName }) {
+  const { t } = useTranslation();
   const Icon = Icons[iconName];
 
   return (
@@ -13,7 +15,7 @@ function Item({ label, navigateTo, iconName }) {
       <Link className={styles.link} to={navigateTo}>
         <div className={styles.labelContainer}>
           <Icon />
-          <span>{label}</span>
+          <span>{t(label)}</span>
         </div>
         <ChevronIcon />
       </Link>

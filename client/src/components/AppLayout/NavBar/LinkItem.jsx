@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useMatch } from 'react-router-dom';
 import ActiveIndicator from './ActiveIndicator';
@@ -5,6 +6,7 @@ import ActiveIndicator from './ActiveIndicator';
 import styles from './styles.module.scss';
 
 function LinkItem({ label, navigateTo, Icon, strictMatch = false }) {
+  const { t } = useTranslation();
   const isActiveMatch = useMatch({ path: navigateTo, end: strictMatch });
 
   return (
@@ -17,7 +19,7 @@ function LinkItem({ label, navigateTo, Icon, strictMatch = false }) {
         <>
           {isActiveMatch && <ActiveIndicator />}
           {Icon && <Icon />}
-          <span>{label}</span>
+          <span>{t(label)}</span>
         </>
       }
     </NavLink>

@@ -4,14 +4,14 @@ import { House, ArrowLeftRight, CircleUser, Settings } from 'lucide-react';
 import styles from './styles.module.scss';
 
 const navLinks = [
-  { label: 'Home', navigateTo: '/app', Icon: House, strictMatch: true },
+  { label: 'home', navigateTo: '/app', Icon: House, strictMatch: true },
   {
-    label: 'Transactions',
+    label: 'transactions',
     navigateTo: '/app/transactions',
     Icon: ArrowLeftRight,
   },
-  { label: 'Account', navigateTo: '/app/account', Icon: CircleUser },
-  { label: 'Settings', navigateTo: '/app/settings', Icon: Settings },
+  { label: 'account', navigateTo: '/app/account', Icon: CircleUser },
+  { label: 'settings', navigateTo: '/app/settings', Icon: Settings },
 ];
 
 export default function NavBar() {

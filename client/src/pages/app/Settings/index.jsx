@@ -6,12 +6,12 @@ import { Settings2 } from 'lucide-react';
 const BASE_ROUTE = '/app/settings';
 const settingsOptions = [
   {
-    label: 'Appearance',
+    label: 'appearance',
     navigateTo: BASE_ROUTE + '/appearance',
     iconName: 'Eclipse',
   },
   {
-    label: 'Languages',
+    label: 'languages',
     navigateTo: BASE_ROUTE + '/languages',
     iconName: 'Languages',
   },
@@ -20,7 +20,7 @@ const settingsOptions = [
 function Settings() {
   return (
     <>
-      <UpdateLayout title="Settings" Icon={Settings2} />
+      <UpdateLayout title="settings" Icon={Settings2} />
       <OptionsList items={settingsOptions} />
     </>
   );

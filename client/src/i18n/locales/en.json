@@ -1,6 +1,18 @@
 {
   "translation": {
+    "home": "Home",
+    "transactions": "Transactions",
+    "account": "Account",
+    "settings": "Settings",
+
     "balance": "Balance",
+    "transfer": "Transfer",
+    "pix": "Pix",
+    "pay": "Pay",
+    "recharge": "Recharge",
+
+    "appearance": "Appearance",
+    "languages": "Languages",
     "setLang": "Set language"
   }
 }

@@ -1,6 +1,18 @@
 {
   "translation": {
+    "home": "Início",
+    "transactions": "Transações",
+    "account": "Conta",
+    "settings": "Configurações",
+
     "balance": "Saldo",
+    "transfer": "Transferência",
+    "pix": "Pix",
+    "pay": "Pagar",
+    "recharge": "Recarregar",
+
+    "appearance": "Aparência",
+    "languages": "Idiomas",
     "setLang": "Definir idioma"
   }
 }
