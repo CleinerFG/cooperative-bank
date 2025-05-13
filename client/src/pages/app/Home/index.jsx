@@ -1,10 +1,14 @@
 import SummaryPanel from './components/SummaryPanel';
+import Features from './components/Features';
+
+import styles from './styles.module.scss';
 
 function Home() {
   return (
     <>
       <SummaryPanel />
-      <main>
+      <main className={styles.main}>
+        <Features />
       </main>
     </>
   );

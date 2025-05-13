@@ -13,6 +13,14 @@
 
     "appearance": "Aparência",
     "languages": "Idiomas",
-    "setLang": "Definir idioma"
+    "setLang": "Definir idioma",
+
+    "loans": "Empréstimos",
+    "new": "Novo",
+    "active": "Ativos",
+    "pending": "Pendentes",
+    "history": "Histórico",
+    "investments": "Investimentos",
+    "search": "Buscar"
   }
 }

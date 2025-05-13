@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '@styles/abstracts' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($gaps, lg);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($gaps, lg);
+  padding: map.get($paddings, lg);
+  background-color: var(--color-neutral-20);
+  border-radius: map.get($radius, xl);
+
+  .actionLinks {
+    display: flex;
+    justify-content: space-around;
+
+    a {
+      width: rem(65);
+      div {
+        border-radius: map.get($radius, md);
+        background-color: var(--color-primary-200);
+      }
+    }
+  }
+}

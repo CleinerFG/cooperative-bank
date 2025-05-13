@@ -1,0 +1,6 @@
+@use 'sass:map';
+@use '@styles/abstracts' as *;
+
+.main {
+  padding: map.get($paddings, xl);
+}
