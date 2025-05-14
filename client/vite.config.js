@@ -8,6 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       // eslint-disable-next-line no-undef
+      '@': path.resolve(__dirname, './src'),
+      // eslint-disable-next-line no-undef
       '@styles': path.resolve(__dirname, './src/styles'),
     },
   },

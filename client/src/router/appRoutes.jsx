@@ -1,4 +1,4 @@
-import AppLayout from '../components/AppLayout';
+import AppLayout from '@/components/AppLayout';
 import Home from '../pages/app/Home';
 
 import settingsRoutes from './settingsRoutes';
