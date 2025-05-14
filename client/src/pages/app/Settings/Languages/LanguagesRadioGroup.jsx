@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import RadioGroup from '../../../../components/ui/RadioGroup';
+import RadioGroup from '@/components/ui/RadioGroup';
 
 const options = [
   { label: 'English', value: 'en' },

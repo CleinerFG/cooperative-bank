@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import NavBar from './NavBar';
 import MotionWrapper from './MotionWrapper';
-import useRouteTransitonDirection from '../../hooks/useRouteTransitionDirection';
+import useRouteTransitonDirection from '@/hooks/useRouteTransitionDirection';
 import styles from './styles.module.scss';
 
 export default function AppLayout() {
