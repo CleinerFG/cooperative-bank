@@ -8,6 +8,7 @@ $container-size: md;
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: $layout-app-max-width;
   justify-content: space-around;
   background-color: var(--color-neutral-10);
 }

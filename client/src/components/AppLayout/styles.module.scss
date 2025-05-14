@@ -5,7 +5,7 @@
   @include flex-container(2xl, column);
   width: 100vw;
   height: 100dvh;
-  max-width: 768px;
+  max-width: $layout-app-max-width;
   position: relative;
   overflow-x: hidden;
 
