@@ -33,5 +33,8 @@
   ],
   "author": "Cleiner Furlani",
   "license": "ISC",
-  "description": "A simple banking simulation app for managing transactions, loans, and payments between people"
+  "description": "A simple banking simulation app for managing transactions, loans, and payments between people",
+  "dependencies": {
+    "styled-components": "^6.1.18"
+  }
 }
