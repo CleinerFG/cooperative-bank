@@ -6,11 +6,14 @@ import router from './router';
 import './i18n';
 import { ThemeProvider } from './contexts/theme';
 import './styles/global.scss';
+import { ThemeProviderWrapper } from './contexts/ThemeContext';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </ThemeProvider>
+    <ThemeProviderWrapper>
+      <ThemeProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </ThemeProvider>
+    </ThemeProviderWrapper>
   </StrictMode>
 );

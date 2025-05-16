@@ -9,7 +9,7 @@ export const StyledHeader = styled.header`
   gap: ${spacing.md};
   padding: ${spacing.md} ${spacing.lg} ${spacing.md} ${spacing.lg};
   justify-content: space-between;
-  background-color: var(--color-primary-300);
+  background-color: ${(props) => props.theme.colors.primary[300]};
 `;
 
 export const StyledProfileLink = styled.a`

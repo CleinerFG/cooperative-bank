@@ -1,5 +1,5 @@
 import RadioGroup from '../../../../components/ui/RadioGroup';
-import { useTheme } from '../../../../contexts/theme';
+import { useTheme } from '@/contexts/ThemeContext';
 
 import { Sun, Moon } from 'lucide-react';
 
@@ -9,13 +9,13 @@ const options = [
 ];
 
 function ThemeRadioGroup() {
-  const { theme, updateTheme } = useTheme();
+  const { themeName, changeTheme } = useTheme();
 
   return (
     <RadioGroup
       options={options}
-      defaultValue={theme}
-      onRadioChecked={updateTheme}
+      defaultValue={themeName}
+      onRadioChecked={changeTheme}
       groupName="themeOptions"
     />
   );
