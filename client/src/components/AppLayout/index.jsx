@@ -4,21 +4,20 @@ import Header from './Header';
 import NavBar from './NavBar';
 import MotionWrapper from './MotionWrapper';
 import useRouteTransitonDirection from '@/hooks/useRouteTransitionDirection';
-import styles from './styles.module.scss';
+import { StyledContainer, StyledPageContent } from './AppLayout.styles';
 
 export default function AppLayout() {
   const { motionKey, direction } = useRouteTransitonDirection();
 
   return (
-    <div className={styles.appWrapper}>
+    <StyledContainer>
       <Header />
       <MotionWrapper motionKey={motionKey} direction={direction}>
-        <div className={styles.content}>
+        <StyledPageContent>
           <Outlet />
-        </div>
+        </StyledPageContent>
       </MotionWrapper>
-
       <NavBar />
-    </div>
+    </StyledContainer>
   );
 }

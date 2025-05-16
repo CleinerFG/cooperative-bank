@@ -1,15 +1,13 @@
 import Notifications from './Notifications';
-import UserProfile from './UserProfile/';
 
-import styles from './styles.module.scss';
+import { StyledHeader } from './Header.styles';
+import ProfileAvatar from './ProfileAvatar';
 
 export default function Header() {
   return (
-    <>
-      <header className={styles.header}>
-        <UserProfile />
-        <Notifications />
-      </header>
-    </>
+    <StyledHeader>
+      <ProfileAvatar />
+      <Notifications />
+    </StyledHeader>
   );
 }
