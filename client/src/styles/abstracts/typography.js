@@ -1,6 +1,6 @@
 import { rem } from './utils';
 
-export const sizes = {
+export const size = {
   xs: rem(12),
   sm: rem(14),
   md: rem(16),
@@ -10,7 +10,7 @@ export const sizes = {
   '3xl': rem(32),
 };
 
-export const families = {
+export const family = {
   default: `'Segoe UI',
     Tahoma,
     Geneva,

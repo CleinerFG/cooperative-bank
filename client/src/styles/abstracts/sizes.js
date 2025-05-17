@@ -12,7 +12,7 @@ export const spacing = {
 
 // spacing size - 2px
 const radiusOffset = rem(2);
-export const radius = {
+export const rounded = {
   xs: `calc(${spacing.xs} - ${radiusOffset})`,
   sm: `calc(${spacing.sm} - ${radiusOffset})`,
   md: `calc(${spacing.md} - ${radiusOffset})`,
@@ -21,11 +21,17 @@ export const radius = {
   '2xl': `calc(${spacing['2xl']} - ${radiusOffset})`,
 };
 
-export const icons = {
+export const icon = {
   xs: rem(20),
   sm: rem(24),
   md: rem(28),
   lg: rem(32),
   xl: rem(36),
   '2xl': rem(40),
+};
+
+export const shadow = {
+  xs: '0 1px 1px rgba(0, 0, 0, 0.2)',
+  sm: '0 2px 2px rgba(0, 0, 0, 0.2)',
+  md: '0 2px 4px rgba(0, 0, 0, 0.2)',
 };
