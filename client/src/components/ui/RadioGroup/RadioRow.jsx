@@ -1,9 +1,9 @@
 import RadioButton from '../RadioButton';
-import styles from './styles.module.scss';
+import { StyledRow } from './RadioGroup.styles';
 
 function RadioRow({ label, value, Icon, checked, onSelect, name }) {
   return (
-    <div className={styles.rowContainer} onClick={() => onSelect(value)}>
+    <StyledRow onClick={() => onSelect(value)}>
       {Icon && <Icon />}
       <RadioButton
         name={name}
@@ -12,7 +12,7 @@ function RadioRow({ label, value, Icon, checked, onSelect, name }) {
         checked={checked}
         onChange={(e) => onSelect(e.target.value)}
       />
-    </div>
+    </StyledRow>
   );
 }
 

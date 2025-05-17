@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import RadioRow from './RadioRow';
 
-import styles from './styles.module.scss';
-
 function RadioGroup({ options, defaultValue = '', groupName, onRadioChecked }) {
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
@@ -12,7 +10,7 @@ function RadioGroup({ options, defaultValue = '', groupName, onRadioChecked }) {
   };
 
   return (
-    <div className={styles.container}>
+    <ul>
       {options.map(({ label, value, Icon }) => (
         <RadioRow
           key={value}
@@ -24,7 +22,7 @@ function RadioGroup({ options, defaultValue = '', groupName, onRadioChecked }) {
           name={groupName}
         />
       ))}
-    </div>
+    </ul>
   );
 }
 

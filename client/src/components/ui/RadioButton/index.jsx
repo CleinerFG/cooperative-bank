@@ -1,16 +1,12 @@
 import { useId } from 'react';
-
-import styles from './styles.module.scss';
+import { StyledContainer, StyledRadio } from './Radio.styles';
 
 function RadioButton({ name, label, value, checked, onChange }) {
   const id = useId();
   return (
-    <div className={styles.container}>
-      <label className={styles.label} htmlFor={id}>
-        {label}
-      </label>
-      <input
-        className={styles.input}
+    <StyledContainer>
+      <label htmlFor={id}>{label}</label>
+      <StyledRadio
         type="radio"
         id={id}
         name={name}
@@ -18,7 +14,7 @@ function RadioButton({ name, label, value, checked, onChange }) {
         checked={checked}
         onChange={onChange}
       />
-    </div>
+    </StyledContainer>
   );
 }
 
