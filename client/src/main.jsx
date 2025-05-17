@@ -4,12 +4,13 @@ import { RouterProvider } from 'react-router-dom';
 
 import router from './router';
 import './i18n';
-import './styles/global.scss';
 import { ThemeProviderWrapper } from './contexts/ThemeContext';
+import GlobalStyle from './components/GlobalStyle';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProviderWrapper>
+      <GlobalStyle />
       <RouterProvider router={router}></RouterProvider>
     </ThemeProviderWrapper>
   </StrictMode>
