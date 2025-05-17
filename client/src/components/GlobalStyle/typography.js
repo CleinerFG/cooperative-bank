@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import * as font from '@/styles/abstracts/typography';
+import { font } from '@/styles/abstracts/';
 
 export const typography = css`
   html {
@@ -7,19 +7,19 @@ export const typography = css`
   }
 
   * {
-    font-family: ${font.families.default};
+    font-family: ${font.family.default};
+    color: ${({ theme }) => theme.colors.neutral[300]};
   }
 
   h1,
   h2,
   h3 {
-    color: ${(props) => props.theme.colors.neutral[500]};
+    color: ${({ theme }) => theme.colors.neutral[500]};
   }
 
   p,
   span {
-    color: ${(props) => props.theme.colors.neutral[300]};
-    font-size: ${font.sizes.md};
+    font-size: ${font.size.md};
   }
 
   @media (min-width: 768px) {
