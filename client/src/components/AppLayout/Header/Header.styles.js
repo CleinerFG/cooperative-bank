@@ -1,28 +1,32 @@
 import styled from 'styled-components';
-
-import { rem } from '@/styles/abstracts/utils';
-import { flexCenter } from '@/styles/abstracts/mixins';
-import { spacing } from '@/styles/abstracts/sizes';
+import { font, sizes, utils } from '@/styles/abstracts';
 
 export const StyledHeader = styled.header`
   display: flex;
-  gap: ${spacing.md};
-  padding: ${spacing.md} ${spacing.lg} ${spacing.md} ${spacing.lg};
+  gap: ${sizes.spacing.md};
+  padding-top: ${sizes.spacing.md};
+  padding-right: ${sizes.spacing.lg};
+  padding-bottom: ${sizes.spacing.md};
+  padding-left: ${sizes.spacing.lg};
   justify-content: space-between;
-  background-color: ${(props) => props.theme.colors.primary[300]};
+  background-color: ${({ theme }) => theme.colors.primary[300]};
 `;
 
 export const StyledProfileLink = styled.a`
-  ${flexCenter}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledAvatar = styled.div`
-  ${flexCenter}
-  width: ${rem(40)};
-  height: ${rem(40)};
-  background-color: var(--color-primary-200);
-  /* box-shadow: map.get($shadows, sm); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${utils.rem(40)};
+  height: ${utils.rem(40)};
+  background-color: ${({ theme }) => theme.colors.primary[200]};
+  box-shadow: ${sizes.shadow.sm};
   border-radius: 50%;
-  /* font-size: map.get($font-sizes, xl); */
+  font-size: ${font.size.xl};
   font-weight: 700;
 `;

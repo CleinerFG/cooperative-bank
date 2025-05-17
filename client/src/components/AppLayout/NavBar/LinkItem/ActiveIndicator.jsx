@@ -1,12 +1,8 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
-
-import styles from './styles.module.scss';
+import { StyledIndicator } from './LinkItem.styles';
 
 function ActiveIndicator() {
   return (
-    <motion.div
-      className={styles.activeIndicator}
+    <StyledIndicator
       layoutId="activeIndicator"
       transition={{
         type: 'spring',

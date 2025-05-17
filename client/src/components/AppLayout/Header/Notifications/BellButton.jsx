@@ -1,16 +1,12 @@
 import { Bell } from 'lucide-react';
-import styles from './styles.module.scss';
+import { StyledButtonIcon } from './Notifications.styles';
 
-function BellButton({ onDisplay }) {
+function BellButton() {
   return (
-    <button
-      type="button"
-      className={styles.btn}
-      onClick={() => onDisplay((prev) => !prev)}
-    >
+    <StyledButtonIcon type="button">
       <Bell />
-      <span className={styles.count}>4</span>
-    </button>
+      <span>4</span>
+    </StyledButtonIcon>
   );
 }
 

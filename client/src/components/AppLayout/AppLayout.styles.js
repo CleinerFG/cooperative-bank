@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-
 import { variables } from '@/styles/abstracts';
 
 export const StyledContainer = styled.div`
@@ -14,6 +13,6 @@ export const StyledPageContent = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 5rem;
-  background-color: var(--color-neutral-0);
+  background-color: ${({ theme }) => theme.colors.neutral[0]};
   flex: 1;
 `;

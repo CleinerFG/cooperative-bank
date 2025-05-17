@@ -1,7 +1,6 @@
 import LinkItem from './LinkItem';
-
 import { House, ArrowLeftRight, CircleUser, Settings } from 'lucide-react';
-import styles from './styles.module.scss';
+import { StyledNav } from './NavBar.styles';
 
 const navLinks = [
   { label: 'home', navigateTo: '/app', Icon: House, strictMatch: true },
@@ -16,16 +15,18 @@ const navLinks = [
 
 export default function NavBar() {
   return (
-    <nav className={styles.container}>
-      {navLinks.map(({ label, navigateTo, Icon, strictMatch }) => (
-        <LinkItem
-          label={label}
-          navigateTo={navigateTo}
-          Icon={Icon}
-          strictMatch={strictMatch}
-          key={navigateTo}
-        />
-      ))}
-    </nav>
+    <StyledNav>
+      <ul>
+        {navLinks.map(({ label, navigateTo, Icon, strictMatch }) => (
+          <LinkItem
+            label={label}
+            navigateTo={navigateTo}
+            Icon={Icon}
+            strictMatch={strictMatch}
+            key={navigateTo}
+          />
+        ))}
+      </ul>
+    </StyledNav>
   );
 }
