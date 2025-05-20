@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { sizes } from '@/styles/abstracts';
 
-export const StyledCardContainer = styled.div`
+export default styled.section`
   display: flex;
   flex-direction: column;
   gap: ${sizes.spacing.lg};

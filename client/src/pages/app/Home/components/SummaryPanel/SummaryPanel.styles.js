@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { StyledCardContainer } from '@/components/ui/StyledCardContainer';
+import StyledSection from '@/components/containers/StyledSection';
 import { sizes } from '@/styles/abstracts';
 
-export const StyledContainer = styled(StyledCardContainer)`
+export const StyledContainer = styled(StyledSection)`
   padding: ${sizes.spacing.xl} ${sizes.spacing.lg};
 `;
