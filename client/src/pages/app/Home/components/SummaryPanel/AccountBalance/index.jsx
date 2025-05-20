@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { EyeClosed, Eye, Asterisk } from 'lucide-react';
-import styles from './styles.module.scss';
+import {
+  StyledContainer,
+  StyledLabel,
+  StyledValueContainer,
+  StyledBalanceValue,
+} from './AccountBalance.styles';
 
 function genAsterisk() {
   const asterisks = new Array(5).fill(null).map((_, i) => <Asterisk key={i} />);
@@ -17,17 +21,17 @@ function AccountBalance() {
   const { t } = useTranslation();
   const [isHidden, setIsHidden] = useState(true);
   return (
-    <div className={styles.accountBalance}>
-      <p className={styles.label}>{t('balance')}</p>
-      <div className={styles.valueContainer}>
-        <div className={styles.value}>
+    <StyledContainer>
+      <StyledLabel>{t('balance')}</StyledLabel>
+      <StyledValueContainer>
+        <StyledBalanceValue>
           {isHidden ? genAsterisk() : getBalance()}
-        </div>
+        </StyledBalanceValue>
         <button onClick={() => setIsHidden((prev) => !prev)}>
           {isHidden ? <EyeClosed /> : <Eye />}
         </button>
-      </div>
-    </div>
+      </StyledValueContainer>
+    </StyledContainer>
   );
 }
 

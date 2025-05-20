@@ -1,14 +1,15 @@
 import AccountBalance from './AccountBalance';
 import QuickActions from './QuickActions';
-
-import styles from './styles.module.scss';
+import { StyledContainer } from './SummaryPanel.styles';
 
 function SummaryPanel() {
   return (
-    <section className={styles.summaryPanel}>
-      <AccountBalance />
-      <QuickActions />
-    </section>
+    <StyledContainer>
+      <section>
+        <AccountBalance />
+        <QuickActions />
+      </section>
+    </StyledContainer>
   );
 }
 

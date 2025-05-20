@@ -1,6 +1,6 @@
-import ActionLink from '../ActionLink';
+import ActionLink from '../../ActionLink';
+import { StyledContainer } from './QuickActions.styles';
 
-import styles from './styles.module.scss';
 import { Send, QrCode, Barcode, Smartphone } from 'lucide-react';
 
 const actionsLinks = [
@@ -12,7 +12,7 @@ const actionsLinks = [
 
 function QuickActions() {
   return (
-    <div className={styles.quickActions}>
+    <StyledContainer>
       {actionsLinks.map(({ label, navigateTo, Icon }) => (
         <ActionLink
           label={label}
@@ -21,7 +21,7 @@ function QuickActions() {
           key={navigateTo}
         />
       ))}
-    </div>
+    </StyledContainer>
   );
 }
 
