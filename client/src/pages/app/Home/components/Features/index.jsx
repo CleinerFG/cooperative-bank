@@ -1,5 +1,5 @@
-import Card from './Card';
-
+import Feature from './Feature';
+import { StyledContainer } from './Features.styles';
 import {
   FilePlus,
   PiggyBank,
@@ -9,12 +9,12 @@ import {
   FileChartPie,
   ChartSpline,
 } from 'lucide-react';
-import styles from './styles.module.scss';
+import MyCards from './MyCards';
 
 const featuresMap = [
   {
     name: 'loans',
-    items: [
+    links: [
       {
         label: 'new',
         navigateTo: '/app/loans/new-request',
@@ -40,7 +40,7 @@ const featuresMap = [
   },
   {
     name: 'investments',
-    items: [
+    links: [
       {
         label: 'search',
         navigateTo: '/app/investments/search',
@@ -62,11 +62,12 @@ const featuresMap = [
 
 function Features() {
   return (
-    <div className={styles.container}>
-      {featuresMap.map(({ name, items }) => (
-        <Card featureName={name} items={items} key={name} />
+    <StyledContainer>
+      <MyCards />
+      {featuresMap.map((feat) => (
+        <Feature {...feat} />
       ))}
-    </div>
+    </StyledContainer>
   );
 }
 

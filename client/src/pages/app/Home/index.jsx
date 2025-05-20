@@ -1,17 +1,14 @@
 import SummaryPanel from './components/SummaryPanel';
-import MyCards from './components/MyCards';
 import Features from './components/Features';
-
-import styles from './styles.module.scss';
+import { StyledMain } from './Home.styles';
 
 function Home() {
   return (
     <>
       <SummaryPanel />
-      <main className={styles.main}>
-        <MyCards />
+      <StyledMain>
         <Features />
-      </main>
+      </StyledMain>
     </>
   );
 }

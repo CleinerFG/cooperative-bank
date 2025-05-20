@@ -1,7 +1,6 @@
-import ActionLink from '../../ActionLink';
-import { StyledContainer } from './QuickActions.styles';
-
+import ActionLink from '@/components/ui/ActionLink';
 import { Send, QrCode, Barcode, Smartphone } from 'lucide-react';
+import { StyledContainer } from './QuickActions.styles';
 
 const actionsLinks = [
   { label: 'transfer', navigateTo: '/app/transfers', Icon: Send },
