@@ -1,4 +1,4 @@
-import UpdateLayout from '../components/Layout/UpdateLayout';
+import SettingsLayout from '../components/Layout';
 import ThemeRadioGroup from './ThemeRadioGroup';
 
 import { Eclipse } from 'lucide-react';
@@ -6,8 +6,9 @@ import { Eclipse } from 'lucide-react';
 function Appearance() {
   return (
     <>
-      <UpdateLayout title="appearance" Icon={Eclipse} />
-      <ThemeRadioGroup />
+      <SettingsLayout title="appearance" Icon={Eclipse}>
+        <ThemeRadioGroup />
+      </SettingsLayout>
     </>
   );
 }

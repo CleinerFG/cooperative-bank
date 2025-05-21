@@ -1,28 +1,26 @@
+import SettingsLayout from './components/Layout';
 import OptionsList from './components/OptionsList';
-import UpdateLayout from './components/Layout/UpdateLayout';
-
-import { Settings2 } from 'lucide-react';
+import { Settings2, Eclipse, Languages } from 'lucide-react';
 
 const BASE_ROUTE = '/app/settings';
 const settingsOptions = [
   {
     label: 'appearance',
     navigateTo: BASE_ROUTE + '/appearance',
-    iconName: 'Eclipse',
+    Icon: <Eclipse />,
   },
   {
     label: 'languages',
     navigateTo: BASE_ROUTE + '/languages',
-    iconName: 'Languages',
+    Icon: <Languages />,
   },
 ];
 
 function Settings() {
   return (
-    <>
-      <UpdateLayout title="settings" Icon={Settings2} />
+    <SettingsLayout title="settings" Icon={Settings2}>
       <OptionsList items={settingsOptions} />
-    </>
+    </SettingsLayout>
   );
 }
 

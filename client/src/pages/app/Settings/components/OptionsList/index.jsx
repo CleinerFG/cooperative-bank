@@ -3,11 +3,11 @@ import Item from './Item';
 function OptionsList({ items }) {
   return (
     <ul>
-      {items.map(({ label, navigateTo, iconName }) => (
+      {items.map(({ label, navigateTo, Icon }) => (
         <Item
           label={label}
           navigateTo={navigateTo}
-          iconName={iconName}
+          Icon={Icon}
           key={navigateTo}
         />
       ))}

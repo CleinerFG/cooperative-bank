@@ -5,7 +5,6 @@ import Languages from '@/pages/app/Settings/Languages';
 
 export default {
   path: 'settings',
-  element: <SettingsLayout />,
   children: [
     { index: true, element: <Settings /> },
     { path: 'appearance', element: <Appearance /> },

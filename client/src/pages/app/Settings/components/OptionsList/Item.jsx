@@ -1,23 +1,21 @@
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { ChevronRight } from 'lucide-react';
+import StyledOptionRow from '@/components/containers/StyledOptionRow';
+import { StyledLabelContainer } from './OptionsList.styles';
 
-import * as Icons from 'lucide-react';
-import styles from './styles.module.scss';
-
-const ChevronIcon = Icons.ChevronRight;
-
-function Item({ label, navigateTo, iconName }) {
+function Item({ label, navigateTo, Icon }) {
   const { t } = useTranslation();
-  const Icon = Icons[iconName];
-
   return (
-    <li className={styles.listItem}>
-      <Link className={styles.link} to={navigateTo}>
-        <div className={styles.labelContainer}>
-          <Icon />
-          <span>{t(label)}</span>
-        </div>
-        <ChevronIcon />
+    <li>
+      <Link to={navigateTo}>
+        <StyledOptionRow>
+          <StyledLabelContainer>
+            {Icon}
+            <span>{t(label)}</span>
+          </StyledLabelContainer>
+          <ChevronRight />
+        </StyledOptionRow>
       </Link>
     </li>
   );
