@@ -1,10 +1,10 @@
+import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+
 function Account() {
   return (
     <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores enim,
-      quis dolorem minus ea et facere corporis aut consequuntur perferendis
-      consequatur at dolorum reprehenderit nemo omnis, quos fuga exercitationem
-      aspernatur?
+      <UpdateLayout title="Profile" />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores enim
     </div>
   );
 }

@@ -1,12 +1,12 @@
-import SettingsLayout from '../components/Layout';
+import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import LanguagesRadioGroup from './LanguagesRadioGroup';
-import { Languages } from 'lucide-react';
 
 function LanguagesPage() {
   return (
-    <SettingsLayout title="languages" Icon={<Languages />}>
+    <>
+      <UpdateLayout title="languages" />
       <LanguagesRadioGroup />
-    </SettingsLayout>
+    </>
   );
 }
 

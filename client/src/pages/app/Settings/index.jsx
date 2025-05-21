@@ -1,6 +1,6 @@
-import SettingsLayout from './components/Layout';
+import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import OptionsList from './components/OptionsList';
-import { Settings2, Eclipse, Languages } from 'lucide-react';
+import { Eclipse, Languages } from 'lucide-react';
 
 const BASE_ROUTE = '/app/settings';
 const settingsOptions = [
@@ -18,9 +18,10 @@ const settingsOptions = [
 
 function Settings() {
   return (
-    <SettingsLayout title="settings" Icon={<Settings2 />}>
+    <>
+      <UpdateLayout title="settings" />
       <OptionsList items={settingsOptions} />
-    </SettingsLayout>
+    </>
   );
 }
 
