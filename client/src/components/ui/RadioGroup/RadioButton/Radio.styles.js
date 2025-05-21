@@ -48,4 +48,9 @@ export const StyledLabelContainer = styled.div`
   display: flex;
   align-items: center;
   gap: ${sizes.spacing.sm};
+
+  svg {
+    width: ${sizes.icon.sm};
+    height: ${sizes.icon.sm};
+  }
 `;
