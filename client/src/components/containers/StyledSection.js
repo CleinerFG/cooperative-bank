@@ -6,7 +6,7 @@ export default styled.section`
   flex-direction: column;
   gap: ${sizes.spacing.lg};
   padding: ${sizes.spacing.lg};
-  background-color: ${({ theme }) => theme.colors.neutral[20]};
+  background-color: ${({ theme }) => theme.colors.neutral[10]};
   border-radius: ${sizes.rounded.xl};
   box-shadow: ${sizes.shadow.sm};
 `;
