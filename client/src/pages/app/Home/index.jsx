@@ -1,6 +1,6 @@
 import SummaryPanel from './components/SummaryPanel';
 import Features from './components/Features';
-import { StyledMain } from './Home.styles';
+import { StyledMain } from '@/components/layouts/PageLayout/PageLayout.styles';
 
 function Home() {
   return (

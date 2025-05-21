@@ -15,3 +15,7 @@ export const StyledTitleContainer = styled.div`
     stroke-width: 3;
   }
 `;
+
+export const StyledMain = styled.main`
+  padding: ${sizes.spacing.xl};
+`;
