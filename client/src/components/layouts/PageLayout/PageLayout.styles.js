@@ -1,12 +1,17 @@
-import { sizes, utils } from '@/styles/abstracts';
+import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
+
+export const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${sizes.spacing.xl};
+  padding: ${sizes.spacing.md} ${sizes.spacing.xl};
+`;
 
 export const StyledTitleContainer = styled.div`
   display: flex;
   gap: ${sizes.spacing.sm};
-  padding: ${sizes.spacing.md};
   align-items: center;
-  border-bottom: solid ${utils.rem(2)};
   border-bottom-color: ${({ theme }) => theme.colors.neutral[50]};
 
   svg {
@@ -17,5 +22,5 @@ export const StyledTitleContainer = styled.div`
 `;
 
 export const StyledMain = styled.main`
-  padding: ${sizes.spacing.xl};
+  padding: ${({ $pd }) => ($pd ? sizes.spacing.xl : 0)};
 `;

@@ -16,5 +16,13 @@ export const StyledContainer = styled.div`
 
 export const StyledLabelContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: ${sizes.spacing.sm};
+  font-weight: 500;
+
+  svg {
+    width: ${sizes.icon.sm};
+    height: ${sizes.icon.sm};
+  }
 `;
+''

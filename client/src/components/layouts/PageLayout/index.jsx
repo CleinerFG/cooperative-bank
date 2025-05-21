@@ -3,7 +3,11 @@ import { Outlet, useMatch, useMatches } from 'react-router-dom';
 import { PageLayoutContext } from '@/contexts/PageLayoutContext';
 import Title from './components/Title';
 import PrevButton from './components/PrevButton';
-import { StyledMain, StyledTitleContainer } from './PageLayout.styles';
+import {
+  StyledContainer,
+  StyledMain,
+  StyledTitleContainer,
+} from './PageLayout.styles';
 
 function PageLayout() {
   const [title, setTitle] = useState('');
@@ -12,13 +16,15 @@ function PageLayout() {
 
   return (
     <PageLayoutContext.Provider value={{ title, setTitle }}>
-      <StyledTitleContainer>
-        {!isRootRoute && <PrevButton />}
-        <Title text={title} strong={isRootRoute} />
-      </StyledTitleContainer>
-      <StyledMain>
-        <Outlet />
-      </StyledMain>
+      <StyledContainer>
+        <StyledTitleContainer>
+          {!isRootRoute && <PrevButton />}
+          <Title text={title} strong={isRootRoute} />
+        </StyledTitleContainer>
+        <StyledMain>
+          <Outlet />
+        </StyledMain>
+      </StyledContainer>
     </PageLayoutContext.Provider>
   );
 }
