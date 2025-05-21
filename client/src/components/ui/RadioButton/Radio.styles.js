@@ -9,7 +9,7 @@ export const StyledRadio = styled.input`
   appearance: none;
   width: ${utils.rem(20)};
   height: ${utils.rem(20)};
-  border: ${utils.rem(2)} solid ${({ theme }) => theme.colors.neutral[0]};
+  border: ${utils.rem(2)} solid ${({ theme }) => theme.colors.neutral[50]};
   border-radius: 50%;
 
   &:before {
