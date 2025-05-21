@@ -30,12 +30,22 @@ export const StyledRadio = styled.input`
 
 export const StyledContainer = styled.div`
   display: flex;
-  gap: ${sizes.spacing.sm};
-  justify-content: space-between;
-  width: 100%;
   align-items: center;
+  justify-content: space-between;
+  gap: ${sizes.spacing.sm};
+  padding: ${sizes.spacing.lg};
+  border: solid 1px ${({ theme }) => theme.colors.neutral[50]};
+  border-radius: ${sizes.rounded.lg};
+  width: 100%;
+  cursor: pointer;
 
-  label {
-    cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.neutral[10]};
   }
+`;
+
+export const StyledLabelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${sizes.spacing.sm};
 `;
