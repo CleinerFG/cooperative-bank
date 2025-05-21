@@ -1,6 +1,7 @@
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
-import OptionsList from './components/OptionsList';
 import { Eclipse, Languages } from 'lucide-react';
+import NavigationCard from '@/components/cards/NavigationCard';
+import { StyledNavigationCards } from '@/components/containers/StyledNavigationCards';
 
 const BASE_ROUTE = '/app/settings';
 const settingsOptions = [
@@ -20,7 +21,11 @@ function Settings() {
   return (
     <>
       <UpdateLayout title="settings" />
-      <OptionsList items={settingsOptions} />
+      <StyledNavigationCards>
+        {settingsOptions.map((item) => (
+          <NavigationCard {...item} key={item.label} />
+        ))}
+      </StyledNavigationCards>
     </>
   );
 }

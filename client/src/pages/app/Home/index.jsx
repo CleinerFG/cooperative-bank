@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <SummaryPanel />
-      <StyledMain>
+      <StyledMain $pd>
         <Features />
       </StyledMain>
     </>
