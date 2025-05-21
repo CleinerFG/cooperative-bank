@@ -18,23 +18,23 @@ const featuresMap = [
       {
         label: 'new',
         navigateTo: '/app/loans/new-request',
-        Icon: FilePlus,
+        Icon: <FilePlus />,
       },
       {
         label: 'active',
         navigateTo: '/app/loans/active',
-        Icon: PiggyBank,
+        Icon: <PiggyBank />,
       },
       {
         label: 'pending',
         navigateTo: '/app/loans/requests',
-        Icon: FileClock,
+        Icon: <FileClock />,
       },
 
       {
         label: 'history',
         navigateTo: '/app/loans/history',
-        Icon: History,
+        Icon: <History />,
       },
     ],
   },
@@ -44,17 +44,17 @@ const featuresMap = [
       {
         label: 'search',
         navigateTo: '/app/investments/search',
-        Icon: FileSearch,
+        Icon: <FileSearch />,
       },
       {
         label: 'active',
         navigateTo: '/app/loans/active',
-        Icon: FileChartPie,
+        Icon: <FileChartPie />,
       },
       {
         label: 'history',
         navigateTo: '/app/loans/history',
-        Icon: ChartSpline,
+        Icon: <ChartSpline />,
       },
     ],
   },
@@ -65,7 +65,7 @@ function Features() {
     <StyledContainer>
       <MyCards />
       {featuresMap.map((feat) => (
-        <Feature {...feat} />
+        <Feature {...feat} key={feat.name} />
       ))}
     </StyledContainer>
   );

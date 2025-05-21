@@ -4,7 +4,7 @@ import RadioButton from '../RadioButton';
 function RadioRow({ label, value, Icon, checked, onSelect, name }) {
   return (
     <StyledOptionRow onClick={() => onSelect(value)}>
-      {Icon && <Icon />}
+      {Icon}
       <RadioButton
         name={name}
         label={label}

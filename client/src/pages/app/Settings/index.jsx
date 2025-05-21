@@ -18,7 +18,7 @@ const settingsOptions = [
 
 function Settings() {
   return (
-    <SettingsLayout title="settings" Icon={Settings2}>
+    <SettingsLayout title="settings" Icon={<Settings2 />}>
       <OptionsList items={settingsOptions} />
     </SettingsLayout>
   );

@@ -3,14 +3,14 @@ import { House, ArrowLeftRight, CircleUser, Settings } from 'lucide-react';
 import { StyledNav } from './NavBar.styles';
 
 const navLinks = [
-  { label: 'home', navigateTo: '/app', Icon: House, strictMatch: true },
+  { label: 'home', navigateTo: '/app', Icon: <House />, strictMatch: true },
   {
     label: 'transactions',
     navigateTo: '/app/transactions',
-    Icon: ArrowLeftRight,
+    Icon: <ArrowLeftRight />,
   },
-  { label: 'account', navigateTo: '/app/account', Icon: CircleUser },
-  { label: 'settings', navigateTo: '/app/settings', Icon: Settings },
+  { label: 'account', navigateTo: '/app/account', Icon: <CircleUser /> },
+  { label: 'settings', navigateTo: '/app/settings', Icon: <Settings /> },
 ];
 
 export default function NavBar() {

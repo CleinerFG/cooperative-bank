@@ -5,7 +5,7 @@ function Title({ text, isRootRoute, Icon }) {
   const { t } = useTranslation();
   return (
     <StyledTitleContainer>
-      {Icon && <Icon />}
+      {Icon}
       <StyledTitle $strong={isRootRoute}>{t(text)}</StyledTitle>
     </StyledTitleContainer>
   );

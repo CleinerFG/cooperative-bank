@@ -4,7 +4,7 @@ import { Languages } from 'lucide-react';
 
 function LanguagesPage() {
   return (
-    <SettingsLayout title="languages" Icon={Languages}>
+    <SettingsLayout title="languages" Icon={<Languages />}>
       <LanguagesRadioGroup />
     </SettingsLayout>
   );

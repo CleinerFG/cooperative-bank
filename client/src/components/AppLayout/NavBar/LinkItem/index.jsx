@@ -12,7 +12,7 @@ function LinkItem({ label, navigateTo, Icon, strictMatch = false }) {
       {
         <>
           {isActiveMatch && <ActiveIndicator />}
-          {Icon && <Icon />}
+          {Icon}
           <span>{t(label)}</span>
         </>
       }
