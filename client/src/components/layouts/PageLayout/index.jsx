@@ -1,0 +1,26 @@
+import { useState } from 'react';
+import { Outlet, useMatch, useMatches } from 'react-router-dom';
+import { PageLayoutContext } from '@/contexts/PageLayoutContext';
+import Title from './components/Title';
+import PrevButton from './components/PrevButton';
+import { StyledTitleContainer } from './PageLayout.styles';
+
+function PageLayout() {
+  const [title, setTitle] = useState('');
+  const matches = useMatches();
+  const isRootRoute = useMatch({ path: matches[1].pathname, end: true });
+
+  return (
+    <PageLayoutContext.Provider value={{ title, setTitle }}>
+      <StyledTitleContainer>
+        {!isRootRoute && <PrevButton />}
+        <Title text={title} strong={isRootRoute} />
+      </StyledTitleContainer>
+      <main>
+        <Outlet />
+      </main>
+    </PageLayoutContext.Provider>
+  );
+}
+
+export default PageLayout;
