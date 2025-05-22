@@ -18,7 +18,7 @@ function PageLayout() {
     <PageLayoutContext.Provider value={{ title, setTitle }}>
       <StyledContainer>
         <StyledTitleContainer>
-          {!isRootRoute && <PrevButton />}
+          <PrevButton rootRoute={{ active: isRootRoute, path: matches[0] }} />
           <Title text={title} strong={isRootRoute} />
         </StyledTitleContainer>
         <StyledMain>
