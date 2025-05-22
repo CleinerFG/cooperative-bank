@@ -28,6 +28,10 @@
 
     "appearance": "Appearance",
     "languages": "Languages",
-    "setLang": "Set language"
+    "setLang": "Set language",
+
+    "myAccount": "My Account",
+    "personalDetails": "Personal Details",
+    "bankDetails": "Bank Account Details"
   }
 }

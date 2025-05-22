@@ -28,6 +28,10 @@
 
     "appearance": "Aparência",
     "languages": "Idiomas",
-    "setLang": "Definir idioma"
+    "setLang": "Definir idioma",
+
+    "myAccount": "Minha Conta",
+    "personalDetails": "Detalhes Pessoais",
+    "bankDetails": "Detalhes da Conta"
   }
 }
