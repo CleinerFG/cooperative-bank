@@ -19,7 +19,7 @@ export const StyledButton = styled.button`
   height: ${sizes.icon.xl};
   box-shadow: ${utils.rem(1)} ${utils.rem(1)} ${utils.rem(5)} rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.neutral[10]};
+  background-color: ${({ theme }) => theme.colors.gray[50]};
 `;
 
 export const StyledCameraIcon = styled(Camera)`

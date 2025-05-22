@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
   height: ${utils.rem(150)};
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.secondary[100]},
+    ${({ theme }) => theme.colors.primary[200]},
     ${({ theme }) => theme.colors.secondary[300]}
   );
   border-radius: ${sizes.rounded.lg};
@@ -26,9 +26,19 @@ export const StyledDetails = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  div {
+    display: flex;
+    gap: ${sizes.spacing.xs};
+  }
 `;
 
 export const StyledType = styled(StyledDetails)`
+  span {
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.gray[700]};
+  }
+
   svg {
     width: ${sizes.icon.md};
     height: ${sizes.icon.md};
@@ -37,5 +47,6 @@ export const StyledType = styled(StyledDetails)`
 `;
 
 export const StyledSpan = styled.span`
+  color: ${({ theme }) => theme.colors.gray[700]};
   font-size: ${font.size.xs};
 `;

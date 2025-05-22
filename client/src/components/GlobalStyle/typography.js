@@ -4,22 +4,19 @@ import { font } from '@/styles/abstracts/';
 export const typography = css`
   html {
     font-size: 100%;
-  }
-
-  * {
     font-family: ${font.family.default};
-    color: ${({ theme }) => theme.colors.neutral[300]};
   }
 
   h1,
   h2,
   h3 {
-    color: ${({ theme }) => theme.colors.neutral[500]};
+    color: ${({ theme }) => theme.colors.gray[900]};
   }
 
   p,
   span {
     font-size: ${font.size.md};
+    color: ${({ theme }) => theme.colors.gray[800]};
   }
 
   @media (min-width: 768px) {

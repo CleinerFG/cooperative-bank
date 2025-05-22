@@ -8,6 +8,11 @@ export const StyledLink = styled(Link)`
   gap: ${sizes.spacing.xs};
   align-items: center;
   width: ${utils.rem(65)};
+
+  &:hover {
+    font-weight: 500;
+    transform: scale(105%);
+  }
 `;
 
 export const StyledIconContainer = styled.div`

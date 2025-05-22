@@ -24,7 +24,7 @@ export const StyledAvatar = styled.div`
   align-items: center;
   width: ${utils.rem(40)};
   height: ${utils.rem(40)};
-  background-color: ${({ theme }) => theme.colors.primary[200]};
+  background-color: ${({ theme }) => theme.colors.gray[50]};
   box-shadow: ${sizes.shadow.sm};
   border-radius: 50%;
   font-size: ${font.size.xl};

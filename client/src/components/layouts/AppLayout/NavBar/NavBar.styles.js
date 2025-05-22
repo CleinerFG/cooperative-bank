@@ -7,8 +7,8 @@ export const StyledNav = styled.nav`
   bottom: 0;
   width: 100%;
   max-width: ${variables.appMaxWidth};
-  background-color: ${({ theme }) => theme.colors.neutral[10]};
-  
+  background-color: ${({ theme }) => theme.colors.neutral[50]};
+
   ul {
     display: flex;
     justify-content: space-around;

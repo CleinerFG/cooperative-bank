@@ -32,7 +32,7 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ theme }) => theme.colors.neutral[500]};
+  color: ${({ theme }) => theme.colors.gray[900]};
   width: ${sizes.icon.xs};
   height: ${sizes.icon.xs};
 }

@@ -8,6 +8,7 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledLabel = styled.p`
+  color: ${({ theme }) => theme.colors.gray[700]};
   font-size: ${font.size.sm};
   font-weight: bold;
 `;

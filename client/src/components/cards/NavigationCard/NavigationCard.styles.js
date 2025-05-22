@@ -6,11 +6,11 @@ export const StyledContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${sizes.spacing.xl} ${sizes.spacing.lg};
-  border: solid 1px ${({ theme }) => theme.colors.neutral[50]};
+  border: solid 1px ${({ theme }) => theme.colors.gray[300]};
   border-radius: ${sizes.rounded.xl};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[10]};
+    background-color: ${({ theme }) => theme.colors.gray[50]};
   }
 `;
 
@@ -25,4 +25,4 @@ export const StyledLabelContainer = styled.div`
     height: ${sizes.icon.sm};
   }
 `;
-''
+('');

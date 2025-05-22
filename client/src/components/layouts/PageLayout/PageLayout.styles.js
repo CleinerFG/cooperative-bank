@@ -12,7 +12,7 @@ export const StyledTitleContainer = styled.div`
   display: flex;
   gap: ${sizes.spacing.sm};
   align-items: center;
-  border-bottom-color: ${({ theme }) => theme.colors.neutral[50]};
+  border-bottom-color: ${({ theme }) => theme.colors.gray[50]};
 
   svg {
     width: ${sizes.icon.sm};

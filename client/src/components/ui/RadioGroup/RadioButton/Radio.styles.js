@@ -9,7 +9,7 @@ export const StyledRadio = styled.input`
   appearance: none;
   width: ${utils.rem(20)};
   height: ${utils.rem(20)};
-  border: ${utils.rem(2)} solid ${({ theme }) => theme.colors.neutral[50]};
+  border: ${utils.rem(2)} solid ${({ theme }) => theme.colors.gray[300]};
   border-radius: 50%;
 
   &:before {
@@ -34,13 +34,13 @@ export const StyledContainer = styled.div`
   justify-content: space-between;
   gap: ${sizes.spacing.sm};
   padding: ${sizes.spacing.lg};
-  border: solid 1px ${({ theme }) => theme.colors.neutral[50]};
+  border: solid 1px ${({ theme }) => theme.colors.gray[200]};
   border-radius: ${sizes.rounded.lg};
   width: 100%;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[10]};
+    background-color: ${({ theme }) => theme.colors.gray[50]};
   }
 `;
 
