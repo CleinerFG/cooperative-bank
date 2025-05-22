@@ -13,7 +13,7 @@ function RadioGroup({ options, defaultValue = '', groupName, onRadioChecked }) {
   return (
     <StyledGroupList>
       {options.map(({ label, value, Icon }) => (
-        <li>
+        <li key={label}>
           <RadioButton
             key={value}
             label={label}
