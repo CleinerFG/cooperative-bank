@@ -1,10 +1,11 @@
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import UserAvatar from './components/UserAvatar';
 
 function Account() {
   return (
     <div>
       <UpdateLayout title="Profile" />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores enim
+      <UserAvatar />
     </div>
   );
 }
