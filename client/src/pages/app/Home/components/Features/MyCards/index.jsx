@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import BankCard from './BankCard';
-import StyledSection from '@/components/containers/StyledSection';
+import StyledSection from '@/pages/app/Home/components/StyledSection';
 import StyledCarousel from '@/components/containers/StyledCarousel';
 
 function MyCards() {
