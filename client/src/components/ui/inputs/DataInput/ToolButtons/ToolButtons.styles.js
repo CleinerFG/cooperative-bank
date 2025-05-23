@@ -18,9 +18,6 @@ const getVariantStyle = (variant, theme) => {
 
 export const StyledContainer = styled.div`
   padding-right: ${sizes.spacing.md};
-`;
-
-export const StyledBtnGroup = styled.div`
   display: flex;
   gap: ${sizes.spacing.xs};
 `;

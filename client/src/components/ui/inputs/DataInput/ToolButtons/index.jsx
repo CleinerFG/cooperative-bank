@@ -1,29 +1,16 @@
-import { Edit3, X, Check } from 'lucide-react';
-import {
-  StyledBtnGroup,
-  StyledButton,
-  StyledContainer,
-} from './ToolButtons.styles';
-
-// Note: A wrapper is needed on the cancel and confirm buttons, to avoid "ghost focus" due to button toggling in the DOM
-// Replacing <StyledBtnGroup/> with a fragment will allow you to observe this effect occurring
+import { StyledContainer } from './ToolButtons.styles';
+import Button from './Button';
 
 function ToolButtons({ isEditing, onEdit, onSave, onCancel }) {
   return (
     <StyledContainer>
       {isEditing ? (
-        <StyledBtnGroup>
-          <StyledButton $variant="confirm" onClick={onSave}>
-            <Check />
-          </StyledButton>
-          <StyledButton $variant="cancel" onClick={onCancel}>
-            <X />
-          </StyledButton>
-        </StyledBtnGroup>
+        <>
+          <Button variant="confirm" onClick={onSave} />
+          <Button variant="cancel" onClick={onCancel} />
+        </>
       ) : (
-        <StyledButton $variant="edit" onClick={onEdit}>
-          <Edit3 />
-        </StyledButton>
+        <Button variant="edit" onClick={onEdit} />
       )}
     </StyledContainer>
   );
