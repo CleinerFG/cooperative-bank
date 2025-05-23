@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   StyledContainer,
   StyledInput,
@@ -8,6 +9,7 @@ import {
 import ToolButtons from './ToolButtons';
 
 function DataInput({ label, value, isEditable, onEditValue }) {
+  const { t } = useTranslation();
   const [isEditing, setIsEditing] = useState(false);
   const [tempValue, setTempValue] = useState(value);
 
@@ -39,7 +41,7 @@ function DataInput({ label, value, isEditable, onEditValue }) {
 
   return (
     <StyledContainer>
-      <StyledLabel>{label}</StyledLabel>
+      <StyledLabel>{t(label)}</StyledLabel>
       <StyledWrapper>
         <StyledInput
           value={tempValue}

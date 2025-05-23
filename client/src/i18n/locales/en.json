@@ -32,6 +32,12 @@
 
     "myAccount": "My Account",
     "personalDetails": "Personal Details",
-    "bankDetails": "Bank Account Details"
+    "bankDetails": "Bank Account Details",
+
+    "name": "Name",
+    "email": "Email",
+    "username": "Username",
+    "birth": "Date of birth",
+    "registrationData": "Registration date"
   }
 }
