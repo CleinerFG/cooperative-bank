@@ -5,6 +5,7 @@ import themes from '@/styles/themes.js';
 import { DEFAULT_THEME, LOCAL_STORAGE_THEME_KEY } from '@/constants';
 
 const ThemeContext = createContext();
+ThemeContext.displayName = 'Theme';
 
 const getInitialTheme = () => {
   const storedTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
