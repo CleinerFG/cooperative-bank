@@ -13,6 +13,18 @@ export const typography = css`
     color: ${({ theme }) => theme.colors.gray[900]};
   }
 
+  h1 {
+    font-size: ${font.size['2xl']};
+  }
+
+  h2 {
+    font-size: ${font.size.xl};
+  }
+
+  h3 {
+    font-size: ${font.size.lg};
+  }
+
   p,
   span {
     font-size: ${font.size.md};
