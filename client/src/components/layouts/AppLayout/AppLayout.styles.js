@@ -13,6 +13,5 @@ export const StyledContainer = styled.div`
 export const StyledPageContent = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.neutral[0]};
   flex: 1;
 `;

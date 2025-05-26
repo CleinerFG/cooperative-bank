@@ -9,6 +9,7 @@ export const StyledSection = styled.section`
   border-radius: ${sizes.rounded.lg};
   border: ${utils.rem(1)} solid;
   border-color: ${({ theme }) => theme.colors.gray[200]};
+  background-color: ${({ theme }) => theme.colors.neutral[0]};
 `;
 
 export const StyledHeader = styled.header`

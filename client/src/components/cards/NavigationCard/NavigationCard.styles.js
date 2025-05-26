@@ -8,6 +8,7 @@ export const StyledContainer = styled.div`
   padding: ${sizes.spacing.xl} ${sizes.spacing.lg};
   border: solid 1px ${({ theme }) => theme.colors.gray[300]};
   border-radius: ${sizes.rounded.xl};
+  background-color: ${({ theme }) => theme.colors.neutral[0]};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray[50]};

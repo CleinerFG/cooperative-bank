@@ -37,6 +37,7 @@ export const StyledContainer = styled.div`
   border: solid 1px ${({ theme }) => theme.colors.gray[200]};
   border-radius: ${sizes.rounded.lg};
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.neutral[0]};
   cursor: pointer;
 
   &:hover {

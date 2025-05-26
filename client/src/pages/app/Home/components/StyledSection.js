@@ -7,7 +7,7 @@ export default styled.section`
   gap: ${sizes.spacing.lg};
   padding: ${sizes.spacing.lg};
   border-radius: ${sizes.rounded.xl};
-  background-color: ${({ theme }) => theme.colors.neutral[50]};
+  background-color: ${({ theme }) => theme.colors.neutral[0]};
   border: solid ${utils.rem(1)};
   border-color: ${({ theme }) => theme.colors.gray[200]};
 `;
