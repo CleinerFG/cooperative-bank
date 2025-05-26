@@ -6,4 +6,5 @@ export const StyledContainer = styled(StyledSection)`
   border: none;
   box-shadow: ${sizes.shadow.sm};
   padding: ${sizes.spacing.xl} ${sizes.spacing.lg};
+  margin-bottom: ${sizes.spacing.xl};
 `;
