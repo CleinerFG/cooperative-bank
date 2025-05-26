@@ -40,6 +40,12 @@
     "birth": "Date of birth",
     "registrationData": "Registration date",
     "personalData": "Personal Data",
-    "importantDates": "Important Dates"
+    "importantDates": "Important Dates",
+    "accountData": "Account Data",
+    "accountNum": "Account Number",
+    "agency": "Agency",
+    "accountType": "Account Type",
+    "verified": "Verified",
+    "statusActive": "Active"
   }
 }

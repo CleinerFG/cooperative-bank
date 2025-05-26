@@ -40,6 +40,12 @@
     "birth": "Data de nascimento",
     "registrationData": "Data de registro",
     "personalData": "Dados Pessoais",
-    "importantDates": "Datas Importantes"
+    "importantDates": "Datas Importantes",
+    "accountData": "Dados da Conta",
+    "accountNum": "Número da Conta",
+    "agency": "Agência",
+    "accountType": "Tipo de Conta",
+    "verified": "Verificado",
+    "statusActive": "Ativo"
   }
 }
