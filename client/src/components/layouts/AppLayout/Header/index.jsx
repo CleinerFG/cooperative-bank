@@ -1,12 +1,11 @@
 import Notifications from './Notifications';
-
+import ToggleVisibility from './ToggleVisibility';
 import { StyledHeader } from './Header.styles';
-import ProfileAvatar from './ProfileAvatar';
 
 export default function Header() {
   return (
     <StyledHeader>
-      <ProfileAvatar />
+      <ToggleVisibility />
       <Notifications />
     </StyledHeader>
   );
