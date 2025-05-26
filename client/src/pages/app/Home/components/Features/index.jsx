@@ -1,73 +1,45 @@
-import Feature from './Feature';
-import { StyledContainer } from './Features.styles';
 import {
-  FilePlus,
-  PiggyBank,
-  FileClock,
-  History,
-  FileSearch,
-  FileChartPie,
+  Building2,
+  CarFront,
   ChartSpline,
+  CircleDollarSign,
+  HandCoins,
+  PiggyBank,
+  UserRoundCheck,
 } from 'lucide-react';
-import MyCards from './MyCards';
+import Card from './Card';
 
-const featuresMap = [
+const items = [
   {
-    name: 'loans',
-    links: [
-      {
-        label: 'new',
-        navigateTo: '/app/loans/new-request',
-        Icon: <FilePlus />,
-      },
-      {
-        label: 'active',
-        navigateTo: '/app/loans/active',
-        Icon: <PiggyBank />,
-      },
-      {
-        label: 'pending',
-        navigateTo: '/app/loans/requests',
-        Icon: <FileClock />,
-      },
-
-      {
-        label: 'history',
-        navigateTo: '/app/loans/history',
-        Icon: <History />,
-      },
+    title: 'loans',
+    description: 'loanFeatureDesc',
+    navigateTo: '/app/loans',
+    typesInfo: [
+      { label: 'personal', Icon: <UserRoundCheck /> },
+      { label: 'automotive', Icon: <CarFront /> },
+      { label: 'realState', Icon: <Building2 /> },
     ],
+    Icon: <HandCoins />,
   },
   {
-    name: 'investments',
-    links: [
-      {
-        label: 'search',
-        navigateTo: '/app/investments/search',
-        Icon: <FileSearch />,
-      },
-      {
-        label: 'active',
-        navigateTo: '/app/loans/active',
-        Icon: <FileChartPie />,
-      },
-      {
-        label: 'history',
-        navigateTo: '/app/loans/history',
-        Icon: <ChartSpline />,
-      },
+    title: 'investments',
+    description: 'investFeatureDesc',
+    navigateTo: '/app/investments',
+    typesInfo: [
+      { label: 'fixedIncome', Icon: <PiggyBank /> },
+      { label: 'variableIncome', Icon: <CircleDollarSign /> },
     ],
+    Icon: <ChartSpline />,
   },
 ];
 
 function Features() {
   return (
-    <StyledContainer>
-      <MyCards />
-      {featuresMap.map((feat) => (
-        <Feature {...feat} key={feat.name} />
+    <>
+      {items.map((feat) => (
+        <Card {...feat} key={feat.title} />
       ))}
-    </StyledContainer>
+    </>
   );
 }
 

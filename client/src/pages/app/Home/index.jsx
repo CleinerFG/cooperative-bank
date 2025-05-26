@@ -1,14 +1,14 @@
 import SummaryPanel from './components/SummaryPanel';
 import Features from './components/Features';
-import { StyledMain } from '@/components/layouts/PageLayout/PageLayout.styles';
+import { StyledContainer } from '@/components/layouts/PageLayout/PageLayout.styles';
 
 function Home() {
   return (
     <>
       <SummaryPanel />
-      <StyledMain $pd>
+      <StyledContainer as="main">
         <Features />
-      </StyledMain>
+      </StyledContainer>
     </>
   );
 }
