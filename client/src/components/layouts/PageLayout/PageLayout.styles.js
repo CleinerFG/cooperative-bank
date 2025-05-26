@@ -22,5 +22,7 @@ export const StyledTitleContainer = styled.div`
 `;
 
 export const StyledMain = styled.main`
-  padding: ${({ $pd }) => ($pd ? sizes.spacing.xl : 0)};
+  display: flex;
+  flex-direction: column;
+  gap: ${sizes.spacing.xl};
 `;
