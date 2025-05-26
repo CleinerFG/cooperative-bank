@@ -4,6 +4,7 @@ import { sizes, variables } from '@/styles/abstracts';
 export const StyledNav = styled.nav`
   padding: ${sizes.spacing.md};
   position: fixed;
+  z-index: 999;
   bottom: 0;
   width: 100%;
   max-width: ${variables.appMaxWidth};
