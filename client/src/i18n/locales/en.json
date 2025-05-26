@@ -38,6 +38,8 @@
     "email": "Email",
     "username": "Username",
     "birth": "Date of birth",
-    "registrationData": "Registration date"
+    "registrationData": "Registration date",
+    "personalData": "Personal Data",
+    "importantDates": "Important Dates"
   }
 }
