@@ -1,9 +1,19 @@
 import useProtectValue from '@/hooks/useProtectValue';
 import HiddenDots from './HiddenDots';
+import { StyledContainer } from './ProtectValue.styles';
 
-function ProtectValue({ dotSize, dotColor, children }) {
+function ProtectValue({ fontSize, dotColor, children }) {
   const { isHidden } = useProtectValue();
-  return isHidden ? <HiddenDots size={dotSize} color={dotColor} /> : children;
+  
+  return (
+    <StyledContainer $fontSize={fontSize}>
+      {isHidden ? (
+        <HiddenDots fontSize={fontSize} color={dotColor} />
+      ) : (
+        children
+      )}
+    </StyledContainer>
+  );
 }
 
 export default ProtectValue;

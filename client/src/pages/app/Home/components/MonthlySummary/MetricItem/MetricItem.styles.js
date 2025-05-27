@@ -46,12 +46,6 @@ export const StyledLabel = styled.span`
   color: ${({ theme }) => theme.colors.gray[600]};
 `;
 
-export const StyledValueContainer = styled.div`
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-`;
-
 export const StyledValue = styled.span`
   font-weight: 600;
   font-size: ${font.size.lg};

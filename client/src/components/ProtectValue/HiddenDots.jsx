@@ -1,12 +1,12 @@
-import { StyledContainer, StyledDot } from './ProtectValue.styles';
+import { StyledDotsContainer, StyledDot } from './ProtectValue.styles';
 
-function HiddenDots({ size, color }) {
+function HiddenDots({ fontSize, color }) {
   return (
-    <StyledContainer>
+    <StyledDotsContainer>
       {Array.from({ length: 6 }, (_, i) => (
-        <StyledDot $size={size} $color={color} key={i} />
+        <StyledDot $fontSize={fontSize} $color={color} key={i} />
       ))}
-    </StyledContainer>
+    </StyledDotsContainer>
   );
 }
 

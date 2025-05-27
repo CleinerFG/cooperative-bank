@@ -25,9 +25,3 @@ export const StyledValue = styled.div`
   font-size: ${font.size['2xl']};
   font-weight: bold;
 `;
-
-export const StyledValueContainer = styled.div`
-  height: 2rem;
-  display: flex;
-  align-items: center;
-`;
