@@ -7,14 +7,14 @@ import {
   PiggyBank,
   UserRoundCheck,
 } from 'lucide-react';
-import Card from './Card';
+import Feature from './Feature';
 
 const items = [
   {
     title: 'loans',
-    description: 'loanFeatureDesc',
+    texts: ['loanFeatTxt1', 'loanFeatTxt2'],
     navigateTo: '/app/loans',
-    typesInfo: [
+    tags: [
       { label: 'personal', Icon: <UserRoundCheck /> },
       { label: 'automotive', Icon: <CarFront /> },
       { label: 'realState', Icon: <Building2 /> },
@@ -23,9 +23,9 @@ const items = [
   },
   {
     title: 'investments',
-    description: 'investFeatureDesc',
+    texts: ['investFeatTxt1', 'investFeatTxt2'],
     navigateTo: '/app/investments',
-    typesInfo: [
+    tags: [
       { label: 'fixedIncome', Icon: <PiggyBank /> },
       { label: 'variableIncome', Icon: <CircleDollarSign /> },
     ],
@@ -37,7 +37,7 @@ function Features() {
   return (
     <>
       {items.map((feat) => (
-        <Card {...feat} key={feat.title} />
+        <Feature {...feat} key={feat.title} />
       ))}
     </>
   );

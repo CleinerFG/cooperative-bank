@@ -1,11 +1,9 @@
 import styled from 'styled-components';
+import { StyledCardHeader } from '@/components/cards/StyledBaseCard';
 import { sizes } from '@/styles/abstracts';
 
-export const StyledContainer = styled.header`
+export const StyledContainer = styled(StyledCardHeader)`
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: start;
 `;
 
 export const StyledIconContainer = styled.div`
@@ -20,7 +18,7 @@ export const StyledIconContainer = styled.div`
   }
 `;
 
-export const StyledTitleContainer = styled.div`
+export const StyledContent = styled.div`
   position: relative;
   z-index: 1;
   display: flex;
@@ -28,7 +26,7 @@ export const StyledTitleContainer = styled.div`
   align-items: center;
 `;
 
-export const StyledTextContainer = styled.div`
+export const StyledColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
