@@ -5,7 +5,12 @@ import { StyledCircleTranslucent, StyledButton } from './NextPageButton.styles';
 function NextPageButton({ navigateTo }) {
   const navigate = useNavigate();
   return (
-    <StyledButton onClick={() => navigate(navigateTo)}>
+    <StyledButton
+      onClick={(ev) => {
+        ev.stopPropagation();
+        navigate(navigateTo);
+      }}
+    >
       <StyledCircleTranslucent />
       <ChevronRight />
     </StyledButton>
