@@ -10,6 +10,3 @@ export const StyledContent = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-export const StyledTitle = styled.h2`
-  color: ${({ theme }) => theme.colors.gray[800]};
-`;

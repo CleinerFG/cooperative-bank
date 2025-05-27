@@ -1,10 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import ProgressBar from '@/components/ProgressBar';
-import {
-  StyledContainer,
-  StyledHeader,
-  StyledTitle,
-} from './InvestmentGoal.styles';
+import { StyledHeader, StyledTitle } from '../Card.styles';
+import { StyledContainer } from './InvestmentGoal.styles';
 import { Goal } from 'lucide-react';
 
 function InvestmentGoal() {
