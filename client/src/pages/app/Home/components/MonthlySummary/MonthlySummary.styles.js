@@ -1,14 +1,8 @@
-import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
+import StyledCard from '@/components/containers/StyledCard';
 
-export const StyledContainer = styled.div`
-  display: flex;
+export const StyledContainer = styled(StyledCard)`
   flex-direction: column;
-  gap: ${sizes.spacing.lg};
-  padding: ${sizes.spacing.lg};
-  border-radius: ${sizes.rounded.lg};
-  background-color: ${({ theme }) => theme.colors.neutral[0]};
-  border: solid 1px ${({ theme }) => theme.colors.gray[200]};
 `;
 
 export const StyledContent = styled.div`
