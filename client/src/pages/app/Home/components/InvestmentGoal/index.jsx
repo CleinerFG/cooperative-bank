@@ -1,19 +1,23 @@
 import { useTranslation } from 'react-i18next';
-import ProgressBar from '@/components/ProgressBar';
-import { StyledHeader, StyledTitle } from '../Card.styles';
-import { StyledContainer } from './InvestmentGoal.styles';
-import { Goal } from 'lucide-react';
+import ExpandableCard from '@/components/cards/ExpandableCard';
+import {
+  StyledCardLink,
+  StyledCardText,
+} from '@/components/cards/StyledBaseCard';
+import VisibleContent from './VisibileContent';
+import { StyledFooter } from './InvestmentGoal.styles';
 
 function InvestmentGoal() {
   const { t } = useTranslation();
+
   return (
-    <StyledContainer>
-      <StyledHeader>
-        <StyledTitle>{t('investGoal')}</StyledTitle>
-        <Goal />
-      </StyledHeader>
-      <ProgressBar current={2345.45} total={5000} formatCurrency />
-    </StyledContainer>
+    <ExpandableCard VisibleComponent={<VisibleContent />}>
+      <StyledFooter>
+        <StyledCardText>{t('investGoalTxt1')}</StyledCardText>
+        <StyledCardText>{t('investGoalTxt2')}</StyledCardText>
+        <StyledCardLink>{t('adjustGoal')}</StyledCardLink>
+      </StyledFooter>
+    </ExpandableCard>
   );
 }
 
