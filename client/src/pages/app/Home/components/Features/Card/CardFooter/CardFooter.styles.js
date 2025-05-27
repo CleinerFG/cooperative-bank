@@ -18,7 +18,6 @@ export const StyledType = styled.div`
 
   svg {
     stroke: ${({ theme }) => theme.colors.gray[600]};
-    stroke-width: 2.5;
   }
 `;
 

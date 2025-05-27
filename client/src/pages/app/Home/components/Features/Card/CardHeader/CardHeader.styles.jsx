@@ -32,7 +32,3 @@ export const StyledTextContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const StyledTitle = styled.h2`
-  color: ${({ theme }) => theme.colors.gray[800]};
-`;

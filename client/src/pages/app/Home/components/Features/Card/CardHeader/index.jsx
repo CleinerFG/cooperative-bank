@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { StyledTitle } from '../../../Card.styles';
 import {
   StyledContainer,
-  StyledTitle,
   StyledTitleContainer,
   StyledIconContainer,
   StyledTextContainer,

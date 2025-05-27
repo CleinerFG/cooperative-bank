@@ -11,8 +11,8 @@ export const StyledButton = styled.button`
 
   svg {
     z-index: 2;
-    width: ${sizes.icon.xl};
-    height: ${sizes.icon.xl};
+    width: ${sizes.icon.lg};
+    height: ${sizes.icon.lg};
   }
 `;
 
@@ -21,8 +21,8 @@ export const StyledCircleTranslucent = styled.div`
   position: absolute;
   z-index: 0;
   top: -2rem;
-  right: -6rem;
-  width: 10rem;
+  right: -4rem;
+  width: 8rem;
   height: 5.5rem;
   background: linear-gradient(
     60deg,
@@ -35,6 +35,6 @@ export const StyledCircleTranslucent = styled.div`
   transition: ease-in-out 0.3s;
 
   ${StyledButton}:hover & {
-    transform: translateX(-4rem);
+    transform: translateX(-2rem);
   }
 `;
