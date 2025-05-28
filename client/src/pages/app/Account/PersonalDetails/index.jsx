@@ -2,7 +2,7 @@ import { useState } from 'react';
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import DataInput from '@/components/ui/inputs/DataInput';
 import { User, Calendar } from 'lucide-react';
-import SectionCard from '../components/SectionCard';
+import BaseCard from '@/components/cards/BaseCard';
 
 const initialData = [
   { desc: 'name', value: 'Sheldon Retriever', isEditable: false },
@@ -22,7 +22,7 @@ function PersonalDetails() {
   return (
     <>
       <UpdateLayout title="personalDetails" />
-      <SectionCard title="personalData" Icon={<User />}>
+      <BaseCard title="personalData" Icon={User}>
         {personalInfo.map((info) => (
           <DataInput
             key={info.desc}
@@ -31,8 +31,8 @@ function PersonalDetails() {
             value={info.value}
           />
         ))}
-      </SectionCard>
-      <SectionCard title="importantDates" Icon={<Calendar />}>
+      </BaseCard>
+      <BaseCard title="importantDates" Icon={Calendar}>
         {importantDates.map((info) => (
           <DataInput
             key={info.desc}
@@ -41,7 +41,7 @@ function PersonalDetails() {
             value={info.value}
           />
         ))}
-      </SectionCard>
+      </BaseCard>
     </>
   );
 }

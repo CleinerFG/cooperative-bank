@@ -29,17 +29,19 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: ${sizes.spacing.md};
 `;
 
 export const StyledIconContainer = styled.div`
   svg {
-    color: ${({ theme }) => theme.colors.gray[800]};
-    width: ${sizes.icon.sm};
-    height: ${sizes.icon.sm};
+    stroke: ${({ theme }) => theme.colors.gray[800]};
+    width: ${sizes.icon.md};
+    height: ${sizes.icon.md};
   }
 `;
 
 export const StyledTitle = styled.h2`
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.gray[800]};
 `;
 

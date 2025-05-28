@@ -6,6 +6,7 @@ import Description from './Description';
 import ProgressBar from '@/components/ui/ProgressBar';
 import {
   StyledHeader,
+  StyledIconContainer,
   StyledTitle,
 } from '@/components/cards/BaseCard/BaseCard.styles';
 import Footer from './Footer';
@@ -25,7 +26,9 @@ function InvestmentGoal() {
       <div>
         <StyledHeader>
           <StyledTitle>{t('investGoal')}</StyledTitle>
-          <Goal />
+          <StyledIconContainer>
+            <Goal />
+          </StyledIconContainer>
         </StyledHeader>
         <SeeMoreButton />
         <ProgressBar current={2345.45} total={5000} formatCurrency />

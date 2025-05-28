@@ -1,9 +1,7 @@
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import BaseCard from '@/components/cards/BaseCard';
 import DataInput from '@/components/ui/inputs/DataInput';
 import { Landmark } from 'lucide-react';
-
-import { useState } from 'react';
-import SectionCard from '../components/SectionCard';
 import Status from './Status';
 
 const initialData = [
@@ -12,16 +10,13 @@ const initialData = [
   { desc: 'accountType', value: 'Personal Account', isEditable: false },
 ];
 
-function PersonalDetails() {
-  // eslint-disable-next-line no-unused-vars
-  const [personalInfo, setPersonalInfo] = useState(initialData);
-
+function BankDetails() {
   return (
     <>
       <UpdateLayout title="bankDetails" />
       <Status />
-      <SectionCard title="accountData" Icon={<Landmark />}>
-        {personalInfo.map((info) => (
+      <BaseCard title="accountData" Icon={Landmark}>
+        {initialData.map((info) => (
           <DataInput
             key={info.desc}
             label={info.desc}
@@ -29,9 +24,9 @@ function PersonalDetails() {
             value={info.value}
           />
         ))}
-      </SectionCard>
+      </BaseCard>
     </>
   );
 }
 
-export default PersonalDetails;
+export default BankDetails;
