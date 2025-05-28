@@ -25,6 +25,13 @@ export const StyledProgress = styled.div`
   width: ${({ $percent = 0 }) => $percent + '%'};
 `;
 
+export const StyledLabelContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: ${({ $haveLabel }) =>
+    $haveLabel ? 'space-between' : 'flex-end'};
+`;
+
 export const StyledLabel = styled.span`
   color: ${({ theme }) => theme.colors.gray[500]};
   font-weight: 500;
