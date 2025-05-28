@@ -7,7 +7,7 @@ import {
   StyledColumnContainer,
 } from './Header.styles';
 import NextPageButton from './NextPageButton';
-import { StyledCardTitle } from '@/components/cards/StyledBaseCard';
+import { StyledTitle } from '@/components/cards/BaseCard/BaseCard.styles';
 
 function Header({ title, navigateTo, Icon }) {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ function Header({ title, navigateTo, Icon }) {
       <StyledContent>
         <StyledIconContainer>{Icon}</StyledIconContainer>
         <StyledColumnContainer>
-          <StyledCardTitle>{t(title)}</StyledCardTitle>
+          <StyledTitle>{t(title)}</StyledTitle>
           <SeeMoreButton />
         </StyledColumnContainer>
       </StyledContent>

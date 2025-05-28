@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { ExpandedCardContext } from './context';
-import { StyledContainer, StyledContentWrapper } from './ExpandableCard.styles';
+import { StyledContainer, StyledHiddenContent } from './ExpandableCard.styles';
 
-function ExpandableCard({ VisibleComponent, children }) {
+function ExpandableCard({ HiddenContent, children }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   return (
     <ExpandedCardContext.Provider value={{ isExpanded }}>
       <StyledContainer onClick={toggleExpanded}>
-        {VisibleComponent}
-        <StyledContentWrapper $isExpanded={isExpanded}>
-          {children}
-        </StyledContentWrapper>
+        {children}
+        <StyledHiddenContent $isExpanded={isExpanded}>
+          {HiddenContent}
+        </StyledHiddenContent>
       </StyledContainer>
     </ExpandedCardContext.Provider>
   );

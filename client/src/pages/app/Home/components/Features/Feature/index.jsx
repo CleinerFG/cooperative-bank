@@ -6,12 +6,14 @@ import Footer from './Footer';
 function Feature({ title, texts, navigateTo, tags, Icon }) {
   return (
     <ExpandableCard
-      VisibleComponent={
-        <Header title={title} navigateTo={navigateTo} Icon={Icon} />
+      HiddenContent={
+        <>
+          <Description texts={texts} />
+          <Footer tags={tags} />
+        </>
       }
     >
-      <Description texts={texts} />
-      <Footer tags={tags} />
+      <Header title={title} navigateTo={navigateTo} Icon={Icon} />
     </ExpandableCard>
   );
 }

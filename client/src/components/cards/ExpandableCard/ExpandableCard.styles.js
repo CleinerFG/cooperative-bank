@@ -1,17 +1,13 @@
 import styled, { css } from 'styled-components';
-import {
-  StyledCardContainer,
-  CARD_SPACING,
-} from '@/components/cards/StyledBaseCard';
+import * as baseCard from '@/components/cards/BaseCard/BaseCard.styles';
 import { sizes } from '@/styles/abstracts';
 
-export const StyledContainer = styled(StyledCardContainer)`
-  flex-direction: column;
+export const StyledContainer = styled(baseCard.StyledContainer)`
   overflow: hidden;
   cursor: pointer;
 `;
 
-export const StyledContentWrapper = styled.div`
+export const StyledHiddenContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${sizes.spacing.md};
@@ -19,7 +15,9 @@ export const StyledContentWrapper = styled.div`
   overflow: hidden;
 
   ${({ $isExpanded }) => {
-    const margin = $isExpanded ? '0' : css`calc(0rem - ${CARD_SPACING})`;
+    const margin = $isExpanded
+      ? '0'
+      : css`calc(0rem - ${baseCard.CARD_SPACING})`;
     const mHeight = $isExpanded ? '24rem' : '0';
     const opacity = $isExpanded ? '1' : '0';
 

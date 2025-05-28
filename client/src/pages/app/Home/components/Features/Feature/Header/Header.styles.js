@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { StyledCardHeader } from '@/components/cards/StyledBaseCard';
+import { StyledHeader } from '@/components/cards/BaseCard/BaseCard.styles';
 import { gradients, sizes } from '@/styles/abstracts';
 
-export const StyledContainer = styled(StyledCardHeader)`
+export const StyledContainer = styled(StyledHeader)`
   position: relative;
 `;
 

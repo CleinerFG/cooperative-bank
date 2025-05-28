@@ -1,13 +1,13 @@
 import Tag from '@/components/Tag';
-import { StyledCardFooter } from '@/components/cards/StyledBaseCard';
+import { StyledFooter } from '@/components/cards/BaseCard/BaseCard.styles';
 
 function Footer({ tags }) {
   return (
-    <StyledCardFooter>
+    <StyledFooter>
       {tags.map((tag) => (
         <Tag {...tag} key={tag.label} />
       ))}
-    </StyledCardFooter>
+    </StyledFooter>
   );
 }
 

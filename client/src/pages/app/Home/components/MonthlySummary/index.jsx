@@ -1,10 +1,6 @@
-import { useTranslation } from 'react-i18next';
-import {
-  StyledCardHeader,
-  StyledCardTitle,
-} from '@/components/cards/StyledBaseCard';
+import BaseCard from '@/components/cards/BaseCard';
 import MetricItem from './MetricItem';
-import { StyledContainer, StyledContent } from './MonthlySummary.styles';
+import { StyledContent } from './MonthlySummary.styles';
 import { ChartNoAxesCombined } from 'lucide-react';
 
 const metrics = [
@@ -13,19 +9,14 @@ const metrics = [
 ];
 
 function MonthlySummary() {
-  const { t } = useTranslation();
   return (
-    <StyledContainer>
-      <StyledCardHeader>
-        <StyledCardTitle>{t('monthlySummary')}</StyledCardTitle>
-        <ChartNoAxesCombined />
-      </StyledCardHeader>
+    <BaseCard title="monthlySummary" Icon={ChartNoAxesCombined}>
       <StyledContent>
         {metrics.map((item) => (
           <MetricItem {...item} key={item.type} />
         ))}
       </StyledContent>
-    </StyledContainer>
+    </BaseCard>
   );
 }
 

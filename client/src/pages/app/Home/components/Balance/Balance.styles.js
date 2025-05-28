@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { StyledCardContainer } from '@/components/cards/StyledBaseCard';
+import * as baseCard from '@/components/cards/BaseCard/BaseCard.styles';
 import { font, sizes } from '@/styles/abstracts';
 
-export const StyledContainer = styled(StyledCardContainer)`
+export const StyledContainer = styled(baseCard.StyledContainer)`
   flex-direction: column;
   gap: ${sizes.spacing.xs};
   border-radius: 0 0 ${sizes.rounded['2xl']} ${sizes.rounded['2xl']};

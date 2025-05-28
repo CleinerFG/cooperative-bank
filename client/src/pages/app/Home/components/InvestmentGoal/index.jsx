@@ -1,22 +1,28 @@
 import { useTranslation } from 'react-i18next';
-import ExpandableCard from '@/components/cards/ExpandableCard';
+import ExpandableCard, {
+  SeeMoreButton,
+} from '@/components/cards/ExpandableCard';
+import ProgressBar from '@/components/ProgressBar';
 import {
-  StyledCardLink,
-  StyledCardText,
-} from '@/components/cards/StyledBaseCard';
-import VisibleContent from './VisibileContent';
-import { StyledFooter } from './InvestmentGoal.styles';
+  StyledHeader,
+  StyledTitle,
+} from '@/components/cards/BaseCard/BaseCard.styles';
+import Footer from './Footer';
+import { Goal } from 'lucide-react';
 
 function InvestmentGoal() {
   const { t } = useTranslation();
 
   return (
-    <ExpandableCard VisibleComponent={<VisibleContent />}>
-      <StyledFooter>
-        <StyledCardText>{t('investGoalTxt1')}</StyledCardText>
-        <StyledCardText>{t('investGoalTxt2')}</StyledCardText>
-        <StyledCardLink>{t('adjustGoal')}</StyledCardLink>
-      </StyledFooter>
+    <ExpandableCard HiddenContent={<Footer />}>
+      <div>
+        <StyledHeader>
+          <StyledTitle>{t('investGoal')}</StyledTitle>
+          <Goal />
+        </StyledHeader>
+        <SeeMoreButton />
+        <ProgressBar current={2345.45} total={5000} formatCurrency />
+      </div>
     </ExpandableCard>
   );
 }

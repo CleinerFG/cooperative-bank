@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const CARD_SPACING = sizes.spacing.lg;
 
-export const StyledCardContainer = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   gap: ${CARD_SPACING};
   flex-direction: column;
@@ -15,18 +15,18 @@ export const StyledCardContainer = styled.div`
   border-color: ${({ theme }) => theme.colors.gray[200]};
 `;
 
-export const StyledCardMain = styled.main`
+export const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   gap: ${sizes.spacing.md};
 `;
 
-export const StyledCardText = styled.p`
+export const StyledText = styled.p`
   color: ${({ theme }) => theme.colors.gray[500]};
   font-weight: 500;
 `;
 
-export const StyledCardHeader = styled.header`
+export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,17 +40,17 @@ export const StyledIconContainer = styled.div`
   }
 `;
 
-export const StyledCardTitle = styled.h2`
+export const StyledTitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray[800]};
 `;
 
-export const StyledCardFooter = styled.footer`
+export const StyledFooter = styled.footer`
   display: flex;
   gap: ${sizes.spacing.md};
   flex-wrap: wrap;
 `;
 
-export const StyledCardLink = styled(Link)`
+export const StyledLink = styled(Link)`
   ${gradients.bgLinearGradient()};
   padding: ${sizes.spacing.sm} ${sizes.spacing.md};
   border-radius: ${sizes.rounded.md};

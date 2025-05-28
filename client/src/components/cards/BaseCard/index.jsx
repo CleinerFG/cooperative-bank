@@ -1,34 +1,34 @@
 import { useTranslation } from 'react-i18next';
 import {
-  StyledCardContainer,
-  StyledCardFooter,
+  StyledContainer,
+  StyledFooter,
   StyledIconContainer,
-  StyledCardTitle,
-  StyledCardHeader,
-  StyledCardMain,
+  StyledTitle,
+  StyledHeader,
+  StyledMain,
 } from './BaseCard.styles';
 
 function BaseCard({ title, Icon, FooterContent, children }) {
   const { t } = useTranslation();
   return (
-    <StyledCardContainer>
-      <StyledCardHeader>
-        <StyledCardTitle>{t(title)}</StyledCardTitle>
+    <StyledContainer>
+      <StyledHeader>
+        <StyledTitle>{t(title)}</StyledTitle>
         {Icon ? (
           <StyledIconContainer>
             <Icon />
           </StyledIconContainer>
         ) : null}
-      </StyledCardHeader>
+      </StyledHeader>
 
-      <StyledCardMain>{children}</StyledCardMain>
+      <StyledMain>{children}</StyledMain>
 
       {FooterContent ? (
-        <StyledCardFooter>
+        <StyledFooter>
           <FooterContent />
-        </StyledCardFooter>
+        </StyledFooter>
       ) : null}
-    </StyledCardContainer>
+    </StyledContainer>
   );
 }
 
