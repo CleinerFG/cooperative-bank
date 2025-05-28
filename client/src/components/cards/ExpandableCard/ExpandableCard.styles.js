@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components';
-import StyledCard, { CARD_SPACING } from '@/components/containers/StyledCard';
+import {
+  StyledCardContainer,
+  CARD_SPACING,
+} from '@/components/cards/StyledBaseCard';
 import { sizes } from '@/styles/abstracts';
 
-export const StyledContainer = styled(StyledCard)`
+export const StyledContainer = styled(StyledCardContainer)`
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;

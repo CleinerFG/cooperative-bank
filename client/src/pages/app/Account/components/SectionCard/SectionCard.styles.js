@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import StyledCard from '@/components/containers/StyledCard';
+import { StyledCardContainer } from '@/components/cards/StyledBaseCard';
 import { sizes } from '@/styles/abstracts';
 
-export const StyledSection = styled(StyledCard)`
+export const StyledSection = styled(StyledCardContainer)`
   flex-direction: column;
 `;
 

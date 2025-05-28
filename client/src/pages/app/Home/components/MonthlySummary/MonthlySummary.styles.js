@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import StyledCard from '@/components/containers/StyledCard';
+import { StyledCardContainer } from '@/components/cards/StyledBaseCard';
 
-export const StyledContainer = styled(StyledCard)`
+export const StyledContainer = styled(StyledCardContainer)`
   flex-direction: column;
 `;
 

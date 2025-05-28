@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import {
+  StyledCardHeader,
+  StyledCardTitle,
+} from '@/components/cards/StyledBaseCard';
 import MetricItem from './MetricItem';
-import { StyledHeader, StyledTitle } from '../Card.styles';
 import { StyledContainer, StyledContent } from './MonthlySummary.styles';
 import { ChartNoAxesCombined } from 'lucide-react';
 
@@ -13,10 +16,10 @@ function MonthlySummary() {
   const { t } = useTranslation();
   return (
     <StyledContainer>
-      <StyledHeader>
-        <StyledTitle>{t('monthlySummary')}</StyledTitle>
+      <StyledCardHeader>
+        <StyledCardTitle>{t('monthlySummary')}</StyledCardTitle>
         <ChartNoAxesCombined />
-      </StyledHeader>
+      </StyledCardHeader>
       <StyledContent>
         {metrics.map((item) => (
           <MetricItem {...item} key={item.type} />
