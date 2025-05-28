@@ -5,7 +5,7 @@ import Tag from '@/components/ui/Tag';
 
 function StatusItems() {
   return (
-    <BaseCard title="Status" Icon={ChartColumnStacked}>
+    <BaseCard title="Status" iconColored Icon={ChartColumnStacked}>
       <StyledContainer>
         <Tag label="verified" Icon={ShieldCheck} />
         <Tag label="Score" value={910} Icon={TrendingUp} />

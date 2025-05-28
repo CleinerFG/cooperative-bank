@@ -34,7 +34,8 @@ export const StyledHeader = styled.header`
 
 export const StyledIconContainer = styled.div`
   svg {
-    stroke: ${({ theme }) => theme.colors.gray[800]};
+    stroke: ${({ theme, $isColored }) =>
+      $isColored ? theme.colors.secondary[400] : theme.colors.gray[800]};
     width: ${sizes.icon.md};
     height: ${sizes.icon.md};
   }

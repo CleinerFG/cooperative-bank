@@ -15,7 +15,7 @@ function BankDetails() {
     <>
       <UpdateLayout title="bankDetails" />
       <Status />
-      <BaseCard title="accountData" Icon={Landmark}>
+      <BaseCard title="accountData" iconColored Icon={Landmark}>
         {initialData.map((info) => (
           <DataInput
             key={info.desc}

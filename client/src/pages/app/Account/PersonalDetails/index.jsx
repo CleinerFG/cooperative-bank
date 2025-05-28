@@ -22,7 +22,7 @@ function PersonalDetails() {
   return (
     <>
       <UpdateLayout title="personalDetails" />
-      <BaseCard title="personalData" Icon={User}>
+      <BaseCard title="personalData" iconColored Icon={User}>
         {personalInfo.map((info) => (
           <DataInput
             key={info.desc}
@@ -32,7 +32,7 @@ function PersonalDetails() {
           />
         ))}
       </BaseCard>
-      <BaseCard title="importantDates" Icon={Calendar}>
+      <BaseCard title="importantDates" iconColored Icon={Calendar}>
         {importantDates.map((info) => (
           <DataInput
             key={info.desc}

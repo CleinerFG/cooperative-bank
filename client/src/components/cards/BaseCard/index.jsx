@@ -8,14 +8,14 @@ import {
   StyledMain,
 } from './BaseCard.styles';
 
-function BaseCard({ title, Icon, FooterContent, children }) {
+function BaseCard({ title, Icon, FooterContent, iconColored, children }) {
   const { t } = useTranslation();
   return (
     <StyledContainer>
       <StyledHeader>
         <StyledTitle>{t(title)}</StyledTitle>
         {Icon ? (
-          <StyledIconContainer>
+          <StyledIconContainer $isColored={iconColored}>
             <Icon />
           </StyledIconContainer>
         ) : null}
