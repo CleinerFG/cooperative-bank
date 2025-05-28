@@ -1,5 +1,5 @@
 import { currencyFormatter } from '@/utils/formatters';
-import ProtectValue from '../ProtectValue';
+import ProtectValue from '@/components/ProtectValue';
 import {
   StyledBar,
   StyledContainer,

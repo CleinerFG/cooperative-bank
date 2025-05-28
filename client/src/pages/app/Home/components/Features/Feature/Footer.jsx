@@ -1,4 +1,4 @@
-import Tag from '@/components/Tag';
+import Tag from '@/components/ui/Tag';
 import { StyledFooter } from '@/components/cards/BaseCard/BaseCard.styles';
 
 function Footer({ tags }) {

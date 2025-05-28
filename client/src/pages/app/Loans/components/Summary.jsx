@@ -1,5 +1,5 @@
 import BaseCard from '@/components/cards/BaseCard';
-import ProgressBar from '@/components/ProgressBar';
+import ProgressBar from '@/components/ui/ProgressBar';
 import { FileChartColumnIncreasing } from 'lucide-react';
 
 function Summary() {
