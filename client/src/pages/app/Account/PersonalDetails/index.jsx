@@ -1,8 +1,7 @@
+import { useState } from 'react';
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import DataInput from '@/components/ui/inputs/DataInput';
 import { User, Calendar } from 'lucide-react';
-
-import { useState } from 'react';
 import SectionCard from '../components/SectionCard';
 
 const initialData = [

@@ -15,21 +15,21 @@ const items = [
     texts: ['loanFeatTxt1', 'loanFeatTxt2'],
     navigateTo: '/app/loans',
     tags: [
-      { label: 'personal', Icon: <UserRoundCheck /> },
-      { label: 'automotive', Icon: <CarFront /> },
-      { label: 'realState', Icon: <Building2 /> },
+      { label: 'personal', Icon: UserRoundCheck },
+      { label: 'automotive', Icon: CarFront },
+      { label: 'realState', Icon: Building2 },
     ],
-    Icon: <HandCoins />,
+    Icon: HandCoins,
   },
   {
     title: 'investments',
     texts: ['investFeatTxt1', 'investFeatTxt2'],
     navigateTo: '/app/investments',
     tags: [
-      { label: 'fixedIncome', Icon: <PiggyBank /> },
-      { label: 'variableIncome', Icon: <CircleDollarSign /> },
+      { label: 'fixedIncome', Icon: PiggyBank },
+      { label: 'variableIncome', Icon: CircleDollarSign },
     ],
-    Icon: <ChartSpline />,
+    Icon: ChartSpline,
   },
 ];
 

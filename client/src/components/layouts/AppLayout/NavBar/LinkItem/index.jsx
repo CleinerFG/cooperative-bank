@@ -8,15 +8,13 @@ function LinkItem({ label, navigateTo, Icon, strictMatch = false }) {
   const isActiveMatch = useMatch({ path: navigateTo, end: strictMatch });
 
   return (
-    <StyledLink to={navigateTo} end active={isActiveMatch}>
-      {
-        <>
-          {isActiveMatch && <ActiveIndicator />}
-          {Icon}
-          <span>{t(label)}</span>
-        </>
-      }
-    </StyledLink>
+    <li>
+      <StyledLink to={navigateTo} end active={isActiveMatch}>
+        {isActiveMatch && <ActiveIndicator />}
+        {Icon && <Icon />}
+        <span>{t(label)}</span>
+      </StyledLink>
+    </li>
   );
 }
 

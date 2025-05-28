@@ -9,22 +9,22 @@ const loansOptions = [
   {
     label: 'newRequest',
     navigateTo: BASE_ROUTE + '/new',
-    Icon: <FilePlus />,
+    Icon: FilePlus,
   },
   {
     label: 'pendingRequests',
     navigateTo: BASE_ROUTE + '/pending',
-    Icon: <FileClock />,
+    Icon: FileClock,
   },
   {
     label: 'activeLoans',
     navigateTo: BASE_ROUTE + '/active',
-    Icon: <Banknote />,
+    Icon: Banknote,
   },
   {
     label: 'history',
     navigateTo: BASE_ROUTE + '/history',
-    Icon: <History />,
+    Icon: History,
   },
 ];
 

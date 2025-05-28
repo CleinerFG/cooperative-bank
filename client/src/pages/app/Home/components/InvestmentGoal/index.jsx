@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import ExpandableCard, {
   SeeMoreButton,
 } from '@/components/cards/ExpandableCard';
+import Description from './Description';
 import ProgressBar from '@/components/ui/ProgressBar';
 import {
   StyledHeader,
@@ -14,7 +15,13 @@ function InvestmentGoal() {
   const { t } = useTranslation();
 
   return (
-    <ExpandableCard HiddenContent={<Footer />}>
+    <ExpandableCard
+      HiddenContent={
+        <>
+          <Description /> <Footer />
+        </>
+      }
+    >
       <div>
         <StyledHeader>
           <StyledTitle>{t('investGoal')}</StyledTitle>

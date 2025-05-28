@@ -4,8 +4,8 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { Sun, Moon } from 'lucide-react';
 
 const options = [
-  { label: 'Dark', value: 'dark', Icon: <Moon /> },
-  { label: 'Light', value: 'light', Icon: <Sun /> },
+  { label: 'Dark', value: 'dark', Icon: Moon },
+  { label: 'Light', value: 'light', Icon: Sun },
 ];
 
 function ThemeRadioGroup() {

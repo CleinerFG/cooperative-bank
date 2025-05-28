@@ -15,7 +15,7 @@ function Header({ title, navigateTo, Icon }) {
   return (
     <StyledContainer>
       <StyledContent>
-        <StyledIconContainer>{Icon}</StyledIconContainer>
+        <StyledIconContainer>{Icon && <Icon />}</StyledIconContainer>
         <StyledColumnContainer>
           <StyledTitle>{t(title)}</StyledTitle>
           <SeeMoreButton />

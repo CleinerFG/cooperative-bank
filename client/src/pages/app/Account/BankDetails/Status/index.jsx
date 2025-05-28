@@ -1,30 +1,17 @@
-import { useTranslation } from 'react-i18next';
-import { ShieldCheck, TrendingUp } from 'lucide-react';
-import {
-  StyledContainer,
-  StyledItem,
-  StyledLabel,
-  StyledDot,
-} from './Status.styles';
+import { ChartColumnStacked, ShieldCheck, TrendingUp, Dot } from 'lucide-react';
+import { StyledContainer, StyledDot } from './Status.styles';
+import BaseCard from '@/components/cards/BaseCard';
+import Tag from '@/components/ui/Tag';
 
 function StatusItems() {
-  const { t } = useTranslation();
   return (
-    <StyledContainer>
-      <StyledItem>
-        <ShieldCheck />
-        <StyledLabel>{t('verified')}</StyledLabel>
-      </StyledItem>
-      <StyledItem>
-        <TrendingUp />
-        <StyledLabel>Score</StyledLabel>
-        <StyledLabel>910</StyledLabel>
-      </StyledItem>
-      <StyledItem>
-        <StyledDot />
-        <StyledLabel>{t('statusActive')}</StyledLabel>
-      </StyledItem>
-    </StyledContainer>
+    <BaseCard title="Status" Icon={ChartColumnStacked}>
+      <StyledContainer>
+        <Tag label="verified" Icon={ShieldCheck} />
+        <Tag label="Score" value={910} Icon={TrendingUp} />
+        <Tag label="statusActive" Icon={StyledDot} />
+      </StyledContainer>
+    </BaseCard>
   );
 }
 

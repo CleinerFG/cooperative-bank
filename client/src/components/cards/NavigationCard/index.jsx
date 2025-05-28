@@ -9,7 +9,7 @@ function NavigationCard({ label, navigateTo, Icon }) {
     <Link to={navigateTo}>
       <StyledContainer>
         <StyledLabelContainer>
-          {Icon}
+          {Icon && <Icon />}
           <span>{t(label)}</span>
         </StyledLabelContainer>
         <ChevronRight />

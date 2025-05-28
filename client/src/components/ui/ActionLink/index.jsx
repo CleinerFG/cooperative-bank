@@ -10,7 +10,9 @@ function ActionLink({ label, navigateTo, Icon, rounded = false }) {
 
   return (
     <StyledLink to={navigateTo}>
-      <StyledIconContainer $rounded={rounded}>{Icon}</StyledIconContainer>
+      <StyledIconContainer $rounded={rounded}>
+        {Icon && <Icon />}
+      </StyledIconContainer>
       <StyledLabel>{t(label)}</StyledLabel>
     </StyledLink>
   );

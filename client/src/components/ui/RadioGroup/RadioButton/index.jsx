@@ -10,7 +10,7 @@ function RadioButton({ name, label, value, Icon, checked, handleChange }) {
   return (
     <StyledContainer onClick={() => handleChange(value)}>
       <StyledLabelContainer>
-        {Icon}
+        {Icon && <Icon />}
         <label htmlFor={id}>{label}</label>
       </StyledLabelContainer>
       <StyledRadio
