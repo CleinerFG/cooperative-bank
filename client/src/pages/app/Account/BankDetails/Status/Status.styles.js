@@ -1,4 +1,4 @@
-import { sizes, utils } from '@/styles/abstracts';
+import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -9,9 +9,8 @@ export const StyledContainer = styled.div`
   gap: ${sizes.spacing.sm};
   padding: ${sizes.spacing.lg} ${sizes.spacing.sm};
   background-color: ${({ theme }) => theme.colors.neutral[0]};
-  border: solid ${utils.rem(1)};
-  border-color: ${({ theme }) => theme.colors.gray[200]};
-  border-radius: 999px;
+  ${sizes.border.sm}
+  border-radius: ${sizes.rounded.lg};
 `;
 
 export const StyledItem = styled.div`

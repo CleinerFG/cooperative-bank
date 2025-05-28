@@ -1,4 +1,4 @@
-import { font, gradients, sizes, utils } from '@/styles/abstracts';
+import { font, gradients, sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -14,8 +14,7 @@ export const StyledBar = styled.div`
   overflow: hidden;
   border-radius: ${sizes.rounded.md};
   background-color: ${({ theme }) => theme.colors.neutral[0]};
-  border: solid ${utils.rem(1)};
-  border-color: ${({ theme }) => theme.colors.gray[200]};
+  ${sizes.border.sm}
 `;
 
 export const StyledProgress = styled.div`

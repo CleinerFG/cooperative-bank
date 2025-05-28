@@ -1,4 +1,4 @@
-import { gradients, sizes, utils } from '@/styles/abstracts';
+import { gradients, sizes } from '@/styles/abstracts';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -11,8 +11,7 @@ export const StyledContainer = styled.div`
   padding: ${CARD_SPACING};
   border-radius: ${sizes.rounded.lg};
   background-color: ${({ theme }) => theme.colors.neutral[0]};
-  border: solid ${utils.rem(1)};
-  border-color: ${({ theme }) => theme.colors.gray[200]};
+  ${sizes.border.sm};
 `;
 
 export const StyledMain = styled.main`

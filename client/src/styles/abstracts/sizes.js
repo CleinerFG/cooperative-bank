@@ -1,3 +1,4 @@
+import { css } from 'styled-components';
 import { rem } from './utils';
 
 // Paddings, gaps e margin
@@ -28,6 +29,15 @@ export const icon = {
   lg: rem(32),
   xl: rem(36),
   '2xl': rem(40),
+};
+
+export const border = {
+  sm: css`
+    border: solid ${rem(1)} ${({ theme }) => theme.colors.gray[200]};
+  `,
+  md: css`
+    border: solid ${rem(2)} ${({ theme }) => theme.colors.gray[200]};
+  `,
 };
 
 export const shadow = {

@@ -1,4 +1,4 @@
-import { font, sizes, utils } from '@/styles/abstracts';
+import { font, sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -24,8 +24,7 @@ export const StyledInput = styled.input`
 export const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
-  border: solid ${utils.rem(2)};
-  border-color: ${({ theme }) => theme.colors.gray[200]};
+  ${sizes.border.md}
   border-radius: ${sizes.rounded.md};
   transition: 0.2s ease-in-out all;
 

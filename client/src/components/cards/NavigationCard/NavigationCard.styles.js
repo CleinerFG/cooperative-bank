@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${sizes.spacing.xl} ${sizes.spacing.lg};
-  border: solid 1px ${({ theme }) => theme.colors.gray[300]};
+  ${sizes.border.sm};
   border-radius: ${sizes.rounded.xl};
   background-color: ${({ theme }) => theme.colors.neutral[0]};
 
@@ -26,4 +26,3 @@ export const StyledLabelContainer = styled.div`
     height: ${sizes.icon.sm};
   }
 `;
-('');
