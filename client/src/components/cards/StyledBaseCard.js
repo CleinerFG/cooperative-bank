@@ -1,4 +1,4 @@
-import { sizes, utils } from '@/styles/abstracts';
+import { gradients, sizes, utils } from '@/styles/abstracts';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -42,12 +42,7 @@ export const StyledCardFooter = styled.footer`
 `;
 
 export const StyledCardLink = styled(Link)`
-  align-self: flex-end;
-  background: linear-gradient(
-    90deg,
-    ${({ theme }) => theme.colors.primary[300]},
-    ${({ theme }) => theme.colors.secondary[300]}
-  );
+  ${gradients.bgLinearGradient()};
   padding: ${sizes.spacing.sm} ${sizes.spacing.md};
   border-radius: ${sizes.rounded.md};
   color: ${({ theme }) => theme.colors.gray[700]};

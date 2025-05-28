@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { sizes } from '@/styles/abstracts';
+import { gradients, sizes } from '@/styles/abstracts';
 
 export const StyledHeader = styled.header`
   height: 4rem;
@@ -10,11 +10,7 @@ export const StyledHeader = styled.header`
   padding-bottom: ${sizes.spacing.md};
   padding-left: ${sizes.spacing.lg};
   justify-content: end;
-  background: linear-gradient(
-    60deg,
-    ${({ theme }) => theme.colors.primary[300]},
-    ${({ theme }) => theme.colors.secondary[300]}
-  );
+  ${gradients.bgLinearGradient()}
 
   svg {
     width: ${sizes.icon.md};

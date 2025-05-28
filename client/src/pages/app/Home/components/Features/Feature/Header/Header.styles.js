@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { StyledCardHeader } from '@/components/cards/StyledBaseCard';
-import { sizes } from '@/styles/abstracts';
+import { gradients, sizes } from '@/styles/abstracts';
 
 export const StyledContainer = styled(StyledCardHeader)`
   position: relative;
@@ -9,7 +9,7 @@ export const StyledContainer = styled(StyledCardHeader)`
 export const StyledIconContainer = styled.div`
   padding: ${sizes.spacing.md};
   border-radius: ${sizes.rounded.lg};
-  background-color: ${({ theme }) => theme.colors.primary[200]};
+  ${gradients.bgLinearGradient(250, 60)};
 
   svg {
     stroke: ${({ theme }) => theme.colors.gray[800]};

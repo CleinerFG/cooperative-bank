@@ -1,4 +1,4 @@
-import { sizes, utils } from '@/styles/abstracts';
+import { gradients, sizes, utils } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
@@ -24,11 +24,7 @@ export const StyledCircleTranslucent = styled.div`
   right: -4rem;
   width: 8rem;
   height: 5.5rem;
-  background: linear-gradient(
-    60deg,
-    ${({ theme }) => theme.colors.primary[100]},
-    ${({ theme }) => theme.colors.secondary[200]}
-  );
+  ${gradients.bgLinearGradient(200, 60)};
   border-bottom-left-radius: ${utils.rem(50)};
 
   transform: scale(1);

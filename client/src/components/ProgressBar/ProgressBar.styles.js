@@ -1,4 +1,4 @@
-import { font, sizes, utils } from '@/styles/abstracts';
+import { font, gradients, sizes, utils } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -19,11 +19,7 @@ export const StyledBar = styled.div`
 `;
 
 export const StyledProgress = styled.div`
-  background: linear-gradient(
-    90deg,
-    ${({ theme }) => theme.colors.primary[300]},
-    ${({ theme }) => theme.colors.secondary[300]}
-  );
+  ${gradients.bgLinearGradient()}
   border-radius: ${sizes.rounded.md};
   height: 100%;
   width: ${({ $percent = 0 }) => $percent + '%'};
