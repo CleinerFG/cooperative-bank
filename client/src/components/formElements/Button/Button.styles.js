@@ -10,15 +10,15 @@ const variantStyles = {
     borderColor: 'transparent',
     hover: {
       bg: gradients.bgLinearGradient(250, 90),
-      borderColor: 'transparent',
     },
   }),
   secondary: (theme) => ({
     textColor: theme.colors.secondary[400],
-    bgColor: 'transparent',
+    bg: css`
+      background-color: ${theme.colors.neutral[0]};
+    `,
     borderColor: theme.colors.secondary[300],
     hover: {
-      bgColor: 'transparent',
       borderColor: theme.colors.secondary[400],
     },
   }),
@@ -35,7 +35,7 @@ export const StyledButton = styled.button`
   border: solid ${utils.rem(2)};
   border-radius: ${sizes.rounded.lg};
   font-size: ${font.size.md};
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease;
 
   svg {
