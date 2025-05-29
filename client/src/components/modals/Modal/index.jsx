@@ -3,7 +3,10 @@ import { createPortal } from 'react-dom';
 import EnterAndExitAnimation from '@/components/animations/EnterAndExitAnimation';
 import { useDelayedUnmount } from '@/hooks/useDelayedUnmount';
 import CloseButton from './CloseButton';
-import { StyledBackdropStyle, StyledContainer } from './Modal.styles';
+import {
+  StyledBackdropStyle,
+  StyledContainer,
+} from './Modal.styles';
 
 function Modal({ isOpen, onClose, children }) {
   const { shouldRender, handleAnimationComplete } = useDelayedUnmount(isOpen);
@@ -23,8 +26,8 @@ function Modal({ isOpen, onClose, children }) {
           onAnimationComplete={handleAnimationComplete}
         >
           <StyledContainer>
-            {children}
             <CloseButton onClose={onClose} />
+            {children}
           </StyledContainer>
         </EnterAndExitAnimation>
       </StyledBackdropStyle>

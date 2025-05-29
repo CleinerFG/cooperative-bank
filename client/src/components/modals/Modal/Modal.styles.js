@@ -15,18 +15,19 @@ export const StyledBackdropStyle = styled.div`
 `;
 
 export const StyledContainer = styled.div`
+  overflow: hidden;
+  width: calc(100vw - 2rem);
   position: relative;
   background-color: ${({ theme }) => theme.colors.neutral[0]};
-  padding: ${sizes.spacing['2xl']};
   border-radius: ${sizes.rounded.lg};
-  margin: 1rem;
 `;
 
 export const StyledButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  padding: ${sizes.spacing.sm};
+  margin: ${sizes.spacing.sm};
+  padding: ${sizes.spacing.xs};
 
   svg {
     width: ${sizes.icon.md};
