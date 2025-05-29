@@ -2,7 +2,7 @@ import { StyledButton } from './Button.styles';
 
 function Button({ variantStyle, Icon, handleClick, children }) {
   return (
-    <StyledButton $variant={variantStyle} Icon={Icon} onClick={handleClick}>
+    <StyledButton $variant={variantStyle} onClick={handleClick}>
       {Icon && <Icon />}
       {children}
     </StyledButton>
