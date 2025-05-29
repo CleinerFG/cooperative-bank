@@ -4,7 +4,7 @@ import {
   StyledInput,
   StyledLabel,
   StyledWrapper,
-} from './Input.styles';
+} from '../baseStyles';
 
 function Input({ label, placeholder, value, handleOnChange }) {
   const { t } = useTranslation();

@@ -5,7 +5,7 @@ import {
   StyledInput,
   StyledWrapper,
   StyledLabel,
-} from '../Input/Input.styles';
+} from '../baseStyles';
 import ToolButtons from './ToolButtons';
 
 function DataInput({ label, value, isEditable, onEditValue }) {
