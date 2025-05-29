@@ -24,7 +24,7 @@ function NewRequestForm() {
       <Input label="requestedAmount" />
       <Select label="installments" options={installmentOptions} />
       <TagRadioGroup
-        title="Selecione a Modalidade"
+        title="modality"
         options={modalityOptions}
         defaultSelected={modalityOptions[0].value}
         onSelected={() => null}
