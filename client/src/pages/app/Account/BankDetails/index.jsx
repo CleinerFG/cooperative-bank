@@ -1,6 +1,6 @@
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import BaseCard from '@/components/cards/BaseCard';
-import DataInput from '@/components/ui/inputs/DataInput';
+import DataInput from '@/components/formElements/DataInput';
 import { Landmark } from 'lucide-react';
 import Status from './Status';
 

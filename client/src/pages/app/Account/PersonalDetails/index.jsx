@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
-import DataInput from '@/components/ui/inputs/DataInput';
+import DataInput from '@/components/formElements/DataInput';
 import { User, Calendar } from 'lucide-react';
 import BaseCard from '@/components/cards/BaseCard';
 
