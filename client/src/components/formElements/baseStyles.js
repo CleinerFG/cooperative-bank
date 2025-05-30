@@ -8,6 +8,12 @@ export const wrapperStyles = css`
   background-color: ${({ theme }) => theme.colors.neutral[0]};
   border-radius: ${sizes.rounded.md};
   transition: 0.2s ease-in-out all;
+
+  ${({ $invalidStyle, theme }) =>
+    $invalidStyle &&
+    css`
+      border-color: ${theme.colors.red[400]};
+    `}
 `;
 
 export const baseElementStyles = css`

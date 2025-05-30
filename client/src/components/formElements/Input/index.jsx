@@ -5,19 +5,38 @@ import {
   StyledLabel,
   StyledWrapper,
 } from '../baseStyles';
+import InputErros from '../InputErrors';
+import useInputValidation from '@/hooks/useInputValidation';
 
-function Input({ label, placeholder, value, handleOnChange }) {
+function Input({
+  label,
+  placeholder,
+  value,
+  ToolButtons,
+  validationRules,
+  onValidValue,
+}) {
   const { t } = useTranslation();
+
+  const { validationState, validationHandlers } = useInputValidation(
+    value,
+    validationRules,
+    onValidValue
+  );
+
   return (
     <StyledContainer>
       <StyledLabel>{t(label)}</StyledLabel>
-      <StyledWrapper>
+      <StyledWrapper $invalidStyle={validationState.isValid === false}>
         <StyledInput
-          value={value}
+          value={validationState.tempValue}
           placeholder={placeholder}
-          onChange={handleOnChange}
+          onChange={validationHandlers.change}
+          onBlur={validationHandlers.blur}
         />
+        {ToolButtons}
       </StyledWrapper>
+      <InputErros errors={validationState.errors} />
     </StyledContainer>
   );
 }
