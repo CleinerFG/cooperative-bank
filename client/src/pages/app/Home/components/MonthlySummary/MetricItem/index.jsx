@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import ProtectValue from '@/components/ProtectValue';
-import { currencyFormatter } from '@/utils/formatters';
+import { numberToCurrency } from '@/utils/formatters';
 import {
   StyledContainer,
   StyledIconWrapper,
@@ -27,7 +27,7 @@ function MetricItem({ type, value }) {
           fontSize="lg"
           dotSize={12}
         >
-          <StyledValue $type={type}>{currencyFormatter(value)}</StyledValue>
+          <StyledValue $type={type}>{numberToCurrency(value)}</StyledValue>
         </ProtectValue>
       </StyledItem>
     </StyledContainer>

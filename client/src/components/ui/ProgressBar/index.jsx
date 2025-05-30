@@ -1,4 +1,4 @@
-import { currencyFormatter } from '@/utils/formatters';
+import { numberToCurrency } from '@/utils/formatters';
 import ProtectValue from '@/components/ProtectValue';
 import {
   StyledBar,
@@ -23,8 +23,8 @@ function ProgressBar({ label, current = 0, total = 100, formatCurrency }) {
         {label ? <StyledLabel>{t(label)}</StyledLabel> : null}
         <ProtectValue fontSize="sm">
           <StyledLabel>
-            {formatCurrency ? currencyFormatter(current) : current} /{' '}
-            {formatCurrency ? currencyFormatter(total) : total}
+            {formatCurrency ? numberToCurrency(current) : current} /{' '}
+            {formatCurrency ? numberToCurrency(total) : total}
           </StyledLabel>
         </ProtectValue>
       </StyledLabelContainer>
