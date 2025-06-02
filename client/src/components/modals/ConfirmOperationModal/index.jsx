@@ -28,7 +28,7 @@ function ConfirmOperationModal({ isOpen, onClose, data }) {
         <Input label="operationPass" />
       </StyledContent>
       <StyledFooter>
-        <Button variantStyle="secondary" handleClick={onClose}>
+        <Button variant="secondary" handleClick={onClose}>
           {t('back')}
         </Button>
         <Button>{t('confirm')}</Button>

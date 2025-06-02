@@ -5,20 +5,28 @@ const DEFAULT_VARIANT = 'primary';
 
 const variantStyles = {
   primary: (theme) => ({
-    textColor: theme.colors.gray[800],
-    bg: gradients.bgLinearGradient(300, 90),
-    borderColor: 'transparent',
+    default: {
+      textColor: theme.colors.gray[800],
+      bg: gradients.bgLinearGradient(300, 90),
+      borderColor: 'transparent',
+    },
     hover: {
       bg: gradients.bgLinearGradient(250, 90),
+      borderColor: 'transparent',
     },
   }),
   secondary: (theme) => ({
-    textColor: theme.colors.secondary[400],
-    bg: css`
-      background-color: ${theme.colors.neutral[0]};
-    `,
-    borderColor: theme.colors.secondary[300],
+    default: {
+      textColor: theme.colors.secondary[400],
+      bg: css`
+        background-color: ${theme.colors.neutral[0]};
+      `,
+      borderColor: theme.colors.secondary[300],
+    },
     hover: {
+      bg: css`
+        background-color: ${theme.colors.neutral[50]};
+      `,
       borderColor: theme.colors.secondary[400],
     },
   }),
@@ -43,16 +51,20 @@ export const StyledButton = styled.button`
     height: ${sizes.icon.md};
   }
 
-  ${({ $variant = DEFAULT_VARIANT, theme }) => {
-    const { textColor, bg, borderColor, hover } = getVariantStyle(
-      $variant,
-      theme
-    );
+  ${({ $variant = DEFAULT_VARIANT, disabled = false, theme }) => {
+    const { default: def, hover } = getVariantStyle($variant, theme);
+
     return css`
-      color: ${textColor};
-      border-color: ${borderColor};
-      padding: ${sizes.spacing.md} ${sizes.spacing.lg};
-      ${bg};
+      color: ${def.textColor};
+      border-color: ${def.borderColor};
+      ${def.bg};
+
+      ${disabled &&
+      css`
+        cursor: not-allowed;
+        opacity: 0.6;
+        pointer-events: none;
+      `}
 
       &:hover {
         ${hover.bg};
