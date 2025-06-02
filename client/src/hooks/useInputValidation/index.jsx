@@ -3,27 +3,23 @@ import { reducer, initialState } from './reducer';
 import { useValidationHandlers } from './useValidationHandlers';
 import { useValidationEffects } from './useValidationEffects';
 
-function useInputValidation(initialValue = '', rules = [], onValidValue) {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    tempValue: initialValue,
-  });
+function useInputValidation(value, rules = [], onValidValue) {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { validateData, handleValidationBlur, handleValidationChange } =
-    useValidationHandlers(state, dispatch, rules);
+  const { validateData, handleValidationBlur } = useValidationHandlers(
+    value,
+    dispatch,
+    rules
+  );
 
-  useValidationEffects(state, validateData, onValidValue);
+  useValidationEffects(value, state, validateData, onValidValue);
 
   return {
     validationState: {
-      tempValue: state.tempValue,
       isValid: state.isValid,
       errors: state.errors,
     },
-    validationHandlers: {
-      blur: handleValidationBlur,
-      change: handleValidationChange,
-    },
+    handleValidationBlur,
   };
 }
 

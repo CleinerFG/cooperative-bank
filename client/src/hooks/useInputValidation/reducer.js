@@ -1,5 +1,4 @@
 export const initialState = {
-  tempValue: '',
   isValid: null,
   realTimeValidation: false,
   errors: [],
@@ -7,8 +6,6 @@ export const initialState = {
 
 export function reducer(state, action) {
   switch (action.type) {
-    case 'SET_TEMP_VALUE':
-      return { ...state, tempValue: action.payload.tempValue };
     case 'VALIDATE':
       return {
         ...state,
