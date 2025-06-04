@@ -12,8 +12,8 @@ function DataDisplay({ items }) {
   return (
     <StyledContainer>
       {items.map((item) => (
-        <StyledRow key={item.label}>
-          <StyledLabel>{t(item.label)}:</StyledLabel>
+        <StyledRow key={item.name}>
+          <StyledLabel>{t(item.name)}:</StyledLabel>
           <StyledValue>{t(item.value)}</StyledValue>
         </StyledRow>
       ))}

@@ -2,18 +2,20 @@ import Button from '@/components/formElements/Button';
 import { StyledElementsContainer, StyledForm } from './Form.styles';
 import { useTranslation } from 'react-i18next';
 
-function Form({ buttonText, buttonIcon, handleSubmit, children }) {
+function Form({ buttonText, buttonIcon, dataIsValid, onSubmit, children }) {
   const { t } = useTranslation();
 
-  const onSubmit = (ev) => {
-    ev.preventDefault();
-    handleSubmit();
-  };
-
   return (
-    <StyledForm onSubmit={onSubmit}>
+    <StyledForm
+      onSubmit={(ev) => {
+        ev.preventDefault();
+        onSubmit();
+      }}
+    >
       <StyledElementsContainer>{children}</StyledElementsContainer>
-      <Button Icon={buttonIcon}>{t(buttonText)}</Button>
+      <Button isDisabled={!dataIsValid} Icon={buttonIcon}>
+        {t(buttonText)}
+      </Button>
     </StyledForm>
   );
 }
