@@ -7,7 +7,7 @@ export const StyledForm = styled.form`
   gap: ${sizes.spacing.xl};
 `;
 
-export const StyledElementsContainer = styled.div`
+export const StyledFieldsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${sizes.spacing.md};
