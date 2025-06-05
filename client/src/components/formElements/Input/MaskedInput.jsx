@@ -52,6 +52,20 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
     );
   }
 
+  if (type === 'numericString') {
+    return (
+      <NumericFormat
+        customInput={StyledInput}
+        allowNegative={false}
+        decimalScale={0}
+        allowLeadingZeros
+        valueIsNumericString
+        {...commonProps}
+        onValueChange={(values) => onChange(values.value)}
+      />
+    );
+  }
+
   return (
     <StyledInput
       value={value}
