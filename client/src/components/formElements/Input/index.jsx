@@ -1,20 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import {
   StyledContainer,
-  StyledInput,
   StyledLabel,
   StyledWrapper,
 } from '../baseStyles';
 import InputErros from '../InputErrors';
+import MaskedInput from './MaskedInput';
 
-function Input({ label, placeholder }) {
+function Input({ label, maskType, ...props }) {
   const { t } = useTranslation();
 
   return (
     <StyledContainer>
       <StyledLabel>{t(label)}</StyledLabel>
       <StyledWrapper>
-        <StyledInput placeholder={placeholder} />
+        <MaskedInput type={maskType} {...props} />
       </StyledWrapper>
       <InputErros errors={[]} />
     </StyledContainer>
