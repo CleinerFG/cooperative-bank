@@ -1,33 +1,30 @@
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useController } from 'react-hook-form';
 import { StyledLabel } from '../baseStyles';
 import TagRadio from './TagRadio';
 import { StyledRadiosContainer } from './TagRadioGroup.styles';
 import { StyledContainer } from '../baseStyles';
+import FieldError from '../FieldError';
 
-function TagRadioGroup({ title, options, defaultSelected, onSelected }) {
+function TagRadioGroup({ control, name, title, options }) {
   const { t } = useTranslation();
-
-  const [currentSelected, setCurrentSelected] = useState(defaultSelected);
-
-  useEffect(() => {
-    onSelected(currentSelected);
-  }, [currentSelected, onSelected]);
+  const { field, fieldState } = useController({ control, name });
 
   return (
     <StyledContainer>
       <StyledLabel>{t(title)}</StyledLabel>
-      <StyledRadiosContainer>
+      <StyledRadiosContainer ref={field.ref}>
         {options.map((op) => (
           <TagRadio
             label={op.label}
             Icon={op.Icon}
-            selected={currentSelected === op.value}
-            onSelect={() => setCurrentSelected(op.value)}
+            selected={field.value === op.value}
+            onSelect={() => field.onChange(op.value)}
             key={op.value}
           />
         ))}
       </StyledRadiosContainer>
+      <FieldError error={fieldState.error} />
     </StyledContainer>
   );
 }
