@@ -57,6 +57,8 @@
     "requestedAmount": "Requested Amount",
     "requestLoan": "Apply for Loan",
     "requiredCpf": "CPF is required",
+    "requiredInstallments": "Quantity of installments is required",
+    "requiredModality": "Modality is required",
     "requiredValue": "Value is required",
     "search": "Search",
     "seeMore": "See more",

@@ -11,4 +11,8 @@ export default yup.object({
     .number()
     .required('requiredValue')
     .min(10, { key: 'minValue', interpolations: { value: 'R$ 10,00' } }),
+
+  installments: yup.string().required('requiredInstallments'),
+
+  modality: yup.string().required('requiredModality'),
 });

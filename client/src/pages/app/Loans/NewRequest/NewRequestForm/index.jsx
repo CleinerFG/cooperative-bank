@@ -17,32 +17,50 @@ function NewRequestForm({ onSubmit }) {
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(validationSchema),
     mode: 'onTouched',
+    defaultValues: {
+      creditor: null,
+      requestedAmount: null,
+      installments: '6',
+      modality: modalityOptions[0].value,
+    },
   });
 
   const { t } = useTranslation();
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm
+      onSubmit={handleSubmit((data) => {
+        const formattedData = {
+          ...data,
+          installments: Number(data.installments),
+        };
+        onSubmit(formattedData);
+      })}
+    >
       <StyledFieldsContainer>
         <Input
           control={control}
-          label="creditor"
           name="creditor"
+          label="creditor"
           maskType="cpf"
         />
         <Input
           control={control}
-          label="requestedAmount"
           name="requestedAmount"
+          label="requestedAmount"
           maskType="currency"
         />
-        <Select label="installments" options={installmentOptions} />
+        <Select
+          control={control}
+          name="installments"
+          label="installments"
+          options={installmentOptions}
+        />
         <TagRadioGroup
-          title="modality"
+          control={control}
           name="modality"
+          title="modality"
           options={modalityOptions}
-          defaultSelected={modalityOptions[0].value}
-          onSelected={() => null}
         />
       </StyledFieldsContainer>
       <Button type="submit" Icon={DollarSign}>

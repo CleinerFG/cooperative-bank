@@ -57,6 +57,8 @@
     "requestedAmount": "Valor Solicitado",
     "requestLoan": "Solicitar Empréstimo",
     "requiredCpf": "CPF é obrigatório",
+    "requiredInstallments": "Quantidade de parcelas é obrigatório",
+    "requiredModality": "Modalidade é obrigatório",
     "requiredValue": "Valor é obrigatório",
     "search": "Buscar",
     "seeMore": "Ver mais",
