@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
-import DataInput from '@/components/formElements/DataInput';
+import FieldData from '@/components/formElements/FieldData';
 import { User, Calendar } from 'lucide-react';
 import BaseCard from '@/components/cards/BaseCard';
 
@@ -24,7 +24,7 @@ function PersonalDetails() {
       <UpdateLayout title="personalDetails" />
       <BaseCard title="personalData" iconColored Icon={User}>
         {personalInfo.map((info) => (
-          <DataInput
+          <FieldData
             key={info.desc}
             label={info.desc}
             isEditable={info.isEditable}
@@ -34,7 +34,7 @@ function PersonalDetails() {
       </BaseCard>
       <BaseCard title="importantDates" iconColored Icon={Calendar}>
         {importantDates.map((info) => (
-          <DataInput
+          <FieldData
             key={info.desc}
             label={info.desc}
             isEditable={info.isEditable}

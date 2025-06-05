@@ -1,6 +1,6 @@
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import BaseCard from '@/components/cards/BaseCard';
-import DataInput from '@/components/formElements/DataInput';
+import FieldData from '@/components/formElements/FieldData';
 import { Landmark } from 'lucide-react';
 import Status from './Status';
 
@@ -17,7 +17,7 @@ function BankDetails() {
       <Status />
       <BaseCard title="accountData" iconColored Icon={Landmark}>
         {initialData.map((info) => (
-          <DataInput
+          <FieldData
             key={info.desc}
             label={info.desc}
             isEditable={info.isEditable}

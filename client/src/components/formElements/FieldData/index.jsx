@@ -8,8 +8,9 @@ import {
 } from '../baseStyles';
 import ToolButtons from './ToolButtons';
 
-function DataInput({ label, value, isEditable, onEditValue }) {
+function FieldData({ label, value, isEditable, onEditValue }) {
   const { t } = useTranslation();
+
   const [isEditing, setIsEditing] = useState(false);
   const [tempValue, setTempValue] = useState(value);
 
@@ -62,4 +63,4 @@ function DataInput({ label, value, isEditable, onEditValue }) {
   );
 }
 
-export default DataInput;
+export default FieldData;
