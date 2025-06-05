@@ -1,31 +1,38 @@
 import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
 import NewRequestForm from './NewRequestForm';
 import { useState } from 'react';
-import Button from '@/components/formElements/Button';
-import { Check } from 'lucide-react';
 import ConfirmOperationModal from '@/components/modals/ConfirmOperationModal';
-
-const confirmData = [
-  { label: 'creditor', value: 'Sheldon Retriver' },
-  { label: 'requestedAmount', value: '12/05/2025' },
-  { label: 'installments', value: 'R$ 244,90' },
-  { label: 'modality', value: 'Pessoal' },
-];
+import { formatCpf, numberToCurrency } from '@/utils/formatters';
 
 function NewRequest() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ values: null, formatted: null });
+
+  const handleSubmitForm = (data) => {
+    setFormData({
+      values: data,
+      formatted: {
+        creditor: formatCpf(data.creditor),
+        requestedAmount: numberToCurrency(data.requestedAmount),
+        installments: data.installments,
+        modality: data.modality,
+      },
+    });
+    console.log(data);
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       <UpdateLayout title="newRequest" />
-      <NewRequestForm />
-      <Button handleClick={() => setIsModalOpen(!isModalOpen)}>
-        Test Open Modal
-      </Button>
-      <ConfirmOperationModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        data={confirmData}
-      />
+      <NewRequestForm onSubmit={handleSubmitForm} />
+      {formData.values && (
+        <ConfirmOperationModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          data={formData.formatted}
+        />
+      )}
     </>
   );
 }
