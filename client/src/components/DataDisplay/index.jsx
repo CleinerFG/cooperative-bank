@@ -11,10 +11,10 @@ function DataDisplay({ items }) {
 
   return (
     <StyledContainer>
-      {items.map((item) => (
-        <StyledRow key={item.name}>
-          <StyledLabel>{t(item.name)}:</StyledLabel>
-          <StyledValue>{t(item.value)}</StyledValue>
+      {Object.keys(items).map((key) => (
+        <StyledRow key={key}>
+          <StyledLabel>{t(key)}:</StyledLabel>
+          <StyledValue>{t(items[key])}</StyledValue>
         </StyledRow>
       ))}
     </StyledContainer>
