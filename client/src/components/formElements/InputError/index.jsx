@@ -6,7 +6,11 @@ function InputError({ error }) {
   return (
     error && (
       <StyledContainer>
-        <StyledItem>{t(error.message)}</StyledItem>
+        <StyledItem>
+          {typeof error.message === 'object'
+            ? t(error.message.key, error.message.interpolations)
+            : t(error.message)}
+        </StyledItem>
       </StyledContainer>
     )
   );
