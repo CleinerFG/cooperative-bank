@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 import { font, sizes, utils } from '@/styles/abstracts';
 
+const ringShadowInvalid = ({ theme }) =>
+  `0 0 0 ${utils.rem(3)} ${theme.colors.red[100]}`;
+
 export const wrapperStyles = css`
   ${sizes.border.md}
   display: flex;
@@ -12,6 +15,7 @@ export const wrapperStyles = css`
   ${({ $invalidStyle, theme }) =>
     $invalidStyle &&
     css`
+      box-shadow: ${ringShadowInvalid};
       border-color: ${theme.colors.red[400]};
     `}
 `;
@@ -29,12 +33,12 @@ export const baseElementStyles = css`
   }
 `;
 
-const ringShadow = ({ theme }) =>
+const ringShadowFocus = ({ theme }) =>
   `0 0 0 ${utils.rem(3)} ${theme.colors.secondary[100]}`;
 
 export const focusStyles = css`
   border-color: ${({ theme }) => theme.colors.secondary[250]};
-  box-shadow: ${ringShadow};
+  box-shadow: ${ringShadowFocus};
 `;
 
 export const StyledContainer = styled.div`
