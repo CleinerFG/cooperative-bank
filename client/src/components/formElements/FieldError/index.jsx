@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { StyledContainer, StyledItem } from './InputError.styles';
+import { StyledContainer, StyledItem } from './FieldError.styles';
 
-function InputError({ error }) {
+function FieldError({ error }) {
   const { t } = useTranslation();
   return (
     error && (
@@ -16,4 +16,4 @@ function InputError({ error }) {
   );
 }
 
-export default InputError;
+export default FieldError;
