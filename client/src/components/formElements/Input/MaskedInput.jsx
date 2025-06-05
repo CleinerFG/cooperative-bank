@@ -33,7 +33,7 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
         allowNegative={false}
         fixedDecimalScale
         {...commonProps}
-        onValueChange={(values) => onChange(values.floatValue ?? values.value)}
+        onValueChange={(values) => onChange(values.floatValue)}
       />
     );
   }
@@ -47,7 +47,7 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
         allowNegative={false}
         fixedDecimalScale
         {...commonProps}
-        onValueChange={(values) => onChange(values.floatValue ?? values.value)}
+        onValueChange={(values) => onChange(values.floatValue)}
       />
     );
   }

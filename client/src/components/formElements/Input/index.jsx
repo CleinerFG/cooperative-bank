@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useController } from 'react-hook-form';
 import { StyledContainer, StyledLabel, StyledWrapper } from '../baseStyles';
-import InputErros from '../InputErrors';
+import InputError from '../InputError';
 import MaskedInput from './MaskedInput';
 
 function Input({ control, name, label, maskType }) {
@@ -12,13 +12,12 @@ function Input({ control, name, label, maskType }) {
   return (
     <StyledContainer>
       <StyledLabel>{t(label)}</StyledLabel>
-      <StyledWrapper>
+      <StyledWrapper $invalidStyle={fieldState.error}>
         <MaskedInput type={maskType} {...field} />
       </StyledWrapper>
-      {/* <InputErros errors={[]} /> */}
+      <InputError error={fieldState.error} />
     </StyledContainer>
   );
 }
 
 export default Input;
- 
