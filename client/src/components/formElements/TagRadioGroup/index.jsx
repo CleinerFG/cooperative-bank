@@ -12,7 +12,7 @@ function TagRadioGroup({ control, name, title, options }) {
 
   return (
     <StyledContainer>
-      <StyledLabel>{t(title)}</StyledLabel>
+      <StyledLabel as="span">{t(title)}</StyledLabel>
       <StyledRadiosContainer ref={field.ref}>
         {options.map((op) => (
           <TagRadio

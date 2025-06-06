@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useController } from 'react-hook-form';
 import {
@@ -18,15 +19,17 @@ function Input({
   ToolButtons,
 }) {
   const { t } = useTranslation();
+  const id = useId();
   const { field, fieldState } = useController({
     name,
     control,
   });
   return (
     <StyledContainer>
-      <StyledLabel>{t(label)}</StyledLabel>
+      <StyledLabel htmlFor={id}>{t(label)}</StyledLabel>
       <StyledWrapper $invalidStyle={fieldState.error}>
         <MaskedInput
+          id={id}
           disabled={isDisabled}
           inputType={inputType}
           maskType={maskType}
