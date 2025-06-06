@@ -2,8 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useController } from 'react-hook-form';
 import { StyledLabel } from '../baseFieldStyles';
 import TagRadio from './TagRadio';
-import { StyledRadiosContainer } from './TagRadioGroup.styles';
-import { StyledContainer } from '../baseFieldStyles';
+import { StyledFieldset, StyledRadiosContainer } from './TagRadioGroup.styles';
 import FieldError from '../FieldError';
 
 function TagRadioGroup({ control, name, title, options }) {
@@ -11,8 +10,8 @@ function TagRadioGroup({ control, name, title, options }) {
   const { field, fieldState } = useController({ control, name });
 
   return (
-    <StyledContainer>
-      <StyledLabel as="span">{t(title)}</StyledLabel>
+    <StyledFieldset>
+      <StyledLabel as="legend">{t(title)}</StyledLabel>
       <StyledRadiosContainer ref={field.ref}>
         {options.map((op) => (
           <TagRadio
@@ -25,7 +24,7 @@ function TagRadioGroup({ control, name, title, options }) {
         ))}
       </StyledRadiosContainer>
       <FieldError error={fieldState.error} />
-    </StyledContainer>
+    </StyledFieldset>
   );
 }
 
