@@ -1,65 +1,49 @@
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import {
-  StyledContainer,
-  StyledInput,
-  StyledWrapper,
-  StyledLabel,
-} from '../baseStyles';
+import { useController, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import ToolButtons from './ToolButtons';
+import Input from '../Input';
+import useEditValue from './useEditValue';
 
-function FieldData({ label, value, isEditable, onEditValue }) {
-  const { t } = useTranslation();
+function FieldData({ label, initialValue, validationSchema, isEditable }) {
+  const { control, setFocus, setError, handleSubmit } = useForm({
+    mode: 'onTouched',
+    defaultValues: { [label]: initialValue },
+    resolver: yupResolver(validationSchema),
+  });
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [tempValue, setTempValue] = useState(value);
+  const { field } = useController({ control, name: label });
 
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (isEditing) {
-      inputRef.current?.focus();
-    }
-  }, [isEditing]);
-
-  const handleEdit = () => {
-    setIsEditing(true);
-  };
-
-  const handleSave = () => {
-    setIsEditing(false);
-    onEditValue(tempValue);
-  };
-
-  const handleCancel = () => {
-    setIsEditing(false);
-    setTempValue(value);
-  };
-
-  const handleChange = (ev) => {
-    setTempValue(ev.target.value);
-  };
+  const { isEditing, handleEdit, handleCancel, handleSave } = useEditValue({
+    label,
+    initialValue,
+    field,
+    setFocus,
+    setError,
+  });
 
   return (
-    <StyledContainer>
-      <StyledLabel>{t(label)}</StyledLabel>
-      <StyledWrapper>
-        <StyledInput
-          value={tempValue}
-          ref={inputRef}
-          disabled={!isEditing}
-          onChange={handleChange}
-        />
-        {isEditable && (
-          <ToolButtons
-            isEditing={isEditing}
-            onEdit={handleEdit}
-            onSave={handleSave}
-            onCancel={handleCancel}
-          />
-        )}
-      </StyledWrapper>
-    </StyledContainer>
+    <form
+      onSubmit={handleSubmit((data) => {
+        console.log(data);
+      })}
+    >
+      <Input
+        control={control}
+        name={label}
+        label={label}
+        isDisabled={!isEditing}
+        ToolButtons={
+          isEditable && (
+            <ToolButtons
+              isEditing={isEditing}
+              onEdit={handleEdit}
+              onSave={handleSave}
+              onCancel={handleCancel}
+            />
+          )
+        }
+      />
+    </form>
   );
 }
 

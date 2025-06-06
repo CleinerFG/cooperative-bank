@@ -4,10 +4,10 @@ import FieldData from '@/components/formElements/FieldData';
 import { Landmark } from 'lucide-react';
 import Status from './Status';
 
-const initialData = [
-  { desc: 'agency', value: '1234', isEditable: false },
-  { desc: 'accountNum', value: '1082-8345-0843', isEditable: false },
-  { desc: 'accountType', value: 'Personal Account', isEditable: false },
+const accountData = [
+  { label: 'agency', initialValue: '1234', isEditable: false },
+  { label: 'accountNum', initialValue: '1082-8345-0843', isEditable: false },
+  { label: 'accountType', initialValue: 'Personal Account', isEditable: false },
 ];
 
 function BankDetails() {
@@ -16,13 +16,8 @@ function BankDetails() {
       <UpdateLayout title="bankDetails" />
       <Status />
       <BaseCard title="accountData" iconColored Icon={Landmark}>
-        {initialData.map((info) => (
-          <FieldData
-            key={info.desc}
-            label={info.desc}
-            isEditable={info.isEditable}
-            value={info.value}
-          />
+        {accountData.map((item) => (
+          <FieldData key={item.label} {...item} />
         ))}
       </BaseCard>
     </>

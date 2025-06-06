@@ -4,7 +4,14 @@ import { StyledContainer, StyledLabel, StyledWrapper } from '../baseStyles';
 import FieldError from '../FieldError';
 import MaskedInput from './MaskedInput';
 
-function Input({ control, name, label, maskType }) {
+function Input({
+  control,
+  name,
+  label,
+  maskType,
+  isDisabled,
+  ToolButtons,
+}) {
   const { t } = useTranslation();
   const { field, fieldState } = useController({ name, control });
 
@@ -12,7 +19,12 @@ function Input({ control, name, label, maskType }) {
     <StyledContainer>
       <StyledLabel>{t(label)}</StyledLabel>
       <StyledWrapper $invalidStyle={fieldState.error}>
-        <MaskedInput type={maskType} {...field} />
+        <MaskedInput
+          disabled={isDisabled}
+          type={maskType}
+          {...field}
+        />
+        {ToolButtons}
       </StyledWrapper>
       <FieldError error={fieldState.error} />
     </StyledContainer>
