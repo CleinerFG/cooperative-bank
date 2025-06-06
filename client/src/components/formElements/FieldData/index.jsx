@@ -1,6 +1,6 @@
 import { useController, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import ToolButtons from './ToolButtons';
+import EditValueButtons from './EditValueButtons';
 import Input from '../Input';
 import useEditValue from './useEditValue';
 
@@ -34,7 +34,7 @@ function FieldData({ label, initialValue, validationSchema, isEditable }) {
         isDisabled={!isEditing}
         ToolButtons={
           isEditable && (
-            <ToolButtons
+            <EditValueButtons
               isEditing={isEditing}
               onEdit={handleEdit}
               onSave={handleSave}
