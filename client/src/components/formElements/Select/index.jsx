@@ -2,7 +2,7 @@ import { useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useController } from 'react-hook-form';
 import FieldError from '../FieldError';
-import { StyledContainer, StyledLabel } from '../baseStyles';
+import { StyledContainer, StyledLabel } from '../baseFieldStyles';
 import { StyledSelect } from './Select.styles';
 
 function Select({ control, name, label, options }) {

@@ -1,5 +1,5 @@
 import { NumericFormat, PatternFormat } from 'react-number-format';
-import { StyledInput } from '../baseStyles';
+import { StyledInput } from '../baseFieldStyles';
 
 function MaskedInput({
   maskType,

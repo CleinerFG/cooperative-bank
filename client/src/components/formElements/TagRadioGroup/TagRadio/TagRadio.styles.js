@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { gradients, sizes } from '@/styles/abstracts';
-import { focusStyles, wrapperStyles } from '../../baseStyles';
+import { focusStyles, wrapperStyles } from '../../baseFieldStyles';
 
 export const StyledButton = styled.button.attrs({
   type: 'button',

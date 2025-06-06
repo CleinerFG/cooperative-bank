@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { useController } from 'react-hook-form';
-import { StyledContainer, StyledLabel, StyledWrapper } from '../baseStyles';
+import {
+  StyledContainer,
+  StyledLabel,
+  StyledWrapper,
+} from '../baseFieldStyles';
 import FieldError from '../FieldError';
 import MaskedInput from './MaskedInput';
 
