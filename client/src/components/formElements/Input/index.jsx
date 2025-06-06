@@ -8,20 +8,24 @@ function Input({
   control,
   name,
   label,
+  inputType,
   maskType,
   isDisabled,
   ToolButtons,
 }) {
   const { t } = useTranslation();
-  const { field, fieldState } = useController({ name, control });
-
+  const { field, fieldState } = useController({
+    name,
+    control,
+  });
   return (
     <StyledContainer>
       <StyledLabel>{t(label)}</StyledLabel>
       <StyledWrapper $invalidStyle={fieldState.error}>
         <MaskedInput
           disabled={isDisabled}
-          type={maskType}
+          inputType={inputType}
+          maskType={maskType}
           {...field}
         />
         {ToolButtons}

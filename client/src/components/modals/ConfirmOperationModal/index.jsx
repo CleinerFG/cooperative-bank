@@ -1,4 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import validationSchema from './validationSchema';
 import DataDisplay from '@/components/DataDisplay';
 import Button from '@/components/formElements/Button';
 import Modal from '../Modal';
@@ -10,10 +13,7 @@ import {
   StyledContent,
   StyledFooter,
 } from '../baseStyles';
-import Input from '@/components/formElements/Input';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import validationSchema from './validationSchema';
+import PasswordInput from '@/components/formElements/PasswordInput';
 
 function ConfirmOperationModal({ isOpen, onClose, data }) {
   const { t } = useTranslation();
@@ -37,11 +37,11 @@ function ConfirmOperationModal({ isOpen, onClose, data }) {
         </StyledHeader>
         <StyledContent>
           <DataDisplay items={data} />
-          <Input
+          <PasswordInput
             control={control}
             name="operationPass"
-            maskType="numericString"
             label="operationPass"
+            isNumeric
           />
         </StyledContent>
         <StyledFooter>

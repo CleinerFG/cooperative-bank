@@ -1,7 +1,16 @@
 import { NumericFormat, PatternFormat } from 'react-number-format';
 import { StyledInput } from '../baseStyles';
 
-function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
+function MaskedInput({
+  maskType,
+  inputType = 'text',
+  onChange,
+  value,
+  onBlur,
+  name,
+  ref,
+  ...props
+}) {
   const commonProps = {
     value,
     name,
@@ -10,7 +19,7 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
     ...props,
   };
 
-  if (type === 'cpf') {
+  if (maskType === 'cpf') {
     return (
       <PatternFormat
         customInput={StyledInput}
@@ -22,7 +31,7 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
     );
   }
 
-  if (type === 'currency') {
+  if (maskType === 'currency') {
     return (
       <NumericFormat
         customInput={StyledInput}
@@ -38,7 +47,7 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
     );
   }
 
-  if (type === 'percentage') {
+  if (maskType === 'percentage') {
     return (
       <NumericFormat
         customInput={StyledInput}
@@ -52,10 +61,11 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
     );
   }
 
-  if (type === 'numericString') {
+  if (maskType === 'numericString') {
     return (
       <NumericFormat
         customInput={StyledInput}
+        type={inputType}
         allowNegative={false}
         decimalScale={0}
         allowLeadingZeros
@@ -68,6 +78,7 @@ function MaskedInput({ type, onChange, value, onBlur, name, ref, ...props }) {
 
   return (
     <StyledInput
+      type={inputType}
       value={value}
       onChange={onChange}
       onBlur={onBlur}
