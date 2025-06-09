@@ -44,6 +44,8 @@
     "myAccount": "My Account",
     "name": "Name",
     "newRequest": "New Request",
+    "notFound404": "404 - Not Found Page",
+    "notFound404Txt": "Sorry, the page you are looking for was not found.",
     "operationPass": "Operation Password",
     "outflow": "Outflow",
     "pay": "Pay",
@@ -73,6 +75,8 @@
     "summary": "Summary",
     "transactions": "Transactions",
     "transfer": "Transfer",
+    "unexpectedError": "Unexpected Error",
+    "unexpectedErrorTxt": "Something went wrong.",
     "username": "Username",
     "variableIncome": "Variable Income",
     "verified": "Verified"

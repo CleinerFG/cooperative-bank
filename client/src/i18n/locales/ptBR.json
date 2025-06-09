@@ -44,6 +44,8 @@
     "myAccount": "Minha Conta",
     "name": "Nome",
     "newRequest": "Nova Solicitação",
+    "notFound404": "404 - Página Não Encontrada",
+    "notFound404Txt": "Desculpe, a página que você procura não foi encontrada.",
     "operationPass": "Senha de Operação",
     "outflow": "Saídas",
     "pay": "Pagar",
@@ -73,6 +75,8 @@
     "summary": "Resumo",
     "transactions": "Transações",
     "transfer": "Transferir",
+    "unexpectedError": "Erro Inesperado",
+    "unexpectedErrorTxt": "Alguma coisa deu errado.",
     "username": "Nome de usuário",
     "variableIncome": "Renda Variável",
     "verified": "Verificado"

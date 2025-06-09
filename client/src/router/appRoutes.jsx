@@ -8,6 +8,7 @@ import loansRoutes from './loansRoutes';
 export default {
   path: '/app',
   element: <AppLayout />,
+  errorElement: <AppLayout />,
   children: [
     { index: true, element: <Home /> },
     settingsRoutes,

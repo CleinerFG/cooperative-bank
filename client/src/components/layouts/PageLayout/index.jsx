@@ -13,7 +13,6 @@ function PageLayout() {
   const [title, setTitle] = useState('');
   const matches = useMatches();
   const isRootRoute = useMatch({ path: matches[1].pathname, end: true });
-
   return (
     <PageLayoutContext.Provider value={{ title, setTitle }}>
       <StyledContainer>
