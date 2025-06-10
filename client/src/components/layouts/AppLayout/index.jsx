@@ -1,5 +1,5 @@
 import { Outlet, useRouteError } from 'react-router-dom';
-
+import useScrollToTop from '@/hooks/useScrollToTop';
 import Header from './Header';
 import NavBar from './NavBar';
 import MotionWrapper from './MotionWrapper';
@@ -11,6 +11,7 @@ import ErrorPage from '@/pages/app/Error';
 export default function AppLayout() {
   const { motionKey, direction } = useRouteTransitonDirection();
   const error = useRouteError();
+  useScrollToTop();
 
   return (
     <StyledContainer>
