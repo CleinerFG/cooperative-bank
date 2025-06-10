@@ -1,13 +1,9 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import LanguagesRadioGroup from './LanguagesRadioGroup';
 
 function LanguagesPage() {
-  return (
-    <>
-      <UpdateLayout title="languages" />
-      <LanguagesRadioGroup />
-    </>
-  );
+  useUpdatePageLayout('languages');
+  return <LanguagesRadioGroup />;
 }
 
 export default LanguagesPage;

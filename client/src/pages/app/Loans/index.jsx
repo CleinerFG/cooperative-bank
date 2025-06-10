@@ -1,4 +1,4 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import NavigationCards from '@/components/containers/NavigationCards';
 import Summary from './components/Summary';
 import PendingRequests from './components/PendingRequests';
@@ -29,9 +29,9 @@ const loansOptions = [
 ];
 
 function Loans() {
+  useUpdatePageLayout('loans');
   return (
     <>
-      <UpdateLayout title="loans" />
       <Summary />
       <PendingRequests />
       <NavigationCards options={loansOptions} />

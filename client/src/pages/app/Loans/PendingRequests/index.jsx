@@ -1,11 +1,8 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 
 function PendingRequests() {
-  return (
-    <>
-      <UpdateLayout title="pendingRequests" />
-    </>
-  );
+  useUpdatePageLayout('pendingRequests');
+  return <></>;
 }
 
 export default PendingRequests;

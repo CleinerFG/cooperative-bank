@@ -1,4 +1,4 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout/';
 import { UserRoundCog, Landmark } from 'lucide-react';
 import UserAvatar from './components/UserAvatar';
 import { StyledContainer } from './Account.styles';
@@ -19,9 +19,9 @@ const accountOptions = [
 ];
 
 function Account() {
+  useUpdatePageLayout('myAccount');
   return (
     <StyledContainer>
-      <UpdateLayout title="myAccount" />
       <UserAvatar />
       <NavigationCards options={accountOptions} />
     </StyledContainer>

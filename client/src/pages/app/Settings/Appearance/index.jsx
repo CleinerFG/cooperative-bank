@@ -1,13 +1,9 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import ThemeRadioGroup from './ThemeRadioGroup';
 
 function Appearance() {
-  return (
-    <>
-      <UpdateLayout title="appearance" />
-      <ThemeRadioGroup />
-    </>
-  );
+  useUpdatePageLayout('appearance');
+  return <ThemeRadioGroup />;
 }
 
 export default Appearance;

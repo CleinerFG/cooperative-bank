@@ -1,4 +1,4 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import NavigationCards from '@/components/containers/NavigationCards';
 import { Eclipse, Languages } from 'lucide-react';
 
@@ -17,12 +17,8 @@ const settingsOptions = [
 ];
 
 function Settings() {
-  return (
-    <>
-      <UpdateLayout title="settings" />
-      <NavigationCards options={settingsOptions} />
-    </>
-  );
+  useUpdatePageLayout('settings');
+  return <NavigationCards options={settingsOptions} />;
 }
 
 export default Settings;

@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { Outlet, useMatch, useMatches } from 'react-router-dom';
-import { PageLayoutContext } from '@/contexts/PageLayoutContext';
+import { Outlet } from 'react-router-dom';
+import { PageLayoutProvider } from '@/contexts/PageLayoutContext';
 import Title from './components/Title';
 import PrevButton from './components/PrevButton';
 import {
@@ -10,21 +9,18 @@ import {
 } from './PageLayout.styles';
 
 function PageLayout() {
-  const [title, setTitle] = useState('');
-  const matches = useMatches();
-  const isRootRoute = useMatch({ path: matches[1].pathname, end: true });
   return (
-    <PageLayoutContext.Provider value={{ title, setTitle }}>
+    <PageLayoutProvider>
       <StyledContainer>
         <StyledTitleContainer>
           <PrevButton />
-          <Title text={title} strong={isRootRoute} />
+          <Title />
         </StyledTitleContainer>
         <StyledMain>
           <Outlet />
         </StyledMain>
       </StyledContainer>
-    </PageLayoutContext.Provider>
+    </PageLayoutProvider>
   );
 }
 

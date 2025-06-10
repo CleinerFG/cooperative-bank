@@ -1,4 +1,4 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import NewRequestForm from './NewRequestForm';
 import { useState } from 'react';
 import ConfirmOperationModal from '@/components/modals/ConfirmOperationModal';
@@ -7,6 +7,8 @@ import { formatCpf, numberToCurrency } from '@/utils/formatters';
 function NewRequest() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ values: null, formatted: null });
+
+  useUpdatePageLayout('newRequest');
 
   const handleSubmitForm = (data) => {
     setFormData({
@@ -24,7 +26,6 @@ function NewRequest() {
 
   return (
     <>
-      <UpdateLayout title="newRequest" />
       <NewRequestForm onSubmit={handleSubmitForm} />
       {formData.values && (
         <ConfirmOperationModal

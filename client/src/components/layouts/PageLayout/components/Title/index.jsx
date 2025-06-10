@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { StyledTitle } from './Title.styles';
+import { usePageLayoutState } from '@/hooks/pageLayout';
 
-function Title({ text, strong }) {
+function Title() {
   const { t } = useTranslation();
-  return <StyledTitle $strong={strong}>{t(text)}</StyledTitle>;
+  const { title, isRootRoute } = usePageLayoutState();
+  return <StyledTitle $strong={isRootRoute}>{t(title)}</StyledTitle>;
 }
 
 export default Title;

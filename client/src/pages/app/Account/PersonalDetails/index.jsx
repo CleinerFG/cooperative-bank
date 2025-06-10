@@ -1,13 +1,13 @@
-import UpdateLayout from '@/components/layouts/PageLayout/components/UpdateLayout';
+import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import FieldData from '@/components/formElements/FieldData';
 import { User, Calendar } from 'lucide-react';
 import BaseCard from '@/components/cards/BaseCard';
 import { personalData, importantDates } from './FieldsDataConfig';
 
 function PersonalDetails() {
+  useUpdatePageLayout('personalDetails');
   return (
     <>
-      <UpdateLayout title="personalDetails" />
       <BaseCard title="personalData" iconColored Icon={User}>
         {personalData.map((item) => (
           <FieldData key={item.label} {...item} />
