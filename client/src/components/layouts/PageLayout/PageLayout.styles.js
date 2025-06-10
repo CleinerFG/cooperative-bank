@@ -8,18 +8,6 @@ export const StyledContainer = styled.div`
   padding: ${sizes.spacing.md} ${sizes.spacing.xl};
 `;
 
-export const StyledTitleContainer = styled.div`
-  display: flex;
-  gap: ${sizes.spacing.sm};
-  align-items: center;
-
-  svg {
-    width: ${sizes.icon.sm};
-    height: ${sizes.icon.sm};
-    stroke-width: 3;
-  }
-`;
-
 export const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
