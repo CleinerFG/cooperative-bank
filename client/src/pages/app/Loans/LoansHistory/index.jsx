@@ -8,6 +8,7 @@ function LoansHistory() {
   return (
     <>
       <ItemCategories
+        dataType="history"
         DataCard={LoanCard}
         categories={[
           {

@@ -8,6 +8,7 @@ function PendingRequests() {
   return (
     <>
       <ItemCategories
+        dataType="request"
         DataCard={LoanCard}
         categories={[
           {

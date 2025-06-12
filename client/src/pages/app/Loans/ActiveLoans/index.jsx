@@ -8,6 +8,7 @@ function ActiveLoans() {
   return (
     <>
       <ItemCategories
+        dataType="active"
         DataCard={LoanCard}
         categories={[
           {

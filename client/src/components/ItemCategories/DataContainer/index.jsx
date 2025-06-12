@@ -6,7 +6,7 @@ import {
   StyledSubTitle,
 } from './DataContainer.styles';
 
-function DataContainer({ DataCard }) {
+function DataContainer({ dataType, DataCard }) {
   const { activeCategory } = useItemCategories();
   const { t } = useTranslation();
   return (
@@ -14,7 +14,10 @@ function DataContainer({ DataCard }) {
       <StyledSubTitle>{t(activeCategory.title)}</StyledSubTitle>
       <StyledCardsContainer>
         {activeCategory.data.map(
-          (item) => DataCard && <DataCard {...item} key={item.id} />
+          (item) =>
+            DataCard && (
+              <DataCard type={dataType} data={item} {...item} key={item.id} />
+            )
         )}
       </StyledCardsContainer>
     </StyledContainer>

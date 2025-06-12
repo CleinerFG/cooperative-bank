@@ -2,11 +2,11 @@ import { ItemCategoriesProvider } from '@/contexts/ItemCategoriesContext';
 import CategoryPanel from './CategoryPanel';
 import DataContainer from './DataContainer';
 
-function ItemCategories({ categories, DataCard }) {
+function ItemCategories({ categories, dataType, DataCard }) {
   return (
     <ItemCategoriesProvider categories={categories}>
       <CategoryPanel />
-      <DataContainer DataCard={DataCard} />
+      <DataContainer dataType={dataType} DataCard={DataCard} />
     </ItemCategoriesProvider>
   );
 }

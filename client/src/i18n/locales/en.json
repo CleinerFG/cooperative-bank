@@ -21,6 +21,7 @@
     "creditor": "Creditor",
     "date": "Date",
     "email": "Email",
+    "endDate": "End Date",
     "fixedIncome": "Fixed Income",
     "history": "History",
     "home": "Home",

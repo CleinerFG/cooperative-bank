@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { numberToCurrency } from '@/utils/formatters';
 import { StyledContainer } from '../BaseCard/BaseCard.styles';
 import InfoItem from './InfoItem';
 import {
@@ -12,13 +11,13 @@ import {
   StyledFooter,
 } from './LoanCard.styles';
 import SeeDetailsLink from './SeeDetailsLink';
-import { Calendar, DollarSign, User, BanknoteArrowUp } from 'lucide-react';
+import { User } from 'lucide-react';
+import configByType from './configByType';
 
-function LoanCard({ creditor, debtor, value, amountPaid, term, date, status }) {
+function LoanCard({ type, data }) {
   const { t } = useTranslation();
-  const formattedValue = numberToCurrency(value);
-  const formattedAmountPaid = amountPaid && numberToCurrency(amountPaid);
-  const formattedTerm = term && t('months', { value: term });
+  const config = configByType[type](t, data);
+
   return (
     <StyledContainer>
       <StyledHeader>
@@ -26,26 +25,23 @@ function LoanCard({ creditor, debtor, value, amountPaid, term, date, status }) {
           <User />
         </StyledImgContainer>
         <StyledHeaderContent>
-          <StyledName>{creditor || debtor}</StyledName>
-          {status && <span>{status}</span>}
+          <StyledName>{data.creditor || data.debtor}</StyledName>
+          {config.headerContent}
         </StyledHeaderContent>
       </StyledHeader>
       <StyledMain>
-        <InfoItem label="value" value={formattedValue} Icon={DollarSign} />
-        {term && (
-          <InfoItem label="term" value={formattedTerm} Icon={Calendar} />
-        )}
-        {amountPaid && (
+        {config.mainItems.map((item, index) => (
           <InfoItem
-            label="amountPaid"
-            value={formattedAmountPaid}
-            Icon={BanknoteArrowUp}
+            key={index}
+            label={item.label}
+            value={item.value}
+            Icon={item.Icon}
           />
-        )}
+        ))}
       </StyledMain>
       <StyledFooter>
         <StyledDate>
-          {t('date')}: {date}
+          {t('date')}: {data.date}
         </StyledDate>
         <SeeDetailsLink />
       </StyledFooter>
