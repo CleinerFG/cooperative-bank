@@ -18,7 +18,7 @@ function LoanCard({ creditor, debtor, value, amountPaid, term, date, status }) {
   const { t } = useTranslation();
   const formattedValue = numberToCurrency(value);
   const formattedAmountPaid = amountPaid && numberToCurrency(amountPaid);
-  const formattedTerm = t('months', { value: term });
+  const formattedTerm = term && t('months', { value: term });
   return (
     <StyledContainer>
       <StyledHeader>
@@ -32,7 +32,9 @@ function LoanCard({ creditor, debtor, value, amountPaid, term, date, status }) {
       </StyledHeader>
       <StyledMain>
         <InfoItem label="value" value={formattedValue} Icon={DollarSign} />
-        <InfoItem label="term" value={formattedTerm} Icon={Calendar} />
+        {term && (
+          <InfoItem label="term" value={formattedTerm} Icon={Calendar} />
+        )}
         {amountPaid && (
           <InfoItem
             label="amountPaid"
