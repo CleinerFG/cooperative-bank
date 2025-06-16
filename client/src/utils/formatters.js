@@ -10,6 +10,12 @@ const intlFormatDate = new Intl.DateTimeFormat('pt-BR', {
   year: 'numeric',
 });
 
+const intlNumberToPercent = new Intl.NumberFormat('pt-BR', {
+  style: 'percent',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
 export function numberToCurrency(value) {
   return intlNumberToCurrency.format(value);
 }
@@ -33,4 +39,8 @@ export function formatCpf(value) {
 
 export function cpfToString(value) {
   return value.replace(/[.-]/g, '');
+}
+
+export function numberToPercent(value) {
+  return intlNumberToPercent.format(value / 100);
 }
