@@ -1,14 +1,10 @@
-import { useTranslation } from 'react-i18next';
-import {
-  StyledLink,
-} from '@/components/cards/BaseCard/BaseCard.styles';
 import { StyledFooter } from './InvestmentGoal.styles';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 function Footer() {
-  const { t } = useTranslation();
   return (
     <StyledFooter>
-      <StyledLink>{t('adjustGoal')}</StyledLink>
+      <ButtonLink label='adjustGoal'/>
     </StyledFooter>
   );
 }

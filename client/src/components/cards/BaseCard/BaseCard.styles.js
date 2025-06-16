@@ -1,5 +1,4 @@
-import { gradients, sizes } from '@/styles/abstracts';
-import { Link } from 'react-router-dom';
+import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const CARD_SPACING = sizes.spacing.lg;
@@ -50,12 +49,4 @@ export const StyledFooter = styled.footer`
   display: flex;
   gap: ${sizes.spacing.md};
   flex-wrap: wrap;
-`;
-
-export const StyledLink = styled(Link)`
-  ${gradients.bgLinearGradient()};
-  padding: ${sizes.spacing.sm} ${sizes.spacing.md};
-  border-radius: ${sizes.rounded.md};
-  color: ${({ theme }) => theme.colors.gray[700]};
-  font-weight: 500;
 `;
