@@ -43,7 +43,7 @@ function LoanCard({ type, data }) {
         <StyledDate>
           {t('date')}: {data.date}
         </StyledDate>
-        <SeeDetailsLink />
+        <SeeDetailsLink dataId={data.id} />
       </StyledFooter>
     </StyledContainer>
   );

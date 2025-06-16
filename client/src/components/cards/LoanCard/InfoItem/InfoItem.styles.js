@@ -5,6 +5,7 @@ export const StyledContainer = styled.div`
   ${gradients.bgLinearGradient(100)}
   background-color: ${({ theme }) => theme.colors.gray[50]};
   display: flex;
+  justify-content: center;
   flex-direction: column;
   padding: ${sizes.spacing.md};
   border-radius: ${sizes.rounded.md};
