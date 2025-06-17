@@ -1,29 +1,25 @@
-import ItemCategories from '@/components/ItemCategories';
 import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import LoanCard from '@/components/cards/LoanCard';
-import { receivedRequestsData, submittedRequestsData } from './mockData';
+import mockData from './mockData';
+import { FilterItemsProvider } from '@/contexts/FilterItemsContext';
+import FilteredData from '@/components/FilteredData';
 
 function PendingRequests() {
   useUpdatePageLayout('pendingRequests');
   return (
-    <>
-      <ItemCategories
-        dataType="request"
+    <FilterItemsProvider
+      data={mockData}
+      config={{
+        filterTypes: ['received', 'submitted'],
+        initialFilter: 'received',
+        filterByProp: 'category',
+      }}
+    >
+      <FilteredData
         DataCard={LoanCard}
-        categories={[
-          {
-            name: 'received',
-            title: 'receivedRequests',
-            data: receivedRequestsData,
-          },
-          {
-            name: 'submitted',
-            title: 'submittedRequests',
-            data: submittedRequestsData,
-          },
-        ]}
+        configDataCard={{ loanType: 'request' }}
       />
-    </>
+    </FilterItemsProvider>
   );
 }
 

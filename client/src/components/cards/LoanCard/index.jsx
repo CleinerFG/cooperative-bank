@@ -14,9 +14,9 @@ import SeeDetailsLink from './SeeDetailsLink';
 import { User } from 'lucide-react';
 import configByType from './configByType';
 
-function LoanCard({ type, data }) {
+function LoanCard({ loanType, ...data }) {
   const { t } = useTranslation();
-  const config = configByType[type](t, data);
+  const config = configByType[loanType](t, data);
 
   return (
     <StyledContainer>

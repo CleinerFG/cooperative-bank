@@ -1,29 +1,25 @@
-import ItemCategories from '@/components/ItemCategories';
 import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import LoanCard from '@/components/cards/LoanCard';
-import { receivableLoansData, payableLoansData } from './mockData';
+import mockData from './mockData';
+import { FilterItemsProvider } from '@/contexts/FilterItemsContext';
+import FilteredData from '@/components/FilteredData';
 
 function LoansHistory() {
   useUpdatePageLayout('loansHistory');
   return (
-    <>
-      <ItemCategories
-        dataType="history"
+    <FilterItemsProvider
+      data={mockData}
+      config={{
+        filterTypes: ['receivable', 'payable'],
+        initialFilter: 'receivable',
+        filterByProp: 'category',
+      }}
+    >
+      <FilteredData
         DataCard={LoanCard}
-        categories={[
-          {
-            name: 'receivable',
-            title: 'receivableLoans',
-            data: receivableLoansData,
-          },
-          {
-            name: 'payable',
-            title: 'payableLoans',
-            data: payableLoansData,
-          },
-        ]}
+        configDataCard={{ loanType: 'history' }}
       />
-    </>
+    </FilterItemsProvider>
   );
 }
 

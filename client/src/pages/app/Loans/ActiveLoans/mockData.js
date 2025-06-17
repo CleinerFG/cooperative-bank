@@ -1,10 +1,11 @@
-export const receivableLoansData = [
+export default [
   {
     id: 1,
     debtor: 'Claudette',
     value: 2000,
     amountPaid: 1300,
     date: '10/04/2025',
+    category: 'receivable',
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const receivableLoansData = [
     value: 4500,
     amountPaid: 6,
     date: '12/05/2025',
+    category: 'receivable',
   },
   {
     id: 3,
@@ -19,28 +21,30 @@ export const receivableLoansData = [
     value: 400,
     amountPaid: 300,
     date: '05/01/2025',
+    category: 'receivable',
   },
-];
-export const payableLoansData = [
   {
-    id: 1,
+    id: 4,
     creditor: 'Negan',
     value: 2000,
     amountPaid: 480,
     date: '02/03/2025',
+    category: 'payable',
   },
   {
-    id: 2,
+    id: 5,
     creditor: 'Julia',
     value: 4500,
     amountPaid: 600,
     date: '22/02/2025',
+    category: 'payable',
   },
   {
-    id: 3,
+    id: 6,
     creditor: 'Marisa',
     value: 400,
     amountPaid: 356,
     date: '12/03/2025',
+    category: 'payable',
   },
 ];

@@ -1,10 +1,11 @@
-export const receivedRequestsData = [
+export default [
   {
     id: 1,
     debtor: 'Lara Croft',
     value: 2000,
     term: 48,
     date: '10/05/2025',
+    category: 'received',
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const receivedRequestsData = [
     value: 4500,
     term: 6,
     date: '12/05/2025',
+    category: 'received',
   },
   {
     id: 3,
@@ -19,28 +21,30 @@ export const receivedRequestsData = [
     value: 400,
     term: 3,
     date: '15/05/2025',
+    category: 'received',
   },
-];
-export const submittedRequestsData = [
   {
-    id: 1,
+    id: 4,
     creditor: 'Negan',
     value: 2000,
     term: 48,
     date: '10/05/2025',
+    category: 'submitted',
   },
   {
-    id: 2,
+    id: 5,
     creditor: 'Rick',
     value: 4500,
     term: 6,
     date: '12/05/2025',
+    category: 'submitted',
   },
   {
-    id: 3,
+    id: 6,
     creditor: 'Mike',
     value: 400,
     term: 3,
     date: '15/05/2025',
+    category: 'submitted',
   },
 ];
