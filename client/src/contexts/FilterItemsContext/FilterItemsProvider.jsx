@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import InstallmentsContext from './FilterItemsContext';
 import reducer from './reducer';
-import filterData from './filterData';
+import { getFilteredDataByType } from './utils';
 
 function FilterItemsProvider({ config, data, children }) {
   const [state, dispatch] = useReducer(reducer, {
@@ -12,10 +12,11 @@ function FilterItemsProvider({ config, data, children }) {
     },
     activeFilter: config.initialFilter,
     data: data,
-    filteredDataByType: config.filterTypes.reduce((acc, filterT) => {
-      acc[filterT] = filterData(filterT, data);
-      return acc;
-    }, {}),
+    filteredDataByType: getFilteredDataByType(
+      data,
+      config.filterTypes,
+      config.filterByProp
+    ),
   });
 
   return (
