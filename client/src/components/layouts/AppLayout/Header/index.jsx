@@ -1,4 +1,4 @@
-import Notifications from './Notifications';
+import Notifications from '@/components/Notifications';
 import ToggleVisibility from './ToggleVisibility';
 import { StyledHeader } from './Header.styles';
 
