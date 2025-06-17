@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { gradients, sizes } from '@/styles/abstracts';
 
 export const StyledHeader = styled.header`
+  z-index: 999;
+  position: relative;
   height: 4rem;
   display: flex;
   gap: ${sizes.spacing.md};

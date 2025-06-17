@@ -2,6 +2,7 @@ import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledBackdropStyle = styled.div`
+  backdrop-filter: blur(5px);
   position: fixed;
   top: 0;
   left: 0;
