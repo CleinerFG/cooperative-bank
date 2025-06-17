@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Button from '@/components/formElements/Button';
-import { StyledFooter } from './Installment.styles';
+import { StyledFooter } from './InstallmentCard.styles';
 
 function Footer({ isPaid, isPayable }) {
   const { t } = useTranslation();

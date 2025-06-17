@@ -4,7 +4,7 @@ import {
   StyledItem,
   StyledLabel,
   StyledValue,
-} from './Installment.styles';
+} from './InstallmentCard.styles';
 import { formatDate, numberToCurrency } from '@/utils/formatters';
 
 function Content({ value, dueDate }) {

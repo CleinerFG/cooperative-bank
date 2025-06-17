@@ -1,10 +1,10 @@
-import { StyledContainer } from './Installment.styles';
+import { StyledContainer } from './InstallmentCard.styles';
 
 import Footer from './Footer';
 import Header from './Header';
 import Content from './Content';
 
-function Installment({
+function InstallmentCard({
   value = 500,
   dueDate = new Date(),
   status = 'overdue',
@@ -20,4 +20,4 @@ function Installment({
   );
 }
 
-export default Installment;
+export default InstallmentCard;

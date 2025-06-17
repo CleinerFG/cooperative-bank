@@ -3,7 +3,7 @@ import {
   StyledHeader,
   StyledSequence,
   StyledStatus,
-} from './Installment.styles';
+} from './InstallmentCard.styles';
 import { CheckCircle, CircleAlert, Clock } from 'lucide-react';
 
 function Header({ sequence, status }) {

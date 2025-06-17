@@ -2,9 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import { FilterItemsProvider } from '@/contexts/FilterItemsContext';
 import FilteredData from '@/components/FilteredData';
+import InstallmentCard from '@/components/cards/InstallmentCard';
 import DetailItem from '@/components/DetailItem';
 import mockData from './mockData';
-import Installment from './Installment';
 import { Fingerprint } from 'lucide-react';
 
 function InstallmentsPage() {
@@ -22,7 +22,7 @@ function InstallmentsPage() {
     >
       <DetailItem label="ID" value={params.loanId} Icon={Fingerprint} />
       <FilteredData
-        DataCard={Installment}
+        DataCard={InstallmentCard}
         configDataCard={{ isPayable: true }}
       />
     </FilterItemsProvider>
