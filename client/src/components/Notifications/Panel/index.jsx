@@ -4,8 +4,8 @@ import { useDelayedUnmount } from '@/hooks/useDelayedUnmount';
 import useHiddenBodyOverFlow from '@/hooks/useHiddenBodyOverflow';
 import SlideDownAnimation from '@/components/animations/SlideDownAnimation';
 import { StyledBackdrop, StyledContainer } from './Panel.styles';
-import { StyledTitle } from './Panel.styles';
 import Content from './Content';
+import Header from './Header';
 
 function Panel() {
   const { panelIsOpen } = useNotifications();
@@ -21,7 +21,7 @@ function Panel() {
           onAnimationComplete={handleAnimationComplete}
         >
           <StyledContainer>
-            <StyledTitle>Notificações</StyledTitle>
+            <Header />
             <Content />
           </StyledContainer>
         </SlideDownAnimation>

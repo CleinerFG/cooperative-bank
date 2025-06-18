@@ -3,7 +3,6 @@ import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledBackdrop = styled(StyledBackdropStyle)`
-  top: 4rem;
   z-index: 998;
   display: grid;
   grid-template-columns: 1fr;
@@ -12,6 +11,9 @@ export const StyledBackdrop = styled(StyledBackdropStyle)`
 `;
 
 export const StyledContainer = styled.div`
+  max-width: 768px;
+  margin: auto;
+  margin-top: 4rem; // Header size
   display: flex;
   flex-direction: column;
   gap: ${sizes.spacing.lg};
@@ -19,10 +21,6 @@ export const StyledContainer = styled.div`
   padding-bottom: ${sizes.spacing.xl};
   border-radius: 0 0 ${sizes.spacing.lg} ${sizes.spacing.lg};
   background-color: ${({ theme }) => theme.colors.gray[100]};
-`;
-
-export const StyledTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.gray[800]};
 `;
 
 export const StyledContent = styled.div`
