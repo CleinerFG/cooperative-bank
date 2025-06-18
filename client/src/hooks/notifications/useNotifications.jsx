@@ -8,15 +8,22 @@ function useNotifications() {
   const setNotificationRead = (id) =>
     dispatch({ type: 'SET_NOTIFICATION_READ', payload: { id } });
 
+  const setAllNotificationsRead = () =>
+    dispatch({ type: 'SET_ALL_NOTIFICATIONS_READ' });
+
   const removeNotification = (id) =>
     dispatch({ type: 'REMOVE_NOTIFICATION', payload: { id } });
 
+  const removeAllNotifications = () =>
+    dispatch({ type: 'REMOVE_ALL_NOTIFICATIONS' });
   return {
     panelIsOpen: state.panelIsOpen,
     notifications: state.notifications,
     togglePanelIsOpen,
     setNotificationRead,
+    setAllNotificationsRead,
     removeNotification,
+    removeAllNotifications,
   };
 }
 

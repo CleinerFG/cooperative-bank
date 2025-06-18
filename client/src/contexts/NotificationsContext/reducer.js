@@ -14,11 +14,28 @@ function reducer(state, action) {
       };
     }
 
+    case 'SET_ALL_NOTIFICATIONS_READ': {
+      return {
+        ...state,
+        notifications: state.notifications.map((notif) => ({
+          ...notif,
+          isRead: true,
+        })),
+      };
+    }
+
     case 'REMOVE_NOTIFICATION': {
       const id = action.payload.id;
       return {
         ...state,
         notifications: state.notifications.filter((notif) => notif.id !== id),
+      };
+    }
+
+    case 'REMOVE_ALL_NOTIFICATIONS': {
+      return {
+        ...state,
+        notifications: [],
       };
     }
 
