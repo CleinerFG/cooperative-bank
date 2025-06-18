@@ -1,5 +1,5 @@
 import { StyledBackdropStyle } from '@/components/modals/Modal/Modal.styles';
-import { sizes } from '@/styles/abstracts';
+import { font, sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledBackdrop = styled(StyledBackdropStyle)`
@@ -27,4 +27,24 @@ export const StyledContent = styled.div`
   display: flex;
   gap: ${sizes.spacing.md};
   flex-direction: column;
+`;
+
+export const StyledWithoutNotifications = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: ${sizes.spacing.lg};
+
+  svg {
+    width: 4rem;
+    height: 4rem;
+    stroke: ${({ theme }) => theme.colors.gray[400]};
+  }
+`;
+
+export const StyledMessage = styled.span`
+  font-weight: 600;
+  font-size: ${font.size.lg};
+  color: ${({ theme }) => theme.colors.gray[700]};
 `;

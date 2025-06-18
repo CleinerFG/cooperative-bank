@@ -117,6 +117,7 @@
     "username": "Nome de usuário",
     "value": "Valor",
     "variableIncome": "Renda Variável",
-    "verified": "Verificado"
+    "verified": "Verificado",
+    "withoutNotifications": "Sem Notificações"
   }
 }
