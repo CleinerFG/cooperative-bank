@@ -4,7 +4,10 @@ import ButtonLink from '@/components/ui/ButtonLink';
 function Footer() {
   return (
     <StyledFooter>
-      <ButtonLink label='adjustGoal'/>
+      <ButtonLink
+        label="adjustGoal"
+        navigateTo="settings/account-preferences"
+      />
     </StyledFooter>
   );
 }
