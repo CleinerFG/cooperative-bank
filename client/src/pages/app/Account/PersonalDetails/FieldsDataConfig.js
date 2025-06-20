@@ -21,6 +21,6 @@ export const personalData = [
 ];
 
 export const importantDates = [
-  { label: 'birth', initialValue: '10/03/2004', isEditable: false },
+  { label: 'birthDate', initialValue: '10/03/2004', isEditable: false },
   { label: 'registrationData', initialValue: '15/03/2025', isEditable: false },
 ];

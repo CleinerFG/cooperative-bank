@@ -3,5 +3,5 @@ import { loginPasswordRules } from '@/utils/validation/yupFieldRules';
 
 export default yup.object({
   newPassword: loginPasswordRules,
-  currentPassword: yup.string().required('requiredCurrentPass'),
+  currentPassword: yup.string().required('requiredField'),
 });

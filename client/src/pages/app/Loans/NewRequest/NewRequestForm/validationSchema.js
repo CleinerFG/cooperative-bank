@@ -4,15 +4,15 @@ import { cpfValidator } from '@/utils/validators';
 export default yup.object({
   creditor: yup
     .string()
-    .required('requiredCpf')
+    .required('requiredField')
     .test('is-valid-cpf', 'invalidCpf', cpfValidator),
 
   requestedAmount: yup
     .number()
-    .required('requiredValue')
+    .required('requiredField')
     .min(10, { key: 'minValue', interpolations: { value: 'R$ 10,00' } }),
 
-  installments: yup.string().required('requiredInstallments'),
+  installments: yup.string().required('requiredField'),
 
-  modality: yup.string().required('requiredModality'),
+  modality: yup.string().required('requiredField'),
 });

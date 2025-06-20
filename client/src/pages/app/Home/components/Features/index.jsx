@@ -17,7 +17,7 @@ const items = [
     tags: [
       { label: 'personal', Icon: UserRoundCheck },
       { label: 'automotive', Icon: CarFront },
-      { label: 'realState', Icon: Building2 },
+      { label: 'realEstate', Icon: Building2 },
     ],
     Icon: HandCoins,
   },

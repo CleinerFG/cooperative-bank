@@ -10,7 +10,7 @@ import {
 
 export const loginPasswordRules = yup
   .string()
-  .required('requiredPass')
+  .required('requiredField')
   .test(repetitionTestRule)
   .test(sequenceTestRule)
   .test(hasNumberTestRule)

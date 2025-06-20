@@ -3,7 +3,7 @@ import { Building2, CarFront, UserRoundCheck } from 'lucide-react';
 export const modalityOptions = [
   { label: 'personal', value: 'personal', Icon: UserRoundCheck },
   { label: 'automotive', value: 'automotive', Icon: CarFront },
-  { label: 'realState', value: 'realState', Icon: Building2 },
+  { label: 'realEstate', value: 'realEstate', Icon: Building2 },
 ];
 
 export const installmentOptions = [
