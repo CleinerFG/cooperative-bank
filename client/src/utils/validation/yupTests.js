@@ -1,7 +1,13 @@
-import { findRepetition, findSequence } from './helpers';
+import { cpfIsValid, findRepetition, findSequence } from './helpers';
+
+export const cpfTestRule = {
+  name: 'cpf-is-valid',
+  message: 'invalidCpf',
+  test: cpfIsValid,
+};
 
 export const repetitionTestRule = {
-  name: 'notRepetition',
+  name: 'not-repetition',
   message: ({ value }) => {
     const rep = findRepetition(value);
     return { key: 'invalidRepetition', interpolations: { repetition: rep } };
@@ -12,7 +18,7 @@ export const repetitionTestRule = {
 };
 
 export const sequenceTestRule = {
-  name: 'notSequence',
+  name: 'not-sequence',
   message: ({ value }) => {
     const seq = findSequence(value);
     return { key: 'invalidSequence', interpolations: { sequence: seq } };
@@ -23,31 +29,31 @@ export const sequenceTestRule = {
 };
 
 export const onlyNumbersTestRule = {
-  name: 'onlyNumbers',
+  name: 'only-numbers',
   message: 'fieldOnlyNum',
-  test: (value) => /^[0-9]+$/.test(value || ''),
+  test: (value) => /^[0-9]+$/.test(value),
 };
 
 export const hasNumberTestRule = {
-  name: 'hasNumber',
+  name: 'has-number',
   message: 'passMustHaveNum',
   test: (value) => /\d/.test(value),
 };
 
 export const hasUppercaseTestRule = {
-  name: 'hasUppercase',
+  name: 'has-uppercase',
   message: 'passMustHaveUpperChar',
   test: (value) => /[A-Z]/.test(value),
 };
 
 export const hasLowercaseTestRule = {
-  name: 'hasLowercase',
+  name: 'has-lowercase',
   message: 'passMustHaveLowerChar',
   test: (value) => /[a-z]/.test(value),
 };
 
 export const hasSpecialCharTestRule = {
-  name: 'hasSpecialChar',
+  name: 'has-special-Char',
   message: 'passMustHaveSpecialChar',
   test: (value) => /[^a-zA-Z0-9]/.test(value),
 };

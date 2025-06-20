@@ -1,11 +1,8 @@
 import * as yup from 'yup';
-import { cpfValidator } from '@/utils/validators';
+import { cpfTestRule } from '@/utils/validation/yupTests';
 
 export default yup.object({
-  creditor: yup
-    .string()
-    .required('requiredField')
-    .test('is-valid-cpf', 'invalidCpf', cpfValidator),
+  creditor: yup.string().required('requiredField').test(cpfTestRule),
 
   requestedAmount: yup
     .number()
