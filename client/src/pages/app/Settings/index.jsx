@@ -1,6 +1,6 @@
 import { useUpdatePageLayout } from '@/hooks/pageLayout';
 import NavigationCards from '@/components/containers/NavigationCards';
-import { Eclipse, Languages } from 'lucide-react';
+import { Eclipse, Languages, LockKeyhole, UserRoundCog } from 'lucide-react';
 
 const BASE_ROUTE = '/app/settings';
 const settingsOptions = [
@@ -13,6 +13,16 @@ const settingsOptions = [
     label: 'languages',
     navigateTo: BASE_ROUTE + '/languages',
     Icon: Languages,
+  },
+  {
+    label: 'accountPreferences',
+    navigateTo: BASE_ROUTE + '/account-preferences',
+    Icon: UserRoundCog,
+  },
+  {
+    label: 'security',
+    navigateTo: BASE_ROUTE + '/security',
+    Icon: LockKeyhole,
   },
 ];
 
