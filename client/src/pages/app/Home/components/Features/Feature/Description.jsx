@@ -1,0 +1,9 @@
+import { useTranslation } from 'react-i18next';
+import { StyledText } from '@/components/cards/BaseCard/BaseCard.styles';
+
+function Description({ texts }) {
+  const { t } = useTranslation();
+  return texts.map((txt, i) => <StyledText key={i}>{t(txt)}</StyledText>);
+}
+
+export default Description;
