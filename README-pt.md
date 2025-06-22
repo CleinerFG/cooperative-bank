@@ -7,87 +7,89 @@
 
 ## Descrição
 
-Este é um projeto web de Aplicação de Página Única (SPA) que simula um banco cooperativo entre pessoas, desenvolvido utilizando `HTML`, `CSS` e `JavaScript`. O projeto utiliza `webpack` para compilar e otimizar os arquivos. Ele é dividido em duas partes principais: `app` e `public`.
+Este é um projeto web de Aplicação de Página Única (SPA) que simula um banco cooperativo entre pessoas. O projeto é dividido em duas partes: `client`, para os arquivos front-end, e `server`, para os arquivos back-end.
 
-O servidor é implementado com `Express.js`, mas atualmente funciona como uma configuração básica para testes de funcionalidades do front-end.
+## Tecnologias
 
-O projeto segue a arquitetura MVC, organizando funções e classes de forma modular para aderir aos princípios da POO. Ele enfatiza práticas de código limpo, utilizando JSDoc para melhorar o entendimento e a manutenção do código.
+### Client
 
-## SPA: app e public
+- **`Core`**: Construído com a biblioteca `React.js`.
 
-- **`app`**: A área logada da aplicação, que fornece funcionalidades relacionadas ao banco, como empréstimos, visão geral da conta, acompanhamento de saldo e outras funcionalidades.
+- **`Roteamento`**: A biblioteca utilizada para roteamento, organização e hierarquia de páginas é `React Router DOM`.
 
-- **`public`**: A área não logada, incluindo a página inicial, login e funcionalidades de registro.
+- **`Formulários`**: O projeto utiliza as bibliotecas `React Hook Form` e `Yup` para validação e gerenciamento de formulários.
 
-## Estrutura do Projeto
+- **`Estilização e Animações`**: O projeto utiliza `Styled Components` para componentes customizados com estilos. Para animações complexas, que dependem da montagem e desmontagem de componentes, é utilizado o `Framer Motion`.
 
-- **`client/`**: Contém os arquivos do front-end.
-- **`server/`**: Contém os arquivos do back-end.
-- **`testing/`**: Um espaço dedicado para testar novas funcionalidades.
+- **`Tradução`**: O projeto atualmente suporta dois idiomas — inglês e português-BR — por meio da biblioteca `React i18next`.
 
-### Front-end
+- **`Inicialização e Boilerplate`**: Para boilerplate, servidor local de desenvolvimento e compilação, é utilizado o `Vite`.
 
-- **`global/`**: Classes, funções e estilizações CSS compartilhadas entre `App` e `Public`.
-- **`app/` - `public/`**: Classes, componentes, implementações e estilização CSS específicas para cada um.
+### Server
 
-### Back-end
+- **`Core`**: Construído com a biblioteca `Express.js`.
 
-- **`db/`**: Arquivos de dados para as APIs de teste, do front-end.
+- **`Banco de Dados`**: O SGBD utilizado é o `MySQL`. Também é usada a biblioteca ORM `Sequelize`.
+
+- **`Autenticação`**: Para autenticação via cookies enviados do servidor para o client, é utilizado o `JSON Web Token`.
+
+- **`Validação Estática`**: A pré-validação — como formatos, tipos de dados etc. —, ou seja, todo tipo de validação que não necessita de consulta ao banco de dados ou regras de negócio, é feita com middlewares usando `Express Validator`.
+
+- **`Arquitetura`**:
+  - `Model`: Modelo de dados do Sequelize.
+  - `Repository`: Abstração de queries utilizando o model.
+  - `Service`: Regras de negócio e validações com acesso ao banco de dados, consumindo os repositories.
+  - `Controller`: Comunicação direta via HTTP com o client.
+
+O projeto segue a arquitetura limpa, organizando funções e classes de forma modular para aderir aos princípios da POO, com ênfase em práticas de código limpo.
 
 ## Inicialização
 
 ### Instalar Dependências
 
-- Execute o comando na raiz do projeto **`/`**.
+- Execute o comando em **`/client`** e **`/server`**:
   ```bash
-  npm run install
+  npm install
   ```
 
 ### Configuração do Projeto
 
-- `Ip e Porta`: Defina a localização do servidor.
+- Crie um arquivo `.env` em **`server/.env`**.
 
-  - Crie um arquivo `.env` em **`server/.env`** e **`client/.env`**.
+  - **`server/.env`**: Configure as variáveis de ambiente do servidor e do banco de dados MySQL:
 
-    - **`server/.env`**:
-
-    ```
-    HOST=localhost
-    PORT=8080
-    ```
-
-    - **`client/.env`**:
-
-    ```
-    SERVER_HOST=localhost
-    SERVER_PORT=8080
+    ```env
+    NODE_ENV
+    COOKIE_SECRET
+    SERVER_HOST
+    SERVER_PORT
+    MYSQL_HOST
+    MYSQL_PORT
+    MYSQL_USER
+    MYSQL_PASSWORD
     ```
 
-  **Nota:** Para configurar servidor em outro endereço basta atualizar as variáveis em ambos. Por padrão é definido como `locahost:8080`.
+### Modos (Desenvolvimento / Produção)
 
-### Iniciar (Desenvolvimento ou Produção)
-
-- Execute os comandos na raiz do projeto **`/`**.
-
-- `Modo de Produção`:
+- Em **`/client`**:
 
   ```bash
-  npm run start:client
-  npm run start:server
+  npm run dev
+  npm run build
   ```
 
-- `Modo de Desenvolvimento`:
+  Vizualização do projeto em `localhost/app` após executar o comando `npm run dev`.
+
+- Em **`/server`**:
 
   ```bash
-  npm run dev:client
-  npm run dev:server
+  npm run dev
+  npm start
   ```
 
-  - **`server/.env`**: Adicionar `NODE_ENV=production`, por padrão essa variável é definida como `development`.
+- **Simular Atraso**: Onde há requisições para `/api`, o client exibe skeletons ou loaders. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso nas respostas para que esses elementos sejam visíveis.
 
-- `Dev-test`: Onde há requisições a `/api`, há skelons ou loaders no client. Quando o servidor estiver rodando localmente, é necessário adicionar um atraso para que eles sejam visíveis.
-
-  - Defina o tempo em milissegundos **`server/src/constants/serverConstants.js`**:
+  - Defina o tempo em milissegundos no arquivo **`server/src/constants/serverConstants.js`**:
 
     ```js
     const SIMULATE_RES_DELAY = 3000;
@@ -95,8 +97,24 @@ O projeto segue a arquitetura MVC, organizando funções e classes de forma modu
 
   - No ambiente de produção, basta remover o middleware:
 
-    **`server/src/server.js`**
+    Arquivo: **`server/src/server.js`**
 
     ```js
     app.use('/api', simulateDelayMiddleware);
     ```
+
+## Futuras Implementações
+
+- **`/client`**:
+
+  - Busca de dados no servidor através de `Axios` e gerenciamento com `React Query`.
+  - Proteção de rotas com base na autenticação.
+  - Testes com `Jest` e `React Testing Library`.
+
+- **`/server`**:
+
+  - Comunicação em tempo real com o client para envio de notificações e autenticação com `WebSockets`.
+  - Armazenamento de configurações da conta do usuário e notificações usando `MongoDB`.
+  - Armazenamento em cache de usuários autenticados com `Redis`, permitindo controle total do servidor sobre autenticação e desautenticação.
+  - O `Redis` também permitirá aumentar a velocidade das queries SQL, armazenando o ID real e o Opaque ID de usuários autenticados e online. Para o client, será exposto apenas o Opaque ID.
+  - Testes com `Jest`.

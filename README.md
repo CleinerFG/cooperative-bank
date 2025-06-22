@@ -1,102 +1,120 @@
 # Cooperative Bank
 
-## README File Languages
+## README Languages
 
 - [English](README.md)
 - [Portuguese-BR](README-pt.md)
 
 ## Description
 
-This is a Single Page Application (SPA) web project simulating a cooperative bank between people, built using `HTML`, `CSS`, and `JavaScript`. The project utilizes `webpack` to compile and optimize files. It is divided into two main parts: `app` and `public`.
+This is a web project for a Single Page Application (SPA) that simulates a cooperative bank between individuals. The project is divided into two parts: `client` for front-end files, and `server` for back-end files.
 
-The server is implemented with `Express.js`, but currently serves as a basic setup for front-end testing features.
+## Technologies
 
-The project follows the MVC architecture, organizing functions and classes modularly to adhere to OOP principles. It emphasizes clean code practices, using JSDoc to enhance understanding and maintainability.
+### Client
 
-## SPA: app and public
+- **`Core`**: Built with the `React.js` library.
 
-- **`app`**: The logged-in area of the application, providing bank-related front-end features such as loans, account overview, balance tracking, and other functionalities.
+- **`Routing`**: The library used for routing, page organization, and hierarchy is `React Router DOM`.
 
-- **`public`**: The unlogged area, including the landing page, login, and registration features.
+- **`Forms`**: The project uses `React Hook Form` and `Yup` for form management and validation.
 
-## Project Structure
+- **`Styling and Animations`**: The project uses `Styled Components` for custom-styled components. For complex animations that depend on component mounting and unmounting, `Framer Motion` is used.
 
-- **`client/`**: Contains front-end files.
-- **`server/`**: Contains back-end files.
-- **`testing/`**: A dedicated space for testing new features.
+- **`Translation`**: The project currently supports two languages — English and Brazilian Portuguese — using the `React i18next` library.
 
-### Front-end
+- **`Initialization and Boilerplate`**: `Vite` is used for boilerplate, local development server, and bundling.
 
-- **`global/`**: Classes, functions, and CSS styles shared between `App` and `Public`.
-- **`app/` - `public/`**: Classes, components, implementations, and CSS styling specific to each one.
+### Server
 
-### Back-end
+- **`Core`**: Built with the `Express.js` framework.
 
-- **`db/`**: Data files for the test APIs, from the front end.
+- **`Database`**: The DBMS used is `MySQL`, along with the `Sequelize` ORM library.
 
-## Initialization
+- **`Authentication`**: Authentication is handled via cookies sent from the server to the client using `JSON Web Token`.
+
+- **`Static Validation`**: Pre-validation (such as data formats, types, etc.) — i.e., any validation that doesn't require database queries or business logic — is handled using middlewares with `Express Validator`.
+
+- **`Architecture`**:
+  - `Model`: Sequelize data model.
+  - `Repository`: Query abstraction layer using the model.
+  - `Service`: Business logic and validations with database access, consuming the repositories.
+  - `Controller`: Direct HTTP communication with the client.
+
+The project follows clean architecture, organizing functions and classes modularly to adhere to OOP principles, with emphasis on clean code practices.
+
+## Getting Started
 
 ### Install Dependencies
 
-- Run the command at the root of the project **`/`**.
+- Run the command in **`/client`** and **`/server`**:
   ```bash
-  npm run install
+  npm install
   ```
 
-### Project Config
+### Project Configuration
 
-- `Ip and Port`: Sets the server location.
+- Create a `.env` file in **`server/.env`**.
 
-  - Create a file `.env` in **`server/.env`** and **`client/.env`**.
+  - **`server/.env`**: Configure the environment variables for the server and MySQL database:
 
-    - **`server/.env`**:
-
-    ```
-    HOST=localhost
-    PORT=8080
-    ```
-
-    - **`client/.env`**:
-
-    ```
-    SERVER_HOST=localhost
-    SERVER_PORT=8080
+    ```env
+    NODE_ENV
+    COOKIE_SECRET
+    SERVER_HOST
+    SERVER_PORT
+    MYSQL_HOST
+    MYSQL_PORT
+    MYSQL_USER
+    MYSQL_PASSWORD
     ```
 
-  **Note:** To configure the server at another address, simply update the variables in both. By default it is set to `locahost:8080`.
+### Modes (Development / Production)
 
-### Start (Development or Production)
-
-- Run the commands at the project root **`/`**.
-
-- `Production Mode`:
+- In **`/client`**:
 
   ```bash
-  npm run start:client
-  npm run start:server
+  npm run dev
+  npm run build
   ```
 
-- `Development Mode`:
+  Viewing the project in `localhost/app` after running the `npm run dev` command.
+
+- In **`/server`**:
 
   ```bash
-  npm run dev:client
-  npm run dev:server
+  npm run dev
+  npm start
   ```
 
-  - **`server/.env`**: Add `NODE_ENV=production`, by default this variable is set to `development`.
+- **Simulate Delay**: When there are requests to `/api`, the client displays skeletons or loaders. If the server is running locally, a delay must be added to the responses so that these elements are visible.
 
-- `Dev-test`: Where there are requests to `/api`, there are skelons or loaders in the client. When running the server locally, you need to add a delay to make them visible.
-
-  - Set the time in milliseconds **`server/src/constants/serverConstants.js`**:
+  - Set the time in milliseconds in the file **`server/src/constants/serverConstants.js`**:
 
     ```js
     const SIMULATE_RES_DELAY = 3000;
     ```
 
-  - In the production environment, just remove de middleware:
+  - In the production environment, simply remove the middleware:
 
-    **`server/src/server.js`**
+    File: **`server/src/server.js`**
 
     ```js
     app.use('/api', simulateDelayMiddleware);
     ```
+
+## Future Implementations
+
+- **`/client`**:
+
+  - Data fetching from the server using `Axios` and state management with `React Query`.
+  - Route protection based on authentication.
+  - Testing with `Jest` and `React Testing Library`.
+
+- **`/server`**:
+
+  - Real-time communication with the client for sending notifications and authentication using `WebSockets`.
+  - Storing user account settings and notifications using `MongoDB`.
+  - Caching authenticated users with `Redis`, allowing full control by the server over authentication and deauthentication.
+  - `Redis` will also help speed up SQL queries by storing both the real and opaque user IDs. Only the opaque ID will be exposed to the client.
+  - Testing with `Jest`.
