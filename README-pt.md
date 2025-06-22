@@ -78,7 +78,7 @@ O projeto segue a arquitetura limpa, organizando funções e classes de forma mo
   npm run build
   ```
 
-  Vizualização do projeto em `localhost/app` após executar o comando `npm run dev`.
+  Vizualização do projeto em `http://localhost:5173/app` após executar o comando `npm run dev`.
 
 - Em **`/server`**:
 

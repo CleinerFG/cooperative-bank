@@ -78,7 +78,7 @@ The project follows clean architecture, organizing functions and classes modular
   npm run build
   ```
 
-  Viewing the project in `localhost/app` after running the `npm run dev` command.
+  Viewing the project in `http://localhost:5173/app` after running the `npm run dev` command.
 
 - In **`/server`**:
 
