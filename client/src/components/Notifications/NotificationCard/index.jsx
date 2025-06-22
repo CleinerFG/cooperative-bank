@@ -1,5 +1,9 @@
 import { useNotifications } from '@/hooks/notifications';
-import { StyledContainer } from './NotificationCard.styles';
+import {
+  StyledContainer,
+  StyledContent,
+  StyledIconContainer,
+} from './NotificationCard.styles';
 import { Trash } from 'lucide-react';
 import EnterAndExitAnimation from '@/components/animations/EnterAndExitAnimation';
 import useDelayedRemoval from '@/hooks/useDelayedRemoval';
@@ -20,9 +24,14 @@ function NotificationCard({ id, isRead }) {
       isVisible={isVisible}
     >
       <StyledContainer $isRead={isRead} onClick={handleRead}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-        distinctio
-        <Trash onClick={unmountComponent} />
+        <StyledContent>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          </span>
+        </StyledContent>
+        <StyledIconContainer>
+          <Trash onClick={unmountComponent} />
+        </StyledIconContainer>
       </StyledContainer>
     </EnterAndExitAnimation>
   );
