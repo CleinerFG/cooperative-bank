@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
+  color-scheme: ${({ theme }) => theme.mode};
   background-color: ${({ theme }) => theme.colors.neutral[50]};
   min-height: 100dvh;
   display: flex;
