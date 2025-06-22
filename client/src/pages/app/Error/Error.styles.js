@@ -7,3 +7,8 @@ export const StyledContainer = styled.div`
   gap: ${sizes.spacing.xl};
   padding: ${sizes.spacing.lg};
 `;
+
+export const StyledImg = styled.img`
+  width: 100%;
+  max-height: 15rem;
+`;

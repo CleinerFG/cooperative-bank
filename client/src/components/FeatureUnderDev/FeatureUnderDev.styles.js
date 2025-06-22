@@ -28,6 +28,11 @@ export const StyledTitle = styled.h2`
 
 export const StyledContent = styled.main``;
 
+export const StyledImg = styled.img`
+  width: 100%;
+  max-height: 15rem;
+`;
+
 export const StyledTextsContainer = styled.div`
   display: flex;
   flex-direction: column;

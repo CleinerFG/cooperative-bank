@@ -6,7 +6,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import Button from '@/components/formElements/Button';
 import StyledText from '@/components/ui/StyledText';
-import { StyledContainer } from './Error.styles';
+import { StyledContainer, StyledImg } from './Error.styles';
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -28,7 +28,7 @@ export default function ErrorPage() {
   return (
     <StyledContainer>
       <h1>{title}</h1>
-      <img src={imgSrc} alt="Error Icon" />
+      <StyledImg src={imgSrc} alt="Error Icon" />
       <StyledText>{text}</StyledText>
       <Button handleClick={() => navigate(-1)}>{t('back')}</Button>
     </StyledContainer>

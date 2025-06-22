@@ -4,6 +4,7 @@ import {
   StyledContent,
   StyledFooter,
   StyledHeader,
+  StyledImg,
   StyledTextsContainer,
 } from './FeatureUnderDev.styles';
 import { StyledContainer, StyledTitle } from './FeatureUnderDev.styles';
@@ -21,7 +22,7 @@ function FeatureUnderDev() {
         <StyledTitle> {t('featureUnderDev')}</StyledTitle>
       </StyledHeader>
       <StyledContent>
-        <img src="/under-dev.svg" alt="Under Development Page" />
+        <StyledImg src="/under-dev.svg" alt="Under Development Page" />
         <StyledTextsContainer>
           <StyledText>{t('featureUnderDevTxt1')}</StyledText>
           <StyledText>{t('featureUnderDevTxt2')}</StyledText>
