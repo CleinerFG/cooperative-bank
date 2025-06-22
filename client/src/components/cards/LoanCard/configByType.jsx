@@ -1,4 +1,4 @@
-import { numberToCurrency } from '@/utils/formatters';
+import { formatDate, numberToCurrency } from '@/utils/formatters';
 import { BanknoteArrowUp, Calendar, DollarSign } from 'lucide-react';
 
 const configByType = {
@@ -30,7 +30,7 @@ const configByType = {
       { label: 'value', value: numberToCurrency(data.value), Icon: DollarSign },
       {
         label: 'endDate',
-        value: data.endDate,
+        value: formatDate(data.endDate),
         Icon: Calendar,
       },
     ],

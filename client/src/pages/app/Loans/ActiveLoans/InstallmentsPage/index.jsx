@@ -5,11 +5,18 @@ import FilteredData from '@/components/FilteredData';
 import InstallmentCard from '@/components/cards/InstallmentCard';
 import DetailItem from '@/components/DetailItem';
 import mockData from './mockData';
+import loanMockData from '../mockData';
 import { Fingerprint } from 'lucide-react';
 
 function InstallmentsPage() {
   useUpdatePageLayout('loanInstallments');
-  const params = useParams();
+
+  const { loanId } = useParams();
+  const loan = loanMockData.find((item) => item.id === loanId);
+  const installmentsData = mockData.map((item) => ({
+    ...item,
+    value: loan.installmentValue,
+  }));
 
   return (
     <FilterItemsProvider
@@ -18,9 +25,9 @@ function InstallmentsPage() {
         initialFilter: 'all',
         filterByProp: 'status',
       }}
-      data={mockData}
+      data={installmentsData}
     >
-      <DetailItem label="ID" value={params.loanId} Icon={Fingerprint} />
+      <DetailItem label="ID" value={loanId} Icon={Fingerprint} />
       <FilteredData
         DataCard={InstallmentCard}
         configDataCard={{ isPayable: true }}

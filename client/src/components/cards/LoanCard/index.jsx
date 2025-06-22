@@ -13,6 +13,7 @@ import {
 import SeeDetailsLink from './SeeDetailsLink';
 import { User } from 'lucide-react';
 import configByType from './configByType';
+import { formatDate } from '@/utils/formatters';
 
 function LoanCard({ loanType, ...data }) {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ function LoanCard({ loanType, ...data }) {
       </StyledMain>
       <StyledFooter>
         <StyledDate>
-          {t('date')}: {data.date}
+          {t('date')}: {formatDate(data.date)}
         </StyledDate>
         <SeeDetailsLink dataId={data.id} />
       </StyledFooter>

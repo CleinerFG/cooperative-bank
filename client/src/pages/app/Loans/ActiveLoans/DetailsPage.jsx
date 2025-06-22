@@ -13,44 +13,51 @@ import {
 import { StyledItemsContainer } from '../components/DetailsPage.styles';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ButtonLink from '@/components/ui/ButtonLink';
+import mockData from './mockData';
 
 function DetailsPage() {
-  const params = useParams();
   useUpdatePageLayout('activeLoanDetails');
+
+  const { loanId } = useParams();
+  const loan = mockData.find((item) => item.id === loanId);
   return (
     <>
       <StyledItemsContainer>
-        <DetailItem label="ID" value={params.loanId} Icon={Fingerprint} />
-        <DetailItem label="creditor" value="Claudia Silva" Icon={User} />
+        <DetailItem label="ID" value={loanId} Icon={Fingerprint} />
+        <DetailItem
+          label={loan.creditor ? 'creditor' : 'debtor'}
+          value={loan.creditor || loan.debtor}
+          Icon={User}
+        />
         <DetailItem
           label="requestedAmount"
-          value={1000}
+          value={loan.value}
           format="currency"
           Icon={DollarSign}
         />
         <DetailItem
           label="installmentValue"
-          value={250}
+          value={loan.installmentValue}
           format="currency"
           Icon={CircleDollarSign}
         />
         <DetailItem label="term" value={12} format="months" Icon={Clock} />
         <DetailItem
           label="requestDate"
-          value="10/05/2025"
+          value={loan.date}
           format="date"
           Icon={Calendar}
         />
         <DetailItem
           label="interestRate"
-          value={2.5}
+          value={loan.interestRate}
           format="percent"
           Icon={Percent}
         />
         <ProgressBar
           label="paymentProgress"
-          current={1000}
-          total={3000}
+          current={loan.amountPaid}
+          total={loan.value}
           formatCurrency
         />
       </StyledItemsContainer>
