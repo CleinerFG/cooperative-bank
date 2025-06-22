@@ -7,6 +7,9 @@ export const StyledHeader = styled.header`
   gap: ${sizes.spacing.sm};
   padding: ${sizes.spacing.md} ${sizes.spacing.xl};
   ${sizes.border.sm}
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 `;
 
 export const StyledTitle = styled.h2`

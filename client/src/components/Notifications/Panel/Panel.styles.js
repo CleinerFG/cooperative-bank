@@ -1,5 +1,6 @@
 import { StyledBackdropStyle } from '@/components/modals/Modal/Modal.styles';
 import { font, sizes } from '@/styles/abstracts';
+import { appMaxWidth } from '@/styles/abstracts/variables';
 import styled from 'styled-components';
 
 export const StyledBackdrop = styled(StyledBackdropStyle)`
@@ -11,7 +12,7 @@ export const StyledBackdrop = styled(StyledBackdropStyle)`
 `;
 
 export const StyledContainer = styled.div`
-  max-width: 768px;
+  max-width: ${appMaxWidth};
   margin: auto;
   margin-top: 4rem; // Header size
   display: flex;

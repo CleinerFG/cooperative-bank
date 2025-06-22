@@ -1,4 +1,5 @@
 import { sizes } from '@/styles/abstracts';
+import { appMaxWidth } from '@/styles/abstracts/variables';
 import styled from 'styled-components';
 
 export const StyledBackdropStyle = styled.div`
@@ -17,7 +18,7 @@ export const StyledBackdropStyle = styled.div`
 
 export const StyledContainer = styled.div`
   overflow: hidden;
-  width: calc(100vw - 2rem);
+  max-width: ${appMaxWidth};
   position: relative;
   background-color: ${({ theme }) => theme.colors.neutral[0]};
   border-radius: ${sizes.rounded.lg};
