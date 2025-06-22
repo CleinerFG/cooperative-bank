@@ -5,6 +5,7 @@ import settingsRoutes from './settingsRoutes';
 import accountRoutes from './accountRoutes';
 import loansRoutes from './loansRoutes';
 import investmentsRoutes from './investmentsRoutes';
+import transactionsRoutes from './transactionsRoutes';
 
 export default {
   path: '/app',
@@ -16,5 +17,6 @@ export default {
     accountRoutes,
     loansRoutes,
     investmentsRoutes,
+    transactionsRoutes,
   ],
 };
