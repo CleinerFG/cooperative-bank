@@ -77,7 +77,7 @@ export const StyledItem = styled.div`
 `;
 
 export const StyledLabel = styled.span`
-  color: ${({ theme }) => theme.colors.gray[500]};
+  color: ${({ theme }) => theme.colors.gray[600]};
 `;
 
 export const StyledValue = styled.span`

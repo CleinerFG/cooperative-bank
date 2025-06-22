@@ -49,6 +49,7 @@ export const StyledLabelContainer = styled.div`
   display: flex;
   align-items: center;
   gap: ${sizes.spacing.sm};
+  color: ${({ theme }) => theme.colors.gray[700]};
 
   svg {
     width: ${sizes.icon.sm};

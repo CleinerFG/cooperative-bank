@@ -17,10 +17,11 @@ export const StyledCount = styled.span`
   position: absolute;
   top: ${utils.rem(-2)};
   right: ${utils.rem(-6)};
-  background-color: ${({ theme }) => theme.colors.cta[100]};
-  color: ${({ theme }) => theme.colors.neutral[0]};
+  background-color: ${({ theme }) => theme.colors.red[500]};
+  color: ${({ theme }) => theme.colors.gray[100]};
   border-radius: 50%;
   font-size: ${font.size.xs};
+  font-weight: 600;
   width: ${sizes.icon.xs};
   height: ${sizes.icon.xs};
 `;

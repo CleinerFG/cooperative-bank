@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
           grid-template-columns: 3fr 1fr;
           align-items: center;
           ${gradients.bgLinearGradient(200, 60)}
-          font-weight: 600;
+          color: ${({ theme }) => theme.colors.gray[700]};
         `
       : css`
           background-color: ${theme.colors.gray[100]};
@@ -23,7 +23,11 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledLabel = styled.span`
-  color: ${({ theme }) => theme.colors.gray[700]};
+  color: ${({ $active, theme }) => {
+    const variant = $active ? 700 : 600;
+    return theme.colors.gray[variant];
+  }};
+  font-weight: 600;
 `;
 
 export const StyledCount = styled(StyledLabel)`
@@ -32,5 +36,6 @@ export const StyledCount = styled(StyledLabel)`
   justify-content: center;
   align-items: center;
   border-radius: 0 ${sizes.rounded.md} ${sizes.rounded.md} 0;
-  ${gradients.bgLinearGradient(300, 60)}
+  color: ${({ theme }) => theme.colors.gray[700]};
+  ${gradients.bgLinearGradient(300, 60)};
 `;

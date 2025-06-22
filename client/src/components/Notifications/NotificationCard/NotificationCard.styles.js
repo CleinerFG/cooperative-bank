@@ -7,6 +7,8 @@ export const StyledContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral[0]};
   border-left: solid 0.4rem;
   border-left-color: ${({ theme }) => theme.colors.gray[300]};
+  color: ${({ theme }) => theme.colors.gray[600]};
+
   ${({ $isRead, theme }) =>
     !$isRead &&
     css`

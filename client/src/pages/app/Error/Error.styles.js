@@ -1,4 +1,4 @@
-import { font, sizes } from '@/styles/abstracts';
+import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -6,8 +6,4 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   gap: ${sizes.spacing.xl};
   padding: ${sizes.spacing.lg};
-`;
-
-export const StyledText = styled.p`
-  font-family: ${font.family.info};
 `;

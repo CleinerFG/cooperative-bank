@@ -11,6 +11,7 @@ export const StyledButton = styled.button`
 
   svg {
     z-index: 2;
+    stroke: ${({theme})=> theme.colors.gray[900]};
     width: ${sizes.icon.lg};
     height: ${sizes.icon.lg};
   }

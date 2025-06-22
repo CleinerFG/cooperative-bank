@@ -9,7 +9,7 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledIcon = styled(ChevronDown)`
-  stroke: ${({ theme }) => theme.colors.gray[400]};
+  stroke: ${({ theme }) => theme.colors.gray[500]};
   width: ${sizes.icon.sm};
   height: ${sizes.icon.sm};
 
@@ -18,5 +18,5 @@ export const StyledIcon = styled(ChevronDown)`
 `;
 
 export const StyledLabel = styled.span`
-  color: ${({ theme }) => theme.colors.gray[400]};
+  color: ${({ theme }) => theme.colors.gray[500]};
 `;

@@ -19,11 +19,6 @@ export const StyledMain = styled.main`
   gap: ${sizes.spacing.md};
 `;
 
-export const StyledText = styled.p`
-  color: ${({ theme }) => theme.colors.gray[500]};
-  font-weight: 500;
-`;
-
 export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;

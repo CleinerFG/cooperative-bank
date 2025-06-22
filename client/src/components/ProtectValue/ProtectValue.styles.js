@@ -37,5 +37,5 @@ export const StyledDot = styled.div`
   height: ${calculateDotSize};
   border-radius: 50%;
   background-color: ${({ $color = 'gray', theme }) =>
-    theme.colors[$color][400]};
+    theme.colors[$color][500]};
 `;

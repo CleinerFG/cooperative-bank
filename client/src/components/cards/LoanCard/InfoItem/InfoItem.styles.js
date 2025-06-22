@@ -19,17 +19,18 @@ export const StyledLabelContainer = styled.div`
   svg {
     width: ${sizes.icon.xs};
     height: ${sizes.icon.xs};
-    stroke: ${({ theme }) => theme.colors.gray[600]};
+    stroke: ${({ theme }) => theme.colors.gray[700]};
   }
 `;
 
 export const StyledLabel = styled.span`
   font-size: ${font.size.md};
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.gray[600]};
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.gray[700]};
 `;
 
 export const StyledValue = styled(StyledLabel)`
   font-size: ${font.size.lg};
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.gray[700]};
 `;

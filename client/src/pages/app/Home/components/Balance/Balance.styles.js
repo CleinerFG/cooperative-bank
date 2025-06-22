@@ -20,4 +20,5 @@ export const StyledValue = styled.div`
   align-items: center;
   font-size: ${font.size['2xl']};
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.gray[700]};
 `;

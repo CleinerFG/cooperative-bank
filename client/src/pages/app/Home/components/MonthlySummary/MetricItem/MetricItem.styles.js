@@ -39,11 +39,12 @@ export const StyledItem = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: ${sizes.spacing.md};
+  gap: ${sizes.spacing.sm};
 `;
 
 export const StyledLabel = styled.span`
-  color: ${({ theme }) => theme.colors.gray[600]};
+  color: ${({ theme }) => theme.colors.gray[700]};
+  font-weight: 600;
 `;
 
 export const StyledValue = styled.span`

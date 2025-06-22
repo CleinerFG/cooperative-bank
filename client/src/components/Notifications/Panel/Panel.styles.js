@@ -18,7 +18,7 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   gap: ${sizes.spacing.lg};
   padding: ${sizes.spacing.md} ${sizes.spacing.lg};
-  padding-bottom: ${sizes.spacing.xl};
+  padding-bottom: ${sizes.spacing['2xl']};
   border-radius: 0 0 ${sizes.spacing.lg} ${sizes.spacing.lg};
   background-color: ${({ theme }) => theme.colors.gray[100]};
 `;

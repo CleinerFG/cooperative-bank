@@ -17,7 +17,8 @@ export const StyledHeader = styled.div`
   align-items: center;
 
   svg {
-    stroke-width: 2.2;
+    stroke: ${({ theme }) => theme.colors.gray[800]};
+    stroke-width: 2.5;
     width: ${sizes.icon.sm};
     height: ${sizes.icon.sm};
   }

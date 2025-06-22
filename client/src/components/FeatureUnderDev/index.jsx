@@ -4,10 +4,10 @@ import {
   StyledContent,
   StyledFooter,
   StyledHeader,
-  StyledText,
   StyledTextsContainer,
 } from './FeatureUnderDev.styles';
 import { StyledContainer, StyledTitle } from './FeatureUnderDev.styles';
+import StyledText from '@/components/ui/StyledText';
 import { FileCode2 } from 'lucide-react';
 import Button from '../formElements/Button';
 

@@ -14,5 +14,5 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledTitle = styled.h1`
-  font-weight: ${({ $strong }) => ($strong ? 700 : 600)};
+  font-weight: ${({ $strong }) => ($strong ? 800 : 700)};
 `;

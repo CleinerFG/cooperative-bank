@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { StyledText } from '@/components/cards/BaseCard/BaseCard.styles';
+import StyledText from '@/components/ui/StyledText';
 
 function Description({ texts }) {
   const { t } = useTranslation();

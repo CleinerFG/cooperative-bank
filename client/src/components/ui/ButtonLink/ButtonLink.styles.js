@@ -6,7 +6,7 @@ export const StyledLink = styled(Link)`
   ${gradients.bgLinearGradient()};
   padding: ${sizes.spacing.sm} ${sizes.spacing.md};
   border-radius: ${sizes.rounded.md};
-  color: ${({ theme }) => theme.colors.gray[700]};
-  font-weight: 500;
+  color: ${({ theme }) => theme.colors.gray[800]};
+  font-weight: 700;
   text-align: center;
 `;

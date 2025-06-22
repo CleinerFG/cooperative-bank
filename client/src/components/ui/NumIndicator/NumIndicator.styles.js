@@ -17,7 +17,7 @@ export const StyledSubTitle = styled.h3`
 `;
 
 export const StyledValue = styled.span`
-  color: ${({ theme }) => theme.colors.gray[600]};
+  color: ${({ theme }) => theme.colors.gray[700]};
   font-size: ${font.size.lg};
-  font-weight: 700;
+  font-weight: 800;
 `;

@@ -43,10 +43,11 @@ export const StyledButton = styled.button`
   border: solid ${utils.rem(2)};
   border-radius: ${sizes.rounded.lg};
   font-size: ${font.size.md};
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.3s ease;
 
   svg {
+    stroke-width: 2.1;
     width: ${sizes.icon.md};
     height: ${sizes.icon.md};
   }

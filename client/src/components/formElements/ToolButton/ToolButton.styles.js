@@ -4,7 +4,7 @@ import { sizes } from '@/styles/abstracts';
 const getVariantStyle = (variant = { color: 'gray', size: 'xs' }, theme) => {
   return {
     bg: theme.colors[variant.color][100],
-    color: theme.colors[variant.color][600],
+    color: theme.colors[variant.color][700],
     iconSize: sizes.icon[variant.size],
   };
 };

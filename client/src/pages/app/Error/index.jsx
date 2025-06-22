@@ -5,7 +5,8 @@ import {
 } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Button from '@/components/formElements/Button';
-import { StyledContainer, StyledText } from './Error.styles';
+import StyledText from '@/components/ui/StyledText';
+import { StyledContainer } from './Error.styles';
 
 export default function ErrorPage() {
   const error = useRouteError();

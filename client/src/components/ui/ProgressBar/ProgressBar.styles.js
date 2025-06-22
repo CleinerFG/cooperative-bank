@@ -32,7 +32,7 @@ export const StyledLabelContainer = styled.div`
 `;
 
 export const StyledLabel = styled.span`
-  color: ${({ theme }) => theme.colors.gray[500]};
+  color: ${({ theme }) => theme.colors.gray[600]};
   font-weight: 500;
   font-size: ${font.size.sm};
 `;

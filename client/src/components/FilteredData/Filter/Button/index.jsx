@@ -8,7 +8,7 @@ function Button({ filterType }) {
   const isActive = activeFilter === filterType;
   return (
     <StyledButton $active={isActive} onClick={() => setFilter(filterType)}>
-      <StyledLabel>{t(filterType)}</StyledLabel>
+      <StyledLabel $active={isActive}>{t(filterType)}</StyledLabel>
       {isActive ? <StyledCount>{filteredData.length}</StyledCount> : null}
     </StyledButton>
   );
