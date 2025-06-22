@@ -19,7 +19,7 @@ This is a web project for a Single Page Application (SPA) that simulates a coope
 
 - **`Forms`**: The project uses `React Hook Form` and `Yup` for form management and validation.
 
-- **`Styling and Animations`**: The project uses `Styled Components` for custom-styled components. For complex animations that depend on component mounting and unmounting, `Framer Motion` is used.
+- **`Styling and Animations`**: The project uses `Styled Components` for custom styled components and light/dark theme. For complex animations that depend on component mounting and unmounting, `Framer Motion` is used.
 
 - **`Translation`**: The project currently supports two languages — English and Brazilian Portuguese — using the `React i18next` library.
 

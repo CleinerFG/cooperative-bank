@@ -19,7 +19,7 @@ Este é um projeto web de Aplicação de Página Única (SPA) que simula um banc
 
 - **`Formulários`**: O projeto utiliza as bibliotecas `React Hook Form` e `Yup` para validação e gerenciamento de formulários.
 
-- **`Estilização e Animações`**: O projeto utiliza `Styled Components` para componentes customizados com estilos. Para animações complexas, que dependem da montagem e desmontagem de componentes, é utilizado o `Framer Motion`.
+- **`Estilização e Animações`**: O projeto utiliza `Styled Components` para componentes customizados com estilos e tema escuro/claro. Para animações complexas, que dependem da montagem e desmontagem de componentes, é utilizado o `Framer Motion`.
 
 - **`Tradução`**: O projeto atualmente suporta dois idiomas — inglês e português-BR — por meio da biblioteca `React i18next`.
 
