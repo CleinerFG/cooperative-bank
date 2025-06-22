@@ -3,7 +3,14 @@ import useNotificationsContext from './useNotificationsContext';
 function useNotifications() {
   const { state, dispatch } = useNotificationsContext();
 
-  const togglePanelIsOpen = () => dispatch({ type: 'TOGGLE_PANEL_IS_OPEN' });
+  const togglePanelIsOpen = () =>
+    dispatch({
+      type: 'SET_PANEL_IS_OPEN',
+      payload: { isOpen: !state.panelIsOpen },
+    });
+
+  const setPanelIsOpen = (isOpen) =>
+    dispatch({ type: 'SET_PANEL_IS_OPEN', payload: { isOpen } });
 
   const setNotificationRead = (id) =>
     dispatch({ type: 'SET_NOTIFICATION_READ', payload: { id } });
@@ -20,6 +27,7 @@ function useNotifications() {
     panelIsOpen: state.panelIsOpen,
     notifications: state.notifications,
     togglePanelIsOpen,
+    setPanelIsOpen,
     setNotificationRead,
     setAllNotificationsRead,
     removeNotification,

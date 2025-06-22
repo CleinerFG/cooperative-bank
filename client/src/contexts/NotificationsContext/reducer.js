@@ -3,6 +3,9 @@ function reducer(state, action) {
     case 'TOGGLE_PANEL_IS_OPEN':
       return { ...state, panelIsOpen: !state.panelIsOpen };
 
+    case 'SET_PANEL_IS_OPEN':
+      return { ...state, panelIsOpen: action.payload.isOpen };
+
     case 'SET_NOTIFICATION_READ': {
       const id = action.payload.id;
       return {

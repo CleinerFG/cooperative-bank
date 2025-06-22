@@ -8,14 +8,21 @@ import Content from './Content';
 import Header from './Header';
 
 function Panel() {
-  const { panelIsOpen } = useNotifications();
+  const { panelIsOpen, setPanelIsOpen } = useNotifications();
   const { shouldRender, handleAnimationComplete } =
     useDelayedUnmount(panelIsOpen);
   useHiddenBodyOverFlow(panelIsOpen);
 
+  const handleCloseOnClickOutside = (ev) => {
+    // Close only when the click is directly on the backdrop
+    if (ev.target === ev.currentTarget) {
+      setPanelIsOpen(false);
+    }
+  };
+
   return createPortal(
     shouldRender && (
-      <StyledBackdrop>
+      <StyledBackdrop onClick={handleCloseOnClickOutside}>
         <SlideDownAnimation
           isVisible={panelIsOpen}
           onAnimationComplete={handleAnimationComplete}
