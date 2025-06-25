@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 import { useNotifications } from '@/hooks/notifications';
 import { useDelayedUnmount } from '@/hooks/useDelayedUnmount';
 import useHiddenBodyOverFlow from '@/hooks/useHiddenBodyOverflow';
-import SlideDownAnimation from '@/components/animations/SlideDownAnimation';
+import SlideAnimation from '@/components/animations/SlideAnimation';
 import { StyledBackdrop, StyledContainer } from './Panel.styles';
 import Content from './Content';
 import Header from './Header';
@@ -23,15 +23,16 @@ function Panel() {
   return createPortal(
     shouldRender && (
       <StyledBackdrop onClick={handleCloseOnClickOutside}>
-        <SlideDownAnimation
+        <SlideAnimation
           isVisible={panelIsOpen}
           onAnimationComplete={handleAnimationComplete}
+          initialPosition={{ y: -200 }}
         >
           <StyledContainer>
             <Header />
             <Content />
           </StyledContainer>
-        </SlideDownAnimation>
+        </SlideAnimation>
       </StyledBackdrop>
     ),
     document.body
