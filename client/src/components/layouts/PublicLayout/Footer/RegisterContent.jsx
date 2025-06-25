@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function RegisterContent() {
   const { t } = useTranslation();
-  return <Link to="/login">{t('notPartnerJoinUs')}</Link>;
+  return <Link to="/login">{t('alreadyAPartner')}</Link>;
 }
 
 export default RegisterContent;
