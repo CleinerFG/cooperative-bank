@@ -7,7 +7,7 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   width: 100vw;
   max-width: 1920px;
-  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
 `;
 
