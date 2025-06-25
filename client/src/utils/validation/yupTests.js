@@ -1,4 +1,9 @@
-import { cpfIsValid, findRepetition, findSequence } from './helpers';
+import {
+  cpfIsValid,
+  findRepetition,
+  findSequence,
+  isAtLeast18,
+} from './helpers';
 
 export const cpfTestRule = {
   name: 'cpf-is-valid',
@@ -56,4 +61,10 @@ export const hasSpecialCharTestRule = {
   name: 'has-special-Char',
   message: 'passMustHaveSpecialChar',
   test: (value) => /[^a-zA-Z0-9]/.test(value),
+};
+
+export const has18YearsTestRule = {
+  name: 'has-18-years',
+  message: 'mustBe18Years',
+  test: isAtLeast18,
 };

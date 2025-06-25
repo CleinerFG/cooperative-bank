@@ -50,3 +50,19 @@ export function cpfIsValid(value) {
 
   return true;
 }
+
+export function isAtLeast18(date) {
+  const [year, month, day] = date.split('-').map(Number);
+
+  const birthDate = new Date(year, month - 1, day);
+  const today = new Date();
+
+  const age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  return (
+    age > 18 ||
+    (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)))
+  );
+}
