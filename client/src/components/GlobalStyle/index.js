@@ -25,6 +25,14 @@ button {
   cursor: pointer;
 }
 
+a{
+  color: ${({ theme }) => theme.colors.secondary[500]};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary[400]};
+  }
+}
+
 li {
   list-style-type: none;
 }
