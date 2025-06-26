@@ -15,6 +15,7 @@ export const StyledMultiStepForm = styled.form`
 `;
 
 export const StyledContent = styled.main`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: ${sizes.spacing.md};

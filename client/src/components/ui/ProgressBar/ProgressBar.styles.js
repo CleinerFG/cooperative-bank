@@ -22,6 +22,7 @@ export const StyledProgress = styled.div`
   border-radius: ${sizes.rounded.md};
   height: 100%;
   width: ${({ $percent = 0 }) => $percent + '%'};
+  transition: all 0.5s;
 `;
 
 export const StyledLabelContainer = styled.div`
