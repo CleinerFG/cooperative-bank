@@ -1,12 +1,15 @@
+import { useMultiStepForm } from '@/hooks/multiStepForm';
 import { StyledContainer, StyledIndicator } from './StepCounter.styles';
 
-function StepCounter({ currentStep, maxSteps }) {
+function StepCounter() {
+  const { state } = useMultiStepForm();
+
   return (
     <StyledContainer>
-      {new Array(maxSteps).fill(null).map((_, i) => (
+      {new Array(state.maxSteps).fill(null).map((_, i) => (
         <StyledIndicator
-          $pastStep={currentStep > i}
-          $currentStep={currentStep === i}
+          $pastStep={state.currentStep > i}
+          $currentStep={state.currentStep === i}
           key={i}
         />
       ))}

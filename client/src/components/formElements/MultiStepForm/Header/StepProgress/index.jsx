@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+import { useMultiStepForm } from '@/hooks/multiStepForm';
 import {
   StyledBar,
   StyledProgress,
@@ -7,15 +9,18 @@ import {
   StyledLabel,
   StyledLabelsContainer,
 } from './StepProgress.styles';
-import { useTranslation } from 'react-i18next';
 
-function StepProgress({ current, max }) {
+function StepProgress() {
   const { t } = useTranslation();
-  const progress = (current / max) * 100;
+  const { state } = useMultiStepForm();
+  const progress = ((state.currentStep + 1) / state.maxSteps) * 100;
+  
   return (
     <StyledContainer>
       <StyledLabelsContainer>
-        <StyledLabel>{t('stepOf', { current, max })}</StyledLabel>
+        <StyledLabel>
+          {t('stepOf', { current: state.currentStep + 1, max: state.maxSteps })}
+        </StyledLabel>
         <StyledLabel $highlight>{Math.trunc(progress)}%</StyledLabel>
       </StyledLabelsContainer>
       <StyledBar>

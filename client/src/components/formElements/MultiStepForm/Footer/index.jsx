@@ -1,17 +1,19 @@
 import { useTranslation } from 'react-i18next';
+import { useMultiStepForm } from '@/hooks/multiStepForm';
 import Button from '../../Button';
 import { StyledButtons, StyledFooter } from './Footer.styles';
 import StepCounter from './StepCounter';
-import { ChevronLeft } from 'lucide-react';
 
-function Footer({ currentStep, maxSteps, onPrevStep, onNextStep }) {
+function Footer() {
   const { t } = useTranslation();
-  const isFirstStep = currentStep === 0;
-  const isLastStep = currentStep === maxSteps - 1;
+  const { state, handleNext, handlePrev } = useMultiStepForm();
 
-  const NextButton = <Button handleClick={onNextStep}>{t('next')}</Button>;
+  const isFirstStep = state.currentStep === 0;
+  const isLastStep = state.currentStep === state.maxSteps - 1;
+
+  const NextButton = <Button handleClick={handleNext}>{t('next')}</Button>;
   const BackButton = (
-    <Button variant="secondary" handleClick={onPrevStep}>
+    <Button variant="secondary" handleClick={handlePrev}>
       {t('back')}
     </Button>
   );
@@ -37,7 +39,7 @@ function Footer({ currentStep, maxSteps, onPrevStep, onNextStep }) {
         )}
       </StyledButtons>
 
-      <StepCounter currentStep={currentStep} maxSteps={maxSteps} />
+      <StepCounter />
     </StyledFooter>
   );
 }
