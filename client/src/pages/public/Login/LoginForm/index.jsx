@@ -10,6 +10,7 @@ import {
   StyledFooter,
   StyledHeader,
   StyledLoginForm,
+  StyledTitle,
 } from './LoginForm.styles';
 import Button from '@/components/formElements/Button';
 
@@ -27,7 +28,7 @@ function LoginForm() {
   return (
     <StyledLoginForm onSubmit={handleSubmit((data) => console.log(data))}>
       <StyledHeader>
-        <h1>{t('loginAccount')}</h1>
+        <StyledTitle>{t('loginAccount')}</StyledTitle>
         <img src="/login.svg" alt="Login Img" />
       </StyledHeader>
       <StyledContent>

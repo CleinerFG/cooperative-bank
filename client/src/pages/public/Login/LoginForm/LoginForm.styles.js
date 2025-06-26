@@ -39,6 +39,10 @@ export const StyledHeader = styled.header`
   }
 `;
 
+export const StyledTitle = styled.h1`
+  color: ${({ theme }) => theme.colors.secondary[500]};
+`;
+
 export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;

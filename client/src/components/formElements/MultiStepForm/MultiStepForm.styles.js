@@ -12,6 +12,7 @@ export const StyledMultiStepForm = styled.form`
   padding: ${sizes.spacing.xl};
   border-radius: ${sizes.rounded.lg};
   ${sizes.border.sm}
+  box-shadow: ${sizes.shadow.md};
 `;
 
 export const StyledContent = styled.main`
