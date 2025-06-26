@@ -4,8 +4,8 @@ import UsFlag from '@/components/flags/UsFlag';
 import BrFlag from '@/components/flags/BrFlag';
 
 const options = [
-  { label: 'English', value: 'en', Icon: UsFlag },
-  { label: 'Português', value: 'pt', Icon: BrFlag },
+  { label: 'English', value: 'en-US', Icon: UsFlag },
+  { label: 'Português', value: 'pt-BR', Icon: BrFlag },
 ];
 
 function LanguagesRadioGroup() {
