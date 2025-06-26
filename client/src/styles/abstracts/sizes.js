@@ -43,5 +43,6 @@ export const border = {
 export const shadow = {
   xs: '0 1px 1px rgba(0, 0, 0, 0.2)',
   sm: '0 2px 2px rgba(0, 0, 0, 0.2)',
-  md: '0 2px 4px rgba(0, 0, 0, 0.2)',
+  md: '0 4px 6px rgba(0, 0, 0, 0.2)',
+  lg: '0 6px 8px rgba(0, 0, 0, 0.2)',
 };

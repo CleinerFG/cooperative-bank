@@ -73,6 +73,7 @@
     "loanInstallments": "Parcelas do Empréstimo",
     "loans": "Empréstimos",
     "login": "Entrar",
+    "loginAccount": "Faça Login na Conta",
     "markAllRead": "Marcar tudo como lido",
     "maxPasswordLen": "A senha deve ter no máximo {{length}} caracteres",
     "minValue": "Valor mínimo é {{value}}",

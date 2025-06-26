@@ -1,5 +1,6 @@
 import PublicFormPageLayout from '@/components/layouts/PublicFormPageLayout';
 import PublicLayout from '@/components/layouts/PublicLayout';
+import Login from '@/pages/public/Login';
 import Register from '@/pages/public/Register';
 
 export default {
@@ -10,7 +11,22 @@ export default {
     {
       path: 'register',
       element: <PublicFormPageLayout />,
-      children: [{ index: true, element: <Register /> }],
+      children: [
+        {
+          index: true,
+          element: <Register />,
+        },
+      ],
+    },
+    {
+      path: 'login',
+      element: <PublicFormPageLayout />,
+      children: [
+        {
+          index: true,
+          element: <Login />,
+        },
+      ],
     },
   ],
 };

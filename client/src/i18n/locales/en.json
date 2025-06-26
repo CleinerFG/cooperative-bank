@@ -73,6 +73,7 @@
     "loanInstallments": "Loan Installments",
     "loans": "Loans",
     "login": "Login",
+    "loginAccount": "Login Into Account",
     "markAllRead": "Mark all as read",
     "maxPasswordLen": "Password must be at most {{length}} characters",
     "minValue": "Minimum value is {{value}}",
