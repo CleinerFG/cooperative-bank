@@ -17,6 +17,7 @@
     "motion": "^12.10.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-easy-crop": "^5.4.2",
     "react-hook-form": "^7.57.0",
     "react-i18next": "^15.5.1",
     "react-number-format": "^5.4.4",

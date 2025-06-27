@@ -22,6 +22,7 @@ export const StyledContainer = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.neutral[0]};
   border-radius: ${sizes.rounded.lg};
+  margin: 1rem;
 `;
 
 export const StyledButton = styled.button`
