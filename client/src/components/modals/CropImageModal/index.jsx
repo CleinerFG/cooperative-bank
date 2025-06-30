@@ -1,13 +1,9 @@
-import 'react-image-crop/dist/ReactCrop.css';
-
-import { useRef, useState } from 'react';
-import ReactCrop, { centerCrop, makeAspectCrop } from 'react-image-crop';
+import { useState } from 'react';
 import Modal from '../Modal';
 import {
   StyledCroppedImage,
   StyledImgContainer,
 } from './CropImageModal.styles';
-import { createCroppedImage } from './utils';
 import {
   StyledHeader,
   StyledTitle,
@@ -17,61 +13,42 @@ import {
 import { ImageUp } from 'lucide-react';
 import Button from '@/components/formElements/Button';
 import { useTranslation } from 'react-i18next';
-
-function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
-  return centerCrop(
-    makeAspectCrop(
-      {
-        unit: '%',
-        width: 60,
-      },
-      aspect,
-      mediaWidth,
-      mediaHeight
-    ),
-    mediaWidth,
-    mediaHeight
-  );
-}
+import { useImageCropper } from '@/hooks/imageCropper';
 
 function CropImageModal({ isOpen, onClose, imageSrc }) {
   const { t } = useTranslation();
 
-  const ASPECT = 1;
+  const { CropperComponent, cropIsComplete, createImageUrlAndFile } =
+    useImageCropper({ imageSrc, aspect: 1 });
 
-  const [crop, setCrop] = useState();
-  const [completedCrop, setCompletedCrop] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
-  const imgRef = useRef(null);
+  const [showCroppedImage, setShowCroppedImage] = useState(false);
 
-  function onImageLoad(ev) {
-    if (ASPECT) {
-      const { width, height } = ev.currentTarget;
-      console.table({ width, height });
-
-      setCrop(centerAspectCrop(width, height, ASPECT));
-    }
-  }
-
-  const showCroppedImage = async () => {
-    if (!completedCrop?.width || !completedCrop?.height) return;
+  const handleDisplayCroppedImage = async () => {
+    if (!cropIsComplete) return;
 
     try {
-      const { url } = await createCroppedImage(
-        imageSrc,
-        completedCrop,
-        imgRef.current
-      );
+      const { url, file } = await createImageUrlAndFile();
+      console.log(file);
+      setShowCroppedImage(true);
       setCroppedImage(url);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const resetCroppedImage = () => setCroppedImage(null);
+  const resetCroppedImage = () => {
+    setCroppedImage(null);
+    setShowCroppedImage(false);
+  };
+
+  const handleModalClose = () => {
+    onClose();
+    resetCroppedImage();
+  };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={handleModalClose}>
       <StyledHeader>
         <StyledIconContainer>
           <ImageUp />
@@ -80,40 +57,34 @@ function CropImageModal({ isOpen, onClose, imageSrc }) {
       </StyledHeader>
 
       <StyledImgContainer>
-        {!croppedImage ? (
-          <ReactCrop
-            crop={crop}
-            onChange={(_, percentCrop) => {
-              console.log(percentCrop);
-              setCrop(percentCrop);
-            }}
-            onComplete={(c) => {
-              console.log(c);
-              setCompletedCrop(c);
-            }}
-            aspect={ASPECT}
-            minHeight={100}
-            keepSelection
-          >
-            <img
-              ref={imgRef}
-              alt="Crop me"
-              src={imageSrc}
-              onLoad={onImageLoad}
-            />
-          </ReactCrop>
+        {!showCroppedImage ? (
+          CropperComponent
         ) : (
           <StyledCroppedImage src={croppedImage} alt="Cropped result" />
         )}
       </StyledImgContainer>
 
       <StyledFooter>
-        <Button variant="secondary" handleClick={resetCroppedImage}>
-          {t('edit')}
-        </Button>
-        <Button handleClick={showCroppedImage} disabled={!completedCrop}>
-          {t('seeResult')}
-        </Button>
+        {!showCroppedImage ? (
+          <>
+            <Button variant="secondary" handleClick={handleModalClose}>
+              {t('back')}
+            </Button>
+            <Button
+              handleClick={handleDisplayCroppedImage}
+              isDisabled={!cropIsComplete}
+            >
+              {t('seeResult')}
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button variant="secondary" handleClick={resetCroppedImage}>
+              {t('edit')}
+            </Button>
+            <Button variant="primary">{t('save')}</Button>
+          </>
+        )}
       </StyledFooter>
     </Modal>
   );
