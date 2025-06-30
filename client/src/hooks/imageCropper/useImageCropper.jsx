@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import ReactCrop from 'react-image-crop';
 import { createCroppedImage, centerAspectCrop } from './utils';
+
+import 'react-image-crop/dist/ReactCrop.css';
 
 function useImageCropper({ imageSrc, aspect }) {
   const [crop, setCrop] = useState();
@@ -15,7 +17,8 @@ function useImageCropper({ imageSrc, aspect }) {
   };
 
   const createImageUrlAndFile = async () => {
-    if (!completedCrop?.width || !completedCrop?.height) return;
+    if (!completedCrop?.width || !completedCrop?.height || !imgRef.current)
+      return;
 
     const { url, file } = await createCroppedImage(
       imageSrc,
@@ -26,20 +29,27 @@ function useImageCropper({ imageSrc, aspect }) {
     return { url, file };
   };
 
-  const CropperComponent = (
-    <ReactCrop
-      crop={crop}
-      onChange={(_, percentCrop) => setCrop(percentCrop)}
-      onComplete={(c) => setCompletedCrop(c)}
-      aspect={aspect}
-      minHeight={100}
-      keepSelection
-    >
-      <img ref={imgRef} alt="Crop me" src={imageSrc} onLoad={onImageLoad} />
-    </ReactCrop>
-  );
+  const CropperComponent = useMemo(() => {
+    return (
+      <ReactCrop
+        crop={crop}
+        onChange={(_, percentCrop) => setCrop(percentCrop)}
+        onComplete={(c) => setCompletedCrop(c)}
+        aspect={aspect}
+        minHeight={100}
+        keepSelection
+      >
+        <img ref={imgRef} alt="Crop me" src={imageSrc} onLoad={onImageLoad} />
+      </ReactCrop>
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [crop, aspect, imageSrc]);
 
-  return { CropperComponent, completedCrop, createImageUrlAndFile };
+  return {
+    CropperComponent,
+    cropIsComplete: Boolean(completedCrop),
+    createImageUrlAndFile,
+  };
 }
 
 export default useImageCropper;
