@@ -2,14 +2,24 @@ import Cropper from 'react-easy-crop';
 import Modal from '../Modal';
 import { useState } from 'react';
 import {
-  StyledContainer,
   StyledCropContainer,
   StyledCroppedImage,
-  StyledTitle,
 } from './CropImageModal.styles';
 import { createCroppedImage } from './utils';
+import {
+  StyledHeader,
+  StyledTitle,
+  StyledIconContainer,
+  StyledFooter,
+  StyledContent,
+} from '../baseStyles';
+import { ImageUp } from 'lucide-react';
+import Button from '@/components/formElements/Button';
+import { useTranslation } from 'react-i18next';
 
 function CropImageModal({ isOpen, onClose, imageSrc }) {
+  const { t } = useTranslation();
+
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -30,12 +40,15 @@ function CropImageModal({ isOpen, onClose, imageSrc }) {
 
   const resetCroppedImage = () => setCroppedImage(null);
 
-
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <StyledContainer>
-        <StyledTitle>Ajuste a Imagem de acordo com sua preferência</StyledTitle>
-
+      <StyledHeader>
+        <StyledIconContainer>
+          <ImageUp />
+        </StyledIconContainer>
+        <StyledTitle>{t('adjustImage')}</StyledTitle>
+      </StyledHeader>
+      <StyledContent>
         <StyledCropContainer>
           {!croppedImage ? (
             <Cropper
@@ -48,15 +61,19 @@ function CropImageModal({ isOpen, onClose, imageSrc }) {
               onZoomChange={setZoom}
             />
           ) : croppedImage ? (
-            <StyledCroppedImage src={croppedImage} alt="Imagem cortada" />
+            <StyledCroppedImage src={croppedImage} alt="Image cropped" />
           ) : null}
         </StyledCropContainer>
+      </StyledContent>
 
-        <button onClick={showCroppedImage} disabled={!croppedAreaPixels}>
-          Ver Resultado
-        </button>
-        <button onClick={resetCroppedImage}>Editar Novamente</button>
-      </StyledContainer>
+      <StyledFooter>
+        <Button variant="secondary" handleClick={resetCroppedImage}>
+          {t('edit')}
+        </Button>
+        <Button handleClick={showCroppedImage} disabled={!croppedAreaPixels}>
+          {t('seeResult')}
+        </Button>
+      </StyledFooter>
     </Modal>
   );
 }

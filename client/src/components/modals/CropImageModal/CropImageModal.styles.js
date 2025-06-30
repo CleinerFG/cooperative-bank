@@ -1,13 +1,4 @@
-import { sizes } from '@/styles/abstracts';
 import styled from 'styled-components';
-
-export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${sizes.spacing.lg};
-  padding: ${sizes.spacing.lg};
-`;
 
 export const StyledCropContainer = styled.div`
   position: relative;
@@ -23,11 +14,6 @@ export const StyledCropContainer = styled.div`
     width: 500px;
     height: 500px;
   }
-`;
-
-export const StyledTitle = styled.h2`
-  color: ${({ theme }) => theme.colors.gray[700]};
-  padding-right: 3rem;
 `;
 
 export const StyledCroppedImage = styled.img`
