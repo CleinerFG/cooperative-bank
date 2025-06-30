@@ -1,9 +1,11 @@
+import { centerCrop, makeAspectCrop } from 'react-image-crop';
+
 export async function createCroppedImage(imageSrc, crop, imageElement) {
   const blobImage = await new Promise((resolve, reject) => {
     const image = new Image();
     image.src = imageSrc;
     image.crossOrigin = 'anonymous';
-    
+
     image.onload = () => {
       const scaleX = image.naturalWidth / imageElement.width;
       const scaleY = image.naturalHeight / imageElement.height;
@@ -45,4 +47,20 @@ export async function createCroppedImage(imageSrc, crop, imageElement) {
   const url = URL.createObjectURL(file);
 
   return { file, url };
+}
+
+export function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
+  return centerCrop(
+    makeAspectCrop(
+      {
+        unit: '%',
+        width: 60,
+      },
+      aspect,
+      mediaWidth,
+      mediaHeight
+    ),
+    mediaWidth,
+    mediaHeight
+  );
 }

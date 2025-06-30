@@ -1,22 +1,12 @@
 import styled from 'styled-components';
-
-export const StyledCropContainer = styled.div`
-  position: relative;
-  width: 300px;
-  height: 300px;
-
-  @media (min-width: 475px) {
-    width: 400px;
-    height: 400px;
-  }
-
-  @media (min-width: 575px) {
-    width: 500px;
-    height: 500px;
-  }
-`;
+import { StyledContent } from '../baseStyles';
 
 export const StyledCroppedImage = styled.img`
   width: 100%;
   height: 100%;
+`;
+
+export const StyledImgContainer = styled(StyledContent)`
+  width: 100%;
+  max-width: 500px;
 `;

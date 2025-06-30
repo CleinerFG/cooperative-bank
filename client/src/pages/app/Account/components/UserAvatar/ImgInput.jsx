@@ -4,13 +4,18 @@ import {
   StyledInputContainer,
 } from './UserAvatar.styles';
 
-function Imginput({ onChange }) {
+function ImgInput({ onFileInput }) {
   return (
     <StyledInputContainer>
-      <StyledInput type="file" accept="image/*" onChange={onChange} />
+      <StyledInput
+        type="file"
+        accept="image/*"
+        onClick={(ev) => (ev.target.value = '')}
+        onInput={onFileInput}
+      />
       <StyledCameraIcon />
     </StyledInputContainer>
   );
 }
 
-export default Imginput;
+export default ImgInput;

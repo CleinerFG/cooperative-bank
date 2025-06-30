@@ -15,10 +15,9 @@ function readFile(file) {
 
 function UserAvatar() {
   const [cropIsOpen, setCropIsOpen] = useState(false);
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState(null);
 
-
-  const onFileChange = async (e) => {
+  const handleFileInput = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       let imageDataUrl = await readFile(file);
@@ -27,7 +26,10 @@ function UserAvatar() {
     }
   };
 
-  const onCloseCrop = () => setCropIsOpen(false);
+  const onCloseCrop = () => {
+    setImageSrc(null);
+    setCropIsOpen(false);
+  };
 
   return (
     <>
@@ -39,7 +41,7 @@ function UserAvatar() {
             imageSrc={imageSrc}
           />
           <StyledCircleImg src="/profile.jpg" alt="User image" />
-          <ImgInput onChange={onFileChange} />
+          <ImgInput onFileInput={handleFileInput} />
         </GradientBorderCircle>
       </StyledContainer>
     </>
