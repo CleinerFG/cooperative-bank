@@ -7,7 +7,6 @@ export const StyledHeader = styled.header`
   gap: ${sizes.spacing.sm};
   padding: ${sizes.spacing.md} ${sizes.spacing.xl};
   ${sizes.border.sm}
-  margin-right: 2rem;
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -15,6 +14,7 @@ export const StyledHeader = styled.header`
 
 export const StyledTitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray[800]};
+  margin-right: 2rem;
 `;
 
 export const StyledIconContainer = styled.div`
