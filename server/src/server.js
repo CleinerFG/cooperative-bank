@@ -6,6 +6,7 @@ const { APP_STATIC_DIR, PUBLIC_STATIC_DIR } = require('./config/constants.js');
 
 const express = require('express');
 const cookierParser = require('cookie-parser');
+const cors = require('cors');
 
 const logMiddleware = require('./middlewares/logMiddleware.js');
 const simulateDelayMiddleware = require('./middlewares/simulateDelayMiddleware.js');
@@ -13,6 +14,13 @@ const errorsMiddleware = require('./middlewares/errorsMiddleware.js');
 const routes = require('./routes/index.js');
 
 const app = express();
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookierParser());
