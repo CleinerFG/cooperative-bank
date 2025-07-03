@@ -1,7 +1,8 @@
 import useMultiStepFormContext from './useMultiStepFormContext';
 
 function useMultiStepForm() {
-  const { state, setState, steps, methodsRhf } = useMultiStepFormContext();
+  const { state, setState, steps, onSubmitData, methodsRhf } =
+    useMultiStepFormContext();
 
   const currentFields = steps[state.currentStep].fields;
   const CurrentStepComponent = steps[state.currentStep].Component;
@@ -29,6 +30,7 @@ function useMultiStepForm() {
     state,
     handleNext,
     handlePrev,
+    handleSubmitData: methodsRhf.handleSubmit(onSubmitData),
     methodsRhf,
     currentFields,
     CurrentStepComponent,

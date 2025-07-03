@@ -7,6 +7,7 @@ function MultiStepFormProvider({
   fieldsValues,
   validationSchema,
   steps,
+  onSubmitData,
   children,
 }) {
   const [state, setState] = useState({
@@ -24,7 +25,7 @@ function MultiStepFormProvider({
   return (
     <FormProvider {...methods}>
       <MultiStepFormContext.Provider
-        value={{ state, setState, steps, methodsRhf: methods }}
+        value={{ state, setState, steps, onSubmitData, methodsRhf: methods }}
       >
         {children}
       </MultiStepFormContext.Provider>

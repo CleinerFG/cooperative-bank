@@ -5,15 +5,11 @@ import Header from './Header';
 import { StyledContent, StyledMultiStepForm } from './MultiStepForm.styles';
 
 function FormContent() {
-  const { state, methodsRhf, currentFields, CurrentStepComponent } =
+  const { state, currentFields, handleSubmitData, CurrentStepComponent } =
     useMultiStepForm();
 
   return (
-    <StyledMultiStepForm
-      onSubmit={methodsRhf.handleSubmit((data) => {
-        console.log(data);
-      })}
-    >
+    <StyledMultiStepForm onSubmit={handleSubmitData}>
       <Header title="register" />
       <StyledContent>
         <SlideAnimation

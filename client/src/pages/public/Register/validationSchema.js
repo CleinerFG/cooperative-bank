@@ -9,17 +9,17 @@ const onlyLettersTestRule = {
 };
 
 export default yup.object({
-  cpf: yup.string().required('requiredField').test(cpfTestRule),
-  email: yup.string().required('requiredField').email('invalidEmail'),
-  fullName: yup
-    .string()
-    .required('requiredField')
-    .test(onlyLettersTestRule)
-    .trim(),
-  birthDate: yup.string().required('requiredField').test(has18YearsTestRule),
-  password: loginPasswordRules,
-  confirmPassword: yup
-    .string()
-    .required('requiredField')
-    .oneOf([yup.ref('password')], 'passMustBeSame'),
+  // cpf: yup.string().required('requiredField').test(cpfTestRule),
+  // email: yup.string().required('requiredField').email('invalidEmail'),
+  // fullName: yup
+  //   .string()
+  //   .required('requiredField')
+  //   .test(onlyLettersTestRule)
+  //   .trim(),
+  // birthDate: yup.string().required('requiredField').test(has18YearsTestRule),
+  // password: loginPasswordRules,
+  // confirmPassword: yup
+  //   .string()
+  //   .required('requiredField')
+  //   .oneOf([yup.ref('password')], 'passMustBeSame'),
 });
